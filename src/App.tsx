@@ -26,10 +26,6 @@ function App() {
   function close() {
     setIsOpen(null);
   }
-  const [value, setValue] = React.useState(
-    new Date("2021-08-31T10:29:52.589Z")
-  );
-
   const [radiusKm, setRadiusKm] = useState(30);
   const [lat, setLat] = useState(-36.853610199274385);
   const [lng, setLng] = useState(174.76054541484535);
