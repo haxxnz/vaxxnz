@@ -15,6 +15,7 @@ import { TimePicker } from "baseui/timepicker";
 import { getMyCalendar } from './getData';
 import { DateLocationsPairsContext } from './contexts';
 import { DateLocationsPair } from './types';
+import { parse } from 'date-fns';
 
 
 function sum(array: number[]) {
@@ -22,7 +23,7 @@ function sum(array: number[]) {
 }
 
 function App() {
-  const [isOpen, setIsOpen] = React.useState<DateLocationsPair|null>(null);
+  const [isOpen, setIsOpen] = React.useState<DateLocationsPair | null>(null);
   function close() {
     setIsOpen(null);
   }
@@ -281,7 +282,10 @@ function App() {
             <h2>September 2021</h2>
             <MonthContainer>
               {dateLocationsPairs.map(dateLocationsPair => <div onClick={() => setIsOpen(dateLocationsPair)}>
-                <h3>{dateLocationsPair.dateStr}</h3>
+                <h3>{parse(dateLocationsPair.dateStr, 'yyyy-MM-dd', new Date()).toLocaleDateString([], {
+                  month: "long",
+                  day: "numeric"
+                })}</h3>
                 <p>{sum(dateLocationsPair.locationSlotsPairs.map(locationSlotsPair => (locationSlotsPair.slots || []).length))} slots available</p>
               </div>)}
               {/* <div>
