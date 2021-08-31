@@ -260,7 +260,7 @@ function App() {
           </Modal>
           <h1>Available Vaccine Slots</h1>
           <div style={{ zIndex: 22 }}>
-            <Button onClick={() => alert("click")} kind={KIND.secondary}>About</Button>
+            <Button onClick={() => alert("Made by the same team who brought you lenny.cf")} kind={KIND.secondary}>About</Button>
 
             <Select
               options={[
