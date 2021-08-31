@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import styled from 'styled-components'
 import './App.css';
 import { Button, KIND } from "baseui/button";
@@ -12,6 +12,8 @@ import {
 import { Select } from "baseui/select";
 
 import { TimePicker } from "baseui/timepicker";
+import { getMyCalendar } from './getData';
+import { DateLocationsPairsContext } from './contexts';
 
 
 
@@ -24,6 +26,19 @@ function App() {
   const [value, setValue] = React.useState(
     new Date("2021-08-31T10:29:52.589Z")
   );
+
+  const [radiusKm, setRadiusKm] = useState(30)
+  const [lat, setLat] = useState(-46.4102)
+  const [lng, setLng] = useState(168.355)
+  const {dateLocationsPairs, setDateLocationsPairs} = useContext(DateLocationsPairsContext)
+  const loadCalendar = useCallback(async () => {
+    const data = await getMyCalendar(lat, lng, radiusKm)
+    setDateLocationsPairs(data)
+  }, [lat, lng, radiusKm, setDateLocationsPairs])
+
+  useEffect(() => {
+    loadCalendar()
+  }, [loadCalendar])
 
   return (
     <>
