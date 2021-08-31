@@ -44,6 +44,7 @@ function App() {
     <>
 
       <div className="App">
+        <pre>{JSON.stringify({dateLocationsPairs}, null, 2)}</pre>
 
         <section className="App-header">
           <h1>Vaccine Timetable</h1>

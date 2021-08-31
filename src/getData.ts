@@ -21,7 +21,14 @@ export async function getMyCalendar(lat: number, lng: number, radiusKm: number) 
         return distance < radiusKm
     })
     const availabilityDatesAndLocations = await Promise.all(filtredLocations.map(async (location) => {
-        const availabilityDates = await getAvailabilityDates(location.extId)
+        let availabilityDates: AvailabilityDates | undefined = undefined
+        try {
+            availabilityDates = await getAvailabilityDates(location.extId)
+        }
+        catch (e) {
+            console.error('getMyCalendar e', e)
+        }
+
         return {
             location,
             availabilityDates
@@ -37,7 +44,7 @@ export async function getMyCalendar(lat: number, lng: number, radiusKm: number) 
         for (let j = 0; j < availabilityDatesAndLocations.length; j++) {
             const availabilityDatesAndLocation = availabilityDatesAndLocations[j];
             const { location, availabilityDates } = availabilityDatesAndLocation
-            const slots = availabilityDates[dateStr]
+            const slots = availabilityDates ? availabilityDates[dateStr] : []
             locationSlotsPairs.push({ location, slots })
         }
         dateLocationsPairs.push({
