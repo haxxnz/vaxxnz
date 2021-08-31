@@ -7,6 +7,7 @@
     "@turf/helpers": "^6.5.0",
     "@types/styled-components": "^5.1.13",
     "baseui": "^10.1.0",
+    "date-fns": "^2.23.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
