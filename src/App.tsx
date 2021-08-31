@@ -30,7 +30,7 @@ function App() {
   const [radiusKm, setRadiusKm] = useState(30)
   const [lat, setLat] = useState(-46.4102)
   const [lng, setLng] = useState(168.355)
-  const {dateLocationsPairs, setDateLocationsPairs} = useContext(DateLocationsPairsContext)
+  const { dateLocationsPairs, setDateLocationsPairs } = useContext(DateLocationsPairsContext)
   const loadCalendar = useCallback(async () => {
     const data = await getMyCalendar(lat, lng, radiusKm)
     setDateLocationsPairs(data)
@@ -44,7 +44,7 @@ function App() {
     <>
 
       <div className="App">
-        <pre>{JSON.stringify({dateLocationsPairs}, null, 2)}</pre>
+        <pre>{JSON.stringify({ dateLocationsPairs }, null, 2)}</pre>
 
         <section className="App-header">
           <h1>Vaccine Timetable</h1>
@@ -668,6 +668,7 @@ div {
   display:flex;
   flex-direction: row;
   gap:1rem;
+  max-height: 48px;
 }
 h1 {
   text-align: left;
