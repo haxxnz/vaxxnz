@@ -88,7 +88,7 @@ function App() {
               </div>
 
               <div style={{ overflow: 'scroll' }}>
-                {isOpen?.locationSlotsPairs.map(locationSlotsPair => <VaccineCentre>
+                {isOpen?.locationSlotsPairs.filter(locationSlotsPair => locationSlotsPair.slots?.length).map(locationSlotsPair => <VaccineCentre>
                   {/* <h3>Murihiku Medical Services</h3> */}
                   <h3>{locationSlotsPair.location.name}</h3>
                   {/* <p>Level 1, 112 Don Street, Invercargill  </p> */}
@@ -266,11 +266,11 @@ function App() {
                 { label: "Within 90km", id: "#00FFFF" },
               ]}
               placeholder={`Within ${radiusKm}km`}
-
+              disabled={true} // TODO: implement
 
 
             />
-            <div>{lat}, {lng} (Invercargill)</div>
+            <div>{lat}, {lng} (Auckland)</div>
             <Button onClick={() => alert("click")} kind={KIND.secondary}>Edit Location</Button>
           </div>
 
