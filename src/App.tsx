@@ -16,7 +16,9 @@ import { getMyCalendar } from './getData';
 import { DateLocationsPairsContext } from './contexts';
 
 
-
+function sum(array: number[]) {
+  return array.reduce((a, b) => a + b, 0);
+}
 
 function App() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -44,7 +46,7 @@ function App() {
     <>
 
       <div className="App">
-        <pre>{JSON.stringify({ dateLocationsPairs }, null, 2)}</pre>
+        {/* <pre>{JSON.stringify({ dateLocationsPairs }, null, 2)}</pre> */}
 
         <section className="App-header">
           <h1>Vaccine Timetable</h1>
@@ -274,7 +276,11 @@ function App() {
           <CalendarSectionContainer>
             <h2>September 2021</h2>
             <MonthContainer>
-              <div onClick={() => setIsOpen(true)}>
+              {dateLocationsPairs.map(dateLocationsPair => <div onClick={() => setIsOpen(true)}>
+                <h3>{dateLocationsPair.dateStr}</h3>
+                <p>{sum(dateLocationsPair.locationSlotsPairs.map(locationSlotsPair => (locationSlotsPair.slots || []).length))} slots available</p>
+              </div>)}
+              {/* <div>
                 <h3>1 Sept</h3>
                 <p>3 slots available</p>
               </div>
@@ -353,17 +359,13 @@ function App() {
               <div>
                 <h3>1 Sept</h3>
                 <p>3 slots available</p>
-              </div>
-              <div>
-                <h3>1 Sept</h3>
-                <p>3 slots available</p>
-              </div>
+              </div> */}
 
 
 
             </MonthContainer>
           </CalendarSectionContainer>
-          <CalendarSectionContainer>
+          {/* <CalendarSectionContainer>
             <h2>October 2021</h2>
             <MonthContainer>
               <div>
@@ -638,7 +640,7 @@ function App() {
 
 
             </MonthContainer>
-          </CalendarSectionContainer>
+          </CalendarSectionContainer> */}
 
 
         </CalendarContainer>
