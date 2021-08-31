@@ -32,8 +32,8 @@ function App() {
   );
 
   const [radiusKm, setRadiusKm] = useState(30)
-  const [lat, setLat] = useState(-46.4102)
-  const [lng, setLng] = useState(168.355)
+  const [lat, setLat] = useState(-36.853610199274385)
+  const [lng, setLng] = useState(174.76054541484535)
   const { dateLocationsPairs, setDateLocationsPairs } = useContext(DateLocationsPairsContext)
   const loadCalendar = useCallback(async () => {
     const data = await getMyCalendar(lat, lng, radiusKm)
@@ -256,11 +256,7 @@ function App() {
           <h1>Available Vaccine Slots</h1>
           <div style={{ zIndex: 22 }}>
             <Button onClick={() => alert("click")} kind={KIND.secondary}>About</Button>
-            <TimePicker
-              value={value}
-              onChange={date => setValue(date)}
-              minTime={new Date("2021-08-30T12:00:00.000Z")}
-            />
+
             <Select
               options={[
                 { label: "Whthin 30KM", id: "#F0F8FF" },
@@ -286,7 +282,7 @@ function App() {
                   month: "long",
                   day: "numeric"
                 })}</h3>
-                <p>{sum(dateLocationsPair.locationSlotsPairs.map(locationSlotsPair => (locationSlotsPair.slots || []).length))} slots available</p>
+                <p>{sum(dateLocationsPair.locationSlotsPairs.map(locationSlotsPair => (locationSlotsPair.slots || []).length))} available</p>
               </div>)}
               {/* <div>
                 <h3>1 Sept</h3>
