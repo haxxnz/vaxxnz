@@ -40,11 +40,11 @@ export interface AvailabilityDates {
 }
 
 export interface LocationSlotsPair {
-  location: Location
-  slots: SlotWithAvailability[] | undefined
+  location: Location;
+  slots: SlotWithAvailability[] | undefined;
 }
 
 export interface DateLocationsPair {
-  dateStr: string
-  locationSlotsPairs: LocationSlotsPair[]
+  dateStr: string;
+  locationSlotsPairs: LocationSlotsPair[];
 }
