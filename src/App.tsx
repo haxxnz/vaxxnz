@@ -305,7 +305,7 @@ function App() {
               disabled={true} // TODO: implement
             />
             <div>
-              {lat}, {lng} (Auckland)
+              {lat}, {lng}
             </div>
             <Button onClick={getLocation} kind={KIND.secondary}>
               Nearby Locations
