@@ -75,10 +75,12 @@ function App() {
           >
             <ModalGrid>
               <div style={{ position: 'sticky', top: "0", display: 'block' }}><h1>Available slots - {isOpen?.dateStr}</h1>
-                <Button onClick={() => alert("click")}
-                  overrides={{
-                    Root: { style: { width: "100%", margin: '1rem 0' } }
-                  }}>Make a Booking</Button>
+                <a href='https://bookmyvaccine.nz' target='_blank'>
+                  <Button
+                    overrides={{
+                      Root: { style: { width: "100%", margin: '1rem 0' } }
+                    }}>Make a Booking</Button>
+                </a>
                 <p>or visit bookmyvaccine.nz</p>
                 <Button onClick={() => alert("click")} overrides={{
                   Root: { style: { width: "100%", margin: '1rem 0' } }
@@ -268,7 +270,7 @@ function App() {
 
 
             />
-             <div>{lat}, {lng} (Invercargill)</div>
+            <div>{lat}, {lng} (Invercargill)</div>
             <Button onClick={() => alert("click")} kind={KIND.secondary}>Edit Location</Button>
           </div>
 
