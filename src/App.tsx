@@ -82,7 +82,7 @@ function App() {
                     }}>Make a Booking</Button>
                 </a>
                 <p>or visit bookmyvaccine.nz</p>
-                <Button onClick={() => alert("click")} overrides={{
+                <Button onClick={() => setIsOpen(null)} overrides={{
                   Root: { style: { width: "100%", margin: '1rem 0' } }
                 }} kind={KIND.secondary}>Back to calendar</Button>
               </div>
