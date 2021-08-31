@@ -97,7 +97,7 @@ function App() {
                   <p style={{ margin: "0.75rem 0 0.5rem 0" }}>Available slots:</p>
                   <section>
                     {/* <p>1am</p> */}
-                    {locationSlotsPair.slots?.map(slot => <p>{new Date(parse(slot.localStartTime, 'HH:mm:ss', new Date())).toLocaleTimeString([], { hour: "numeric", minute: "2-digit", hour12: true })}</p>)}
+                    {locationSlotsPair.slots?.map(slot => <p>{new Date(parse(slot.localStartTime, 'HH:mm:ss', new Date())).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: true })}</p>)}
 
 
 
@@ -285,7 +285,7 @@ function App() {
             <MonthContainer>
               {dateLocationsPairs.map(dateLocationsPair => <div onClick={() => setIsOpen(dateLocationsPair)}>
                 <h3>{parse(dateLocationsPair.dateStr, 'yyyy-MM-dd', new Date()).toLocaleDateString([], {
-                  month: "long",
+                  month: "short",
                   day: "numeric"
                 })}</h3>
                 <p>{sum(dateLocationsPair.locationSlotsPairs.map(locationSlotsPair => (locationSlotsPair.slots || []).length))} available</p>
