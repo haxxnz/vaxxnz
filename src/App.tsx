@@ -263,15 +263,16 @@ function App() {
             />
             <Select
               options={[
-                { label: "Whthin 30KM", id: "#F0F8FF" },
-                { label: "Within 60KM", id: "#FAEBD7" },
-                { label: "Within 90KM", id: "#00FFFF" },
+                { label: "Whthin 30km", id: "#F0F8FF" },
+                { label: "Within 60km", id: "#FAEBD7" },
+                { label: "Within 90km", id: "#00FFFF" },
               ]}
-              placeholder="Within 30KM"
+              placeholder={`Within ${radiusKm}km`}
 
 
 
             />
+             <div>{lat}, {lng} (Invercargill)</div>
             <Button onClick={() => alert("click")} kind={KIND.secondary}>Edit Location</Button>
           </div>
 
