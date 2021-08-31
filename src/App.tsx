@@ -268,7 +268,7 @@ function App() {
 
 
             />
-             <div>{lat}, {lng} (Invercargill)</div>
+             <div>{lat}, {lng} (Auckland)</div>
             <Button onClick={() => alert("click")} kind={KIND.secondary}>Edit Location</Button>
           </div>
 
