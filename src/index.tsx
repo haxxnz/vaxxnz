@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { DateLocationsPairsContext } from './contexts';
 
 
 const engine = new Styletron();
@@ -16,7 +17,9 @@ ReactDOM.render(
 
     <StyletronProvider value={engine}>
       <BaseProvider theme={LightTheme}>
-        <App />
+        <DateLocationsPairsContext.Provider>
+          <App />
+        </DateLocationsPairsContext.Provider>
 
       </BaseProvider>
     </StyletronProvider>
