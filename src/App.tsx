@@ -260,7 +260,9 @@ function App() {
           </Modal>
           <h1>Available Vaccine Slots</h1>
           <div style={{ zIndex: 22 }}>
-            <Button onClick={() => alert("Made by the same team who brought you lenny.cf")} kind={KIND.secondary}>About</Button>
+            <a href='https://github.com/CovidEngine' target='_blank'>
+              <Button kind={KIND.secondary}>About</Button>
+            </a>
 
             <Select
               options={[
@@ -274,7 +276,7 @@ function App() {
 
             />
             <div>{lat}, {lng} (Auckland)</div>
-            <Button onClick={() => alert("click")} kind={KIND.secondary}>Edit Location</Button>
+            <Button onClick={() => alert("To be implemented: watch this space")} kind={KIND.secondary}>Edit Location</Button>
           </div>
 
 
