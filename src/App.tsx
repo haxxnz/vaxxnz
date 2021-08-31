@@ -1,21 +1,13 @@
+import { Button, KIND } from "baseui/button";
+import { Modal } from "baseui/modal";
+import { Select } from "baseui/select";
+import { parse } from "date-fns";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import "./App.css";
-import { Button, KIND } from "baseui/button";
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  ModalButton,
-} from "baseui/modal";
-import { Select } from "baseui/select";
-
-import { TimePicker } from "baseui/timepicker";
-import { getMyCalendar } from "./getData";
 import { DateLocationsPairsContext } from "./contexts";
+import { getMyCalendar } from "./getData";
 import { DateLocationsPair } from "./types";
-import { parse } from "date-fns";
 
 function sum(array: number[]) {
   return array.reduce((a, b) => a + b, 0);
