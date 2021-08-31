@@ -713,7 +713,7 @@ h2 {
   font-size: 1.5rem;
 border-bottom: 1px solid lightgray;
 position: sticky;
-top:86px;
+top:96px;
 
   background-color: #fff;
   z-index: 1;
