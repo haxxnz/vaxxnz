@@ -199,7 +199,7 @@ function App() {
           </MonthContainer>
         </CalendarSectionContainer>
         <CalendarSectionContainer>
-          <h2>September 2021</h2>
+          <h2>November 2021</h2>
           <MonthContainer>
             <div>
               <h3>1 Sept</h3>
@@ -291,7 +291,7 @@ function App() {
           </MonthContainer>
         </CalendarSectionContainer>
         <CalendarSectionContainer>
-          <h2>September 2021</h2>
+          <h2>December 2021</h2>
           <MonthContainer>
             <div>
               <h3>1 Sept</h3>
@@ -439,6 +439,7 @@ grid-template-columns: repeat(7, 1fr);
 background-color: lightgray;
 border-bottom: 1px solid lightgray;
 gap: 1px;
+transition: all 0.3s;
 div {
   min-height:120px;
   background-color: white;
@@ -454,6 +455,9 @@ div {
   p {
     font-size: 1.2rem;
     font-weight: 600;
+  }
+  :hover {
+    background-color: purple;
   }
 }
   `
