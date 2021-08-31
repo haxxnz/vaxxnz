@@ -264,7 +264,7 @@ function App() {
                 { label: "Within 90km", id: "#00FFFF" },
               ]}
               placeholder={`Within ${radiusKm}km`}
-
+              disabled={true} // TODO: implement
 
 
             />
