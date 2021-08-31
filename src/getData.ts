@@ -8,7 +8,7 @@ export async function getLocations() {
 }
 
 export async function getAvailabilityDates(extId: string) {
-    const res = await fetch(`https://github.com/CovidEngine/vaxxnzlocations/blob/main/mockAvailability/${extId}.json`)
+    const res = await fetch(`https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/mockAvailability/${extId}.json`)
     const data: AvailabilityDates = await res.json()
     return data
 }
