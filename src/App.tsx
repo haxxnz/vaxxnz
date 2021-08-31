@@ -797,7 +797,7 @@ section {
     background-color: #444;
     color: white;
     padding: 0.5rem;
-    min-width: 72px;
+    min-width: 80px;
     text-align: center;
   }
 }
