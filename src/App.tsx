@@ -14,6 +14,7 @@ import { Select } from "baseui/select";
 import { TimePicker } from "baseui/timepicker";
 import { getMyCalendar } from './getData';
 import { DateLocationsPairsContext } from './contexts';
+import { DateLocationsPair } from './types';
 
 
 function sum(array: number[]) {
@@ -21,9 +22,9 @@ function sum(array: number[]) {
 }
 
 function App() {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState<DateLocationsPair|null>(null);
   function close() {
-    setIsOpen(false);
+    setIsOpen(null);
   }
   const [value, setValue] = React.useState(
     new Date("2021-08-31T10:29:52.589Z")
@@ -56,7 +57,7 @@ function App() {
         <HeaderMain>
           <Modal
             onClose={close}
-            isOpen={isOpen}
+            isOpen={!!isOpen}
             overrides={{
               Root: { style: { zIndex: 1500 } },
               Dialog: {
@@ -72,7 +73,7 @@ function App() {
             }}
           >
             <ModalGrid>
-              <div style={{ position: 'sticky', top: "0", display: 'block' }}><h1>Available slots - 1 September 2021</h1>
+              <div style={{ position: 'sticky', top: "0", display: 'block' }}><h1>Available slots - {isOpen?.dateStr}</h1>
                 <Button onClick={() => alert("click")}
                   overrides={{
                     Root: { style: { width: "100%", margin: '1rem 0' } }
@@ -84,14 +85,17 @@ function App() {
               </div>
 
               <div style={{ overflow: 'scroll' }}>
-                <VaccineCentre>
-                  <h3>Murihiku Medical Services</h3>
-                  <p>Level 1, 112 Don Street, Invercargill  </p>
+                {isOpen?.locationSlotsPairs.map(locationSlotsPair => <VaccineCentre>
+                  {/* <h3>Murihiku Medical Services</h3> */}
+                  <h3>{locationSlotsPair.location.name}</h3>
+                  {/* <p>Level 1, 112 Don Street, Invercargill  </p> */}
+                  <p>{locationSlotsPair.location.displayAddress}</p>
 
                   <p>Available slots:</p>
                   <section>
-                    <p>1am</p>
-                    <p>2am</p>
+                    {/* <p>1am</p> */}
+                    {locationSlotsPair.slots?.map(slot => <p>{slot.localStartTime}</p>)}
+                    {/* <p>2am</p>
                     <p>3am</p>
                     <p>4am</p>
                     <p>5am</p>
@@ -113,11 +117,11 @@ function App() {
                     <p>9pm</p>
                     <p>10pm</p>
                     <p>11pm</p>
-                    <p>12am</p>
+                    <p>12am</p> */}
 
                   </section>
-                </VaccineCentre>
-                <VaccineCentre>
+                </VaccineCentre>)}
+                {/* <VaccineCentre>
                   <h3>Murihiku Medical Services</h3>
                   <p>Level 1, 112 Don Street, Invercargill  </p>
 
@@ -237,7 +241,7 @@ function App() {
                   </section>
 
 
-                </VaccineCentre>
+                </VaccineCentre> */}
 
 
 
@@ -276,7 +280,7 @@ function App() {
           <CalendarSectionContainer>
             <h2>September 2021</h2>
             <MonthContainer>
-              {dateLocationsPairs.map(dateLocationsPair => <div onClick={() => setIsOpen(true)}>
+              {dateLocationsPairs.map(dateLocationsPair => <div onClick={() => setIsOpen(dateLocationsPair)}>
                 <h3>{dateLocationsPair.dateStr}</h3>
                 <p>{sum(dateLocationsPair.locationSlotsPairs.map(locationSlotsPair => (locationSlotsPair.slots || []).length))} slots available</p>
               </div>)}
