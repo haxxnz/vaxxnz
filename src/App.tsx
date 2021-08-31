@@ -94,10 +94,13 @@ function App() {
                   {/* <p>Level 1, 112 Don Street, Invercargill  </p> */}
                   <p>{locationSlotsPair.location.displayAddress}</p>
 
-                  <p>Available slots:</p>
+                  <p style={{ margin: "0.75rem 0 0.5rem 0" }}>Available slots:</p>
                   <section>
                     {/* <p>1am</p> */}
-                    {locationSlotsPair.slots?.map(slot => <p>{slot.localStartTime}</p>)}
+                    {locationSlotsPair.slots?.map(slot => <p>{new Date(parse(slot.localStartTime, 'HH:mm:ss', new Date())).toLocaleTimeString([], { hour: "numeric", minute: "2-digit", hour12: true })}</p>)}
+
+
+
                     {/* <p>2am</p>
                     <p>3am</p>
                     <p>4am</p>
@@ -775,6 +778,7 @@ display: grid;
 gap: 4rem;
 grid-template-columns: 480px 1fr;
 overflow: hidden;
+
 `
 
 const VaccineCentre = styled.section`
@@ -791,7 +795,7 @@ section {
     background-color: #444;
     color: white;
     padding: 0.5rem;
-    min-width: 48px;
+    min-width: 72px;
     text-align: center;
   }
 }
