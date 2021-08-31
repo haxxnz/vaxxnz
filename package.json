@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@turf/distance": "^6.5.0",
+    "@turf/helpers": "^6.5.0",
     "@types/styled-components": "^5.1.13",
     "baseui": "^10.1.0",
     "react": "^17.0.2",
