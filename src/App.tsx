@@ -765,6 +765,8 @@ section {
     background-color: #444;
     color: white;
     padding: 0.5rem;
+    min-width: 48px;
+    text-align: center;
   }
 }
 
