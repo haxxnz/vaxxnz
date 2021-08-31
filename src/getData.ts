@@ -1,3 +1,4 @@
+import { getDistanceKm } from "./distanceUtils"
 import { Location, AvailabilityDates } from "./types"
 
 export async function getLocations() {
@@ -6,8 +7,24 @@ export async function getLocations() {
     return data
 }
 
-export async function getLocationSlots(extId: string) {
+export async function getAvailabilityDates(extId: string) {
     const res = await fetch(`https://github.com/CovidEngine/vaxxnzlocations/blob/main/mockAvailability/${extId}.json`)
     const data: AvailabilityDates = await res.json()
     return data
+}
+
+export async function getMyCalendar(lat: number, lng: number, radiusKm: number) {
+    const locations = await getLocations()
+    const filtredLocations = locations.filter(location => {
+        const distance = getDistanceKm(lat, lng, location.location.lat, location.location.lng)
+        return distance < radiusKm
+    })
+    const availabilityDatesAndLocations = await Promise.all(filtredLocations.map(async (location) => {
+        const availabilityDates = await getAvailabilityDates(location.extId)
+        return {
+            location,
+            availabilityDates
+        }
+    }))
+    return availabilityDatesAndLocations
 }
