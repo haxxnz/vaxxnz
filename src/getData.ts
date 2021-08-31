@@ -9,8 +9,9 @@ export async function getLocations() {
 }
 
 export async function getAvailabilityDates(extId: string) {
-    const res = await fetch(`https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/mockAvailability/${extId}.json`)
+    const res = await fetch(`https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/availability/${extId}.json`)
     const data: AvailabilityDates = await res.json()
+    // console.log('data',data)
     return data
 }
 
@@ -28,6 +29,7 @@ export async function getMyCalendar(lat: number, lng: number, radiusKm: number) 
         catch (e) {
             console.error('getMyCalendar e', e)
         }
+        console.log('availabilityDates',availabilityDates)
 
         return {
             location,
@@ -38,8 +40,9 @@ export async function getMyCalendar(lat: number, lng: number, radiusKm: number) 
     const today = new Date()
     const dateLocationsPairs: DateLocationsPair[] = []
     for (let i = 0; i < 90; i++) { // 90 days in the future
-        const date = (new Date()).setDate(today.getDate() + 1)
+        const date = (new Date()).setDate(today.getDate() + i)
         const dateStr = format(date, 'yyyy-MM-dd')
+        console.log('dateStr',dateStr)
         const locationSlotsPairs: LocationSlotsPair[] = []
         for (let j = 0; j < availabilityDatesAndLocations.length; j++) {
             const availabilityDatesAndLocation = availabilityDatesAndLocations[j];
