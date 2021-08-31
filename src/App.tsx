@@ -1,4 +1,5 @@
 import { Button, KIND } from "baseui/button";
+import { Search } from "baseui/icon";
 import { Modal } from "baseui/modal";
 import { Select } from "baseui/select";
 import { parse } from "date-fns";
@@ -152,7 +153,11 @@ function App() {
             <div>
               {lat}, {lng}
             </div>
-            <Button onClick={getLocation} kind={KIND.secondary}>
+            <Button
+              startEnhancer={() => <Search size={24} />}
+              kind={KIND.secondary}
+              onClick={getLocation}
+            >
               Nearby Locations
             </Button>
           </div>
