@@ -38,3 +38,13 @@ export interface SlotWithAvailability {
 export interface AvailabilityDates {
   [key: string]: SlotWithAvailability[];
 }
+
+export interface LocationSlotsPair {
+  location: Location
+  slots: SlotWithAvailability[]
+}
+
+export interface DateLocationsPair {
+  dateStr: string
+  locationSlotsPairs: LocationSlotsPair[]
+}
