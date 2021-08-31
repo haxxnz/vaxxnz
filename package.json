@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "baseui": "^10.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "styled-components": "^5.3.1",
+    "styletron-engine-atomic": "^1.4.8",
+    "styletron-react": "^6.0.1",
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
@@ -17,6 +20,9 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/styletron-engine-atomic": "^1.1.1",
+    "@types/styletron-react": "^5.0.3",
+    "@types/styletron-standard": "^2.0.2",
     "typescript": "^4.1.2"
   },
   "scripts": {
