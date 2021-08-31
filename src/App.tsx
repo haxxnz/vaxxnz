@@ -129,9 +129,11 @@ function App() {
                         {/* <p>1am</p> */}
                         {locationSlotsPair.slots?.map((slot) => (
                           <p>
-                            {new Date(
-                              parse(slot.localStartTime, "HH:mm:ss", new Date())
-                            ).toLocaleTimeString([], {
+                            {parse(
+                              slot.localStartTime,
+                              "HH:mm:ss",
+                              new Date()
+                            ).toLocaleTimeString("en-NZ", {
                               hour: "2-digit",
                               minute: "2-digit",
                               hour12: true,
