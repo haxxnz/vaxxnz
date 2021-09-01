@@ -131,9 +131,9 @@ function App() {
         {/* <pre>{JSON.stringify({ dateLocationsPairs }, null, 2)}</pre> */}
 
         <section className="App-header">
-          <h1>Vaccine Timetable</h1>
+          <h1>Vaccine Calendar</h1>
           <p>
-            Check vaccine timetable availability before making a booking. This
+            Check vaccine booking availability for all sites before making a booking. This
             is an unofficial website and pulls data from bookmyvaccine.nz{" "}
           </p>
         </section>
@@ -171,7 +171,7 @@ function App() {
             <h2>September 2021</h2>
             <MonthContainer>
               {dateLocationsPairs.map((dateLocationsPair) => (
-                <section onClick={() => setIsOpen(dateLocationsPair)}>
+                <button onClick={() => setIsOpen(dateLocationsPair)}>
                   <div>
                   <h3>
                     {parse(
@@ -194,7 +194,7 @@ function App() {
                     </p>
                     </div>
                   <img src='./arrow.svg' />
-                </section>
+                </button>
               ))}
             </MonthContainer>
           </CalendarSectionContainer>
@@ -290,15 +290,18 @@ const MonthContainer = styled.section`
   border-bottom: 1px solid lightgray;
   gap: 1px;
   transition: all 0.3s;
-  section {
-    min-height: 120px;
+  button {
+    box-sizing: border-box;
+    min-height: 144px;
+    text-align: left;
     background-color: white;
+    border: none;
     padding: 1.5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     div {
-
+      height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
