@@ -5,7 +5,7 @@ import { Select } from "baseui/select";
 import { parse } from "date-fns";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { HeaderMain, CalendarContainer, CalendarSectionContainer, MonthContainer, ModalGrid, VaccineCentre} from './VaxComponents'
-import "./App.css";
+
 import { DateLocationsPairsContext } from "./contexts";
 import { getMyCalendar } from "./getData";
 import { DateLocationsPair, LocationSlotsPair } from "./types";
@@ -131,10 +131,13 @@ function App() {
         {/* <pre>{JSON.stringify({ dateLocationsPairs }, null, 2)}</pre> */}
 
         <section className="App-header">
-          <h1>Vaccine Calendar</h1>
+          <h1>Vaccine Calendar</h1> <br/>
           <p>
-            Check vaccine booking availability for all sites before making a booking. This
-            is an unofficial website and pulls data from bookmyvaccine.nz{" "}
+          This is a website that shows available vaccination spots near you.  It shows vaccination sites, and available booking times that are available to you.
+          <br/> <br/>
+            This is not an official Government website.
+             <br/> <br/>
+          To get vaccinated visit <a href='https://bookmyvaccine.nz' target='_blank'>bookmyvaccine.nz</a>
           </p>
         </section>
 

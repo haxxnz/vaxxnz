@@ -13,7 +13,12 @@ h1, h2, h3, h4, h5, h6, p {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
 a {
   text-decoration: none;
 }
 
+.App-header {
+  margin: 1.5rem;
+  color: black;
+}
