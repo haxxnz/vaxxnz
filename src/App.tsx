@@ -292,6 +292,7 @@ const MonthContainer = styled.section`
   transition: all 0.3s;
   button {
     box-sizing: border-box;
+    font-family: inherit;
     min-height: 144px;
     text-align: left;
     background-color: white;
@@ -309,15 +310,18 @@ const MonthContainer = styled.section`
 
     h3 {
       font-size: 1.3rem;
-      font-weight: 400;
+      font-weight: 600;
     }
     p {
       font-size: 1.25rem;
-      font-weight: 600;
+      font-weight: 400;
     }
     :hover {
       background-color: #e4eeff;
       cursor: pointer;
+      h3, p {
+        color: #005eca;
+      }
     }
     img {
       width: 1.5rem;
