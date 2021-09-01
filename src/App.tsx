@@ -1,5 +1,5 @@
 import { Button, KIND } from "baseui/button";
-import { Search } from "baseui/icon";
+import { Search, Show } from "baseui/icon";
 import { Modal } from "baseui/modal";
 import { Select } from "baseui/select";
 import { parse } from "date-fns";
@@ -91,16 +91,18 @@ function App() {
                     <VaccineCentre>
                       <h3>{locationSlotsPair.location.name}</h3>
                       <p>{locationSlotsPair.location.displayAddress} ({Math.floor(getDistanceKm(lat, lng, locationSlotsPair.location.location.lat, locationSlotsPair.location.location.lng))}km away)</p>
-                       <a href="https://bookmyvaccine.nz" target="_blank">
+                      <a href="https://bookmyvaccine.nz" target="_blank">
+                        <div className='ButtonConstraint'>
                         <Button
-                                 kind={KIND.secondary}
+                              
                     overrides={{
                       Root: { style: { width: "100%", margin: "1rem 0" } },
                       
                     }}
                   >
                     Make a Booking
-                  </Button>
+                          </Button>
+                          </div>
                 </a>
                       <p style={{ margin: "0.25rem 0 0.5rem 0" }}>
                         Available slots:
@@ -139,9 +141,10 @@ function App() {
         <HeaderMain>
         
           <h1>Available Vaccine Slots</h1>
-          <div style={{ zIndex: 22 }}>
+          <div >
             <a href="https://github.com/CovidEngine" target="_blank">
-              <Button kind={KIND.secondary}>About</Button>
+              <Button 
+              startEnhancer={() => <Show size={24} />} kind={KIND.secondary}>View Source Code</Button>
             </a>
 
             <Select
@@ -153,15 +156,13 @@ function App() {
               placeholder={`Within ${radiusKm}km`}
               disabled={true} // TODO: implement
             />
-            <div>
-              {lat}, {lng}
-            </div>
+            
             <Button
               startEnhancer={() => <Search size={24} />}
               kind={KIND.secondary}
               onClick={getLocation}
             >
-              Nearby Locations
+              Edit your Location
             </Button>
           </div>
         </HeaderMain>
@@ -170,7 +171,8 @@ function App() {
             <h2>September 2021</h2>
             <MonthContainer>
               {dateLocationsPairs.map((dateLocationsPair) => (
-                <div onClick={() => setIsOpen(dateLocationsPair)}>
+                <section onClick={() => setIsOpen(dateLocationsPair)}>
+                  <div>
                   <h3>
                     {parse(
                       dateLocationsPair.dateStr,
@@ -189,8 +191,10 @@ function App() {
                       )
                     )}{" "}
                     available
-                  </p>
-                </div>
+                    </p>
+                    </div>
+                  <img src='./arrow.svg' />
+                </section>
               ))}
             </MonthContainer>
           </CalendarSectionContainer>
@@ -205,6 +209,7 @@ export default App;
 const HeaderMain = styled.header`
 position: sticky;
 display: flex;
+flex-direction: row;
 justify-content: space-between;
 box-sizing: border-box;
 top: -2px;
@@ -220,6 +225,7 @@ div {
   flex-direction: row;
   gap:1rem;
   max-height: 48px;
+  width: auto;
 }
 h1 {
   text-align: left;
@@ -284,25 +290,37 @@ const MonthContainer = styled.section`
   border-bottom: 1px solid lightgray;
   gap: 1px;
   transition: all 0.3s;
-  div {
+  section {
     min-height: 120px;
     background-color: white;
     padding: 1.5rem;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    div {
+
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
+    }
 
     h3 {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 400;
     }
     p {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: 600;
     }
     :hover {
       background-color: #e4eeff;
       cursor: pointer;
+    }
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+      bottom: 0;
+      opacity: 0.7;
     }
   }
 
@@ -337,9 +355,17 @@ const VaccineCentre = styled.section`
   margin-bottom: 1.5rem;
   border-bottom: 2px solid lightgray;
     h3 {
-      font-size: 1.5rem;
+      font-size: 2rem;
       max-width: 80%;
     }
+
+  @media screen and (min-width: 1024px) {
+ .ButtonConstraint {
+    max-width: 400px;
+    }
+  }
+   
+
   section {
     display: flex;
     flex-direction: row;
@@ -353,6 +379,7 @@ const VaccineCentre = styled.section`
       padding: 0.5rem;
       min-width: 80px;
       text-align: center;
+      
     }
   }
 `;
