@@ -8,7 +8,8 @@ import styled from "styled-components";
 import "./App.css";
 import { DateLocationsPairsContext } from "./contexts";
 import { getMyCalendar } from "./getData";
-import { DateLocationsPair } from "./types";
+import { DateLocationsPair, LocationSlotsPair } from "./types";
+import { getDistanceKm } from "./distanceUtils";
 
 function sum(array: number[]) {
   return array.reduce((a, b) => a + b, 0);
@@ -100,7 +101,7 @@ function App() {
               </div>
 
               <div style={{ overflow: "scroll" }}>
-                {isOpen?.locationSlotsPairs
+                {sortByDistance(isOpen?.locationSlotsPairs, lat, lng)
                   .filter(
                     (locationSlotsPair) => locationSlotsPair.slots?.length
                   )
@@ -109,7 +110,7 @@ function App() {
                       {/* <h3>Murihiku Medical Services</h3> */}
                       <h3>{locationSlotsPair.location.name}</h3>
                       {/* <p>Level 1, 112 Don Street, Invercargill  </p> */}
-                      <p>{locationSlotsPair.location.displayAddress}</p>
+                      <p>{locationSlotsPair.location.displayAddress} ({Math.floor(getDistanceKm(lat, lng, locationSlotsPair.location.location.lat, locationSlotsPair.location.location.lng))}km away)</p>
 
                       <p style={{ margin: "0.75rem 0 0.5rem 0" }}>
                         Available slots:
@@ -331,3 +332,27 @@ const VaccineCentre = styled.section`
     }
   }
 `;
+
+
+export function sortBy<T = unknown>(
+  notes: T[],
+  comparator: (note: T) => string | number,
+) {
+  return [...notes].sort((a: T, b: T) => {
+    if (comparator(a) < comparator(b)) {
+      return -1;
+    }
+    if (comparator(a) > comparator(b)) {
+      return 1;
+    }
+    return 0;
+  });
+}
+
+function sortByDistance(locationSlotsPairs: LocationSlotsPair[] | undefined, lat: number, lng: number): LocationSlotsPair[] {
+  return sortBy(locationSlotsPairs ?? [], locationSlotsPair => {
+    const distanceKm = getDistanceKm(lat, lng, locationSlotsPair.location.location.lat, locationSlotsPair.location.location.lng)
+    return distanceKm
+  });
+}
+
