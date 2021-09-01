@@ -193,7 +193,7 @@ function App() {
                     available
                     </p>
                     </div>
-                  <img src='./arrow.svg' />
+                  <img src='./arrow.svg' aria-hidden='true' />
                 </button>
               ))}
             </MonthContainer>
