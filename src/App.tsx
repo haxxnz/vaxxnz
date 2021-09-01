@@ -49,17 +49,6 @@ function App() {
   return (
     <>
       <div className="App">
-        {/* <pre>{JSON.stringify({ dateLocationsPairs }, null, 2)}</pre> */}
-
-        <section className="App-header">
-          <h1>Vaccine Timetable</h1>
-          <p>
-            Check vaccine timetable availability before making a booking. This
-            is an unofficial website and pulls data from managemyvaccine.nz{" "}
-          </p>
-        </section>
-
-        <HeaderMain>
           <Modal
             onClose={close}
             isOpen={!!isOpen}
@@ -78,26 +67,19 @@ function App() {
           >
             <ModalGrid>
               <div style={{ position: "sticky", top: "0", display: "block" }}>
-                <h1>Available slots - {isOpen?.dateStr}</h1>
-                <a href="https://bookmyvaccine.nz" target="_blank">
-                  <Button
-                    overrides={{
-                      Root: { style: { width: "100%", margin: "1rem 0" } },
-                    }}
-                  >
-                    Make a Booking
-                  </Button>
-                </a>
-                <p>or visit bookmyvaccine.nz</p>
+                <h1>Available slots <br/> for {isOpen?.dateStr}</h1>
+               
+                <p>Data from bookmyvaccine.nz</p>
                 <Button
                   onClick={() => setIsOpen(null)}
                   overrides={{
-                    Root: { style: { width: "100%", margin: "1rem 0" } },
+                    Root: { style: { width: "100%", margin: "2rem 0" } },
                   }}
                   kind={KIND.secondary}
                 >
                   Back to calendar
                 </Button>
+              
               </div>
 
               <div style={{ overflow: "scroll" }}>
@@ -107,12 +89,20 @@ function App() {
                   )
                   .map((locationSlotsPair) => (
                     <VaccineCentre>
-                      {/* <h3>Murihiku Medical Services</h3> */}
                       <h3>{locationSlotsPair.location.name}</h3>
-                      {/* <p>Level 1, 112 Don Street, Invercargill  </p> */}
                       <p>{locationSlotsPair.location.displayAddress} ({Math.floor(getDistanceKm(lat, lng, locationSlotsPair.location.location.lat, locationSlotsPair.location.location.lng))}km away)</p>
-
-                      <p style={{ margin: "0.75rem 0 0.5rem 0" }}>
+                       <a href="https://bookmyvaccine.nz" target="_blank">
+                        <Button
+                                 kind={KIND.secondary}
+                    overrides={{
+                      Root: { style: { width: "100%", margin: "1rem 0" } },
+                      
+                    }}
+                  >
+                    Make a Booking
+                  </Button>
+                </a>
+                      <p style={{ margin: "0.25rem 0 0.5rem 0" }}>
                         Available slots:
                       </p>
                       <section>
@@ -136,6 +126,18 @@ function App() {
               </div>
             </ModalGrid>
           </Modal>
+        {/* <pre>{JSON.stringify({ dateLocationsPairs }, null, 2)}</pre> */}
+
+        <section className="App-header">
+          <h1>Vaccine Timetable</h1>
+          <p>
+            Check vaccine timetable availability before making a booking. This
+            is an unofficial website and pulls data from bookmyvaccine.nz{" "}
+          </p>
+        </section>
+
+        <HeaderMain>
+        
           <h1>Available Vaccine Slots</h1>
           <div style={{ zIndex: 22 }}>
             <a href="https://github.com/CovidEngine" target="_blank">
@@ -226,8 +228,12 @@ h1 {
 
 
 @media screen and (max-width:1024px) {
+  position: relative;
+  top: initial;
 flex-direction: column;
 div {
+
+  max-height: initial;
   flex-direction: column;
 }
 }
@@ -243,7 +249,6 @@ div {
   flex-direction: column;
 
 }
-
 
 `;
 
@@ -263,6 +268,12 @@ const CalendarSectionContainer = styled.section`
     background-color: #fff;
     z-index: 1;
   }
+
+@media screen and (max-width:1024px) {
+  h2 {
+    top: 0;
+  }
+}
 `;
 
 const MonthContainer = styled.section`
@@ -311,12 +322,24 @@ const ModalGrid = styled.section`
   gap: 4rem;
   grid-template-columns: 480px 1fr;
   overflow: hidden;
-`;
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+`
 
 const VaccineCentre = styled.section`
   padding-bottom: 1.5rem;
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 2px solid lightgray;
+    h3 {
+      font-size: 1.5rem;
+      max-width: 80%;
+    }
   section {
     display: flex;
     flex-direction: row;
@@ -324,8 +347,9 @@ const VaccineCentre = styled.section`
     gap: 0.5rem;
     p {
       border-radius: 4px;
-      background-color: #444;
-      color: white;
+      border: 2px solid #e8e8e8;
+      color: black;
+      font-weight: 600;
       padding: 0.5rem;
       min-width: 80px;
       text-align: center;
