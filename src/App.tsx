@@ -17,7 +17,6 @@ import { DateLocationsPairsContext } from "./contexts";
 import { getMyCalendar } from "./getData";
 import { DateLocationsPair, LocationSlotsPair } from "./types";
 import { getDistanceKm } from "./distanceUtils";
-import { Input } from "baseui/input";
 import LocationModal from "./LocationModal";
 
 function sum(array: number[]) {
@@ -49,6 +48,18 @@ function App() {
     const openLocation = () => {
         setLocationIsOpen(true);
     };
+
+    let byMonth = new Map<string, DateLocationsPair[]>();
+    dateLocationsPairs.forEach((dateLocationsPair) => {
+        const date = parse(dateLocationsPair.dateStr, "yyyy-MM-dd", new Date());
+        const month = date.toLocaleString("en-NZ", {
+            month: "long",
+            year: "numeric",
+        });
+        const arrayToPush = byMonth.get(month) ?? [];
+        arrayToPush.push(dateLocationsPair);
+        byMonth.set(month, arrayToPush);
+    });
 
     return (
         <>
@@ -134,6 +145,7 @@ function App() {
                                         <a
                                             href="https://bookmyvaccine.nz"
                                             target="_blank"
+                                            rel="noreferrer"
                                         >
                                             <div className="ButtonConstraint">
                                                 <Button
@@ -202,7 +214,11 @@ function App() {
                         This is not an official Government website.
                         <br /> <br />
                         To get vaccinated visit{" "}
-                        <a href="https://bookmyvaccine.nz" target="_blank">
+                        <a
+                            href="https://bookmyvaccine.nz"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             bookmyvaccine.nz
                         </a>
                     </p>
@@ -243,46 +259,59 @@ function App() {
                     </div>
                 </HeaderMain>
                 <CalendarContainer>
-                    <CalendarSectionContainer>
-                        <h2>September 2021</h2>
-                        <MonthContainer>
-                            {dateLocationsPairs.map((dateLocationsPair) => (
-                                <button
-                                    onClick={() => setIsOpen(dateLocationsPair)}
-                                >
-                                    <div>
-                                        <h3>
-                                            {parse(
-                                                dateLocationsPair.dateStr,
-                                                "yyyy-MM-dd",
-                                                new Date()
-                                            ).toLocaleDateString([], {
-                                                month: "short",
-                                                day: "numeric",
-                                            })}
-                                        </h3>
-                                        <p>
-                                            {sum(
-                                                dateLocationsPair.locationSlotsPairs.map(
-                                                    (locationSlotsPair) =>
-                                                        (
-                                                            locationSlotsPair.slots ||
-                                                            []
-                                                        ).length
-                                                )
-                                            )}{" "}
-                                            available
-                                        </p>
-                                    </div>
-                                    <img
-                                        src="./arrow.svg"
-                                        aria-hidden="true"
-                                        alt=""
-                                    />
-                                </button>
-                            ))}
-                        </MonthContainer>
-                    </CalendarSectionContainer>
+                    {Array.from(byMonth.entries()).map(
+                        ([month, dateLocationsPairsForMonth]) => (
+                            <CalendarSectionContainer>
+                                <h2>{month}</h2>
+                                <MonthContainer>
+                                    {dateLocationsPairsForMonth.map(
+                                        (dateLocationsPair) => (
+                                            <button
+                                                onClick={() =>
+                                                    setIsOpen(dateLocationsPair)
+                                                }
+                                            >
+                                                <div>
+                                                    <h3>
+                                                        {parse(
+                                                            dateLocationsPair.dateStr,
+                                                            "yyyy-MM-dd",
+                                                            new Date()
+                                                        ).toLocaleDateString(
+                                                            [],
+                                                            {
+                                                                month: "short",
+                                                                day: "numeric",
+                                                            }
+                                                        )}
+                                                    </h3>
+                                                    <p>
+                                                        {sum(
+                                                            dateLocationsPair.locationSlotsPairs.map(
+                                                                (
+                                                                    locationSlotsPair
+                                                                ) =>
+                                                                    (
+                                                                        locationSlotsPair.slots ||
+                                                                        []
+                                                                    ).length
+                                                            )
+                                                        )}{" "}
+                                                        available
+                                                    </p>
+                                                </div>
+                                                <img
+                                                    src="./arrow.svg"
+                                                    aria-hidden="true"
+                                                    alt=""
+                                                />
+                                            </button>
+                                        )
+                                    )}
+                                </MonthContainer>
+                            </CalendarSectionContainer>
+                        )
+                    )}
                 </CalendarContainer>
             </div>
         </>
