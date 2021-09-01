@@ -142,10 +142,7 @@ function App() {
         
           <h1>Available Vaccine Slots</h1>
           <div >
-            <a href="https://github.com/CovidEngine" target="_blank">
-              <Button 
-              startEnhancer={() => <Show size={24} />} kind={KIND.secondary}>View Source Code</Button>
-            </a>
+        
 
             <Select
               options={[
@@ -164,6 +161,10 @@ function App() {
             >
               Edit your Location
             </Button>
+                <a href="https://github.com/CovidEngine/vaxxnz" target="_blank">
+              <Button 
+              startEnhancer={() => <Show size={24} />} kind={KIND.secondary}>View Source Code</Button>
+            </a>
           </div>
         </HeaderMain>
         <CalendarContainer>
