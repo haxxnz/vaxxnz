@@ -60,10 +60,30 @@ const BookingsModal = (props: Props) => {
                     }}
                 >
                     <h1>
-                        Available slots <br /> for {props.isOpen?.dateStr}
+                        {props.isOpen
+                            ? parse(
+                                  props.isOpen.dateStr,
+                                  "yyyy-MM-dd",
+                                  new Date()
+                              ).toLocaleDateString([], {
+                                  weekday: "long",
+                              })
+                            : ""}
+                        <br />
+                        {props.isOpen
+                            ? parse(
+                                  props.isOpen.dateStr,
+                                  "yyyy-MM-dd",
+                                  new Date()
+                              ).toLocaleDateString([], {
+                                  month: "short",
+                                  day: "numeric",
+                                  year: "numeric",
+                              })
+                            : ""}
                     </h1>
+                    <p>Booking data from bookmyvaccine.nz</p>
 
-                    <p>Data from bookmyvaccine.nz</p>
                     <Button
                         onClick={() => props.setIsOpen(null)}
                         overrides={{
@@ -81,6 +101,8 @@ const BookingsModal = (props: Props) => {
                 </div>
 
                 <div style={{ overflow: "scroll" }}>
+                    <h2>Available slots</h2>
+                    <hr />
                     {sortByDistance(
                         props.isOpen?.locationSlotsPairs,
                         props.lat,

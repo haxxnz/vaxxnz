@@ -21,6 +21,18 @@ a {
 .App-header {
   margin: 1.5rem;
   color: black;
+  text-align: center;
+}
+
+.App-header h1 {
+font-size: 4rem;
+}
+.App-header p {
+  font-size: 1.5rem;
+  max-width: 944px;
+  width: 80vw;
+  margin: 0 auto;
+  line-height: 1.5;
 }
 
 .clickable {

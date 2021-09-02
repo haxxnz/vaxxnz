@@ -65,10 +65,9 @@ export const CalendarContainer = styled.section`
 `;
 
 export const CalendarSectionContainer = styled.section`
-    h2 {
+    .MonthSection {
         display: block;
         padding: 1.5rem;
-        font-size: 1.5rem;
         border-bottom: 1px solid lightgray;
         position: sticky;
         top: 96px;
@@ -76,9 +75,12 @@ export const CalendarSectionContainer = styled.section`
         background-color: #fff;
         z-index: 1;
     }
+    h2 {
+        font-size: 1.5rem;
+    }
 
     @media screen and (max-width: 1024px) {
-        h2 {
+        .MonthSection {
             top: 0;
         }
     }
@@ -123,6 +125,7 @@ export const MonthContainer = styled.section`
         p {
             font-size: 1.25rem;
             font-weight: 400;
+            color: #555;
         }
         :hover {
             background-color: #e4eeff;

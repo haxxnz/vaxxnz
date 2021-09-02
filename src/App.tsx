@@ -38,7 +38,7 @@ function App() {
     const [lastUpdateTime, setLastUpdateTime] = useState(new Date());
 
     useEffect(() => {
-        getLastUpdatedTime().then(time => setLastUpdateTime(time));
+        getLastUpdatedTime().then((time) => setLastUpdateTime(time));
     }, []);
 
     useEffect(() => {
@@ -64,7 +64,6 @@ function App() {
     return (
         <>
             <div className="App">
-
                 <BookingsModal
                     isOpen={isOpen}
                     setIsOpen={setIsOpen}
@@ -81,15 +80,14 @@ function App() {
                 {/* <pre>{JSON.stringify({ dateLocationsPairs }, null, 2)}</pre> */}
 
                 <section className="App-header">
-                    <h1>Vaccine Calendar</h1> <br />
+                    <h1>Vaxx Booking Finder</h1> <br />
                     <p>
-                        This is a website that shows available vaccination spots
-                        near you. It shows vaccination sites, and available
-                        booking times.
+                        This is a website that shows every available vaccination
+                        booking slot near you. It shows vaccination sites, and
+                        available booking times.
                         <br /> <br />
-                        This is not an official Government website.
-                        <br /> <br />
-                        To get vaccinated visit{" "}
+                        This is not an official Government website. To get
+                        vaccinated visit
                         <a
                             href="https://bookmyvaccine.nz"
                             target="_blank"
@@ -103,7 +101,12 @@ function App() {
                 <HeaderMain>
                     <section>
                         <h1>Available Vaccine Slots</h1>
-                        <p>Last updated: {formatDistance(lastUpdateTime, new Date(), { addSuffix: true })}</p>
+                        <p>
+                            Last updated:{" "}
+                            {formatDistance(lastUpdateTime, new Date(), {
+                                addSuffix: true,
+                            })}
+                        </p>
                     </section>
                     <div>
                         <Select
@@ -132,7 +135,7 @@ function App() {
                                 startEnhancer={() => <Show size={24} />}
                                 kind={KIND.secondary}
                             >
-                                View Source Code
+                                Source Code
                             </Button>
                         </a>
                     </div>
@@ -141,7 +144,9 @@ function App() {
                     {Array.from(byMonth.entries()).map(
                         ([month, dateLocationsPairsForMonth]) => (
                             <CalendarSectionContainer>
-                                <h2>{month}</h2>
+                                <div className="MonthSection">
+                                    <h2>{month}</h2>{" "}
+                                </div>
                                 <MonthContainer>
                                     {dateLocationsPairsForMonth.map(
                                         (dateLocationsPair) => (
