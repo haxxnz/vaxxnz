@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import { getDistanceKm } from "./distanceUtils";
 import {
   AvailabilityDates,
@@ -21,6 +21,16 @@ export async function getAvailabilityDates(extId: string) {
   );
   const data: {availabilityDates: AvailabilityDates, lastUpdatedAt: string} = await res.json();
   return data.availabilityDates;
+}
+
+export async function getLastUpdatedTime() {
+  try {
+    const res = await fetch('https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/endedScrapeAt.json');
+    const time: string = await res.json();
+    return parseISO(time);
+  } catch(e) {
+    return new Date();
+  }
 }
 
 export async function getMyCalendar(
