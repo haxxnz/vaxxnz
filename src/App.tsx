@@ -1,5 +1,5 @@
 import { Button, KIND } from "baseui/button";
-import { Search, Show } from "baseui/icon";
+import { Search, Show, Check } from "baseui/icon";
 import { Select } from "baseui/select";
 import { formatDistance, parse } from "date-fns";
 import React, { useCallback, useContext, useEffect, useState } from "react";
@@ -20,13 +20,17 @@ function sum(array: number[]) {
     return array.reduce((a, b) => a + b, 0);
 }
 
+const defaultLat = -36.853610199274385;
+const defaultLng = 174.76054541484535;
+
 function App() {
     const [isOpen, setIsOpen] = React.useState<DateLocationsPair | null>(null);
     const [locationIsOpen, setLocationIsOpen] = React.useState<boolean>(false);
 
     const [radiusKm, setRadiusKm] = useState(30);
-    const [lat, setLat] = useState(-36.853610199274385);
-    const [lng, setLng] = useState(174.76054541484535);
+    const [lat, setLat] = useState(defaultLat);
+    const [lng, setLng] = useState(defaultLng);
+    const [locationLoading, setLocationLoading] = useState<boolean>(false)
     const { dateLocationsPairs, setDateLocationsPairs } = useContext(
         DateLocationsPairsContext
     );
@@ -49,7 +53,9 @@ function App() {
         if (!navigator.geolocation) {
             alert("Geolocation is not supported by your browser");
         } else {
+            setLocationLoading(true)
             navigator.geolocation.getCurrentPosition((position) => {
+                setLocationLoading(false)
                 setLat(position.coords.latitude);
                 setLng(position.coords.longitude);
             });
@@ -126,14 +132,25 @@ function App() {
                             disabled={true} // TODO: implement
                         />
 
-                        <Button
-                            startEnhancer={() => <Search size={24} />}
-                            kind={KIND.secondary}
-                            onClick={() => getLocation()}
-                        >
-                            Get your Location
-                        </Button>
-                        <a
+                        {lat === defaultLat && lng === defaultLng ? (
+                            <Button
+                                startEnhancer={() => <Search size={24} />}
+                                kind={KIND.primary}
+                                onClick={() => getLocation()}
+                            >
+                                {locationLoading ? 'Loading...' : 'Set your Location'}
+                            </Button>
+                        ) : (
+                            <Button
+                                startEnhancer={() => <Check size={24} />}
+                                kind={KIND.primary}
+                                onClick={() => getLocation()}
+                                disabled={true}
+                            >
+                                Location set
+                            </Button>
+                        )}
+                        {/* <a
                             href="https://github.com/CovidEngine/vaxxnz"
                             target="_blank"
                             rel="noreferrer"
@@ -144,7 +161,7 @@ function App() {
                             >
                                 Source Code
                             </Button>
-                        </a>
+                        </a> */}
                     </div>
                 </HeaderMain>
                 <CalendarContainer>
@@ -218,6 +235,17 @@ function App() {
                         )
                     )}
                 </CalendarContainer>
+                <section className="App-header">
+                    <p>
+                        <a
+                            href="https://github.com/CovidEngine/vaxxnz"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            Source code
+                        </a>
+                    </p>
+                </section>
             </div>
         </>
     );
