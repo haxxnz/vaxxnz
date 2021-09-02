@@ -25,7 +25,7 @@ export async function getAvailabilityDates(extId: string) {
 
 export async function getLastUpdatedTime() {
   try {
-    const res = await fetch('https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/endedScrapeAt.json');
+    const res = await fetch('https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/startedScrapeAt.json');
     const time: string = await res.json();
     return parseISO(time);
   } catch(e) {
