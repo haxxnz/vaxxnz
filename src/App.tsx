@@ -97,7 +97,7 @@ function App() {
                         available booking times.
                         <br /> <br />
                         This is not an official Government website. To get
-                        vaccinated visit
+                        vaccinated visit&nbsp;
                         <a
                             href="https://bookmyvaccine.nz"
                             target="_blank"
