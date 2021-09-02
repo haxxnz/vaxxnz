@@ -89,9 +89,29 @@ function App() {
                             }}
                         >
                             <h1>
-                                Available slots <br /> for {isOpen?.dateStr}
+                                {isOpen
+                                    ? parse(
+                                          isOpen.dateStr,
+                                          "yyyy-MM-dd",
+                                          new Date()
+                                      ).toLocaleDateString([], {
+                                          weekday: "long",
+                                      })
+                                    : ""}
+                                <br />
+                                {isOpen
+                                    ? parse(
+                                          isOpen.dateStr,
+                                          "yyyy-MM-dd",
+                                          new Date()
+                                      ).toLocaleDateString([], {
+                                          month: "short",
+                                          day: "numeric",
+                                          year: "numeric",
+                                      })
+                                    : ""}
                             </h1>
-
+                            <hr />
                             <p>Data from bookmyvaccine.nz</p>
                             <Button
                                 onClick={() => setIsOpen(null)}
@@ -110,6 +130,8 @@ function App() {
                         </div>
 
                         <div style={{ overflow: "scroll" }}>
+                            <h2>Available slots</h2>
+                            <hr />
                             {sortByDistance(
                                 isOpen?.locationSlotsPairs,
                                 lat,
@@ -224,11 +246,11 @@ function App() {
                     </p>
                 </section>
 
-          <HeaderMain>
-            <section>
-            <h1>Available Vaccine Slots</h1>
-            <p>Last updated: 21 minutes ago</p>
-            </section>
+                <HeaderMain>
+                    <section>
+                        <h1>Available Vaccine Slots</h1>
+                        <p>Last updated: 21 minutes ago</p>
+                    </section>
                     <div>
                         <Select
                             options={[
@@ -300,7 +322,21 @@ function App() {
                                                                     ).length
                                                             )
                                                         )}{" "}
-                                                        available
+                                                        available{" "}
+                                                        {/* <aside>
+                                                            &nbsp; - &nbsp;
+                                                            {parse(
+                                                                dateLocationsPair.dateStr,
+                                                                "yyyy-MM-dd",
+                                                                new Date()
+                                                            ).toLocaleDateString(
+                                                                [],
+                                                                {
+                                                                    weekday:
+                                                                        "long",
+                                                                }
+                                                            )}
+                                                        </aside> */}
                                                     </p>
                                                 </div>
                                                 <img

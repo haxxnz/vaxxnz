@@ -114,6 +114,12 @@ export const MonthContainer = styled.section`
             font-size: 1.3rem;
             font-weight: 600;
         }
+        aside {
+            display: inline;
+            float: right;
+            color: #777;
+            font-weight: 400;
+        }
         p {
             font-size: 1.25rem;
             font-weight: 400;
@@ -151,12 +157,23 @@ export const ModalGrid = styled.section`
     grid-template-columns: 480px 1fr;
     overflow: hidden;
     h1 {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
+    }
+    hr {
+        border: none;
+        border-top: 1px solid lightgray;
+        margin-top: 1rem;
+        padding-top: 1rem;
     }
 
     @media screen and (max-width: 1024px) {
         grid-template-columns: 1fr;
         gap: 0;
+    }
+    @media screen and (max-width: 768px) {
+        h1 {
+            font-size: 2rem;
+        }
     }
 `;
 
