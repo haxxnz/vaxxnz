@@ -309,6 +309,20 @@ function App() {
                                                                 day: "numeric",
                                                             }
                                                         )}
+                                                        {/* <aside>
+                                                            &nbsp; - &nbsp;
+                                                            {parse(
+                                                                dateLocationsPair.dateStr,
+                                                                "yyyy-MM-dd",
+                                                                new Date()
+                                                            ).toLocaleDateString(
+                                                                [],
+                                                                {
+                                                                    weekday:
+                                                                        "short",
+                                                                }
+                                                            )}
+                                                        </aside> */}
                                                     </h3>
                                                     <p>
                                                         {sum(
@@ -322,21 +336,7 @@ function App() {
                                                                     ).length
                                                             )
                                                         )}{" "}
-                                                        available{" "}
-                                                        {/* <aside>
-                                                            &nbsp; - &nbsp;
-                                                            {parse(
-                                                                dateLocationsPair.dateStr,
-                                                                "yyyy-MM-dd",
-                                                                new Date()
-                                                            ).toLocaleDateString(
-                                                                [],
-                                                                {
-                                                                    weekday:
-                                                                        "long",
-                                                                }
-                                                            )}
-                                                        </aside> */}
+                                                        available
                                                     </p>
                                                 </div>
                                                 <img

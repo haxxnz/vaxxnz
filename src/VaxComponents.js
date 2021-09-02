@@ -158,6 +158,10 @@ export const ModalGrid = styled.section`
     overflow: hidden;
     h1 {
         font-size: 3.5rem;
+        font-weight: 300;
+    }
+    h2 {
+        font-weight: 400;
     }
     hr {
         border: none;
