@@ -48,6 +48,16 @@ function App() {
     const openLocation = () => {
         setLocationIsOpen(true);
     };
+    const getLocation = () => {
+        if (!navigator.geolocation) {
+            alert("Geolocation is not supported by your browser");
+        } else {
+            navigator.geolocation.getCurrentPosition((position) => {
+                setLat(position.coords.latitude);
+                setLng(position.coords.longitude);
+            });
+        }
+    };
 
     let byMonth = new Map<string, DateLocationsPair[]>();
     dateLocationsPairs.forEach((dateLocationsPair) => {
@@ -122,9 +132,9 @@ function App() {
                         <Button
                             startEnhancer={() => <Search size={24} />}
                             kind={KIND.secondary}
-                            onClick={openLocation}
+                            onClick={() => getLocation()}
                         >
-                            Edit your Location
+                            Get your Location
                         </Button>
                         <a
                             href="https://github.com/CovidEngine/vaxxnz"
