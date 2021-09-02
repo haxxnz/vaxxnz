@@ -77,7 +77,7 @@ export async function getMyCalendar(
 
   const today = new Date();
   const dateLocationsPairs: DateLocationsPair[] = [];
-  for (let i = 0; i < 90; i++) {
+  for (let i = 0; i < 60; i++) {
     // 90 days in the future
     const date = new Date().setDate(today.getDate() + i);
     const dateStr = format(date, "yyyy-MM-dd");
