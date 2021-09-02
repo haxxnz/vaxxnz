@@ -59,6 +59,7 @@ function App() {
     return (
         <>
             <div className="App">
+
                 <BookingsModal
                     isOpen={isOpen}
                     setIsOpen={setIsOpen}
@@ -170,7 +171,21 @@ function App() {
                                                                     ).length
                                                             )
                                                         )}{" "}
-                                                        available
+                                                        available{" "}
+                                                        {/* <aside>
+                                                            &nbsp; - &nbsp;
+                                                            {parse(
+                                                                dateLocationsPair.dateStr,
+                                                                "yyyy-MM-dd",
+                                                                new Date()
+                                                            ).toLocaleDateString(
+                                                                [],
+                                                                {
+                                                                    weekday:
+                                                                        "long",
+                                                                }
+                                                            )}
+                                                        </aside> */}
                                                     </p>
                                                 </div>
                                                 <img
