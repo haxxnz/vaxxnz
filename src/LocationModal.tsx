@@ -65,17 +65,20 @@ const LocationModal = (props: Props) => {
                 value={locationInputValue}
                 onChange={(e) => setLocationInputValue(e.currentTarget.value)}
             />
-            <p
+            <button
                 className={"clickable"}
                 style={{
                     color: "#0057FF",
                     fontWeight: 600,
                     marginBlock: 20,
+                    textAlign: "left",
+                    border: "none",
+                    backgroundColor: "white'"
                 }}
                 onClick={() => getLocation()}
             >
                 Use my location
-            </p>
+            </button>
             <Button
                 overrides={{
                     Root: {

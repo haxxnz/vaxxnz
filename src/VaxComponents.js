@@ -25,15 +25,22 @@ h1 {
   text-align: left;
   margin: 0;
   align-self: center;
+  font-size: 1.75rem;
 }
-
+section {
+  flex-direction: column;
+}
+p {
+  font-size: 0.95rem;
+  color: #555;
+}
 
 @media screen and (max-width:1024px) {
   position: relative;
   top: initial;
 flex-direction: column;
 div {
-
+  margin-top: 0.5rem;
   max-height: initial;
   flex-direction: column;
 }

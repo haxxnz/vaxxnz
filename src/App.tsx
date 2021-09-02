@@ -224,8 +224,11 @@ function App() {
                     </p>
                 </section>
 
-                <HeaderMain>
-                    <h1>Available Vaccine Slots</h1>
+          <HeaderMain>
+            <section>
+            <h1>Available Vaccine Slots</h1>
+            <p>Last updated: 21 minutes ago</p>
+            </section>
                     <div>
                         <Select
                             options={[
