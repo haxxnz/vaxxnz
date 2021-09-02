@@ -2,7 +2,7 @@ import { Button, KIND } from "baseui/button";
 import { Search, Show } from "baseui/icon";
 import { Modal } from "baseui/modal";
 import { Select } from "baseui/select";
-import { parse } from "date-fns";
+import { formatDistance, parse } from "date-fns";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
     HeaderMain,
@@ -14,7 +14,7 @@ import {
 } from "./VaxComponents";
 
 import { DateLocationsPairsContext } from "./contexts";
-import { getMyCalendar } from "./getData";
+import { getLastUpdatedTime, getMyCalendar } from "./getData";
 import { DateLocationsPair, LocationSlotsPair } from "./types";
 import { getDistanceKm } from "./distanceUtils";
 import LocationModal from "./LocationModal";
@@ -40,6 +40,12 @@ function App() {
         const data = await getMyCalendar(lat, lng, radiusKm);
         setDateLocationsPairs(data);
     }, [lat, lng, radiusKm, setDateLocationsPairs]);
+
+    const [lastUpdateTime, setLastUpdateTime] = useState(new Date());
+
+    useEffect(() => {
+        getLastUpdatedTime().then(time => setLastUpdateTime(time));
+    }, []);
 
     useEffect(() => {
         loadCalendar();
@@ -91,24 +97,24 @@ function App() {
                             <h1>
                                 {isOpen
                                     ? parse(
-                                          isOpen.dateStr,
-                                          "yyyy-MM-dd",
-                                          new Date()
-                                      ).toLocaleDateString([], {
-                                          weekday: "long",
-                                      })
+                                        isOpen.dateStr,
+                                        "yyyy-MM-dd",
+                                        new Date()
+                                    ).toLocaleDateString([], {
+                                        weekday: "long",
+                                    })
                                     : ""}
                                 <br />
                                 {isOpen
                                     ? parse(
-                                          isOpen.dateStr,
-                                          "yyyy-MM-dd",
-                                          new Date()
-                                      ).toLocaleDateString([], {
-                                          month: "short",
-                                          day: "numeric",
-                                          year: "numeric",
-                                      })
+                                        isOpen.dateStr,
+                                        "yyyy-MM-dd",
+                                        new Date()
+                                    ).toLocaleDateString([], {
+                                        month: "short",
+                                        day: "numeric",
+                                        year: "numeric",
+                                    })
                                     : ""}
                             </h1>
                             <hr />
@@ -249,7 +255,7 @@ function App() {
                 <HeaderMain>
                     <section>
                         <h1>Available Vaccine Slots</h1>
-                        <p>Last updated: 21 minutes ago</p>
+                        <p>Last updated: {formatDistance(lastUpdateTime, new Date())}</p>
                     </section>
                     <div>
                         <Select
