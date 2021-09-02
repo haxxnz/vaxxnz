@@ -209,7 +209,7 @@ function App() {
                     <p>
                         This is a website that shows available vaccination spots
                         near you. It shows vaccination sites, and available
-                        booking times that are available to you.
+                        booking times.
                         <br /> <br />
                         This is not an official Government website.
                         <br /> <br />

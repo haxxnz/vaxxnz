@@ -24,6 +24,7 @@ div {
 h1 {
   text-align: left;
   margin: 0;
+  align-self: center;
 }
 
 
@@ -53,133 +54,133 @@ div {
 `;
 
 export const CalendarContainer = styled.section`
-  margin: 0;
+    margin: 0;
 `;
 
 export const CalendarSectionContainer = styled.section`
-  h2 {
-    display: block;
-    padding: 1.5rem;
-    font-size: 1.5rem;
-    border-bottom: 1px solid lightgray;
-    position: sticky;
-    top: 96px;
-
-    background-color: #fff;
-    z-index: 1;
-  }
-
-  @media screen and (max-width: 1024px) {
     h2 {
-      top: 0;
+        display: block;
+        padding: 1.5rem;
+        font-size: 1.5rem;
+        border-bottom: 1px solid lightgray;
+        position: sticky;
+        top: 96px;
+
+        background-color: #fff;
+        z-index: 1;
     }
-  }
+
+    @media screen and (max-width: 1024px) {
+        h2 {
+            top: 0;
+        }
+    }
 `;
 
 export const MonthContainer = styled.section`
-  display: grid;
-  box-sizing: border-box;
-  grid-template-columns: repeat(7, 1fr);
-  background-color: lightgray;
-  border-bottom: 1px solid lightgray;
-  gap: 1px;
-  transition: all 0.3s;
-  button {
+    display: grid;
     box-sizing: border-box;
-    font-family: inherit;
-    min-height: 144px;
-    text-align: left;
-    background-color: white;
-    border: none;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    div {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: lightgray;
+    border-bottom: 1px solid lightgray;
+    gap: 1px;
+    transition: all 0.3s;
+    button {
+        box-sizing: border-box;
+        font-family: inherit;
+        min-height: 144px;
+        text-align: left;
+        background-color: white;
+        border: none;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        div {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        p {
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+        :hover {
+            background-color: #e4eeff;
+            cursor: pointer;
+            h3,
+            p {
+                color: #005eca;
+            }
+        }
+        img {
+            width: 1.5rem;
+            height: 1.5rem;
+            bottom: 0;
+            opacity: 0.7;
+        }
     }
 
-    h3 {
-      font-size: 1.3rem;
-      font-weight: 600;
+    @media screen and (max-width: 1024px) {
+        grid-template-columns: repeat(5, 1fr);
     }
-    p {
-      font-size: 1.25rem;
-      font-weight: 400;
+    @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
     }
-    :hover {
-      background-color: #e4eeff;
-      cursor: pointer;
-      h3,
-      p {
-        color: #005eca;
-      }
+    @media screen and (max-width: 500px) {
+        grid-template-columns: repeat(1, 1fr);
     }
-    img {
-      width: 1.5rem;
-      height: 1.5rem;
-      bottom: 0;
-      opacity: 0.7;
-    }
-  }
-
-  @media screen and (max-width: 1024px) {
-    grid-template-columns: repeat(5, 1fr);
-  }
-  @media screen and (max-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media screen and (max-width: 500px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
 `;
 
 export const ModalGrid = styled.section`
-  display: grid;
-  gap: 4rem;
-  grid-template-columns: 480px 1fr;
-  overflow: hidden;
-  h1 {
-    font-size: 2.5rem;
-  }
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: 480px 1fr;
+    overflow: hidden;
+    h1 {
+        font-size: 2.5rem;
+    }
 
-  @media screen and (max-width: 1024px) {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
+    @media screen and (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
 `;
 
 export const VaccineCentre = styled.section`
-  padding-bottom: 1.5rem;
-  margin-bottom: 1.5rem;
-  border-bottom: 2px solid lightgray;
-  h3 {
-    font-size: 2rem;
-    max-width: 80%;
-  }
-
-  @media screen and (min-width: 1024px) {
-    .ButtonConstraint {
-      max-width: 400px;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid lightgray;
+    h3 {
+        font-size: 2rem;
+        max-width: 80%;
     }
-  }
 
-  section {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    p {
-      border-radius: 4px;
-      border: 2px solid #e8e8e8;
-      color: black;
-      font-weight: 600;
-      padding: 0.5rem;
-      min-width: 80px;
-      text-align: center;
+    @media screen and (min-width: 1024px) {
+        .ButtonConstraint {
+            max-width: 400px;
+        }
     }
-  }
+
+    section {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        p {
+            border-radius: 4px;
+            border: 2px solid #e8e8e8;
+            color: black;
+            font-weight: 600;
+            padding: 0.5rem;
+            min-width: 80px;
+            text-align: center;
+        }
+    }
 `;
