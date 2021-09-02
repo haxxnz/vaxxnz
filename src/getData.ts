@@ -19,8 +19,8 @@ export async function getAvailabilityDates(extId: string) {
   const res = await fetch(
     `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/availability/${extId}.json`
   );
-  const data: AvailabilityDates = await res.json();
-  return data;
+  const data: {availabilityDates: AvailabilityDates, lastUpdatedAt: string} = await res.json();
+  return data.availabilityDates;
 }
 
 export async function getMyCalendar(
