@@ -16,7 +16,6 @@ export async function getLocations() {
   return data;
 }
 
-
 export async function getLocationData(extId: string) {
   const res = await fetch(
     `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/HEAD/availability/${extId}.json`
@@ -27,10 +26,12 @@ export async function getLocationData(extId: string) {
 
 export async function getLastUpdatedTime() {
   try {
-    const res = await fetch('https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/startedScrapeAt.json');
+    const res = await fetch(
+      "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/startedScrapeAt.json"
+    );
     const time: string = await res.json();
     return parseISO(time);
-  } catch(e) {
+  } catch (e) {
     return new Date();
   }
 }
@@ -50,7 +51,7 @@ export async function getMyCalendar(
     );
     return distance < radiusKm;
   });
-  let oldestLastUpdatedTimestamp = Infinity
+  let oldestLastUpdatedTimestamp = Infinity;
   const availabilityDatesAndLocations = await Promise.all(
     filtredLocations.map(async (location) => {
       let locationsData: LocationsData | undefined = undefined;
@@ -59,10 +60,12 @@ export async function getMyCalendar(
       } catch (e) {
         console.error("getMyCalendar e", e);
       }
-      const lastUpdatedAt = locationsData?.lastUpdatedAt
-      const lastUpdatedTimestamp = lastUpdatedAt ? (new Date(lastUpdatedAt)).getTime() : Infinity
+      const lastUpdatedAt = locationsData?.lastUpdatedAt;
+      const lastUpdatedTimestamp = lastUpdatedAt
+        ? new Date(lastUpdatedAt).getTime()
+        : Infinity;
       if (lastUpdatedTimestamp < oldestLastUpdatedTimestamp) {
-        oldestLastUpdatedTimestamp = lastUpdatedTimestamp
+        oldestLastUpdatedTimestamp = lastUpdatedTimestamp;
       }
 
       return {
@@ -90,5 +93,5 @@ export async function getMyCalendar(
       locationSlotsPairs,
     });
   }
-  return {dateLocationsPairs, oldestLastUpdatedTimestamp};
+  return { dateLocationsPairs, oldestLastUpdatedTimestamp };
 }
