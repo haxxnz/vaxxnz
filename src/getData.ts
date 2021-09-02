@@ -9,7 +9,7 @@ import {
 
 export async function getLocations() {
   const res = await fetch(
-    "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/uniqLocations.json"
+    "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/HEAD/uniqLocations.json"
   );
   const data: Location[] = await res.json();
   return data;
@@ -17,7 +17,7 @@ export async function getLocations() {
 
 export async function getAvailabilityDates(extId: string) {
   const res = await fetch(
-    `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/availability/${extId}.json`
+    `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/HEAD/availability/${extId}.json`
   );
   const data: {availabilityDates: AvailabilityDates, lastUpdatedAt: string} = await res.json();
   return data.availabilityDates;
