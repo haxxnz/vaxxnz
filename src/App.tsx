@@ -90,7 +90,7 @@ function App() {
                 {/* <pre>{JSON.stringify({ dateLocationsPairs }, null, 2)}</pre> */}
 
                 <section className="App-header">
-                    <h1>Vaxx Booking Finder</h1> <br />
+                    <h1>Vaccination Booking Finder</h1> <br />
                     <p>
                         This is a website that shows every available vaccination
                         booking slot near you. It shows vaccination sites, and
