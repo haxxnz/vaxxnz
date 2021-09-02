@@ -100,7 +100,7 @@ const BookingsModal = (props: Props) => {
                     </Button>
                 </div>
 
-                <div style={{ overflow: "scroll" }}>
+                <div style={{ overflowY: "scroll", height: "100%" }}>
                     <h2>Available slots</h2>
                     <hr />
                     {sortByDistance(
