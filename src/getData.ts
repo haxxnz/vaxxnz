@@ -4,6 +4,7 @@ import {
   AvailabilityDates,
   DateLocationsPair,
   Location,
+  LocationsData,
   LocationSlotsPair,
 } from "./types";
 
@@ -15,12 +16,13 @@ export async function getLocations() {
   return data;
 }
 
-export async function getAvailabilityDates(extId: string) {
+
+export async function getLocationData(extId: string) {
   const res = await fetch(
     `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/HEAD/availability/${extId}.json`
   );
-  const data: {availabilityDates: AvailabilityDates, lastUpdatedAt: string} = await res.json();
-  return data.availabilityDates;
+  const data: LocationsData = await res.json();
+  return data;
 }
 
 export async function getLastUpdatedTime() {
@@ -48,18 +50,24 @@ export async function getMyCalendar(
     );
     return distance < radiusKm;
   });
+  let oldestLastUpdatedTimestamp = Infinity
   const availabilityDatesAndLocations = await Promise.all(
     filtredLocations.map(async (location) => {
-      let availabilityDates: AvailabilityDates | undefined = undefined;
+      let locationsData: LocationsData | undefined = undefined;
       try {
-        availabilityDates = await getAvailabilityDates(location.extId);
+        locationsData = await getLocationData(location.extId);
       } catch (e) {
         console.error("getMyCalendar e", e);
+      }
+      const lastUpdatedAt = locationsData?.lastUpdatedAt
+      const lastUpdatedTimestamp = lastUpdatedAt ? (new Date(lastUpdatedAt)).getTime() : Infinity
+      if (lastUpdatedTimestamp < oldestLastUpdatedTimestamp) {
+        oldestLastUpdatedTimestamp = lastUpdatedTimestamp
       }
 
       return {
         location,
-        availabilityDates,
+        availabilityDates: locationsData?.availabilityDates,
       };
     })
   );
@@ -82,5 +90,5 @@ export async function getMyCalendar(
       locationSlotsPairs,
     });
   }
-  return dateLocationsPairs;
+  return {dateLocationsPairs, oldestLastUpdatedTimestamp};
 }

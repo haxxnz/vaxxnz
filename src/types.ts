@@ -39,6 +39,11 @@ export interface AvailabilityDates {
   [key: string]: SlotWithAvailability[] | undefined;
 }
 
+export interface LocationsData {
+  availabilityDates: AvailabilityDates
+  lastUpdatedAt: string
+}
+
 export interface LocationSlotsPair {
   location: Location;
   slots: SlotWithAvailability[] | undefined;

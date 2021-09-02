@@ -32,14 +32,11 @@ function App() {
     );
     const loadCalendar = useCallback(async () => {
         const data = await getMyCalendar(lat, lng, radiusKm);
-        setDateLocationsPairs(data);
+        setDateLocationsPairs(data.dateLocationsPairs);
+        setLastUpdateTime(new Date(data.oldestLastUpdatedTimestamp))
     }, [lat, lng, radiusKm, setDateLocationsPairs]);
 
     const [lastUpdateTime, setLastUpdateTime] = useState(new Date());
-
-    useEffect(() => {
-        getLastUpdatedTime().then((time) => setLastUpdateTime(time));
-    }, []);
 
     useEffect(() => {
         loadCalendar();
