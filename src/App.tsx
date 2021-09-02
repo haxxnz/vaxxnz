@@ -255,7 +255,7 @@ function App() {
                 <HeaderMain>
                     <section>
                         <h1>Available Vaccine Slots</h1>
-                        <p>Last updated: {formatDistance(lastUpdateTime, new Date())}</p>
+                        <p>Last updated: {formatDistance(lastUpdateTime, new Date(), { addSuffix: true })}</p>
                     </section>
                     <div>
                         <Select
