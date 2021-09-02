@@ -1,7 +1,7 @@
 import { Button, KIND } from "baseui/button";
 import { Search, Show } from "baseui/icon";
 import { Select } from "baseui/select";
-import { parse } from "date-fns";
+import { formatDistance, parse } from "date-fns";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
     HeaderMain,
@@ -11,7 +11,7 @@ import {
 } from "./VaxComponents";
 
 import { DateLocationsPairsContext } from "./contexts";
-import { getMyCalendar } from "./getData";
+import { getLastUpdatedTime, getMyCalendar } from "./getData";
 import { DateLocationsPair } from "./types";
 import LocationModal from "./LocationModal";
 import BookingsModal from "./BookingsModal";
@@ -34,6 +34,12 @@ function App() {
         const data = await getMyCalendar(lat, lng, radiusKm);
         setDateLocationsPairs(data);
     }, [lat, lng, radiusKm, setDateLocationsPairs]);
+
+    const [lastUpdateTime, setLastUpdateTime] = useState(new Date());
+
+    useEffect(() => {
+        getLastUpdatedTime().then(time => setLastUpdateTime(time));
+    }, []);
 
     useEffect(() => {
         loadCalendar();
@@ -97,7 +103,7 @@ function App() {
                 <HeaderMain>
                     <section>
                         <h1>Available Vaccine Slots</h1>
-                        <p>Last updated: 21 minutes ago</p>
+                        <p>Last updated: {formatDistance(lastUpdateTime, new Date(), { addSuffix: true })}</p>
                     </section>
                     <div>
                         <Select
