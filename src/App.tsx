@@ -12,8 +12,7 @@ import {
 
 import { DateLocationsPairsContext } from "./contexts";
 import { getMyCalendar } from "./getData";
-import { DateLocationsPair, LocationSlotsPair } from "./types";
-import { getDistanceKm } from "./distanceUtils";
+import { DateLocationsPair } from "./types";
 import LocationModal from "./LocationModal";
 import BookingsModal from "./BookingsModal";
 
