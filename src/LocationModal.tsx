@@ -1,4 +1,5 @@
 import { Button, KIND } from "baseui/button";
+import { BaseInput } from "baseui/input"
 import { Modal } from "baseui/modal";
 import { useCallback, useMemo, useState } from "react";
 import { Place } from "./googleTypes";
@@ -144,7 +145,7 @@ const LocationModal = (props: Props) => {
             >
                 Type in an address, postcode, or suburb
             </p>
-            <input id="pac-input" type="text" ref={inputRef} />
+            <BaseInput id="pac-input" type="text" ref={inputRef} />
             <button
                 className={"clickable"}
                 style={{
