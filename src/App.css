@@ -1,0 +1,17 @@
+.pac-icon {
+    display: none;
+}
+
+.pac-item {
+    padding: 0.25rem 0.5rem;
+}
+
+.pac-container {
+    z-index: 1501;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+
+.pac-item-query {
+    margin-right: 0.5rem;
+}

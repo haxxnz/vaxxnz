@@ -2,6 +2,7 @@ import { Button, KIND } from "baseui/button";
 import { BaseInput } from "baseui/input";
 import { Modal } from "baseui/modal";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import "./App.css";
 
 type Props = {
     locationIsOpen: boolean;
@@ -14,7 +15,7 @@ type Props = {
 const LocationModal = (props: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
     const { setLat, setLng, setPlaceName, setLocationIsOpen } = props;
-    const [address, setAddress] = useState('');
+    const [address, setAddress] = useState("");
     const geocoder = useMemo(() => new google.maps.Geocoder(), []);
     const placesService = useMemo(
         () =>
@@ -57,7 +58,11 @@ const LocationModal = (props: Props) => {
             autocomplete.addListener("place_changed", () => {
                 const place = autocomplete.getPlace();
 
-                if (place.name && place.geometry != null && place.geometry.location != null) {
+                if (
+                    place.name &&
+                    place.geometry != null &&
+                    place.geometry.location != null
+                ) {
                     setLocation(
                         place.geometry.location.lat(),
                         place.geometry.location.lng(),
@@ -66,7 +71,7 @@ const LocationModal = (props: Props) => {
                 }
             });
             return () => {
-                google.maps.event.clearListeners(autocomplete, 'place_changed');
+                google.maps.event.clearListeners(autocomplete, "place_changed");
             };
         }
     }, [setLocation, address]);
@@ -122,11 +127,11 @@ const LocationModal = (props: Props) => {
             onClose={close}
             isOpen={!!props.locationIsOpen}
             overrides={{
-                // Root: { style: { zIndex: 1500 } },
+                Root: { style: { zIndex: 1500 } },
                 Dialog: {
                     style: {
-                        width: "auto",
                         height: "auto",
+                        width: "600px",
                         display: "flex",
                         flexDirection: "column",
                         padding: "1.5rem",
@@ -144,7 +149,12 @@ const LocationModal = (props: Props) => {
             >
                 Type in an address, postcode, or suburb
             </p>
-            <BaseInput id="pac-input" type="text" inputRef={inputRef} onChange={(e) => setAddress(e.currentTarget.value)} />
+            <BaseInput
+                id="pac-input"
+                type="text"
+                inputRef={inputRef}
+                onChange={(e) => setAddress(e.currentTarget.value)}
+            />
             <button
                 className={"clickable"}
                 style={{
