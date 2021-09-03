@@ -39,7 +39,7 @@ const BookingsModal = (props: Props) => {
             onClose={close}
             isOpen={!!props.isOpen}
             overrides={{
-                Root: { style: { zIndex: 1500 } },
+                // Root: { style: { zIndex: 1500 } },
                 Dialog: {
                     style: {
                         width: "80vw",

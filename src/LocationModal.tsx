@@ -1,17 +1,55 @@
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Input } from "baseui/input";
 
 type Props = {
     locationIsOpen: boolean;
-    setLocationIsOpen: any;
-    setLat: any;
-    setLng: any;
+    setLocationIsOpen: (isOpen: boolean) => void;
+    setLat: (lat: number) => void;
+    setLng: (lng: number) => void;
+    setLocationName: (name: string) => void;
 };
 
 const LocationModal = (props: Props) => {
-    const [locationInputValue, setLocationInputValue] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(false);
+
+    const inputRef = useCallback((node) => {
+        if (node !== null) {
+            const center = { lat: 50.064192, lng: -130.605469 };
+            // Create a bounding box with sides ~10km away from the center point
+            const defaultBounds = {
+                north: center.lat + 0.1,
+                south: center.lat - 0.1,
+                east: center.lng + 0.1,
+                west: center.lng - 0.1,
+            };
+            const options = {
+                bounds: defaultBounds,
+                componentRestrictions: { country: "nz" },
+                fields: ["address_components", "geometry", "icon", "name"],
+                strictBounds: false,
+                // types: ["establishment"],
+            };
+
+            const autocomplete = new google.maps.places.Autocomplete(
+                node,
+                options
+            );
+
+            autocomplete.addListener("place_changed", () => {
+                const place = autocomplete.getPlace();
+
+                props.setLat(place.geometry.location.lat());
+                props.setLng(place.geometry.location.lng());
+                props.setLocationName(place.name);
+                close();
+
+                console.log("place", place);
+            });
+            console.log("autocomplete setup", autocomplete);
+        }
+    }, []);
 
     const close = () => {
         props.setLocationIsOpen(false);
@@ -21,9 +59,15 @@ const LocationModal = (props: Props) => {
         if (!navigator.geolocation) {
             alert("Geolocation is not supported by your browser");
         } else {
+            setLoading(true);
             navigator.geolocation.getCurrentPosition((position) => {
                 props.setLat(position.coords.latitude);
                 props.setLng(position.coords.longitude);
+                props.setLocationName(
+                    `${position.coords.latitude} ${position.coords.longitude}`
+                );
+                setLoading(false);
+                close();
             });
         }
     };
@@ -37,7 +81,7 @@ const LocationModal = (props: Props) => {
             onClose={close}
             isOpen={!!props.locationIsOpen}
             overrides={{
-                Root: { style: { zIndex: 1500 } },
+                // Root: { style: { zIndex: 1500 } },
                 Dialog: {
                     style: {
                         width: "auto",
@@ -59,12 +103,7 @@ const LocationModal = (props: Props) => {
             >
                 Type in an address, postcode, or suburb
             </p>
-            <Input
-                autoFocus
-                clearable
-                value={locationInputValue}
-                onChange={(e) => setLocationInputValue(e.currentTarget.value)}
-            />
+            <input id="pac-input" type="text" ref={inputRef} />
             <button
                 className={"clickable"}
                 style={{
@@ -73,11 +112,11 @@ const LocationModal = (props: Props) => {
                     marginBlock: 20,
                     textAlign: "left",
                     border: "none",
-                    backgroundColor: "white'"
+                    backgroundColor: "white'",
                 }}
                 onClick={() => getLocation()}
             >
-                Use my location
+                {loading ? "Loading..." : "Use my location"}
             </button>
             <Button
                 overrides={{

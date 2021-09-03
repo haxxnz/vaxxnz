@@ -30,9 +30,12 @@ function App() {
     const [locationIsOpen, setLocationIsOpen] = React.useState<boolean>(false);
 
     const [radiusKm, setRadiusKm] = useState(20);
+
     const [lat, setLat] = useState(defaultLat);
     const [lng, setLng] = useState(defaultLng);
+    const [locationName, setLocationName] = useState("Auckland CBD");
     const [locationLoading, setLocationLoading] = useState<boolean>(false);
+
     const { dateLocationsPairs, setDateLocationsPairs } = useContext(
         DateLocationsPairsContext
     );
@@ -90,6 +93,7 @@ function App() {
                     setLocationIsOpen={setLocationIsOpen}
                     setLat={setLat}
                     setLng={setLng}
+                    setLocationName={setLocationName}
                 />
 
                 <section className="App-header">
@@ -134,20 +138,22 @@ function App() {
                                     )
                                 }
                                 kind={KIND.primary}
-                                onClick={() => getLocation()}
+                                onClick={() => openLocation()}
                             >
                                 {locationLoading
                                     ? "Loading..."
-                                    : "Set your Location"}
+                                    : "Set your Location" +
+                                      " (" +
+                                      locationName +
+                                      ")"}
                             </Button>
                         ) : (
                             <Button
                                 startEnhancer={() => <Check size={24} />}
                                 kind={KIND.primary}
-                                onClick={() => getLocation()}
-                                disabled={true}
+                                onClick={() => openLocation()}
                             >
-                                Location set
+                                Location set ({locationName})
                             </Button>
                         )}
                     </div>
@@ -155,7 +161,7 @@ function App() {
                 <CalendarContainer>
                     {Array.from(byMonth.entries()).map(
                         ([month, dateLocationsPairsForMonth]) => (
-                            <CalendarSectionContainer>
+                            <CalendarSectionContainer key={month}>
                                 <div className="MonthSection">
                                     <h2>{month}</h2>{" "}
                                 </div>
@@ -163,6 +169,7 @@ function App() {
                                     {dateLocationsPairsForMonth.map(
                                         (dateLocationsPair) => (
                                             <button
+                                                key={dateLocationsPair.dateStr}
                                                 onClick={() =>
                                                     setIsOpen(dateLocationsPair)
                                                 }
