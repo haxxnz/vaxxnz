@@ -91,8 +91,6 @@ function App() {
                     setLng={setLng}
                 />
 
-                {/* <pre>{JSON.stringify({ dateLocationsPairs }, null, 2)}</pre> */}
-
                 <section className="App-header">
                     <h1>Vaccination Booking Finder</h1> <br />
                     <p>
@@ -143,18 +141,6 @@ function App() {
                                 Location set
                             </Button>
                         )}
-                        {/* <a
-                            href="https://github.com/CovidEngine/vaxxnz"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
-                            <Button
-                                startEnhancer={() => <Show size={24} />}
-                                kind={KIND.secondary}
-                            >
-                                Source Code
-                            </Button>
-                        </a> */}
                     </div>
                 </HeaderMain>
                 <CalendarContainer>
