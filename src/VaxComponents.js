@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderMain = styled.header`
-position: sticky;
+// position: sticky;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
@@ -69,7 +69,7 @@ export const CalendarSectionContainer = styled.section`
         display: block;
         padding: 1.5rem;
         border-bottom: 1px solid lightgray;
-        position: sticky;
+        // position: sticky;
         top: 96px;
 
         background-color: #fff;

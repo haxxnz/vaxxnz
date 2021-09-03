@@ -15,6 +15,7 @@ import { getLastUpdatedTime, getMyCalendar } from "./getData";
 import { DateLocationsPair } from "./types";
 import LocationModal from "./LocationModal";
 import BookingsModal from "./BookingsModal";
+import RadiusSelect from "./RadiusSelect";
 
 function sum(array: number[]) {
     return array.reduce((a, b) => a + b, 0);
@@ -27,7 +28,7 @@ function App() {
     const [isOpen, setIsOpen] = React.useState<DateLocationsPair | null>(null);
     const [locationIsOpen, setLocationIsOpen] = React.useState<boolean>(false);
 
-    const [radiusKm, setRadiusKm] = useState(30);
+    const [radiusKm, setRadiusKm] = useState(20);
     const [lat, setLat] = useState(defaultLat);
     const [lng, setLng] = useState(defaultLng);
     const [locationLoading, setLocationLoading] = useState<boolean>(false)
@@ -122,15 +123,7 @@ function App() {
                         </p>
                     </section>
                     <div>
-                        <Select
-                            options={[
-                                { label: "Whthin 30km", id: "#F0F8FF" },
-                                { label: "Within 60km", id: "#FAEBD7" },
-                                { label: "Within 90km", id: "#00FFFF" },
-                            ]}
-                            placeholder={`Within ${radiusKm}km`}
-                            disabled={true} // TODO: implement
-                        />
+                        <RadiusSelect value={radiusKm} setValue={setRadiusKm} />
 
                         {lat === defaultLat && lng === defaultLng ? (
                             <Button
