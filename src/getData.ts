@@ -1,7 +1,6 @@
 import { format, parseISO } from "date-fns";
 import { getDistanceKm } from "./distanceUtils";
 import {
-  AvailabilityDates,
   DateLocationsPair,
   Location,
   LocationsData,
