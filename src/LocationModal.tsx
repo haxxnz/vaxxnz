@@ -65,8 +65,6 @@ const LocationModal = (props: Props) => {
         } else {
             setLoading(true);
             navigator.geolocation.getCurrentPosition(async (position) => {
-                props.setLat(position.coords.latitude);
-                props.setLng(position.coords.longitude);
 
                 const geocoder = new google.maps.Geocoder();
                 const latlng = {
@@ -88,10 +86,10 @@ const LocationModal = (props: Props) => {
                 service.getDetails(
                     request,
                     (place: Place, _status: string) => {
-                        // console.log("place", (place));
-                        // console.log("place", JSON.stringify(place));
                         const name = place.name;
 
+                        props.setLat(position.coords.latitude);
+                        props.setLng(position.coords.longitude);        
                         props.setLocationName(name);
                         setLoading(false);
                         close();
