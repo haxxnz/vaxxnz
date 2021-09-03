@@ -1,8 +1,7 @@
 import { Button, KIND } from "baseui/button";
-import { BaseInput } from "baseui/input"
+import { BaseInput } from "baseui/input";
 import { Modal } from "baseui/modal";
-import { useCallback, useMemo, useState } from "react";
-import { Place } from "./googleTypes";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 type Props = {
     locationIsOpen: boolean;
@@ -15,7 +14,7 @@ type Props = {
 const LocationModal = (props: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
     const { setLat, setLng, setPlaceName, setLocationIsOpen } = props;
-
+    const [address, setAddress] = useState('');
     const geocoder = useMemo(() => new google.maps.Geocoder(), []);
     const placesService = useMemo(
         () =>
@@ -41,36 +40,36 @@ const LocationModal = (props: Props) => {
         },
         [close, setLat, setLng, setPlaceName]
     );
+    const inputRef = useRef<HTMLInputElement>(null);
+    useEffect(() => {
+        if (inputRef.current != null) {
+            const options = {
+                componentRestrictions: { country: "nz" },
+                fields: ["geometry", "name"],
+                strictBounds: false,
+            };
 
-    const inputRef = useCallback(
-        (node) => {
-            if (node !== null) {
-                const options = {
-                    componentRestrictions: { country: "nz" },
-                    fields: ["geometry", "name"],
-                    strictBounds: false,
-                };
+            const autocomplete = new google.maps.places.Autocomplete(
+                inputRef.current,
+                options
+            );
 
-                const autocomplete = new google.maps.places.Autocomplete(
-                    node,
-                    options
-                );
+            autocomplete.addListener("place_changed", () => {
+                const place = autocomplete.getPlace();
 
-                autocomplete.addListener("place_changed", () => {
-                    const place: Place = autocomplete.getPlace();
+                if (place.name && place.geometry != null && place.geometry.location != null) {
                     setLocation(
                         place.geometry.location.lat(),
                         place.geometry.location.lng(),
                         place.name
                     );
-
-                    console.log("place", place);
-                });
-                console.log("autocomplete setup", autocomplete);
-            }
-        },
-        [setLocation]
-    );
+                }
+            });
+            return () => {
+                google.maps.event.clearListeners(autocomplete, 'place_changed');
+            };
+        }
+    }, [setLocation, address]);
 
     const getLocation = () => {
         if (!navigator.geolocation) {
@@ -92,9 +91,9 @@ const LocationModal = (props: Props) => {
                             placeId: results[0].place_id,
                             fields: ["geometry", "name"],
                         },
-                        (place: Place, status: string) => {
+                        (place, status: string) => {
                             if (status === "OK") {
-                                setLocation(latitude, longitude, place.name);
+                                setLocation(latitude, longitude, place!.name!);
                                 setLoading(false);
                             } else {
                                 setLocation(
@@ -145,7 +144,7 @@ const LocationModal = (props: Props) => {
             >
                 Type in an address, postcode, or suburb
             </p>
-            <BaseInput id="pac-input" type="text" ref={inputRef} />
+            <BaseInput id="pac-input" type="text" inputRef={inputRef} onChange={(e) => setAddress(e.currentTarget.value)} />
             <button
                 className={"clickable"}
                 style={{
