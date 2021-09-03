@@ -1,7 +1,6 @@
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Input } from "baseui/input";
+import { useCallback, useState } from "react";
 
 type Props = {
     locationIsOpen: boolean;
@@ -13,47 +12,50 @@ type Props = {
 
 const LocationModal = (props: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
+    const { setLat, setLng, setLocationName, setLocationIsOpen } = props;
 
-    const inputRef = useCallback((node) => {
-        if (node !== null) {
-            const center = { lat: 50.064192, lng: -130.605469 };
-            // Create a bounding box with sides ~10km away from the center point
-            const defaultBounds = {
-                north: center.lat + 0.1,
-                south: center.lat - 0.1,
-                east: center.lng + 0.1,
-                west: center.lng - 0.1,
-            };
-            const options = {
-                bounds: defaultBounds,
-                componentRestrictions: { country: "nz" },
-                fields: ["geometry", "name"],
-                strictBounds: false,
-                // types: ["establishment"],
-            };
+    const close = useCallback(() => {
+        setLocationIsOpen(false);
+    }, [setLocationIsOpen]);
 
-            const autocomplete = new google.maps.places.Autocomplete(
-                node,
-                options
-            );
+    const inputRef = useCallback(
+        (node) => {
+            if (node !== null) {
+                const center = { lat: 50.064192, lng: -130.605469 };
+                // Create a bounding box with sides ~10km away from the center point
+                const defaultBounds = {
+                    north: center.lat + 0.1,
+                    south: center.lat - 0.1,
+                    east: center.lng + 0.1,
+                    west: center.lng - 0.1,
+                };
+                const options = {
+                    bounds: defaultBounds,
+                    componentRestrictions: { country: "nz" },
+                    fields: ["geometry", "name"],
+                    strictBounds: false,
+                };
 
-            autocomplete.addListener("place_changed", () => {
-                const place = autocomplete.getPlace();
+                const autocomplete = new google.maps.places.Autocomplete(
+                    node,
+                    options
+                );
 
-                props.setLat(place.geometry.location.lat());
-                props.setLng(place.geometry.location.lng());
-                props.setLocationName(place.name);
-                close();
+                autocomplete.addListener("place_changed", () => {
+                    const place = autocomplete.getPlace();
 
-                console.log("place", place);
-            });
-            console.log("autocomplete setup", autocomplete);
-        }
-    }, []);
+                    setLat(place.geometry.location.lat());
+                    setLng(place.geometry.location.lng());
+                    setLocationName(place.name);
+                    close();
 
-    const close = () => {
-        props.setLocationIsOpen(false);
-    };
+                    console.log("place", place);
+                });
+                console.log("autocomplete setup", autocomplete);
+            }
+        },
+        [close, setLat, setLng, setLocationName]
+    );
 
     const getLocation = () => {
         if (!navigator.geolocation) {
@@ -71,7 +73,6 @@ const LocationModal = (props: Props) => {
             });
         }
     };
-
 
     return (
         <Modal
