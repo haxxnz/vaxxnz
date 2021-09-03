@@ -72,9 +72,6 @@ const LocationModal = (props: Props) => {
         }
     };
 
-    const onSubmit = () => {
-        // Do something with locationInputValue
-    };
 
     return (
         <Modal
@@ -118,18 +115,6 @@ const LocationModal = (props: Props) => {
             >
                 {loading ? "Loading..." : "Use my location"}
             </button>
-            <Button
-                overrides={{
-                    Root: {
-                        style: {
-                            width: "100%",
-                            margin: "0.5rem 0",
-                        },
-                    },
-                }}
-            >
-                Submit
-            </Button>
             <Button
                 overrides={{
                     Root: {
