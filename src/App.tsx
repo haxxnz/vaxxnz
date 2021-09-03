@@ -31,7 +31,7 @@ function App() {
 
     const [lat, setLat] = useState(defaultLat);
     const [lng, setLng] = useState(defaultLng);
-    const [locationName, setLocationName] = useState("Auckland CBD");
+    const [locationName, setLocationName] = useState("Auckland CBD"); // TODO: rename to placeName
 
     const { dateLocationsPairs, setDateLocationsPairs } = useContext(
         DateLocationsPairsContext

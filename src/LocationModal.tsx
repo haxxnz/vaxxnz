@@ -26,6 +26,21 @@ const LocationModal = (props: Props) => {
         setLocationIsOpen(false);
     }, [setLocationIsOpen]);
 
+    const setLocation = useCallback(
+        (lat: number, lng: number, name: string) => {
+            setLat(lat);
+            setLng(lng);
+            setLocationName(name);
+            close();
+            const url = new URL(window.location.toString());
+            url.searchParams.set("lat", lat.toString());
+            url.searchParams.set("lng", lng.toString());
+            url.searchParams.set("placeName", name);
+            window.history.pushState({}, "", url.toString());
+        },
+        [close, setLat, setLng, setLocationName]
+    );
+
     const inputRef = useCallback(
         (node) => {
             if (node !== null) {
@@ -42,18 +57,18 @@ const LocationModal = (props: Props) => {
 
                 autocomplete.addListener("place_changed", () => {
                     const place: Place = autocomplete.getPlace();
-
-                    setLat(place.geometry.location.lat());
-                    setLng(place.geometry.location.lng());
-                    setLocationName(place.name);
-                    close();
+                    setLocation(
+                        place.geometry.location.lat(),
+                        place.geometry.location.lng(),
+                        place.name
+                    );
 
                     console.log("place", place);
                 });
                 console.log("autocomplete setup", autocomplete);
             }
         },
-        [close, setLat, setLng, setLocationName]
+        [setLocation]
     );
 
     const getLocation = () => {
@@ -78,28 +93,25 @@ const LocationModal = (props: Props) => {
                         },
                         (place: Place, status: string) => {
                             if (status === "OK") {
-                                props.setLat(latitude);
-                                props.setLng(longitude);
-                                props.setLocationName(place.name);
+                                setLocation(latitude, longitude, place.name);
                                 setLoading(false);
-                                close();
                             } else {
-                                props.setLat(latitude);
-                                props.setLng(longitude);
-                                props.setLocationName(
+                                setLocation(
+                                    latitude,
+                                    longitude,
                                     `${latitude}, ${longitude}`
                                 );
                                 setLoading(false);
-                                close();
                             }
                         }
                     );
                 } else {
-                    props.setLat(latitude);
-                    props.setLng(longitude);
-                    props.setLocationName(`${latitude}, ${longitude}`);
+                    setLocation(
+                        latitude,
+                        longitude,
+                        `${latitude}, ${longitude}`
+                    );
                     setLoading(false);
-                    close();
                 }
             });
         }
