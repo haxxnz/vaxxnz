@@ -71,20 +71,19 @@ const LocationModal = (props: Props) => {
             setLoading(true);
             navigator.geolocation.getCurrentPosition(async (position) => {
                 const { latitude, longitude } = position.coords;
-                const latlng = {
-                    lat: latitude,
-                    lng: longitude,
-                };
-                const response = await geocoder.geocode({ location: latlng });
+                const response = await geocoder.geocode({
+                    location: {
+                        lat: latitude,
+                        lng: longitude,
+                    },
+                });
                 const { results } = response;
                 if (results.length > 0) {
-                    const request = {
-                        placeId: results[0].place_id,
-                        fields: ["geometry", "name"],
-                    };
-
                     placesService.getDetails(
-                        request,
+                        {
+                            placeId: results[0].place_id,
+                            fields: ["geometry", "name"],
+                        },
                         (place: Place, status: string) => {
                             if (status === "OK") {
                                 props.setLat(latitude);
