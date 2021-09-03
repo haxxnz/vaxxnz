@@ -8,14 +8,14 @@ import { parse } from "date-fns";
 
 type Props = {
     isOpen: DateLocationsPair | null;
-    setIsOpen: any;
+    setIsOpen: (isOpen: DateLocationsPair | null) => void;
     lat: number;
     lng: number;
 };
 
 const BookingsModal = (props: Props) => {
     const close = () => {
-        props.setIsOpen(false);
+        props.setIsOpen(null);
     };
 
     function sortByDistance(
