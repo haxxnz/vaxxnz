@@ -38,7 +38,7 @@ function App() {
 
     const [lat, setLat] = useState(defaultLat);
     const [lng, setLng] = useState(defaultLng);
-    const [locationName, setLocationName] = useState(defaultPlaceName); // TODO: rename to placeName
+    const [placeName, setPlaceName] = useState(defaultPlaceName);
 
     const { dateLocationsPairs, setDateLocationsPairs } = useContext(
         DateLocationsPairsContext
@@ -85,7 +85,7 @@ function App() {
                     setLocationIsOpen={setLocationIsOpen}
                     setLat={setLat}
                     setLng={setLng}
-                    setLocationName={setLocationName}
+                    setPlaceName={setPlaceName}
                 />
 
                 <section className="App-header">
@@ -128,7 +128,7 @@ function App() {
                             >
                                 {"Set your Location" +
                                     " (" +
-                                    locationName +
+                                    placeName +
                                     ")"}
                             </Button>
                         ) : (
@@ -137,7 +137,7 @@ function App() {
                                 kind={KIND.primary}
                                 onClick={() => openLocation()}
                             >
-                                Location set ({locationName})
+                                Location set ({placeName})
                             </Button>
                         )}
                     </div>

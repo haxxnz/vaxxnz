@@ -8,12 +8,12 @@ type Props = {
     setLocationIsOpen: (isOpen: boolean) => void;
     setLat: (lat: number) => void;
     setLng: (lng: number) => void;
-    setLocationName: (name: string) => void;
+    setPlaceName: (name: string) => void;
 };
 
 const LocationModal = (props: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
-    const { setLat, setLng, setLocationName, setLocationIsOpen } = props;
+    const { setLat, setLng, setPlaceName, setLocationIsOpen } = props;
 
     const geocoder = useMemo(() => new google.maps.Geocoder(), []);
     const placesService = useMemo(
@@ -30,7 +30,7 @@ const LocationModal = (props: Props) => {
         (lat: number, lng: number, name: string) => {
             setLat(lat);
             setLng(lng);
-            setLocationName(name);
+            setPlaceName(name);
             close();
             const url = new URL(window.location.toString());
             url.searchParams.set("lat", lat.toString());
@@ -38,7 +38,7 @@ const LocationModal = (props: Props) => {
             url.searchParams.set("placeName", name);
             window.history.pushState({}, "", url.toString());
         },
-        [close, setLat, setLng, setLocationName]
+        [close, setLat, setLng, setPlaceName]
     );
 
     const inputRef = useCallback(
