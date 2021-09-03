@@ -1,6 +1,7 @@
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import { useCallback, useState } from "react";
+import { Place } from "./googleTypes";
 
 type Props = {
     locationIsOpen: boolean;
@@ -43,7 +44,7 @@ const LocationModal = (props: Props) => {
                 );
 
                 autocomplete.addListener("place_changed", () => {
-                    const place = autocomplete.getPlace();
+                    const place: Place = autocomplete.getPlace();
 
                     setLat(place.geometry.location.lat());
                     setLng(place.geometry.location.lng());
@@ -76,10 +77,8 @@ const LocationModal = (props: Props) => {
                 const request = {
                     placeId: response.results[0].place_id,
                     fields: [
-                        "name",
-                        "rating",
-                        "formatted_phone_number",
                         "geometry",
+                        "name",
                     ],
                 };
 
@@ -88,7 +87,9 @@ const LocationModal = (props: Props) => {
                 );
                 service.getDetails(
                     request,
-                    (place: { name: string }, status: string) => {
+                    (place: Place, _status: string) => {
+                        // console.log("place", (place));
+                        // console.log("place", JSON.stringify(place));
                         const name = place.name;
 
                         props.setLocationName(name);
