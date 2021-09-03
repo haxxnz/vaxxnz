@@ -21,6 +21,7 @@ const LocationModal = (props: Props) => {
     const inputRef = useCallback(
         (node) => {
             if (node !== null) {
+                // TODO: remove this
                 const center = { lat: 50.064192, lng: -130.605469 };
                 // Create a bounding box with sides ~10km away from the center point
                 const defaultBounds = {
@@ -62,14 +63,39 @@ const LocationModal = (props: Props) => {
             alert("Geolocation is not supported by your browser");
         } else {
             setLoading(true);
-            navigator.geolocation.getCurrentPosition((position) => {
+            navigator.geolocation.getCurrentPosition(async (position) => {
                 props.setLat(position.coords.latitude);
                 props.setLng(position.coords.longitude);
-                props.setLocationName(
-                    `${position.coords.latitude} ${position.coords.longitude}`
+
+                const geocoder = new google.maps.Geocoder();
+                const latlng = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                };
+                const response = await geocoder.geocode({ location: latlng });
+                const request = {
+                    placeId: response.results[0].place_id,
+                    fields: [
+                        "name",
+                        "rating",
+                        "formatted_phone_number",
+                        "geometry",
+                    ],
+                };
+
+                const service = new google.maps.places.PlacesService(
+                    document.createElement("div")
                 );
-                setLoading(false);
-                close();
+                service.getDetails(
+                    request,
+                    (place: { name: string }, status: string) => {
+                        const name = place.name;
+
+                        props.setLocationName(name);
+                        setLoading(false);
+                        close();
+                    }
+                );
             });
         }
     };
