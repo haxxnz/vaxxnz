@@ -27,7 +27,7 @@ const LocationModal = (props: Props) => {
             const options = {
                 bounds: defaultBounds,
                 componentRestrictions: { country: "nz" },
-                fields: ["address_components", "geometry", "icon", "name"],
+                fields: ["geometry", "name"],
                 strictBounds: false,
                 // types: ["establishment"],
             };
