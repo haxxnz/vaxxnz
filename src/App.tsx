@@ -1,5 +1,6 @@
 import { Button, KIND } from "baseui/button";
 import { Search, Show, Check } from "baseui/icon";
+import { Spinner } from "baseui/spinner";
 import { Select } from "baseui/select";
 import { formatDistance, parse } from "date-fns";
 import React, { useCallback, useContext, useEffect, useState } from "react";
@@ -31,7 +32,7 @@ function App() {
     const [radiusKm, setRadiusKm] = useState(20);
     const [lat, setLat] = useState(defaultLat);
     const [lng, setLng] = useState(defaultLng);
-    const [locationLoading, setLocationLoading] = useState<boolean>(false)
+    const [locationLoading, setLocationLoading] = useState<boolean>(false);
     const { dateLocationsPairs, setDateLocationsPairs } = useContext(
         DateLocationsPairsContext
     );
@@ -54,9 +55,9 @@ function App() {
         if (!navigator.geolocation) {
             alert("Geolocation is not supported by your browser");
         } else {
-            setLocationLoading(true)
+            setLocationLoading(true);
             navigator.geolocation.getCurrentPosition((position) => {
-                setLocationLoading(false)
+                setLocationLoading(false);
                 setLat(position.coords.latitude);
                 setLng(position.coords.longitude);
             });
@@ -125,11 +126,19 @@ function App() {
 
                         {lat === defaultLat && lng === defaultLng ? (
                             <Button
-                                startEnhancer={() => <Search size={24} />}
+                                startEnhancer={() =>
+                                    locationLoading ? (
+                                        <Spinner size={18} color="white" />
+                                    ) : (
+                                        <Search size={24} />
+                                    )
+                                }
                                 kind={KIND.primary}
                                 onClick={() => getLocation()}
                             >
-                                {locationLoading ? 'Loading...' : 'Set your Location'}
+                                {locationLoading
+                                    ? "Loading..."
+                                    : "Set your Location"}
                             </Button>
                         ) : (
                             <Button
