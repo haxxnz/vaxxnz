@@ -20,8 +20,15 @@ function sum(array: number[]) {
     return array.reduce((a, b) => a + b, 0);
 }
 
-const defaultLat = -36.853610199274385;
-const defaultLng = 174.76054541484535;
+const searchParams = new URL(window.location.toString()).searchParams;
+
+const urlLat = searchParams.get("lat");
+const urlLng = searchParams.get("lng");
+const urlPlaceName = searchParams.get("placeName");
+
+const defaultLat = urlLat ? parseFloat(urlLat) : -36.853610199274385;
+const defaultLng = urlLng ? parseFloat(urlLng) : 174.76054541484535;
+const defaultPlaceName = urlPlaceName ?? "Auckland CBD";
 
 function App() {
     const [isOpen, setIsOpen] = React.useState<DateLocationsPair | null>(null);
@@ -31,7 +38,7 @@ function App() {
 
     const [lat, setLat] = useState(defaultLat);
     const [lng, setLng] = useState(defaultLng);
-    const [locationName, setLocationName] = useState("Auckland CBD"); // TODO: rename to placeName
+    const [locationName, setLocationName] = useState(defaultPlaceName); // TODO: rename to placeName
 
     const { dateLocationsPairs, setDateLocationsPairs } = useContext(
         DateLocationsPairsContext
