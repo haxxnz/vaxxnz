@@ -11,6 +11,11 @@ type Props = {
     setLocationName: (name: string) => void;
 };
 
+const geocoder = new google.maps.Geocoder();
+const placesService = new google.maps.places.PlacesService(
+    document.createElement("div")
+);
+
 const LocationModal = (props: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
     const { setLat, setLng, setLocationName, setLocationIsOpen } = props;
@@ -65,36 +70,46 @@ const LocationModal = (props: Props) => {
         } else {
             setLoading(true);
             navigator.geolocation.getCurrentPosition(async (position) => {
-
-                const geocoder = new google.maps.Geocoder();
+                const { latitude, longitude } = position.coords;
                 const latlng = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
+                    lat: latitude,
+                    lng: longitude,
                 };
                 const response = await geocoder.geocode({ location: latlng });
-                const request = {
-                    placeId: response.results[0].place_id,
-                    fields: [
-                        "geometry",
-                        "name",
-                    ],
-                };
+                const { results } = response;
+                if (results.length > 0) {
+                    const request = {
+                        placeId: results[0].place_id,
+                        fields: ["geometry", "name"],
+                    };
 
-                const service = new google.maps.places.PlacesService(
-                    document.createElement("div")
-                );
-                service.getDetails(
-                    request,
-                    (place: Place, _status: string) => {
-                        const name = place.name;
-
-                        props.setLat(position.coords.latitude);
-                        props.setLng(position.coords.longitude);        
-                        props.setLocationName(name);
-                        setLoading(false);
-                        close();
-                    }
-                );
+                    placesService.getDetails(
+                        request,
+                        (place: Place, status: string) => {
+                            if (status === "OK") {
+                                props.setLat(latitude);
+                                props.setLng(longitude);
+                                props.setLocationName(place.name);
+                                setLoading(false);
+                                close();
+                            } else {
+                                props.setLat(latitude);
+                                props.setLng(longitude);
+                                props.setLocationName(
+                                    `${latitude}, ${longitude}`
+                                );
+                                setLoading(false);
+                                close();
+                            }
+                        }
+                    );
+                } else {
+                    props.setLat(latitude);
+                    props.setLng(longitude);
+                    props.setLocationName(`${latitude}, ${longitude}`);
+                    setLoading(false);
+                    close();
+                }
             });
         }
     };
