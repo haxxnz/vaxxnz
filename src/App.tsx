@@ -1,7 +1,5 @@
 import { Button, KIND } from "baseui/button";
-import { Search, Show, Check } from "baseui/icon";
-import { Spinner } from "baseui/spinner";
-import { Select } from "baseui/select";
+import { Search, Check } from "baseui/icon";
 import { formatDistance, parse } from "date-fns";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
@@ -12,7 +10,7 @@ import {
 } from "./VaxComponents";
 
 import { DateLocationsPairsContext } from "./contexts";
-import { getLastUpdatedTime, getMyCalendar } from "./getData";
+import { getMyCalendar } from "./getData";
 import { DateLocationsPair } from "./types";
 import LocationModal from "./LocationModal";
 import BookingsModal from "./BookingsModal";
@@ -34,7 +32,6 @@ function App() {
     const [lat, setLat] = useState(defaultLat);
     const [lng, setLng] = useState(defaultLng);
     const [locationName, setLocationName] = useState("Auckland CBD");
-    const [locationLoading, setLocationLoading] = useState<boolean>(false);
 
     const { dateLocationsPairs, setDateLocationsPairs } = useContext(
         DateLocationsPairsContext
@@ -53,18 +50,6 @@ function App() {
 
     const openLocation = () => {
         setLocationIsOpen(true);
-    };
-    const getLocation = () => {
-        if (!navigator.geolocation) {
-            alert("Geolocation is not supported by your browser");
-        } else {
-            setLocationLoading(true);
-            navigator.geolocation.getCurrentPosition((position) => {
-                setLocationLoading(false);
-                setLat(position.coords.latitude);
-                setLng(position.coords.longitude);
-            });
-        }
     };
 
     let byMonth = new Map<string, DateLocationsPair[]>();
@@ -130,22 +115,14 @@ function App() {
 
                         {lat === defaultLat && lng === defaultLng ? (
                             <Button
-                                startEnhancer={() =>
-                                    locationLoading ? (
-                                        <Spinner size={18} color="white" />
-                                    ) : (
-                                        <Search size={24} />
-                                    )
-                                }
+                                startEnhancer={() => <Search size={24} />}
                                 kind={KIND.primary}
                                 onClick={() => openLocation()}
                             >
-                                {locationLoading
-                                    ? "Loading..."
-                                    : "Set your Location" +
-                                      " (" +
-                                      locationName +
-                                      ")"}
+                                {"Set your Location" +
+                                    " (" +
+                                    locationName +
+                                    ")"}
                             </Button>
                         ) : (
                             <Button
