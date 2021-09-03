@@ -125,6 +125,7 @@ const LocationModal = (props: Props) => {
         <Modal
             onClose={close}
             isOpen={!!props.locationIsOpen}
+            unstable_ModalBackdropScroll={true}
             overrides={{
                 Root: { style: { zIndex: 1500 } },
                 Dialog: {
@@ -173,7 +174,10 @@ const LocationModal = (props: Props) => {
                     Root: {
                         style: {
                             width: "100%",
-                            margin: "0.5rem 0",
+                            marginTop: "0.5rem",
+                            marginRight: 0,
+                            marginBottom: "0.5rem",
+                            marginLeft: 0,
                         },
                     },
                 }}

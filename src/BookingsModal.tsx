@@ -38,6 +38,7 @@ const BookingsModal = (props: Props) => {
         <Modal
             onClose={close}
             isOpen={!!props.isOpen}
+            unstable_ModalBackdropScroll={true}
             overrides={{
                 // Root: { style: { zIndex: 1500 } },
                 Dialog: {
@@ -90,7 +91,11 @@ const BookingsModal = (props: Props) => {
                             Root: {
                                 style: {
                                     width: "100%",
-                                    margin: "2rem 0",
+                                    marginTop: "2rem",
+                                    marginRight: 0,
+                                    marginBottom: "2rem",
+                                    marginLeft: 0,
+
                                 },
                             },
                         }}
@@ -113,7 +118,7 @@ const BookingsModal = (props: Props) => {
                                 locationSlotsPair.slots?.length
                         )
                         .map((locationSlotsPair) => (
-                            <VaccineCentre>
+                            <VaccineCentre key={locationSlotsPair.location.extId}>
                                 <h3>{locationSlotsPair.location.name}</h3>
                                 <p>
                                     {locationSlotsPair.location.displayAddress}{" "}
@@ -141,7 +146,11 @@ const BookingsModal = (props: Props) => {
                                                 Root: {
                                                     style: {
                                                         width: "100%",
-                                                        margin: "1rem 0",
+                                                        marginTop: "1rem",
+                                                        marginRight: 0,
+                                                        marginBottom: "1rem",
+                                                        marginLeft: 0,
+                
                                                     },
                                                 },
                                             }}
@@ -152,7 +161,10 @@ const BookingsModal = (props: Props) => {
                                 </a>
                                 <p
                                     style={{
-                                        margin: "0.25rem 0 0.5rem 0",
+                                        marginTop: "0.25rem",
+                                        marginRight: 0,
+                                        marginBottom: "0.5rem",
+                                        marginLeft: 0,
                                     }}
                                 >
                                     Available slots:
@@ -160,7 +172,7 @@ const BookingsModal = (props: Props) => {
                                 <section>
                                     {/* <p>1am</p> */}
                                     {locationSlotsPair.slots?.map((slot) => (
-                                        <p>
+                                        <p key={slot.localStartTime}>
                                             {parse(
                                                 slot.localStartTime,
                                                 "HH:mm:ss",
