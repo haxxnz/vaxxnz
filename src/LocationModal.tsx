@@ -1,6 +1,6 @@
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Place } from "./googleTypes";
 
 type Props = {
@@ -11,14 +11,16 @@ type Props = {
     setLocationName: (name: string) => void;
 };
 
-const geocoder = new google.maps.Geocoder();
-const placesService = new google.maps.places.PlacesService(
-    document.createElement("div")
-);
-
 const LocationModal = (props: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
     const { setLat, setLng, setLocationName, setLocationIsOpen } = props;
+
+    const geocoder = useMemo(() => new google.maps.Geocoder(), []);
+    const placesService = useMemo(
+        () =>
+            new google.maps.places.PlacesService(document.createElement("div")),
+        []
+    );
 
     const close = useCallback(() => {
         setLocationIsOpen(false);
