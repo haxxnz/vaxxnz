@@ -259,6 +259,15 @@ function App() {
                 <section className="App-header">
                     <p>
                         <a
+                            href="https://github.com/CovidEngine/vaxxnzlocations"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            JSON of all available slots
+                        </a>
+                    </p>
+                    <p>
+                        <a
                             href="https://github.com/CovidEngine/vaxxnz"
                             target="_blank"
                             rel="noreferrer"
