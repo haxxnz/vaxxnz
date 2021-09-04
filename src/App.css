@@ -8,8 +8,7 @@
 
 .pac-container {
     z-index: 1501;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .pac-item-query {
@@ -25,15 +24,20 @@
 a.nolink:hover {
     color: black
 }
+
 a.nolink:active {
     color: black
 }
+
 a.nolink {
     color: black
 }
+
 .zero-available {
-    
     /* Walt, use this */
-    background-color: rgb(255, 234, 234) !important; 
+    background-color: rgb(255, 234, 234) !important;
+}
+
+button.zero-available div p {
     color: #850707;
 }

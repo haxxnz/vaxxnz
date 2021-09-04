@@ -298,7 +298,7 @@ function App() {
                                                                     }
                                                                 )}
                                                                 <br />{" "}
-                                                                <aside>
+                                                                <aside aria-hidden="true">
                                                                     {parse(
                                                                         dateLocationsPair.dateStr,
                                                                         "yyyy-MM-dd",

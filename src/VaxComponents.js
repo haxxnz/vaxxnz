@@ -135,6 +135,7 @@ export const MonthContainer = styled.section`
             color: #777;
             font-weight: 500;
             font-size: 0.8rem;
+            opacity: 0.9;
         }
         p {
             font-size: 1.1rem;
