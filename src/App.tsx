@@ -36,8 +36,10 @@ function App() {
 
     const [radiusKm, setRadiusKm] = useState(10);
 
-    const [lat, setLat] = useState(defaultLat);
-    const [lng, setLng] = useState(defaultLng);
+    const [coords, setCoords] = useState<[number, number]>([
+        defaultLat,
+        defaultLng,
+    ]);
     const [placeName, setPlaceName] = useState(defaultPlaceName);
 
     const { dateLocationsPairs, setDateLocationsPairs } = useContext(
@@ -54,8 +56,9 @@ function App() {
 
     const loadCalendar = useCallback(async () => {
         setLoading(true);
+        setError(null);
         try {
-            const data = await getMyCalendar(lat, lng, radiusKm);
+            const data = await getMyCalendar(coords[0], coords[1], radiusKm);
             setDateLocationsPairs(data.dateLocationsPairs);
             setLastUpdateTime(
                 data.oldestLastUpdatedTimestamp === Infinity
@@ -66,7 +69,7 @@ function App() {
             setError(error as Error);
         }
         setLoading(false);
-    }, [lat, lng, radiusKm, setDateLocationsPairs]);
+    }, [coords, radiusKm, setDateLocationsPairs]);
 
     useEffect(() => {
         loadCalendar();
@@ -118,14 +121,13 @@ function App() {
                 <BookingsModal
                     isOpen={isOpen}
                     setIsOpen={setIsOpen}
-                    lat={lat}
-                    lng={lng}
+                    lat={coords[0]}
+                    lng={coords[1]}
                 />
                 <LocationModal
                     locationIsOpen={locationIsOpen}
                     setLocationIsOpen={setLocationIsOpen}
-                    setLat={setLat}
-                    setLng={setLng}
+                    setCoords={setCoords}
                     setPlaceName={setPlaceName}
                 />
                 <Button
@@ -193,7 +195,8 @@ function App() {
                                 },
                             }}
                         >
-                            {lat === defaultLat && lng === defaultLng
+                            {coords[0] === defaultLat &&
+                            coords[1] === defaultLng
                                 ? "Set your Location"
                                 : "Location set"}
                         </Button>
@@ -309,8 +312,7 @@ function App() {
                             {error.message}
                         </div>
                     </div>
-                ) : // <div>{error.message}</div>
-                null}
+                ) : null}
 
                 <section className="App-header">
                     <p>
@@ -338,18 +340,3 @@ function App() {
 }
 
 export default App;
-
-export function sortBy<T = unknown>(
-    notes: T[],
-    comparator: (note: T) => string | number
-) {
-    return [...notes].sort((a: T, b: T) => {
-        if (comparator(a) < comparator(b)) {
-            return -1;
-        }
-        if (comparator(a) > comparator(b)) {
-            return 1;
-        }
-        return 0;
-    });
-}

@@ -2,9 +2,9 @@ import { Modal } from "baseui/modal";
 import { Button, KIND } from "baseui/button";
 import { ModalGrid, VaccineCentre } from "./VaxComponents";
 import { DateLocationsPair, LocationSlotsPair } from "./types";
-import { sortBy } from "./App";
 import { getDistanceKm } from "./distanceUtils";
 import { parse } from "date-fns";
+import { sortByAsc } from "./arrayUtils";
 
 type Props = {
     isOpen: DateLocationsPair | null;
@@ -23,7 +23,7 @@ const BookingsModal = (props: Props) => {
         lat: number,
         lng: number
     ): LocationSlotsPair[] {
-        return sortBy(locationSlotsPairs ?? [], (locationSlotsPair) => {
+        return sortByAsc(locationSlotsPairs ?? [], (locationSlotsPair) => {
             const distanceKm = getDistanceKm(
                 lat,
                 lng,

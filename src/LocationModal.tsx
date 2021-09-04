@@ -8,14 +8,13 @@ import { getSuburbIsh } from "./locationUtils";
 type Props = {
     locationIsOpen: boolean;
     setLocationIsOpen: (isOpen: boolean) => void;
-    setLat: (lat: number) => void;
-    setLng: (lng: number) => void;
+    setCoords: (coords: [number, number]) => void;
     setPlaceName: (name: string) => void;
 };
 
 const LocationModal = (props: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
-    const { setLat, setLng, setPlaceName, setLocationIsOpen } = props;
+    const { setCoords, setPlaceName, setLocationIsOpen } = props;
     const geocoder = useMemo(() => new google.maps.Geocoder(), []);
     const placesService = useMemo(
         () =>
@@ -30,8 +29,7 @@ const LocationModal = (props: Props) => {
     const setLocation = useCallback(
         (lat: number, lng: number, name?: string | null) => {
             const placeName = name ?? `${lat} ${lng}`;
-            setLat(lat);
-            setLng(lng);
+            setCoords([lat, lng]);
             setPlaceName(placeName);
             close();
             const url = new URL(window.location.toString());
@@ -40,7 +38,7 @@ const LocationModal = (props: Props) => {
             url.searchParams.set("placeName", placeName);
             window.history.pushState({}, "", url.toString());
         },
-        [close, setLat, setLng, setPlaceName]
+        [close, setCoords, setPlaceName]
     );
     const inputRef = useCallback(
         (domNode) => {
