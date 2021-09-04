@@ -45,6 +45,7 @@ function App() {
     );
     const [lastUpdateTime, setLastUpdateTime] = useState(new Date());
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<Error | null>(null);
 
     const [shareButtonText, setShareButtonText] = useState("Share");
     const resetShareButtonText = () => {
@@ -62,7 +63,7 @@ function App() {
                     : new Date(data.oldestLastUpdatedTimestamp)
             );
         } catch (error) {
-            alert((error as Error).message);
+            setError(error as Error);
         }
         setLoading(false);
     }, [lat, lng, radiusKm, setDateLocationsPairs]);
@@ -216,7 +217,7 @@ function App() {
                     </div>
                 ) : null}
 
-                {!loading && (
+                {!loading && !error ? (
                     <CalendarContainer>
                         {Array.from(byMonth.entries()).map(
                             ([month, dateLocationsPairsForMonth]) => (
@@ -293,7 +294,24 @@ function App() {
                             )
                         )}
                     </CalendarContainer>
-                )}
+                ) : null}
+                {!loading && error ? (
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            marginTop: "1rem",
+                        }}
+                    >
+                        {/* <Spinner color="black" /> */}
+                        <div style={{ marginLeft: "1rem", fontSize: "1.5rem" }}>
+                            {error.message}
+                        </div>
+                    </div>
+                ) : // <div>{error.message}</div>
+                null}
+
                 <section className="App-header">
                     <p>
                         <a
