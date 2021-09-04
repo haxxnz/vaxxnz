@@ -1,7 +1,7 @@
 import { Button, KIND } from "baseui/button";
 import { BaseInput } from "baseui/input";
 import { Modal } from "baseui/modal";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import "./App.css";
 
 type Props = {
@@ -41,9 +41,8 @@ const LocationModal = (props: Props) => {
         },
         [close, setLat, setLng, setPlaceName]
     );
-    const inputRef = useRef<HTMLInputElement>(null);
-    useEffect(() => {
-        if (inputRef.current != null) {
+    const inputRef = useCallback((domNode) => {
+        if (domNode != null) {
             const options = {
                 componentRestrictions: { country: "nz" },
                 fields: ["geometry", "name"],
@@ -51,7 +50,7 @@ const LocationModal = (props: Props) => {
             };
 
             const autocomplete = new google.maps.places.Autocomplete(
-                inputRef.current,
+                domNode,
                 options
             );
 
@@ -74,7 +73,7 @@ const LocationModal = (props: Props) => {
                 google.maps.event.clearListeners(autocomplete, "place_changed");
             };
         }
-    }, [setLocation, address]);
+    }, [setLocation]);
 
     const getLocation = () => {
         if (!navigator.geolocation) {
@@ -152,7 +151,7 @@ const LocationModal = (props: Props) => {
             <BaseInput
                 id="pac-input"
                 type="text"
-                inputRef={inputRef}
+                inputRef={(e) => inputRef(e)}
                 onChange={(e) => setAddress(e.currentTarget.value)}
             />
             <button
