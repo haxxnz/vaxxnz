@@ -284,12 +284,21 @@ function App() {
                                                                 ).toLocaleDateString(
                                                                     [],
                                                                     {
-                                                                        month: "short",
                                                                         day: "numeric",
                                                                     }
+                                                                )}{" "}
+                                                                {parse(
+                                                                    dateLocationsPair.dateStr,
+                                                                    "yyyy-MM-dd",
+                                                                    new Date()
+                                                                ).toLocaleDateString(
+                                                                    [],
+                                                                    {
+                                                                        month: "short",
+                                                                    }
                                                                 )}
+                                                                <br />{" "}
                                                                 <aside>
-                                                                    &nbsp;
                                                                     {parse(
                                                                         dateLocationsPair.dateStr,
                                                                         "yyyy-MM-dd",

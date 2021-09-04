@@ -34,5 +34,6 @@ a.nolink {
 .zero-available {
     
     /* Walt, use this */
-    background-color: white !important; 
+    background-color: rgb(255, 234, 234) !important; 
+    color: #850707;
 }

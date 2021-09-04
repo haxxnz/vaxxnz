@@ -132,10 +132,9 @@ export const MonthContainer = styled.section`
             font-weight: 400;
         }
         aside {
-            display: inline;
-            float: right;
             color: #777;
-            font-weight: 300;
+            font-weight: 500;
+            font-size: 0.8rem;
         }
         p {
             font-size: 1.1rem;
