@@ -1,5 +1,6 @@
 import { Button, KIND } from "baseui/button";
 import { Search, Check } from "baseui/icon";
+import { Spinner } from "baseui/spinner";
 import { formatDistance, parse } from "date-fns";
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import {
@@ -43,13 +44,23 @@ function App() {
     const { dateLocationsPairs, setDateLocationsPairs } = useContext(
         DateLocationsPairsContext
     );
-    const loadCalendar = useCallback(async () => {
-        const data = await getMyCalendar(lat, lng, radiusKm);
-        setDateLocationsPairs(data.dateLocationsPairs);
-        setLastUpdateTime(data.oldestLastUpdatedTimestamp === Infinity ? new Date(0) : new Date(data.oldestLastUpdatedTimestamp));
-    }, [lat, lng, radiusKm, setDateLocationsPairs]);
-
     const [lastUpdateTime, setLastUpdateTime] = useState(new Date());
+    const [loading, setLoading] = useState(false);
+    const loadCalendar = useCallback(async () => {
+        setLoading(true);
+        try {
+            const data = await getMyCalendar(lat, lng, radiusKm);
+            setDateLocationsPairs(data.dateLocationsPairs);
+            setLastUpdateTime(
+                data.oldestLastUpdatedTimestamp === Infinity
+                    ? new Date(0)
+                    : new Date(data.oldestLastUpdatedTimestamp)
+            );
+        } catch (error) {
+            alert((error as Error).message);
+        }
+        setLoading(false);
+    }, [lat, lng, radiusKm, setDateLocationsPairs]);
 
     useEffect(() => {
         loadCalendar();
@@ -91,10 +102,13 @@ function App() {
                 <section className="App-header">
                     <h1>Vaccination Booking Finder</h1> <br />
                     <p>
-                        <h3 style={{fontWeight: 'normal'}}>See every available vaccination booking slot near you. </h3>
-                        <br /> 
-                        This is not an official Government website.<br/> To get
-                        vaccinated visit&nbsp;
+                        <h3 style={{ fontWeight: "normal" }}>
+                            See every available vaccination booking slot near
+                            you.{" "}
+                        </h3>
+                        <br />
+                        This is not an official Government website.
+                        <br /> To get vaccinated visit&nbsp;
                         <a
                             href="https://bookmyvaccine.nz"
                             target="_blank"
@@ -137,6 +151,24 @@ function App() {
                         )}
                     </div>
                 </HeaderMain>
+
+                {loading ? (
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            marginTop: "1rem",
+                        }}
+                    >
+                        <Spinner color="black" />
+                        <div style={{ marginLeft: "1rem", fontSize: "1.5rem" }}>
+                            Loading...
+                        </div>
+                    </div>
+                ) : null}
+
+                {!loading && (
                 <CalendarContainer>
                     {Array.from(byMonth.entries()).map(
                         ([month, dateLocationsPairsForMonth]) => (
@@ -209,6 +241,7 @@ function App() {
                         )
                     )}
                 </CalendarContainer>
+                )}
                 <section className="App-header">
                     <p>
                         <a
