@@ -103,8 +103,8 @@ function App() {
                     <h1>NZ Vaccination Finder</h1> <br />
                     <p>
                         <h3 style={{ fontWeight: "normal" }}>
-                            See every available vaccination booking slot in NZ
-                            near you.{" "}
+                            See every available vaccination booking slot near
+                            you.{" "}
                         </h3>
                         <br />
                         This is not an official Government website.
