@@ -37,6 +37,9 @@ border-bottom: 1px solid lightgray;
   font-size: 0.95rem;
   color: #555;
 }
+strong {
+    font-weight:400;
+}
 
 @media screen and (max-width:1024px) {
   position: relative;
