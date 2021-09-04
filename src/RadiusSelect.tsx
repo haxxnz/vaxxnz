@@ -1,10 +1,10 @@
 import { Select } from "baseui/select";
 
 const options = [
+    { label: "Within 2km", id: 2 },
     { label: "Within 5km", id: 5 },
     { label: "Within 10km", id: 10 },
-    { label: "Within 20km", id: 20 },
-    { label: "Within 30km", id: 30 },
+    { label: "Within 25km", id: 25 },
     { label: "Within 100km", id: 100 },
 ];
 
