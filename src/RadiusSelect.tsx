@@ -5,6 +5,7 @@ const options = [
     { label: "Within 10km", id: 10 },
     { label: "Within 20km", id: 20 },
     { label: "Within 30km", id: 30 },
+    { label: "Within 100km", id: 100 },
 ];
 
 interface Props {
