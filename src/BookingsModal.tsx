@@ -90,7 +90,7 @@ const BookingsModal = (props: Props) => {
                     </p>
                     <ol>
                         <li>Find an available booking time</li>
-                        <li>Click on book a meeting</li>
+                        <li>Click on book a meeting on bookmyvaccine.nz</li>
                         <li>Enter your peronal details</li>
                         <li>Find the same branch</li>
                     </ol>

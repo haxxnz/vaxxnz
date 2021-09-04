@@ -81,7 +81,7 @@ export const CalendarSectionContainer = styled.section`
         top: 0px;
 
         background-color: #fff;
-        z-index: 1 !important;
+        z-index: 2 !important;
     }
     h2 {
         font-size: 1.5rem;
