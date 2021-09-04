@@ -1,6 +1,6 @@
-# Vaxxed
+# Vaxx.nz - The NZ COVID Vaccination Finder
 
-Showing you all vaccine slots for all locations to minimise the manual filtering hassle.
+See every available vaccination booking slot near you.
 
 ## Resources
 
