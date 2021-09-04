@@ -42,9 +42,9 @@ function App() {
     const [placeName, setPlaceName] = useState(defaultPlaceName);
 
     useEffect(() => {
-        setCoords([defaultLat, defaultLng])
+        setCoords([defaultLat, defaultLng]);
         setPlaceName(defaultPlaceName);
-    }, [defaultLat, defaultLng, defaultPlaceName])
+    }, [defaultLat, defaultLng, defaultPlaceName]);
 
     const { dateLocationsPairs, setDateLocationsPairs } = useContext(
         DateLocationsPairsContext
@@ -134,23 +134,6 @@ function App() {
                     setCoords={setCoords}
                     setPlaceName={setPlaceName}
                 />
-                <Button
-                    kind={KIND.primary}
-                    onClick={() => onClickShare()}
-                    overrides={{
-                        BaseButton: {
-                            style: {
-                                maxWidth: "100px",
-                                width: "80px",
-                                position: "absolute",
-                                right: "1rem",
-                                top: "1rem",
-                            },
-                        },
-                    }}
-                >
-                    {shareButtonText}
-                </Button>
 
                 <section className="App-header">
                     <h1>NZ COVID Vaccination Finder</h1> <br />
@@ -159,7 +142,6 @@ function App() {
                             See every available vaccination booking slot near
                             you.{" "}
                         </h3>
-                        <br />
                         This is not an official Government website.
                         <br /> To get vaccinated visit&nbsp;
                         <a
@@ -168,7 +150,23 @@ function App() {
                             rel="noreferrer"
                         >
                             bookmyvaccine.nz
-                        </a>
+                        </a>{" "}
+                        <br />
+                        <Button
+                            kind={KIND.primary}
+                            onClick={() => onClickShare()}
+                            overrides={{
+                                BaseButton: {
+                                    style: {
+                                        maxWidth: "100px",
+                                        width: "80px",
+                                        marginTop: "0.5rem",
+                                    },
+                                },
+                            }}
+                        >
+                            {shareButtonText}
+                        </Button>{" "}
                     </p>
                 </section>
                 <div className={"big-old-container"}>

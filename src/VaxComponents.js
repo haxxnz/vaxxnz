@@ -13,8 +13,7 @@ gap: 2rem;
 
   z-index: 2;
 
-border-top: 1px solid lightgray;
-border-bottom: 1px solid lightgray;
+border: 1px solid lightgray;
 >div {
   display:flex;
   flex-direction: row;
@@ -69,6 +68,8 @@ flex-direction: column;
 `;
 
 export const CalendarContainer = styled.section`
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
     margin: 0;
 `;
 
@@ -228,7 +229,7 @@ export const VaccineCentre = styled.section`
         gap: 0.5rem;
         p {
             border-radius: 4px;
-            border: 2px solid #e8e8e8;
+            border: 1px solid #e8e8e8;
             color: black;
             font-weight: 600;
             padding: 0.5rem;
