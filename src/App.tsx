@@ -264,20 +264,20 @@ function App() {
                                                                         day: "numeric",
                                                                     }
                                                                 )}
-                                                                {/* <aside>
-                                                            &nbsp; - &nbsp;
-                                                            {parse(
-                                                                dateLocationsPair.dateStr,
-                                                                "yyyy-MM-dd",
-                                                                new Date()
-                                                            ).toLocaleDateString(
-                                                                [],
-                                                                {
-                                                                    weekday:
-                                                                        "short",
-                                                                }
-                                                            )}
-                                                        </aside> */}
+                                                                <aside>
+                                                                    &nbsp;
+                                                                    {parse(
+                                                                        dateLocationsPair.dateStr,
+                                                                        "yyyy-MM-dd",
+                                                                        new Date()
+                                                                    ).toLocaleDateString(
+                                                                        [],
+                                                                        {
+                                                                            weekday:
+                                                                                "short",
+                                                                        }
+                                                                    )}
+                                                                </aside>
                                                             </h3>
                                                             <p>
                                                                 {sum(
