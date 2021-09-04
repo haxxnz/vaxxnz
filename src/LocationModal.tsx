@@ -15,7 +15,7 @@ type Props = {
 const LocationModal = (props: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
     const { setLat, setLng, setPlaceName, setLocationIsOpen } = props;
-    const [address, setAddress] = useState("");
+    const [, setAddress] = useState("");
     const geocoder = useMemo(() => new google.maps.Geocoder(), []);
     const placesService = useMemo(
         () =>
