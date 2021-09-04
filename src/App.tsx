@@ -1,5 +1,4 @@
 import { Button, KIND } from "baseui/button";
-import { Search, Check } from "baseui/icon";
 import { Spinner } from "baseui/spinner";
 import { formatDistance, parse } from "date-fns";
 import React, { useCallback, useContext, useEffect, useState } from "react";
@@ -83,8 +82,7 @@ function App() {
             url: "https://vaxx.nz/",
         };
 
-        // Share must be triggered by "user activation"
-        if (!navigator.share) {
+        if (navigator.share) {
             try {
                 await navigator.share(shareData);
             } catch (err) {
@@ -194,7 +192,9 @@ function App() {
                                 },
                             }}
                         >
-                            {lat === defaultLat && lng === defaultLng ? "Set your Location" : "Location set"}
+                            {lat === defaultLat && lng === defaultLng
+                                ? "Set your Location"
+                                : "Location set"}
                         </Button>
                         <RadiusSelect value={radiusKm} setValue={setRadiusKm} />
                     </div>
