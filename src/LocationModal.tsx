@@ -3,6 +3,7 @@ import { BaseInput } from "baseui/input";
 import { Modal } from "baseui/modal";
 import { useCallback, useMemo, useState } from "react";
 import "./App.css";
+import { getSuburbIsh } from "./locationUtils";
 
 type Props = {
     locationIsOpen: boolean;
@@ -15,7 +16,6 @@ type Props = {
 const LocationModal = (props: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
     const { setLat, setLng, setPlaceName, setLocationIsOpen } = props;
-    const [, setAddress] = useState("");
     const geocoder = useMemo(() => new google.maps.Geocoder(), []);
     const placesService = useMemo(
         () =>
@@ -28,52 +28,59 @@ const LocationModal = (props: Props) => {
     }, [setLocationIsOpen]);
 
     const setLocation = useCallback(
-        (lat: number, lng: number, name: string) => {
+        (lat: number, lng: number, name?: string | null) => {
+            const placeName = name ?? `${lat} ${lng}`;
             setLat(lat);
             setLng(lng);
-            setPlaceName(name);
+            setPlaceName(placeName);
             close();
             const url = new URL(window.location.toString());
             url.searchParams.set("lat", lat.toString());
             url.searchParams.set("lng", lng.toString());
-            url.searchParams.set("placeName", name);
+            url.searchParams.set("placeName", placeName);
             window.history.pushState({}, "", url.toString());
         },
         [close, setLat, setLng, setPlaceName]
     );
-    const inputRef = useCallback((domNode) => {
-        if (domNode != null) {
-            const options = {
-                componentRestrictions: { country: "nz" },
-                fields: ["geometry", "name"],
-                strictBounds: false,
-            };
+    const inputRef = useCallback(
+        (domNode) => {
+            if (domNode != null) {
+                const options = {
+                    componentRestrictions: { country: "nz" },
+                    fields: ["geometry", "name", "address_components"],
+                    strictBounds: false,
+                };
 
-            const autocomplete = new google.maps.places.Autocomplete(
-                domNode,
-                options
-            );
+                const autocomplete = new google.maps.places.Autocomplete(
+                    domNode,
+                    options
+                );
 
-            autocomplete.addListener("place_changed", () => {
-                const place = autocomplete.getPlace();
+                autocomplete.addListener("place_changed", () => {
+                    const place = autocomplete.getPlace();
 
-                if (
-                    place.name &&
-                    place.geometry != null &&
-                    place.geometry.location != null
-                ) {
-                    setLocation(
-                        place.geometry.location.lat(),
-                        place.geometry.location.lng(),
-                        place.name
+                    if (
+                        place.name &&
+                        place.geometry != null &&
+                        place.geometry.location != null
+                    ) {
+                        const { location } = place.geometry;
+                        const lat = location.lat();
+                        const lng = location.lng();
+                        const suburbish = getSuburbIsh(place);
+                        setLocation(lat, lng, suburbish);
+                    }
+                });
+                return () => {
+                    google.maps.event.clearListeners(
+                        autocomplete,
+                        "place_changed"
                     );
-                }
-            });
-            return () => {
-                google.maps.event.clearListeners(autocomplete, "place_changed");
-            };
-        }
-    }, [setLocation]);
+                };
+            }
+        },
+        [setLocation]
+    );
 
     const getLocation = () => {
         if (!navigator.geolocation) {
@@ -93,28 +100,18 @@ const LocationModal = (props: Props) => {
                     placesService.getDetails(
                         {
                             placeId: results[0].place_id,
-                            fields: ["geometry", "name"],
+                            fields: ["geometry", "name", "address_components"],
                         },
                         (place, status: string) => {
-                            if (status === "OK") {
-                                setLocation(latitude, longitude, place!.name!);
-                                setLoading(false);
-                            } else {
-                                setLocation(
-                                    latitude,
-                                    longitude,
-                                    `${latitude}, ${longitude}`
-                                );
-                                setLoading(false);
-                            }
+                            const suburbish = place
+                                ? getSuburbIsh(place)
+                                : null;
+                            setLocation(latitude, longitude, suburbish);
+                            setLoading(false);
                         }
                     );
                 } else {
-                    setLocation(
-                        latitude,
-                        longitude,
-                        `${latitude}, ${longitude}`
-                    );
+                    setLocation(latitude, longitude);
                     setLoading(false);
                 }
             });
@@ -153,7 +150,7 @@ const LocationModal = (props: Props) => {
                 id="pac-input"
                 type="text"
                 inputRef={(e) => inputRef(e)}
-                onChange={(e) => setAddress(e.currentTarget.value)}
+                onChange={(_e) => {}}
             />
             <button
                 className={"clickable"}
