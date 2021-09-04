@@ -171,94 +171,102 @@ function App() {
                         </a>
                     </p>
                 </section>
-
-                <HeaderMain>
-                    <section>
-                        <h1>
-                            Available Vaccine Slots
-                            <strong>
-                                {placeName ? " near " + placeName : ""}
-                            </strong>
-                        </h1>
-                        <p>
-                            Last updated:{" "}
-                            {formatDistance(lastUpdateTime, new Date(), {
-                                addSuffix: true,
-                            })}
-                        </p>
-                    </section>
-                    <div>
-                        <Button
-                            kind={KIND.primary}
-                            onClick={() => openLocation()}
-                            overrides={{
-                                BaseButton: {
-                                    style: {
-                                        minWidth: "220px",
+                <div className={"big-old-container"}>
+                    <HeaderMain>
+                        <section>
+                            <h1>
+                                Available Vaccine Slots
+                                <strong>
+                                    {placeName ? " near " + placeName : ""}
+                                </strong>
+                            </h1>
+                            <p>
+                                Last updated:{" "}
+                                {formatDistance(lastUpdateTime, new Date(), {
+                                    addSuffix: true,
+                                })}
+                            </p>
+                        </section>
+                        <div>
+                            <Button
+                                kind={KIND.primary}
+                                onClick={() => openLocation()}
+                                overrides={{
+                                    BaseButton: {
+                                        style: {
+                                            minWidth: "220px",
+                                        },
                                     },
-                                },
+                                }}
+                            >
+                                {coords[0] === defaultLat &&
+                                coords[1] === defaultLng
+                                    ? "Set your Location"
+                                    : "Location set"}
+                            </Button>
+                            <RadiusSelect
+                                value={radiusKm}
+                                setValue={setRadiusKm}
+                            />
+                        </div>
+                    </HeaderMain>
+
+                    {loading ? (
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                marginTop: "1rem",
                             }}
                         >
-                            {coords[0] === defaultLat &&
-                            coords[1] === defaultLng
-                                ? "Set your Location"
-                                : "Location set"}
-                        </Button>
-                        <RadiusSelect value={radiusKm} setValue={setRadiusKm} />
-                    </div>
-                </HeaderMain>
-
-                {loading ? (
-                    <div
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            marginTop: "1rem",
-                        }}
-                    >
-                        <Spinner color="black" />
-                        <div style={{ marginLeft: "1rem", fontSize: "1.5rem" }}>
-                            Loading...
+                            <Spinner color="black" />
+                            <div
+                                style={{
+                                    marginLeft: "1rem",
+                                    fontSize: "1.5rem",
+                                }}
+                            >
+                                Loading...
+                            </div>
                         </div>
-                    </div>
-                ) : null}
+                    ) : null}
 
-                {!loading && !error ? (
-                    <CalendarContainer>
-                        {Array.from(byMonth.entries()).map(
-                            ([month, dateLocationsPairsForMonth]) => (
-                                <CalendarSectionContainer key={month}>
-                                    <div className="MonthSection">
-                                        <h2>{month}</h2>{" "}
-                                    </div>
-                                    <MonthContainer>
-                                        {dateLocationsPairsForMonth.map(
-                                            (dateLocationsPair) => (
-                                                <button
-                                                    key={
-                                                        dateLocationsPair.dateStr
-                                                    }
-                                                    onClick={() =>
-                                                        setIsOpen(
-                                                            dateLocationsPair
-                                                        )
-                                                    }
-                                                >
-                                                    <div>
-                                                        <h3>
-                                                            {parse(
-                                                                dateLocationsPair.dateStr,
-                                                                "yyyy-MM-dd",
-                                                                new Date()
-                                                            ).toLocaleDateString(
-                                                                [],
-                                                                {
-                                                                    month: "short",
-                                                                    day: "numeric",
-                                                                }
-                                                            )}
-                                                            {/* <aside>
+                    {!loading && !error ? (
+                        <CalendarContainer>
+                            {Array.from(byMonth.entries()).map(
+                                ([month, dateLocationsPairsForMonth]) => (
+                                    <CalendarSectionContainer key={month}>
+                                        <div className="MonthSection">
+                                            <h2>{month}</h2>{" "}
+                                        </div>
+                                        <MonthContainer>
+                                            {dateLocationsPairsForMonth.map(
+                                                (dateLocationsPair) => (
+                                                    <button
+                                                        key={
+                                                            dateLocationsPair.dateStr
+                                                        }
+                                                        onClick={() =>
+                                                            setIsOpen(
+                                                                dateLocationsPair
+                                                            )
+                                                        }
+                                                    >
+                                                        <div>
+                                                            <h3>
+                                                                {parse(
+                                                                    dateLocationsPair.dateStr,
+                                                                    "yyyy-MM-dd",
+                                                                    new Date()
+                                                                ).toLocaleDateString(
+                                                                    [],
+                                                                    {
+                                                                        month: "short",
+                                                                        day: "numeric",
+                                                                    }
+                                                                )}
+                                                                {/* <aside>
                                                             &nbsp; - &nbsp;
                                                             {parse(
                                                                 dateLocationsPair.dateStr,
@@ -272,36 +280,38 @@ function App() {
                                                                 }
                                                             )}
                                                         </aside> */}
-                                                        </h3>
-                                                        <p>
-                                                            {sum(
-                                                                dateLocationsPair.locationSlotsPairs.map(
-                                                                    (
-                                                                        locationSlotsPair
-                                                                    ) =>
+                                                            </h3>
+                                                            <p>
+                                                                {sum(
+                                                                    dateLocationsPair.locationSlotsPairs.map(
                                                                         (
-                                                                            locationSlotsPair.slots ||
-                                                                            []
-                                                                        ).length
-                                                                )
-                                                            )}{" "}
-                                                            available
-                                                        </p>
-                                                    </div>
-                                                    <img
-                                                        src="./arrow.svg"
-                                                        aria-hidden="true"
-                                                        alt=""
-                                                    />
-                                                </button>
-                                            )
-                                        )}
-                                    </MonthContainer>
-                                </CalendarSectionContainer>
-                            )
-                        )}
-                    </CalendarContainer>
-                ) : null}
+                                                                            locationSlotsPair
+                                                                        ) =>
+                                                                            (
+                                                                                locationSlotsPair.slots ||
+                                                                                []
+                                                                            )
+                                                                                .length
+                                                                    )
+                                                                )}{" "}
+                                                                available
+                                                            </p>
+                                                        </div>
+                                                        <img
+                                                            src="./arrow.svg"
+                                                            aria-hidden="true"
+                                                            alt=""
+                                                        />
+                                                    </button>
+                                                )
+                                            )}
+                                        </MonthContainer>
+                                    </CalendarSectionContainer>
+                                )
+                            )}
+                        </CalendarContainer>
+                    ) : null}
+                </div>
                 {!loading && error ? (
                     <div
                         style={{
