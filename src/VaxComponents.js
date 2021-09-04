@@ -7,7 +7,7 @@ flex-direction: row;
 justify-content: space-between;
 box-sizing: border-box;
 top: -2px;
-padding: 1.5rem;
+padding: 1.5rem 1rem;
 background-color: white;
 gap: 2rem;
 
@@ -76,7 +76,7 @@ export const CalendarContainer = styled.section`
 export const CalendarSectionContainer = styled.section`
     .MonthSection {
         display: block;
-        padding: 1.5rem;
+        padding: 1.5rem 1rem;
         border-bottom: 1px solid lightgray;
         position: sticky;
         top: 0px;
@@ -115,7 +115,7 @@ export const MonthContainer = styled.section`
         background-color: white;
         border: none;
         margin: 0;
-        padding: 1.5rem;
+        padding: 1rem;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
