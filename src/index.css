@@ -7,11 +7,11 @@ body {
 }
 
 #root div:first-child {
-  z-index: 0;
+  z-index: 1;
 }
 
 #root div:last-child {
-  z-index: 1;
+  z-index: 2;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -27,7 +27,7 @@ a {
 }
 
 .App-header {
-  margin: 1.5rem;
+  padding: 1.5rem;
   color: black;
   text-align: center;
 }
@@ -49,4 +49,19 @@ a {
   cursor: pointer;
   font-size: 1rem;
   font-family: inherit;
+}
+
+@media screen and (max-width: 768px) {
+  #root div:first-child {
+    z-index: 1;
+  }
+  #root div:last-child {
+    z-index: 2;
+  }
+  .App-header h1 {
+    font-size: 2rem;
+  }
+  .App-header p {
+    font-size: 1rem;
+  }
 }

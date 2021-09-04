@@ -41,17 +41,19 @@ p {
 @media screen and (max-width:1024px) {
   position: relative;
   top: initial;
-flex-direction: column;
+flex-direction: row;
 div {
-  margin-top: 0.5rem;
-  max-height: initial;
-  flex-direction: column;
+  max-height: auto;
+  flex-direction: row;
 }
 }
 @media screen and (max-width:768px) {
 flex-direction: column;
 div {
   flex-direction: column;
+  width: 100%;
+  max-height: initial;
+  z-index: initial;
 
 }
 @media screen and (max-width:500px) {
@@ -106,6 +108,7 @@ export const MonthContainer = styled.section`
         text-align: left;
         background-color: white;
         border: none;
+        margin: 0;
         padding: 1.5rem;
         display: flex;
         flex-direction: row;

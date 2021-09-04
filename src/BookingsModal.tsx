@@ -83,7 +83,6 @@ const BookingsModal = (props: Props) => {
                               })
                             : ""}
                     </h1>
-                    <p>Booking data from bookmyvaccine.nz</p>
 
                     <Button
                         onClick={() => props.setIsOpen(null)}
@@ -95,7 +94,6 @@ const BookingsModal = (props: Props) => {
                                     marginRight: 0,
                                     marginBottom: "2rem",
                                     marginLeft: 0,
-
                                 },
                             },
                         }}
@@ -108,85 +106,126 @@ const BookingsModal = (props: Props) => {
                 <div style={{ overflowY: "scroll", height: "100%" }}>
                     <h2>Available slots</h2>
                     <hr />
-                    {sortByDistance(
-                        props.isOpen?.locationSlotsPairs,
-                        props.lat,
-                        props.lng
-                    )
-                        .filter(
-                            (locationSlotsPair) =>
-                                locationSlotsPair.slots?.length
+
+                    {props.isOpen?.locationSlotsPairs.filter(
+                        (locationSlotsPair) => locationSlotsPair.slots?.length
+                    ).length ? (
+                        sortByDistance(
+                            props.isOpen?.locationSlotsPairs,
+                            props.lat,
+                            props.lng
                         )
-                        .map((locationSlotsPair) => (
-                            <VaccineCentre key={locationSlotsPair.location.extId}>
-                                <h3>{locationSlotsPair.location.name}</h3>
-                                <p>
-                                    {locationSlotsPair.location.displayAddress}{" "}
-                                    (
-                                    {Math.floor(
-                                        getDistanceKm(
-                                            props.lat,
-                                            props.lng,
-                                            locationSlotsPair.location.location
-                                                .lat,
-                                            locationSlotsPair.location.location
-                                                .lng
-                                        )
-                                    )}
-                                    km away)
-                                </p>
-                                <a
-                                    href="https://bookmyvaccine.nz"
-                                    target="_blank"
-                                    rel="noreferrer"
+                            .filter(
+                                (locationSlotsPair) =>
+                                    locationSlotsPair.slots?.length
+                            )
+                            .map((locationSlotsPair) => (
+                                <VaccineCentre
+                                    key={locationSlotsPair.location.extId}
                                 >
-                                    <div className="ButtonConstraint">
-                                        <Button
-                                            overrides={{
-                                                Root: {
-                                                    style: {
-                                                        width: "100%",
-                                                        marginTop: "1rem",
-                                                        marginRight: 0,
-                                                        marginBottom: "1rem",
-                                                        marginLeft: 0,
-                
+                                    <h3>{locationSlotsPair.location.name}</h3>
+                                    <p>
+                                        {
+                                            locationSlotsPair.location
+                                                .displayAddress
+                                        }{" "}
+                                        (
+                                        {Math.floor(
+                                            getDistanceKm(
+                                                props.lat,
+                                                props.lng,
+                                                locationSlotsPair.location
+                                                    .location.lat,
+                                                locationSlotsPair.location
+                                                    .location.lng
+                                            )
+                                        )}
+                                        km away)
+                                    </p>
+                                    <a
+                                        href="https://bookmyvaccine.nz"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        <div className="ButtonConstraint">
+                                            <Button
+                                                overrides={{
+                                                    Root: {
+                                                        style: {
+                                                            width: "100%",
+                                                            marginTop: "1rem",
+                                                            marginRight: 0,
+                                                            marginBottom:
+                                                                "1rem",
+                                                            marginLeft: 0,
+                                                        },
                                                     },
-                                                },
-                                            }}
-                                        >
-                                            Make a Booking
-                                        </Button>
-                                    </div>
-                                </a>
-                                <p
-                                    style={{
-                                        marginTop: "0.25rem",
-                                        marginRight: 0,
-                                        marginBottom: "0.5rem",
-                                        marginLeft: 0,
-                                    }}
-                                >
-                                    Available slots:
-                                </p>
-                                <section>
-                                    {/* <p>1am</p> */}
-                                    {locationSlotsPair.slots?.map((slot) => (
-                                        <p key={slot.localStartTime}>
-                                            {parse(
-                                                slot.localStartTime,
-                                                "HH:mm:ss",
-                                                new Date()
-                                            ).toLocaleTimeString("en-NZ", {
-                                                hour: "2-digit",
-                                                minute: "2-digit",
-                                                hour12: true,
-                                            })}
-                                        </p>
-                                    ))}
-                                </section>
-                            </VaccineCentre>
-                        ))}
+                                                }}
+                                            >
+                                                Make a Booking
+                                            </Button>
+                                        </div>
+                                    </a>
+                                    <p
+                                        style={{
+                                            marginTop: "0.25rem",
+                                            marginRight: 0,
+                                            marginBottom: "0.5rem",
+                                            marginLeft: 0,
+                                        }}
+                                    >
+                                        Available slots:
+                                    </p>
+                                    <section>
+                                        {/* <p>1am</p> */}
+                                        {locationSlotsPair.slots?.map(
+                                            (slot) => (
+                                                <p key={slot.localStartTime}>
+                                                    {parse(
+                                                        slot.localStartTime,
+                                                        "HH:mm:ss",
+                                                        new Date()
+                                                    ).toLocaleTimeString(
+                                                        "en-NZ",
+                                                        {
+                                                            hour: "2-digit",
+                                                            minute: "2-digit",
+                                                            hour12: true,
+                                                        }
+                                                    )}
+                                                </p>
+                                            )
+                                        )}
+                                    </section>
+                                </VaccineCentre>
+                            ))
+                    ) : (
+                        <>
+                            <h1>
+                                No bookings available on this day :(
+                                <br />
+                                Try changing your search!
+                            </h1>
+                            <Button
+                                onClick={() => props.setIsOpen(null)}
+                                overrides={{
+                                    Root: {
+                                        style: {
+                                            width: "100%",
+                                            maxWidth: "400px",
+                                            marginTop: "2rem",
+                                            marginRight: 0,
+                                            marginBottom: "2rem",
+                                            marginLeft: 0,
+                                        },
+                                    },
+                                }}
+                                kind={KIND.secondary}
+                            >
+                                Back to calendar
+                            </Button>
+                        </>
+                    )}
                 </div>
             </ModalGrid>
         </Modal>
