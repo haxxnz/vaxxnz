@@ -164,7 +164,7 @@ const LocationModal = (props: Props) => {
                 }}
                 onClick={() => getLocation()}
             >
-                {loading ? "Loading..." : "Use my location"}
+                {loading ? "Loading..." : "Use my current location"}
             </button>
             <Button
                 overrides={{

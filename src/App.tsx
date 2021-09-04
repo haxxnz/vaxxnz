@@ -100,11 +100,11 @@ function App() {
                 />
 
                 <section className="App-header">
-                    <h1>NZ Vaccination Finder</h1> <br />
+                    <h1>NZ COVID Vaccination Finder</h1> <br />
                     <p>
                         <h3 style={{ fontWeight: "normal" }}>
-                            See every available vaccination booking slot in NZ
-                            near you.{" "}
+                            See every available vaccination booking slot near
+                            you.{" "}
                         </h3>
                         <br />
                         This is not an official Government website.
@@ -135,29 +135,19 @@ function App() {
                         </p>
                     </section>
                     <div>
-                        {lat === defaultLat && lng === defaultLng ? (
-                            <Button
-                                kind={KIND.primary}
-                                onClick={() => openLocation()}
-                                overrides={{
-                                    BaseButton: {
-                                        style: {
-                                            minWidth: "220px",
-                                        },
+                        <Button
+                            kind={KIND.primary}
+                            onClick={() => openLocation()}
+                            overrides={{
+                                BaseButton: {
+                                    style: {
+                                        minWidth: "220px",
                                     },
-                                }}
-                            >
-                                {"Set your Location"}
-                            </Button>
-                        ) : (
-                            <Button
-                                startEnhancer={() => <Check size={24} />}
-                                kind={KIND.primary}
-                                onClick={() => openLocation()}
-                            >
-                                Location set ({placeName})
-                            </Button>
-                        )}
+                                },
+                            }}
+                        >
+                            {lat === defaultLat && lng === defaultLng ? "Set your Location" : "Location set"}
+                        </Button>
                         <RadiusSelect value={radiusKm} setValue={setRadiusKm} />
                     </div>
                 </HeaderMain>
