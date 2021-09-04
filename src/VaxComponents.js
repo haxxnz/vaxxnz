@@ -108,6 +108,8 @@ export const MonthContainer = styled.section`
         box-sizing: border-box;
         font-family: inherit;
         min-height: 144px;
+        height: 100%;
+
         text-align: left;
         background-color: white;
         border: none;
