@@ -169,36 +169,40 @@ function App() {
                 ) : null}
 
                 {!loading && (
-                <CalendarContainer>
-                    {Array.from(byMonth.entries()).map(
-                        ([month, dateLocationsPairsForMonth]) => (
-                            <CalendarSectionContainer key={month}>
-                                <div className="MonthSection">
-                                    <h2>{month}</h2>{" "}
-                                </div>
-                                <MonthContainer>
-                                    {dateLocationsPairsForMonth.map(
-                                        (dateLocationsPair) => (
-                                            <button
-                                                key={dateLocationsPair.dateStr}
-                                                onClick={() =>
-                                                    setIsOpen(dateLocationsPair)
-                                                }
-                                            >
-                                                <div>
-                                                    <h3>
-                                                        {parse(
-                                                            dateLocationsPair.dateStr,
-                                                            "yyyy-MM-dd",
-                                                            new Date()
-                                                        ).toLocaleDateString(
-                                                            [],
-                                                            {
-                                                                month: "short",
-                                                                day: "numeric",
-                                                            }
-                                                        )}
-                                                        {/* <aside>
+                    <CalendarContainer>
+                        {Array.from(byMonth.entries()).map(
+                            ([month, dateLocationsPairsForMonth]) => (
+                                <CalendarSectionContainer key={month}>
+                                    <div className="MonthSection">
+                                        <h2>{month}</h2>{" "}
+                                    </div>
+                                    <MonthContainer>
+                                        {dateLocationsPairsForMonth.map(
+                                            (dateLocationsPair) => (
+                                                <button
+                                                    key={
+                                                        dateLocationsPair.dateStr
+                                                    }
+                                                    onClick={() =>
+                                                        setIsOpen(
+                                                            dateLocationsPair
+                                                        )
+                                                    }
+                                                >
+                                                    <div>
+                                                        <h3>
+                                                            {parse(
+                                                                dateLocationsPair.dateStr,
+                                                                "yyyy-MM-dd",
+                                                                new Date()
+                                                            ).toLocaleDateString(
+                                                                [],
+                                                                {
+                                                                    month: "short",
+                                                                    day: "numeric",
+                                                                }
+                                                            )}
+                                                            {/* <aside>
                                                             &nbsp; - &nbsp;
                                                             {parse(
                                                                 dateLocationsPair.dateStr,
@@ -212,35 +216,35 @@ function App() {
                                                                 }
                                                             )}
                                                         </aside> */}
-                                                    </h3>
-                                                    <p>
-                                                        {sum(
-                                                            dateLocationsPair.locationSlotsPairs.map(
-                                                                (
-                                                                    locationSlotsPair
-                                                                ) =>
+                                                        </h3>
+                                                        <p>
+                                                            {sum(
+                                                                dateLocationsPair.locationSlotsPairs.map(
                                                                     (
-                                                                        locationSlotsPair.slots ||
-                                                                        []
-                                                                    ).length
-                                                            )
-                                                        )}{" "}
-                                                        available
-                                                    </p>
-                                                </div>
-                                                <img
-                                                    src="./arrow.svg"
-                                                    aria-hidden="true"
-                                                    alt=""
-                                                />
-                                            </button>
-                                        )
-                                    )}
-                                </MonthContainer>
-                            </CalendarSectionContainer>
-                        )
-                    )}
-                </CalendarContainer>
+                                                                        locationSlotsPair
+                                                                    ) =>
+                                                                        (
+                                                                            locationSlotsPair.slots ||
+                                                                            []
+                                                                        ).length
+                                                                )
+                                                            )}{" "}
+                                                            available
+                                                        </p>
+                                                    </div>
+                                                    <img
+                                                        src="./arrow.svg"
+                                                        aria-hidden="true"
+                                                        alt=""
+                                                    />
+                                                </button>
+                                            )
+                                        )}
+                                    </MonthContainer>
+                                </CalendarSectionContainer>
+                            )
+                        )}
+                    </CalendarContainer>
                 )}
                 <section className="App-header">
                     <p>
