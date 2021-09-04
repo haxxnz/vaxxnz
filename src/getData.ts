@@ -1,4 +1,4 @@
-import { format, parseISO } from "date-fns";
+import { format } from "date-fns";
 import { getDistanceKm } from "./distanceUtils";
 import {
   DateLocationsPair,
@@ -37,6 +37,10 @@ export async function getMyCalendar(
     );
     return distance < radiusKm;
   });
+  if (filtredLocations.length === 0) {
+    alert('No vaccination sites found for this search query. Are you in New Zealand?')
+    return {dateLocationsPairs: [], oldestLastUpdatedTimestamp: Infinity};
+  }
   let oldestLastUpdatedTimestamp = Infinity;
   const availabilityDatesAndLocations = await Promise.all(
     filtredLocations.map(async (location) => {
