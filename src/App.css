@@ -21,3 +21,13 @@
     max-width: 1440px;
     margin: auto;
 }
+
+a.nolink:hover {
+    color: black
+}
+a.nolink:active {
+    color: black
+}
+a.nolink {
+    color: black
+}
