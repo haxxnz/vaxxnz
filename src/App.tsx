@@ -49,7 +49,7 @@ function App() {
     const { dateLocationsPairs, setDateLocationsPairs } = useContext(
         DateLocationsPairsContext
     );
-    const [lastUpdateTime, setLastUpdateTime] = useState(new Date());
+    const [lastUpdateTime, setLastUpdateTime] = useState(new Date(0));
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<Error | null>(null);
 
@@ -182,10 +182,16 @@ function App() {
                                 </strong>
                             </h1>
                             <p>
-                                Last updated:{" "}
-                                {formatDistance(lastUpdateTime, new Date(), {
-                                    addSuffix: true,
-                                })}
+                                Last updated{" "}
+                                {lastUpdateTime.getFullYear() === 1970
+                                    ? "..."
+                                    : formatDistance(
+                                          lastUpdateTime,
+                                          new Date(),
+                                          {
+                                              addSuffix: true,
+                                          }
+                                      )}
                             </p>
                         </section>
                         <div>
