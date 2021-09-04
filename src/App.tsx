@@ -266,6 +266,15 @@ function App() {
                             Source code
                         </a>
                     </p>
+                    <p>
+                        <a
+                            href="https://github.com/CovidEngine/vaxxnzlocations"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            JSON of all available slots
+                        </a>
+                    </p>
                 </section>
             </div>
         </>
