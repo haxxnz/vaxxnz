@@ -6,6 +6,14 @@ body {
   background-color: #ececec;
 }
 
+#root div:first-child {
+  z-index: 0;
+}
+
+#root div:last-child {
+  z-index: 1;
+}
+
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
@@ -25,8 +33,9 @@ a {
 }
 
 .App-header h1 {
-font-size: 4rem;
+  font-size: 4rem;
 }
+
 .App-header p {
   font-size: 1.5rem;
   max-width: 944px;

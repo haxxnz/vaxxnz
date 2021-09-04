@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderMain = styled.header`
-// position: sticky;
+
 display: flex;
 flex-direction: row;
 justify-content: space-between;
@@ -9,6 +9,7 @@ box-sizing: border-box;
 top: -2px;
 padding: 1.5rem;
 background-color: white;
+gap: 2rem;
 
   z-index: 2;
 
@@ -20,12 +21,14 @@ div {
   gap:1rem;
   max-height: 48px;
   width: auto;
+  align-self: center;
 }
 h1 {
   text-align: left;
   margin: 0;
   align-self: center;
-  font-size: 1.75rem;
+  font-size: 1.7rem;
+  font-weight: 400;
 }
 section {
   flex-direction: column;
@@ -69,11 +72,11 @@ export const CalendarSectionContainer = styled.section`
         display: block;
         padding: 1.5rem;
         border-bottom: 1px solid lightgray;
-        // position: sticky;
-        top: 96px;
+        position: sticky;
+        top: 0px;
 
         background-color: #fff;
-        z-index: 1;
+        z-index: 1 !important;
     }
     h2 {
         font-size: 1.5rem;
@@ -94,6 +97,8 @@ export const MonthContainer = styled.section`
     border-bottom: 1px solid lightgray;
     gap: 1px;
     transition: all 0.3s;
+
+    z-index: 1;
     button {
         box-sizing: border-box;
         font-family: inherit;
@@ -105,6 +110,7 @@ export const MonthContainer = styled.section`
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+
         div {
             height: 100%;
             display: flex;
@@ -113,17 +119,17 @@ export const MonthContainer = styled.section`
         }
 
         h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.2rem;
+            font-weight: 400;
         }
         aside {
             display: inline;
             float: right;
             color: #777;
-            font-weight: 400;
+            font-weight: 300;
         }
         p {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 400;
             color: #555;
         }

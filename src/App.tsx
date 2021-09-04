@@ -121,7 +121,10 @@ function App() {
 
                 <HeaderMain>
                     <section>
-                        <h1>Available Vaccine Slots</h1>
+                        <h1>
+                            <strong>Available Vaccine Slots</strong>
+                            {placeName ? " near " + placeName : ""}
+                        </h1>
                         <p>
                             Last updated:{" "}
                             {formatDistance(lastUpdateTime, new Date(), {
@@ -138,7 +141,7 @@ function App() {
                                 kind={KIND.primary}
                                 onClick={() => openLocation()}
                             >
-                                {"Set your Location" + " (" + placeName + ")"}
+                                {"Set your Location"}
                             </Button>
                         ) : (
                             <Button

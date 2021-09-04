@@ -16,6 +16,7 @@ export default function RadiusSelect(props: Props) {
     const selectedOption = options.find((o) => o.id === props.value);
     return (
         <Select
+            overrides={{ Root: { style: { zIndex: 1500 } } }}
             clearable={false}
             options={options}
             value={selectedOption ? [selectedOption] : []}
