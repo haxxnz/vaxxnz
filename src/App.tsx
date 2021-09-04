@@ -15,45 +15,36 @@ import { DateLocationsPair } from "./types";
 import LocationModal from "./LocationModal";
 import BookingsModal from "./BookingsModal";
 import RadiusSelect from "./RadiusSelect";
+import { useSearchParams } from "./urlUtils";
 
 function sum(array: number[]) {
     return array.reduce((a, b) => a + b, 0);
 }
 
-function getUrlCoords(): [number, number] {
-    const searchParams = new URL(window.location.toString()).searchParams;
-    const urlLat = searchParams.get("lat");
-    const urlLng = searchParams.get("lng");
+function App() {
+    const {
+        lat: urlLat,
+        lng: urlLng,
+        placeName: urlPlaceName,
+    } = useSearchParams();
     const defaultLat = urlLat ? parseFloat(urlLat) : -36.853610199274385;
     const defaultLng = urlLng ? parseFloat(urlLng) : 174.76054541484535;
-    return [defaultLat, defaultLng];
-}
-
-function getUrlPlaceName(): string {
-    const searchParams = new URL(window.location.toString()).searchParams;
-    const urlPlaceName = searchParams.get("placeName");
     const defaultPlaceName = urlPlaceName ?? "Auckland CBD";
-    return defaultPlaceName;
-}
 
-function App() {
     const [isOpen, setIsOpen] = React.useState<DateLocationsPair | null>(null);
     const [locationIsOpen, setLocationIsOpen] = React.useState<boolean>(false);
 
     const [radiusKm, setRadiusKm] = useState(10);
-    const [coords, setCoords] = useState<[number, number]>(getUrlCoords());
-    const [placeName, setPlaceName] = useState(getUrlPlaceName());
+    const [coords, setCoords] = useState<[number, number]>([
+        defaultLat,
+        defaultLng,
+    ]);
+    const [placeName, setPlaceName] = useState(defaultPlaceName);
 
     useEffect(() => {
-        function onHistoryUpdate() {
-            setCoords(getUrlCoords());
-            setPlaceName(getUrlPlaceName());
-        }
-        window.addEventListener("popstate", onHistoryUpdate);
-        return () => {
-            window.removeEventListener("popstate", onHistoryUpdate);
-        };
-    }, []);
+        setCoords([defaultLat, defaultLng])
+        setPlaceName(defaultPlaceName);
+    }, [defaultLat, defaultLng, defaultPlaceName])
 
     const { dateLocationsPairs, setDateLocationsPairs } = useContext(
         DateLocationsPairsContext
@@ -208,8 +199,8 @@ function App() {
                                 },
                             }}
                         >
-                            {coords[0] === getUrlCoords()[0] &&
-                            coords[1] === getUrlCoords()[1] // TODO: memoize
+                            {coords[0] === defaultLat &&
+                            coords[1] === defaultLng
                                 ? "Set your Location"
                                 : "Location set"}
                         </Button>
