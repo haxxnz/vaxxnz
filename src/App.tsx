@@ -91,11 +91,9 @@ function App() {
                 <section className="App-header">
                     <h1>Vaccination Booking Finder</h1> <br />
                     <p>
-                        This is a website that shows every available vaccination
-                        booking slot near you. It shows vaccination sites, and
-                        available booking times.
-                        <br /> <br />
-                        This is not an official Government website. To get
+                        <h3 style={{fontWeight: 'normal'}}>See every available vaccination booking slot near you. </h3>
+                        <br /> 
+                        This is not an official Government website.<br/> To get
                         vaccinated visit&nbsp;
                         <a
                             href="https://bookmyvaccine.nz"
