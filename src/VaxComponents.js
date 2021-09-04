@@ -191,6 +191,7 @@ export const ModalGrid = styled.section`
         gap: 0;
     }
     @media screen and (max-width: 768px) {
+        gap: 0;
         h1 {
             font-size: 2rem;
         }
