@@ -212,6 +212,12 @@ export const VaccineCentre = styled.section`
             max-width: 400px;
         }
     }
+    @media screen and (max-width: 768px) {
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+    }
 
     section {
         display: flex;
