@@ -138,7 +138,7 @@ function App() {
                                 kind={KIND.primary}
                                 onClick={() => openLocation()}
                             >
-                                {"Set your Location" + " (" + placeName + ")"}
+                                {"Set your Location (" + placeName + ")"}
                             </Button>
                         ) : (
                             <Button
