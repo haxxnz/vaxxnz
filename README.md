@@ -1,4 +1,4 @@
-# Vaxx.nz - The NZ COVID Vaccination Finder
+# [Vaxx.nz](https://vaxx.nz) - The NZ COVID Vaccination Finder
 
 See every available vaccination booking slot near you.
 
