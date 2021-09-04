@@ -3,6 +3,7 @@ import { BaseInput } from "baseui/input";
 import { Modal } from "baseui/modal";
 import { useCallback, useMemo, useState } from "react";
 import "./App.css";
+import { getSuburbIsh } from "./locationUtils";
 
 type Props = {
     locationIsOpen: boolean;
@@ -12,24 +13,9 @@ type Props = {
     setPlaceName: (name: string) => void;
 };
 
-function getSuburbIsh(
-    place: google.maps.places.PlaceResult
-): string | undefined {
-    const { address_components } = place;
-    const suburbish = (address_components ?? []).find(
-        (a) =>
-            a.types.includes("locality") ||
-            a.types.includes("sublocality_level_1") ||
-            a.types.includes("sublocality")
-    );
-    const short_name = suburbish?.short_name;
-    return short_name;
-}
-
 const LocationModal = (props: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
     const { setLat, setLng, setPlaceName, setLocationIsOpen } = props;
-    const [, setAddress] = useState("");
     const geocoder = useMemo(() => new google.maps.Geocoder(), []);
     const placesService = useMemo(
         () =>
@@ -42,15 +28,16 @@ const LocationModal = (props: Props) => {
     }, [setLocationIsOpen]);
 
     const setLocation = useCallback(
-        (lat: number, lng: number, name: string) => {
+        (lat: number, lng: number, name?: string | null) => {
+            const placeName = name ?? `${lat} ${lng}`;
             setLat(lat);
             setLng(lng);
-            setPlaceName(name);
+            setPlaceName(placeName);
             close();
             const url = new URL(window.location.toString());
             url.searchParams.set("lat", lat.toString());
             url.searchParams.set("lng", lng.toString());
-            url.searchParams.set("placeName", name);
+            url.searchParams.set("placeName", placeName);
             window.history.pushState({}, "", url.toString());
         },
         [close, setLat, setLng, setPlaceName]
@@ -77,14 +64,11 @@ const LocationModal = (props: Props) => {
                         place.geometry != null &&
                         place.geometry.location != null
                     ) {
+                        const { location } = place.geometry;
+                        const lat = location.lat();
+                        const lng = location.lng();
                         const suburbish = getSuburbIsh(place);
-                        const { lat, lng } = place.geometry.location;
-
-                        if (suburbish) {
-                            setLocation(lat(), lng(), suburbish);
-                        } else {
-                            setLocation(lat(), lng(), `${lat()}, ${lng()}`);
-                        }
+                        setLocation(lat, lng, suburbish);
                     }
                 });
                 return () => {
@@ -119,30 +103,15 @@ const LocationModal = (props: Props) => {
                             fields: ["geometry", "name", "address_components"],
                         },
                         (place, status: string) => {
-                            if (status === "OK" && place) {
-                                const suburbish = getSuburbIsh(place);
-                                setLocation(
-                                    latitude,
-                                    longitude,
-                                    suburbish ?? `${latitude}, ${longitude}`
-                                );
-                                setLoading(false);
-                            } else {
-                                setLocation(
-                                    latitude,
-                                    longitude,
-                                    `${latitude}, ${longitude}`
-                                );
-                                setLoading(false);
-                            }
+                            const suburbish = place
+                                ? getSuburbIsh(place)
+                                : null;
+                            setLocation(latitude, longitude, suburbish);
+                            setLoading(false);
                         }
                     );
                 } else {
-                    setLocation(
-                        latitude,
-                        longitude,
-                        `${latitude}, ${longitude}`
-                    );
+                    setLocation(latitude, longitude);
                     setLoading(false);
                 }
             });
@@ -181,7 +150,7 @@ const LocationModal = (props: Props) => {
                 id="pac-input"
                 type="text"
                 inputRef={(e) => inputRef(e)}
-                onChange={(e) => setAddress(e.currentTarget.value)}
+                onChange={(_e) => {}}
             />
             <button
                 className={"clickable"}
