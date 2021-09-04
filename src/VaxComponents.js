@@ -15,7 +15,7 @@ gap: 2rem;
 
 border-top: 1px solid lightgray;
 border-bottom: 1px solid lightgray;
-div {
+>div {
   display:flex;
   flex-direction: row;
   gap:1rem;
@@ -23,17 +23,17 @@ div {
   width: auto;
   align-self: center;
 }
-h1 {
+>h1 {
   text-align: left;
   margin: 0;
   align-self: center;
   font-size: 1.7rem;
   font-weight: 400;
 }
-section {
+>section {
   flex-direction: column;
 }
-p {
+>p {
   font-size: 0.95rem;
   color: #555;
 }
@@ -42,14 +42,14 @@ p {
   position: relative;
   top: initial;
 flex-direction: row;
-div {
+>div {
   max-height: auto;
   flex-direction: row;
 }
 }
 @media screen and (max-width:768px) {
 flex-direction: column;
-div {
+>div {
   flex-direction: column;
   width: 100%;
   max-height: initial;
@@ -58,7 +58,7 @@ div {
 }
 @media screen and (max-width:500px) {
   flex-direction: column;
-div {
+>div {
   flex-direction: column;
 
 }
