@@ -251,6 +251,21 @@ function App() {
                                             {dateLocationsPairsForMonth.map(
                                                 (dateLocationsPair) => (
                                                     <button
+                                                        className={
+                                                            sum(
+                                                                dateLocationsPair.locationSlotsPairs.map(
+                                                                    (
+                                                                        locationSlotsPair
+                                                                    ) =>
+                                                                        (
+                                                                            locationSlotsPair.slots ||
+                                                                            []
+                                                                        ).length
+                                                                )
+                                                            ) === 0
+                                                                ? "zero-available"
+                                                                : ""
+                                                        }
                                                         key={
                                                             dateLocationsPair.dateStr
                                                         }

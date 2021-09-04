@@ -31,3 +31,8 @@ a.nolink:active {
 a.nolink {
     color: black
 }
+.zero-available {
+    
+    /* Walt, use this */
+    background-color: white !important; 
+}
