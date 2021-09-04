@@ -100,7 +100,7 @@ function App() {
                 />
 
                 <section className="App-header">
-                    <h1>NZ Vaccination Finder</h1> <br />
+                    <h1>NZ COVID Vaccination Finder</h1> <br />
                     <p>
                         <h3 style={{ fontWeight: "normal" }}>
                             See every available vaccination booking slot near
