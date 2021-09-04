@@ -12,6 +12,20 @@ type Props = {
     setPlaceName: (name: string) => void;
 };
 
+function getSuburbIsh(
+    place: google.maps.places.PlaceResult
+): string | undefined {
+    const { address_components } = place;
+    const suburbish = (address_components ?? []).find(
+        (a) =>
+            a.types.includes("locality") ||
+            a.types.includes("sublocality_level_1") ||
+            a.types.includes("sublocality")
+    );
+    const short_name = suburbish?.short_name;
+    return short_name;
+}
+
 const LocationModal = (props: Props) => {
     const [loading, setLoading] = useState<boolean>(false);
     const { setLat, setLng, setPlaceName, setLocationIsOpen } = props;
@@ -41,39 +55,48 @@ const LocationModal = (props: Props) => {
         },
         [close, setLat, setLng, setPlaceName]
     );
-    const inputRef = useCallback((domNode) => {
-        if (domNode != null) {
-            const options = {
-                componentRestrictions: { country: "nz" },
-                fields: ["geometry", "name"],
-                strictBounds: false,
-            };
+    const inputRef = useCallback(
+        (domNode) => {
+            if (domNode != null) {
+                const options = {
+                    componentRestrictions: { country: "nz" },
+                    fields: ["geometry", "name", "address_components"],
+                    strictBounds: false,
+                };
 
-            const autocomplete = new google.maps.places.Autocomplete(
-                domNode,
-                options
-            );
+                const autocomplete = new google.maps.places.Autocomplete(
+                    domNode,
+                    options
+                );
 
-            autocomplete.addListener("place_changed", () => {
-                const place = autocomplete.getPlace();
+                autocomplete.addListener("place_changed", () => {
+                    const place = autocomplete.getPlace();
 
-                if (
-                    place.name &&
-                    place.geometry != null &&
-                    place.geometry.location != null
-                ) {
-                    setLocation(
-                        place.geometry.location.lat(),
-                        place.geometry.location.lng(),
-                        place.name
+                    if (
+                        place.name &&
+                        place.geometry != null &&
+                        place.geometry.location != null
+                    ) {
+                        const suburbish = getSuburbIsh(place);
+                        const { lat, lng } = place.geometry.location;
+
+                        if (suburbish) {
+                            setLocation(lat(), lng(), suburbish);
+                        } else {
+                            setLocation(lat(), lng(), `${lat()}, ${lng()}`);
+                        }
+                    }
+                });
+                return () => {
+                    google.maps.event.clearListeners(
+                        autocomplete,
+                        "place_changed"
                     );
-                }
-            });
-            return () => {
-                google.maps.event.clearListeners(autocomplete, "place_changed");
-            };
-        }
-    }, [setLocation]);
+                };
+            }
+        },
+        [setLocation]
+    );
 
     const getLocation = () => {
         if (!navigator.geolocation) {
@@ -93,11 +116,16 @@ const LocationModal = (props: Props) => {
                     placesService.getDetails(
                         {
                             placeId: results[0].place_id,
-                            fields: ["geometry", "name"],
+                            fields: ["geometry", "name", "address_components"],
                         },
                         (place, status: string) => {
-                            if (status === "OK") {
-                                setLocation(latitude, longitude, place!.name!);
+                            if (status === "OK" && place) {
+                                const suburbish = getSuburbIsh(place);
+                                setLocation(
+                                    latitude,
+                                    longitude,
+                                    suburbish ?? `${latitude}, ${longitude}`
+                                );
                                 setLoading(false);
                             } else {
                                 setLocation(
