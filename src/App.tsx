@@ -35,7 +35,7 @@ function App() {
     const [isOpen, setIsOpen] = React.useState<DateLocationsPair | null>(null);
     const [locationIsOpen, setLocationIsOpen] = React.useState<boolean>(false);
 
-    const [radiusKm, setRadiusKm] = useState(20);
+    const [radiusKm, setRadiusKm] = useState(10);
 
     const [lat, setLat] = useState(defaultLat);
     const [lng, setLng] = useState(defaultLng);
