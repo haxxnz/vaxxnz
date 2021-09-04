@@ -46,6 +46,12 @@ function App() {
     );
     const [lastUpdateTime, setLastUpdateTime] = useState(new Date());
     const [loading, setLoading] = useState(false);
+
+    const [shareButtonText, setShareButtonText] = useState("Share");
+    const resetShareButtonText = () => {
+        setShareButtonText("Share");
+    };
+
     const loadCalendar = useCallback(async () => {
         setLoading(true);
         try {
@@ -68,6 +74,31 @@ function App() {
 
     const openLocation = () => {
         setLocationIsOpen(true);
+    };
+
+    const onClickShare = async () => {
+        const shareData = {
+            title: "Vaxx.nz | The NZ COVID Vaccination Finder",
+            text: "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle",
+            url: "https://vaxx.nz/",
+        };
+
+        // Share must be triggered by "user activation"
+        if (!navigator.share) {
+            try {
+                await navigator.share(shareData);
+            } catch (err) {
+                console.error(err);
+            }
+        } else {
+            navigator.clipboard.writeText(shareData.url);
+            setShareButtonText("Copied!");
+            setTimeout(() => {
+                resetShareButtonText();
+            }, 2000);
+
+            console.log("Copied");
+        }
     };
 
     let byMonth = new Map<string, DateLocationsPair[]>();
@@ -98,6 +129,23 @@ function App() {
                     setLng={setLng}
                     setPlaceName={setPlaceName}
                 />
+                <Button
+                    kind={KIND.primary}
+                    onClick={() => onClickShare()}
+                    overrides={{
+                        BaseButton: {
+                            style: {
+                                maxWidth: "100px",
+                                width: "80px",
+                                position: "absolute",
+                                right: "1rem",
+                                top: "1rem",
+                            },
+                        },
+                    }}
+                >
+                    {shareButtonText}
+                </Button>
 
                 <section className="App-header">
                     <h1>NZ COVID Vaccination Finder</h1> <br />
