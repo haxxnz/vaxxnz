@@ -22,19 +22,6 @@ export async function getLocationData(extId: string) {
   const data: LocationsData = await res.json();
   return data;
 }
-
-export async function getLastUpdatedTime() {
-  try {
-    const res = await fetch(
-      "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/startedScrapeAt.json"
-    );
-    const time: string = await res.json();
-    return parseISO(time);
-  } catch (e) {
-    return new Date();
-  }
-}
-
 export async function getMyCalendar(
   lat: number,
   lng: number,
