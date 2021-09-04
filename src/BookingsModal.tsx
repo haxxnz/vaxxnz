@@ -53,68 +53,64 @@ const BookingsModal = (props: Props) => {
             }}
         >
             <ModalGrid>
-                <div
-                    style={{
-                        position: "sticky",
-                        top: "0",
-                        display: "block",
-                    }}
-                >
-                    <h1>
-                        {props.isOpen
-                            ? parse(
-                                  props.isOpen.dateStr,
-                                  "yyyy-MM-dd",
-                                  new Date()
-                              ).toLocaleDateString([], {
-                                  weekday: "long",
-                              })
-                            : ""}
-                        <br />
-                        {props.isOpen
-                            ? parse(
-                                  props.isOpen.dateStr,
-                                  "yyyy-MM-dd",
-                                  new Date()
-                              ).toLocaleDateString([], {
-                                  month: "short",
-                                  day: "numeric",
-                                  year: "numeric",
-                              })
-                            : ""}
-                    </h1>
-                    <p>
-                        {" "}
-                        <br />
-                        How to book:
-                    </p>
-                    <ol>
-                        <li>Find an available booking time</li>
-                        <li>Click on book a meeting on bookmyvaccine.nz</li>
-                        <li>Enter your peronal details</li>
-                        <li>Find the same branch</li>
-                    </ol>
+                <div>
+                    <div className="ModalHeader">
+                        <h1>
+                            {props.isOpen
+                                ? parse(
+                                      props.isOpen.dateStr,
+                                      "yyyy-MM-dd",
+                                      new Date()
+                                  ).toLocaleDateString([], {
+                                      weekday: "long",
+                                  })
+                                : ""}
+                            <br />
+                            {props.isOpen
+                                ? parse(
+                                      props.isOpen.dateStr,
+                                      "yyyy-MM-dd",
+                                      new Date()
+                                  ).toLocaleDateString([], {
+                                      month: "short",
+                                      day: "numeric",
+                                      year: "numeric",
+                                  })
+                                : ""}
+                        </h1>
+                        <p>
+                            {" "}
+                            <br />
+                            How to book:
+                        </p>
+                        <ol>
+                            <li>Find an available booking time</li>
+                            <li>Click on book a meeting on bookmyvaccine.nz</li>
+                            <li>Enter your peronal details</li>
+                            <li>Find the same branch</li>
+                        </ol>
 
-                    <Button
-                        onClick={() => props.setIsOpen(null)}
-                        overrides={{
-                            Root: {
-                                style: {
-                                    width: "100%",
-                                    marginTop: "2rem",
-                                    marginRight: 0,
-                                    marginBottom: "2rem",
-                                    marginLeft: 0,
+                        <Button
+                            onClick={() => props.setIsOpen(null)}
+                            overrides={{
+                                Root: {
+                                    style: {
+                                        width: "100%",
+                                        marginTop: "2rem",
+                                        marginRight: 0,
+                                        marginBottom: "2rem",
+                                        marginLeft: 0,
+                                    },
                                 },
-                            },
-                        }}
-                        kind={KIND.secondary}
-                    >
-                        Back to calendar
-                    </Button>
+                            }}
+                            kind={KIND.secondary}
+                        >
+                            Back to calendar
+                        </Button>
+                    </div>
                 </div>
 
-                <div style={{ overflowY: "scroll", height: "100%" }}>
+                <div style={{ height: "100%" }}>
                     <h2>Available slots</h2>
                     <hr />
 
