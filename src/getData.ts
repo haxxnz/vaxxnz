@@ -7,6 +7,9 @@ import {
   LocationSlotsPair,
 } from "./types";
 
+const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
+
+
 export async function getLocations() {
   const res = await fetch(
     "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/HEAD/uniqLocations.json"
@@ -38,7 +41,10 @@ export async function getMyCalendar(
     return distance < radiusKm;
   });
   if (filtredLocations.length === 0) {
-    throw new Error('No vaccination sites found for this search query. Are you in New Zealand?')
+    if (!(lat > NZbbox[1] && lat < NZbbox[3] && lng > NZbbox[0] && lng < NZbbox[2])) {
+      throw new Error('No vaccination sites found for this search query. Are you in New Zealand?')
+    }
+    throw new Error('No vaccination sites found for this search query. Try a different kilometer radius?')
   }
   let oldestLastUpdatedTimestamp = Infinity;
   const availabilityDatesAndLocations = await Promise.all(
