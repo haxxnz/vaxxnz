@@ -37,13 +37,24 @@ const WalkModal = (props: Props) => {
                 },
             }}
         >
-            <h2>Henderson Vaccination Centre</h2>
+            <h1
+                style={{
+                    marginBottom: "1rem",
+                }}
+            >
+                Henderson Vaccination Centre
+            </h1>
             <p
                 style={{
-                    marginTop: "0.25rem",
+                    marginTop: "1rem",
+
+                    paddingTop: "1.25rem",
                     marginBottom: "0.5rem",
                     marginRight: "1rem",
-                    fontSize: "1rem",
+                    fontSize: "1.25rem",
+                    borderTop: "1px solid lightgray",
+                    borderBottom: "1px solid lightgray",
+                    paddingBottom: "1.5rem",
                 }}
             >
                 This vaccination centre allows you to walk up and get a
@@ -55,7 +66,9 @@ const WalkModal = (props: Props) => {
                     marginTop: "1rem",
                     marginBottom: "0.5rem",
                     marginRight: "1rem",
-                    fontSize: "1rem",
+                    fontSize: "1.25rem",
+                    borderBottom: "1px solid lightgray",
+                    paddingBottom: "1.5rem",
                 }}
             >
                 <strong> Hours</strong>
@@ -69,7 +82,9 @@ const WalkModal = (props: Props) => {
                     marginTop: "1rem",
                     marginBottom: "0.5rem",
                     marginRight: "1rem",
-                    fontSize: "1rem",
+                    fontSize: "1.25rem",
+                    borderBottom: "1px solid lightgray",
+                    paddingBottom: "1.5rem",
                 }}
             >
                 <strong> Phone</strong>
@@ -80,7 +95,8 @@ const WalkModal = (props: Props) => {
                 style={{
                     marginTop: "1rem",
                     marginBottom: "0.5rem",
-                    marginRight: "1rem",
+                    fontSize: "1.25rem",
+                    paddingBottom: "1.5rem",
                 }}
             >
                 <strong> Address</strong>
