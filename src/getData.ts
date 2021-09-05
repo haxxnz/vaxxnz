@@ -42,9 +42,9 @@ export async function getMyCalendar(
   });
   if (filtredLocations.length === 0) {
     if (!(lat > NZbbox[1] && lat < NZbbox[3] && lng > NZbbox[0] && lng < NZbbox[2])) {
-      throw new Error('No vaccination sites found for this search query. Are you in New Zealand?')
+      throw new Error('No vaccination sites found for this search query. Are you in New Zealand?');
     }
-    throw new Error('No vaccination sites found for this search query. Try a different kilometer radius?')
+    throw new Error('No vaccination sites found for this search query. Try a different kilometer radius?');
   }
   let oldestLastUpdatedTimestamp = Infinity;
   const availabilityDatesAndLocations = await Promise.all(
@@ -89,4 +89,33 @@ export async function getMyCalendar(
     });
   }
   return { dateLocationsPairs, oldestLastUpdatedTimestamp };
+}
+
+export interface OpennningHours {
+  schedule: { [date: string]: string; };
+  exceptions: { [date: string]: string; };
+}
+
+export interface WalkinLocation {
+  lat: number;
+  lng: number;
+  name: string;
+  branch: string;
+  isOpenToday: boolean;
+  instructionLis: string[];
+  address: string;
+  faxNumber: string;
+  telephone: string;
+  opennningHours: OpennningHours;
+}
+
+export async function getWalkinData(): Promise<WalkinLocation[]> {
+  try {
+    const res = await fetch('https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/healthpoint/healthpointLocations.json');
+    const data = await res.json();
+    return data;
+  } catch (e) {
+    console.error(e); // Ilia, please don't break this, xoxoxo
+    return [];
+  }
 }
