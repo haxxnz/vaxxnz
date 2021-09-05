@@ -90,7 +90,7 @@ const BookingsModal = (props: Props) => {
                                 take you to bookmyvaccine.nz
                             </li>
                             <li>Enter your personal details</li>
-                            <li>Find the same branch</li>
+                            <li>Scroll through the list to find the location</li>
                         </ol>
 
                         <Button
