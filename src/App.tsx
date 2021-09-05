@@ -7,8 +7,6 @@ import {
     CalendarContainer,
     CalendarSectionContainer,
     MonthContainer,
-    WalkContainer,
-    WalkBox,
 } from "./VaxComponents";
 
 import { DateLocationsPairsContext } from "./contexts";
@@ -17,7 +15,6 @@ import { DateLocationsPair } from "./types";
 import LocationModal from "./LocationModal";
 import BookingsModal from "./BookingsModal";
 
-import WalkModal from "./WalkModal";
 import RadiusSelect from "./RadiusSelect";
 import { useSearchParams } from "./urlUtils";
 import { WalkInSection } from './WalkSection';
