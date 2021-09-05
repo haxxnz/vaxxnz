@@ -291,6 +291,7 @@ export const WalkBox = styled.button`
     h3 {
         font-size: 1.2rem;
         font-weight: 400;
+        margin-bottom: 0.25rem;
     }
     p {
         font-size: 1rem;
