@@ -251,6 +251,15 @@ export const WalkContainer = styled.div`
     transition: all 0.3s;
 
     z-index: 1;
+    @media screen and (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    @media screen and (max-width: 500px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 `;
 
 export const WalkBox = styled.button`
@@ -299,4 +308,6 @@ export const WalkBox = styled.button`
             align-self: center;
         }
     }
+
+
     `;
