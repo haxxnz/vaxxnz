@@ -20,12 +20,15 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
         getWalkinData()
             .then((walkIn) => {
                 const matchedFilter = walkIn.filter(
-                    ({ lat: locationLat, lng: locationLng, isOpenToday }) => {
+                    ({ lat: locationLat, lng: locationLng, isOpenToday, instructionLis }) => {
                         const distanceInKm =
                             locationLat &&
                             locationLng &&
                             getDistanceKm(lat, lng, locationLat, locationLng);
-                        return distanceInKm < radiusKm && isOpenToday;
+                            
+
+                        const walkInOrDriveThru = instructionLis.includes("Walk in") || instructionLis.includes("Drive through");
+                        return distanceInKm < radiusKm && isOpenToday && walkInOrDriveThru;
                     }
                 );
                 matchedFilter.sort(
@@ -68,7 +71,7 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
                         : undefined
                 }
             />
-            <h2 className="WalkSection">Walk-in centres</h2>
+            <h2 className="WalkSection">Walk-in/drive thru centres <strong>Open Today &mdash; NO BOOKING REQUIRED</strong></h2>
             {loading && (
                 <div
                     style={{
