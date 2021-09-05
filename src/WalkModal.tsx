@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import "./App.css";
-import { WalkinLocation } from './WalkSection';
+import { WalkinLocation } from './getData';
 
 type Props = {
     clearSelectedLocation: () => void;
@@ -54,7 +54,15 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                     paddingBottom: "1.5rem",
                 }}
             >
-                {location.description}
+                {
+                    location.instructionLis.map((instruction, index) => {
+                        return (
+                            <Fragment key={index}>
+                                {instruction}
+                                <br />
+                            </Fragment>
+                        );
+                    })}
             </p>
             <p
                 style={{
@@ -69,10 +77,10 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                 <strong> Hours</strong>
                 <br />
                 {
-                    location.hours.map(((openTime, index) => {
+                    Object.keys(location.opennningHours.schedule).map(((openDate, index) => {
                         return (
                             <Fragment key={index}>
-                                {openTime}
+                                {openDate} {' '} {location.opennningHours.schedule[openDate]}
                                 <br />
                             </Fragment>
                         );
@@ -91,7 +99,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
             >
                 <strong> Phone</strong>
                 <br />
-                {location.phone && <a href={`tel:${location.phone}`}>{location.phone}</a>}
+                {location.telephone && <a href={`tel:${location.telephone}`}>{location.telephone}</a>}
             </p>
             <p
                 style={{
@@ -118,10 +126,10 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                     },
                 }}
                 kind={KIND.primary}
-                onClick={()=> {
+                onClick={() => {
                     // Also close the modal to avoid confusing stuff
-                    window.open(`https://www.google.com/maps/dir/?api=1&saddr=My+Location&destination=${location.address}`)
-                    close()
+                    window.open(`https://www.google.com/maps/dir/?api=1&saddr=My+Location&destination=${location.address}`);
+                    close();
                 }}
             >
                 Get directions
