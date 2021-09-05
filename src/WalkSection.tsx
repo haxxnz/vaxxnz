@@ -22,9 +22,24 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
       .then(walkIn => {
         const matchedFilter = walkIn.filter(({ lat: locationLat, lng: locationLng, isOpenToday }) => {
           const distanceInKm = locationLat && locationLng && getDistanceKm(lat, lng, locationLat, locationLng);
-          return (distanceInKm < radiusKm) && isOpenToday
+          return (distanceInKm < radiusKm) && isOpenToday;
         });
-        setWalkinLocation(matchedFilter);
+        matchedFilter.sort(({ lat: locationALat, lng: locationALng }, { lat: locationBLat, lng: locationBLng }) => {
+          const distanceKmLocationA = getDistanceKm(
+            lat,
+            lng,
+            locationALat,
+            locationALng
+          );
+          const distanceKmLocationB = getDistanceKm(
+            lat,
+            lng,
+            locationBLat,
+            locationBLng
+          );
+          return distanceKmLocationA - distanceKmLocationB;
+        });
+        setWalkinLocation(matchedFilter.slice(0, 6));
       })
       .finally(() => setLoading(false));
   }, [lat, lng, radiusKm]);
@@ -92,7 +107,7 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
                 <section>
                   <div>
                     <h3>{name}</h3>
-                    {locationLat && locationLng && <p>{Math.round(getDistanceKm(lat, lng, locationLat, locationLng) * 100)/ 100}Km away</p>}
+                    {locationLat && locationLng && <p>{Math.round(getDistanceKm(lat, lng, locationLat, locationLng) * 10) / 10}Km away</p>}
                   </div>
 
                   {isOpenToday && (
