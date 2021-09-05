@@ -90,7 +90,9 @@ const BookingsModal = (props: Props) => {
                                 take you to bookmyvaccine.nz
                             </li>
                             <li>Enter your personal details</li>
-                            <li>Scroll through the list to find the location</li>
+                            <li>
+                                Scroll through the list to find the location
+                            </li>
                         </ol>
 
                         <Button
@@ -155,7 +157,7 @@ const BookingsModal = (props: Props) => {
                                     <a
                                         href="https://bookmyvaccine.nz"
                                         target="_blank"
-                                        rel="noreferrer"
+                                        referrerPolicy="origin"
                                     >
                                         <div className="ButtonConstraint">
                                             <Button
