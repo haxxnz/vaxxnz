@@ -5,6 +5,7 @@ const options = [
     { label: "Within 5km", id: 5 },
     { label: "Within 10km", id: 10 },
     { label: "Within 25km", id: 25 },
+    { label: "Within 50km", id: 50 },
     { label: "Within 100km", id: 100 },
 ];
 
