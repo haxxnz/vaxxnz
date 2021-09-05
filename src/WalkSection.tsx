@@ -70,6 +70,11 @@ export function WalkInSection() {
       <h2 className="WalkSection">
         Walk-in centres - Open right now
       </h2>
+      {
+        mockWalkInLocations.length === 0 && <div>
+          HEYYYYYYYYY WALT, plz come up with something that I can show when no walk in location found. XOXO
+        </div>
+      }
       <WalkContainer>
         {
           mockWalkInLocations.map(({ name, distanceAway, openHourToday }, index) => {
