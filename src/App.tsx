@@ -222,7 +222,7 @@ function App() {
                             />
                         </div>
                     </HeaderMain>
-                    <WalkInSection />
+                    <WalkInSection lat={coords[0]} lng={coords[1]} radiusKm={radiusKm}/>
                     {loading ? (
                         <div
                             style={{
