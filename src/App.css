@@ -41,3 +41,9 @@ a.nolink {
 button.zero-available div p {
     color: #850707;
 }
+
+@media screen and (max-width: 500px) {
+    button.zero-available {
+        display: none !important;
+    }
+}
