@@ -142,7 +142,7 @@ const LocationModal = (props: Props) => {
                     marginRight: "1rem",
                 }}
             >
-                Type in an address, postcode, or suburb
+                Type in an address or suburb
             </p>
             <BaseInput
                 id="pac-input"
