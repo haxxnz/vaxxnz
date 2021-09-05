@@ -64,31 +64,33 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                     );
                 })}
             </p>
-            <p
-                style={{
-                    marginTop: "1rem",
-                    marginBottom: "0.5rem",
-                    marginRight: "1rem",
-                    fontSize: "1.25rem",
-                    borderBottom: "1px solid lightgray",
-                    paddingBottom: "1.5rem",
-                    lineHeight: "1.5",
-                }}
-            >
-                <strong> Hours</strong>
-                <br />
-                {Object.keys(location.opennningHours.schedule).map(
-                    (openDate, index) => {
-                        return (
-                            <Fragment key={index}>
-                                {openDate}{" "}
-                                {location.opennningHours.schedule[openDate]}
-                                <br />
-                            </Fragment>
-                        );
-                    }
-                )}
-            </p>
+            {location.opennningHours.schedule && (
+                <p
+                    style={{
+                        marginTop: "1rem",
+                        marginBottom: "0.5rem",
+                        marginRight: "1rem",
+                        fontSize: "1.25rem",
+                        borderBottom: "1px solid lightgray",
+                        paddingBottom: "1.5rem",
+                        lineHeight: "1.5",
+                    }}
+                >
+                    <strong> Hours</strong>
+                    <br />
+                    {Object.keys(location.opennningHours.schedule).map(
+                        (openDate, index) => {
+                            return (
+                                <Fragment key={index}>
+                                    {openDate}{" "}
+                                    {location.opennningHours.schedule[openDate]}
+                                    <br />
+                                </Fragment>
+                            );
+                        }
+                    )}
+                </p>
+            )}
 
             {location.telephone && (
                 <p
@@ -99,6 +101,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                         fontSize: "1.25rem",
                         borderBottom: "1px solid lightgray",
                         paddingBottom: "1.5rem",
+                        lineHeight: "1.5",
                     }}
                 >
                     <strong> Phone</strong>
