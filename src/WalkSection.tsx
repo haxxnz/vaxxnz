@@ -9,7 +9,7 @@ export type WalkinLocation = {
   address: string;
   description: string;
   openHourToday?: string;
-  distanceAway: number;
+  distanceAwayInMeters: number;
 };
 
 // TODO: replace this with legit data
@@ -20,7 +20,7 @@ const mockWalkInLocations: WalkinLocation[] = [{
   hours: [`Mon - fri 8am - 4.30pm (first appointments at 9am, last appointments at 3.30pm)`, `Sat 9:00 AM – 2:00 PM`],
   phone: '09 123 123',
   openHourToday: 'Open today 9am - 5pm',
-  distanceAway: 400
+  distanceAwayInMeters: 400
 },
 {
   name: 'Henderson Vaccination Centre',
@@ -29,7 +29,7 @@ const mockWalkInLocations: WalkinLocation[] = [{
   hours: [`Mon - fri 8am - 4.30pm (first appointments at 9am, last appointments at 3.30pm)`, `Sat 9:00 AM – 2:00 PM`],
   phone: '09 123 123',
   openHourToday: 'Open today 9am - 5pm',
-  distanceAway: 400
+  distanceAwayInMeters: 400
 },
 {
   name: 'Henderson Vaccination Centre',
@@ -38,7 +38,7 @@ const mockWalkInLocations: WalkinLocation[] = [{
   hours: [`Mon - fri 8am - 4.30pm (first appointments at 9am, last appointments at 3.30pm)`, `Sat 9:00 AM – 2:00 PM`],
   phone: '09 123 123',
   openHourToday: 'Open today 9am - 5pm',
-  distanceAway: 400
+  distanceAwayInMeters: 400
 },
 {
   name: 'Henderson Vaccination Centre',
@@ -47,7 +47,7 @@ const mockWalkInLocations: WalkinLocation[] = [{
   hours: [`Mon - fri 8am - 4.30pm (first appointments at 9am, last appointments at 3.30pm)`, `Sat 9:00 AM – 2:00 PM`],
   phone: '09 123 123',
   openHourToday: '9am - 5pm',
-  distanceAway: 400
+  distanceAwayInMeters: 400
 },
 ];
 
@@ -55,7 +55,6 @@ export function WalkInSection() {
   const [selectedLocationIndex, setSelectedLocation] = useState<number>();
 
   const openModal = (locationIndex: number) => {
-    console.log(locationIndex);
     setSelectedLocation(locationIndex);
   };
 
@@ -77,7 +76,7 @@ export function WalkInSection() {
       }
       <WalkContainer>
         {
-          mockWalkInLocations.map(({ name, distanceAway, openHourToday }, index) => {
+          mockWalkInLocations.map(({ name, distanceAwayInMeters: distanceAway, openHourToday }, index) => {
             return (
               <WalkBox onClick={() => openModal(index)} key={index}>
                 <section>
