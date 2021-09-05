@@ -38,7 +38,7 @@ export async function getMyCalendar(
     return distance < radiusKm;
   });
   if (filtredLocations.length === 0) {
-    throw new Error('No vaccination sites found for this search query. Are you in New Zealand?')
+    throw new Error('No vaccination sites found for this search query. Try a different kilometer radius?')
   }
   let oldestLastUpdatedTimestamp = Infinity;
   const availabilityDatesAndLocations = await Promise.all(
