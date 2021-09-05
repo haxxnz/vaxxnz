@@ -112,7 +112,7 @@ export interface WalkinLocation {
 
 export async function getWalkinData(): Promise<WalkinLocation[]> {
   try {
-    const res = await fetch('https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/627147e05ac6dcb9c43b723d56b41aed300bbddb/healthpointLocations.json');
+    const res = await fetch('https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/609d6684497b49d4039eedc3361c80ac75410e02/healthpointLocations.json');
     const data = await res.json();
     return data;
   } catch (e) {
