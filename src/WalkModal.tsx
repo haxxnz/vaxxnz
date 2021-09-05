@@ -1,26 +1,24 @@
+import { Fragment } from "react";
 import { Button, KIND } from "baseui/button";
-import { BaseInput } from "baseui/input";
 import { Modal } from "baseui/modal";
-import { useCallback, useState } from "react";
 import "./App.css";
+import { WalkinLocation } from './WalkSection';
 
 type Props = {
-    walkIsOpen: boolean;
-    setWalkIsOpen: (isOpen: boolean) => void;
+    clearSelectedLocation: () => void;
+    location?: WalkinLocation;
 };
 
-const WalkModal = (props: Props) => {
-    const [loading] = useState<boolean>(false);
-    const { setWalkIsOpen } = props;
-
-    const close = useCallback(() => {
-        setWalkIsOpen(false);
-    }, [setWalkIsOpen]);
+const WalkModal = ({ clearSelectedLocation, location }: Props) => {
+    const close = () => clearSelectedLocation();
+    if (location == null) {
+        return null;
+    }
 
     return (
         <Modal
             onClose={close}
-            isOpen={!!props.walkIsOpen}
+            isOpen={!!location}
             unstable_ModalBackdropScroll={true}
             overrides={{
                 Root: { style: { zIndex: 1500 } },
@@ -42,12 +40,11 @@ const WalkModal = (props: Props) => {
                     marginBottom: "1rem",
                 }}
             >
-                Henderson Vaccination Centre
+                {location.name}
             </h1>
             <p
                 style={{
                     marginTop: "1rem",
-
                     paddingTop: "1.25rem",
                     marginBottom: "0.5rem",
                     marginRight: "1rem",
@@ -57,9 +54,7 @@ const WalkModal = (props: Props) => {
                     paddingBottom: "1.5rem",
                 }}
             >
-                This vaccination centre allows you to walk up and get a
-                vaccination, no booking necessary. Just remember to maintain
-                social distancing, and bring a mask!
+                {location.description}
             </p>
             <p
                 style={{
@@ -73,9 +68,16 @@ const WalkModal = (props: Props) => {
             >
                 <strong> Hours</strong>
                 <br />
-                Mon - fri 8am - 4.30pm (first appointments at 9am, last
-                appointments at 3.30pm)
-                <br /> Sat 9:00 AM – 2:00 PM
+                {
+                    location.hours.map(((openTime, index) => {
+                        return (
+                            <Fragment key={index}>
+                                {openTime}
+                                <br />
+                            </Fragment>
+                        );
+                    }))
+                }
             </p>
             <p
                 style={{
@@ -89,7 +91,7 @@ const WalkModal = (props: Props) => {
             >
                 <strong> Phone</strong>
                 <br />
-                <a href="tel:">09 123 123</a>
+                {location.phone && <a href={`tel:${location.phone}`}>{location.phone}</a>}
             </p>
             <p
                 style={{
@@ -101,7 +103,7 @@ const WalkModal = (props: Props) => {
             >
                 <strong> Address</strong>
                 <br />
-                Henderson Vaccination Centre, 28 Catherine Street, Henderson
+                {location.address}
             </p>
             <Button
                 overrides={{

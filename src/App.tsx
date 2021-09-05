@@ -20,6 +20,7 @@ import BookingsModal from "./BookingsModal";
 import WalkModal from "./WalkModal";
 import RadiusSelect from "./RadiusSelect";
 import { useSearchParams } from "./urlUtils";
+import { WalkInSection } from './WalkSection';
 
 function sum(array: number[]) {
     return array.reduce((a, b) => a + b, 0);
@@ -38,7 +39,6 @@ function App() {
     const [isOpen, setIsOpen] = React.useState<DateLocationsPair | null>(null);
     const [locationIsOpen, setLocationIsOpen] = React.useState<boolean>(false);
 
-    const [walkIsOpen, setWalkIsOpen] = React.useState<boolean>(false);
 
     const [radiusKm, setRadiusKm] = useState(10);
     const [coords, setCoords] = useState<[number, number]>([
@@ -88,9 +88,7 @@ function App() {
     const openLocation = () => {
         setLocationIsOpen(true);
     };
-    const openWalk = () => {
-        setWalkIsOpen(true);
-    };
+
 
     const onClickShare = async () => {
         const shareData = {
@@ -142,10 +140,6 @@ function App() {
                     setLocationIsOpen={setLocationIsOpen}
                     setCoords={setCoords}
                     setPlaceName={setPlaceName}
-                />
-                <WalkModal
-                    walkIsOpen={walkIsOpen}
-                    setWalkIsOpen={setWalkIsOpen}
                 />
 
                 <section className="App-header">
@@ -199,12 +193,12 @@ function App() {
                                 {lastUpdateTime.getFullYear() === 1970
                                     ? "..."
                                     : formatDistance(
-                                          lastUpdateTime,
-                                          new Date(),
-                                          {
-                                              addSuffix: true,
-                                          }
-                                      )}
+                                        lastUpdateTime,
+                                        new Date(),
+                                        {
+                                            addSuffix: true,
+                                        }
+                                    )}
                             </p>
                         </section>
 
@@ -221,7 +215,7 @@ function App() {
                                 }}
                             >
                                 {coords[0] === defaultLat &&
-                                coords[1] === defaultLng
+                                    coords[1] === defaultLng
                                     ? "Set your Location"
                                     : "Location set"}
                             </Button>
@@ -231,103 +225,7 @@ function App() {
                             />
                         </div>
                     </HeaderMain>
-                    <div>
-                        <h2 className="WalkSection">
-                            Walk-in centres - Open right now
-                        </h2>
-                        <WalkContainer>
-                            <WalkBox onClick={() => openWalk()}>
-                                <section>
-                                    <div>
-                                        <h3>Henderson Vaccination Centre</h3>
-                                        <p>400m away</p>
-                                    </div>
-
-                                    <p>Open today 9am - 5pm</p>
-                                </section>
-                                <img
-                                    className="Chevron"
-                                    src="./arrow-right-1.svg"
-                                    alt=""
-                                />
-                            </WalkBox>
-                            <WalkBox>
-                                <section>
-                                    <div>
-                                        <h3>Henderson Vaccination Centre</h3>
-                                        <p>400m away</p>
-                                    </div>
-
-                                    <p>Open today 9am - 5pm</p>
-                                </section>
-                                <img
-                                    className="Chevron"
-                                    src="./arrow-right-1.svg"
-                                    alt=""
-                                />
-                            </WalkBox>
-                            <WalkBox>
-                                <section>
-                                    <div>
-                                        <h3>Henderson Vaccination Centre</h3>
-                                        <p>400m away</p>
-                                    </div>
-
-                                    <p>Open today 9am - 5pm</p>
-                                </section>
-                                <img
-                                    className="Chevron"
-                                    src="./arrow-right-1.svg"
-                                    alt=""
-                                />
-                            </WalkBox>
-                            <WalkBox>
-                                <section>
-                                    <div>
-                                        <h3>Henderson Vaccination Centre</h3>
-                                        <p>400m away</p>
-                                    </div>
-
-                                    <p>Open today 9am - 5pm</p>
-                                </section>
-                                <img
-                                    className="Chevron"
-                                    src="./arrow-right-1.svg"
-                                    alt=""
-                                />
-                            </WalkBox>
-                            <WalkBox>
-                                <section>
-                                    <div>
-                                        <h3>Henderson Vaccination Centre</h3>
-                                        <p>400m away</p>
-                                    </div>
-
-                                    <p>Open today 9am - 5pm</p>
-                                </section>
-                                <img
-                                    className="Chevron"
-                                    src="./arrow-right-1.svg"
-                                    alt=""
-                                />
-                            </WalkBox>
-                            <WalkBox>
-                                <section>
-                                    <div>
-                                        <h3>Henderson Vaccination Centre</h3>
-                                        <p>400m away</p>
-                                    </div>
-
-                                    <p>Open today 9am - 5pm</p>
-                                </section>
-                                <img
-                                    className="Chevron"
-                                    src="./arrow-right-1.svg"
-                                    alt=""
-                                />
-                            </WalkBox>
-                        </WalkContainer>
-                    </div>
+                    <WalkInSection />
                     {loading ? (
                         <div
                             style={{
