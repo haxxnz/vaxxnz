@@ -89,24 +89,27 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                     }
                 )}
             </p>
-            <p
-                style={{
-                    marginTop: "1rem",
-                    marginBottom: "0.5rem",
-                    marginRight: "1rem",
-                    fontSize: "1.25rem",
-                    borderBottom: "1px solid lightgray",
-                    paddingBottom: "1.5rem",
-                }}
-            >
-                <strong> Phone</strong>
-                <br />
-                {location.telephone && (
+
+            {location.telephone && (
+                <p
+                    style={{
+                        marginTop: "1rem",
+                        marginBottom: "0.5rem",
+                        marginRight: "1rem",
+                        fontSize: "1.25rem",
+                        borderBottom: "1px solid lightgray",
+                        paddingBottom: "1.5rem",
+                    }}
+                >
+                    <strong> Phone</strong>
+                    <br />
+
                     <a href={`tel:${location.telephone}`}>
                         {location.telephone}
                     </a>
-                )}
-            </p>
+                </p>
+            )}
+
             <p
                 style={{
                     marginTop: "1rem",
