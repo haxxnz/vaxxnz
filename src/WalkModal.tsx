@@ -42,7 +42,8 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
             >
                 {location.name}
             </h1>
-            <p
+
+            {/* <p
                 style={{
                     marginTop: "1rem",
                     paddingTop: "1.25rem",
@@ -63,7 +64,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                         </Fragment>
                     );
                 })}
-            </p>
+            </p> */}
             {location.opennningHours.schedule && (
                 <p
                     style={{
@@ -72,7 +73,9 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                         marginRight: "1rem",
                         fontSize: "1.25rem",
                         borderBottom: "1px solid lightgray",
+                        borderTop: "1px solid lightgray",
                         paddingBottom: "1.5rem",
+                        paddingTop: "1rem",
                         lineHeight: "1.5",
                     }}
                 >
@@ -92,11 +95,10 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                 </p>
             )}
 
-
             {Object.entries(location.opennningHours.exceptions).map(
                 ([key, value], index) => {
                     return (
-                        <div style={{ marginTop: '1rem' }}>
+                        <div style={{ marginTop: "1rem", lineHeight: "1.5" }}>
                             <strong>{key}</strong>
                             <br />
 
@@ -107,7 +109,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
             )}
             {location.opennningHours.notes.map((note, index) => {
                 return (
-                    <div style={{ marginTop: '1rem' }}>
+                    <div style={{ marginTop: "1rem" }}>
                         <small key={index}>{note}</small>
                     </div>
                 );
@@ -116,12 +118,13 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
             {location.telephone && (
                 <p
                     style={{
-                        marginTop: "1rem",
+                        marginTop: "1.5rem",
                         marginBottom: "0.5rem",
                         marginRight: "1rem",
                         fontSize: "1.25rem",
-                        borderBottom: "1px solid lightgray",
-                        paddingBottom: "1.5rem",
+
+                        paddingTop: "1rem",
+                        borderTop: "1px solid lightgray",
                         lineHeight: "1.5",
                     }}
                 >
@@ -139,7 +142,9 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                     marginTop: "1rem",
                     marginBottom: "0.5rem",
                     fontSize: "1.25rem",
-                    paddingBottom: "1.5rem",
+                    paddingTop: "1.5rem",
+                    paddingBottom: "1rem",
+                    borderTop: "1px solid lightgray",
                     lineHeight: "1.5",
                 }}
             >
