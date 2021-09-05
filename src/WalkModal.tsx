@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import "./App.css";
-import { WalkinLocation } from './getData';
+import { WalkinLocation } from "./getData";
 
 type Props = {
     clearSelectedLocation: () => void;
@@ -52,17 +52,17 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                     borderTop: "1px solid lightgray",
                     borderBottom: "1px solid lightgray",
                     paddingBottom: "1.5rem",
+                    lineHeight: "1.5",
                 }}
             >
-                {
-                    location.instructionLis.map((instruction, index) => {
-                        return (
-                            <Fragment key={index}>
-                                {instruction}
-                                <br />
-                            </Fragment>
-                        );
-                    })}
+                {location.instructionLis.map((instruction, index) => {
+                    return (
+                        <Fragment key={index}>
+                            {instruction}
+                            <br />
+                        </Fragment>
+                    );
+                })}
             </p>
             <p
                 style={{
@@ -72,20 +72,22 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                     fontSize: "1.25rem",
                     borderBottom: "1px solid lightgray",
                     paddingBottom: "1.5rem",
+                    lineHeight: "1.5",
                 }}
             >
                 <strong> Hours</strong>
                 <br />
-                {
-                    Object.keys(location.opennningHours.schedule).map(((openDate, index) => {
+                {Object.keys(location.opennningHours.schedule).map(
+                    (openDate, index) => {
                         return (
                             <Fragment key={index}>
-                                {openDate} {' '} {location.opennningHours.schedule[openDate]}
+                                {openDate}{" "}
+                                {location.opennningHours.schedule[openDate]}
                                 <br />
                             </Fragment>
                         );
-                    }))
-                }
+                    }
+                )}
             </p>
             <p
                 style={{
@@ -99,7 +101,11 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
             >
                 <strong> Phone</strong>
                 <br />
-                {location.telephone && <a href={`tel:${location.telephone}`}>{location.telephone}</a>}
+                {location.telephone && (
+                    <a href={`tel:${location.telephone}`}>
+                        {location.telephone}
+                    </a>
+                )}
             </p>
             <p
                 style={{
@@ -107,6 +113,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                     marginBottom: "0.5rem",
                     fontSize: "1.25rem",
                     paddingBottom: "1.5rem",
+                    lineHeight: "1.5",
                 }}
             >
                 <strong> Address</strong>
@@ -128,7 +135,9 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                 kind={KIND.primary}
                 onClick={() => {
                     // Also close the modal to avoid confusing stuff
-                    window.open(`https://www.google.com/maps/dir/?api=1&saddr=My+Location&destination=${location.address}`);
+                    window.open(
+                        `https://www.google.com/maps/dir/?api=1&saddr=My+Location&destination=${location.address}`
+                    );
                     close();
                 }}
             >
