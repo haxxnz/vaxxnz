@@ -92,6 +92,27 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                 </p>
             )}
 
+
+            {Object.entries(location.opennningHours.exceptions).map(
+                ([key, value], index) => {
+                    return (
+                        <div style={{ marginTop: '1rem' }}>
+                            <strong>{key}</strong>
+                            <br />
+
+                            <p key={index}>{value}</p>
+                        </div>
+                    );
+                }
+            )}
+            {location.opennningHours.notes.map((note, index) => {
+                return (
+                    <div style={{ marginTop: '1rem' }}>
+                        <small key={index}>{note}</small>
+                    </div>
+                );
+            })}
+
             {location.telephone && (
                 <p
                     style={{

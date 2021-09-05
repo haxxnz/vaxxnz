@@ -94,6 +94,7 @@ export async function getMyCalendar(
 export interface OpennningHours {
   schedule: { [date: string]: string; };
   exceptions: { [date: string]: string; };
+  notes: string[]
 }
 
 export interface WalkinLocation {
@@ -111,7 +112,7 @@ export interface WalkinLocation {
 
 export async function getWalkinData(): Promise<WalkinLocation[]> {
   try {
-    const res = await fetch('https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/healthpoint/healthpointLocations.json');
+    const res = await fetch('https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/627147e05ac6dcb9c43b723d56b41aed300bbddb/healthpointLocations.json');
     const data = await res.json();
     return data;
   } catch (e) {
