@@ -16,7 +16,7 @@ export type WalkinLocation = {
 const mockWalkInLocations: WalkinLocation[] = [{
   name: 'Henderson Vaccination Centre',
   description: 'This vaccination centre allows you to walk up and get a vaccination, no booking necessary. Just remember to maintain social distancing, and bring a mask!',
-  address: 'Henderson Vaccination Centre, 28 Catherine Street, Henderson',
+  address: '28 Catherine Street, Henderson',
   hours: [`Mon - fri 8am - 4.30pm (first appointments at 9am, last appointments at 3.30pm)`, `Sat 9:00 AM – 2:00 PM`],
   phone: '09 123 123',
   openHourToday: 'Open today 9am - 5pm',
@@ -25,7 +25,7 @@ const mockWalkInLocations: WalkinLocation[] = [{
 {
   name: 'Henderson Vaccination Centre',
   description: 'This vaccination centre allows you to walk up and get a vaccination, no booking necessary. Just remember to maintain social distancing, and bring a mask!',
-  address: 'Henderson Vaccination Centre, 28 Catherine Street, Henderson',
+  address: '28 Catherine Street, Henderson',
   hours: [`Mon - fri 8am - 4.30pm (first appointments at 9am, last appointments at 3.30pm)`, `Sat 9:00 AM – 2:00 PM`],
   phone: '09 123 123',
   openHourToday: 'Open today 9am - 5pm',
@@ -34,7 +34,7 @@ const mockWalkInLocations: WalkinLocation[] = [{
 {
   name: 'Henderson Vaccination Centre',
   description: 'This vaccination centre allows you to walk up and get a vaccination, no booking necessary. Just remember to maintain social distancing, and bring a mask!',
-  address: 'Henderson Vaccination Centre, 28 Catherine Street, Henderson',
+  address: '28 Catherine Street, Henderson',
   hours: [`Mon - fri 8am - 4.30pm (first appointments at 9am, last appointments at 3.30pm)`, `Sat 9:00 AM – 2:00 PM`],
   phone: '09 123 123',
   openHourToday: 'Open today 9am - 5pm',
@@ -43,7 +43,7 @@ const mockWalkInLocations: WalkinLocation[] = [{
 {
   name: 'Henderson Vaccination Centre',
   description: 'This vaccination centre allows you to walk up and get a vaccination, no booking necessary. Just remember to maintain social distancing, and bring a mask!',
-  address: 'Henderson Vaccination Centre, 28 Catherine Street, Henderson',
+  address: '28 Catherine Street, Henderson',
   hours: [`Mon - fri 8am - 4.30pm (first appointments at 9am, last appointments at 3.30pm)`, `Sat 9:00 AM – 2:00 PM`],
   phone: '09 123 123',
   openHourToday: '9am - 5pm',

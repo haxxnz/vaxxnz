@@ -118,7 +118,11 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                     },
                 }}
                 kind={KIND.primary}
-                onClick={close}
+                onClick={()=> {
+                    // Also close the modal to avoid confusing stuff
+                    window.open(`https://www.google.com/maps/dir/?api=1&saddr=My+Location&destination=${location.address}`)
+                    close()
+                }}
             >
                 Get directions
             </Button>
