@@ -86,10 +86,10 @@ const BookingsModal = (props: Props) => {
                         <ol>
                             <li>Find an available booking time</li>
                             <li>
-                                Click on book a meeting - this will take you to
-                                bookmyvaccine.nz
+                                Click on the Make a Booking button - this will
+                                take you to bookmyvaccine.nz
                             </li>
-                            <li>Enter your peronal details</li>
+                            <li>Enter your personal details</li>
                             <li>Find the same branch</li>
                         </ol>
 
