@@ -1,136 +1,114 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Spinner } from 'baseui/spinner';
+import { getWalkinData, WalkinLocation } from './getData';
 import { WalkBox, WalkContainer } from "./VaxComponents";
 import WalkModal from "./WalkModal";
+import { getDistanceKm } from './distanceUtils';
 
-export type WalkinLocation = {
-    name: string;
-    hours: string[];
-    phone?: string;
-    address: string;
-    description: string;
-    openHourToday?: string;
-    distanceAwayInMeters: number;
-};
+export interface Props {
+  lat: number;
+  lng: number;
+  radiusKm: number;
+}
 
-// TODO: replace this with legit data
-const mockWalkInLocations: WalkinLocation[] = [
-    {
-        name: "Henderson Vaccination Centre",
-        description:
-            "This vaccination centre allows you to walk up and get a vaccination, no booking necessary. Just remember to maintain social distancing, and bring a mask!",
-        address: "28 Catherine Street, Henderson",
-        hours: [
-            `Mon - fri 8am - 4.30pm (first appointments at 9am, last appointments at 3.30pm)`,
-            `Sat 9:00 AM – 2:00 PM`,
-        ],
-        phone: "09 123 123",
-        openHourToday: "Open today 9am - 5pm",
-        distanceAwayInMeters: 400,
-    },
-    {
-        name: "Henderson Vaccination Centre",
-        description:
-            "This vaccination centre allows you to walk up and get a vaccination, no booking necessary. Just remember to maintain social distancing, and bring a mask!",
-        address: "28 Catherine Street, Henderson",
-        hours: [
-            `Mon - fri 8am - 4.30pm (first appointments at 9am, last appointments at 3.30pm)`,
-            `Sat 9:00 AM – 2:00 PM`,
-        ],
-        phone: "09 123 123",
-        openHourToday: "Open today 9am - 5pm",
-        distanceAwayInMeters: 400,
-    },
-    {
-        name: "Henderson Vaccination Centre",
-        description:
-            "This vaccination centre allows you to walk up and get a vaccination, no booking necessary. Just remember to maintain social distancing, and bring a mask!",
-        address: "28 Catherine Street, Henderson",
-        hours: [
-            `Mon - fri 8am - 4.30pm (first appointments at 9am, last appointments at 3.30pm)`,
-            `Sat 9:00 AM – 2:00 PM`,
-        ],
-        phone: "09 123 123",
-        openHourToday: "Open today 9am - 5pm",
-        distanceAwayInMeters: 400,
-    },
-    {
-        name: "Henderson Vaccination Centre",
-        description:
-            "This vaccination centre allows you to walk up and get a vaccination, no booking necessary. Just remember to maintain social distancing, and bring a mask!",
-        address: "28 Catherine Street, Henderson",
-        hours: [
-            `Mon - fri 8am - 4.30pm (first appointments at 9am, last appointments at 3.30pm)`,
-            `Sat 9:00 AM – 2:00 PM`,
-        ],
-        phone: "09 123 123",
-        openHourToday: "9am - 5pm",
-        distanceAwayInMeters: 400,
-    },
-];
+export function WalkInSection({ lat, lng, radiusKm }: Props) {
 
-export function WalkInSection() {
-    const [selectedLocationIndex, setSelectedLocation] = useState<number>();
+  const [selectedLocationIndex, setSelectedLocation] = useState<number>();
+  const [walkInLocations, setWalkinLocation] = useState<WalkinLocation[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  useEffect(() => {
+    setLoading(true);
+    getWalkinData()
+      .then(walkIn => {
+        const matchedFilter = walkIn.filter(({ lat: locationLat, lng: locationLng, isOpenToday }) => {
+          const distanceInKm = locationLat && locationLng && getDistanceKm(lat, lng, locationLat, locationLng);
+          return (distanceInKm < radiusKm) && isOpenToday
+        });
+        setWalkinLocation(matchedFilter);
+      })
+      .finally(() => setLoading(false));
+  }, [lat, lng, radiusKm]);
+  const openModal = (locationIndex: number) => {
+    setSelectedLocation(locationIndex);
+  };
 
-    const openModal = (locationIndex: number) => {
-        setSelectedLocation(locationIndex);
-    };
+  const clearSelectedLocation = () => setSelectedLocation(undefined);
 
-    const clearSelectedLocation = () => setSelectedLocation(undefined);
-
-    return (
-        <div>
-            <WalkModal
-                clearSelectedLocation={clearSelectedLocation}
-                location={
-                    selectedLocationIndex !== undefined
-                        ? mockWalkInLocations[selectedLocationIndex]
-                        : undefined
-                }
-            />
-            <h2 className="WalkSection">
-                Walk-in centres <i className="StupidWalkHack">- Open today</i>
-            </h2>
-            {mockWalkInLocations.length === 0 && (
-                <div>
-                    someone please come up with something that I can show when
-                    no walk in location found. XOXO
-                </div>
-            )}
-            <WalkContainer>
-                {mockWalkInLocations.map(
-                    (
-                        {
-                            name,
-                            distanceAwayInMeters: distanceAway,
-                            openHourToday,
-                        },
-                        index
-                    ) => {
-                        return (
-                            <WalkBox
-                                onClick={() => openModal(index)}
-                                key={index}
-                            >
-                                <section>
-                                    <div>
-                                        <h3>{name}</h3>
-                                        <p>{distanceAway}m away</p>
-                                    </div>
-
-                                    {openHourToday && (
-                                        <p>Open today {openHourToday}</p>
-                                    )}
-                                </section>
-                                <img
-                                    className="Chevron"
-                                    src="./arrow-right-1.svg"
-                                    alt=""
-                                />
-                            </WalkBox>
-                        );
-                    }
-                )}
-            </WalkContainer>
+  return (
+    <div>
+      <WalkModal
+        clearSelectedLocation={clearSelectedLocation}
+        location={
+          selectedLocationIndex !== undefined
+            ? walkInLocations[selectedLocationIndex]
+            : undefined
+        }
+      />
+      <h2 className="WalkSection">
+        Walk-in centres <i className="StupidWalkHack">- Open today</i>
+      </h2>
+      {loading && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "1rem",
+          }}
+        >
+          <Spinner color="black" />
+          <div
+            style={{
+              marginLeft: "1rem",
+              fontSize: "1.5rem",
+            }}
+          >
+            Loading...
+          </div>
         </div>
-    );
+      )
+      }
+      {walkInLocations.length === 0 && !loading && (
+        <div>
+          someone please come up with something that I can show when
+          no walk in location found. Looking at you, WALTER LIM XOXOXO
+        </div>
+      )}
+      <WalkContainer>
+        {walkInLocations.map(
+          (
+            {
+              name,
+              isOpenToday,
+              lat: locationLat, lng: locationLng,
+            },
+            index
+          ) => {
+            return (
+              <WalkBox
+                onClick={() => openModal(index)}
+                key={index}
+              >
+                <section>
+                  <div>
+                    <h3>{name}</h3>
+                    {locationLat && locationLng && <p>{Math.round(getDistanceKm(lat, lng, locationLat, locationLng) * 100)/ 100}Km away</p>}
+                  </div>
+
+                  {isOpenToday && (
+                    <p>Open today </p>
+                  )}
+                </section>
+                <img
+                  className="Chevron"
+                  src="./arrow-right-1.svg"
+                  alt=""
+                />
+              </WalkBox>
+            );
+          }
+        )}
+      </WalkContainer>
+    </div>
+  );
 }
