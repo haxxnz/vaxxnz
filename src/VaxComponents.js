@@ -22,12 +22,12 @@ border: 1px solid lightgray;
   width: auto;
   align-self: center;
 }
->h1 {
+h1 {
   text-align: left;
   margin: 0;
   align-self: center;
-  font-size: 1.7rem;
-  font-weight: 400;
+  font-size: 2rem;
+  font-weight: 600;
 }
 >section {
   flex-direction: column;
