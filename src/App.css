@@ -61,3 +61,8 @@ h2.WalkSection {
     font-size: 1.5rem;
     font-weight: 600;
 }
+
+i.StupidWalkHack {
+    font-weight: 400;
+    font-style: normal;
+}

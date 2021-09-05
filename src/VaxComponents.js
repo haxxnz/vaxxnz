@@ -263,51 +263,48 @@ export const WalkContainer = styled.div`
 `;
 
 export const WalkBox = styled.button`
-        box-sizing: border-box;
-        font-family: inherit;
-        min-height: 144px;
-        height: 100%;
-        flex: 1;
-        min-width: 320px;
+    box-sizing: border-box;
+    font-family: inherit;
+    min-height: 144px;
+    height: 100%;
+    flex: 1;
+    min-width: 320px;
 
-        text-align: left;
-        background-color: white;
-        border: none;
-        margin: 0;
-        padding: 1rem;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+    text-align: left;
+    background-color: white;
+    border: none;
+    margin: 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-         :hover {
-            background-color: #e4eeff;
-            cursor: pointer;
-            h3,
-            p {
-                color: #005eca;
-            }
-        }
-
-        h3 {
-        font-size: 1.2rem;
-        font-weight: 400;
-        }
+    :hover {
+        background-color: #e4eeff;
+        cursor: pointer;
+        h3,
         p {
-            font-size: 1rem;
-            color: #333;
-        }
-        section {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
-        .Chevron {
-            width: 1.25rem;
-            height: 1.25rem;
-            align-self: center;
+            color: #005eca;
         }
     }
 
-
-    `;
+    h3 {
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+    p {
+        font-size: 1rem;
+        color: #333;
+    }
+    section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+    }
+    .Chevron {
+        width: 1.25rem;
+        height: 1.25rem;
+        align-self: center;
+    }
+`;

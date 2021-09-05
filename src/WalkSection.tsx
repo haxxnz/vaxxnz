@@ -87,7 +87,9 @@ export function WalkInSection() {
                         : undefined
                 }
             />
-            <h2 className="WalkSection">Walk-in centres - Open today</h2>
+            <h2 className="WalkSection">
+                Walk-in centres <i className="StupidWalkHack">- Open today</i>
+            </h2>
             {mockWalkInLocations.length === 0 && (
                 <div>
                     someone please come up with something that I can show when
