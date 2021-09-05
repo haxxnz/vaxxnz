@@ -7,6 +7,8 @@ import {
     CalendarContainer,
     CalendarSectionContainer,
     MonthContainer,
+    WalkContainer,
+    WalkBox,
 } from "./VaxComponents";
 
 import { DateLocationsPairsContext } from "./contexts";
@@ -14,6 +16,8 @@ import { getMyCalendar } from "./getData";
 import { DateLocationsPair } from "./types";
 import LocationModal from "./LocationModal";
 import BookingsModal from "./BookingsModal";
+
+import WalkModal from "./WalkModal";
 import RadiusSelect from "./RadiusSelect";
 import { useSearchParams } from "./urlUtils";
 
@@ -33,6 +37,8 @@ function App() {
 
     const [isOpen, setIsOpen] = React.useState<DateLocationsPair | null>(null);
     const [locationIsOpen, setLocationIsOpen] = React.useState<boolean>(false);
+
+    const [walkIsOpen, setWalkIsOpen] = React.useState<boolean>(false);
 
     const [radiusKm, setRadiusKm] = useState(10);
     const [coords, setCoords] = useState<[number, number]>([
@@ -81,6 +87,9 @@ function App() {
 
     const openLocation = () => {
         setLocationIsOpen(true);
+    };
+    const openWalk = () => {
+        setWalkIsOpen(true);
     };
 
     const onClickShare = async () => {
@@ -134,6 +143,10 @@ function App() {
                     setCoords={setCoords}
                     setPlaceName={setPlaceName}
                 />
+                <WalkModal
+                    walkIsOpen={walkIsOpen}
+                    setWalkIsOpen={setWalkIsOpen}
+                />
 
                 <section className="App-header">
                     <a href="/" className="nolink">
@@ -176,7 +189,7 @@ function App() {
                     <HeaderMain>
                         <section>
                             <h1>
-                                Available Vaccine Slots
+                                Available Vaccinations
                                 <strong>
                                     {placeName ? " near " + placeName : ""}
                                 </strong>
@@ -194,6 +207,7 @@ function App() {
                                       )}
                             </p>
                         </section>
+
                         <div>
                             <Button
                                 kind={KIND.primary}
@@ -217,7 +231,103 @@ function App() {
                             />
                         </div>
                     </HeaderMain>
+                    <div>
+                        <h2 className="WalkSection">
+                            Walk-in centres - Open right now
+                        </h2>
+                        <WalkContainer>
+                            <WalkBox onClick={() => openWalk()}>
+                                <section>
+                                    <div>
+                                        <h3>Henderson Vaccination Centre</h3>
+                                        <p>400m away</p>
+                                    </div>
 
+                                    <p>Open today 9am - 5pm</p>
+                                </section>
+                                <img
+                                    className="Chevron"
+                                    src="./arrow-right-1.svg"
+                                    alt=""
+                                />
+                            </WalkBox>
+                            <WalkBox>
+                                <section>
+                                    <div>
+                                        <h3>Henderson Vaccination Centre</h3>
+                                        <p>400m away</p>
+                                    </div>
+
+                                    <p>Open today 9am - 5pm</p>
+                                </section>
+                                <img
+                                    className="Chevron"
+                                    src="./arrow-right-1.svg"
+                                    alt=""
+                                />
+                            </WalkBox>
+                            <WalkBox>
+                                <section>
+                                    <div>
+                                        <h3>Henderson Vaccination Centre</h3>
+                                        <p>400m away</p>
+                                    </div>
+
+                                    <p>Open today 9am - 5pm</p>
+                                </section>
+                                <img
+                                    className="Chevron"
+                                    src="./arrow-right-1.svg"
+                                    alt=""
+                                />
+                            </WalkBox>
+                            <WalkBox>
+                                <section>
+                                    <div>
+                                        <h3>Henderson Vaccination Centre</h3>
+                                        <p>400m away</p>
+                                    </div>
+
+                                    <p>Open today 9am - 5pm</p>
+                                </section>
+                                <img
+                                    className="Chevron"
+                                    src="./arrow-right-1.svg"
+                                    alt=""
+                                />
+                            </WalkBox>
+                            <WalkBox>
+                                <section>
+                                    <div>
+                                        <h3>Henderson Vaccination Centre</h3>
+                                        <p>400m away</p>
+                                    </div>
+
+                                    <p>Open today 9am - 5pm</p>
+                                </section>
+                                <img
+                                    className="Chevron"
+                                    src="./arrow-right-1.svg"
+                                    alt=""
+                                />
+                            </WalkBox>
+                            <WalkBox>
+                                <section>
+                                    <div>
+                                        <h3>Henderson Vaccination Centre</h3>
+                                        <p>400m away</p>
+                                    </div>
+
+                                    <p>Open today 9am - 5pm</p>
+                                </section>
+                                <img
+                                    className="Chevron"
+                                    src="./arrow-right-1.svg"
+                                    alt=""
+                                />
+                            </WalkBox>
+                        </WalkContainer>
+                    </div>
                     {loading ? (
                         <div
                             style={{

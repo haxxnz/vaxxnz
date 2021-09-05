@@ -238,3 +238,65 @@ export const VaccineCentre = styled.section`
         }
     }
 `;
+export const WalkContainer = styled.div`
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    margin: 0;
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: lightgray;
+    border-bottom: 1px solid lightgray;
+    gap: 1px;
+    transition: all 0.3s;
+
+    z-index: 1;
+`;
+
+export const WalkBox = styled.button`
+        box-sizing: border-box;
+        font-family: inherit;
+        min-height: 144px;
+        height: 100%;
+        flex: 1;
+        min-width: 320px;
+
+        text-align: left;
+        background-color: white;
+        border: none;
+        margin: 0;
+        padding: 1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+         :hover {
+            background-color: #e4eeff;
+            cursor: pointer;
+            h3,
+            p {
+                color: #005eca;
+            }
+        }
+
+        h3 {
+        font-size: 1.2rem;
+        font-weight: 400;
+        }
+        p {
+            font-size: 1rem;
+            color: #333;
+        }
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .Chevron {
+            width: 1.25rem;
+            height: 1.25rem;
+            align-self: center;
+        }
+    }
+    `;
