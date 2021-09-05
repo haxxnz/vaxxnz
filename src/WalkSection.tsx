@@ -93,6 +93,7 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
                 <div>
                     someone please come up with something that I can show when
                     no walk in location found. Looking at you, WALTER LIM XOXOXO
+                    <br /> Minh pls ill design something soon im tired
                 </div>
             )}
             <WalkContainer>
@@ -124,7 +125,7 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
                                                         locationLng
                                                     ) * 10
                                                 ) / 10}
-                                                Km away
+                                                KM away
                                             </p>
                                         )}
                                     </div>
