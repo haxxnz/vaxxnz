@@ -36,7 +36,7 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
   };
 
   return (
-    <div>
+    <div style={walkInLocations.length === 0 && !loading ? {display: 'none'} : {}}>
       <WalkModal
         clearSelectedLocation={clearSelectedLocation}
         location={
@@ -64,13 +64,6 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
           >
             Loading...
           </div>
-        </div>
-      )}
-      {walkInLocations.length === 0 && !loading && (
-        <div>
-          someone please come up with something that I can show when no walk in
-          location found. Looking at you, WALTER LIM XOXOXO
-          <br /> Minh pls ill design something soon im tired
         </div>
       )}
       <WalkContainer>
