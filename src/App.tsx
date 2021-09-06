@@ -2,7 +2,6 @@ import { Button, KIND } from "baseui/button";
 import { Spinner } from "baseui/spinner";
 import { formatDistance, parse } from "date-fns";
 import React, { useCallback, useContext, useEffect, useState } from "react";
-import { useInterval } from "react-interval-hook";
 import {
     HeaderMain,
     CalendarContainer,
@@ -18,9 +17,6 @@ import BookingsModal from "./BookingsModal";
 import RadiusSelect from "./RadiusSelect";
 import { useSearchParams } from "./urlUtils";
 import filterOldDates from "./filterOldDates";
-
-const FILTER_DATES_INTERVAL_IN_SECONDS = 30;
-const GET_DATA_INTERVAL_IN_MINUTES = 30;
 
 function sum(array: number[]) {
     return array.reduce((a, b) => a + b, 0);
@@ -51,9 +47,10 @@ function App() {
         setPlaceName(defaultPlaceName);
     }, [defaultLat, defaultLng, defaultPlaceName]);
 
-    const { dateLocationsPairs, setDateLocationsPairs } = useContext(
+    const { dateLocationsPairs: dateLocationsPairsUnfiltered, setDateLocationsPairs } = useContext(
         DateLocationsPairsContext
     );
+    const dateLocationsPairs = filterOldDates(dateLocationsPairsUnfiltered)
     const [lastUpdateTime, setLastUpdateTime] = useState(new Date(0));
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<Error | null>(null);
@@ -68,8 +65,7 @@ function App() {
         setError(null);
         try {
             const data = await getMyCalendar(coords[0], coords[1], radiusKm);
-            const filteredLocationsPairs = filterOldDates(data.dateLocationsPairs)
-            setDateLocationsPairs(filteredLocationsPairs);
+            setDateLocationsPairs(data.dateLocationsPairs);
             setLastUpdateTime(
                 data.oldestLastUpdatedTimestamp === Infinity
                     ? new Date(0)
@@ -120,17 +116,6 @@ function App() {
         arrayToPush.push(dateLocationsPair);
         byMonth.set(month, arrayToPush);
     });
-
-    // Get new data every interval
-    useInterval(() => {
-        loadCalendar();
-    }, 60000 * GET_DATA_INTERVAL_IN_MINUTES);
-
-    // Filter old dates every interval
-    useInterval(() => {
-        const newLocationsPairs = filterOldDates(dateLocationsPairs);
-        setDateLocationsPairs(newLocationsPairs);
-    }, 1000 * FILTER_DATES_INTERVAL_IN_SECONDS);
 
     useEffect(() => {
         loadCalendar();
