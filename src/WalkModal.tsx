@@ -161,6 +161,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
             ([key, value], index) => {
               return (
                 <div
+                  key={index}
                   style={{
                     marginTop: "1rem",
                     lineHeight: "1.5",
@@ -176,8 +177,8 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
           )}
           {location.opennningHours.notes.map((note, index) => {
             return (
-              <div style={{ marginTop: "1rem" }}>
-                <small key={index}>{note}</small>
+              <div key={index} style={{ marginTop: "1rem" }}>
+                <small>{note}</small>
               </div>
             );
           })}
