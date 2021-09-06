@@ -99,7 +99,7 @@ export const MonthContainer = styled.section`
     display: grid;
     box-sizing: border-box;
     grid-template-columns: repeat(7, 1fr);
-    background-color: #f9f9f9;
+    background-color: lightgray;
     border-bottom: 1px solid lightgray;
     gap: 1px;
     transition: all 0.3s;
