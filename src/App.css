@@ -130,4 +130,12 @@ button.WalkSeeMore:hover {
   background: #e4eeff;
   cursor: pointer;
 }
+
+ul.NoticeList {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.NoticeList li {
+	margin-bottom: 20px;
 }

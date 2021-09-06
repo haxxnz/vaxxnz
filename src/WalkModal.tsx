@@ -4,6 +4,7 @@ import { Modal } from "baseui/modal";
 import "./App.css";
 import { WalkinLocation } from "./getData";
 import { ModalGrid } from "./VaxComponents";
+import { NoticeList } from "./NoticeList";
 
 type Props = {
   clearSelectedLocation: () => void;
@@ -88,6 +89,8 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
           >
             Cancel
           </Button>
+
+          <NoticeList />
         </div>
         <div style={{ height: "100%" }}>
           {/* <p
