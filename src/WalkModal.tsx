@@ -200,10 +200,10 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
               );
             }
           )}
-          {location.opennningHours.notes.map((note, index) => {
+          {location.opennningHours.notesHtml.map((noteHtml, index) => {
             return (
               <div key={index} style={{ marginTop: "1rem" }}>
-                <small>{note}</small>
+                <small key={index} dangerouslySetInnerHTML={{__html: noteHtml}}></small>
               </div>
             );
           })}

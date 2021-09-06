@@ -94,7 +94,7 @@ export async function getMyCalendar(
 export interface OpennningHours {
   schedule: { [date: string]: string; };
   exceptions: { [date: string]: string; };
-  notes: string[]
+  notesHtml: string[]
 }
 
 export interface WalkinLocation {
