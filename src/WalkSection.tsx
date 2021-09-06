@@ -45,7 +45,7 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
             : undefined
         }
       />
-      <h2 className="WalkSection">Walk-in &amp; Drive-through Locations </h2>
+      <h2 className="WalkSection">Walk-in &amp; Drive-thru Vaccinations<strong> - Open Today</strong></h2>
       {loading && (
         <div
           style={{
@@ -78,7 +78,7 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
           .slice(0, currentView)
           .map(
             (
-              { name, isOpenToday, lat: locationLat, lng: locationLng },
+              { name, isOpenToday, lat: locationLat, lng: locationLng, openTodayHours },
               index
             ) => {
               return (
@@ -97,7 +97,7 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
                       )}
                     </div>
 
-                    {isOpenToday && <p>Open today </p>}
+                    {isOpenToday && <p>Open <span>{openTodayHours}</span></p>}
                   </section>
                   <img className="Chevron" src="./arrow-right-1.svg" alt="" />
                 </WalkBox>
@@ -122,16 +122,15 @@ function filterWalkInLocation(
   radiusKm: number
 ) {
   const matchedFilter = walkIn.filter(
-    ({ lat: locationLat, lng: locationLng, isOpenToday, instructionLis }) => {
+    ({ lat: locationLat, lng: locationLng, isOpenToday, instructionLis: bps }) => {
       const distanceInKm =
         locationLat &&
         locationLng &&
         getDistanceKm(lat, lng, locationLat, locationLng);
 
-      const walkInOrDriveThru =
-        instructionLis.includes("Walk in") ||
-        instructionLis.includes("Drive through");
-      return distanceInKm < radiusKm && isOpenToday && walkInOrDriveThru;
+      const filterBoolean = (bps.includes('Walk in') || bps.includes('Drive through')) && !(bps.includes('Eligible GP enrolled patients only') || bps.includes('By invitation only'))
+
+      return distanceInKm < radiusKm && isOpenToday && filterBoolean;
     }
   );
   matchedFilter.sort(

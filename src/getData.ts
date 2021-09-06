@@ -103,6 +103,7 @@ export interface WalkinLocation {
   name: string;
   branch: string;
   isOpenToday: boolean;
+  openTodayHours: string;
   instructionLis: string[];
   address: string;
   faxNumber: string;
