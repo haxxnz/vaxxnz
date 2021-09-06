@@ -19,6 +19,9 @@ import RadiusSelect from "./RadiusSelect";
 import { useSearchParams } from "./urlUtils";
 import filterOldDates from "./filterOldDates";
 
+const FILTER_DATES_INTERVAL_IN_SECONDS = 30;
+const GET_DATA_INTERVAL_IN_MINUTES = 30;
+
 function sum(array: number[]) {
     return array.reduce((a, b) => a + b, 0);
 }
@@ -118,10 +121,16 @@ function App() {
         byMonth.set(month, arrayToPush);
     });
 
+    // Get new data every interval
+    useInterval(() => {
+        loadCalendar();
+    }, 60000 * GET_DATA_INTERVAL_IN_MINUTES);
+
+    // Filter old dates every interval
     useInterval(() => {
         const newLocationsPairs = filterOldDates(dateLocationsPairs);
         setDateLocationsPairs(newLocationsPairs);
-    }, 1000 * 30); // Every 30 seconds
+    }, 1000 * FILTER_DATES_INTERVAL_IN_SECONDS);
 
     useEffect(() => {
         loadCalendar();

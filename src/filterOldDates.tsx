@@ -3,6 +3,9 @@ import { DateLocationsPair } from "./types";
 const getTime = (string: string): number =>
     parseInt(string.substring(0, 5).replace(/:/g, ""), 10);
 
+const getDate = (string: string): number =>
+    parseInt(string.replace(/-/g, ""), 10);
+
 const filterOldDates = (
     dateLocationsPairs: DateLocationsPair[]
 ): DateLocationsPair[] => {
@@ -13,11 +16,16 @@ const filterOldDates = (
         .toISOString()
         .split("T");
     const parsedTodayTime = getTime(todayTime);
+    const parsedTodayDate = getDate(todayDate);
     const newLocationsPairs = dateLocationsPairs.map(
         ({ dateStr, locationSlotsPairs }) => {
             let newLocationSlotsPairs = locationSlotsPairs.filter(
                 ({ slots }) => slots !== undefined
             );
+            const parsedDateStr = getDate(dateStr);
+            if (parsedDateStr < parsedTodayDate) {
+                newLocationSlotsPairs = [];
+            }
             if (dateStr === todayDate) {
                 newLocationSlotsPairs = newLocationSlotsPairs.map(
                     ({ location, slots }) => {
@@ -33,6 +41,7 @@ const filterOldDates = (
             return { dateStr, locationSlotsPairs: newLocationSlotsPairs };
         }
     );
+    console.log(newLocationsPairs);
     return newLocationsPairs;
 };
 
