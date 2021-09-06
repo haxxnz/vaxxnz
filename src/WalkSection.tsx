@@ -14,54 +14,14 @@ export interface Props {
 export function WalkInSection({ lat, lng, radiusKm }: Props) {
   const [selectedLocationIndex, setSelectedLocation] = useState<number>();
   const [walkInLocations, setWalkinLocation] = useState<WalkinLocation[]>([]);
+  const [currentView, setCurrentView] = useState(6);
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     setLoading(true);
     getWalkinData()
       .then((walkIn) => {
-        const matchedFilter = walkIn.filter(
-          ({
-            lat: locationLat,
-            lng: locationLng,
-            isOpenToday,
-            instructionLis,
-          }) => {
-            const distanceInKm =
-              locationLat &&
-              locationLng &&
-              getDistanceKm(lat, lng, locationLat, locationLng);
-
-            const walkInOrDriveThru =
-              instructionLis.includes("Walk in") ||
-              instructionLis.includes("Drive through");
-            return (
-              distanceInKm < radiusKm &&
-              isOpenToday &&
-              walkInOrDriveThru
-            );
-          }
-        );
-        matchedFilter.sort(
-          (
-            { lat: locationALat, lng: locationALng },
-            { lat: locationBLat, lng: locationBLng }
-          ) => {
-            const distanceKmLocationA = getDistanceKm(
-              lat,
-              lng,
-              locationALat,
-              locationALng
-            );
-            const distanceKmLocationB = getDistanceKm(
-              lat,
-              lng,
-              locationBLat,
-              locationBLng
-            );
-            return distanceKmLocationA - distanceKmLocationB;
-          }
-        );
-        setWalkinLocation(matchedFilter.slice(0, 6));
+        setWalkinLocation(filterWalkInLocation(walkIn, lat, lng, radiusKm));
+        setCurrentView(6); // clear view more when we reload location
       })
       .finally(() => setLoading(false));
   }, [lat, lng, radiusKm]);
@@ -70,6 +30,10 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
   };
 
   const clearSelectedLocation = () => setSelectedLocation(undefined);
+
+  const loadMore = () => {
+    setCurrentView((latest) => latest + 6);
+  };
 
   return (
     <div>
@@ -112,7 +76,7 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
         </div>
       )}
       <WalkContainer>
-        {walkInLocations.map(
+        {walkInLocations.slice(0, currentView).map(
           (
             {
               name,
@@ -157,6 +121,53 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
           }
         )}
       </WalkContainer>
+      {walkInLocations.length / currentView > 1 && <button onClick={loadMore}>See more</button>}
     </div>
   );
+}
+
+function filterWalkInLocation(walkIn: WalkinLocation[], lat: number, lng: number, radiusKm: number) {
+  const matchedFilter = walkIn.filter(
+    ({
+      lat: locationLat,
+      lng: locationLng,
+      isOpenToday,
+      instructionLis,
+    }) => {
+      const distanceInKm =
+        locationLat &&
+        locationLng &&
+        getDistanceKm(lat, lng, locationLat, locationLng);
+
+      const walkInOrDriveThru =
+        instructionLis.includes("Walk in") ||
+        instructionLis.includes("Drive through");
+      return (
+        distanceInKm < radiusKm &&
+        isOpenToday &&
+        walkInOrDriveThru
+      );
+    }
+  );
+  matchedFilter.sort(
+    (
+      { lat: locationALat, lng: locationALng },
+      { lat: locationBLat, lng: locationBLng }
+    ) => {
+      const distanceKmLocationA = getDistanceKm(
+        lat,
+        lng,
+        locationALat,
+        locationALng
+      );
+      const distanceKmLocationB = getDistanceKm(
+        lat,
+        lng,
+        locationBLat,
+        locationBLng
+      );
+      return distanceKmLocationA - distanceKmLocationB;
+    }
+  );
+  return matchedFilter;
 }
