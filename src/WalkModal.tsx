@@ -65,29 +65,28 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
 
           <CancelBookingNotice className="mobile" />
 
-          <Button
-            overrides={{
-              Root: {
-                style: {
-                  width: "100%",
-                  marginTop: "1.5rem",
-                  marginRight: 0,
-                  marginBottom: "0.5rem",
-                  marginLeft: 0,
-                },
-              },
-            }}
-            kind={KIND.primary}
-            onClick={() => {
-              // Also close the modal to avoid confusing stuff
-              window.open(
-                `https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`
-              );
-              close();
-            }}
+          <a
+            href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Get Directions
-          </Button>
+            <Button
+              overrides={{
+                Root: {
+                  style: {
+                    width: "100%",
+                    marginTop: "1.5rem",
+                    marginRight: 0,
+                    marginBottom: "0.5rem",
+                    marginLeft: 0,
+                  },
+                },
+              }}
+              kind={KIND.primary}
+            >
+              Get Directions
+            </Button>
+          </a>
 
           <Button
             overrides={{
@@ -106,6 +105,13 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
           >
             Cancel
           </Button>
+
+          <NoticeList>
+            <NoticeListItem title="Availability Is Not Guaranteed">
+              Keep in mind that walk-in locations listed might not necessarily
+              have capacity available.
+            </NoticeListItem>
+          </NoticeList>
         </div>
         <div style={{ height: "100%" }}>
           <CancelBookingNotice className="desktop" />
@@ -203,13 +209,6 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
               </div>
             );
           })}
-          <hr />
-          <NoticeList>
-            <hr />
-            <NoticeListItem title="Availability Is Not Guaranteed">
-              There might be a long queue when you arrive.
-            </NoticeListItem>
-          </NoticeList>
         </div>
       </ModalGrid>
     </Modal>
