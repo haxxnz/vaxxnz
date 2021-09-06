@@ -30,7 +30,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
             display: "flex",
             flexDirection: "column",
             padding: "1.5rem",
-            maxWidth: "1200px",
+            maxWidth: "860px",
           },
         },
       }}
@@ -45,6 +45,51 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
             {location.name}
           </h1>
 
+          <p>{location.address}</p>
+
+          <Button
+            overrides={{
+              Root: {
+                style: {
+                  width: "100%",
+                  marginTop: "1.5rem",
+                  marginRight: 0,
+                  marginBottom: "0.5rem",
+                  marginLeft: 0,
+                },
+              },
+            }}
+            kind={KIND.primary}
+            onClick={() => {
+              // Also close the modal to avoid confusing stuff
+              window.open(
+                `https://www.google.com/maps/dir/?api=1&saddr=My+Location&destination=${location.address}`
+              );
+              close();
+            }}
+          >
+            Get directions
+          </Button>
+
+          <Button
+            overrides={{
+              Root: {
+                style: {
+                  width: "100%",
+                  marginTop: "0.5rem",
+                  marginRight: 0,
+                  marginBottom: "0.5rem",
+                  marginLeft: 0,
+                },
+              },
+            }}
+            kind={KIND.secondary}
+            onClick={close}
+          >
+            Cancel
+          </Button>
+        </div>
+        <div style={{ height: "100%" }}>
           {/* <p
                 style={{
                     marginTop: "1rem",
@@ -67,13 +112,30 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                     );
                 })}
             </p> */}
-          {location.opennningHours.schedule && (
+
+          {location.telephone && (
             <p
+              style={{
+                marginBottom: "0.5rem",
+                marginRight: "1rem",
+                fontSize: "1.25rem",
+
+                paddingTop: "1rem",
+                lineHeight: "1.5",
+              }}
+            >
+              <h3> Phone</h3>
+
+              <a href={`tel:${location.telephone}`}>{location.telephone}</a>
+            </p>
+          )}
+
+          {location.opennningHours.schedule && (
+            <div
               style={{
                 marginTop: "1rem",
                 marginBottom: "0.5rem",
                 marginRight: "1rem",
-                fontSize: "1.25rem",
                 borderBottom: "1px solid lightgray",
                 borderTop: "1px solid lightgray",
                 paddingBottom: "1.5rem",
@@ -81,19 +143,18 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                 lineHeight: "1.5",
               }}
             >
-              <strong> Hours</strong>
-              <br />
+              <h3> Hours</h3>
               {Object.keys(location.opennningHours.schedule).map(
                 (openDate, index) => {
                   return (
-                    <Fragment key={index}>
+                    <p key={index}>
                       {openDate} {location.opennningHours.schedule[openDate]}
                       <br />
-                    </Fragment>
+                    </p>
                   );
                 }
               )}
-            </p>
+            </div>
           )}
 
           {Object.entries(location.opennningHours.exceptions).map(
@@ -120,82 +181,6 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
               </div>
             );
           })}
-
-          {location.telephone && (
-            <p
-              style={{
-                marginTop: "1.5rem",
-                marginBottom: "0.5rem",
-                marginRight: "1rem",
-                fontSize: "1.25rem",
-
-                paddingTop: "1rem",
-                borderTop: "1px solid lightgray",
-                lineHeight: "1.5",
-              }}
-            >
-              <strong> Phone</strong>
-              <br />
-
-              <a href={`tel:${location.telephone}`}>{location.telephone}</a>
-            </p>
-          )}
-
-          <p
-            style={{
-              marginTop: "1rem",
-              marginBottom: "0.5rem",
-              fontSize: "1.25rem",
-              paddingTop: "1.5rem",
-              paddingBottom: "1rem",
-              borderTop: "1px solid lightgray",
-              lineHeight: "1.5",
-            }}
-          >
-            <strong> Address</strong>
-            <br />
-            {location.address}
-          </p>
-          <Button
-            overrides={{
-              Root: {
-                style: {
-                  width: "100%",
-                  marginTop: "0.5rem",
-                  marginRight: 0,
-                  marginBottom: "0.5rem",
-                  marginLeft: 0,
-                },
-              },
-            }}
-            kind={KIND.primary}
-            onClick={() => {
-              // Also close the modal to avoid confusing stuff
-              window.open(
-                `https://www.google.com/maps/dir/?api=1&saddr=My+Location&destination=${location.address}`
-              );
-              close();
-            }}
-          >
-            Get directions
-          </Button>
-          <Button
-            overrides={{
-              Root: {
-                style: {
-                  width: "100%",
-                  marginTop: "0.5rem",
-                  marginRight: 0,
-                  marginBottom: "0.5rem",
-                  marginLeft: 0,
-                },
-              },
-            }}
-            kind={KIND.secondary}
-            onClick={close}
-          >
-            Cancel
-          </Button>
         </div>
       </ModalGrid>
     </Modal>
