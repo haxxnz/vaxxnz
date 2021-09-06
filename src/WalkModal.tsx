@@ -186,7 +186,6 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                   }}
                 >
                   <h3>{key}</h3>
-                  <br />
 
                   <p key={index}>{value}</p>
                 </div>
