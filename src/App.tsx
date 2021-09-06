@@ -8,7 +8,6 @@ import {
     CalendarSectionContainer,
     MonthContainer,
 } from "./VaxComponents";
-
 import { ShareButtons } from "./ShareButtons"
 
 import { DateLocationsPairsContext } from "./contexts";
@@ -55,11 +54,6 @@ function App() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<Error | null>(null);
 
-    const [shareButtonText, setShareButtonText] = useState("Share");
-    const resetShareButtonText = () => {
-        setShareButtonText("Share");
-    };
-
     const loadCalendar = useCallback(async () => {
         setLoading(true);
         setError(null);
@@ -83,30 +77,6 @@ function App() {
 
     const openLocation = () => {
         setLocationIsOpen(true);
-    };
-
-    const onClickShare = async () => {
-        const shareData = {
-            title: "Vaxx.nz | The NZ COVID Vaccination Finder",
-            text: "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle",
-            url: "https://vaxx.nz/",
-        };
-
-        if (navigator.share) {
-            try {
-                await navigator.share(shareData);
-            } catch (err) {
-                console.error(err);
-            }
-        } else {
-            navigator.clipboard.writeText(shareData.url);
-            setShareButtonText("Copied!");
-            setTimeout(() => {
-                resetShareButtonText();
-            }, 2000);
-
-            console.log("Copied");
-        }
     };
 
     let byMonth = new Map<string, DateLocationsPair[]>();
