@@ -29,7 +29,7 @@ const filterOldDates = (
             if (dateStr === todayDate) {
                 newLocationSlotsPairs = newLocationSlotsPairs.map(
                     ({ location, slots }) => {
-                        const newSlots = slots.filter(({ localStartTime }) => {
+                        const newSlots = (slots ?? []).filter(({ localStartTime }) => {
                             const parsedLocalStartTime =
                                 getTime(localStartTime);
                             return parsedLocalStartTime > parsedTodayTime;
