@@ -16,9 +16,9 @@ Over the course of one week, our team of 6 developers and 2 designers built a we
 
 ## The Team
 
-![Team Vaxx.NZ](https://i.imgur.com/j1Ly50A.png)
+![Team Vaxx.NZ](https://i.imgur.com/hnJIua7.png)
 
-Left to right, top to bottom: Ilia Sidorenko, Jackson Lawrence, Matt Weston, Minh Phu Lai, Olaf Wrieden, Walter Lim, Molly Derecourt and Will Seagar.
+Left to right, top to bottom: Ilia Sidorenko, Jackson Lawrence, Matt Weston, Minh Phu Lai, Olaf Wrieden, Walter Lim, Molly Derecourt, Will Seagar and Oliver Cooper.
 
 We recognise that the best projects aren't built alone. If you would like to contribute, __we would love to hear from you__.
 
@@ -33,7 +33,7 @@ We recognise that the best projects aren't built alone. If you would like to con
 - 1 News (TVNZ): [Kiwi friends build website to help speed up vaccinations](https://www.tvnz.co.nz/one-news/new-zealand/kiwi-friends-build-website-help-speed-up-vaccinations)
 - ZM Radio Shout-out!
 - David Farrier on Twitter: [Powerful and wonderful tool for new zealanders trying to get vaccinated](https://twitter.com/davidfarrier/status/1434717951798611968)
-
+- [The Project](https://www.youtube.com/watch?v=erZ6kTJTpmI)
 ## Uptake
 
 Following our launch, we welcomed an average of 2,800 users every 30 minutes! All up, we helped over 6,600 people to explore vaccine availability options via our calendar.
