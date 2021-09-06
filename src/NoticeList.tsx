@@ -14,7 +14,7 @@ export const NoticeListItem: FunctionComponent<NoticeListItemProps> = ({
   </li>
 );
 
-export const NoticeList: FunctionComponent = () => (
+export const NoticeList: FunctionComponent = ({ children }) => (
   <ul className="NoticeList">
     <NoticeListItem title="Follow Alert Level Restrictions">
       Masks are mandatory at Alert Level 3 and 4. Remember to scan in with the
@@ -28,9 +28,6 @@ export const NoticeList: FunctionComponent = () => (
       </i>
     </NoticeListItem>
 
-    <NoticeListItem title="Walk-in Availability Is Not Guaranteed">
-      Keep in mind that walk-in locations listed might not have capacity
-      available when you get there.
-    </NoticeListItem>
+    {children}
   </ul>
 );

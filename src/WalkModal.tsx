@@ -1,10 +1,9 @@
-import { Fragment } from "react";
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import "./App.css";
 import { WalkinLocation } from "./getData";
 import { ModalGrid } from "./VaxComponents";
-import { NoticeList } from "./NoticeList";
+import { NoticeList, NoticeListItem } from "./NoticeList";
 
 type Props = {
   clearSelectedLocation: () => void;
@@ -90,7 +89,17 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
             Cancel
           </Button>
 
-          <NoticeList />
+          <NoticeList>
+            <NoticeListItem title="Walk-in Availability Is Not Guaranteed">
+              Keep in mind that walk-in locations listed might not have capacity
+              available when you get there.
+            </NoticeListItem>
+
+            <NoticeListItem title="Remember to Cancel Your Original Booking">
+              If you attend a walk-in vaccine and don't forget to cancel your
+              booking if you have one.
+            </NoticeListItem>
+          </NoticeList>
         </div>
         <div style={{ height: "100%" }}>
           {/* <p
