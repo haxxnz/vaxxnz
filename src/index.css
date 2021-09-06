@@ -23,6 +23,7 @@ code {
 }
 
 a {
+  outline: none;
   text-decoration: none;
 }
 
