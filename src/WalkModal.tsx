@@ -4,11 +4,26 @@ import "./App.css";
 import { WalkinLocation } from "./getData";
 import { ModalGrid } from "./VaxComponents";
 import { NoticeList, NoticeListItem } from "./NoticeList";
+import { FunctionComponent } from "react";
 
 type Props = {
   clearSelectedLocation: () => void;
   location?: WalkinLocation;
 };
+
+const CancelBookingNotice: FunctionComponent<{ className: string }> = ({
+  className,
+}) => (
+  <div className={`cancel-booking-notice ${className}`}>
+    <h4>Please Don't Double Book</h4>
+    <p>
+      Remember to cancel your original booking if you have one at{" "}
+      <a href="https://bookmyvaccine.nz" target="_blank" rel="noreferrer">
+        bookmyvaccine.nz
+      </a>
+    </p>
+  </div>
+);
 
 const WalkModal = ({ clearSelectedLocation, location }: Props) => {
   const close = () => clearSelectedLocation();
@@ -47,6 +62,8 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
 
           <p>{location.address}</p>
 
+          <CancelBookingNotice className="mobile" />
+
           <Button
             overrides={{
               Root: {
@@ -68,7 +85,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
               close();
             }}
           >
-            Get directions
+            Get Directions to Walk-in
           </Button>
 
           <Button
@@ -94,14 +111,10 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
               Keep in mind that walk-in locations listed might not have capacity
               available when you get there.
             </NoticeListItem>
-
-            <NoticeListItem title="Remember to Cancel Your Original Booking">
-              If you attend a walk-in vaccine and don't forget to cancel your
-              booking if you have one.
-            </NoticeListItem>
           </NoticeList>
         </div>
         <div style={{ height: "100%" }}>
+          <CancelBookingNotice className="desktop" />
           {/* <p
                 style={{
                     marginTop: "1rem",
@@ -179,7 +192,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                     lineHeight: "1.5",
                   }}
                 >
-                  <strong>{key}</strong>
+                  <h3>{key}</h3>
                   <br />
 
                   <p key={index}>{value}</p>
