@@ -206,7 +206,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
           <NoticeList>
             <hr />
             <NoticeListItem title="Walk-in Availability Is Not Guaranteed">
-              Walk-in locations might have long queues when get there.
+              Walk-in locations might have long queues when you get there.
             </NoticeListItem>
           </NoticeList>
         </div>
