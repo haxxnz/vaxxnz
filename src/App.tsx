@@ -8,6 +8,7 @@ import {
   CalendarSectionContainer,
   MonthContainer,
 } from "./VaxComponents";
+import { ShareButtons } from "./ShareButtons";
 
 import { DateLocationsPairsContext } from "./contexts";
 import { getMyCalendar } from "./getData";
@@ -37,7 +38,6 @@ function App() {
   const [isOpen, setIsOpen] = React.useState<DateLocationsPair | null>(null);
   const [locationIsOpen, setLocationIsOpen] = React.useState<boolean>(false);
 
-
   const [radiusKm, setRadiusKm] = useState(10);
   const [coords, setCoords] = useState<[number, number]>([
     defaultLat,
@@ -50,18 +50,14 @@ function App() {
     setPlaceName(defaultPlaceName);
   }, [defaultLat, defaultLng, defaultPlaceName]);
 
-  const { dateLocationsPairs: dateLocationsPairsUnfiltered, setDateLocationsPairs } = useContext(
-    DateLocationsPairsContext
-  );
+  const {
+    dateLocationsPairs: dateLocationsPairsUnfiltered,
+    setDateLocationsPairs,
+  } = useContext(DateLocationsPairsContext);
   const dateLocationsPairs = filterOldDates(dateLocationsPairsUnfiltered);
   const [lastUpdateTime, setLastUpdateTime] = useState(new Date(0));
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
-
-  const [shareButtonText, setShareButtonText] = useState("Share");
-  const resetShareButtonText = () => {
-    setShareButtonText("Share");
-  };
 
   const loadCalendar = useCallback(async () => {
     setLoading(true);
@@ -82,31 +78,6 @@ function App() {
 
   const openLocation = () => {
     setLocationIsOpen(true);
-  };
-
-
-  const onClickShare = async () => {
-    const shareData = {
-      title: "Vaxx.nz | The NZ COVID Vaccination Finder",
-      text: "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle",
-      url: "https://vaxx.nz/",
-    };
-
-    if (navigator.share) {
-      try {
-        await navigator.share(shareData);
-      } catch (err) {
-        console.error(err);
-      }
-    } else {
-      navigator.clipboard.writeText(shareData.url);
-      setShareButtonText("Copied!");
-      setTimeout(() => {
-        resetShareButtonText();
-      }, 2000);
-
-      console.log("Copied");
-    }
   };
 
   let byMonth = new Map<string, DateLocationsPair[]>();
@@ -148,56 +119,30 @@ function App() {
           <br />
           <p>
             <h3 style={{ fontWeight: "normal" }}>
-              See every available vaccination booking slot near
-              you.{" "}
+              See every available vaccination booking slot near you.{" "}
             </h3>
             This is not an official Government website.
             <br /> To get vaccinated visit&nbsp;
-            <a
-              href="https://bookmyvaccine.nz"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="https://bookmyvaccine.nz" target="_blank" rel="noreferrer">
               bookmyvaccine.nz
             </a>{" "}
             <br />
-            <Button
-              kind={KIND.primary}
-              onClick={() => onClickShare()}
-              overrides={{
-                BaseButton: {
-                  style: {
-                    maxWidth: "100px",
-                    width: "80px",
-                    marginTop: "0.5rem",
-                  },
-                },
-              }}
-            >
-              {shareButtonText}
-            </Button>{" "}
           </p>
         </section>
         <div className={"big-old-container"}>
           <HeaderMain>
             <section>
               <h1>
-                Available Vaccinations
-                <strong>
-                  {placeName ? " near " + placeName : ""}
-                </strong>
+                Available Vaccine Slots
+                <strong>{placeName ? " near " + placeName : ""}</strong>
               </h1>
               <p>
                 Last updated{" "}
                 {lastUpdateTime.getFullYear() === 1970
                   ? "..."
-                  : formatDistance(
-                    lastUpdateTime,
-                    new Date(),
-                    {
-                      addSuffix: true,
-                    }
-                  )}
+                  : formatDistance(lastUpdateTime, new Date(), {
+                    addSuffix: true,
+                  })}
               </p>
             </section>
 
@@ -213,15 +158,11 @@ function App() {
                   },
                 }}
               >
-                {coords[0] === defaultLat &&
-                  coords[1] === defaultLng
+                {coords[0] === defaultLat && coords[1] === defaultLng
                   ? "Set your Location"
                   : "Location set"}
               </Button>
-              <RadiusSelect
-                value={radiusKm}
-                setValue={setRadiusKm}
-              />
+              <RadiusSelect value={radiusKm} setValue={setRadiusKm} />
             </div>
           </HeaderMain>
           <WalkInSection lat={coords[0]} lng={coords[1]} radiusKm={radiusKm} />
@@ -255,94 +196,61 @@ function App() {
                       <h2>{month}</h2>{" "}
                     </div>
                     <MonthContainer>
-                      {dateLocationsPairsForMonth.map(
-                        (dateLocationsPair) => (
-                          <button
-                            className={
-                              sum(
-                                dateLocationsPair.locationSlotsPairs.map(
-                                  (
-                                    locationSlotsPair
-                                  ) =>
-                                    (
-                                      locationSlotsPair.slots ||
-                                      []
-                                    ).length
-                                )
-                              ) === 0
-                                ? "zero-available"
-                                : ""
-                            }
-                            key={
-                              dateLocationsPair.dateStr
-                            }
-                            onClick={() =>
-                              setIsOpen(
-                                dateLocationsPair
+                      {dateLocationsPairsForMonth.map((dateLocationsPair) => (
+                        <button
+                          className={
+                            sum(
+                              dateLocationsPair.locationSlotsPairs.map(
+                                (locationSlotsPair) =>
+                                  (locationSlotsPair.slots || []).length
                               )
-                            }
-                          >
-                            <div>
-                              <h3>
+                            ) === 0
+                              ? "zero-available"
+                              : ""
+                          }
+                          key={dateLocationsPair.dateStr}
+                          onClick={() => setIsOpen(dateLocationsPair)}
+                        >
+                          <div>
+                            <h3>
+                              {parse(
+                                dateLocationsPair.dateStr,
+                                "yyyy-MM-dd",
+                                new Date()
+                              ).toLocaleDateString([], {
+                                day: "numeric",
+                              })}{" "}
+                              {parse(
+                                dateLocationsPair.dateStr,
+                                "yyyy-MM-dd",
+                                new Date()
+                              ).toLocaleDateString([], {
+                                month: "short",
+                              })}
+                              <br />{" "}
+                              <aside aria-hidden="true">
                                 {parse(
                                   dateLocationsPair.dateStr,
                                   "yyyy-MM-dd",
                                   new Date()
-                                ).toLocaleDateString(
-                                  [],
-                                  {
-                                    day: "numeric",
-                                  }
-                                )}{" "}
-                                {parse(
-                                  dateLocationsPair.dateStr,
-                                  "yyyy-MM-dd",
-                                  new Date()
-                                ).toLocaleDateString(
-                                  [],
-                                  {
-                                    month: "short",
-                                  }
-                                )}
-                                <br />{" "}
-                                <aside aria-hidden="true">
-                                  {parse(
-                                    dateLocationsPair.dateStr,
-                                    "yyyy-MM-dd",
-                                    new Date()
-                                  ).toLocaleDateString(
-                                    [],
-                                    {
-                                      weekday:
-                                        "short",
-                                    }
-                                  )}
-                                </aside>
-                              </h3>
-                              <p>
-                                {sum(
-                                  dateLocationsPair.locationSlotsPairs.map(
-                                    (
-                                      locationSlotsPair
-                                    ) =>
-                                      (
-                                        locationSlotsPair.slots ||
-                                        []
-                                      )
-                                        .length
-                                  )
-                                )}{" "}
-                                available
-                              </p>
-                            </div>
-                            <img
-                              src="./arrow.svg"
-                              aria-hidden="true"
-                              alt=""
-                            />
-                          </button>
-                        )
-                      )}
+                                ).toLocaleDateString([], {
+                                  weekday: "short",
+                                })}
+                              </aside>
+                            </h3>
+                            <p>
+                              {sum(
+                                dateLocationsPair.locationSlotsPairs.map(
+                                  (locationSlotsPair) =>
+                                    (locationSlotsPair.slots || []).length
+                                )
+                              )}{" "}
+                              available
+                            </p>
+                          </div>
+                          <img src="./arrow.svg" aria-hidden="true" alt="" />
+                        </button>
+                      ))}
                     </MonthContainer>
                   </CalendarSectionContainer>
                 )
@@ -367,24 +275,40 @@ function App() {
         ) : null}
 
         <section className="App-header">
+          <p style={{ marginBottom: "0.5rem" }}>
+            If this site helped you please consider sharing:
+          </p>
+          <div className={"social-container"}>
+            <ShareButtons />
+          </div>
+          <br />
           <p>
             <a
               href="https://github.com/CovidEngine/vaxxnzlocations"
               target="_blank"
               rel="noreferrer"
             >
-              JSON of all available slots
-            </a>
-          </p>
-          <p>
+              Raw Data
+            </a>{" "}
+            /{" "}
             <a
               href="https://github.com/CovidEngine/vaxxnz"
               target="_blank"
               rel="noreferrer"
             >
               Source code
+            </a>{" "}
+            /{" "}
+            <a
+              href="https://github.com/CovidEngine/vaxxnz/projects/2"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {" "}
+              Roadmap
             </a>
           </p>
+          <p></p>
         </section>
       </div>
     </>
