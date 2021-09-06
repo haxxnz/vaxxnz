@@ -284,6 +284,14 @@ function App() {
           <br />
           <p>
             <a
+              href="https://airtable.com/shrxuw3vSp2yRPrG7"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Contact us
+            </a>{" "}
+            /{" "}
+            <a
               href="https://github.com/CovidEngine/vaxxnzlocations"
               target="_blank"
               rel="noreferrer"
