@@ -55,7 +55,7 @@ const BookingsModal = (props: Props) => {
         },
       }}
     >
-      <ModalGrid>
+      <ModalGrid className={"modal-container"}>
         <div>
           <div className="ModalHeader">
             <h1>

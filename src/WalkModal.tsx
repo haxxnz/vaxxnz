@@ -35,7 +35,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
         },
       }}
     >
-      <ModalGrid>
+      <ModalGrid className={"modal-container"}>
         <div>
           <h1
             style={{
