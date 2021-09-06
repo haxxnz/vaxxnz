@@ -18,7 +18,7 @@ import BookingsModal from "./BookingsModal";
 
 import RadiusSelect from "./RadiusSelect";
 import { useSearchParams } from "./urlUtils";
-import { WalkInSection } from './WalkSection';
+import { WalkInSection } from "./WalkSection";
 import filterOldDates from "./filterOldDates";
 
 function sum(array: number[]) {
@@ -141,8 +141,8 @@ function App() {
                 {lastUpdateTime.getFullYear() === 1970
                   ? "..."
                   : formatDistance(lastUpdateTime, new Date(), {
-                    addSuffix: true,
-                  })}
+                      addSuffix: true,
+                    })}
               </p>
             </section>
 
