@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import { Modal } from "baseui/modal";
 import { Button, KIND } from "baseui/button";
 import { ModalGrid, VaccineCentre } from "./VaxComponents";
