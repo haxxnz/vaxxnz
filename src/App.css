@@ -93,8 +93,6 @@ h2 strong {
     border-right: 1px solid lightgray;
 }
 
-}
-
 ol.HelpList {
     list-style: none;
     counter-reset: help-counter;
