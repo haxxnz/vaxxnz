@@ -27,9 +27,9 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
         Root: { style: { zIndex: 1500 } },
         Dialog: {
           style: {
-            height: "80vh",
             display: "flex",
             flexDirection: "column",
+            alignSelf: "center",
             padding: "1.5rem",
             maxWidth: "860px",
           },
