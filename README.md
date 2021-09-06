@@ -4,7 +4,7 @@
 
 > The intuitive NZ COVID Vaccination Finder for New Zealand
 
-Perhaps you visited [bookmyvaccine.nz](bookmyvaccine.nz), only to find that all of the places closest to you are booked out weeks or months in advance?
+Perhaps you visited [bookmyvaccine.nz](https://bookmyvaccine.nz), only to find that all of the places closest to you are booked out weeks or months in advance?
 
 In response to this, we've built [vaxx.nz](https://vaxx.nz) to make the experience of finding an earlier vaccine appointment close to you easier.
 
