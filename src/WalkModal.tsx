@@ -85,7 +85,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
               close();
             }}
           >
-            Get Directions to Walk-in
+            Get Directions
           </Button>
 
           <Button
@@ -205,8 +205,9 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
           <hr />
           <NoticeList>
             <hr />
-            <NoticeListItem title="Walk-in Availability Is Not Guaranteed">
-              Walk-in locations might have long queues when you get there.
+            <NoticeListItem title="Availability Is Not Guaranteed">
+              Walk-in and Drive-thru locations might have long queues when you
+              get there.
             </NoticeListItem>
           </NoticeList>
         </div>
