@@ -30,6 +30,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
   if (location == null) {
     return null;
   }
+  const telephone = location.telephone.replace(/\[.*\]/g, "");
 
   return (
     <Modal
@@ -80,7 +81,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
             onClick={() => {
               // Also close the modal to avoid confusing stuff
               window.open(
-                `https://www.google.com/maps/dir/?api=1&saddr=My+Location&destination=${location.address}`
+                `https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`
               );
               close();
             }}
@@ -131,7 +132,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                 })}
             </p> */}
 
-          {location.telephone && (
+          {telephone && (
             <p
               style={{
                 marginBottom: "0.5rem",
@@ -144,7 +145,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
             >
               <h3> Phone</h3>
 
-              <a href={`tel:${location.telephone}`}>{location.telephone}</a>
+              <a href={`tel:${telephone}`}>{telephone}</a>
             </p>
           )}
 
