@@ -145,29 +145,15 @@ const BookingsModal = (props: Props) => {
                     )}
                     km away)
                   </p>
-                  {/* <p>
+                  <p>
                     <a
-                      href={`https://maps.apple.com/?daddr=${locationSlotsPair.location.displayAddress.replace(
-                        /\s+/g,
-                        "+"
-                      )}&dirflg=d&t=r`}
+                      href={`https://www.google.com/maps/dir/?api=1&destination=${locationSlotsPair.location.location.lat},${locationSlotsPair.location.location.lng}`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Driving directions
+                      Get Directions
                     </a>
-                    {" - "}
-                    <a
-                      href={`https://maps.apple.com/?daddr=${locationSlotsPair.location.displayAddress.replace(
-                        /\s+/g,
-                        "+"
-                      )}&dirflg=w&t=r`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Walking directions
-                    </a>
-                  </p> */}
+                  </p>
                   <a
                     href="https://bookmyvaccine.nz"
                     target="_blank"
