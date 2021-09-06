@@ -11,6 +11,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "react-share": "^4.4.0",
     "styled-components": "^5.3.1",
     "styletron-engine-atomic": "^1.4.8",
     "styletron-react": "^6.0.1",

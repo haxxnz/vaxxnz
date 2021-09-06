@@ -9,6 +9,8 @@ import {
     MonthContainer,
 } from "./VaxComponents";
 
+import { ShareButtons } from "./ShareButtons"
+
 import { DateLocationsPairsContext } from "./contexts";
 import { getMyCalendar } from "./getData";
 import { DateLocationsPair } from "./types";
@@ -155,21 +157,11 @@ function App() {
                             bookmyvaccine.nz
                         </a>{" "}
                         <br />
-                        <Button
-                            kind={KIND.primary}
-                            onClick={() => onClickShare()}
-                            overrides={{
-                                BaseButton: {
-                                    style: {
-                                        maxWidth: "100px",
-                                        width: "80px",
-                                        marginTop: "0.5rem",
-                                    },
-                                },
-                            }}
-                        >
-                            {shareButtonText}
-                        </Button>{" "}
+                        <br />
+                        <p>If this site helped you please consider sharing:</p>
+                        <div className={"social-container"}>
+                            <ShareButtons />
+                        </div>
                     </p>
                 </section>
                 <div className={"big-old-container"}>

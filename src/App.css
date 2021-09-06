@@ -47,3 +47,9 @@ button.zero-available div p {
         display: none !important;
     }
 }
+
+.social-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
