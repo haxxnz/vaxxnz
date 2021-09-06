@@ -138,4 +138,11 @@ ul.NoticeList {
 
 ul.NoticeList li {
 	margin-bottom: 20px;
+    background: #e4eeff;
+    cursor: pointer;
+}
+.social-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
 }
