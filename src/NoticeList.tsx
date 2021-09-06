@@ -16,7 +16,7 @@ export const NoticeListItem: FunctionComponent<NoticeListItemProps> = ({
 
 export const NoticeList: FunctionComponent = ({ children }) => (
   <ul className="NoticeList">
-    <NoticeListItem title="Follow Alert Level Restrictions">
+    {/* <NoticeListItem title="Follow Alert Level Restrictions">
       Masks are mandatory at Alert Level 3 and 4. Remember to scan in with the
       NZ COVID Tracer app, observe social distancing and be kind.
       <br />
@@ -26,7 +26,7 @@ export const NoticeList: FunctionComponent = ({ children }) => (
           covid19.govt.nz
         </a>
       </i>
-    </NoticeListItem>
+    </NoticeListItem> */}
 
     {children}
   </ul>

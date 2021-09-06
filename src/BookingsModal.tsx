@@ -145,7 +145,7 @@ const BookingsModal = (props: Props) => {
                     )}
                     km away)
                   </p>
-                  <p>
+                  {/* <p>
                     <a
                       href={`https://maps.apple.com/?daddr=${locationSlotsPair.location.displayAddress.replace(
                         /\s+/g,
@@ -167,7 +167,7 @@ const BookingsModal = (props: Props) => {
                     >
                       Walking directions
                     </a>
-                  </p>
+                  </p> */}
                   <a
                     href="https://bookmyvaccine.nz"
                     target="_blank"
