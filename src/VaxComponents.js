@@ -241,6 +241,12 @@ export const VaccineCentre = styled.section`
       min-width: 80px;
       text-align: center;
     }
+
+    @media screen and (max-width: 500px) {
+           p { flex: 1;
+        }
+}
+    }
   }
 `;
 export const WalkContainer = styled.div`

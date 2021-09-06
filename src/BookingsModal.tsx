@@ -87,16 +87,12 @@ const BookingsModal = (props: Props) => {
               <h3>How to Book</h3>
             </p>
             <ol className="HelpList">
-              <li>Find find a location and time from the list.</li>
+              <li>Find find a location and time from the list below.</li>
               <li>
                 Click on the <i>Make a Booking</i> button, this will take you to{" "}
                 <a href="https://bookmyvaccine.nz/">bookmyvaccine.nz</a>
               </li>
-              <li>Enter your the required details.</li>
-              <li>
-                Once to choose a location, search for your desired location and
-                time.
-              </li>
+              <li>Enter your details.</li>
             </ol>
 
             <Button
@@ -105,9 +101,9 @@ const BookingsModal = (props: Props) => {
                 Root: {
                   style: {
                     width: "100%",
-                    marginTop: "2rem",
+                    marginTop: "1rem",
                     marginRight: 0,
-                    marginBottom: "2rem",
+                    marginBottom: "1rem",
                     marginLeft: 0,
                   },
                 },
