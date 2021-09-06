@@ -15,7 +15,7 @@ const CancelBookingNotice: FunctionComponent<{ className: string }> = ({
   className,
 }) => (
   <div className={`cancel-booking-notice ${className}`}>
-    <h4>Please Don't Double Book</h4>
+    <h4>Please don't double-book</h4>
     <p>
       Remember to cancel your original booking if you have one at{" "}
       <a href="https://bookmyvaccine.nz" target="_blank" rel="noreferrer">
@@ -105,13 +105,6 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
           >
             Cancel
           </Button>
-
-          <NoticeList>
-            <NoticeListItem title="Walk-in Availability Is Not Guaranteed">
-              Keep in mind that walk-in locations listed might not have capacity
-              available when you get there.
-            </NoticeListItem>
-          </NoticeList>
         </div>
         <div style={{ height: "100%" }}>
           <CancelBookingNotice className="desktop" />
@@ -203,10 +196,20 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
           {location.opennningHours.notesHtml.map((noteHtml, index) => {
             return (
               <div key={index} style={{ marginTop: "1rem" }}>
-                <small key={index} dangerouslySetInnerHTML={{__html: noteHtml}}></small>
+                <small
+                  key={index}
+                  dangerouslySetInnerHTML={{ __html: noteHtml }}
+                ></small>
               </div>
             );
           })}
+          <hr />
+          <NoticeList>
+            <hr />
+            <NoticeListItem title="Walk-in Availability Is Not Guaranteed">
+              Walk-in locations might have long queues when get there.
+            </NoticeListItem>
+          </NoticeList>
         </div>
       </ModalGrid>
     </Modal>
