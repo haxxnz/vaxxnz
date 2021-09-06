@@ -78,7 +78,7 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
           .slice(0, currentView)
           .map(
             (
-              { name, isOpenToday, lat: locationLat, lng: locationLng },
+              { name, isOpenToday, lat: locationLat, lng: locationLng, openTodayHours },
               index
             ) => {
               return (
@@ -97,7 +97,7 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
                       )}
                     </div>
 
-                    {isOpenToday && <p>Open today </p>}
+                    {isOpenToday && <p>Open today <span>{openTodayHours}</span></p>}
                   </section>
                   <img className="Chevron" src="./arrow-right-1.svg" alt="" />
                 </WalkBox>
