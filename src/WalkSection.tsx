@@ -121,6 +121,7 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
           }
         )}
       </WalkContainer>
+      {/* Over here @WALTS */}
       {walkInLocations.length / currentView > 1 && <button onClick={loadMore}>See more</button>}
     </div>
   );
