@@ -18,6 +18,7 @@ import BookingsModal from "./BookingsModal";
 import RadiusSelect from "./RadiusSelect";
 import { useSearchParams } from "./urlUtils";
 import { WalkInSection } from './WalkSection';
+import filterOldDates from "./filterOldDates";
 
 function sum(array: number[]) {
     return array.reduce((a, b) => a + b, 0);
@@ -49,9 +50,10 @@ function App() {
         setPlaceName(defaultPlaceName);
     }, [defaultLat, defaultLng, defaultPlaceName]);
 
-    const { dateLocationsPairs, setDateLocationsPairs } = useContext(
+    const { dateLocationsPairs: dateLocationsPairsUnfiltered, setDateLocationsPairs } = useContext(
         DateLocationsPairsContext
     );
+    const dateLocationsPairs = filterOldDates(dateLocationsPairsUnfiltered)
     const [lastUpdateTime, setLastUpdateTime] = useState(new Date(0));
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<Error | null>(null);
@@ -77,10 +79,6 @@ function App() {
         }
         setLoading(false);
     }, [coords, radiusKm, setDateLocationsPairs]);
-
-    useEffect(() => {
-        loadCalendar();
-    }, [loadCalendar]);
 
     const openLocation = () => {
         setLocationIsOpen(true);
@@ -122,6 +120,10 @@ function App() {
         arrayToPush.push(dateLocationsPair);
         byMonth.set(month, arrayToPush);
     });
+
+    useEffect(() => {
+        loadCalendar();
+    }, [loadCalendar]);
 
     return (
         <>
