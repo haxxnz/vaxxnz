@@ -131,7 +131,8 @@ function filterWalkInLocation(
       const walkInOrDriveThru =
         instructionLis.includes("Walk in") ||
         instructionLis.includes("Drive through");
-      return distanceInKm < radiusKm && isOpenToday && walkInOrDriveThru;
+      // return distanceInKm < radiusKm && isOpenToday && walkInOrDriveThru;
+      return distanceInKm < radiusKm && isOpenToday && true;
     }
   );
   matchedFilter.sort(
