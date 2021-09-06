@@ -122,16 +122,15 @@ function filterWalkInLocation(
   radiusKm: number
 ) {
   const matchedFilter = walkIn.filter(
-    ({ lat: locationLat, lng: locationLng, isOpenToday, instructionLis }) => {
+    ({ lat: locationLat, lng: locationLng, isOpenToday, instructionLis: bps }) => {
       const distanceInKm =
         locationLat &&
         locationLng &&
         getDistanceKm(lat, lng, locationLat, locationLng);
 
-      const walkInOrDriveThru =
-        instructionLis.includes("Walk in") ||
-        instructionLis.includes("Drive through");
-      return distanceInKm < radiusKm && isOpenToday && walkInOrDriveThru;
+      const filterBoolean = (bps.includes('Walk in') || bps.includes('Drive through')) && !(bps.includes('Eligible GP enrolled patients only') || bps.includes('By invitation only'))
+
+      return distanceInKm < radiusKm && isOpenToday && filterBoolean;
     }
   );
   matchedFilter.sort(
