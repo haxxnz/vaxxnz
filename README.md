@@ -36,7 +36,7 @@ We recognise that the best projects aren't built alone. If you would like to con
 - [The Project](https://www.youtube.com/watch?v=erZ6kTJTpmI) (Mediaworks)
 ## Uptake
 
-Following our launch, we welcomed an average of 2,800 users every 30 minutes! All up, we helped over 6,600 people to explore vaccine availability options via our calendar.
+Following our launch, we welcomed an average of 2,800 users every 30 minutes! All up, we helped over 29,000 people to explore vaccine availability options via our calendar.
 
 ![Analytics](https://i.imgur.com/YjUZL9j.png)
 
