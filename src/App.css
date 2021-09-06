@@ -70,5 +70,22 @@ i.StupidWalkHack {
 h2 strong {
     font-weight: 400;
     font-style: normal;
+}
 
+.WalkSeeMore {
+    width: 100%;
+    padding: 1.2rem 1rem;
+    font-size: 1.2rem;
+    background-color: white;
+    border: none;
+    font-family: inherit;
+    color: blue;
+    border-bottom: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+
+button.WalkSeeMore:hover {
+    background: #e4eeff;
+    cursor: pointer;
 }

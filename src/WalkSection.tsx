@@ -45,9 +45,7 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
             : undefined
         }
       />
-      <h2 className="WalkSection">
-        Walk-in &amp; Drive-through Locations{" "}
-      </h2>
+      <h2 className="WalkSection">Walk-in &amp; Drive-through Locations </h2>
       {loading && (
         <div
           style={{
@@ -70,71 +68,61 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
       )}
       {walkInLocations.length === 0 && !loading && (
         <div>
-          someone please come up with something that I can show when
-          no walk in location found. Looking at you, WALTER LIM XOXOXO
+          someone please come up with something that I can show when no walk in
+          location found. Looking at you, WALTER LIM XOXOXO
           <br /> Minh pls ill design something soon im tired
         </div>
       )}
       <WalkContainer>
-        {walkInLocations.slice(0, currentView).map(
-          (
-            {
-              name,
-              isOpenToday,
-              lat: locationLat,
-              lng: locationLng,
-            },
-            index
-          ) => {
-            return (
-              <WalkBox
-                onClick={() => openModal(index)}
-                key={index}
-              >
-                <section>
-                  <div>
-                    <h3>{name}</h3>
-                    {locationLat && locationLng && (
-                      <p>
-                        {Math.round(
-                          getDistanceKm(
-                            lat,
-                            lng,
-                            locationLat,
-                            locationLng
-                          ) * 10
-                        ) / 10}
-                        KM away
-                      </p>
-                    )}
-                  </div>
+        {walkInLocations
+          .slice(0, currentView)
+          .map(
+            (
+              { name, isOpenToday, lat: locationLat, lng: locationLng },
+              index
+            ) => {
+              return (
+                <WalkBox onClick={() => openModal(index)} key={index}>
+                  <section>
+                    <div>
+                      <h3>{name}</h3>
+                      {locationLat && locationLng && (
+                        <p>
+                          {Math.round(
+                            getDistanceKm(lat, lng, locationLat, locationLng) *
+                              10
+                          ) / 10}
+                          KM away
+                        </p>
+                      )}
+                    </div>
 
-                  {isOpenToday && <p>Open today </p>}
-                </section>
-                <img
-                  className="Chevron"
-                  src="./arrow-right-1.svg"
-                  alt=""
-                />
-              </WalkBox>
-            );
-          }
-        )}
+                    {isOpenToday && <p>Open today </p>}
+                  </section>
+                  <img className="Chevron" src="./arrow-right-1.svg" alt="" />
+                </WalkBox>
+              );
+            }
+          )}
       </WalkContainer>
       {/* Over here @WALTS */}
-      {walkInLocations.length / currentView > 1 && <button onClick={loadMore}>See more</button>}
+      {walkInLocations.length / currentView > 1 && (
+        <button className="WalkSeeMore" onClick={loadMore}>
+          See more
+        </button>
+      )}
     </div>
   );
 }
 
-function filterWalkInLocation(walkIn: WalkinLocation[], lat: number, lng: number, radiusKm: number) {
+function filterWalkInLocation(
+  walkIn: WalkinLocation[],
+  lat: number,
+  lng: number,
+  radiusKm: number
+) {
   const matchedFilter = walkIn.filter(
-    ({
-      lat: locationLat,
-      lng: locationLng,
-      isOpenToday,
-      instructionLis,
-    }) => {
+    ({ lat: locationLat, lng: locationLng, isOpenToday, instructionLis }) => {
       const distanceInKm =
         locationLat &&
         locationLng &&
@@ -143,11 +131,7 @@ function filterWalkInLocation(walkIn: WalkinLocation[], lat: number, lng: number
       const walkInOrDriveThru =
         instructionLis.includes("Walk in") ||
         instructionLis.includes("Drive through");
-      return (
-        distanceInKm < radiusKm &&
-        isOpenToday &&
-        walkInOrDriveThru
-      );
+      return distanceInKm < radiusKm && isOpenToday && walkInOrDriveThru;
     }
   );
   matchedFilter.sort(
