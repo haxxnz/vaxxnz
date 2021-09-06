@@ -1,55 +1,177 @@
 .pac-icon {
-    display: none;
+  display: none;
 }
 
 .pac-item {
-    padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.5rem;
 }
 
 .pac-container {
-    z-index: 1501;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  z-index: 1501;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .pac-item-query {
-    margin-right: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .big-old-container {
-    border-radius: 16px;
-    max-width: 1440px;
-    margin: auto;
+  border-radius: 16px;
+  max-width: 1440px;
+  margin: auto;
 }
 
 a.nolink:hover {
-    color: black
+  color: black
 }
 
 a.nolink:active {
-    color: black
+  color: black
 }
 
 a.nolink {
-    color: black
+  color: black
 }
 
 .zero-available {
-    /* Walt, use this */
-    background-color: rgb(255, 234, 234) !important;
+  /* Walt, use this */
+  background-color: rgb(255, 234, 234) !important;
 }
 
 button.zero-available div p {
-    color: #850707;
+  color: #850707;
 }
 
 @media screen and (max-width: 500px) {
-    button.zero-available {
-        display: none !important;
-    }
+  button.zero-available {
+    display: none !important;
+  }
 }
 
+.cancel-booking-notice {
+	background-color: rgba(39,128,11, 0.07);
+	color: rgb(39, 128, 11);
+  padding: 12px 13px;
+  margin-top: 10px;
+}
+
+.cancel-booking-notice a {
+  text-decoration: underline;
+}
+
+@media screen and (max-width:1024px) {
+  .cancel-booking-notice.mobile {
+    display: block !important;
+  }
+
+  .cancel-booking-notice.desktop {
+    display: none;
+  }
+}
+
+.cancel-booking-notice.mobile {
+  display: none;
+}
+
+.cancel-booking-notice.desktop {
+  padding: 10px 17px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+h2.WalkSection {
+  display: block;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  position: sticky;
+  top: 0px;
+  background-color: #fff;
+  z-index: 2 !important;
+}
+
+i.StupidWalkHack {
+  font-weight: 400;
+  font-style: normal;
+}
+
+h2 strong {
+  font-weight: 400;
+  font-style: normal;
+}
+
+.WalkSeeMore {
+  width: 100%;
+  padding: 1.2rem 1rem;
+  font-size: 1.2rem;
+  background-color: white;
+  border: none;
+  font-family: inherit;
+  color: blue;
+  border-bottom: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+}
+
+ol.HelpList {
+  list-style: none;
+  counter-reset: help-counter;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+ol.HelpList li {
+  counter-increment: help-counter;
+  position: relative;
+  margin-bottom: 15px;
+  padding-left: 32px;
+}
+
+ol.HelpList li::before {
+  content: counter(help-counter);
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-weight: bold;
+
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  background: #e4eeff;
+  color: #005eca;
+  text-align: center;
+  line-height: 24px;
+  margin-right: 8px;
+  margin-top: -2px;
+}
+
+button.WalkSeeMore:hover {
+  background: #e4eeff;
+  cursor: pointer;
+  background: #e4eeff;
+  cursor: pointer;
+}
+
+ul.NoticeList {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.NoticeList li {
+	margin-bottom: 20px;
+}
 .social-container {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
 }

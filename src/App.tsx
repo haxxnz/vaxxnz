@@ -15,8 +15,10 @@ import { getMyCalendar } from "./getData";
 import { DateLocationsPair } from "./types";
 import LocationModal from "./LocationModal";
 import BookingsModal from "./BookingsModal";
+
 import RadiusSelect from "./RadiusSelect";
 import { useSearchParams } from "./urlUtils";
+import { WalkInSection } from "./WalkSection";
 import filterOldDates from "./filterOldDates";
 
 function sum(array: number[]) {
@@ -114,11 +116,11 @@ function App() {
           <a href="/" className="nolink">
             <h1>NZ COVID Vaccination Finder</h1>
           </a>{" "}
+          <h3 style={{ fontWeight: "normal" }}>
+            See every available vaccination booking slot near you.{" "}
+          </h3>{" "}
           <br />
           <p>
-            <h3 style={{ fontWeight: "normal" }}>
-              See every available vaccination booking slot near you.{" "}
-            </h3>
             This is not an official Government website.
             <br /> To get vaccinated visit&nbsp;
             <a href="https://bookmyvaccine.nz" target="_blank" rel="noreferrer">
@@ -143,6 +145,7 @@ function App() {
                     })}
               </p>
             </section>
+
             <div>
               <Button
                 kind={KIND.primary}
@@ -162,7 +165,7 @@ function App() {
               <RadiusSelect value={radiusKm} setValue={setRadiusKm} />
             </div>
           </HeaderMain>
-
+          <WalkInSection lat={coords[0]} lng={coords[1]} radiusKm={radiusKm} />
           {loading ? (
             <div
               style={{
