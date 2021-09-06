@@ -93,6 +93,7 @@ const BookingsModal = (props: Props) => {
                 <a href="https://bookmyvaccine.nz/">bookmyvaccine.nz</a>
               </li>
               <li>Enter your details.</li>
+              <li>When asked, search for your desired location and time.</li>
             </ol>
 
             <Button
