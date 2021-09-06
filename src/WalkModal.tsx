@@ -43,7 +43,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                 {location.name}
             </h1>
 
-            {/* <p
+            <p
                 style={{
                     marginTop: "1rem",
                     paddingTop: "1.25rem",
@@ -64,7 +64,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                         </Fragment>
                     );
                 })}
-            </p> */}
+            </p>
             {location.opennningHours.schedule && (
                 <p
                     style={{

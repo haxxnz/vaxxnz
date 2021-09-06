@@ -172,7 +172,7 @@ export const MonthContainer = styled.section`
 export const ModalGrid = styled.section`
     display: grid;
     gap: 4rem;
-    grid-template-columns: 480px 1fr;
+    grid-template-columns: 400px 1fr;
     height: 100%;
     overflow-y: scroll;
     h1 {
