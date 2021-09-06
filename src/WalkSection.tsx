@@ -45,7 +45,7 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
             : undefined
         }
       />
-      <h2 className="WalkSection">Walk-in &amp; Drive-through Locations </h2>
+      <h2 className="WalkSection">Walk-in &amp; Drive-thru Vaccinations<strong> - Open Today</strong></h2>
       {loading && (
         <div
           style={{
@@ -97,7 +97,7 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
                       )}
                     </div>
 
-                    {isOpenToday && <p>Open today <span>{openTodayHours}</span></p>}
+                    {isOpenToday && <p>Open <span>{openTodayHours}</span></p>}
                   </section>
                   <img className="Chevron" src="./arrow-right-1.svg" alt="" />
                 </WalkBox>
