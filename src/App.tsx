@@ -2,6 +2,7 @@ import { Button, KIND } from "baseui/button";
 import { Spinner } from "baseui/spinner";
 import { formatDistance, parse } from "date-fns";
 import React, { useCallback, useContext, useEffect, useState } from "react";
+import { useInterval } from "react-interval-hook";
 import {
     HeaderMain,
     CalendarContainer,
@@ -16,6 +17,7 @@ import LocationModal from "./LocationModal";
 import BookingsModal from "./BookingsModal";
 import RadiusSelect from "./RadiusSelect";
 import { useSearchParams } from "./urlUtils";
+import filterOldDates from "./filterOldDates";
 
 function sum(array: number[]) {
     return array.reduce((a, b) => a + b, 0);
@@ -63,7 +65,8 @@ function App() {
         setError(null);
         try {
             const data = await getMyCalendar(coords[0], coords[1], radiusKm);
-            setDateLocationsPairs(data.dateLocationsPairs);
+            const filteredLocationsPairs = filterOldDates(data.dateLocationsPairs)
+            setDateLocationsPairs(filteredLocationsPairs);
             setLastUpdateTime(
                 data.oldestLastUpdatedTimestamp === Infinity
                     ? new Date(0)
@@ -74,10 +77,6 @@ function App() {
         }
         setLoading(false);
     }, [coords, radiusKm, setDateLocationsPairs]);
-
-    useEffect(() => {
-        loadCalendar();
-    }, [loadCalendar]);
 
     const openLocation = () => {
         setLocationIsOpen(true);
@@ -118,6 +117,15 @@ function App() {
         arrayToPush.push(dateLocationsPair);
         byMonth.set(month, arrayToPush);
     });
+
+    useInterval(() => {
+        const newLocationsPairs = filterOldDates(dateLocationsPairs);
+        setDateLocationsPairs(newLocationsPairs);
+    }, 1000 * 30); // Every 30 seconds
+
+    useEffect(() => {
+        loadCalendar();
+    }, [loadCalendar]);
 
     return (
         <>
