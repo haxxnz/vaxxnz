@@ -80,7 +80,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
             onClick={() => {
               // Also close the modal to avoid confusing stuff
               window.open(
-                `https://www.google.com/maps/dir/?api=1&saddr=My+Location&destination=${location.address}`
+                `https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`
               );
               close();
             }}
