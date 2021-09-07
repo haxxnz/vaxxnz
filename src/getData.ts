@@ -107,6 +107,15 @@ export interface OpennningHours {
   notesHtml: string[];
 }
 
+export enum Instruction {
+  anyoneEligible = "Anyone currently eligible can access",
+  makeAppointment = "Make an appointment",
+  enrolledOnly = "Eligible GP enrolled patients only",
+  walkIn = "Walk in",
+  invitationOnly = "By invitation only",
+  driveThrough = "Drive through",
+}
+
 export interface WalkinLocation {
   lat: number;
   lng: number;
@@ -114,7 +123,7 @@ export interface WalkinLocation {
   branch: string;
   isOpenToday: boolean;
   openTodayHours: string;
-  instructionLis: string[];
+  instructionLis: Instruction[];
   address: string;
   faxNumber: string;
   telephone: string;
