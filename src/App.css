@@ -175,8 +175,6 @@ ul.NoticeList li {
   gap: 1rem;
   justify-content: center;
 }
-<<<<<<< HEAD
-=======
 
 .WalkItem svg {
   margin-left: 12px;
@@ -207,4 +205,3 @@ ul.NoticeList li {
 .WalkModal section:not(:last-child) {
   border-bottom: 1px solid lightgray;
 }
->>>>>>> tags
