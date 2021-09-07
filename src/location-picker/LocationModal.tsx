@@ -3,12 +3,13 @@ import { BaseInput } from "baseui/input";
 import { Modal } from "baseui/modal";
 import { useCallback, useMemo, useState } from "react";
 import "./App.css";
-import { getSuburbIsh } from "./utils/location";
+import { getSuburbIsh } from "../utils/location";
+import { Coords } from "./LocationPicker";
 
 type Props = {
   locationIsOpen: boolean;
   setLocationIsOpen: (isOpen: boolean) => void;
-  setCoords: (coords: [number, number]) => void;
+  setCoords: (coords: Coords) => void;
   setPlaceName: (name: string) => void;
 };
 
@@ -28,7 +29,7 @@ const LocationModal = (props: Props) => {
   const setLocation = useCallback(
     (lat: number, lng: number, name?: string | null) => {
       const placeName = name ?? `${lat} ${lng}`;
-      setCoords([lat, lng]);
+      setCoords({ lat, lng });
       setPlaceName(placeName);
       close();
       const url = new URL(window.location.toString());

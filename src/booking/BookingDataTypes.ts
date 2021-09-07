@@ -1,8 +1,3 @@
-export interface Coords {
-  lng: number;
-  lat: number;
-}
-
 export interface OpenHour {
   days: string[];
   localStart: string;

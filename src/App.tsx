@@ -12,89 +12,52 @@ import { ShareButtons } from "./ShareButtons";
 
 import { DateLocationsPairsContext } from "./contexts";
 import { getMyCalendar } from "./getData";
-import { DateLocationsPair } from "./types";
-import LocationModal from "./LocationModal";
+import { DateLocationsPair } from "./booking/BookingDataTypes";
+import LocationModal from "./location-picker/LocationModal";
 import BookingsModal from "./booking/BookingsModal";
 
 import RadiusSelect from "./RadiusSelect";
 import { useSearchParams } from "./utils/url";
 import { WalkInSection } from "./walk-in/WalkInSection";
 import filterOldDates from "./filterOldDates";
+import { useDefaultCoords } from "./location-picker/LocationPicker";
 
 function sum(array: number[]) {
   return array.reduce((a, b) => a + b, 0);
 }
 
 function App() {
-  const {
-    lat: urlLat,
-    lng: urlLng,
-    placeName: urlPlaceName,
-  } = useSearchParams();
-  const defaultLat = urlLat ? parseFloat(urlLat) : -36.853610199274385;
-  const defaultLng = urlLng ? parseFloat(urlLng) : 174.76054541484535;
-  const defaultPlaceName = urlPlaceName ?? "Auckland CBD";
-
-  const [isOpen, setIsOpen] = React.useState<DateLocationsPair | null>(null);
-  const [locationIsOpen, setLocationIsOpen] = React.useState<boolean>(false);
+  const defaultCoords = useDefaultCoords();
+  const [coords, setCoords] = useState(defaultCoords);
+  // update the coords when the URL changes
+  useEffect(() => setCoords(defaultCoords), [defaultCoords]);
 
   const [radiusKm, setRadiusKm] = useState(10);
-  const [coords, setCoords] = useState<[number, number]>([
-    defaultLat,
-    defaultLng,
-  ]);
-  const [placeName, setPlaceName] = useState(defaultPlaceName);
+  // const {
+  //   lat: urlLat,
+  //   lng: urlLng,
+  //   placeName: urlPlaceName,
+  // } = useSearchParams();
+  // const defaultLat = urlLat ? parseFloat(urlLat) : -36.853610199274385;
+  // const defaultLng = urlLng ? parseFloat(urlLng) : 174.76054541484535;
+  // const defaultPlaceName = urlPlaceName ?? "Auckland CBD";
 
-  useEffect(() => {
-    setCoords([defaultLat, defaultLng]);
-    setPlaceName(defaultPlaceName);
-  }, [defaultLat, defaultLng, defaultPlaceName]);
-
-  const {
-    dateLocationsPairs: dateLocationsPairsUnfiltered,
-    setDateLocationsPairs,
-  } = useContext(DateLocationsPairsContext);
-  const dateLocationsPairs = filterOldDates(dateLocationsPairsUnfiltered);
-  const [lastUpdateTime, setLastUpdateTime] = useState(new Date(0));
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
-
-  const loadCalendar = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const data = await getMyCalendar(coords[0], coords[1], radiusKm);
-      setDateLocationsPairs(data.dateLocationsPairs);
-      setLastUpdateTime(
-        data.oldestLastUpdatedTimestamp === Infinity
-          ? new Date(0)
-          : new Date(data.oldestLastUpdatedTimestamp)
-      );
-    } catch (error) {
-      setError(error as Error);
-    }
-    setLoading(false);
-  }, [coords, radiusKm, setDateLocationsPairs]);
-
-  const openLocation = () => {
-    setLocationIsOpen(true);
-  };
-
-  let byMonth = new Map<string, DateLocationsPair[]>();
-  dateLocationsPairs.forEach((dateLocationsPair) => {
-    const date = parse(dateLocationsPair.dateStr, "yyyy-MM-dd", new Date());
-    const month = date.toLocaleString("en-NZ", {
-      month: "long",
-      year: "numeric",
-    });
-    const arrayToPush = byMonth.get(month) ?? [];
-    arrayToPush.push(dateLocationsPair);
-    byMonth.set(month, arrayToPush);
-  });
-
-  useEffect(() => {
-    loadCalendar();
-  }, [loadCalendar]);
+  // const loadCalendar = useCallback(async () => {
+  //   setLoading(true);
+  //   setError(null);
+  //   try {
+  //     const data = await getMyCalendar(coords[0], coords[1], radiusKm);
+  //     setDateLocationsPairs(data.dateLocationsPairs);
+  //     setLastUpdateTime(
+  //       data.oldestLastUpdatedTimestamp === Infinity
+  //         ? new Date(0)
+  //         : new Date(data.oldestLastUpdatedTimestamp)
+  //     );
+  //   } catch (error) {
+  //     setError(error as Error);
+  //   }
+  //   setLoading(false);
+  // }, [coords, radiusKm, setDateLocationsPairs]);
 
   return (
     <>
@@ -104,12 +67,6 @@ function App() {
           setIsOpen={setIsOpen}
           lat={coords[0]}
           lng={coords[1]}
-        />
-        <LocationModal
-          locationIsOpen={locationIsOpen}
-          setLocationIsOpen={setLocationIsOpen}
-          setCoords={setCoords}
-          setPlaceName={setPlaceName}
         />
 
         <section className="App-header">
@@ -129,135 +86,7 @@ function App() {
             <br />
           </p>
         </section>
-        <div className={"big-old-container"}>
-          <HeaderMain>
-            <section>
-              <h1>
-                Available Vaccine Slots
-                <strong>{placeName ? " near " + placeName : ""}</strong>
-              </h1>
-              <p>
-                Last updated{" "}
-                {lastUpdateTime.getFullYear() === 1970
-                  ? "..."
-                  : formatDistance(lastUpdateTime, new Date(), {
-                      addSuffix: true,
-                    })}
-              </p>
-            </section>
-
-            <div>
-              <Button
-                kind={KIND.primary}
-                onClick={() => openLocation()}
-                overrides={{
-                  BaseButton: {
-                    style: {
-                      minWidth: "220px",
-                    },
-                  },
-                }}
-              >
-                {coords[0] === defaultLat && coords[1] === defaultLng
-                  ? "Set your Location"
-                  : "Location set"}
-              </Button>
-              <RadiusSelect value={radiusKm} setValue={setRadiusKm} />
-            </div>
-          </HeaderMain>
-          <WalkInSection lat={coords[0]} lng={coords[1]} radiusKm={radiusKm} />
-          {loading ? (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                marginTop: "1rem",
-              }}
-            >
-              <Spinner color="black" />
-              <div
-                style={{
-                  marginLeft: "1rem",
-                  fontSize: "1.5rem",
-                }}
-              >
-                Loading...
-              </div>
-            </div>
-          ) : null}
-
-          {!loading && !error ? (
-            <CalendarContainer>
-              {Array.from(byMonth.entries()).map(
-                ([month, dateLocationsPairsForMonth]) => (
-                  <CalendarSectionContainer key={month}>
-                    <div className="MonthSection">
-                      <h2>{month}</h2>{" "}
-                    </div>
-                    <MonthContainer>
-                      {dateLocationsPairsForMonth.map((dateLocationsPair) => (
-                        <button
-                          className={
-                            sum(
-                              dateLocationsPair.locationSlotsPairs.map(
-                                (locationSlotsPair) =>
-                                  (locationSlotsPair.slots || []).length
-                              )
-                            ) === 0
-                              ? "zero-available"
-                              : ""
-                          }
-                          key={dateLocationsPair.dateStr}
-                          onClick={() => setIsOpen(dateLocationsPair)}
-                        >
-                          <div>
-                            <h3>
-                              {parse(
-                                dateLocationsPair.dateStr,
-                                "yyyy-MM-dd",
-                                new Date()
-                              ).toLocaleDateString([], {
-                                day: "numeric",
-                              })}{" "}
-                              {parse(
-                                dateLocationsPair.dateStr,
-                                "yyyy-MM-dd",
-                                new Date()
-                              ).toLocaleDateString([], {
-                                month: "short",
-                              })}
-                              <br />{" "}
-                              <aside aria-hidden="true">
-                                {parse(
-                                  dateLocationsPair.dateStr,
-                                  "yyyy-MM-dd",
-                                  new Date()
-                                ).toLocaleDateString([], {
-                                  weekday: "short",
-                                })}
-                              </aside>
-                            </h3>
-                            <p>
-                              {sum(
-                                dateLocationsPair.locationSlotsPairs.map(
-                                  (locationSlotsPair) =>
-                                    (locationSlotsPair.slots || []).length
-                                )
-                              )}{" "}
-                              available
-                            </p>
-                          </div>
-                          <img src="./arrow.svg" aria-hidden="true" alt="" />
-                        </button>
-                      ))}
-                    </MonthContainer>
-                  </CalendarSectionContainer>
-                )
-              )}
-            </CalendarContainer>
-          ) : null}
-        </div>
+        <div className={"big-old-container"}></div>
         {!loading && error ? (
           <div
             style={{
