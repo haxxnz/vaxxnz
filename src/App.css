@@ -174,3 +174,7 @@ ul.NoticeList li {
   gap: 1rem;
   justify-content: center;
 }
+
+.WalkItem svg {
+  margin-left: 12px;
+}

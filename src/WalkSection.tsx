@@ -4,6 +4,8 @@ import { getWalkinData, Instruction, WalkinLocation } from "./getData";
 import { WalkBox, WalkContainer } from "./VaxComponents";
 import WalkModal from "./WalkModal";
 import { getDistanceKm } from "./distanceUtils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 
 export interface Props {
   lat: number;
@@ -83,14 +85,23 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
                 lat: locationLat,
                 lng: locationLng,
                 openTodayHours,
+                instructionLis: instructions,
               },
               index
             ) => {
               return (
                 <WalkBox onClick={() => openModal(index)} key={index}>
-                  <section>
+                  <section className="WalkItem">
                     <div>
-                      <h3>{name}</h3>
+                      <h3>
+                        {name}
+                        {instructions.includes(Instruction.walkIn) && (
+                          <FontAwesomeIcon icon={faWalking} />
+                        )}
+                        {instructions.includes(Instruction.driveThrough) && (
+                          <FontAwesomeIcon icon={faCar} />
+                        )}
+                      </h3>
                       {locationLat && locationLng && (
                         <p>
                           {Math.round(
