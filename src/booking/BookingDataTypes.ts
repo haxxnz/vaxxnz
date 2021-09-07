@@ -1,3 +1,5 @@
+import { Coords } from "../location-picker/LocationPicker";
+
 export interface OpenHour {
   days: string[];
   localStart: string;

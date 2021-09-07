@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent } from "react";
 import { Coords } from "../location-picker/LocationPicker";
-import { BookingCalendar } from "./BookingCalendar";
+import { BookingCalendar, LoadingBookingCalendar } from "./BookingCalendar";
 import { useBookingData } from "./BookingData";
 import { DateLocationsPair } from "./BookingDataTypes";
 import BookingsModal from "./BookingsModal";
@@ -15,6 +15,7 @@ interface BookingSectionProps {
 export const BookingSection: FunctionComponent<BookingSectionProps> = ({
   coords,
   radiusKm,
+  setLastUpdateTime,
 }) => {
   const [activeDate, setActiveDate] = React.useState<DateLocationsPair | null>(
     null
@@ -31,9 +32,9 @@ export const BookingSection: FunctionComponent<BookingSectionProps> = ({
       />
 
       {"ok" in data ? (
-        <BookingCalendar data={data.ok} />
+        <BookingCalendar setActiveDate={setActiveDate} data={data.ok} />
       ) : "loading" in data ? (
-        <BookingCalendar data={null} />
+        <LoadingBookingCalendar />
       ) : (
         <div
           style={{

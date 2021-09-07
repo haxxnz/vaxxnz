@@ -7,39 +7,40 @@ import { getDistanceKm } from "../utils/distance";
 import { parse } from "date-fns";
 import { sortByAsc } from "../utils/array";
 import { NoticeList } from "../NoticeList";
+import { Coords } from "../location-picker/LocationPicker";
+import { FunctionComponent } from "react";
 
-type Props = {
-  isOpen: DateLocationsPair | null;
-  setIsOpen: (isOpen: DateLocationsPair | null) => void;
-  lat: number;
-  lng: number;
+type BookingsModalProps = {
+  activeDate: DateLocationsPair | null;
+  setActiveDate: (activeDate: DateLocationsPair | null) => void;
+  coords: Coords;
 };
 
-const BookingsModal = (props: Props) => {
+const BookingsModal: FunctionComponent<BookingsModalProps> = ({
+  activeDate,
+  setActiveDate,
+  coords,
+}) => {
   const close = () => {
-    props.setIsOpen(null);
+    setActiveDate(null);
   };
 
   function sortByDistance(
     locationSlotsPairs: LocationSlotsPair[] | undefined,
-    lat: number,
-    lng: number
+    coords: Coords
   ): LocationSlotsPair[] {
     return sortByAsc(locationSlotsPairs ?? [], (locationSlotsPair) => {
       const distanceKm = getDistanceKm(
-        lat,
-        lng,
-        locationSlotsPair.location.location.lat,
-        locationSlotsPair.location.location.lng
+        coords,
+        locationSlotsPair.location.location
       );
       return distanceKm;
     });
   }
-
   return (
     <Modal
       onClose={close}
-      isOpen={!!props.isOpen}
+      isOpen={!!activeDate}
       unstable_ModalBackdropScroll={true}
       overrides={{
         // Root: { style: { zIndex: 1500 } },
@@ -59,9 +60,9 @@ const BookingsModal = (props: Props) => {
         <div>
           <div className="ModalHeader">
             <h1>
-              {props.isOpen
+              {activeDate
                 ? parse(
-                    props.isOpen.dateStr,
+                    activeDate.dateStr,
                     "yyyy-MM-dd",
                     new Date()
                   ).toLocaleDateString([], {
@@ -69,9 +70,9 @@ const BookingsModal = (props: Props) => {
                   })
                 : ""}
               <br />
-              {props.isOpen
+              {activeDate
                 ? parse(
-                    props.isOpen.dateStr,
+                    activeDate.dateStr,
                     "yyyy-MM-dd",
                     new Date()
                   ).toLocaleDateString([], {
@@ -97,7 +98,7 @@ const BookingsModal = (props: Props) => {
             </ol>
 
             <Button
-              onClick={() => props.setIsOpen(null)}
+              onClick={() => setActiveDate(null)}
               overrides={{
                 Root: {
                   style: {
@@ -122,14 +123,10 @@ const BookingsModal = (props: Props) => {
           <h2>Available slots</h2>
           <hr />
 
-          {props.isOpen?.locationSlotsPairs.filter(
+          {activeDate?.locationSlotsPairs.filter(
             (locationSlotsPair) => locationSlotsPair.slots?.length
           ).length ? (
-            sortByDistance(
-              props.isOpen?.locationSlotsPairs,
-              props.lat,
-              props.lng
-            )
+            sortByDistance(activeDate?.locationSlotsPairs, coords)
               .filter((locationSlotsPair) => locationSlotsPair.slots?.length)
               .map((locationSlotsPair) => (
                 <VaccineCentre key={locationSlotsPair.location.extId}>
@@ -137,12 +134,7 @@ const BookingsModal = (props: Props) => {
                   <p>
                     {locationSlotsPair.location.displayAddress} (
                     {Math.floor(
-                      getDistanceKm(
-                        props.lat,
-                        props.lng,
-                        locationSlotsPair.location.location.lat,
-                        locationSlotsPair.location.location.lng
-                      )
+                      getDistanceKm(coords, locationSlotsPair.location.location)
                     )}
                     km away)
                   </p>
@@ -215,7 +207,7 @@ const BookingsModal = (props: Props) => {
                 Try changing your search!
               </h1>
               <Button
-                onClick={() => props.setIsOpen(null)}
+                onClick={() => setActiveDate(null)}
                 overrides={{
                   Root: {
                     style: {

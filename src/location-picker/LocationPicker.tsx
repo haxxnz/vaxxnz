@@ -16,6 +16,7 @@ interface LocationPickerProps {
   setCoords: (coords: Coords) => void;
   radiusKm: number;
   setRadiusKm: (radiusKm: number) => void;
+  lastUpdateTime: Date | null;
 }
 
 export const useDefaultCoords = (): Coords => {
@@ -39,6 +40,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
   setCoords,
   radiusKm,
   setRadiusKm,
+  lastUpdateTime,
 }) => {
   const defaultCoords = useDefaultCoords();
   const defaultPlaceName = useDefaultPlaceName();
@@ -65,7 +67,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
           </h1>
           <p>
             Last updated{" "}
-            {lastUpdateTime.getFullYear() === 1970
+            {lastUpdateTime === null
               ? "..."
               : formatDistance(lastUpdateTime, new Date(), {
                   addSuffix: true,

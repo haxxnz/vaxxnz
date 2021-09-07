@@ -9,10 +9,6 @@ import {
 import { error } from "console";
 import { BookingSection } from "./booking/BookingSection";
 
-function sum(array: number[]) {
-  return array.reduce((a, b) => a + b, 0);
-}
-
 function App() {
   const defaultCoords = useDefaultCoords();
   const [coords, setCoords] = useState(defaultCoords);
@@ -48,27 +44,17 @@ function App() {
             setCoords={setCoords}
             radiusKm={radiusKm}
             setRadiusKm={setRadiusKm}
+            lastUpdateTime={lastUpdateTime}
           />
 
           <WalkInSection coords={coords} radiusKm={radiusKm} />
 
-          <BookingSection coords={coords} radiusKm={radiusKm} />
+          <BookingSection
+            coords={coords}
+            radiusKm={radiusKm}
+            setLastUpdateTime={setLastUpdateTime}
+          />
         </div>
-        {!loading && error ? (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: "1rem",
-            }}
-          >
-            {/* <Spinner color="black" /> */}
-            <div style={{ marginLeft: "1rem", fontSize: "1.5rem" }}>
-              {error.message}
-            </div>
-          </div>
-        ) : null}
 
         <section className="App-header">
           <p style={{ marginBottom: "0.5rem" }}>

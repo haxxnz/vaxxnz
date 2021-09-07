@@ -29,24 +29,19 @@ async function getLocationData(extId: string) {
   return data;
 }
 
-async function getMyCalendar({ lat, lng }: Coords, radiusKm: number) {
+async function getMyCalendar(coords: Coords, radiusKm: number) {
   const locations = await getLocations();
   const filtredLocations = locations.filter((location) => {
-    const distance = getDistanceKm(
-      lat,
-      lng,
-      location.location.lat,
-      location.location.lng
-    );
+    const distance = getDistanceKm(coords, location.location);
     return distance < radiusKm;
   });
   if (filtredLocations.length === 0) {
     if (
       !(
-        lat > NZbbox[1] &&
-        lat < NZbbox[3] &&
-        lng > NZbbox[0] &&
-        lng < NZbbox[2]
+        coords.lat > NZbbox[1] &&
+        coords.lat < NZbbox[3] &&
+        coords.lng > NZbbox[0] &&
+        coords.lng < NZbbox[2]
       )
     ) {
       throw new Error(
@@ -103,9 +98,11 @@ async function getMyCalendar({ lat, lng }: Coords, radiusKm: number) {
 }
 
 type BookingDataResult =
-  | { ok: Map<string, DateLocationsPair[]> }
+  | { ok: BookingData }
   | { error: Error }
   | { loading: true };
+
+export type BookingData = Map<string, DateLocationsPair[]>;
 
 export const useBookingData = (
   coords: Coords,
