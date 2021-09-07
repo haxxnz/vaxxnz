@@ -156,7 +156,10 @@ function filterWalkInLocation(
       const filterBoolean =
         (bps.includes(Instruction.walkIn) ||
           bps.includes(Instruction.driveThrough)) &&
-        Instruction.isPublic(bps);
+        !(
+          bps.includes(Instruction.enrolledOnly) ||
+          bps.includes(Instruction.invitationOnly)
+        );
 
       return distanceInKm < radiusKm && isOpenToday && filterBoolean;
     }
