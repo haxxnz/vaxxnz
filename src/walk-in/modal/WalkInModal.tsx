@@ -4,7 +4,10 @@ import { ModalGrid } from "../../VaxComponents";
 import { NoticeList, NoticeListItem } from "../../NoticeList";
 import { FunctionComponent } from "react";
 import { CancelBookingNotice } from "./CancelNotice";
-import { WalkInLocation } from "../WalkInData";
+import { Instruction, WalkInLocation } from "../WalkInData";
+import "./App.css";
+import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type Props = {
   clearSelectedLocation: () => void;
@@ -40,7 +43,7 @@ const WalkInModal: FunctionComponent<Props> = ({
         },
       }}
     >
-      <ModalGrid className={"modal-container"}>
+      <ModalGrid className={"modal-container WalkModal"}>
         <div>
           <h1
             style={{
@@ -127,36 +130,31 @@ const WalkInModal: FunctionComponent<Props> = ({
                 })}
             </p> */}
 
-          {telephone && (
-            <p
-              style={{
-                marginBottom: "0.5rem",
-                marginRight: "1rem",
-                fontSize: "1.25rem",
+          <section>
+            <div className="WalkInTypes">
+              {location.instructionLis.includes(Instruction.walkIn) && (
+                <p>
+                  <FontAwesomeIcon icon={faWalking} /> Walk-in available
+                </p>
+              )}
+              {location.instructionLis.includes(Instruction.driveThrough) && (
+                <p>
+                  <FontAwesomeIcon icon={faCar} /> Drive-through available
+                </p>
+              )}
+            </div>
+          </section>
 
-                paddingTop: "1rem",
-                lineHeight: "1.5",
-              }}
-            >
+          {telephone && (
+            <section>
               <h3> Phone</h3>
 
               <a href={`tel:${telephone}`}>{telephone}</a>
-            </p>
+            </section>
           )}
 
           {location.opennningHours.schedule && (
-            <div
-              style={{
-                marginTop: "1rem",
-                marginBottom: "0.5rem",
-                marginRight: "1rem",
-                borderBottom: "1px solid lightgray",
-                borderTop: "1px solid lightgray",
-                paddingBottom: "1.5rem",
-                paddingTop: "1rem",
-                lineHeight: "1.5",
-              }}
-            >
+            <section>
               <h3> Hours</h3>
               {Object.keys(location.opennningHours.schedule).map(
                 (openDate, index) => {
@@ -168,13 +166,13 @@ const WalkInModal: FunctionComponent<Props> = ({
                   );
                 }
               )}
-            </div>
+            </section>
           )}
 
           {Object.entries(location.opennningHours.exceptions).map(
             ([key, value], index) => {
               return (
-                <div
+                <section
                   key={index}
                   style={{
                     marginTop: "1rem",
@@ -184,7 +182,7 @@ const WalkInModal: FunctionComponent<Props> = ({
                   <h3>{key}</h3>
 
                   <p key={index}>{value}</p>
-                </div>
+                </section>
               );
             }
           )}

@@ -2,9 +2,11 @@ import { WalkBox, WalkContainer } from "../VaxComponents";
 import WalkModal from "./modal/WalkInModal";
 import { getDistanceKm } from "../utils/distance";
 import { Coords } from "../location-picker/LocationPicker";
-import { useWalkInLocations } from "./WalkInData";
+import { Instruction, useWalkInLocations } from "./WalkInData";
 import { useState } from "react";
 import { Spinner } from "baseui/spinner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 
 export interface Props {
   coords: Coords;
@@ -72,6 +74,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
                     lat: locationLat,
                     lng: locationLng,
                     openTodayHours,
+                    instructionLis: instructions,
                   },
                   index
                 ) => {
@@ -79,7 +82,15 @@ export function WalkInSection({ coords, radiusKm }: Props) {
                     <WalkBox onClick={() => openModal(index)} key={index}>
                       <section>
                         <div>
-                          <h3>{name}</h3>
+                          <h3>
+                            {name}
+                            {instructions.includes(Instruction.walkIn) && (
+                              <FontAwesomeIcon icon={faWalking} />
+                            )}
+                            {instructions.includes(Instruction.driveThrough) && (
+                              <FontAwesomeIcon icon={faCar} />
+                            )}
+                          </h3>
                           {locationLat && locationLng && (
                             <p>
                               {Math.round(
