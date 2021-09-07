@@ -1,42 +1,77 @@
-![Banner](https://i.imgur.com/rUx3XPw.png)
+# Vaxx Nz technical guide
 
-## Welcome to [Vaxx.nz](https://vaxx.nz)
+This section of the documentation contains a guide for technicall users who want to contribute code or documentation to the Vaxx.nz. As a community, we share rules of behavior and interaction. Make sure you are familiar with the [community guidelines](CODE_OF_CONDUCT.md) before continuing.
 
-> The intuitive NZ COVID Vaccination Finder for New Zealand
+Users who are new to development should start by setting up their environment. Then, they should try a simple code change. After that, you should find something to work on or propose a totally new change.
 
-Perhaps you visited [bookmyvaccine.nz](https://bookmyvaccine.nz), only to find that all of the places closest to you are booked out weeks or months in advance?
+If you are a programming prodigy, you still may find this documentation useful. Please feel free to skim past information you find obvious or boring.
 
-In response to this, we've built [vaxx.nz](https://vaxx.nz) to make the experience of finding an earlier vaccine appointment close to you easier.
+## How to get started
 
-## How does it work?
+### Task 1. Get a GitHub account
 
-Choose your location, set the distance you wish to travel and it will show ALL of the earliest available vaccination slots using those search parameters. After you find the vaccine clinic with your desirable slot, you can proceed to [bookmyvaccine.nz](https://bookmyvaccine.nz) and book your appointment. We fetch data every 30 minutes from the official APIs, so slot information should be near real-time.
+To contribute to the Vaxxnz project, you will need a <a
+href="https://github.com" target="_blank">GitHub account</a>. A free account is
+fine. All the Vaxxnz repositories are public and visible to everyone.
 
-Over the course of one week, our team of 6 developers and 2 designers built a website to aide residents of New Zealand in booking their COVID-19 vaccine the intuitive way! Rather than selecting your location, and booking the next available slot, Vaxxed (aka. The Vaccination Calendar) let's you choose when you want to receive your vaccine at a provider near you. Eliminating the filtering hassle and subsequent frustration.
+You should also have some experience using both the GitHub application and `git`
+on the command line. But if you prefer GUI version which is also fine to.
 
-We recognise that the best projects aren't built alone. If you would like to contribute, Read our getting started guide and __we would love to hear from you__.
+### Task 2. Install git
 
-[Getting Started Guide](https://vaxx.nz) 
+Install `git` on your local system. You can check if `git` is on already on your
+system and properly installed with the following command:
 
+```bash
+$ git --version
+```
 
-![Contributors](https://contrib.rocks/image?repo=CovidEngine/vaxxnz)
+Your version may be
+different depending on your OS.
 
-## Press
+### Task 3. Fork the repository
 
-[Vaxx.nz](https://vaxx.nz) has been featured in the following:
+Before contributing, you first fork the Vaxxnz code repository. A fork copies a repository at a particular point in time. GitHub tracks for you where a fork originates.
 
-- NZ Business Desk: [Developers build better vaccine booking website](https://businessdesk.co.nz/article/news-in-brief/developers-build-better-vaccine-booking-website)
-- Stuff New Zealand: [Covid-19: 'Hackathon' creates faster way to find a Covid-19 vaccine near you](https://www.stuff.co.nz/national/health/coronavirus/126293947/covid19-hackathon-creates-faster-way-to-find-a-covid19-vaccine-near-you)
-- 1 News (TVNZ): [Kiwi friends build website to help speed up vaccinations](https://www.tvnz.co.nz/one-news/new-zealand/kiwi-friends-build-website-help-speed-up-vaccinations)
-- ZM Radio Shout-out!
-- David Farrier on Twitter: [Powerful and wonderful tool for new zealanders trying to get vaccinated](https://twitter.com/davidfarrier/status/1434717951798611968)
-- [The Project](https://www.youtube.com/watch?v=erZ6kTJTpmI) (Mediaworks)
-## Uptake
+As you make contributions, you change your fork's code. When you are ready, you make a pull request back to the original Vaxxnz repository. If you aren't familiar with this workflow, don't worry, you can contact us at [Discord](https://discord.com/channels/884578058911219743/884714023323586600) for help.
 
-Following our launch, we welcomed an average of 2,800 users every 30 minutes! All up, we helped over 29,000 people to explore vaccine availability options via our calendar.
+### Task 4. Check for required tools
 
-![Analytics](https://i.imgur.com/YjUZL9j.png)
+We recommend [VsCode](https://code.visualstudio.com/) for development use. Our team uses Yarn as package manager instead of NPM so make sure you installed it locally.
+
+Make sure you have these tools installed locally:
+
+- Node JS ([download](https://nodejs.org/en/download/))
+- Yarn v1 ([download](https://classic.yarnpkg.com/lang/en/))
+
+### Task 5. Start development
+
+Clone your fork repo to local machine and navigate to the repo from commandline
+
+Install dependency with command `yarn install`
+
+Available Commands:
+
+1. `yarn start` - starts the development server with hot reloading enabled
+
+2. `yarn build` - bundles the code
+
+Once you see the message: 
+
+```shell
+Compiled successfully!
+
+You can now view vaxxnz in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://192.168.1.6:3000
+
+Note that the development build is not optimized.
+To create a production build, use yarn build.
+```
+ 
+You are good to start coding
 
 ## Resources
 
-Periodically updated JSON of all available slots: [see raw data here](https://github.com/CovidEngine/vaxxnzlocations)
+If you need any help, we have our [Discord server](https://discord.com/channels/884578058911219743/884714023323586600) feel free to join and ask us anything, we don't bite.
