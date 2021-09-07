@@ -12,6 +12,8 @@ Here are some ways to help:
 
 - Have a look at some [open issues](https://github.com/CovidEngine/vaxxnz/issues) and see if anyone needs any help investigating a problem or bug
 
+- [Review our roadmap ](https://github.com/CovidEngine/vaxxnz/issues) and propose improvements
+
 - Propose a new idea or feature by [Creating an issue](https://github.com/CovidEngine/vaxxnz/issues)
 
 - Have a look at the design page, and start doing some user research to figure out how we can improve the workflow
@@ -19,5 +21,4 @@ Here are some ways to help:
 ## For Designers:
 
 - We have a [figma file here](https://www.figma.com/file/4oWThzqdwnGO0ibpbWR3zd/Vaxxtastic?node-id=0%3A1)
-
-- you are welcome to clone and fork anything there
+- We'll set up a research repository soon at https://github.com/CovidEngine/vaxxnz/wiki
