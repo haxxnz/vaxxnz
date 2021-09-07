@@ -1,4 +1,8 @@
-import { format } from "date-fns";
+import { format, parse } from "date-fns";
+import { useContext, useState, useCallback, useEffect } from "react";
+import { DateLocationsPairsContext } from "../contexts";
+import filterOldDates from "../filterOldDates";
+import { Coords } from "../location-picker/LocationPicker";
 import { getDistanceKm } from "../utils/distance";
 import {
   DateLocationsPair,
@@ -9,7 +13,7 @@ import {
 
 const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
 
-export async function getLocations() {
+async function getLocations() {
   const res = await fetch(
     "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/uniqLocations.json"
   );
@@ -17,18 +21,15 @@ export async function getLocations() {
   return data;
 }
 
-export async function getLocationData(extId: string) {
+async function getLocationData(extId: string) {
   const res = await fetch(
     `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/availability/${extId}.json`
   );
   const data: LocationsData = await res.json();
   return data;
 }
-export async function getMyCalendar(
-  lat: number,
-  lng: number,
-  radiusKm: number
-) {
+
+async function getMyCalendar({ lat, lng }: Coords, radiusKm: number) {
   const locations = await getLocations();
   const filtredLocations = locations.filter((location) => {
     const distance = getDistanceKm(
@@ -100,3 +101,63 @@ export async function getMyCalendar(
   }
   return { dateLocationsPairs, oldestLastUpdatedTimestamp };
 }
+
+type BookingDataResult =
+  | { ok: Map<string, DateLocationsPair[]> }
+  | { error: Error }
+  | { loading: true };
+
+export const useBookingData = (
+  coords: Coords,
+  radiusKm: number,
+  setLastUpdateTime: (time: Date | null) => void
+): BookingDataResult => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  const {
+    dateLocationsPairs: dateLocationsPairsUnfiltered,
+    setDateLocationsPairs,
+  } = useContext(DateLocationsPairsContext);
+  const dateLocationsPairs = filterOldDates(dateLocationsPairsUnfiltered);
+  const loadCalendar = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await getMyCalendar(coords, radiusKm);
+      setDateLocationsPairs(data.dateLocationsPairs);
+      setLastUpdateTime(
+        data.oldestLastUpdatedTimestamp === Infinity
+          ? null
+          : new Date(data.oldestLastUpdatedTimestamp)
+      );
+    } catch (error) {
+      setError(error as Error);
+    }
+    setLoading(false);
+  }, [coords, radiusKm, setDateLocationsPairs, setLastUpdateTime]);
+
+  let byMonth = new Map<string, DateLocationsPair[]>();
+  dateLocationsPairs.forEach((dateLocationsPair) => {
+    const date = parse(dateLocationsPair.dateStr, "yyyy-MM-dd", new Date());
+    const month = date.toLocaleString("en-NZ", {
+      month: "long",
+      year: "numeric",
+    });
+    const arrayToPush = byMonth.get(month) ?? [];
+    arrayToPush.push(dateLocationsPair);
+    byMonth.set(month, arrayToPush);
+  });
+
+  useEffect(() => {
+    loadCalendar();
+  }, [loadCalendar]);
+
+  if (loading) {
+    return { loading: true };
+  } else if (error) {
+    return { error };
+  } else {
+    return { ok: byMonth };
+  }
+};

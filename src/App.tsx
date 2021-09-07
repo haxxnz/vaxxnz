@@ -1,26 +1,13 @@
-import { Button, KIND } from "baseui/button";
-import { Spinner } from "baseui/spinner";
-import { formatDistance, parse } from "date-fns";
-import React, { useCallback, useContext, useEffect, useState } from "react";
-import {
-  HeaderMain,
-  CalendarContainer,
-  CalendarSectionContainer,
-  MonthContainer,
-} from "./VaxComponents";
+import { useEffect, useState } from "react";
 import { ShareButtons } from "./ShareButtons";
 
-import { DateLocationsPairsContext } from "./contexts";
-import { getMyCalendar } from "./getData";
-import { DateLocationsPair } from "./booking/BookingDataTypes";
-import LocationModal from "./location-picker/LocationModal";
-import BookingsModal from "./booking/BookingsModal";
-
-import RadiusSelect from "./RadiusSelect";
-import { useSearchParams } from "./utils/url";
 import { WalkInSection } from "./walk-in/WalkInSection";
-import filterOldDates from "./filterOldDates";
-import { useDefaultCoords } from "./location-picker/LocationPicker";
+import {
+  LocationPicker,
+  useDefaultCoords,
+} from "./location-picker/LocationPicker";
+import { error } from "console";
+import { BookingSection } from "./booking/BookingSection";
 
 function sum(array: number[]) {
   return array.reduce((a, b) => a + b, 0);
@@ -33,42 +20,11 @@ function App() {
   useEffect(() => setCoords(defaultCoords), [defaultCoords]);
 
   const [radiusKm, setRadiusKm] = useState(10);
-  // const {
-  //   lat: urlLat,
-  //   lng: urlLng,
-  //   placeName: urlPlaceName,
-  // } = useSearchParams();
-  // const defaultLat = urlLat ? parseFloat(urlLat) : -36.853610199274385;
-  // const defaultLng = urlLng ? parseFloat(urlLng) : 174.76054541484535;
-  // const defaultPlaceName = urlPlaceName ?? "Auckland CBD";
-
-  // const loadCalendar = useCallback(async () => {
-  //   setLoading(true);
-  //   setError(null);
-  //   try {
-  //     const data = await getMyCalendar(coords[0], coords[1], radiusKm);
-  //     setDateLocationsPairs(data.dateLocationsPairs);
-  //     setLastUpdateTime(
-  //       data.oldestLastUpdatedTimestamp === Infinity
-  //         ? new Date(0)
-  //         : new Date(data.oldestLastUpdatedTimestamp)
-  //     );
-  //   } catch (error) {
-  //     setError(error as Error);
-  //   }
-  //   setLoading(false);
-  // }, [coords, radiusKm, setDateLocationsPairs]);
+  const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
 
   return (
     <>
       <div className="App">
-        <BookingsModal
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-          lat={coords[0]}
-          lng={coords[1]}
-        />
-
         <section className="App-header">
           <a href="/" className="nolink">
             <h1>NZ COVID Vaccination Finder</h1>
@@ -86,7 +42,18 @@ function App() {
             <br />
           </p>
         </section>
-        <div className={"big-old-container"}></div>
+        <div className={"big-old-container"}>
+          <LocationPicker
+            coords={coords}
+            setCoords={setCoords}
+            radiusKm={radiusKm}
+            setRadiusKm={setRadiusKm}
+          />
+
+          <WalkInSection coords={coords} radiusKm={radiusKm} />
+
+          <BookingSection coords={coords} radiusKm={radiusKm} />
+        </div>
         {!loading && error ? (
           <div
             style={{
