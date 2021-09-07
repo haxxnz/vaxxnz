@@ -88,7 +88,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
               <h3>How to Book</h3>
             </p>
             <ol className="HelpList">
-              <li>Find find a location and time from the list below.</li>
+              <li>Find a location and time from the list below.</li>
               <li>
                 Click on the <i>Make a Booking</i> button, this will take you to{" "}
                 <a href="https://bookmyvaccine.nz/">bookmyvaccine.nz</a>
