@@ -147,17 +147,19 @@ export const MonthContainer = styled.section`
       font-weight: 400;
       color: #555;
     }
-    :hover {
-      background-color: #e4eeff;
-      cursor: pointer;
-      h3,
-      p {
-        color: #005eca;
+    @media (hover: hover) {
+      :hover {
+        background-color: #e4eeff;
+        cursor: pointer;
+        h3,
+        p {
+          color: #005eca;
+        }
       }
     }
     img {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 1rem;
+      height: 1rem;
       bottom: 0;
       opacity: 0.7;
     }
@@ -171,6 +173,11 @@ export const MonthContainer = styled.section`
   }
   @media screen and (max-width: 500px) {
     grid-template-columns: repeat(1, 1fr);
+    button img {
+      align-self: center;
+      height: 2rem;
+      width: 2rem;
+    }
   }
 `;
 
@@ -289,13 +296,14 @@ export const WalkBox = styled.button`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-  :hover {
-    background-color: #e4eeff;
-    cursor: pointer;
-    h3,
-    p {
-      color: #005eca;
+  @media (hover: hover) {
+    :hover {
+      background-color: #e4eeff;
+      cursor: pointer;
+      h3,
+      p {
+        color: #005eca;
+      }
     }
   }
 
