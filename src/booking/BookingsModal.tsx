@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { Modal } from "baseui/modal";
 import { Button, KIND } from "baseui/button";
-import { ModalGrid, VaccineCentre } from "./VaxComponents";
-import { DateLocationsPair, LocationSlotsPair } from "./types";
-import { getDistanceKm } from "./utils/distance";
+import { ModalGrid, VaccineCentre } from "../VaxComponents";
+import { DateLocationsPair, LocationSlotsPair } from "../types";
+import { getDistanceKm } from "../utils/distance";
 import { parse } from "date-fns";
-import { sortByAsc } from "./utils/array";
-import { NoticeList } from "./NoticeList";
+import { sortByAsc } from "../utils/array";
+import { NoticeList } from "../NoticeList";
 
 type Props = {
   isOpen: DateLocationsPair | null;

@@ -14,7 +14,7 @@ import { DateLocationsPairsContext } from "./contexts";
 import { getMyCalendar } from "./getData";
 import { DateLocationsPair } from "./types";
 import LocationModal from "./LocationModal";
-import BookingsModal from "./BookingsModal";
+import BookingsModal from "./booking/BookingsModal";
 
 import RadiusSelect from "./RadiusSelect";
 import { useSearchParams } from "./utils/url";
