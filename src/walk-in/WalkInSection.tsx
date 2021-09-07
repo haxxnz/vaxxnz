@@ -80,7 +80,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
                 ) => {
                   return (
                     <WalkBox onClick={() => openModal(index)} key={index}>
-                      <section>
+                      <section className="WalkItem">
                         <div>
                           <h3>
                             {name}
