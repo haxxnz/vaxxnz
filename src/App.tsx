@@ -246,6 +246,23 @@ function App() {
                                 )
                               )}{" "}
                               available
+                              {/* Ternary statement to display number of vaccination centres if > 0. We need to use a map as there are some cases where locationSlotsPairs has entries
+                              but the nested slots field is empty. */}
+                              {sum(
+                                dateLocationsPair.locationSlotsPairs.map(
+                                  (locationSlotsPair) => {
+                                    return (locationSlotsPair.slots || [])
+                                      .length > 0
+                                      ? 1
+                                      : 0;
+                                  }
+                                )
+                              ) < 1 ? null : (
+                                <div>
+                                  {dateLocationsPair.locationSlotsPairs.length}{" "}
+                                  vaccination centres
+                                </div>
+                              )}
                             </p>
                           </div>
                           <img src="./arrow.svg" aria-hidden="true" alt="" />
