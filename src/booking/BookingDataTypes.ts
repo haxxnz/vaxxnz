@@ -1,7 +1,4 @@
-export interface Coords {
-  lng: number;
-  lat: number;
-}
+import { Coords } from "../location-picker/LocationPicker";
 
 export interface OpenHour {
   days: string[];
@@ -40,8 +37,8 @@ export interface AvailabilityDates {
 }
 
 export interface LocationsData {
-  availabilityDates: AvailabilityDates
-  lastUpdatedAt: string
+  availabilityDates: AvailabilityDates;
+  lastUpdatedAt: string;
 }
 
 export interface LocationSlotsPair {

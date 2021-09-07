@@ -1,15 +1,19 @@
-import { format } from "date-fns";
-import { getDistanceKm } from "./distanceUtils";
+import { format, parse } from "date-fns";
+import { useContext, useState, useCallback, useEffect } from "react";
+import { DateLocationsPairsContext } from "../contexts";
+import filterOldDates from "../filterOldDates";
+import { Coords } from "../location-picker/LocationPicker";
+import { getDistanceKm } from "../utils/distance";
 import {
   DateLocationsPair,
   Location,
   LocationsData,
   LocationSlotsPair,
-} from "./types";
+} from "./BookingDataTypes";
 
 const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
 
-export async function getLocations() {
+async function getLocations() {
   const res = await fetch(
     "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/uniqLocations.json"
   );
@@ -17,35 +21,27 @@ export async function getLocations() {
   return data;
 }
 
-export async function getLocationData(extId: string) {
+async function getLocationData(extId: string) {
   const res = await fetch(
     `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/availability/${extId}.json`
   );
   const data: LocationsData = await res.json();
   return data;
 }
-export async function getMyCalendar(
-  lat: number,
-  lng: number,
-  radiusKm: number
-) {
+
+async function getMyCalendar(coords: Coords, radiusKm: number) {
   const locations = await getLocations();
   const filtredLocations = locations.filter((location) => {
-    const distance = getDistanceKm(
-      lat,
-      lng,
-      location.location.lat,
-      location.location.lng
-    );
+    const distance = getDistanceKm(coords, location.location);
     return distance < radiusKm;
   });
   if (filtredLocations.length === 0) {
     if (
       !(
-        lat > NZbbox[1] &&
-        lat < NZbbox[3] &&
-        lng > NZbbox[0] &&
-        lng < NZbbox[2]
+        coords.lat > NZbbox[1] &&
+        coords.lat < NZbbox[3] &&
+        coords.lng > NZbbox[0] &&
+        coords.lng < NZbbox[2]
       )
     ) {
       throw new Error(
@@ -101,44 +97,64 @@ export async function getMyCalendar(
   return { dateLocationsPairs, oldestLastUpdatedTimestamp };
 }
 
-export interface OpennningHours {
-  schedule: { [date: string]: string };
-  exceptions: { [date: string]: string };
-  notesHtml: string[];
-}
+type BookingDataResult =
+  | { ok: BookingData }
+  | { error: Error }
+  | { loading: true };
 
-export enum Instruction {
-  anyoneEligible = "Anyone currently eligible can access",
-  makeAppointment = "Make an appointment",
-  enrolledOnly = "Eligible GP enrolled patients only",
-  walkIn = "Walk in",
-  invitationOnly = "By invitation only",
-  driveThrough = "Drive through",
-}
+export type BookingData = Map<string, DateLocationsPair[]>;
 
-export interface WalkinLocation {
-  lat: number;
-  lng: number;
-  name: string;
-  branch: string;
-  isOpenToday: boolean;
-  openTodayHours: string;
-  instructionLis: Instruction[];
-  address: string;
-  faxNumber: string;
-  telephone: string;
-  opennningHours: OpennningHours;
-}
+export const useBookingData = (
+  coords: Coords,
+  radiusKm: number,
+  setLastUpdateTime: (time: Date | null) => void
+): BookingDataResult => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
 
-export async function getWalkinData(): Promise<WalkinLocation[]> {
-  try {
-    const res = await fetch(
-      "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/healthpointLocations.json"
-    );
-    const data = await res.json();
-    return data;
-  } catch (e) {
-    console.error(e); // Ilia, please don't break this, xoxoxo
-    return [];
+  const {
+    dateLocationsPairs: dateLocationsPairsUnfiltered,
+    setDateLocationsPairs,
+  } = useContext(DateLocationsPairsContext);
+  const dateLocationsPairs = filterOldDates(dateLocationsPairsUnfiltered);
+  const loadCalendar = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const data = await getMyCalendar(coords, radiusKm);
+      setDateLocationsPairs(data.dateLocationsPairs);
+      setLastUpdateTime(
+        data.oldestLastUpdatedTimestamp === Infinity
+          ? null
+          : new Date(data.oldestLastUpdatedTimestamp)
+      );
+    } catch (error) {
+      setError(error as Error);
+    }
+    setLoading(false);
+  }, [coords, radiusKm, setDateLocationsPairs, setLastUpdateTime]);
+
+  let byMonth = new Map<string, DateLocationsPair[]>();
+  dateLocationsPairs.forEach((dateLocationsPair) => {
+    const date = parse(dateLocationsPair.dateStr, "yyyy-MM-dd", new Date());
+    const month = date.toLocaleString("en-NZ", {
+      month: "long",
+      year: "numeric",
+    });
+    const arrayToPush = byMonth.get(month) ?? [];
+    arrayToPush.push(dateLocationsPair);
+    byMonth.set(month, arrayToPush);
+  });
+
+  useEffect(() => {
+    loadCalendar();
+  }, [loadCalendar]);
+
+  if (loading) {
+    return { loading: true };
+  } else if (error) {
+    return { error };
+  } else {
+    return { ok: byMonth };
   }
-}
+};

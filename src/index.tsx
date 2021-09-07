@@ -7,7 +7,7 @@ import App from "./App";
 import { DateLocationsPairsContext } from "./contexts";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { DateLocationsPair } from "./types";
+import { DateLocationsPair } from "./booking/BookingDataTypes";
 
 const engine = new Styletron();
 
