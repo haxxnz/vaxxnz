@@ -15,7 +15,7 @@ const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
 
 async function getLocations() {
   const res = await fetch(
-    "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/d45bef5cdfe47f2c1d0b00f69485b51f286ae455/uniqLocations.json"
+    "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/HEAD/uniqLocations.json"
   );
   const data: Location[] = await res.json();
   return data;
@@ -23,7 +23,7 @@ async function getLocations() {
 
 async function getLocationData(extId: string) {
   const res = await fetch(
-    `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/d45bef5cdfe47f2c1d0b00f69485b51f286ae455/availability/${extId}.json`
+    `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/HEAD/availability/${extId}.json`
   );
   const data: LocationsData = await res.json();
   return data;
