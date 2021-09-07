@@ -40,8 +40,8 @@ export interface AvailabilityDates {
 }
 
 export interface LocationsData {
-  availabilityDates: AvailabilityDates
-  lastUpdatedAt: string
+  availabilityDates: AvailabilityDates;
+  lastUpdatedAt: string;
 }
 
 export interface LocationSlotsPair {
