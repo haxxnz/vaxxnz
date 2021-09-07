@@ -2,7 +2,7 @@
 import { Modal } from "baseui/modal";
 import { Button, KIND } from "baseui/button";
 import { ModalGrid, VaccineCentre } from "../VaxComponents";
-import { DateLocationsPair, LocationSlotsPair } from "../types";
+import { DateLocationsPair, LocationSlotsPair } from "./BookingDataTypes";
 import { getDistanceKm } from "../utils/distance";
 import { parse } from "date-fns";
 import { sortByAsc } from "../utils/array";
