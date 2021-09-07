@@ -9,7 +9,6 @@ import {
 
 const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
 
-
 export async function getLocations() {
   const res = await fetch(
     "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/uniqLocations.json"
@@ -41,10 +40,21 @@ export async function getMyCalendar(
     return distance < radiusKm;
   });
   if (filtredLocations.length === 0) {
-    if (!(lat > NZbbox[1] && lat < NZbbox[3] && lng > NZbbox[0] && lng < NZbbox[2])) {
-      throw new Error('No vaccination sites found for this search query. Are you in New Zealand?');
+    if (
+      !(
+        lat > NZbbox[1] &&
+        lat < NZbbox[3] &&
+        lng > NZbbox[0] &&
+        lng < NZbbox[2]
+      )
+    ) {
+      throw new Error(
+        "No vaccination sites found for this search query. Are you in New Zealand?"
+      );
     }
-    throw new Error('No vaccination sites found for this search query. Try a different kilometer radius?');
+    throw new Error(
+      "No vaccination sites found for this search query. Try a different kilometer radius?"
+    );
   }
   let oldestLastUpdatedTimestamp = Infinity;
   const availabilityDatesAndLocations = await Promise.all(
@@ -92,9 +102,18 @@ export async function getMyCalendar(
 }
 
 export interface OpennningHours {
-  schedule: { [date: string]: string; };
-  exceptions: { [date: string]: string; };
-  notesHtml: string[]
+  schedule: { [date: string]: string };
+  exceptions: { [date: string]: string };
+  notesHtml: string[];
+}
+
+export enum Instruction {
+  anyoneEligible = "Anyone currently eligible can access",
+  makeAppointment = "Make an appointment",
+  enrolledOnly = "Eligible GP enrolled patients only",
+  walkIn = "Walk in",
+  invitationOnly = "By invitation only",
+  driveThrough = "Drive through",
 }
 
 export interface WalkinLocation {
@@ -104,7 +123,7 @@ export interface WalkinLocation {
   branch: string;
   isOpenToday: boolean;
   openTodayHours: string;
-  instructionLis: string[];
+  instructionLis: Instruction[];
   address: string;
   faxNumber: string;
   telephone: string;
@@ -113,7 +132,9 @@ export interface WalkinLocation {
 
 export async function getWalkinData(): Promise<WalkinLocation[]> {
   try {
-    const res = await fetch('https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/healthpointLocations.json');
+    const res = await fetch(
+      "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/healthpointLocations.json"
+    );
     const data = await res.json();
     return data;
   } catch (e) {
