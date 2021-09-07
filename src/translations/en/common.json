@@ -5,7 +5,8 @@
     "disclaimerNotAGovWebsite": "This is not an official Government website. To get vaccinated visit bookmyvaccine.nz"
   },
   "navigation": {
-    "setLocation": "Set your Location"
+    "setLocation": "Set your Location",
+    "setLocationConfirmation": "Location Set"
   },
   "footer": {
     "message": "If this site helped you please consider sharing",

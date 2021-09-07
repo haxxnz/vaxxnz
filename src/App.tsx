@@ -2,30 +2,32 @@ import { Button, KIND } from "baseui/button";
 import { Spinner } from "baseui/spinner";
 import { formatDistance, parse } from "date-fns";
 import React, { useCallback, useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import BookingsModal from "./BookingsModal";
+import { DateLocationsPairsContext } from "./contexts";
+import filterOldDates from "./filterOldDates";
+import { getMyCalendar } from "./getData";
+import LanguageSelect from "./LanguageSelect";
+import LocationModal from "./LocationModal";
+import RadiusSelect from "./RadiusSelect";
+import { ShareButtons } from "./ShareButtons";
+import { DateLocationsPair } from "./types";
+import { useSearchParams } from "./urlUtils";
 import {
-  HeaderMain,
   CalendarContainer,
   CalendarSectionContainer,
+  HeaderMain,
   MonthContainer,
 } from "./VaxComponents";
-import { ShareButtons } from "./ShareButtons";
-
-import { DateLocationsPairsContext } from "./contexts";
-import { getMyCalendar } from "./getData";
-import { DateLocationsPair } from "./types";
-import LocationModal from "./LocationModal";
-import BookingsModal from "./BookingsModal";
-
-import RadiusSelect from "./RadiusSelect";
-import { useSearchParams } from "./urlUtils";
 import { WalkInSection } from "./WalkSection";
-import filterOldDates from "./filterOldDates";
 
 function sum(array: number[]) {
   return array.reduce((a, b) => a + b, 0);
 }
 
 function App() {
+  const { t } = useTranslation("common");
+
   const {
     lat: urlLat,
     lng: urlLng,
@@ -114,14 +116,12 @@ function App() {
 
         <section className="App-header">
           <a href="/" className="nolink">
-            <h1>NZ COVID Vaccination Finder</h1>
+            <h1>{t("core.title")}</h1>
           </a>{" "}
-          <h3 style={{ fontWeight: "normal" }}>
-            See every available vaccination booking slot near you.{" "}
-          </h3>{" "}
+          <h3 style={{ fontWeight: "normal" }}>{t("core.tagline")}</h3>
           <br />
           <p>
-            This is not an official Government website.
+            {t("core.disclaimerNotAGovWebsite")}
             <br /> To get vaccinated visit&nbsp;
             <a href="https://bookmyvaccine.nz" target="_blank" rel="noreferrer">
               bookmyvaccine.nz
@@ -159,10 +159,11 @@ function App() {
                 }}
               >
                 {coords[0] === defaultLat && coords[1] === defaultLng
-                  ? "Set your Location"
-                  : "Location set"}
+                  ? t("navigation.setLocation")
+                  : t("navigation.setLocationConfirmation")}
               </Button>
               <RadiusSelect value={radiusKm} setValue={setRadiusKm} />
+              <LanguageSelect />
             </div>
           </HeaderMain>
           <WalkInSection lat={coords[0]} lng={coords[1]} radiusKm={radiusKm} />
