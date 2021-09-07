@@ -1,30 +1,21 @@
-import { useEffect, useState } from "react";
-import { Spinner } from "baseui/spinner";
-import { getWalkinData, WalkinLocation } from "../getData";
 import { WalkBox, WalkContainer } from "../VaxComponents";
 import WalkModal from "./modal/WalkInModal";
 import { getDistanceKm } from "../utils/distance";
+import { Coords } from "../location-picker/LocationPicker";
+import { useWalkInLocations } from "./WalkInData";
+import { useState } from "react";
+import { Spinner } from "baseui/spinner";
 
 export interface Props {
-  lat: number;
-  lng: number;
+  coords: Coords;
   radiusKm: number;
 }
 
-export function WalkInSection({ lat, lng, radiusKm }: Props) {
+export function WalkInSection({ coords, radiusKm }: Props) {
+  const locations = useWalkInLocations(coords, radiusKm);
+
   const [selectedLocationIndex, setSelectedLocation] = useState<number>();
-  const [walkInLocations, setWalkinLocation] = useState<WalkinLocation[]>([]);
   const [currentView, setCurrentView] = useState(6);
-  const [loading, setLoading] = useState<boolean>(true);
-  useEffect(() => {
-    setLoading(true);
-    getWalkinData()
-      .then((walkIn) => {
-        setWalkinLocation(filterWalkInLocation(walkIn, lat, lng, radiusKm));
-        setCurrentView(6); // clear view more when we reload location
-      })
-      .finally(() => setLoading(false));
-  }, [lat, lng, radiusKm]);
   const openModal = (locationIndex: number) => {
     setSelectedLocation(locationIndex);
   };
@@ -35,24 +26,21 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
     setCurrentView((latest) => latest + 6);
   };
 
-  return (
-    <div
-      style={
-        walkInLocations.length === 0 && !loading ? { display: "none" } : {}
-      }
-    >
+  return "error" in locations ||
+    ("ok" in locations && locations.ok.length === 0) ? null : (
+    <div>
       <WalkModal
         clearSelectedLocation={clearSelectedLocation}
         location={
-          selectedLocationIndex !== undefined
-            ? walkInLocations[selectedLocationIndex]
+          "ok" in locations && selectedLocationIndex !== undefined
+            ? locations.ok[selectedLocationIndex]
             : undefined
         }
       />
       <h2 className="WalkSection">
         Walk-in &amp; Drive-thru Vaccinations<strong> - Open Today</strong>
       </h2>
-      {loading && (
+      {"loading" in locations ? (
         <div
           style={{
             display: "flex",
@@ -71,106 +59,65 @@ export function WalkInSection({ lat, lng, radiusKm }: Props) {
             Loading...
           </div>
         </div>
-      )}
-      <WalkContainer>
-        {walkInLocations
-          .slice(0, currentView)
-          .map(
-            (
-              {
-                name,
-                isOpenToday,
-                lat: locationLat,
-                lng: locationLng,
-                openTodayHours,
-              },
-              index
-            ) => {
-              return (
-                <WalkBox onClick={() => openModal(index)} key={index}>
-                  <section>
-                    <div>
-                      <h3>{name}</h3>
-                      {locationLat && locationLng && (
-                        <p>
-                          {Math.round(
-                            getDistanceKm(lat, lng, locationLat, locationLng) *
-                              10
-                          ) / 10}
-                          KM away
-                        </p>
-                      )}
-                    </div>
+      ) : (
+        <>
+          <WalkContainer>
+            {locations.ok
+              .slice(0, currentView)
+              .map(
+                (
+                  {
+                    name,
+                    isOpenToday,
+                    lat: locationLat,
+                    lng: locationLng,
+                    openTodayHours,
+                  },
+                  index
+                ) => {
+                  return (
+                    <WalkBox onClick={() => openModal(index)} key={index}>
+                      <section>
+                        <div>
+                          <h3>{name}</h3>
+                          {locationLat && locationLng && (
+                            <p>
+                              {Math.round(
+                                getDistanceKm(coords, {
+                                  lat: locationLat,
+                                  lng: locationLng,
+                                }) * 10
+                              ) / 10}
+                              KM away
+                            </p>
+                          )}
+                        </div>
 
-                    {isOpenToday && (
-                      <p>
-                        Open <span>{openTodayHours}</span>
-                      </p>
-                    )}
-                  </section>
-                  <img className="Chevron" src="./arrow-right-1.svg" alt="" />
-                </WalkBox>
-              );
-            }
+                        {isOpenToday && (
+                          <p>
+                            Open <span>{openTodayHours}</span>
+                          </p>
+                        )}
+                      </section>
+                      <img
+                        className="Chevron"
+                        src="./arrow-right-1.svg"
+                        alt=""
+                      />
+                    </WalkBox>
+                  );
+                }
+              )}
+          </WalkContainer>
+
+          {/* Over here @WALTS */}
+          {"ok" in locations && locations.ok.length / currentView > 1 && (
+            <button className="WalkSeeMore" onClick={loadMore}>
+              See more
+            </button>
           )}
-      </WalkContainer>
-      {/* Over here @WALTS */}
-      {walkInLocations.length / currentView > 1 && (
-        <button className="WalkSeeMore" onClick={loadMore}>
-          See more
-        </button>
+        </>
       )}
     </div>
   );
-}
-
-function filterWalkInLocation(
-  walkIn: WalkinLocation[],
-  lat: number,
-  lng: number,
-  radiusKm: number
-) {
-  const matchedFilter = walkIn.filter(
-    ({
-      lat: locationLat,
-      lng: locationLng,
-      isOpenToday,
-      instructionLis: bps,
-    }) => {
-      const distanceInKm =
-        locationLat &&
-        locationLng &&
-        getDistanceKm(lat, lng, locationLat, locationLng);
-
-      const filterBoolean =
-        (bps.includes("Walk in") || bps.includes("Drive through")) &&
-        !(
-          bps.includes("Eligible GP enrolled patients only") ||
-          bps.includes("By invitation only")
-        );
-
-      return distanceInKm < radiusKm && isOpenToday && filterBoolean;
-    }
-  );
-  matchedFilter.sort(
-    (
-      { lat: locationALat, lng: locationALng },
-      { lat: locationBLat, lng: locationBLng }
-    ) => {
-      const distanceKmLocationA = getDistanceKm(
-        lat,
-        lng,
-        locationALat,
-        locationALng
-      );
-      const distanceKmLocationB = getDistanceKm(
-        lat,
-        lng,
-        locationBLat,
-        locationBLng
-      );
-      return distanceKmLocationA - distanceKmLocationB;
-    }
-  );
-  return matchedFilter;
 }

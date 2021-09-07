@@ -1,15 +1,14 @@
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
-import "./App.css";
-import { WalkinLocation } from "../../getData";
 import { ModalGrid } from "../../VaxComponents";
 import { NoticeList, NoticeListItem } from "../../NoticeList";
 import { FunctionComponent } from "react";
 import { CancelBookingNotice } from "./CancelNotice";
+import { WalkInLocation } from "../WalkInData";
 
 type Props = {
   clearSelectedLocation: () => void;
-  location?: WalkinLocation;
+  location?: WalkInLocation;
 };
 
 const WalkInModal: FunctionComponent<Props> = ({

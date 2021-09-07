@@ -1,3 +1,4 @@
+import "./App.css";
 import { useEffect, useState } from "react";
 import { ShareButtons } from "./ShareButtons";
 
@@ -6,7 +7,6 @@ import {
   LocationPicker,
   useDefaultCoords,
 } from "./location-picker/LocationPicker";
-import { error } from "console";
 import { BookingSection } from "./booking/BookingSection";
 
 function App() {

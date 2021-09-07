@@ -2,7 +2,6 @@ import { Button, KIND } from "baseui/button";
 import { BaseInput } from "baseui/input";
 import { Modal } from "baseui/modal";
 import { useCallback, useMemo, useState } from "react";
-import "./App.css";
 import { getSuburbIsh } from "../utils/location";
 import { Coords } from "./LocationPicker";
 
