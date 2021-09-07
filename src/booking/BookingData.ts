@@ -23,7 +23,7 @@ async function getLocations() {
 
 async function getLocationData(extId: string) {
   const res = await fetch(
-    `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/d45bef5cdfe47f2c1d0b00f69485b51f286ae455/availability/${extId}.json`
+    `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/availability/${extId}.json`
   );
   const data: LocationsData = await res.json();
   return data;
