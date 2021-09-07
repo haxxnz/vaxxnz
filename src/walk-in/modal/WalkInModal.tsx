@@ -1,31 +1,21 @@
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import "./App.css";
-import { WalkinLocation } from "./getData";
-import { ModalGrid } from "./VaxComponents";
-import { NoticeList, NoticeListItem } from "./NoticeList";
+import { WalkinLocation } from "../../getData";
+import { ModalGrid } from "../../VaxComponents";
+import { NoticeList, NoticeListItem } from "../../NoticeList";
 import { FunctionComponent } from "react";
+import { CancelBookingNotice } from "./CancelNotice";
 
 type Props = {
   clearSelectedLocation: () => void;
   location?: WalkinLocation;
 };
 
-const CancelBookingNotice: FunctionComponent<{ className: string }> = ({
-  className,
-}) => (
-  <div className={`cancel-booking-notice ${className}`}>
-    <h4>Please don't double-book</h4>
-    <p>
-      Remember to cancel your original booking if you have one at{" "}
-      <a href="https://bookmyvaccine.nz" target="_blank" rel="noreferrer">
-        bookmyvaccine.nz
-      </a>
-    </p>
-  </div>
-);
-
-const WalkModal = ({ clearSelectedLocation, location }: Props) => {
+const WalkInModal: FunctionComponent<Props> = ({
+  clearSelectedLocation,
+  location,
+}) => {
   const close = () => clearSelectedLocation();
   if (location == null) {
     return null;
@@ -215,4 +205,4 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
   );
 };
 
-export default WalkModal;
+export default WalkInModal;

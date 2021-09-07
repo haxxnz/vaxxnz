@@ -18,7 +18,7 @@ import BookingsModal from "./BookingsModal";
 
 import RadiusSelect from "./RadiusSelect";
 import { useSearchParams } from "./utils/url";
-import { WalkInSection } from "./WalkSection";
+import { WalkInSection } from "./walk-in/WalkInSection";
 import filterOldDates from "./filterOldDates";
 
 function sum(array: number[]) {
