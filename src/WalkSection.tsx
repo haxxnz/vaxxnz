@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Spinner } from "baseui/spinner";
-import { getWalkinData, WalkinLocation } from "./getData";
+import { getWalkinData, Instruction, WalkinLocation } from "./getData";
 import { WalkBox, WalkContainer } from "./VaxComponents";
 import WalkModal from "./WalkModal";
 import { getDistanceKm } from "./distanceUtils";
@@ -143,11 +143,9 @@ function filterWalkInLocation(
         getDistanceKm(lat, lng, locationLat, locationLng);
 
       const filterBoolean =
-        (bps.includes("Walk in") || bps.includes("Drive through")) &&
-        !(
-          bps.includes("Eligible GP enrolled patients only") ||
-          bps.includes("By invitation only")
-        );
+        (bps.includes(Instruction.walkIn) ||
+          bps.includes(Instruction.driveThrough)) &&
+        Instruction.isPublic(bps);
 
       return distanceInKm < radiusKm && isOpenToday && filterBoolean;
     }

@@ -116,6 +116,16 @@ export enum Instruction {
   driveThrough = "Drive through",
 }
 
+export namespace Instruction {
+  /** Returns true if the list of instructions allows the general public. */
+  export function isPublic(instructions: Instruction[]) {
+    return !(
+      instructions.includes(Instruction.enrolledOnly) ||
+      instructions.includes(Instruction.invitationOnly)
+    );
+  }
+}
+
 export interface WalkinLocation {
   lat: number;
   lng: number;
