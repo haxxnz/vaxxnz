@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ShareButtons } from "./ShareButtons";
 
 import { WalkInSection } from "./walk-in/WalkInSection";
@@ -12,8 +12,8 @@ import { BookingSection } from "./booking/BookingSection";
 function App() {
   const defaultCoords = useDefaultCoords();
   const [coords, setCoords] = useState(defaultCoords);
-  // update the coords when the URL changes
-  useEffect(() => setCoords(defaultCoords), [defaultCoords]);
+  // TODO: this existed previously but I can't see what use it has
+  // useEffect(() => setCoords(defaultCoords), [defaultCoords]);
 
   const [radiusKm, setRadiusKm] = useState(10);
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading

@@ -22,7 +22,6 @@ export const BookingSection: FunctionComponent<BookingSectionProps> = ({
   );
 
   const data = useBookingData(coords, radiusKm, setLastUpdateTime);
-
   return (
     <>
       <BookingsModal

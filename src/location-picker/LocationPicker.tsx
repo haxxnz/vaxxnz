@@ -1,6 +1,6 @@
 import { Button, KIND } from "baseui/button";
 import { formatDistance } from "date-fns";
-import React, { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useState } from "react";
 import RadiusSelect from "../RadiusSelect";
 import { useSearchParams } from "../utils/url";
 import { HeaderMain } from "../VaxComponents";
@@ -45,8 +45,8 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
   const defaultCoords = useDefaultCoords();
   const defaultPlaceName = useDefaultPlaceName();
   const [placeName, setPlaceName] = useState(defaultPlaceName);
-  // update the place name when the URL changes
-  useEffect(() => setPlaceName(defaultPlaceName), [defaultPlaceName]);
+  // TODO: this existed previously but I can't see what use it has
+  // useEffect(() => setPlaceName(defaultPlaceName), [defaultPlaceName]);
 
   const [isOpen, setIsOpen] = useState(false);
 
