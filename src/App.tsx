@@ -17,7 +17,7 @@ import LocationModal from "./LocationModal";
 import BookingsModal from "./BookingsModal";
 
 import RadiusSelect from "./RadiusSelect";
-import { useSearchParams } from "./urlUtils";
+import { useSearchParams } from "./utils/url";
 import { WalkInSection } from "./WalkSection";
 import filterOldDates from "./filterOldDates";
 
