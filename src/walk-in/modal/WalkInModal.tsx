@@ -5,7 +5,7 @@ import { NoticeList, NoticeListItem } from "../../NoticeList";
 import { FunctionComponent } from "react";
 import { CancelBookingNotice } from "./CancelNotice";
 import { Instruction, WalkInLocation } from "../WalkInData";
-import "./App.css";
+import "../../App.css";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
