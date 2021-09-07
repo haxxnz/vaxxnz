@@ -1,0 +1,19 @@
+{
+  "core": {
+    "title": "NZ COVID Vaccination Finder",
+    "tagline": "See every available vaccination booking slot near you.",
+    "disclaimerNotAGovWebsite": "This is not an official Government website. To get vaccinated visit bookmyvaccine.nz"
+  },
+  "navigation": {
+    "setLocation": "Set your Location"
+  },
+  "footer": {
+    "message": "If this site helped you please consider sharing",
+    "links": {
+      "contactUs": "Contact Us",
+      "rawData": "Raw Data",
+      "sourceCode": "Source Code",
+      "roadmap": "Roadmap"
+    }
+  }
+}
