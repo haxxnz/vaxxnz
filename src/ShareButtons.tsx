@@ -55,7 +55,7 @@ export const ShareButtons = () => {
         </RedditShareButton>
       </div>
       <div>
-        <EmailShareButton url={shareUrl} subject={title} body="body">
+        <EmailShareButton url={shareUrl} subject={title} body="Have a look at:">
           <EmailIcon size={32} round />
         </EmailShareButton>
       </div>
