@@ -1,10 +1,12 @@
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import "./App.css";
-import { WalkinLocation } from "./getData";
+import { Instruction, WalkinLocation } from "./getData";
 import { ModalGrid } from "./VaxComponents";
 import { NoticeList, NoticeListItem } from "./NoticeList";
 import { FunctionComponent } from "react";
+import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type Props = {
   clearSelectedLocation: () => void;
@@ -51,7 +53,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
         },
       }}
     >
-      <ModalGrid className={"modal-container"}>
+      <ModalGrid className={"modal-container WalkModal"}>
         <div>
           <h1
             style={{
@@ -138,36 +140,31 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                 })}
             </p> */}
 
-          {telephone && (
-            <p
-              style={{
-                marginBottom: "0.5rem",
-                marginRight: "1rem",
-                fontSize: "1.25rem",
+          <section>
+            <div className="WalkInTypes">
+              {location.instructionLis.includes(Instruction.walkIn) && (
+                <p>
+                  <FontAwesomeIcon icon={faWalking} /> Walk-in available
+                </p>
+              )}
+              {location.instructionLis.includes(Instruction.driveThrough) && (
+                <p>
+                  <FontAwesomeIcon icon={faCar} /> Drive-through available
+                </p>
+              )}
+            </div>
+          </section>
 
-                paddingTop: "1rem",
-                lineHeight: "1.5",
-              }}
-            >
+          {telephone && (
+            <section>
               <h3> Phone</h3>
 
               <a href={`tel:${telephone}`}>{telephone}</a>
-            </p>
+            </section>
           )}
 
           {location.opennningHours.schedule && (
-            <div
-              style={{
-                marginTop: "1rem",
-                marginBottom: "0.5rem",
-                marginRight: "1rem",
-                borderBottom: "1px solid lightgray",
-                borderTop: "1px solid lightgray",
-                paddingBottom: "1.5rem",
-                paddingTop: "1rem",
-                lineHeight: "1.5",
-              }}
-            >
+            <section>
               <h3> Hours</h3>
               {Object.keys(location.opennningHours.schedule).map(
                 (openDate, index) => {
@@ -179,13 +176,13 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                   );
                 }
               )}
-            </div>
+            </section>
           )}
 
           {Object.entries(location.opennningHours.exceptions).map(
             ([key, value], index) => {
               return (
-                <div
+                <section
                   key={index}
                   style={{
                     marginTop: "1rem",
@@ -195,7 +192,7 @@ const WalkModal = ({ clearSelectedLocation, location }: Props) => {
                   <h3>{key}</h3>
 
                   <p key={index}>{value}</p>
-                </div>
+                </section>
               );
             }
           )}

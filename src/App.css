@@ -178,3 +178,29 @@ ul.NoticeList li {
 .WalkItem svg {
   margin-left: 12px;
 }
+
+.WalkInTypes {
+	margin-top: 10px;
+}
+
+.WalkInTypes p:not(:first-child) {
+  margin-top: 5px;
+}
+
+.WalkModal section {
+  margin-bottom: 0.5rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.WalkModal section p {
+  font-size: 1rem;
+}
+
+.WalkModal section:not(:last-child) {
+  border-bottom: 1px solid lightgray;
+}
