@@ -21,6 +21,9 @@ import { useSearchParams } from "./urlUtils";
 import { WalkInSection } from "./WalkSection";
 import filterOldDates from "./filterOldDates";
 
+import { faMedkit, faClock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 function sum(array: number[]) {
   return array.reduce((a, b) => a + b, 0);
 }
@@ -238,7 +241,30 @@ function App() {
                                 })}
                               </aside>
                             </h3>
-                            <p>
+                            <p id="cal-info">
+                              {/* Ternary statement to display number of vaccination centres if > 0. We need to use a map as there are some cases where locationSlotsPairs has entries
+                              but the nested slots field is empty. */}
+                              {sum(
+                                dateLocationsPair.locationSlotsPairs.map(
+                                  (locationSlotsPair) => {
+                                    return locationSlotsPair?.slots!.length > 0
+                                      ? 1
+                                      : 0;
+                                  }
+                                )
+                              ) < 1 ? null : (
+                                <React.Fragment>
+                                  <FontAwesomeIcon icon={faMedkit} />
+                                  &nbsp;&nbsp;
+                                  {
+                                    dateLocationsPair.locationSlotsPairs.length
+                                  }{" "}
+                                  locations
+                                  <br />
+                                </React.Fragment>
+                              )}
+                              <FontAwesomeIcon icon={faClock} />
+                              &nbsp;&nbsp;
                               {sum(
                                 dateLocationsPair.locationSlotsPairs.map(
                                   (locationSlotsPair) =>
@@ -246,23 +272,6 @@ function App() {
                                 )
                               )}{" "}
                               available
-                              {/* Ternary statement to display number of vaccination centres if > 0. We need to use a map as there are some cases where locationSlotsPairs has entries
-                              but the nested slots field is empty. */}
-                              {sum(
-                                dateLocationsPair.locationSlotsPairs.map(
-                                  (locationSlotsPair) => {
-                                    return (locationSlotsPair.slots || [])
-                                      .length > 0
-                                      ? 1
-                                      : 0;
-                                  }
-                                )
-                              ) < 1 ? null : (
-                                <div>
-                                  {dateLocationsPair.locationSlotsPairs.length}{" "}
-                                  vaccination centres
-                                </div>
-                              )}
                             </p>
                           </div>
                           <img src="./arrow.svg" aria-hidden="true" alt="" />
