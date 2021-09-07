@@ -20,7 +20,7 @@ Steps to reproduce the behavior:
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**Desktop (please complete the following information):**
+**Device:**
  - Device: [e.g. iPhone6]
  - Browser [e.g. chrome, safari]
 
