@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ShareButtons } from "./ShareButtons";
 
 import { WalkInSection } from "./walk-in/WalkInSection";
@@ -10,10 +10,9 @@ import {
 import { BookingSection } from "./booking/BookingSection";
 
 function App() {
-  const defaultCoords = useDefaultCoords();
-  const [coords, setCoords] = useState(defaultCoords);
-  // TODO: this existed previously but I can't see what use it has
-  // useEffect(() => setCoords(defaultCoords), [defaultCoords]);
+  const {lat, lng} = useDefaultCoords();
+  const [coords, setCoords] = useState({lat, lng});
+  useEffect(() => setCoords({lat, lng}), [lat, lng]);
 
   const [radiusKm, setRadiusKm] = useState(10);
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
