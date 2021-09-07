@@ -3,7 +3,7 @@ import { BaseInput } from "baseui/input";
 import { Modal } from "baseui/modal";
 import { useCallback, useMemo, useState } from "react";
 import "./App.css";
-import { getSuburbIsh } from "./locationUtils";
+import { getSuburbIsh } from "./utils/location";
 
 type Props = {
     locationIsOpen: boolean;

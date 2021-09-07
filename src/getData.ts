@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { getDistanceKm } from "./distanceUtils";
+import { getDistanceKm } from "./utils/distance";
 import {
   DateLocationsPair,
   Location,
