@@ -9,7 +9,7 @@ import {
 import { BookingData } from "./BookingData";
 import { DateLocationsPair } from "./BookingDataTypes";
 import { parse } from "date-fns";
-import { enqueAnalyticsEvent } from '../utils/analytics';
+import { enqueueAnalyticsEvent } from '../utils/analytics';
 
 interface BookingCalendarProps {
   data: BookingData;
@@ -63,7 +63,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
               key={dateLocationsPair.dateStr}
               onClick={() => {
                 setActiveDate(dateLocationsPair);
-                enqueAnalyticsEvent('Calendar day picked', { datePicked: dateLocationsPair.dateStr });
+                enqueueAnalyticsEvent('Calendar day picked', { datePicked: dateLocationsPair.dateStr });
               }}
             >
               <div>

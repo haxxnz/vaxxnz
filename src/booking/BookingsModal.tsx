@@ -10,7 +10,7 @@ import { NoticeList } from "../NoticeList";
 import { Coords } from "../location-picker/LocationPicker";
 import { FunctionComponent } from "react";
 
-import { enqueAnalyticsEvent } from '../utils/analytics';
+import { enqueueAnalyticsEvent } from '../utils/analytics';
 
 type BookingsModalProps = {
   activeDate: DateLocationsPair | null;
@@ -101,7 +101,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
 
             <Button
               onClick={() => {
-                enqueAnalyticsEvent('Click back to Calendar');
+                enqueueAnalyticsEvent('Click back to Calendar');
                 setActiveDate(null);
               }}
               overrides={{
@@ -148,7 +148,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                       href={`https://www.google.com/maps/dir/?api=1&destination=${locationSlotsPair.location.location.lat},${locationSlotsPair.location.location.lng}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => enqueAnalyticsEvent('Get direction')}
+                      onClick={() => enqueueAnalyticsEvent('Get direction')}
                     >
                       Get Directions
                     </a>
@@ -172,7 +172,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                             },
                           },
                         }}
-                        onClick={() => enqueAnalyticsEvent('Click make a booking')}
+                        onClick={() => enqueueAnalyticsEvent('Click make a booking')}
                       >
                         Make a Booking
                       </Button>
@@ -215,7 +215,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
               </h1>
               <Button
                 onClick={() => {
-                  enqueAnalyticsEvent('Click back to Calendar');
+                  enqueueAnalyticsEvent('Click back to Calendar');
                   setActiveDate(null);
                 }}
                 overrides={{

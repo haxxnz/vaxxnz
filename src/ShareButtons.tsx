@@ -14,7 +14,7 @@ import {
   EmailIcon,
 } from "react-share";
 
-import { enqueAnalyticsEvent } from './utils/analytics';
+import { enqueueAnalyticsEvent } from './utils/analytics';
 
 export const ShareButtons = () => {
   const shareUrl = "https://vaxx.nz";
@@ -23,25 +23,25 @@ export const ShareButtons = () => {
   return (
     <>
       <div>
-        <FacebookShareButton url={shareUrl} quote={title} onClick={() => enqueAnalyticsEvent('Share by Facebook clicked')}>
+        <FacebookShareButton url={shareUrl} quote={title} onClick={() => enqueueAnalyticsEvent('Share by Facebook clicked')}>
           <FacebookIcon size={32} round />
         </FacebookShareButton>
       </div>
 
       <div>
-        <FacebookMessengerShareButton url={shareUrl} appId="1207927626340037" onClick={() => enqueAnalyticsEvent('Share by FB Messenger clicked')}>
+        <FacebookMessengerShareButton url={shareUrl} appId="1207927626340037" onClick={() => enqueueAnalyticsEvent('Share by FB Messenger clicked')}>
           <FacebookMessengerIcon size={32} round />
         </FacebookMessengerShareButton>
       </div>
 
       <div>
-        <TwitterShareButton url={shareUrl} title={title} onClick={() => enqueAnalyticsEvent('Share by Twitter clicked')}>
+        <TwitterShareButton url={shareUrl} title={title} onClick={() => enqueueAnalyticsEvent('Share by Twitter clicked')}>
           <TwitterIcon size={32} round />
         </TwitterShareButton>
       </div>
 
       <div>
-        <LinkedinShareButton url={shareUrl} onClick={() => enqueAnalyticsEvent('Share by LinkIn clicked')}>
+        <LinkedinShareButton url={shareUrl} onClick={() => enqueueAnalyticsEvent('Share by LinkIn clicked')}>
           <LinkedinIcon size={32} round />
         </LinkedinShareButton>
       </div>
@@ -52,7 +52,7 @@ export const ShareButtons = () => {
           title={title}
           windowWidth={660}
           windowHeight={460}
-          onClick={() => enqueAnalyticsEvent('Share by Reddit clicked')}
+          onClick={() => enqueueAnalyticsEvent('Share by Reddit clicked')}
         >
           <RedditIcon size={32} round />
         </RedditShareButton>
@@ -60,7 +60,7 @@ export const ShareButtons = () => {
       <div>
         <EmailShareButton url={shareUrl} subject={title} 
           body="Have a look at:" 
-          onClick={() => enqueAnalyticsEvent('Share by Email clicked')}>
+          onClick={() => enqueueAnalyticsEvent('Share by Email clicked')}>
           <EmailIcon size={32} round />
         </EmailShareButton>
       </div>

@@ -9,7 +9,7 @@ declare global {
   }
 }
 
-export function enqueAnalyticsEvent(event: string, metaData?: { [metaDataField: string]: any; }) {
+export function enqueueAnalyticsEvent(event: string, metaData?: { [metaDataField: string]: any; }) {
   if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
     // don't send analytics event when running in dev server
     console.log('Enqued event to GA ', { event, ...metaData });

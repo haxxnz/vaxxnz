@@ -2,7 +2,7 @@ import { Button, KIND } from "baseui/button";
 import { BaseInput } from "baseui/input";
 import { Modal } from "baseui/modal";
 import { useCallback, useMemo, useState } from "react";
-import { enqueAnalyticsEvent } from '../utils/analytics';
+import { enqueueAnalyticsEvent } from '../utils/analytics';
 import { getSuburbIsh } from "../utils/location";
 import { Coords } from "./LocationPicker";
 
@@ -36,7 +36,7 @@ const LocationModal = (props: Props) => {
       url.searchParams.set("lat", lat.toString());
       url.searchParams.set("lng", lng.toString());
       url.searchParams.set("placeName", placeName);
-      enqueAnalyticsEvent('Set location');
+      enqueueAnalyticsEvent('Set location');
       window.history.pushState({}, "", url.toString());
     },
     [close, setCoords, setPlaceName]
@@ -157,7 +157,7 @@ const LocationModal = (props: Props) => {
           backgroundColor: "white'",
         }}
         onClick={() => {
-          enqueAnalyticsEvent('Use current location click');
+          enqueueAnalyticsEvent('Use current location click');
           getLocation();
         }}
       >

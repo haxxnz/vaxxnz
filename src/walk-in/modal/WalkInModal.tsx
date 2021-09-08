@@ -8,7 +8,7 @@ import { Instruction, WalkInLocation } from "../WalkInData";
 import "../../App.css";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { enqueAnalyticsEvent } from '../../utils/analytics';
+import { enqueueAnalyticsEvent } from '../../utils/analytics';
 
 type Props = {
   clearSelectedLocation: () => void;
@@ -76,7 +76,7 @@ const WalkInModal: FunctionComponent<Props> = ({
                 },
               }}
               kind={KIND.primary}
-              onClick={() => enqueAnalyticsEvent('Click get walk in location')}
+              onClick={() => enqueueAnalyticsEvent('Click get walk in location')}
             >
               Get Directions
             </Button>
