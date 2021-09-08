@@ -220,6 +220,25 @@ const WalkInModal: FunctionComponent<Props> = ({
           })}
         </div>
       </ModalGrid>
+      <div className="MobileOnly">
+        <Button
+          onClick={close}
+          overrides={{
+            Root: {
+              style: {
+                width: "100%",
+                marginTop: "1rem",
+                marginRight: 0,
+                marginBottom: "1rem",
+                marginLeft: 0,
+              },
+            },
+          }}
+          kind={KIND.secondary}
+        >
+          {t("walkins.cancelBooking")}
+        </Button>
+      </div>
     </Modal>
   );
 };
