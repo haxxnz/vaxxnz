@@ -6,7 +6,6 @@ import {
   LocationPicker,
   useDefaultCoords,
 } from "./location-picker/LocationPicker";
-// import { BookingSection } from "./booking/BookingSection";
 import { enqueueAnalyticsEvent } from './utils/analytics';
 
 import LanguageSelect from "./LanguageSelect";

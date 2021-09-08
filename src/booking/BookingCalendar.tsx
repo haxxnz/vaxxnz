@@ -10,7 +10,6 @@ import { BookingData } from "./BookingData";
 import { DateLocationsPair } from "./BookingDataTypes";
 import { differenceInDays, parse } from "date-fns";
 import { enqueueAnalyticsEvent } from '../utils/analytics';
-// import { parse } from "date-fns";
 import { useTranslation } from "react-i18next";
 
 interface BookingCalendarProps {
