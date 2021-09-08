@@ -1,4 +1,5 @@
-import resources from "./resources";
+import { resources } from "./resources";
+import languages from "./resources";
 
 export const config = {
   lng: "en",
@@ -7,4 +8,4 @@ export const config = {
   resources,
 };
 
-export { resources };
+export { languages };
