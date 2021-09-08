@@ -45,7 +45,6 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
       isOpen={!!activeDate}
       unstable_ModalBackdropScroll={true}
       overrides={{
-        // Root: { style: { zIndex: 1500 } },
         Dialog: {
           style: {
             width: "80vw",
@@ -172,7 +171,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                             },
                           },
                         }}
-                        onClick={() => enqueueAnalyticsEvent('Click make a booking')}
+                        onClick={() => enqueueAnalyticsEvent('Click make a booking', { location: locationSlotsPair.location, date: activeDate.dateStr })}
                       >
                         Make a Booking
                       </Button>
