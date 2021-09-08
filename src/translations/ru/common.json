@@ -1,0 +1,74 @@
+{
+    "core": {
+      "title": "Vaxx.nz",
+      "tagline": "Найди COVID вакцинацию",
+      "subtitle": "Узнайте, как пройти вакцинацию рядом с вами",
+      "disclaimerNotAGovWebsite": "Это не оффициальный вебсайт правительства. Чтобы провакцинироваться, посетите <0>bookmyvaccine.nz</0>",
+      "loading": "Загрузка...",
+      "getDirections": "Получить направления",
+      "makeABooking": "Выполнить бронирование",
+      "kmAway": "{{distance}} км отсюда"
+    },
+    "navigation": {
+      "about": "О нас",
+      "contact": "Связь",
+      "getInvolved": "Примите участие",
+      "setLocation": "Установить местоположение",
+      "setLocationConfirmation": "Местоположение установлено",
+      "vaccinationsNear": "Доступные слоты для вакцин <0>рядом с {{location}}</0>",
+      "distanceDropdown": {
+        "2km": "В пределах 2 км",
+        "5km": "В пределах 5 км",
+        "10km": "В пределах 10 км",
+        "25km": "В пределах 25 км",
+        "50km": "В пределах 50 км",
+        "100km": "В пределах 100 км"
+      }
+    },
+    "walkins": {
+      "sectionHeader": "Вакцинация без регистрации и Drive-Through <0>- Открыто сегодня</0>",
+      "openString": "Открыто {{openTimeString}}",
+      "cancellationNotice": {
+        "info": "Пожалуйста, не бронируйте дважды",
+        "message": "Не забудьте отменить предыдущие бронирование, если оно у вас есть на <0>bookmyvaccine.nz</0>"
+      },
+      "cancelBooking": "Cancel",
+      "noticeList": {
+        "title": "Availability Is Not Guaranteed",
+        "text": "Keep in mind that walk-in locations listed might not necessarily have capacity available."
+      },
+      "walkinAwailable": "<0 /> Walk-in available",
+      "driveThroughAvailable": "<0 /> Drive-through available",
+      "phone": "Phone",
+      "hours": "Hours",
+      "publicHolidays": "Public Holidays",
+      "otherExeptions": "Exceptions",
+      "seeMore": "See More"
+    },
+    "calendar": {
+      "month": "{{monthString, MMMM yyyy}}",
+      "numberOfDoses": "{{numberOfDoses}} available",
+      "modal": {
+        "howToBook": {
+          "title": "How to Book",
+          "stepOne": "Find a location and time from the list below.",
+          "stepTwo": "Click on the <i>Make a Booking</i> button, this will take you to <0>bookmyvaccine.nz</0>",
+          "stepThree": "Enter your details.",
+          "stepFour": "When asked, search for your desired location and time."
+        },
+        "availableSlots": "Available slots",
+        "noBookingsAvailable": "No bookings are available on this day :(",
+        "backToCalendar": "Back to Calendar"
+      }
+    },
+    "footer": {
+      "message": "If this site helped you, please consider sharing",
+      "links": {
+        "contactUs": "Contact Us",
+        "rawData": "Raw Data",
+        "sourceCode": "Source Code",
+        "roadmap": "Roadmap"
+      }
+    }
+  }
+  
