@@ -3,7 +3,21 @@ body {
   font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ececec;
+}
+
+.bg-impt {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background-repeat: no-repeat, no-repeat;
+  background-position: center center, center center;
+  background-size: cover, cover;
+  z-index: -2 !important;
+}
+
+.background {
+  z-index: -2 !important;
 }
 
 #root div:first-child {
@@ -27,26 +41,90 @@ a {
   text-decoration: none;
 }
 
-.App-header {
-  padding: 1.5rem;
-  color: black;
+.menu-header {
+  max-width: 1440px;
+  margin: 0 auto;
+  border: 1px solid lightgray;
+  border-top: none;
+  box-sizing: border-box;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-divider {
+  gap: 2.5rem;
+  display: flex;
+  align-self: center;
+}
+
+.menu-link {
+  color: #254dff;
+  font-size: 1.1rem;
   text-align: center;
+  white-space: nowrap;
+  align-self: center;
+}
+
+.menu-link:hover {
+  color: blue;
+  font-size: 1.1rem;
+}
+
+.menu-logo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  align-self: center;
+}
+
+.App-header {
+  color: black;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+}
+
+.header-divider {
+  height: 100%;
+  width: 100%;
+  background-color: lightgray;
+  border: none;
+}
+
+.header-content {
+  padding: 2.5rem;
 }
 
 .App-header h1 {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .App-header h3 {
-  font-size: 1.75rem;
+  margin-top: 0.5rem;
+  font-size: 1.5rem;
 }
 
 .App-header p {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   max-width: 944px;
-  width: 80vw;
-  margin: 0 auto;
   line-height: 1.5;
+}
+
+.header-img-container {
+  max-height: 280px;
+  overflow: hidden;
+  display: block;
+}
+
+.header-img {
+  height: 300px;
+  display: block;
+  margin: 1.5rem auto 0 auto;
+  opacity: 0.7;
 }
 
 .clickable {
@@ -54,6 +132,10 @@ a {
   cursor: pointer;
   font-size: 1rem;
   font-family: inherit;
+}
+
+.MobileOnly {
+  display: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -71,6 +153,30 @@ a {
   }
   .App-header p {
     font-size: 1rem;
+  }
+  .MobileOnly {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .App-header {
+    grid-template-columns: 1fr;
+  }
+  .menu-header {
+    display: none;
+  }
+  .header-img-container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .App-header {
+    grid-template-columns: 1fr;
+  }
+  .header-content {
+    padding: 1.5rem;
   }
 }
 
@@ -92,4 +198,10 @@ a {
   /* WebKit */
   width: 0;
   height: 0;
+}
+
+.footer-header {
+  text-align: center;
+  padding: 2.5rem 2.5rem 4rem 2.5rem;
+  ;
 }
