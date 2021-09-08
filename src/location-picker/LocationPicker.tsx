@@ -54,7 +54,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
               t={t}
               components={[
                 <strong>
-                  {{ location: placeName || "Unknown Location" }}
+                  {{ location: placeName || DEFAULT_LOCATION.placeName }}
                 </strong>,
               ]}
             />
