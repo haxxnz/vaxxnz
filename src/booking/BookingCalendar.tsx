@@ -8,7 +8,7 @@ import {
 } from "../VaxComponents";
 import { BookingData } from "./BookingData";
 import { DateLocationsPair } from "./BookingDataTypes";
-import { parse } from "date-fns";
+import { differenceInDays, parse } from "date-fns";
 import { enqueueAnalyticsEvent } from '../utils/analytics';
 
 interface BookingCalendarProps {
@@ -63,7 +63,20 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
               key={dateLocationsPair.dateStr}
               onClick={() => {
                 setActiveDate(dateLocationsPair);
-                enqueueAnalyticsEvent('Calendar day picked', { datePicked: dateLocationsPair.dateStr });
+                enqueueAnalyticsEvent('Calendar day picked', {
+                  datePicked: dateLocationsPair.dateStr,
+                  bookingDateInDays: differenceInDays(parse(
+                    dateLocationsPair.dateStr,
+                    "yyyy-MM-dd",
+                    new Date()
+                  ), new Date()),
+                  spotsAvailable: sum(
+                    dateLocationsPair.locationSlotsPairs.map(
+                      (locationSlotsPair) =>
+                        (locationSlotsPair.slots || []).length
+                    )
+                  ),
+                });
               }}
             >
               <div>
@@ -109,5 +122,5 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
         </MonthContainer>
       </CalendarSectionContainer>
     ))}
-  </CalendarContainer>
+  </CalendarContainer >
 );
