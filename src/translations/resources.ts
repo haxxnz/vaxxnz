@@ -1,5 +1,5 @@
 import common_en from "./en/common.json";
-import common_es from "./es/common.json";
+import common_es from "./de/common.json";
 import enFlag from "./flags/gbFlag.png";
 // import miFlag from "./flags/miFlag.png";
 // import esFlag from "./flags/miFlag.png";
@@ -20,9 +20,9 @@ const languages = [
   // },
   {
     common: common_es,
-    label: "Spanish",
-    code: "es",
-    // flag: esFlag
+    label: "Deutsch",
+    code: "de",
+    // flag: deFlag
   },
 ];
 

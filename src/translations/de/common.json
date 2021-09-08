@@ -1,20 +1,20 @@
 {
   "core": {
     "title": "Vaxx.nz",
-    "tagline": "NZ COVID - Buscador de Vacunas",
-    "subtitle": "See ways to get vaccinated near you.",
-    "disclaimerNotAGovWebsite": "This is not an official Government website. To get vaccinated visit <0>bookmyvaccine.nz</0>",
-    "loading": "Loading...",
-    "getDirections": "Get Directions",
-    "makeABooking": "Make a Booking",
-    "kmAway": "{{distance}}km away"
+    "tagline": "COVID-19 Impfungen",
+    "subtitle": "Impfungsmöglichkeiten, in Deiner Nähe.",
+    "disclaimerNotAGovWebsite": "Dies ist keine offizielle Website der Regierung. Um sich impfen zu lassen, besuchen Sie <0>bookmyvaccine.nz</0>",
+    "loading": "Laden...",
+    "getDirections": "Wegbeschreibung",
+    "makeABooking": "Buchung vornehmen",
+    "kmAway": "{{distance}}km entfernt"
   },
   "navigation": {
-    "about": "About",
-    "contact": "Contact",
-    "getInvolved": "Get Involved",
-    "setLocation": "Set your Location",
-    "setLocationConfirmation": "Location Set",
+    "about": "Über uns",
+    "contact": "Kontaktieren",
+    "getInvolved": "Mitmachen",
+    "setLocation": "Standort aktualisieren",
+    "setLocationConfirmation": "Standort aktualisiert",
     "vaccinationsNear": "Available Vaccine Slots <0>near {{location}}</0>",
     "distanceDropdown": {
       "2km": "Within 2km",
@@ -29,8 +29,8 @@
     "sectionHeader": "Walk-in & Drive-thru Vaccinations <0>- Open Today</0>",
     "openString": "Open {{openTimeString}}",
     "cancellationNotice": {
-      "info": "Please don't double-book",
-      "message": "Remember to cancel your original booking if you have one at <0>https://bookmyvaccine.nz</0>"
+      "info": "Please Don't Double-book",
+      "message": "Remember to cancel your original booking if you have one at <0>bookmyvaccine.nz</0>"
     },
     "cancelBooking": "Cancel",
     "noticeList": {
@@ -41,6 +41,8 @@
     "driveThroughAvailable": "<0 /> Drive-through available",
     "phone": "Phone",
     "hours": "Hours",
+    "publicHolidays": "Public Holidays",
+    "otherExeptions": "Exceptions",
     "seeMore": "See More"
   },
   "calendar": {
