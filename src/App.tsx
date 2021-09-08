@@ -9,6 +9,7 @@ import {
 } from "./location-picker/LocationPicker";
 import { BookingSection } from "./booking/BookingSection";
 import { useTranslation } from "react-i18next";
+import LanguageSelect from "./LanguageSelect";
 
 function App() {
   const { lat, lng } = useDefaultCoords();
@@ -49,6 +50,7 @@ function App() {
             >
               Get Involved
             </a>
+            <LanguageSelect />
           </div>
         </header>
         <section className="App-header">
