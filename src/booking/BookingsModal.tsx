@@ -176,7 +176,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                         }}
                         onClick={() =>
                           enqueueAnalyticsEvent('Make a Booking clicked', {
-                            location: locationSlotsPair.location,
+                            locationName: locationSlotsPair.location.name,
                             radiusKm,
                             spotsAvailable: locationSlotsPair.slots?.length || 0,
                             bookingDateInDays: differenceInDays(parse(
