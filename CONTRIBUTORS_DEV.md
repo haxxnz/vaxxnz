@@ -78,8 +78,10 @@ Note that the development build is not optimized.
 To create a production build, use yarn build.
 ```
 
-You are good to start coding
+You are good to start coding!
 
-## Resources
+## Help! I'm stuck!
 
-If you need any help, we have our [Discord server](https://discord.com/channels/884578058911219743/884714023323586600) feel free to join and ask us anything, we don't bite.
+If you need any help, we have our [Discord Server](https://discord.com/channels/884578058911219743/884714023323586600). Feel free to join and ask us anything, we don't bite!
+
+If you need some guidance of what to do or are stuck on an issue feel free to message in the #dev channel or @Oliver for help.
