@@ -26,6 +26,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
         : undefined;
     enqueueAnalyticsEvent("Walk in location selected", {
       locationName: location ? location.name : "",
+      radiusKm,
     });
     setSelectedLocation(locationIndex);
   };
