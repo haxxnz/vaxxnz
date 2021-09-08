@@ -8,6 +8,10 @@ Perhaps you visited [bookmyvaccine.nz](https://bookmyvaccine.nz), only to find t
 
 In response to this, we've built [vaxx.nz](https://vaxx.nz) to make the experience of finding an earlier vaccine appointment close to you easier.
 
+### Built by:
+
+![Contributors](https://contrib.rocks/image?repo=CovidEngine/vaxxnz)
+
 ## How does it work?
 
 Choose your location, set the distance you wish to travel and it will show ALL of the earliest available vaccination slots using those search parameters. After you find the vaccine clinic with your desirable slot, you can proceed to [bookmyvaccine.nz](https://bookmyvaccine.nz) and book your appointment. We fetch data every 30 minutes from the official APIs, so slot information should be near real-time.
@@ -18,9 +22,7 @@ Over the course of one week, our team of 6 developers and 2 designers built a we
 
 We recognise that the best projects aren't built alone. If you would like to contribute, check out the guides below:
 
-[Getting Started Guide](CONTRIBUTORS_.md) / [Developer Guide](CONTRIBUTORS_DEV.md)
-
-![Contributors](https://contrib.rocks/image?repo=CovidEngine/vaxxnz)
+[Getting Started Guide](CONTRIBUTORS.md) / [Developer Guide](CONTRIBUTORS_DEV.md)
 
 ## Press
 
