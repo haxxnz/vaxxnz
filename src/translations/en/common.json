@@ -1,14 +1,18 @@
 {
   "core": {
-    "title": "NZ COVID Vaccination Finder",
-    "tagline": "See every available vaccination booking slot near you.",
-    "disclaimerNotAGovWebsite": "This is not an official Government website. To get vaccinated visit bookmyvaccine.nz",
+    "title": "Vaxx.nz",
+    "tagline": "Find a COVID vaccination",
+    "subtitle": "See ways to get vaccinated near you.",
+    "disclaimerNotAGovWebsite": "This is not an official Government website. To get vaccinated visit <0>bookmyvaccine.nz</0>",
     "loading": "Loading...",
     "getDirections": "Get Directions",
     "makeABooking": "Make a Booking",
     "kmAway": "{{distance}}km away"
   },
   "navigation": {
+    "about": "About",
+    "contact": "Contact",
+    "getInvolved": "Get Involved",
     "setLocation": "Set your Location",
     "setLocationConfirmation": "Location Set",
     "vaccinationsNear": "Available Vaccine Slots <0>near {{location}}</0>",

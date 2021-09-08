@@ -1,14 +1,13 @@
-import "./App.css";
 import { useEffect, useState } from "react";
-import { ShareButtons } from "./ShareButtons";
-
-import { WalkInSection } from "./walk-in/WalkInSection";
+import { Trans, useTranslation } from "react-i18next";
+import "./App.css";
+import { BookingSection } from "./booking/BookingSection";
 import {
   LocationPicker,
   useDefaultCoords,
 } from "./location-picker/LocationPicker";
-import { BookingSection } from "./booking/BookingSection";
-import { useTranslation } from "react-i18next";
+import { ShareButtons } from "./ShareButtons";
+import { WalkInSection } from "./walk-in/WalkInSection";
 
 function App() {
   const { lat, lng } = useDefaultCoords();
@@ -25,30 +24,41 @@ function App() {
       <div className="App">
         <header className="menu-header">
           <a href="/" className="nolink menu-logo">
-            Vaxx.nz
+            {t("core.title")}
           </a>
           <div className="menu-divider">
             {" "}
             <a href="/" className="menu-link">
-              About
+              {t("navigation.about")}
             </a>
             <a href="/" className="menu-link">
-              Contact
+              {t("navigation.contact")}
             </a>
             <a href="/" className="menu-link">
-              Get Involved
+              {t("navigation.getInvolved")}
             </a>
           </div>
         </header>
         <section className="App-header">
           <div className="header-content">
-            <h1>Find a COVID vaccination</h1>
-            <h3 style={{ fontWeight: "normal" }}>
-              See ways to get vaccinated near you.{" "}
-            </h3>
+            <h1>{t("core.tagline")}</h1>
+            <h3 style={{ fontWeight: "normal" }}>{t("core.subtitle")}</h3>
             <br />
             <p>
-              This is not an official Government website.
+              <Trans
+                i18nKey="core.disclaimerNotAGovWebsite"
+                t={t}
+                components={[
+                  <a
+                    href="https://bookmyvaccine.nz"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    https://bookmyvaccine.nz
+                  </a>,
+                ]}
+              />
+              {/* This is not an official Government website.
               <br /> To get vaccinated visit&nbsp;
               <a
                 href="https://bookmyvaccine.covid19.health.nz"
@@ -56,7 +66,7 @@ function App() {
                 rel="noreferrer"
               >
                 bookmyvaccine.nz
-              </a>{" "}
+              </a>{" "} */}
               <br />
             </p>
           </div>
