@@ -1,7 +1,7 @@
 {
     "core": {
       "title": "Vaxx.nz",
-      "tagline": "Найди COVID вакцинацию",
+      "tagline": "Найдити COVID вакцинацию",
       "subtitle": "Узнайте, как пройти вакцинацию рядом с вами",
       "disclaimerNotAGovWebsite": "Это не оффициальный вебсайт правительства. Чтобы провакцинироваться, посетите <0>bookmyvaccine.nz</0>",
       "loading": "Загрузка...",
