@@ -11,12 +11,12 @@ const languages = [
     code: "en",
     flag: enFlag,
   },
-  {
-    common: common_de,
-    label: "Deutsch",
-    code: "de",
+  //{
+  //  common: common_de,
+  //  label: "Deutsch",
+  //  code: "de",
     // flag: deFlag
-  },
+  //},
 ];
 
 const resources = languages.reduce(

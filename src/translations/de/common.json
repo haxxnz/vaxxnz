@@ -15,14 +15,14 @@
     "getInvolved": "Mitmachen",
     "setLocation": "Standort aktualisieren",
     "setLocationConfirmation": "Standort aktualisiert",
-    "vaccinationsNear": "Available Vaccine Slots <0>near {{location}}</0>",
+    "vaccinationsNear": "Verfügbare Buchungszeiten <0>bei {{location}}</0>",
     "distanceDropdown": {
-      "2km": "Within 2km",
-      "5km": "Within 5km",
-      "10km": "Within 10km",
-      "25km": "Within 25km",
-      "50km": "Within 50km",
-      "100km": "Within 100km"
+      "2km": "Innerhalb von 2km",
+      "5km": "Innerhalb von 5km",
+      "10km": "Innerhalb von 10km",
+      "25km": "Innerhalb von 25km",
+      "50km": "Innerhalb von 50km",
+      "100km": "Innerhalb von 100km"
     }
   },
   "walkins": {
