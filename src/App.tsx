@@ -6,6 +6,7 @@ import {
   LocationPicker,
   useDefaultCoords,
 } from "./location-picker/LocationPicker";
+import { enqueueAnalyticsEvent } from './utils/analytics';
 
 import LanguageSelect from "./LanguageSelect";
 
@@ -116,6 +117,7 @@ function App() {
               href="https://github.com/CovidEngine/vaxxnzlocations"
               target="_blank"
               rel="noreferrer"
+              onClick={() => enqueueAnalyticsEvent('Raw data clicked')}
             >
               {t("footer.links.rawData")}
             </a>{" "}
@@ -124,6 +126,7 @@ function App() {
               href="https://github.com/CovidEngine/vaxxnz"
               target="_blank"
               rel="noreferrer"
+              onClick={() => enqueueAnalyticsEvent('Source code clicked')}
             >
               {t("footer.links.sourceCode")}
             </a>{" "}
@@ -132,6 +135,7 @@ function App() {
               href="https://github.com/CovidEngine/vaxxnz/projects/2"
               target="_blank"
               rel="noreferrer"
+              onClick={() => enqueueAnalyticsEvent('Roadmap clicked')}
             >
               {t("footer.links.roadmap")}
             </a>

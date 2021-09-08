@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Spinner } from "baseui/spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
+import { enqueueAnalyticsEvent } from '../utils/analytics';
 import { Trans, useTranslation } from "react-i18next";
 
 export interface Props {
@@ -21,10 +22,20 @@ export function WalkInSection({ coords, radiusKm }: Props) {
   const [selectedLocationIndex, setSelectedLocation] = useState<number>();
   const [currentView, setCurrentView] = useState(6);
   const openModal = (locationIndex: number) => {
+    const location =
+      "ok" in locations && locationIndex !== undefined
+        ? locations.ok[locationIndex]
+        : undefined;
+    enqueueAnalyticsEvent("Healthpoint location selected", {
+      locationName: location ? location.name : "",
+      radiusKm,
+    });
     setSelectedLocation(locationIndex);
   };
 
-  const clearSelectedLocation = () => setSelectedLocation(undefined);
+  const clearSelectedLocation = () => {
+    setSelectedLocation(undefined)
+  };
 
   const loadMore = () => {
     setCurrentView((latest) => latest + 6);
@@ -40,6 +51,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
             ? locations.ok[selectedLocationIndex]
             : undefined
         }
+        radiusKm={radiusKm}
       />
       <h2 className="WalkSection">
         <Trans

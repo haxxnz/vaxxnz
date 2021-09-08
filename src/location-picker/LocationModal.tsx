@@ -2,6 +2,7 @@ import { Button, KIND } from "baseui/button";
 import { BaseInput } from "baseui/input";
 import { Modal } from "baseui/modal";
 import { useCallback, useMemo, useState } from "react";
+import { enqueueAnalyticsEvent } from '../utils/analytics';
 import { getSuburbIsh } from "../utils/location";
 import { Coords } from "./LocationPicker";
 
@@ -35,6 +36,7 @@ const LocationModal = (props: Props) => {
       url.searchParams.set("lat", lat.toString());
       url.searchParams.set("lng", lng.toString());
       url.searchParams.set("placeName", placeName);
+      enqueueAnalyticsEvent('Location set');
       window.history.pushState({}, "", url.toString());
     },
     [close, setCoords, setPlaceName]
@@ -142,7 +144,7 @@ const LocationModal = (props: Props) => {
         id="pac-input"
         type="text"
         inputRef={(e) => inputRef(e)}
-        onChange={(_e) => {}}
+        onChange={(_e) => { }}
       />
       <button
         className={"clickable"}
@@ -154,7 +156,10 @@ const LocationModal = (props: Props) => {
           border: "none",
           backgroundColor: "white'",
         }}
-        onClick={() => getLocation()}
+        onClick={() => {
+          enqueueAnalyticsEvent('Use current location clicked');
+          getLocation();
+        }}
       >
         {loading ? "Loading..." : "Use my current location"}
       </button>

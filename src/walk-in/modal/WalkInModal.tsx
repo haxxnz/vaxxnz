@@ -5,6 +5,7 @@ import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import "../../App.css";
+import { enqueueAnalyticsEvent } from '../../utils/analytics';
 import { NoticeList, NoticeListItem } from "../../NoticeList";
 import { ModalGrid } from "../../VaxComponents";
 import { Instruction, WalkInLocation } from "../WalkInData";
@@ -14,11 +15,13 @@ import { useMediaQuery } from "react-responsive";
 type Props = {
   clearSelectedLocation: () => void;
   location?: WalkInLocation;
+  radiusKm: number;
 };
 
 const WalkInModal: FunctionComponent<Props> = ({
   clearSelectedLocation,
   location,
+  radiusKm
 }) => {
   const close = () => clearSelectedLocation();
   const { t } = useTranslation("common");
@@ -91,6 +94,7 @@ const WalkInModal: FunctionComponent<Props> = ({
                 },
               }}
               kind={KIND.primary}
+              onClick={() => enqueueAnalyticsEvent('Healthpoint Get Directions clicked', { locationName: location.name, radiusKm })}
             >
               {t("core.getDirections")}
             </Button>
@@ -122,29 +126,6 @@ const WalkInModal: FunctionComponent<Props> = ({
         </div>
         <div style={{ height: "100%" }}>
           <CancelBookingNotice className="desktop" />
-          {/* <p
-                style={{
-                    marginTop: "1rem",
-                    paddingTop: "1.25rem",
-                    marginBottom: "0.5rem",
-                    marginRight: "1rem",
-                    fontSize: "1.25rem",
-                    borderTop: "1px solid lightgray",
-                    borderBottom: "1px solid lightgray",
-                    paddingBottom: "1.5rem",
-                    lineHeight: "1.5",
-                }}
-            >
-                {location.instructionLis.map((instruction, index) => {
-                    return (
-                        <Fragment key={index}>
-                            {instruction}
-                            <br />
-                        </Fragment>
-                    );
-                })}
-            </p> */}
-
           <section>
             <div className="WalkInTypes">
               {location.instructionLis.includes(Instruction.walkIn) && (

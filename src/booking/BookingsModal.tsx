@@ -11,15 +11,20 @@ import { Coords } from "../location-picker/LocationPicker";
 import { FunctionComponent } from "react";
 import { useTranslation, Trans } from "react-i18next";
 
+import { enqueueAnalyticsEvent } from '../utils/analytics';
+import { differenceInDays } from 'date-fns/esm';
+
 import { useMediaQuery } from "react-responsive";
 type BookingsModalProps = {
   activeDate: DateLocationsPair | null;
   setActiveDate: (activeDate: DateLocationsPair | null) => void;
   coords: Coords;
+  radiusKm: number;
 };
 
 const BookingsModal: FunctionComponent<BookingsModalProps> = ({
   activeDate,
+  radiusKm,
   setActiveDate,
   coords,
 }) => {
@@ -68,7 +73,6 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
       isOpen={!!activeDate}
       unstable_ModalBackdropScroll={true}
       overrides={{
-        Root: { style: { zIndex: 1500 } },
         Dialog: {
           style: dialogStyle as any,
         },
@@ -80,24 +84,24 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
             <h1>
               {activeDate
                 ? parse(
-                    activeDate.dateStr,
-                    "yyyy-MM-dd",
-                    new Date()
-                  ).toLocaleDateString([], {
-                    weekday: "long",
-                  })
+                  activeDate.dateStr,
+                  "yyyy-MM-dd",
+                  new Date()
+                ).toLocaleDateString([], {
+                  weekday: "long",
+                })
                 : ""}
               <br />
               {activeDate
                 ? parse(
-                    activeDate.dateStr,
-                    "yyyy-MM-dd",
-                    new Date()
-                  ).toLocaleDateString([], {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })
+                  activeDate.dateStr,
+                  "yyyy-MM-dd",
+                  new Date()
+                ).toLocaleDateString([], {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })
                 : ""}
             </h1>
             <p>
@@ -127,7 +131,10 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
             </ol>
 
             <Button
-              onClick={() => setActiveDate(null)}
+              onClick={() => {
+                enqueueAnalyticsEvent('Back to Calendar clicked');
+                setActiveDate(null);
+              }}
               overrides={{
                 Root: {
                   style: {
@@ -177,6 +184,15 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                       href={`https://www.google.com/maps/dir/?api=1&destination=${locationSlotsPair.location.location.lat},${locationSlotsPair.location.location.lng}`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => enqueueAnalyticsEvent('Get Directions clicked', {
+                        radiusKm,
+                        spotsAvailable: locationSlotsPair.slots?.length || 0,
+                        bookingDateInDays: differenceInDays(parse(
+                          activeDate.dateStr,
+                          "yyyy-MM-dd",
+                          new Date()
+                        ), new Date()),
+                      })}
                     >
                       {t("core.getDirections")}
                     </a>
@@ -200,6 +216,17 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                             },
                           },
                         }}
+                        onClick={() =>
+                          enqueueAnalyticsEvent('Make a Booking clicked', {
+                            locationName: locationSlotsPair.location.name,
+                            radiusKm,
+                            spotsAvailable: locationSlotsPair.slots?.length || 0,
+                            bookingDateInDays: differenceInDays(parse(
+                              activeDate.dateStr,
+                              "yyyy-MM-dd",
+                              new Date()
+                            ), new Date()),
+                          })}
                       >
                         {t("core.makeABooking")}
                       </Button>
@@ -260,7 +287,10 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
       </ModalGrid>
       <div className="MobileOnly">
         <Button
-          onClick={() => setActiveDate(null)}
+          onClick={() => {
+            setActiveDate(null)
+            enqueueAnalyticsEvent('Back to Calendar clicked');
+          }}
           overrides={{
             Root: {
               style: {

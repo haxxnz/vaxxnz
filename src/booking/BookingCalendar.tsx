@@ -8,12 +8,14 @@ import {
 } from "../VaxComponents";
 import { BookingData } from "./BookingData";
 import { DateLocationsPair } from "./BookingDataTypes";
-import { parse } from "date-fns";
+import { differenceInDays, parse } from "date-fns";
+import { enqueueAnalyticsEvent } from '../utils/analytics';
 import { useTranslation } from "react-i18next";
 
 interface BookingCalendarProps {
   data: BookingData;
   setActiveDate: (activeDate: DateLocationsPair | null) => void;
+  radiusKm: number;
 }
 
 export const LoadingBookingCalendar: FunctionComponent = () => (
@@ -40,6 +42,7 @@ export const LoadingBookingCalendar: FunctionComponent = () => (
 export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   data,
   setActiveDate,
+  radiusKm,
 }) => {
   const { t } = useTranslation("common");
 
@@ -64,7 +67,24 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                     : ""
                 }
                 key={dateLocationsPair.dateStr}
-                onClick={() => setActiveDate(dateLocationsPair)}
+                onClick={() => {
+                  enqueueAnalyticsEvent('Calendar day picked', {
+                    datePicked: dateLocationsPair.dateStr,
+                    bookingDateInDays: differenceInDays(parse(
+                      dateLocationsPair.dateStr,
+                      "yyyy-MM-dd",
+                      new Date()
+                    ), new Date()),
+                    radiusKm, 
+                    spotsAvailable: sum(
+                      dateLocationsPair.locationSlotsPairs.map(
+                        (locationSlotsPair) =>
+                          (locationSlotsPair.slots || []).length
+                      )
+                    ),
+                  });
+                  setActiveDate(dateLocationsPair)
+                }}
               >
                 <div>
                   <h3>

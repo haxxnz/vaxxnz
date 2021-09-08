@@ -1,6 +1,7 @@
 import { Select } from "baseui/select";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { enqueueAnalyticsEvent } from "./utils/analytics";
 
 interface Props {
   value: number;
@@ -42,6 +43,7 @@ export default function RadiusSelect(props: Props) {
           const id = selectedOption.id;
           if (id && typeof id === "number") {
             props.setValue(id);
+            enqueueAnalyticsEvent('Radius changed', { radiusKm: id });
           }
         }
       }}
