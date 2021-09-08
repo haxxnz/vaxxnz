@@ -8,6 +8,7 @@ import {
   useDefaultCoords,
 } from "./location-picker/LocationPicker";
 import { BookingSection } from "./booking/BookingSection";
+import { enqueAnalyticsEvent } from './utils/analytics';
 
 function App() {
   const {lat, lng} = useDefaultCoords();
@@ -76,6 +77,7 @@ function App() {
               href="https://github.com/CovidEngine/vaxxnzlocations"
               target="_blank"
               rel="noreferrer"
+              onClick={() => enqueAnalyticsEvent('Raw data clicked')}
             >
               Raw Data
             </a>{" "}
@@ -84,6 +86,7 @@ function App() {
               href="https://github.com/CovidEngine/vaxxnz"
               target="_blank"
               rel="noreferrer"
+              onClick={() => enqueAnalyticsEvent('Source code clicked')}
             >
               Source code
             </a>{" "}
@@ -92,12 +95,12 @@ function App() {
               href="https://github.com/CovidEngine/vaxxnz/projects/2"
               target="_blank"
               rel="noreferrer"
+              onClick={() => enqueAnalyticsEvent('Roadmap clicked')}
             >
               {" "}
               Roadmap
             </a>
           </p>
-          <p></p>
         </section>
       </div>
     </>

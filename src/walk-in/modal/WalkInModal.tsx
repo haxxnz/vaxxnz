@@ -8,6 +8,7 @@ import { Instruction, WalkInLocation } from "../WalkInData";
 import "../../App.css";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { enqueAnalyticsEvent } from '../../utils/analytics';
 
 type Props = {
   clearSelectedLocation: () => void;
@@ -75,6 +76,7 @@ const WalkInModal: FunctionComponent<Props> = ({
                 },
               }}
               kind={KIND.primary}
+              onClick={() => enqueAnalyticsEvent('Click get walk in location')}
             >
               Get Directions
             </Button>
@@ -107,29 +109,6 @@ const WalkInModal: FunctionComponent<Props> = ({
         </div>
         <div style={{ height: "100%" }}>
           <CancelBookingNotice className="desktop" />
-          {/* <p
-                style={{
-                    marginTop: "1rem",
-                    paddingTop: "1.25rem",
-                    marginBottom: "0.5rem",
-                    marginRight: "1rem",
-                    fontSize: "1.25rem",
-                    borderTop: "1px solid lightgray",
-                    borderBottom: "1px solid lightgray",
-                    paddingBottom: "1.5rem",
-                    lineHeight: "1.5",
-                }}
-            >
-                {location.instructionLis.map((instruction, index) => {
-                    return (
-                        <Fragment key={index}>
-                            {instruction}
-                            <br />
-                        </Fragment>
-                    );
-                })}
-            </p> */}
-
           <section>
             <div className="WalkInTypes">
               {location.instructionLis.includes(Instruction.walkIn) && (

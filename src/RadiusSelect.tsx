@@ -1,4 +1,5 @@
 import { Select } from "baseui/select";
+import { enqueAnalyticsEvent } from './utils/analytics';
 
 const options = [
   { label: "Within 2km", id: 2 },
@@ -36,6 +37,7 @@ export default function RadiusSelect(props: Props) {
           const id = selectedOption.id;
           if (id && typeof id === "number") {
             props.setValue(id);
+            enqueAnalyticsEvent('Change radius', { radius: id });
           }
         }
       }}

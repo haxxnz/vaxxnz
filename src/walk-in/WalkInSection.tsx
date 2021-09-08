@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Spinner } from "baseui/spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
+import { enqueAnalyticsEvent } from '../utils/analytics';
 
 export interface Props {
   coords: Coords;
@@ -19,10 +20,13 @@ export function WalkInSection({ coords, radiusKm }: Props) {
   const [selectedLocationIndex, setSelectedLocation] = useState<number>();
   const [currentView, setCurrentView] = useState(6);
   const openModal = (locationIndex: number) => {
+    enqueAnalyticsEvent('Walk in location selected')
     setSelectedLocation(locationIndex);
   };
 
-  const clearSelectedLocation = () => setSelectedLocation(undefined);
+  const clearSelectedLocation = () => {
+    setSelectedLocation(undefined)
+  };
 
   const loadMore = () => {
     setCurrentView((latest) => latest + 6);

@@ -1,6 +1,7 @@
 import { Button, KIND } from "baseui/button";
 import { formatDistance } from "date-fns";
 import { FunctionComponent, useEffect, useState } from "react";
+import { enqueAnalyticsEvent } from '../utils/analytics';
 import RadiusSelect from "../RadiusSelect";
 import { useSearchParams } from "../utils/url";
 import { HeaderMain } from "../VaxComponents";
@@ -77,7 +78,10 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
         <div>
           <Button
             kind={KIND.primary}
-            onClick={() => setIsOpen(true)}
+            onClick={() => {
+              enqueAnalyticsEvent('Open location modal')
+              setIsOpen(true)}
+            }
             overrides={{
               BaseButton: {
                 style: {

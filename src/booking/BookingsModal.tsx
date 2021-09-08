@@ -10,6 +10,8 @@ import { NoticeList } from "../NoticeList";
 import { Coords } from "../location-picker/LocationPicker";
 import { FunctionComponent } from "react";
 
+import { enqueAnalyticsEvent } from '../utils/analytics';
+
 type BookingsModalProps = {
   activeDate: DateLocationsPair | null;
   setActiveDate: (activeDate: DateLocationsPair | null) => void;
@@ -62,24 +64,24 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
             <h1>
               {activeDate
                 ? parse(
-                    activeDate.dateStr,
-                    "yyyy-MM-dd",
-                    new Date()
-                  ).toLocaleDateString([], {
-                    weekday: "long",
-                  })
+                  activeDate.dateStr,
+                  "yyyy-MM-dd",
+                  new Date()
+                ).toLocaleDateString([], {
+                  weekday: "long",
+                })
                 : ""}
               <br />
               {activeDate
                 ? parse(
-                    activeDate.dateStr,
-                    "yyyy-MM-dd",
-                    new Date()
-                  ).toLocaleDateString([], {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })
+                  activeDate.dateStr,
+                  "yyyy-MM-dd",
+                  new Date()
+                ).toLocaleDateString([], {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })
                 : ""}
             </h1>
             <p>
@@ -98,7 +100,10 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
             </ol>
 
             <Button
-              onClick={() => setActiveDate(null)}
+              onClick={() => {
+                enqueAnalyticsEvent('Click back to Calendar');
+                setActiveDate(null);
+              }}
               overrides={{
                 Root: {
                   style: {
@@ -143,6 +148,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                       href={`https://www.google.com/maps/dir/?api=1&destination=${locationSlotsPair.location.location.lat},${locationSlotsPair.location.location.lng}`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => enqueAnalyticsEvent('Get direction')}
                     >
                       Get Directions
                     </a>
@@ -166,6 +172,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                             },
                           },
                         }}
+                        onClick={() => enqueAnalyticsEvent('Click make a booking')}
                       >
                         Make a Booking
                       </Button>
@@ -207,7 +214,10 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                 Try changing your search!
               </h1>
               <Button
-                onClick={() => setActiveDate(null)}
+                onClick={() => {
+                  enqueAnalyticsEvent('Click back to Calendar');
+                  setActiveDate(null);
+                }}
                 overrides={{
                   Root: {
                     style: {
