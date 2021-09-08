@@ -178,7 +178,6 @@ const WalkInModal: FunctionComponent<Props> = ({
             </section>
           )}
 
-          {console.log(Object.entries(location.opennningHours.exceptions))}
           {Object.entries(location.opennningHours.exceptions).map(
             ([key, value], index) => {
               return (
