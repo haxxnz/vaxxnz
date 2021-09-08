@@ -37,6 +37,10 @@
     "phone": "Phone",
     "hours": "Hours"
   },
+  "calendar": {
+    "month": "{{monthString, MMMM yyyy}}",
+    "numberOfDoses": "{{numberOfDoses}} available"
+  },
   "footer": {
     "message": "If this site helped you please consider sharing",
     "links": {
