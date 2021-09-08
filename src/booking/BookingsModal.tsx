@@ -11,15 +11,18 @@ import { Coords } from "../location-picker/LocationPicker";
 import { FunctionComponent } from "react";
 
 import { enqueueAnalyticsEvent } from '../utils/analytics';
+import { differenceInDays } from 'date-fns/esm';
 
 type BookingsModalProps = {
   activeDate: DateLocationsPair | null;
   setActiveDate: (activeDate: DateLocationsPair | null) => void;
   coords: Coords;
+  radiusKm: number;
 };
 
 const BookingsModal: FunctionComponent<BookingsModalProps> = ({
   activeDate,
+  radiusKm,
   setActiveDate,
   coords,
 }) => {
@@ -171,7 +174,18 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                             },
                           },
                         }}
-                        onClick={() => enqueueAnalyticsEvent('Click make a booking', { location: locationSlotsPair.location, date: activeDate.dateStr })}
+                        onClick={() =>
+                          enqueueAnalyticsEvent('Click make a booking', {
+                            location: locationSlotsPair.location,
+                            radiusKm,
+                            spotAvailable: locationSlotsPair.slots?.length || 0,
+                            bookingDateInDays: differenceInDays(parse(
+                              activeDate.dateStr,
+                              "yyyy-MM-dd",
+                              new Date()
+                            ), new Date()),
+                            distanceInKm: getDistanceKm(coords, locationSlotsPair.location.location)
+                          })}
                       >
                         Make a Booking
                       </Button>

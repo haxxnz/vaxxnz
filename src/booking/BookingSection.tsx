@@ -25,6 +25,7 @@ export const BookingSection: FunctionComponent<BookingSectionProps> = ({
   return (
     <>
       <BookingsModal
+        radiusKm={radiusKm}
         activeDate={activeDate}
         setActiveDate={setActiveDate}
         coords={coords}
