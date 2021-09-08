@@ -24,7 +24,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
       "ok" in locations && locationIndex !== undefined
         ? locations.ok[locationIndex]
         : undefined;
-    enqueueAnalyticsEvent("Walk in location selected", {
+    enqueueAnalyticsEvent("Healthpoint location selected", {
       locationName: location ? location.name : "",
       radiusKm,
     });
