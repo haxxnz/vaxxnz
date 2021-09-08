@@ -25,6 +25,7 @@ const LanguageSelect = () => {
           },
         },
       }}
+      searchable={false}
       clearable={false}
       options={languages}
       value={language ? [language] : []}

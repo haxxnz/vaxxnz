@@ -30,6 +30,7 @@ export default function RadiusSelect(props: Props) {
           },
         },
       }}
+      searchable={false}
       clearable={false}
       options={options}
       value={selectedOption ? [selectedOption] : []}
