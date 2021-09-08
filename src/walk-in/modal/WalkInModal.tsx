@@ -201,7 +201,11 @@ const WalkInModal: FunctionComponent<Props> = ({
                     lineHeight: "1.5",
                   }}
                 >
-                  <h3>{key}</h3>
+                  <h3>
+                    {key === "Public Holidays"
+                      ? t("walkins.publicHolidays")
+                      : t("walkins.otherExeptions")}
+                  </h3>
 
                   <p key={index}>{value}</p>
                 </section>

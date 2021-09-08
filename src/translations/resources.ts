@@ -1,5 +1,5 @@
 import common_en from "./en/common.json";
-import common_es from "./es/common.json";
+import common_de from "./de/common.json";
 import enFlag from "./flags/gbFlag.png";
 // import miFlag from "./flags/miFlag.png";
 // import esFlag from "./flags/miFlag.png";
@@ -11,18 +11,11 @@ const languages = [
     code: "en",
     flag: enFlag,
   },
-  //,
-  // {
-  //   common: common_en,
-  //   label: "Te Reo Māori",
-  //   code: "mi",
-  //   flag: miFlag,
-  // },
   {
-    common: common_es,
-    label: "Spanish",
-    code: "es",
-    // flag: esFlag
+    common: common_de,
+    label: "Deutsch",
+    code: "de",
+    // flag: deFlag
   },
 ];
 
