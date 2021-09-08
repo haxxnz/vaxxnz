@@ -15,7 +15,7 @@
     "getInvolved": "Get Involved",
     "setLocation": "Set your Location",
     "setLocationConfirmation": "Location Set",
-    "vaccinationsNear": "Available Vaccine Slots <0>near {{location}}</0>",
+    "vaccinationsNear": "Available Vaccinations <0>near {{location}}</0>",
     "distanceDropdown": {
       "2km": "Within 2km",
       "5km": "Within 5km",

@@ -12,17 +12,17 @@ const languages = [
     code: "en",
     flag: enFlag,
   },
-  //{
-  //  common: common_de,
-  //  label: "Deutsch",
-  //  code: "de",
-    // flag: deFlag
-  //},
+  {
+    common: common_de,
+    label: "Deutsch",
+    code: "de",
+    // flag: deFlag,
+  },
   {
     common: common_ru,
     label: "Русский",
     code: "ru",
-     flag: enFlag
+    //  flag: enFlag
   },
 ];
 

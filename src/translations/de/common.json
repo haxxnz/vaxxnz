@@ -27,46 +27,46 @@
   },
   "walkins": {
     "sectionHeader": "Walk-in & Drive-thru Vaccinations <0>- Open Today</0>",
-    "openString": "Open {{openTimeString}}",
+    "openString": "Offen: {{openTimeString}}",
     "cancellationNotice": {
-      "info": "Please Don't Double-book",
-      "message": "Remember to cancel your original booking if you have one at <0>bookmyvaccine.nz</0>"
+      "info": "Bitte nicht doppelt buchen",
+      "message": "Denken Sie daran, Ihre ursprüngliche Buchung zu stornieren, wenn Sie bereits eine bei <0>bookmyvaccine.nz</0> haben."
     },
-    "cancelBooking": "Cancel",
+    "cancelBooking": "Abbrechen",
     "noticeList": {
       "title": "Availability Is Not Guaranteed",
       "text": "Keep in mind that walk-in locations listed might not necessarily have capacity available."
     },
-    "walkinAwailable": "<0 /> Walk-in available",
-    "driveThroughAvailable": "<0 /> Drive-through available",
-    "phone": "Phone",
-    "hours": "Hours",
+    "walkinAwailable": "<0 /> Walk-in verfügbar",
+    "driveThroughAvailable": "<0 /> Drive-Through verfügbar",
+    "phone": "Telefonnummer",
+    "hours": "Öffnungszeiten",
     "publicHolidays": "Public Holidays",
-    "otherExeptions": "Exceptions",
-    "seeMore": "See More"
+    "otherExeptions": "Feiertage",
+    "seeMore": "Mehr"
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
-    "numberOfDoses": "{{numberOfDoses}} available",
+    "numberOfDoses": "{{numberOfDoses}} Termine",
     "modal": {
       "howToBook": {
-        "title": "How to Book",
-        "stepOne": "Find a location and time from the list below.",
-        "stepTwo": "Click on the <i>Make a Booking</i> button, this will take you to <0>bookmyvaccine.nz</0>",
-        "stepThree": "Enter your details.",
-        "stepFour": "When asked, search for your desired location and time."
+        "title": "Wie buche ich?",
+        "stepOne": "Finden Sie einen Ort und eine Uhrzeit aus der Liste.",
+        "stepTwo": "Klicken Sie auf <i>Buchung vornehmen</i>, um Ihre Impfung bei <0>bookmyvaccine.nz</0> zu buchen.",
+        "stepThree": "Geben Sie Ihre Daten ein.",
+        "stepFour": "Suchen Sie nach Ihrem gewünschten Ort und Ihrer gewünschten Zeit."
       },
-      "availableSlots": "Available slots",
-      "noBookingsAvailable": "No bookings are available on this day :(",
-      "backToCalendar": "Back to Calendar"
+      "availableSlots": "verfügbare Termine",
+      "noBookingsAvailable": "An diesem Tag sind keine Buchungen möglich :(",
+      "backToCalendar": "Zurück zum Kalender"
     }
   },
   "footer": {
-    "message": "If this site helped you, please consider sharing",
+    "message": "Wenn diese Seite Ihnen geholfen hat, bitte teilen Sie diese Seite.",
     "links": {
-      "contactUs": "Contact Us",
-      "rawData": "Raw Data",
-      "sourceCode": "Source Code",
+      "contactUs": "Kontaktieren",
+      "rawData": "Rohdaten",
+      "sourceCode": "Quellcode",
       "roadmap": "Roadmap"
     }
   }
