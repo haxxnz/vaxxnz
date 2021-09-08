@@ -41,6 +41,8 @@
     "driveThroughAvailable": "<0 /> Drive-through available",
     "phone": "Phone",
     "hours": "Hours",
+    "publicHolidays": "Public Holidays",
+    "otherExeptions": "Exceptions",
     "seeMore": "See More"
   },
   "calendar": {
