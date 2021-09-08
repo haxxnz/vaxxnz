@@ -9,6 +9,7 @@ import { sortByAsc } from "../utils/array";
 import { NoticeList } from "../NoticeList";
 import { Coords } from "../location-picker/LocationPicker";
 import { FunctionComponent } from "react";
+import { useTranslation, Trans } from "react-i18next";
 
 type BookingsModalProps = {
   activeDate: DateLocationsPair | null;
@@ -21,6 +22,9 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
   setActiveDate,
   coords,
 }) => {
+
+  const { t } = useTranslation("common")
+
   const close = () => {
     setActiveDate(null);
   };
@@ -62,39 +66,46 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
             <h1>
               {activeDate
                 ? parse(
-                    activeDate.dateStr,
-                    "yyyy-MM-dd",
-                    new Date()
-                  ).toLocaleDateString([], {
-                    weekday: "long",
-                  })
+                  activeDate.dateStr,
+                  "yyyy-MM-dd",
+                  new Date()
+                ).toLocaleDateString([], {
+                  weekday: "long",
+                })
                 : ""}
               <br />
               {activeDate
                 ? parse(
-                    activeDate.dateStr,
-                    "yyyy-MM-dd",
-                    new Date()
-                  ).toLocaleDateString([], {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })
+                  activeDate.dateStr,
+                  "yyyy-MM-dd",
+                  new Date()
+                ).toLocaleDateString([], {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })
                 : ""}
             </h1>
             <p>
               {" "}
               <br />
-              <h3>How to Book</h3>
+              <h3>{t("calendar.modal.howToBook.title")}</h3>
             </p>
             <ol className="HelpList">
-              <li>Find a location and time from the list below.</li>
+              <li>{t("calendar.modal.howToBook.stepOne")}</li>
               <li>
-                Click on the <i>Make a Booking</i> button, this will take you to{" "}
-                <a href="https://bookmyvaccine.nz/">bookmyvaccine.nz</a>
+                <Trans
+                  i18nKey="calendar.modal.howToBook.stepTwo"
+                  t={t}
+                  components={[
+                    <a href="https://bookmyvaccine.nz" target="_blank" rel="noreferrer">
+                      https://bookmyvaccine.nz
+                    </a>,
+                  ]}
+                />
               </li>
-              <li>Enter your details.</li>
-              <li>When asked, search for your desired location and time.</li>
+              <li>{t("calendar.modal.howToBook.stepThree")}</li>
+              <li>{t("calendar.modal.howToBook.stepFour")}</li>
             </ol>
 
             <Button
@@ -112,7 +123,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
               }}
               kind={KIND.secondary}
             >
-              Back to calendar
+              {t("calendar.modal.howToBook.backToCalendar")}
             </Button>
 
             <NoticeList />

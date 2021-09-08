@@ -39,7 +39,17 @@
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
-    "numberOfDoses": "{{numberOfDoses}} available"
+    "numberOfDoses": "{{numberOfDoses}} available",
+    "modal": {
+      "howToBook": {
+        "title": "How to Book",
+        "stepOne": "Find a location and time from the list below.",
+        "stepTwo": "Click on the <i>Make a Booking</i> button, this will take you to <0>bookmyvaccine.nz</0>",
+        "stepThree": "Enter your details.",
+        "stepFour": "When asked, search for your desired location and time.",
+        "backToCalendar":  "Back to calendar"
+      }
+    }
   },
   "footer": {
     "message": "If this site helped you please consider sharing",
