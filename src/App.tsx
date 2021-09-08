@@ -8,6 +8,7 @@ import {
   useDefaultCoords,
 } from "./location-picker/LocationPicker";
 import { BookingSection } from "./booking/BookingSection";
+import { useTranslation } from "react-i18next";
 
 function App() {
   const { lat, lng } = useDefaultCoords();
@@ -16,6 +17,8 @@ function App() {
 
   const [radiusKm, setRadiusKm] = useState(10);
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
+
+  const { t } = useTranslation("common");
 
   return (
     <>
@@ -42,7 +45,7 @@ function App() {
             <h1>Find a COVID vaccination</h1>
             <h3 style={{ fontWeight: "normal" }}>
               See ways to get vaccinated near you.{" "}
-            </h3>{" "}
+            </h3>
             <br />
             <p>
               This is not an official Government website.
@@ -80,9 +83,7 @@ function App() {
         </div>
 
         <section className="App-header">
-          <p style={{ marginBottom: "0.5rem" }}>
-            If this site helped you please consider sharing:
-          </p>
+          <p style={{ marginBottom: "0.5rem" }}>{t("footer.message")}</p>
           <div className={"social-container"}>
             <ShareButtons />
           </div>
@@ -93,7 +94,7 @@ function App() {
               target="_blank"
               rel="noreferrer"
             >
-              Contact us
+              {t("footer.links.contactUs")}
             </a>{" "}
             /{" "}
             <a
@@ -101,7 +102,7 @@ function App() {
               target="_blank"
               rel="noreferrer"
             >
-              Raw Data
+              {t("footer.links.rawData")}
             </a>{" "}
             /{" "}
             <a
@@ -109,7 +110,7 @@ function App() {
               target="_blank"
               rel="noreferrer"
             >
-              Source code
+              {t("footer.links.sourceCode")}
             </a>{" "}
             /{" "}
             <a
@@ -117,8 +118,7 @@ function App() {
               target="_blank"
               rel="noreferrer"
             >
-              {" "}
-              Roadmap
+              {t("footer.links.roadmap")}
             </a>
           </p>
           <p></p>

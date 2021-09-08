@@ -1,13 +1,14 @@
-import { Button, KIND } from "baseui/button";
-import { Modal } from "baseui/modal";
-import { ModalGrid } from "../../VaxComponents";
-import { NoticeList, NoticeListItem } from "../../NoticeList";
-import { FunctionComponent } from "react";
-import { CancelBookingNotice } from "./CancelNotice";
-import { Instruction, WalkInLocation } from "../WalkInData";
-import "../../App.css";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button, KIND } from "baseui/button";
+import { Modal } from "baseui/modal";
+import { FunctionComponent } from "react";
+import { Trans, useTranslation } from "react-i18next";
+import "../../App.css";
+import { NoticeList, NoticeListItem } from "../../NoticeList";
+import { ModalGrid } from "../../VaxComponents";
+import { Instruction, WalkInLocation } from "../WalkInData";
+import { CancelBookingNotice } from "./CancelNotice";
 
 type Props = {
   clearSelectedLocation: () => void;
@@ -19,6 +20,8 @@ const WalkInModal: FunctionComponent<Props> = ({
   location,
 }) => {
   const close = () => clearSelectedLocation();
+  const { t } = useTranslation("common");
+
   if (location == null) {
     return null;
   }
@@ -76,7 +79,7 @@ const WalkInModal: FunctionComponent<Props> = ({
               }}
               kind={KIND.primary}
             >
-              Get Directions
+              {t("core.getDirections")}
             </Button>
           </a>
 
@@ -95,13 +98,12 @@ const WalkInModal: FunctionComponent<Props> = ({
             kind={KIND.secondary}
             onClick={close}
           >
-            Cancel
+            {t("walkins.cancelBooking")}
           </Button>
 
           <NoticeList>
-            <NoticeListItem title="Availability Is Not Guaranteed">
-              Keep in mind that walk-in locations listed might not necessarily
-              have capacity available.
+            <NoticeListItem title={t("walkins.noticeList.title")}>
+              {t("walkins.noticeList.text")}
             </NoticeListItem>
           </NoticeList>
         </div>
@@ -134,12 +136,20 @@ const WalkInModal: FunctionComponent<Props> = ({
             <div className="WalkInTypes">
               {location.instructionLis.includes(Instruction.walkIn) && (
                 <p>
-                  <FontAwesomeIcon icon={faWalking} /> Walk-in available
+                  <Trans
+                    i18nKey="walkins.walkinAwailable"
+                    t={t}
+                    components={[<FontAwesomeIcon icon={faWalking} />]}
+                  />
                 </p>
               )}
               {location.instructionLis.includes(Instruction.driveThrough) && (
                 <p>
-                  <FontAwesomeIcon icon={faCar} /> Drive-through available
+                  <Trans
+                    i18nKey="walkins.driveThroughAvailable"
+                    t={t}
+                    components={[<FontAwesomeIcon icon={faCar} />]}
+                  />
                 </p>
               )}
             </div>
@@ -147,15 +157,14 @@ const WalkInModal: FunctionComponent<Props> = ({
 
           {telephone && (
             <section>
-              <h3> Phone</h3>
-
+              <h3>{t("walkins.phone")}</h3>
               <a href={`tel:${telephone}`}>{telephone}</a>
             </section>
           )}
 
           {location.opennningHours.schedule && (
             <section>
-              <h3> Hours</h3>
+              <h3>{t("walkins.hours")}</h3>
               {Object.keys(location.opennningHours.schedule).map(
                 (openDate, index) => {
                   return (

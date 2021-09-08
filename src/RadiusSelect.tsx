@@ -1,13 +1,5 @@
 import { Select } from "baseui/select";
-
-const options = [
-  { label: "Within 2km", id: 2 },
-  { label: "Within 5km", id: 5 },
-  { label: "Within 10km", id: 10 },
-  { label: "Within 25km", id: 25 },
-  { label: "Within 50km", id: 50 },
-  { label: "Within 100km", id: 100 },
-];
+import { useTranslation } from "react-i18next";
 
 interface Props {
   value: number;
@@ -15,7 +7,19 @@ interface Props {
 }
 
 export default function RadiusSelect(props: Props) {
+  const { t } = useTranslation("common");
+
+  const options = [
+    { label: t("navigation.distranceDropdown.2km"), id: 2 },
+    { label: t("navigation.distranceDropdown.5km"), id: 5 },
+    { label: t("navigation.distranceDropdown.10km"), id: 10 },
+    { label: t("navigation.distranceDropdown.25km"), id: 25 },
+    { label: t("navigation.distranceDropdown.50km"), id: 50 },
+    { label: t("navigation.distranceDropdown.100km"), id: 100 },
+  ];
+
   const selectedOption = options.find((o) => o.id === props.value);
+
   return (
     <Select
       overrides={{

@@ -9,6 +9,7 @@ import {
 import { BookingData } from "./BookingData";
 import { DateLocationsPair } from "./BookingDataTypes";
 import { parse } from "date-fns";
+import { useTranslation } from "react-i18next";
 
 interface BookingCalendarProps {
   data: BookingData;
@@ -39,71 +40,76 @@ export const LoadingBookingCalendar: FunctionComponent = () => (
 export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   data,
   setActiveDate,
-}) => (
-  <CalendarContainer>
-    {Array.from(data.entries()).map(([month, dateLocationsPairsForMonth]) => (
-      <CalendarSectionContainer key={month}>
-        <div className="MonthSection">
-          <h2>{month}</h2>{" "}
-        </div>
-        <MonthContainer>
-          {dateLocationsPairsForMonth.map((dateLocationsPair) => (
-            <button
-              className={
-                sum(
-                  dateLocationsPair.locationSlotsPairs.map(
-                    (locationSlotsPair) =>
-                      (locationSlotsPair.slots || []).length
-                  )
-                ) === 0
-                  ? "zero-available"
-                  : ""
-              }
-              key={dateLocationsPair.dateStr}
-              onClick={() => setActiveDate(dateLocationsPair)}
-            >
-              <div>
-                <h3>
-                  {parse(
-                    dateLocationsPair.dateStr,
-                    "yyyy-MM-dd",
-                    new Date()
-                  ).toLocaleDateString([], {
-                    day: "numeric",
-                  })}{" "}
-                  {parse(
-                    dateLocationsPair.dateStr,
-                    "yyyy-MM-dd",
-                    new Date()
-                  ).toLocaleDateString([], {
-                    month: "short",
-                  })}
-                  <br />{" "}
-                  <aside aria-hidden="true">
+}) => {
+  const { t } = useTranslation("common");
+
+  return (
+    <CalendarContainer>
+      {Array.from(data.entries()).map(([month, dateLocationsPairsForMonth]) => (
+        <CalendarSectionContainer key={month}>
+          <div className="MonthSection">
+            <h2>{t("calendar.month", { monthString: month })}</h2>
+          </div>
+          <MonthContainer>
+            {dateLocationsPairsForMonth.map((dateLocationsPair) => (
+              <button
+                className={
+                  sum(
+                    dateLocationsPair.locationSlotsPairs.map(
+                      (locationSlotsPair) =>
+                        (locationSlotsPair.slots || []).length
+                    )
+                  ) === 0
+                    ? "zero-available"
+                    : ""
+                }
+                key={dateLocationsPair.dateStr}
+                onClick={() => setActiveDate(dateLocationsPair)}
+              >
+                <div>
+                  <h3>
                     {parse(
                       dateLocationsPair.dateStr,
                       "yyyy-MM-dd",
                       new Date()
                     ).toLocaleDateString([], {
-                      weekday: "short",
+                      day: "numeric",
+                    })}{" "}
+                    {parse(
+                      dateLocationsPair.dateStr,
+                      "yyyy-MM-dd",
+                      new Date()
+                    ).toLocaleDateString([], {
+                      month: "short",
                     })}
-                  </aside>
-                </h3>
-                <p>
-                  {sum(
-                    dateLocationsPair.locationSlotsPairs.map(
-                      (locationSlotsPair) =>
-                        (locationSlotsPair.slots || []).length
-                    )
-                  )}{" "}
-                  available
-                </p>
-              </div>
-              <img src="./arrow.svg" aria-hidden="true" alt="" />
-            </button>
-          ))}
-        </MonthContainer>
-      </CalendarSectionContainer>
-    ))}
-  </CalendarContainer>
-);
+                    <br />{" "}
+                    <aside aria-hidden="true">
+                      {parse(
+                        dateLocationsPair.dateStr,
+                        "yyyy-MM-dd",
+                        new Date()
+                      ).toLocaleDateString([], {
+                        weekday: "short",
+                      })}
+                    </aside>
+                  </h3>
+                  <p>
+                    {t("calendar.numberOfDoses", {
+                      numberOfDoses: sum(
+                        dateLocationsPair.locationSlotsPairs.map(
+                          (locationSlotsPair) =>
+                            (locationSlotsPair.slots || []).length
+                        )
+                      ),
+                    })}
+                  </p>
+                </div>
+                <img src="./arrow.svg" aria-hidden="true" alt="" />
+              </button>
+            ))}
+          </MonthContainer>
+        </CalendarSectionContainer>
+      ))}
+    </CalendarContainer>
+  );
+};

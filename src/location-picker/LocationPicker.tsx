@@ -1,7 +1,9 @@
 import { Button, KIND } from "baseui/button";
 import { formatDistance } from "date-fns";
 import { FunctionComponent, useEffect, useState } from "react";
+import { Trans, useTranslation } from "react-i18next";
 import RadiusSelect from "../RadiusSelect";
+import LanguageSelect from "../LanguageSelect";
 import { useSearchParams } from "../utils/url";
 import { HeaderMain } from "../VaxComponents";
 import LocationModal from "./LocationModal";
@@ -49,6 +51,8 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
 
   const [isOpen, setIsOpen] = useState(false);
 
+  const { t } = useTranslation("common");
+
   return (
     <>
       <LocationModal
@@ -61,8 +65,15 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
       <HeaderMain>
         <section>
           <h1>
-            Available Vaccinations
-            <strong>{placeName ? " near " + placeName : ""}</strong>
+            <Trans
+              i18nKey="navigation.vaccinationsNear"
+              t={t}
+              components={[
+                <strong>
+                  {{ location: placeName || "Unknown Location" }}
+                </strong>,
+              ]}
+            />
           </h1>
           <p>
             Last updated{" "}
@@ -88,10 +99,11 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
           >
             {coords.lat === defaultCoords.lat &&
             coords.lng === defaultCoords.lng
-              ? "Set your Location"
-              : "Location Set"}
+              ? t("navigation.setLocation")
+              : t("navigation.setLocationConfirmation")}
           </Button>
           <RadiusSelect value={radiusKm} setValue={setRadiusKm} />
+          <LanguageSelect />
         </div>
       </HeaderMain>
     </>

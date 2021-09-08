@@ -1,0 +1,49 @@
+{
+  "core": {
+    "title": "NZ COVID - Buscador de Vacunas",
+    "tagline": "See every available vaccination booking slot near you.",
+    "disclaimerNotAGovWebsite": "This is not an official Government website. To get vaccinated visit bookmyvaccine.nz",
+    "loading": "Loading..."
+  },
+  "navigation": {
+    "setLocation": "Set your Location",
+    "setLocationConfirmation": "Location Set",
+    "vaccinationsNear": "Available Vaccine Slots <0>near {{location}}</0>",
+    "distranceDropdown": {
+      "2km": "Within 2km",
+      "5km": "Within 5km",
+      "10km": "Within 10km",
+      "25km": "Within 25km",
+      "50km": "Within 50km",
+      "100km": "Within 100km"
+    }
+  },
+  "walkins": {
+    "sectionHeader": "Walk-in & Drive-thru Vaccinations <0>- Open Today</0>",
+    "kmAway": "{{distance}} away",
+    "openString": "Open {{openTimeString}}",
+    "cancellationNotice": {
+      "info": "Please don't double-book",
+      "message": "Remember to cancel your original booking if you have one at <0>https://bookmyvaccine.nz</0>"
+    },
+    "getDirections": "Get Directions",
+    "cancelBooking": "Cancel",
+    "noticeList": {
+      "title": "Availability Is Not Guaranteed",
+      "text": "Keep in mind that walk-in locations listed might not necessarily have capacity available."
+    },
+    "walkinAwailable": "<0 /> Walk-in available",
+    "driveThroughAvailable": "<0 /> Drive-through available",
+    "phone": "Phone",
+    "hours": "Hours"
+  },
+  "footer": {
+    "message": "If this site helped you please consider sharing",
+    "links": {
+      "contactUs": "Contact Us",
+      "rawData": "Raw Data",
+      "sourceCode": "Source Code",
+      "roadmap": "Roadmap"
+    }
+  }
+}
