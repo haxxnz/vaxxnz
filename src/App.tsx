@@ -28,13 +28,24 @@ function App() {
           </a>
           <div className="menu-divider">
             {" "}
-            <a href="/" className="menu-link">
+            <a
+              href="https://github.com/CovidEngine/vaxxnz"
+              target="_blank"
+              rel="noreferrer"
+              className="menu-link"
+            >
               {t("navigation.about")}
             </a>
-            <a href="/" className="menu-link">
+            <a
+              href="https://airtable.com/shrxuw3vSp2yRPrG7"
+              className="menu-link"
+            >
               {t("navigation.contact")}
             </a>
-            <a href="/" className="menu-link">
+            <a
+              href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTORS.md"
+              className="menu-link"
+            >
               {t("navigation.getInvolved")}
             </a>
           </div>
