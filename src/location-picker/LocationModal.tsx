@@ -157,7 +157,7 @@ const LocationModal = (props: Props) => {
           backgroundColor: "white'",
         }}
         onClick={() => {
-          enqueueAnalyticsEvent('Use current location click');
+          enqueueAnalyticsEvent('Use current location clicked');
           getLocation();
         }}
       >

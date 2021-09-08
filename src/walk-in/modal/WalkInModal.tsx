@@ -76,7 +76,7 @@ const WalkInModal: FunctionComponent<Props> = ({
                 },
               }}
               kind={KIND.primary}
-              onClick={() => enqueueAnalyticsEvent('Click get walk in location', { location })}
+              onClick={() => enqueueAnalyticsEvent('Healthpoint Get Directions clicked', { location })}
             >
               Get Directions
             </Button>

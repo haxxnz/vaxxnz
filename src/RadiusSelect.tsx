@@ -37,7 +37,7 @@ export default function RadiusSelect(props: Props) {
           const id = selectedOption.id;
           if (id && typeof id === "number") {
             props.setValue(id);
-            enqueueAnalyticsEvent('Change radius', { radius: id });
+            enqueueAnalyticsEvent('Radius changed', { radius: id });
           }
         }
       }}
