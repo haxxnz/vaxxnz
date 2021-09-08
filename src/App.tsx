@@ -8,6 +8,7 @@ import {
   useDefaultCoords,
 } from "./location-picker/LocationPicker";
 import { BookingSection } from "./booking/BookingSection";
+import { CrowdSourcedSection } from "./crowdsourced/CrowdsourcedSection";
 
 function App() {
   const {lat, lng} = useDefaultCoords();
@@ -47,6 +48,8 @@ function App() {
           />
 
           <WalkInSection coords={coords} radiusKm={radiusKm} />
+
+          <CrowdSourcedSection coords={coords} radiusKm={radiusKm} />
 
           <BookingSection
             coords={coords}
