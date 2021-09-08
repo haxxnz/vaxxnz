@@ -32,42 +32,42 @@
         "info": "Пожалуйста, не бронируйте дважды",
         "message": "Не забудьте отменить предыдущие бронирование, если оно у вас есть на <0>bookmyvaccine.nz</0>"
       },
-      "cancelBooking": "Cancel",
+      "cancelBooking": "Отменить",
       "noticeList": {
-        "title": "Availability Is Not Guaranteed",
-        "text": "Keep in mind that walk-in locations listed might not necessarily have capacity available."
+        "title": "Наличие не гарантируется",
+        "text": "Имейте в виду, что локации без регистрации могут не иметь свободных мест."
       },
-      "walkinAwailable": "<0 /> Walk-in available",
-      "driveThroughAvailable": "<0 /> Drive-through available",
-      "phone": "Phone",
-      "hours": "Hours",
-      "publicHolidays": "Public Holidays",
-      "otherExeptions": "Exceptions",
-      "seeMore": "See More"
+      "walkinAwailable": "<0 /> без регистрации доступны",
+      "driveThroughAvailable": "<0 /> Drive-through доступны",
+      "phone": "Телефон",
+      "hours": "Часы работы",
+      "publicHolidays": "Праздничные дни",
+      "otherExeptions": "Исключения",
+      "seeMore": "Смотрите больше"
     },
     "calendar": {
       "month": "{{monthString, MMMM yyyy}}",
-      "numberOfDoses": "{{numberOfDoses}} available",
+      "numberOfDoses": "{{numberOfDoses}} доступно",
       "modal": {
         "howToBook": {
-          "title": "How to Book",
-          "stepOne": "Find a location and time from the list below.",
-          "stepTwo": "Click on the <i>Make a Booking</i> button, this will take you to <0>bookmyvaccine.nz</0>",
-          "stepThree": "Enter your details.",
-          "stepFour": "When asked, search for your desired location and time."
+          "title": "Как забронировать",
+          "stepOne": "Найдите локацию и время из списка ниже.",
+          "stepTwo": "Нажать на <i>Выполнить бронирование</i> кнопку, это приведет вас на сайт <0>bookmyvaccine.nz</0>",
+          "stepThree": "Введите свои данные",
+          "stepFour": "Когда вас спросят, найдите желаемую локацию и время"
         },
-        "availableSlots": "Available slots",
-        "noBookingsAvailable": "No bookings are available on this day :(",
-        "backToCalendar": "Back to Calendar"
+        "availableSlots": "Доступные слоты",
+        "noBookingsAvailable": "В этот день нет доступных бронирований :(",
+        "backToCalendar": "Вернуться к календарю"
       }
     },
     "footer": {
-      "message": "If this site helped you, please consider sharing",
+      "message": "Если этот сайт помог вам, подумайте о том, чтобы поделиться",
       "links": {
-        "contactUs": "Contact Us",
-        "rawData": "Raw Data",
-        "sourceCode": "Source Code",
-        "roadmap": "Roadmap"
+        "contactUs": "Связаться с нами",
+        "rawData": "Необработанные данные",
+        "sourceCode": "Исходный код",
+        "roadmap": "План продукта"
       }
     }
   }
