@@ -3,6 +3,7 @@ import { formatDistance } from "date-fns";
 import { FunctionComponent, useEffect, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import RadiusSelect from "../RadiusSelect";
+import LanguageSelect from "../LanguageSelect";
 import { useSearchParams } from "../utils/url";
 import { HeaderMain } from "../VaxComponents";
 import LocationModal from "./LocationModal";
@@ -102,6 +103,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
               : t("navigation.setLocationConfirmation")}
           </Button>
           <RadiusSelect value={radiusKm} setValue={setRadiusKm} />
+          <LanguageSelect />
         </div>
       </HeaderMain>
     </>
