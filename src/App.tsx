@@ -6,8 +6,8 @@ import {
   LocationPicker,
   useDefaultCoords,
 } from "./location-picker/LocationPicker";
-
-import LanguageSelect from "./LanguageSelect";
+// import { BookingSection } from "./booking/BookingSection";
+// import { useTranslation } from "react-i18next";
 
 import { ShareButtons } from "./ShareButtons";
 import { WalkInSection } from "./walk-in/WalkInSection";
@@ -51,7 +51,6 @@ function App() {
             >
               {t("navigation.getInvolved")}
             </a>
-            <LanguageSelect />
           </div>
         </header>
         <section className="App-header">
