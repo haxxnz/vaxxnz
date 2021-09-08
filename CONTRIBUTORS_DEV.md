@@ -46,6 +46,14 @@ Make sure you have these tools installed locally:
 
 ### Task 5. Start development
 
+- Have a look at some [open issues](https://github.com/CovidEngine/vaxxnz/issues) and see if anyone needs any help investigating a problem or bug
+
+- [Review our roadmap ](https://github.com/CovidEngine/vaxxnz/projects/2) and join the discussion
+
+- Propose a new idea or feature by [Creating an issue](https://github.com/CovidEngine/vaxxnz/issues)
+
+### Task 6. Start development
+
 Clone your fork repo to local machine and navigate to the repo from commandline
 
 Install dependency with command `yarn install`
@@ -56,7 +64,7 @@ Available Commands:
 
 2. `yarn build` - bundles the code
 
-Once you see the message: 
+Once you see the message:
 
 ```shell
 Compiled successfully!
@@ -69,7 +77,7 @@ You can now view vaxxnz in the browser.
 Note that the development build is not optimized.
 To create a production build, use yarn build.
 ```
- 
+
 You are good to start coding
 
 ## Resources

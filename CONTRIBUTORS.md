@@ -12,11 +12,9 @@ Here are some ways to help:
 
 - Have a look at some [open issues](https://github.com/CovidEngine/vaxxnz/issues) and see if anyone needs any help investigating a problem or bug
 
-- [Review our roadmap ](https://github.com/CovidEngine/vaxxnz/issues) and propose improvements
+- [Review our roadmap ](https://github.com/CovidEngine/vaxxnz/projects/2) and join the discussion
 
 - Propose a new idea or feature by [Creating an issue](https://github.com/CovidEngine/vaxxnz/issues)
-
-- Have a look at the design page, and start doing some user research to figure out how we can improve the workflow
 
 ## For Designers:
 
