@@ -16,7 +16,7 @@
     "setLocation": "Set your Location",
     "setLocationConfirmation": "Location Set",
     "vaccinationsNear": "Available Vaccine Slots <0>near {{location}}</0>",
-    "distranceDropdown": {
+    "distanceDropdown": {
       "2km": "Within 2km",
       "5km": "Within 5km",
       "10km": "Within 10km",

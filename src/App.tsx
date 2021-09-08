@@ -73,15 +73,6 @@ function App() {
                   </a>,
                 ]}
               />
-              {/* This is not an official Government website.
-              <br /> To get vaccinated visit&nbsp;
-              <a
-                href="https://bookmyvaccine.covid19.health.nz"
-                target="_blank"
-                rel="noreferrer"
-              >
-                bookmyvaccine.nz
-              </a>{" "} */}
               <br />
             </p>
           </div>
