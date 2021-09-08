@@ -98,7 +98,7 @@ function App() {
           <WalkInSection coords={coords} radiusKm={radiusKm} />
         </div>
 
-        <section className="App-header">
+        <footer className="footer-header">
           <p style={{ marginBottom: "0.5rem" }}>{t("footer.message")}</p>
           <div className={"social-container"}>
             <ShareButtons />
@@ -138,9 +138,9 @@ function App() {
             </a>
           </p>
           <p></p>
-        </section>
+        </footer>
       </div>
-      <div className="bg">
+      <div className="background">
         <div
           className="bg-impt"
           style={{

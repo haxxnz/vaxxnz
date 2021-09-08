@@ -16,7 +16,7 @@ body {
   z-index: -2 !important;
 }
 
-.bg {
+.background {
   z-index: -2 !important;
 }
 
@@ -55,11 +55,15 @@ a {
 .menu-divider {
   gap: 2.5rem;
   display: flex;
+  align-self: center;
 }
 
 .menu-link {
   color: #254dff;
   font-size: 1.1rem;
+  text-align: center;
+  white-space: nowrap;
+  align-self: center;
 }
 
 .menu-link:hover {
@@ -70,6 +74,7 @@ a {
 .menu-logo {
   font-size: 1.2rem;
   font-weight: 600;
+  align-self: center;
 }
 
 .App-header {
@@ -147,6 +152,28 @@ a {
   }
 }
 
+@media screen and (max-width: 740px) {
+  .App-header {
+    grid-template-columns: 1fr;
+  }
+  .menu-header {
+    display: none;
+  }
+  .header-img-container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .App-header {
+    grid-template-columns: 1fr;
+  }
+.header-content {
+  padding: 1.5rem;
+}
+
+}
+
 .ModalHeader {
   position: sticky;
   top: 0;
@@ -165,4 +192,10 @@ a {
   /* WebKit */
   width: 0;
   height: 0;
+}
+
+.footer-header {
+  text-align: center;
+  padding: 2.5rem 2.5rem 4rem 2.5rem;
+  ;
 }
