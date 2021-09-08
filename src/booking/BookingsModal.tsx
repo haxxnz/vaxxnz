@@ -184,7 +184,6 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                               "yyyy-MM-dd",
                               new Date()
                             ), new Date()),
-                            distanceInKm: getDistanceKm(coords, locationSlotsPair.location.location)
                           })}
                       >
                         Make a Booking
