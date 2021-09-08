@@ -36,7 +36,8 @@
     "walkinAwailable": "<0 /> Walk-in available",
     "driveThroughAvailable": "<0 /> Drive-through available",
     "phone": "Phone",
-    "hours": "Hours"
+    "hours": "Hours",
+    "seeMore": "See More"
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",

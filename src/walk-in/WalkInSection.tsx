@@ -131,10 +131,9 @@ export function WalkInSection({ coords, radiusKm }: Props) {
               )}
           </WalkContainer>
 
-          {/* Over here @WALTS */}
           {"ok" in locations && locations.ok.length / currentView > 1 && (
             <button className="WalkSeeMore" onClick={loadMore}>
-              See more
+              {t("walkins.seeMore")}
             </button>
           )}
         </>
