@@ -134,6 +134,10 @@ a {
   font-family: inherit;
 }
 
+.MobileOnly {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   #root div:first-child {
     z-index: 1;
@@ -149,6 +153,9 @@ a {
   }
   .App-header p {
     font-size: 1rem;
+  }
+  .MobileOnly {
+    display: block;
   }
 }
 
@@ -168,10 +175,9 @@ a {
   .App-header {
     grid-template-columns: 1fr;
   }
-.header-content {
-  padding: 1.5rem;
-}
-
+  .header-content {
+    padding: 1.5rem;
+  }
 }
 
 .ModalHeader {

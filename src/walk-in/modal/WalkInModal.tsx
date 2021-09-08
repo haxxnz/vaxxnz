@@ -9,6 +9,7 @@ import { NoticeList, NoticeListItem } from "../../NoticeList";
 import { ModalGrid } from "../../VaxComponents";
 import { Instruction, WalkInLocation } from "../WalkInData";
 import { CancelBookingNotice } from "./CancelNotice";
+import { useMediaQuery } from "react-responsive";
 
 type Props = {
   clearSelectedLocation: () => void;
@@ -21,12 +22,30 @@ const WalkInModal: FunctionComponent<Props> = ({
 }) => {
   const close = () => clearSelectedLocation();
   const { t } = useTranslation("common");
-
+  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
   if (location == null) {
     return null;
   }
   const telephone = location.telephone.replace(/\[.*\]/g, "");
 
+  const desktopDialogStyle = {
+    width: "80vw",
+  };
+  const mobileDialogStyle = {
+    width: "100vw",
+    margin: "0rem",
+    borderRadius: "0",
+  };
+  const sharedDialogStyle = {
+    maxWidth: "1200px",
+    display: "flex",
+    flexDirection: "column",
+    alignSelf: "center",
+    padding: "1.5rem",
+  };
+  const dialogStyle = isMobileView
+    ? { ...mobileDialogStyle, ...sharedDialogStyle }
+    : { ...desktopDialogStyle, ...sharedDialogStyle };
   return (
     <Modal
       onClose={close}
@@ -36,13 +55,7 @@ const WalkInModal: FunctionComponent<Props> = ({
       overrides={{
         Root: { style: { zIndex: 1500 } },
         Dialog: {
-          style: {
-            display: "flex",
-            flexDirection: "column",
-            alignSelf: "center",
-            padding: "1.5rem",
-            maxWidth: "860px",
-          },
+          style: dialogStyle as any,
         },
       }}
     >

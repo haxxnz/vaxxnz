@@ -11,6 +11,7 @@ import { Coords } from "../location-picker/LocationPicker";
 import { FunctionComponent } from "react";
 import { useTranslation, Trans } from "react-i18next";
 
+import { useMediaQuery } from "react-responsive";
 type BookingsModalProps = {
   activeDate: DateLocationsPair | null;
   setActiveDate: (activeDate: DateLocationsPair | null) => void;
@@ -22,11 +23,32 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
   setActiveDate,
   coords,
 }) => {
-  const { t } = useTranslation("common")
+  const { t } = useTranslation("common");
 
   const close = () => {
     setActiveDate(null);
   };
+
+  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
+
+  const desktopDialogStyle = {
+    width: "80vw",
+  };
+  const mobileDialogStyle = {
+    width: "100vw",
+    margin: "0rem",
+    borderRadius: "0",
+  };
+  const sharedDialogStyle = {
+    maxWidth: "1200px",
+    display: "flex",
+    flexDirection: "column",
+    alignSelf: "center",
+    padding: "1.5rem",
+  };
+  const dialogStyle = isMobileView
+    ? { ...mobileDialogStyle, ...sharedDialogStyle }
+    : { ...desktopDialogStyle, ...sharedDialogStyle };
 
   function sortByDistance(
     locationSlotsPairs: LocationSlotsPair[] | undefined,
@@ -46,16 +68,9 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
       isOpen={!!activeDate}
       unstable_ModalBackdropScroll={true}
       overrides={{
-        // Root: { style: { zIndex: 1500 } },
+        Root: { style: { zIndex: 1500 } },
         Dialog: {
-          style: {
-            width: "80vw",
-            maxWidth: "1200px",
-            display: "flex",
-            flexDirection: "column",
-            alignSelf: "center",
-            padding: "1.5rem",
-          },
+          style: dialogStyle as any,
         },
       }}
     >
@@ -65,24 +80,24 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
             <h1>
               {activeDate
                 ? parse(
-                  activeDate.dateStr,
-                  "yyyy-MM-dd",
-                  new Date()
-                ).toLocaleDateString([], {
-                  weekday: "long",
-                })
+                    activeDate.dateStr,
+                    "yyyy-MM-dd",
+                    new Date()
+                  ).toLocaleDateString([], {
+                    weekday: "long",
+                  })
                 : ""}
               <br />
               {activeDate
                 ? parse(
-                  activeDate.dateStr,
-                  "yyyy-MM-dd",
-                  new Date()
-                ).toLocaleDateString([], {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                })
+                    activeDate.dateStr,
+                    "yyyy-MM-dd",
+                    new Date()
+                  ).toLocaleDateString([], {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })
                 : ""}
             </h1>
             <p>
@@ -97,7 +112,11 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                   i18nKey="calendar.modal.howToBook.stepTwo"
                   t={t}
                   components={[
-                    <a href="https://bookmyvaccine.nz" target="_blank" rel="noreferrer">
+                    <a
+                      href="https://bookmyvaccine.nz"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       https://bookmyvaccine.nz
                     </a>,
                   ]}
@@ -239,6 +258,25 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
           )}
         </div>
       </ModalGrid>
+      <div className="MobileOnly">
+        <Button
+          onClick={() => setActiveDate(null)}
+          overrides={{
+            Root: {
+              style: {
+                width: "100%",
+                marginTop: "1rem",
+                marginRight: 0,
+                marginBottom: "1rem",
+                marginLeft: 0,
+              },
+            },
+          }}
+          kind={KIND.secondary}
+        >
+          {t("calendar.modal.backToCalendar")}
+        </Button>
+      </div>
     </Modal>
   );
 };
