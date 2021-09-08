@@ -31,7 +31,11 @@
     "noticeList": {
       "title": "Availability Is Not Guaranteed",
       "text": "Keep in mind that walk-in locations listed might not necessarily have capacity available."
-    }
+    },
+    "walkinAwailable": "<0 /> Walk-in available",
+    "driveThroughAvailable": "<0 /> Drive-through available",
+    "phone": "Phone",
+    "hours": "Hours"
   },
   "footer": {
     "message": "If this site helped you please consider sharing",
