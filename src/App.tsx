@@ -23,20 +23,47 @@ function App() {
   return (
     <>
       <div className="App">
+        <header className="menu-header">
+          <a href="/" className="nolink menu-logo">
+            Vaxx.nz
+          </a>
+          <div className="menu-divider">
+            {" "}
+            <a href="/" className="menu-link">
+              About
+            </a>
+            <a href="/" className="menu-link">
+              Contact
+            </a>
+            <a href="/" className="menu-link">
+              Get Involved
+            </a>
+          </div>
+        </header>
         <section className="App-header">
-          <a href="/" className="nolink">
-            <h1>{t("core.title")}</h1>
-          </a>{" "}
-          <h3 style={{ fontWeight: "normal" }}>{t("core.tagline")}</h3>
-          <br />
-          <p>
-            {t("core.disclaimerNotAGovWebsite")}
-            <br /> To get vaccinated visit&nbsp;
-            <a href="https://bookmyvaccine.covid19.health.nz" target="_blank" rel="noreferrer">
-              bookmyvaccine.nz
-            </a>{" "}
+          <div className="header-content">
+            <h1>Find a COVID vaccination</h1>
+            <h3 style={{ fontWeight: "normal" }}>
+              See ways to get vaccinated near you.{" "}
+            </h3>
             <br />
-          </p>
+            <p>
+              This is not an official Government website.
+              <br /> To get vaccinated visit&nbsp;
+              <a
+                href="https://bookmyvaccine.covid19.health.nz"
+                target="_blank"
+                rel="noreferrer"
+              >
+                bookmyvaccine.nz
+              </a>{" "}
+              <br />
+            </p>
+          </div>
+          <div className="header-divider"></div>{" "}
+          <div className="header-img-container">
+            <img className="header-img" src="./doc.svg" alt=" a doctor"></img>
+          </div>
         </section>
         <div className={"big-old-container"}>
           <LocationPicker
@@ -47,13 +74,12 @@ function App() {
             lastUpdateTime={lastUpdateTime}
           />
 
-          <WalkInSection coords={coords} radiusKm={radiusKm} />
-
           <BookingSection
             coords={coords}
             radiusKm={radiusKm}
             setLastUpdateTime={setLastUpdateTime}
           />
+          <WalkInSection coords={coords} radiusKm={radiusKm} />
         </div>
 
         <section className="App-header">
@@ -97,6 +123,14 @@ function App() {
           </p>
           <p></p>
         </section>
+      </div>
+      <div className="bg">
+        <div
+          className="bg-impt"
+          style={{
+            backgroundImage: `url(${process.env.PUBLIC_URL + "./bg.svg"})`,
+          }}
+        ></div>
       </div>
     </>
   );
