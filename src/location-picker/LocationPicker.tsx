@@ -61,7 +61,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
       <HeaderMain>
         <section>
           <h1>
-            Available Vaccine Slots
+            Available Vaccinations
             <strong>{placeName ? " near " + placeName : ""}</strong>
           </h1>
           <p>
