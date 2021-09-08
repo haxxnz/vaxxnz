@@ -36,7 +36,7 @@ const LocationModal = (props: Props) => {
       url.searchParams.set("lat", lat.toString());
       url.searchParams.set("lng", lng.toString());
       url.searchParams.set("placeName", placeName);
-      enqueueAnalyticsEvent('location set');
+      enqueueAnalyticsEvent('Location set');
       window.history.pushState({}, "", url.toString());
     },
     [close, setCoords, setPlaceName]
