@@ -27,7 +27,7 @@
     },
     "walkins": {
       "sectionHeader": "Вакцинация без регистрации и Drive-Through <0>- Открыто сегодня</0>",
-      "openString": "Открыто {{openTimeString}}",
+      "openString": "Открыто с {{openTimeString}}",
       "cancellationNotice": {
         "info": "Пожалуйста, не бронируйте дважды",
         "message": "Не забудьте отменить предыдущее бронирование, если оно у вас есть на <0>bookmyvaccine.nz</0>"
