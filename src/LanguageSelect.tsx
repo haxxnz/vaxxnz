@@ -2,6 +2,7 @@ import { Select } from "baseui/select";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import languages from './translations/resources';
+import { enqueueAnalyticsEvent } from "./utils/analytics";
 
 
 const LanguageSelect = () => {
@@ -14,6 +15,7 @@ const LanguageSelect = () => {
     let newLang = languages.find((lang) => lang.code === selectedLanguage.code);
     setLanguage([newLang]);
     i18n.changeLanguage(newLang?.code);
+    enqueueAnalyticsEvent('Language changed', { code: newLang?.code })
   }
 
   return (
