@@ -163,7 +163,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                     </a>
                   </p>
                   <a
-                    href="https://bookmyvaccine.nz"
+                    href="https://bookmyvaccine.covid19.health.nz"
                     target="_blank"
                     referrerPolicy="origin"
                     rel="noreferrer"
