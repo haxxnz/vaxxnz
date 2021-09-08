@@ -14,6 +14,7 @@ import { enqueueAnalyticsEvent } from '../utils/analytics';
 interface BookingCalendarProps {
   data: BookingData;
   setActiveDate: (activeDate: DateLocationsPair | null) => void;
+  radiusKm: number;
 }
 
 export const LoadingBookingCalendar: FunctionComponent = () => (
@@ -40,6 +41,7 @@ export const LoadingBookingCalendar: FunctionComponent = () => (
 export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   data,
   setActiveDate,
+  radiusKm,
 }) => (
   <CalendarContainer>
     {Array.from(data.entries()).map(([month, dateLocationsPairsForMonth]) => (
@@ -70,6 +72,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                     "yyyy-MM-dd",
                     new Date()
                   ), new Date()),
+                  radiusKm, 
                   spotsAvailable: sum(
                     dateLocationsPair.locationSlotsPairs.map(
                       (locationSlotsPair) =>

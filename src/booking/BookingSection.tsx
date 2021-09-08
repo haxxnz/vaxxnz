@@ -32,7 +32,7 @@ export const BookingSection: FunctionComponent<BookingSectionProps> = ({
       />
 
       {"ok" in data ? (
-        <BookingCalendar setActiveDate={setActiveDate} data={data.ok} />
+        <BookingCalendar setActiveDate={setActiveDate} data={data.ok} radiusKm={radiusKm} />
       ) : "loading" in data ? (
         <LoadingBookingCalendar />
       ) : (
