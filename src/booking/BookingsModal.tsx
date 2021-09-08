@@ -91,7 +91,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
               <li>Find find a location and time from the list below.</li>
               <li>
                 Click on the <i>Make a Booking</i> button, this will take you to{" "}
-                <a href="https://bookmyvaccine.nz/">bookmyvaccine.nz</a>
+                <a href="https://bookmyvaccine.covid19.health.nz//">bookmyvaccine.nz</a>
               </li>
               <li>Enter your details.</li>
               <li>When asked, search for your desired location and time.</li>
@@ -148,7 +148,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                     </a>
                   </p>
                   <a
-                    href="https://bookmyvaccine.nz"
+                    href="https://bookmyvaccine.covid19.health.nz/"
                     target="_blank"
                     referrerPolicy="origin"
                     rel="noreferrer"
