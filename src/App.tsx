@@ -46,16 +46,13 @@ function App() {
             setRadiusKm={setRadiusKm}
             lastUpdateTime={lastUpdateTime}
           />
-
-          <WalkInSection coords={coords} radiusKm={radiusKm} />
-
-          <CrowdSourcedSection coords={coords} radiusKm={radiusKm} />
-
           <BookingSection
             coords={coords}
             radiusKm={radiusKm}
             setLastUpdateTime={setLastUpdateTime}
           />
+          <WalkInSection coords={coords} radiusKm={radiusKm} />
+          <CrowdSourcedSection coords={coords} radiusKm={radiusKm} />
         </div>
 
         <section className="App-header">
