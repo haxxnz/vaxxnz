@@ -18,6 +18,9 @@ Choose your location, set the distance you wish to travel and it will show ALL o
 
 Over the course of one week, our team of 6 developers and 2 designers built a website to aide residents of New Zealand in booking their COVID-19 vaccine the intuitive way! Rather than selecting your location, and booking the next available slot, Vaxxed (aka. The Vaccination Calendar) let's you choose when you want to receive your vaccine at a provider near you. Eliminating the filtering hassle and subsequent frustration.
 
+## A vaccine centre is missing!
+We automatically load any locations giving vaccines listed on [bookmyvaccine.nz](https://bookmyvaccine.nz), but if you know of one we don't have add it on [our spreadsheet](https://docs.google.com/spreadsheets/d/1dbAFVdtQParU78_j3eR1i5iA6XpzLsrR_WvzTATPK2Y/edit) and we will manually include it.
+
 ## How to get involved
 
 We recognise that the best projects aren't built alone. If you would like to contribute, check out the guides below:
