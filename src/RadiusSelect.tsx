@@ -11,12 +11,12 @@ export default function RadiusSelect(props: Props) {
   const { t } = useTranslation("common");
 
   const options = [
-    { label: t("navigation.distanceDropdown.2km"), id: 2 },
-    { label: t("navigation.distanceDropdown.5km"), id: 5 },
-    { label: t("navigation.distanceDropdown.10km"), id: 10 },
-    { label: t("navigation.distanceDropdown.25km"), id: 25 },
-    { label: t("navigation.distanceDropdown.50km"), id: 50 },
-    { label: t("navigation.distanceDropdown.100km"), id: 100 },
+    { label: "2km", id: 2 },
+    { label: "5km", id: 5 },
+    { label: "10km", id: 10 },
+    { label: "25km", id: 25 },
+    { label: "50km", id: 50 },
+    { label: "100km", id: 100 },
   ];
 
   const selectedOption = options.find((o) => o.id === props.value);
