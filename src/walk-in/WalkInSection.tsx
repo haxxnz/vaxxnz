@@ -8,6 +8,7 @@ import { Spinner } from "baseui/spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { enqueueAnalyticsEvent } from '../utils/analytics';
+import { Trans, useTranslation } from "react-i18next";
 
 export interface Props {
   coords: Coords;
@@ -16,6 +17,7 @@ export interface Props {
 
 export function WalkInSection({ coords, radiusKm }: Props) {
   const locations = useWalkInLocations(coords, radiusKm);
+  const { t } = useTranslation("common");
 
   const [selectedLocationIndex, setSelectedLocation] = useState<number>();
   const [currentView, setCurrentView] = useState(6);
@@ -52,7 +54,11 @@ export function WalkInSection({ coords, radiusKm }: Props) {
         radiusKm={radiusKm}
       />
       <h2 className="WalkSection">
-        Walk-in &amp; Drive-thru Vaccinations<strong> - Open Today</strong>
+        <Trans
+          i18nKey="walkins.sectionHeader"
+          t={t}
+          components={[<strong></strong>]}
+        />
       </h2>
       {"loading" in locations ? (
         <div
@@ -70,7 +76,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
               fontSize: "1.5rem",
             }}
           >
-            Loading...
+            {t("core.loading")}
           </div>
         </div>
       ) : (
@@ -99,26 +105,30 @@ export function WalkInSection({ coords, radiusKm }: Props) {
                             {instructions.includes(Instruction.walkIn) && (
                               <FontAwesomeIcon icon={faWalking} />
                             )}
-                            {instructions.includes(Instruction.driveThrough) && (
-                              <FontAwesomeIcon icon={faCar} />
-                            )}
+                            {instructions.includes(
+                              Instruction.driveThrough
+                            ) && <FontAwesomeIcon icon={faCar} />}
                           </h3>
                           {locationLat && locationLng && (
                             <p>
-                              {Math.round(
-                                getDistanceKm(coords, {
-                                  lat: locationLat,
-                                  lng: locationLng,
-                                }) * 10
-                              ) / 10}
-                              KM away
+                              {t("core.kmAway", {
+                                distance:
+                                  Math.round(
+                                    getDistanceKm(coords, {
+                                      lat: locationLat,
+                                      lng: locationLng,
+                                    }) * 10
+                                  ) / 10,
+                              })}
                             </p>
                           )}
                         </div>
 
                         {isOpenToday && (
                           <p>
-                            Open <span>{openTodayHours}</span>
+                            {t("walkins.openString", {
+                              openTimeString: openTodayHours,
+                            })}
                           </p>
                         )}
                       </section>
@@ -133,10 +143,9 @@ export function WalkInSection({ coords, radiusKm }: Props) {
               )}
           </WalkContainer>
 
-          {/* Over here @WALTS */}
           {"ok" in locations && locations.ok.length / currentView > 1 && (
             <button className="WalkSeeMore" onClick={loadMore}>
-              See more
+              {t("walkins.seeMore")}
             </button>
           )}
         </>

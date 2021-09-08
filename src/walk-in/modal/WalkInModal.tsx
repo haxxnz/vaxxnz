@@ -1,14 +1,16 @@
-import { Button, KIND } from "baseui/button";
-import { Modal } from "baseui/modal";
-import { ModalGrid } from "../../VaxComponents";
-import { NoticeList, NoticeListItem } from "../../NoticeList";
-import { FunctionComponent } from "react";
-import { CancelBookingNotice } from "./CancelNotice";
-import { Instruction, WalkInLocation } from "../WalkInData";
-import "../../App.css";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button, KIND } from "baseui/button";
+import { Modal } from "baseui/modal";
+import { FunctionComponent } from "react";
+import { Trans, useTranslation } from "react-i18next";
+import "../../App.css";
 import { enqueueAnalyticsEvent } from '../../utils/analytics';
+import { NoticeList, NoticeListItem } from "../../NoticeList";
+import { ModalGrid } from "../../VaxComponents";
+import { Instruction, WalkInLocation } from "../WalkInData";
+import { CancelBookingNotice } from "./CancelNotice";
+import { useMediaQuery } from "react-responsive";
 
 type Props = {
   clearSelectedLocation: () => void;
@@ -22,11 +24,31 @@ const WalkInModal: FunctionComponent<Props> = ({
   radiusKm
 }) => {
   const close = () => clearSelectedLocation();
+  const { t } = useTranslation("common");
+  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
   if (location == null) {
     return null;
   }
   const telephone = location.telephone.replace(/\[.*\]/g, "");
 
+  const desktopDialogStyle = {
+    width: "80vw",
+  };
+  const mobileDialogStyle = {
+    width: "100vw",
+    margin: "0rem",
+    borderRadius: "0",
+  };
+  const sharedDialogStyle = {
+    maxWidth: "1200px",
+    display: "flex",
+    flexDirection: "column",
+    alignSelf: "center",
+    padding: "1.5rem",
+  };
+  const dialogStyle = isMobileView
+    ? { ...mobileDialogStyle, ...sharedDialogStyle }
+    : { ...desktopDialogStyle, ...sharedDialogStyle };
   return (
     <Modal
       onClose={close}
@@ -36,13 +58,7 @@ const WalkInModal: FunctionComponent<Props> = ({
       overrides={{
         Root: { style: { zIndex: 1500 } },
         Dialog: {
-          style: {
-            display: "flex",
-            flexDirection: "column",
-            alignSelf: "center",
-            padding: "1.5rem",
-            maxWidth: "860px",
-          },
+          style: dialogStyle as any,
         },
       }}
     >
@@ -80,7 +96,7 @@ const WalkInModal: FunctionComponent<Props> = ({
               kind={KIND.primary}
               onClick={() => enqueueAnalyticsEvent('Healthpoint Get Directions clicked', { locationName: location.name, radiusKm })}
             >
-              Get Directions
+              {t("core.getDirections")}
             </Button>
           </a>
 
@@ -99,13 +115,12 @@ const WalkInModal: FunctionComponent<Props> = ({
             kind={KIND.secondary}
             onClick={close}
           >
-            Cancel
+            {t("walkins.cancelBooking")}
           </Button>
 
           <NoticeList>
-            <NoticeListItem title="Availability Is Not Guaranteed">
-              Keep in mind that walk-in locations listed might not necessarily
-              have capacity available.
+            <NoticeListItem title={t("walkins.noticeList.title")}>
+              {t("walkins.noticeList.text")}
             </NoticeListItem>
           </NoticeList>
         </div>
@@ -115,12 +130,20 @@ const WalkInModal: FunctionComponent<Props> = ({
             <div className="WalkInTypes">
               {location.instructionLis.includes(Instruction.walkIn) && (
                 <p>
-                  <FontAwesomeIcon icon={faWalking} /> Walk-in available
+                  <Trans
+                    i18nKey="walkins.walkinAwailable"
+                    t={t}
+                    components={[<FontAwesomeIcon icon={faWalking} />]}
+                  />
                 </p>
               )}
               {location.instructionLis.includes(Instruction.driveThrough) && (
                 <p>
-                  <FontAwesomeIcon icon={faCar} /> Drive-through available
+                  <Trans
+                    i18nKey="walkins.driveThroughAvailable"
+                    t={t}
+                    components={[<FontAwesomeIcon icon={faCar} />]}
+                  />
                 </p>
               )}
             </div>
@@ -128,15 +151,14 @@ const WalkInModal: FunctionComponent<Props> = ({
 
           {telephone && (
             <section>
-              <h3> Phone</h3>
-
+              <h3>{t("walkins.phone")}</h3>
               <a href={`tel:${telephone}`}>{telephone}</a>
             </section>
           )}
 
           {location.opennningHours.schedule && (
             <section>
-              <h3> Hours</h3>
+              <h3>{t("walkins.hours")}</h3>
               {Object.keys(location.opennningHours.schedule).map(
                 (openDate, index) => {
                   return (
@@ -160,7 +182,11 @@ const WalkInModal: FunctionComponent<Props> = ({
                     lineHeight: "1.5",
                   }}
                 >
-                  <h3>{key}</h3>
+                  <h3>
+                    {key === "Public Holidays"
+                      ? t("walkins.publicHolidays")
+                      : t("walkins.otherExeptions")}
+                  </h3>
 
                   <p key={index}>{value}</p>
                 </section>
@@ -179,6 +205,25 @@ const WalkInModal: FunctionComponent<Props> = ({
           })}
         </div>
       </ModalGrid>
+      <div className="MobileOnly">
+        <Button
+          onClick={close}
+          overrides={{
+            Root: {
+              style: {
+                width: "100%",
+                marginTop: "1rem",
+                marginRight: 0,
+                marginBottom: "1rem",
+                marginLeft: 0,
+              },
+            },
+          }}
+          kind={KIND.secondary}
+        >
+          {t("walkins.cancelBooking")}
+        </Button>
+      </div>
     </Modal>
   );
 };
