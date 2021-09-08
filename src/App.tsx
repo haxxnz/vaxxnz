@@ -8,14 +8,17 @@ import {
   useDefaultCoords,
 } from "./location-picker/LocationPicker";
 import { BookingSection } from "./booking/BookingSection";
+import { useTranslation } from "react-i18next";
 
 function App() {
-  const {lat, lng} = useDefaultCoords();
-  const [coords, setCoords] = useState({lat, lng});
-  useEffect(() => setCoords({lat, lng}), [lat, lng]);
+  const { lat, lng } = useDefaultCoords();
+  const [coords, setCoords] = useState({ lat, lng });
+  useEffect(() => setCoords({ lat, lng }), [lat, lng]);
 
   const [radiusKm, setRadiusKm] = useState(10);
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
+
+  const { t } = useTranslation("common");
 
   return (
     <>
