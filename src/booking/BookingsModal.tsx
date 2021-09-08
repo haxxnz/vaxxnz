@@ -150,7 +150,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                       href={`https://www.google.com/maps/dir/?api=1&destination=${locationSlotsPair.location.location.lat},${locationSlotsPair.location.location.lng}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => enqueueAnalyticsEvent('"Get Directions clicked')}
+                      onClick={() => enqueueAnalyticsEvent('Get Directions clicked')}
                     >
                       Get Directions
                     </a>

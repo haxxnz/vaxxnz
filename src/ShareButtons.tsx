@@ -41,7 +41,7 @@ export const ShareButtons = () => {
       </div>
 
       <div>
-        <LinkedinShareButton url={shareUrl} onClick={() => enqueueAnalyticsEvent('Share with LinkIn clicked')}>
+        <LinkedinShareButton url={shareUrl} onClick={() => enqueueAnalyticsEvent('Share with LinkedIn clicked')}>
           <LinkedinIcon size={32} round />
         </LinkedinShareButton>
       </div>
