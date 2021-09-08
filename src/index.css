@@ -44,8 +44,6 @@ a {
 .menu-header {
   max-width: 1440px;
   margin: 0 auto;
-  border: 1px solid lightgray;
-  border-top: none;
   box-sizing: border-box;
   padding: 1.5rem 2rem;
   display: flex;
@@ -82,10 +80,8 @@ a {
   max-width: 1440px;
   margin: 0 auto;
   box-sizing: border-box;
-  border-left: 1px solid lightgray;
-  border-right: 1px solid lightgray;
   display: grid;
-  grid-template-columns: 1fr 1px 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .header-divider {
@@ -123,7 +119,7 @@ a {
 .header-img {
   height: 300px;
   display: block;
-  margin: 1.5rem auto 0 auto;
+  margin: 35px auto 0 auto;
   opacity: 0.7;
 }
 

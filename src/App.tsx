@@ -76,7 +76,6 @@ function App() {
               <br />
             </p>
           </div>
-          <div className="header-divider"></div>{" "}
           <div className="header-img-container">
             <img className="header-img" src="./doc.svg" alt=" a doctor"></img>
           </div>
