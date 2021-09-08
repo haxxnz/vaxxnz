@@ -20,7 +20,13 @@ export function WalkInSection({ coords, radiusKm }: Props) {
   const [selectedLocationIndex, setSelectedLocation] = useState<number>();
   const [currentView, setCurrentView] = useState(6);
   const openModal = (locationIndex: number) => {
-    enqueueAnalyticsEvent('Walk in location selected')
+    const location =
+      "ok" in locations && locationIndex !== undefined
+        ? locations.ok[locationIndex]
+        : undefined;
+    enqueueAnalyticsEvent("Walk in location selected", {
+      locationName: location ? location.name : "",
+    });
     setSelectedLocation(locationIndex);
   };
 
