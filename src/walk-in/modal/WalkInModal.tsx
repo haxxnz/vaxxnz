@@ -79,7 +79,7 @@ const WalkInModal: FunctionComponent<Props> = ({
               }}
               kind={KIND.primary}
             >
-              {t("walkins.getDirections")}
+              {t("core.getDirections")}
             </Button>
           </a>
 

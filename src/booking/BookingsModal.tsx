@@ -22,7 +22,6 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
   setActiveDate,
   coords,
 }) => {
-
   const { t } = useTranslation("common")
 
   const close = () => {
@@ -123,7 +122,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
               }}
               kind={KIND.secondary}
             >
-              {t("calendar.modal.howToBook.backToCalendar")}
+              {t("calendar.modal.backToCalendar")}
             </Button>
 
             <NoticeList />
@@ -131,7 +130,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
         </div>
 
         <div style={{ height: "100%" }}>
-          <h2>Available slots</h2>
+          <h2>{t("calendar.modal.availableSlots")}</h2>
           <hr />
 
           {activeDate?.locationSlotsPairs.filter(
@@ -144,10 +143,15 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                   <h3>{locationSlotsPair.location.name}</h3>
                   <p>
                     {locationSlotsPair.location.displayAddress} (
-                    {Math.floor(
-                      getDistanceKm(coords, locationSlotsPair.location.location)
-                    )}
-                    km away)
+                    {t("core.kmAway", {
+                      distance: Math.floor(
+                        getDistanceKm(
+                          coords,
+                          locationSlotsPair.location.location
+                        )
+                      ),
+                    })}
+                    )
                   </p>
                   <p>
                     <a
@@ -155,7 +159,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Get Directions
+                      {t("core.getDirections")}
                     </a>
                   </p>
                   <a
@@ -178,7 +182,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                           },
                         }}
                       >
-                        Make a Booking
+                        {t("core.makeABooking")}
                       </Button>
                     </div>
                   </a>
@@ -190,7 +194,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                       marginLeft: 0,
                     }}
                   >
-                    Available slots:
+                    {t("calendar.modal.availableSlots")}
                   </p>
                   <section>
                     {/* <p>1am</p> */}
@@ -212,12 +216,8 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
               ))
           ) : (
             <>
-              <h1>
-                No bookings available on this day :(
-                <br />
-                Try changing your search!
-              </h1>
-              <Button
+              <h1>{t("calendar.modal.noBookingsAvailable")}</h1>
+              {/* <Button
                 onClick={() => setActiveDate(null)}
                 overrides={{
                   Root: {
@@ -233,8 +233,8 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                 }}
                 kind={KIND.secondary}
               >
-                Back to calendar
-              </Button>
+                {t("calendar.modal.backToCalendar")}
+              </Button> */}
             </>
           )}
         </div>

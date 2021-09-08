@@ -3,7 +3,10 @@
     "title": "NZ COVID Vaccination Finder",
     "tagline": "See every available vaccination booking slot near you.",
     "disclaimerNotAGovWebsite": "This is not an official Government website. To get vaccinated visit bookmyvaccine.nz",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "getDirections": "Get Directions",
+    "makeABooking": "Make a Booking",
+    "kmAway": "{{distance}}km away"
   },
   "navigation": {
     "setLocation": "Set your Location",
@@ -20,13 +23,11 @@
   },
   "walkins": {
     "sectionHeader": "Walk-in & Drive-thru Vaccinations <0>- Open Today</0>",
-    "kmAway": "{{distance}} away",
     "openString": "Open {{openTimeString}}",
     "cancellationNotice": {
       "info": "Please don't double-book",
       "message": "Remember to cancel your original booking if you have one at <0>https://bookmyvaccine.nz</0>"
     },
-    "getDirections": "Get Directions",
     "cancelBooking": "Cancel",
     "noticeList": {
       "title": "Availability Is Not Guaranteed",
@@ -46,9 +47,11 @@
         "stepOne": "Find a location and time from the list below.",
         "stepTwo": "Click on the <i>Make a Booking</i> button, this will take you to <0>bookmyvaccine.nz</0>",
         "stepThree": "Enter your details.",
-        "stepFour": "When asked, search for your desired location and time.",
-        "backToCalendar":  "Back to calendar"
-      }
+        "stepFour": "When asked, search for your desired location and time."
+      },
+      "availableSlots": "Available slots",
+      "noBookingsAvailable": "No bookings are available on this day :(",
+      "backToCalendar": "Back to Calendar"
     }
   },
   "footer": {

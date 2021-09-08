@@ -99,7 +99,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
                           </h3>
                           {locationLat && locationLng && (
                             <p>
-                              {t("walkins.kmAway", {
+                              {t("core.kmAway", {
                                 distance:
                                   Math.round(
                                     getDistanceKm(coords, {
