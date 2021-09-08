@@ -6,7 +6,8 @@
   },
   "navigation": {
     "setLocation": "Set your Location",
-    "setLocationConfirmation": "Location Set"
+    "setLocationConfirmation": "Location Set",
+    "vaccinationsNear": "Available Vaccine Slots <0>near {{location}}</0>"
   },
   "footer": {
     "message": "If this site helped you please consider sharing",
