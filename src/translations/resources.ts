@@ -10,7 +10,7 @@ const languages = [
     label: "English",
     code: "en",
     flag: enFlag,
-  }
+  },
   //,
   // {
   //   common: common_en,
