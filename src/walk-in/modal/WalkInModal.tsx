@@ -13,11 +13,13 @@ import { enqueueAnalyticsEvent } from '../../utils/analytics';
 type Props = {
   clearSelectedLocation: () => void;
   location?: WalkInLocation;
+  radiusKm: number;
 };
 
 const WalkInModal: FunctionComponent<Props> = ({
   clearSelectedLocation,
   location,
+  radiusKm
 }) => {
   const close = () => clearSelectedLocation();
   if (location == null) {
@@ -76,7 +78,7 @@ const WalkInModal: FunctionComponent<Props> = ({
                 },
               }}
               kind={KIND.primary}
-              onClick={() => enqueueAnalyticsEvent('Healthpoint Get Directions clicked', { locationName: location.name })}
+              onClick={() => enqueueAnalyticsEvent('Healthpoint Get Directions clicked', { locationName: location.name, radiusKm })}
             >
               Get Directions
             </Button>

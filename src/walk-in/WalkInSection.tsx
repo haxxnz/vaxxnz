@@ -49,6 +49,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
             ? locations.ok[selectedLocationIndex]
             : undefined
         }
+        radiusKm={radiusKm}
       />
       <h2 className="WalkSection">
         Walk-in &amp; Drive-thru Vaccinations<strong> - Open Today</strong>
