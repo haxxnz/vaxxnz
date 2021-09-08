@@ -22,3 +22,7 @@ Here are some ways to help:
 
 - We have a [figma file here](https://www.figma.com/file/4oWThzqdwnGO0ibpbWR3zd/Vaxxtastic?node-id=0%3A1)
 - We'll set up a research repository soon at https://github.com/CovidEngine/vaxxnz/wiki
+
+## For Developers:
+
+- Have a look at our technical guide on [how to get started](CONTRIBUTORS_DEV.md)

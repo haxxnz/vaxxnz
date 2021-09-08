@@ -1,6 +1,6 @@
 # Vaxx Nz technical guide
 
-This section of the documentation contains a guide for technicall users who want to contribute code or documentation to the Vaxx.nz. As a community, we share rules of behavior and interaction. Make sure you are familiar with the [community guidelines](CODE_OF_CONDUCT.md) before continuing.
+This section of the documentation contains a guide for technical users who want to contribute code or documentation to the Vaxx.nz. As a community, we share rules of behavior and interaction. Make sure you are familiar with the [community guidelines](CODE_OF_CONDUCT.md) before continuing.
 
 Users who are new to development should start by setting up their environment. Then, they should try a simple code change. After that, you should find something to work on or propose a totally new change.
 
@@ -15,7 +15,7 @@ href="https://github.com" target="_blank">GitHub account</a>. A free account is
 fine. All the Vaxxnz repositories are public and visible to everyone.
 
 You should also have some experience using both the GitHub application and `git`
-on the command line. But if you prefer GUI version which is also fine to.
+on the command line. But if you prefer, there's a GUI version available too.
 
 ### Task 2. Install git
 
