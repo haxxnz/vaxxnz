@@ -29,8 +29,8 @@
     "sectionHeader": "Walk-in & Drive-thru Vaccinations <0>- Open Today</0>",
     "openString": "Open {{openTimeString}}",
     "cancellationNotice": {
-      "info": "Please don't double-book",
-      "message": "Remember to cancel your original booking if you have one at <0>https://bookmyvaccine.nz</0>"
+      "info": "Please Don't Double-book",
+      "message": "Remember to cancel your original booking if you have one at <0>bookmyvaccine.nz</0>"
     },
     "cancelBooking": "Cancel",
     "noticeList": {
