@@ -19,7 +19,7 @@ import { enqueueAnalyticsEvent } from "./utils/analytics";
 export const ShareButtons = () => {
   const shareUrl = "https://vaxx.nz";
   const title = "Vaxx.nz | NZ COVID Vaccination Finder";
-  console.log("awf");
+  console.log("ghiu");
 
   return (
     <>
