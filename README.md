@@ -1,4 +1,4 @@
-![Banner](https://i.imgur.com/rUx3XPw.png)
+![Banner](https://i.imgur.com/uQrEML4.png)
 
 ## Welcome to [Vaxx.nz](https://vaxx.nz)
 
