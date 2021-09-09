@@ -2,6 +2,7 @@ import common_en from "./locales/common_en.json";
 import common_de from "./locales/common_de.json";
 import common_ru from "./locales/common_ru.json";
 import common_es from "./locales/common_es.json";
+import common_ms_MY from "./locales/common_ms-MY.json";
 
 export type Language = {
   common: typeof common_en,
@@ -30,6 +31,11 @@ const languages: Language[] = [
     common: common_ru,
     label: "Русский",
     code: "ru",
+  },
+  {
+    common: common_ms_MY,
+    label: "Bahasa Malaysia",
+    code: "ms",
   },
 ];
 
