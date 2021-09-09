@@ -48,13 +48,14 @@
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
     "numberOfDoses": "{{numberOfDoses}} disponible",
+    "numberOfDoses_plural": "{{numberOfDoses}} disponibles", 
     "modal": {
       "howToBook": {
         "title": "Cómo reservar",
         "stepOne": "Encuentre una ubicación y hora en la lista a continuación.",
         "stepTwo": "Clickea en el <i>Make a Booking</i> botón, esto te llevará a <0>bookmyvaccine.nz</0>",
         "stepThree": "Completa tus datos.",
-        "stepFour": "Cuando se le solicite, busque la ubicación y la hora deseadas."
+        "stepFour": "Cuando se le solicite, busque la ubicación y la hora deseada."
       },
       "availableSlots": "Espacios disponibles",
       "noBookingsAvailable": "No hay reservas disponibles en este día :(",
