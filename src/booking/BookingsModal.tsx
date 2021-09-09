@@ -15,6 +15,7 @@ import { enqueueAnalyticsEvent } from '../utils/analytics';
 import { differenceInDays } from 'date-fns/esm';
 
 import { useMediaQuery } from "react-responsive";
+import i18next from "i18next";
 type BookingsModalProps = {
   activeDate: DateLocationsPair | null;
   setActiveDate: (activeDate: DateLocationsPair | null) => void;
@@ -83,24 +84,18 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
           <div className="ModalHeader">
             <h1>
               {activeDate
-                ? parse(
-                  activeDate.dateStr,
-                  "yyyy-MM-dd",
-                  new Date()
-                ).toLocaleDateString([], {
-                  weekday: "long",
-                })
+                ?
+                  new Date(activeDate.dateStr).toLocaleDateString([i18next.language], {
+                    weekday: "long"
+                  })
                 : ""}
               <br />
               {activeDate
-                ? parse(
-                  activeDate.dateStr,
-                  "yyyy-MM-dd",
-                  new Date()
-                ).toLocaleDateString([], {
-                  month: "short",
+                ?
+                new Date(activeDate.dateStr).toLocaleDateString([i18next.language], {
                   day: "numeric",
-                  year: "numeric",
+                  month: "short",
+                  year: "numeric"
                 })
                 : ""}
             </h1>
