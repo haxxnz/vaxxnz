@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Spinner } from "baseui/spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
-import { enqueueAnalyticsEvent } from '../utils/analytics';
+import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { Trans, useTranslation } from "react-i18next";
 
 export interface Props {
@@ -34,7 +34,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
   };
 
   const clearSelectedLocation = () => {
-    setSelectedLocation(undefined)
+    setSelectedLocation(undefined);
   };
 
   const loadMore = () => {
