@@ -9,7 +9,7 @@
     "makeABooking": "Hacer una reserva",
     "kmAway": "{{distance}}km de distancia",
     "lastUpdated": "Última actualización {{updatedAt}}",
-    "cancel": "Cancel"
+    "cancel": "Cancelar"
   },
   "navigation": {
     "about": "Sobre nosotros",
@@ -62,7 +62,7 @@
       "howToBook": {
         "title": "Cómo reservar",
         "stepOne": "Encuentre una ubicación y hora en la lista a continuación.",
-        "stepTwo": "Clickea en el <i>hacer una reserva</i> botón, esto te llevará a <0>bookmyvaccine.nz</0>",
+        "stepTwo": "Clickea en el botón <i>hacer una reserva</i>, esto te llevará a <0>bookmyvaccine.nz</0>",
         "stepThree": "Completa tus datos.",
         "stepFour": "Cuando se le solicite, busque la ubicación y la hora deseada."
       },
