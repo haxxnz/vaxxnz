@@ -65,7 +65,7 @@
         "stepThree": "Geben Sie Ihre Daten ein.",
         "stepFour": "Suchen Sie nach Ihrem gewünschten Ort und Ihrer gewünschten Zeit."
       },
-      "availableSlots": "verfügbare Termine",
+      "availableSlots": "Verfügbare Termine",
       "noBookingsAvailable": "An diesem Tag sind keine Buchungen möglich :(",
       "backToCalendar": "Zurück zum Kalender"
     }
