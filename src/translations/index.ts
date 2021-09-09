@@ -5,7 +5,7 @@ let initLanguage = localStorage.getItem("language") || "en";
 
 export const config = {
   lng: initLanguage,
-  fallbackLng: initLanguage,
+  fallbackLng: "en",
   interpolation: { escapeValue: false },
   resources,
 };
