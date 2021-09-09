@@ -115,9 +115,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
           </Button>
 
           <NoticeList>
-            <NoticeListItem
-              title={t("walkins.otherLocations.disclaimer.title")}
-            >
+            <NoticeListItem title={t("walkins.otherLocations.disclaimer.title")}>
               {t("walkins.otherLocations.disclaimer.message")}
             </NoticeListItem>
           </NoticeList>
