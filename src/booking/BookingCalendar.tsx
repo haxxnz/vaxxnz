@@ -55,8 +55,8 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
             <h2>
               {
                 parse(
-                  "1 " + month,
-                  "d MMMM yyyy",
+                  month,
+                  "MMMM yyyy",
                   new Date()
                 ).toLocaleDateString([i18next.language], {
                   month: "long",
