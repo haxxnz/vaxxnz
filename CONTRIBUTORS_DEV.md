@@ -37,12 +37,13 @@ As you make contributions, you change your fork's code. When you are ready, you 
 
 ### Task 4. Check for required tools
 
-We recommend [VsCode](https://code.visualstudio.com/) for development use. Our team uses Yarn as package manager instead of NPM so make sure you installed it locally.
+We recommend [VSCode](https://code.visualstudio.com/) for development use. Our team uses Yarn as package manager instead of NPM so make sure you installed it locally. We also use Prettier to ensure consistent code formatting, please make sure your code is formatted before submitting a pull request (VSCode has an extension that can run on save).
 
 Make sure you have these tools installed locally:
 
 - Node JS ([download](https://nodejs.org/en/download/))
 - Yarn v1 ([download](https://classic.yarnpkg.com/lang/en/))
+- Prettier ([download](https://prettier.io/)
 
 ### Task 5. Start development
 
