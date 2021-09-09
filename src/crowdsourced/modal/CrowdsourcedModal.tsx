@@ -3,7 +3,7 @@ import { Modal } from "baseui/modal";
 import { ModalGrid } from "../../VaxComponents";
 import { NoticeList, NoticeListItem } from "../../NoticeList";
 import { FunctionComponent } from "react";
-import { CancelBookingNotice } from "./CancelNotice";
+import { CancelBookingNotice } from "../../common/CancelNotice";
 import "../../App.css";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
