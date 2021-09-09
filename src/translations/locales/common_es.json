@@ -8,8 +8,8 @@
     "getDirections": "Obtener las direcciones",
     "makeABooking": "Hacer una reserva",
     "kmAway": "{{distance}}km de distancia",
-    "lastUpdated": "Last updated {{updatedAt}}",
-    "cancel": "Cancel"
+    "lastUpdated": "Última actualización {{updatedAt}}",
+    "cancel": "Cancelar"
   },
   "navigation": {
     "about": "Sobre nosotros",
@@ -27,12 +27,12 @@
       "100km": "Dentro de 100km"
     },
     "locationModal": {
-      "locaitonTitle": "Location",
-      "locationCTA": "Type in an address or suburb",
-      "useCurrentLocation": "Use my current location",
-      "geolocationNotSupported": "Geolocation is not supported by your browser"
+      "locaitonTitle": "Ubicación",
+      "locationCTA": "Escriba una dirección o suburbio",
+      "useCurrentLocation": "Usar mi ubicación actual",
+      "geolocationNotSupported": "La geolocalización no es compatible con su navegador"
     },
-    "unknownLocation": "Unknown Location"
+    "unknownLocation": "Ubicación desconocida"
   },
   "walkins": {
     "sectionHeader": "Sin cita & Vacunas en el coche <0>- Open Today</0>",
@@ -62,7 +62,7 @@
       "howToBook": {
         "title": "Cómo reservar",
         "stepOne": "Encuentre una ubicación y hora en la lista a continuación.",
-        "stepTwo": "Clickea en el <i>Make a Booking</i> botón, esto te llevará a <0>bookmyvaccine.nz</0>",
+        "stepTwo": "Clickea en el botón <i>hacer una reserva</i>, esto te llevará a <0>bookmyvaccine.nz</0>",
         "stepThree": "Completa tus datos.",
         "stepFour": "Cuando se le solicite, busque la ubicación y la hora deseada."
       },
