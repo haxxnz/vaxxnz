@@ -57,7 +57,7 @@ a {
 }
 
 .menu-link {
-  color: #254dff;
+  color: #000;
   font-size: 1.1rem;
   text-align: center;
   white-space: nowrap;
@@ -99,7 +99,7 @@ a {
   font-size: 3rem;
 }
 
-.App-header h3 {
+.App-header h2 {
   margin-top: 0.5rem;
   font-size: 1.5rem;
 }
@@ -144,7 +144,7 @@ a {
   .App-header h1 {
     font-size: 2rem;
   }
-  .App-header h3 {
+  .App-header h2 {
     font-size: 1.25rem;
   }
   .App-header p {
@@ -165,6 +165,12 @@ a {
   .header-img-container {
     display: none;
   }
+  .header-content {
+    padding: 1.5rem;
+  }
+  .header-content h1 {
+    font-size: 2.5rem;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -173,6 +179,9 @@ a {
   }
   .header-content {
     padding: 1.5rem;
+  }
+  .header-content h1 {
+    font-size: 2rem;
   }
 }
 

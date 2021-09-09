@@ -5,9 +5,9 @@ import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import "../../App.css";
-import { enqueueAnalyticsEvent } from '../../utils/analytics';
+import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { NoticeList, NoticeListItem } from "../../NoticeList";
-import { ModalGrid } from "../../VaxComponents";
+import { WalkGrid } from "../../VaxComponents";
 import { Instruction, WalkInLocation } from "../WalkInData";
 import { CancelBookingNotice } from "./CancelNotice";
 import { useMediaQuery } from "react-responsive";
@@ -21,7 +21,7 @@ type Props = {
 const WalkInModal: FunctionComponent<Props> = ({
   clearSelectedLocation,
   location,
-  radiusKm
+  radiusKm,
 }) => {
   const close = () => clearSelectedLocation();
   const { t } = useTranslation("common");
@@ -62,20 +62,26 @@ const WalkInModal: FunctionComponent<Props> = ({
         },
       }}
     >
-      <ModalGrid className={"modal-container WalkModal"}>
+      <WalkGrid className={"modal-container WalkModal"}>
         <div>
           <h1
             style={{
-              marginBottom: "1rem",
+              marginBottom: "0.5rem",
             }}
           >
             {location.name}
           </h1>
-
           <p>{location.address}</p>
+          <hr />
+          <p>
+            <strong>{t("walkins.noticeList.title")}</strong>
+            <br /> Just go to the address and get in the queue. You don't need
+            abooking to get vaccinated here.
+            <br />
+            <br /> {t("walkins.noticeList.text")}
+          </p>
 
           <CancelBookingNotice className="mobile" />
-
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
             target="_blank"
@@ -94,12 +100,16 @@ const WalkInModal: FunctionComponent<Props> = ({
                 },
               }}
               kind={KIND.primary}
-              onClick={() => enqueueAnalyticsEvent('Healthpoint Get Directions clicked', { locationName: location.name, radiusKm })}
+              onClick={() =>
+                enqueueAnalyticsEvent("Healthpoint Get Directions clicked", {
+                  locationName: location.name,
+                  radiusKm,
+                })
+              }
             >
               {t("core.getDirections")}
             </Button>
           </a>
-
           <Button
             overrides={{
               Root: {
@@ -117,12 +127,6 @@ const WalkInModal: FunctionComponent<Props> = ({
           >
             {t("walkins.cancelBooking")}
           </Button>
-
-          <NoticeList>
-            <NoticeListItem title={t("walkins.noticeList.title")}>
-              {t("walkins.noticeList.text")}
-            </NoticeListItem>
-          </NoticeList>
         </div>
         <div style={{ height: "100%" }}>
           <CancelBookingNotice className="desktop" />
@@ -204,7 +208,7 @@ const WalkInModal: FunctionComponent<Props> = ({
             );
           })}
         </div>
-      </ModalGrid>
+      </WalkGrid>
       <div className="MobileOnly">
         <Button
           onClick={close}

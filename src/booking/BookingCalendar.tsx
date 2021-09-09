@@ -9,7 +9,7 @@ import {
 import { BookingData } from "./BookingData";
 import { DateLocationsPair } from "./BookingDataTypes";
 import { differenceInDays, parse } from "date-fns";
-import { enqueueAnalyticsEvent } from '../utils/analytics';
+import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { useTranslation } from "react-i18next";
 
 interface BookingCalendarProps {
@@ -68,14 +68,17 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                 }
                 key={dateLocationsPair.dateStr}
                 onClick={() => {
-                  enqueueAnalyticsEvent('Calendar day picked', {
+                  enqueueAnalyticsEvent("Calendar day picked", {
                     datePicked: dateLocationsPair.dateStr,
-                    bookingDateInDays: differenceInDays(parse(
-                      dateLocationsPair.dateStr,
-                      "yyyy-MM-dd",
+                    bookingDateInDays: differenceInDays(
+                      parse(
+                        dateLocationsPair.dateStr,
+                        "yyyy-MM-dd",
+                        new Date()
+                      ),
                       new Date()
-                    ), new Date()),
-                    radiusKm, 
+                    ),
+                    radiusKm,
                     spotsAvailable: sum(
                       dateLocationsPair.locationSlotsPairs.map(
                         (locationSlotsPair) =>
@@ -83,7 +86,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                       )
                     ),
                   });
-                  setActiveDate(dateLocationsPair)
+                  setActiveDate(dateLocationsPair);
                 }}
               >
                 <div>
@@ -103,7 +106,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                       month: "short",
                     })}
                     <br />{" "}
-                    <aside aria-hidden="true">
+                    <aside>
                       {parse(
                         dateLocationsPair.dateStr,
                         "yyyy-MM-dd",

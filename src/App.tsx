@@ -6,7 +6,7 @@ import {
   LocationPicker,
   useDefaultCoords,
 } from "./location-picker/LocationPicker";
-import { enqueueAnalyticsEvent } from './utils/analytics';
+import { enqueueAnalyticsEvent } from "./utils/analytics";
 
 import LanguageSelect from "./LanguageSelect";
 
@@ -46,19 +46,13 @@ function App() {
             >
               {t("navigation.contact")}
             </a>
-            <a
-              href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTORS.md"
-              className="menu-link"
-            >
-              {t("navigation.getInvolved")}
-            </a>
             <LanguageSelect />
           </div>
         </header>
         <section className="App-header">
           <div className="header-content">
             <h1>{t("core.tagline")}</h1>
-            <h3 style={{ fontWeight: "normal" }}>{t("core.subtitle")}</h3>
+            <h2 style={{ fontWeight: "normal" }}>{t("core.subtitle")}</h2>
             <br />
             <p>
               <Trans
@@ -90,12 +84,12 @@ function App() {
             lastUpdateTime={lastUpdateTime}
           />
 
+          <WalkInSection coords={coords} radiusKm={radiusKm} />
           <BookingSection
             coords={coords}
             radiusKm={radiusKm}
             setLastUpdateTime={setLastUpdateTime}
           />
-          <WalkInSection coords={coords} radiusKm={radiusKm} />
         </div>
 
         <footer className="footer-header">
@@ -117,7 +111,7 @@ function App() {
               href="https://github.com/CovidEngine/vaxxnzlocations"
               target="_blank"
               rel="noreferrer"
-              onClick={() => enqueueAnalyticsEvent('Raw data clicked')}
+              onClick={() => enqueueAnalyticsEvent("Raw data clicked")}
             >
               {t("footer.links.rawData")}
             </a>{" "}
@@ -126,7 +120,7 @@ function App() {
               href="https://github.com/CovidEngine/vaxxnz"
               target="_blank"
               rel="noreferrer"
-              onClick={() => enqueueAnalyticsEvent('Source code clicked')}
+              onClick={() => enqueueAnalyticsEvent("Source code clicked")}
             >
               {t("footer.links.sourceCode")}
             </a>{" "}
@@ -135,9 +129,17 @@ function App() {
               href="https://github.com/CovidEngine/vaxxnz/projects/2"
               target="_blank"
               rel="noreferrer"
-              onClick={() => enqueueAnalyticsEvent('Roadmap clicked')}
+              onClick={() => enqueueAnalyticsEvent("Roadmap clicked")}
             >
               {t("footer.links.roadmap")}
+            </a>{" "}
+            /{" "}
+            <a
+              href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTORS.md"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t("navigation.getInvolved")}
             </a>
           </p>
           <p></p>

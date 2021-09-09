@@ -15,7 +15,7 @@
     "getInvolved": "Get Involved",
     "setLocation": "Set your Location",
     "setLocationConfirmation": "Location Set",
-    "vaccinationsNear": "Available Vaccinations <0>near {{location}}</0>",
+    "vaccinationsNear": "Vaccinations <0>near {{location}}</0>",
     "distanceDropdown": {
       "2km": "Within 2km",
       "5km": "Within 5km",
@@ -26,7 +26,7 @@
     }
   },
   "walkins": {
-    "sectionHeader": "Walk-in & Drive-thru Vaccinations <0>- Open Today</0>",
+    "sectionHeader": "Available Today",
     "openString": "Open {{openTimeString}}",
     "cancellationNotice": {
       "info": "Please Don't Double-book",
@@ -35,6 +35,7 @@
     "cancelBooking": "Cancel",
     "noticeList": {
       "title": "Availability Is Not Guaranteed",
+     
       "text": "Keep in mind that walk-in locations listed might not necessarily have capacity available."
     },
     "walkinAwailable": "<0 /> Walk-in available",

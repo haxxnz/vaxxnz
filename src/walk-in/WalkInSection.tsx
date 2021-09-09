@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Spinner } from "baseui/spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
-import { enqueueAnalyticsEvent } from '../utils/analytics';
+import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { Trans, useTranslation } from "react-i18next";
 
 export interface Props {
@@ -20,7 +20,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
   const { t } = useTranslation("common");
 
   const [selectedLocationIndex, setSelectedLocation] = useState<number>();
-  const [currentView, setCurrentView] = useState(6);
+  const [currentView, setCurrentView] = useState(3);
   const openModal = (locationIndex: number) => {
     const location =
       "ok" in locations && locationIndex !== undefined
@@ -34,11 +34,11 @@ export function WalkInSection({ coords, radiusKm }: Props) {
   };
 
   const clearSelectedLocation = () => {
-    setSelectedLocation(undefined)
+    setSelectedLocation(undefined);
   };
 
   const loadMore = () => {
-    setCurrentView((latest) => latest + 6);
+    setCurrentView((latest) => latest + 3);
   };
 
   return "error" in locations ||
