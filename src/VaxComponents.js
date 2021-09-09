@@ -192,7 +192,7 @@ export const ModalGrid = styled.section`
   gap: 4rem;
   grid-template-columns: 400px 1fr;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: initial;
   h1 {
     font-size: 3.5rem;
     font-weight: 300;
