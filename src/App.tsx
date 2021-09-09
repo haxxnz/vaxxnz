@@ -2,17 +2,14 @@ import { useEffect, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import "./App.css";
 import { BookingSection } from "./booking/BookingSection";
+import LanguageSelect from "./LanguageSelect";
 import {
   LocationPicker,
   useDefaultCoords,
 } from "./location-picker/LocationPicker";
-import { enqueueAnalyticsEvent } from './utils/analytics';
-
-import LanguageSelect from "./LanguageSelect";
-
 import { ShareButtons } from "./ShareButtons";
+import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { WalkInSection } from "./walk-in/WalkInSection";
-import i18next from "i18next";
 
 function App() {
   const { lat, lng } = useDefaultCoords();
@@ -29,7 +26,7 @@ function App() {
       <div className="App">
         <header className="menu-header">
           <a href="/" className="nolink menu-logo">
-            {t("core.title")} ({i18next.language})
+            {t("core.title")}
           </a>
           <div className="menu-divider">
             {" "}
@@ -118,7 +115,7 @@ function App() {
               href="https://github.com/CovidEngine/vaxxnzlocations"
               target="_blank"
               rel="noreferrer"
-              onClick={() => enqueueAnalyticsEvent('Raw data clicked')}
+              onClick={() => enqueueAnalyticsEvent("Raw data clicked")}
             >
               {t("footer.links.rawData")}
             </a>{" "}
@@ -127,7 +124,7 @@ function App() {
               href="https://github.com/CovidEngine/vaxxnz"
               target="_blank"
               rel="noreferrer"
-              onClick={() => enqueueAnalyticsEvent('Source code clicked')}
+              onClick={() => enqueueAnalyticsEvent("Source code clicked")}
             >
               {t("footer.links.sourceCode")}
             </a>{" "}
@@ -136,7 +133,7 @@ function App() {
               href="https://github.com/CovidEngine/vaxxnz/projects/2"
               target="_blank"
               rel="noreferrer"
-              onClick={() => enqueueAnalyticsEvent('Roadmap clicked')}
+              onClick={() => enqueueAnalyticsEvent("Roadmap clicked")}
             >
               {t("footer.links.roadmap")}
             </a>

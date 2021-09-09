@@ -1,13 +1,13 @@
 import { Button, KIND } from "baseui/button";
 import { formatDistance } from "date-fns";
 import { FunctionComponent, useEffect, useState } from "react";
-import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { Trans, useTranslation } from "react-i18next";
 import RadiusSelect from "../RadiusSelect";
+import { enqueueAnalyticsEvent } from "../utils/analytics";
+import { getDateFnsLocale } from "../utils/locale";
 import { useSearchParams } from "../utils/url";
 import { HeaderMain } from "../VaxComponents";
 import LocationModal from "./LocationModal";
-import deLocale from "date-fns/locale/de";
 
 export interface Coords {
   lng: number;
@@ -71,7 +71,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
               t={t}
               components={[
                 <strong>
-                  {{ location: placeName || "Unknown Location" }}
+                  {{ location: placeName || t("navigation.unknownLocation") }}
                 </strong>,
               ]}
             />
@@ -83,7 +83,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
                   ? "..."
                   : formatDistance(lastUpdateTime, new Date(), {
                       addSuffix: true,
-                      locale: deLocale,
+                      locale: getDateFnsLocale(),
                     }),
             })}
           </p>
