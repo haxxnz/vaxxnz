@@ -1,8 +1,10 @@
 import { resources } from "./resources";
 import languages from "./resources";
 
+let initLanguage = localStorage.getItem("i18nextLng") || "en";
+
 export const config = {
-  lng: "en",
+  lng: initLanguage,
   fallbackLng: "en",
   interpolation: { escapeValue: false },
   resources,
