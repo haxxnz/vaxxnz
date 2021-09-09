@@ -9,6 +9,7 @@ import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { DEFAULT_LOCATION } from "./utils/location";
 import { useSearchParams } from "./utils/url";
 import { WalkInSection } from "./walk-in/WalkInSection";
+import { CrowdSourcedSection } from "./crowdsourced/CrowdsourcedSection";
 
 function App() {
   const { lat, lng } = useSearchParams();
@@ -94,13 +95,13 @@ function App() {
             setRadiusKm={setRadiusKm}
             lastUpdateTime={lastUpdateTime}
           />
-
           <BookingSection
             coords={coords}
             radiusKm={radiusKm}
             setLastUpdateTime={setLastUpdateTime}
           />
           <WalkInSection coords={coords} radiusKm={radiusKm} />
+          <CrowdSourcedSection coords={coords} radiusKm={radiusKm} />
         </div>
 
         <footer className="footer-header">
