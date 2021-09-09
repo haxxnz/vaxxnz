@@ -71,14 +71,31 @@ const WalkInModal: FunctionComponent<Props> = ({
           >
             {location.name}
           </h1>
-          <p>{location.address}</p>
+          <div className="WalkInTypes">
+            {location.instructionLis.includes(Instruction.walkIn) && (
+              <p>
+                <Trans
+                  i18nKey="walkins.walkinAwailable"
+                  t={t}
+                  components={[<FontAwesomeIcon icon={faWalking} />]}
+                />
+              </p>
+            )}
+            {location.instructionLis.includes(Instruction.driveThrough) && (
+              <p>
+                <Trans
+                  i18nKey="walkins.driveThroughAvailable"
+                  t={t}
+                  components={[<FontAwesomeIcon icon={faCar} />]}
+                />
+              </p>
+            )}
+          </div>
           <hr />
           <p>
             <strong>{t("walkins.noticeList.title")}</strong>
             <br /> Just go to the address and get in the queue. You don't need a
-            booking to get vaccinated here.
-            <br />
-            <br /> {t("walkins.noticeList.text")}
+            booking to get vaccinated here. {t("walkins.noticeList.text")}
           </p>
 
           <CancelBookingNotice className="mobile" />
@@ -130,27 +147,10 @@ const WalkInModal: FunctionComponent<Props> = ({
         </div>
         <div style={{ height: "100%" }}>
           <CancelBookingNotice className="desktop" />
+
           <section>
-            <div className="WalkInTypes">
-              {location.instructionLis.includes(Instruction.walkIn) && (
-                <p>
-                  <Trans
-                    i18nKey="walkins.walkinAwailable"
-                    t={t}
-                    components={[<FontAwesomeIcon icon={faWalking} />]}
-                  />
-                </p>
-              )}
-              {location.instructionLis.includes(Instruction.driveThrough) && (
-                <p>
-                  <Trans
-                    i18nKey="walkins.driveThroughAvailable"
-                    t={t}
-                    components={[<FontAwesomeIcon icon={faCar} />]}
-                  />
-                </p>
-              )}
-            </div>
+            <h3>Address</h3>
+            <p>{location.address}</p>
           </section>
 
           {telephone && (

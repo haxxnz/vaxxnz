@@ -35,11 +35,10 @@
     "cancelBooking": "Cancel",
     "noticeList": {
       "title": "How to get Vaccinated",
-     
-      "text": "Keep in mind that walk-in locations listed might not have spots available."
+      "text": "Keep in mind that this location might have a long queue."
     },
-    "walkinAwailable": "<0 /> Walk-in available",
-    "driveThroughAvailable": "<0 /> Drive-through available",
+    "walkinAwailable": "<0 /> Walk-in vaccinations available",
+    "driveThroughAvailable": "<0 /> Drive-through vaccinations available",
     "phone": "Phone",
     "hours": "Hours",
     "publicHolidays": "Public Holidays",
