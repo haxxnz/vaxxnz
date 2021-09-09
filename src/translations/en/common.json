@@ -34,9 +34,9 @@
     },
     "cancelBooking": "Cancel",
     "noticeList": {
-      "title": "Availability Is Not Guaranteed",
+      "title": "How to get Vaccinated",
      
-      "text": "Keep in mind that walk-in locations listed might not necessarily have capacity available."
+      "text": "Keep in mind that walk-in locations listed might not have spots available."
     },
     "walkinAwailable": "<0 /> Walk-in available",
     "driveThroughAvailable": "<0 /> Drive-through available",

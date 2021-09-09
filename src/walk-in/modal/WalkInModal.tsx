@@ -75,8 +75,8 @@ const WalkInModal: FunctionComponent<Props> = ({
           <hr />
           <p>
             <strong>{t("walkins.noticeList.title")}</strong>
-            <br /> Just go to the address and get in the queue. You don't need
-            abooking to get vaccinated here.
+            <br /> Just go to the address and get in the queue. You don't need a
+            booking to get vaccinated here.
             <br />
             <br /> {t("walkins.noticeList.text")}
           </p>
