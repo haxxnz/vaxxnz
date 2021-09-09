@@ -2,12 +2,13 @@ import { WalkBox, WalkContainer } from "../VaxComponents";
 // import WalkModal from "./modal/WalkInModal";
 import { getDistanceKm } from "../utils/distance";
 import { Coords } from "../location-picker/LocationPicker";
-import { Instruction, useCrowdsourcedLocations } from "./CrowdsourcedData";
+import { useCrowdsourcedLocations } from "./CrowdsourcedData";
 import { useState } from "react";
 import { Spinner } from "baseui/spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import CrowdsourcedModal from "./modal/CrowdsourcedModal";
+import { Instruction } from "../walk-in/WalkInData";
 
 export interface Props {
   coords: Coords;

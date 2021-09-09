@@ -3,12 +3,18 @@ import { getDistanceKm } from "../utils/distance";
 import { Instruction } from "../walk-in/WalkInData";
 import { crowdsourcedLocations } from "./CrowdsourcedLocations";
 
-interface OpeningHours {
-  // 0 = monday, 1 = tuesday ... same as new Date().getDay();
-  day: 0 | 1 | 2 | 3 | 4 | 5 | 6;
-  isOpen: boolean;
-  hours: string;
-}
+// 0 = monday, 1 = tuesday ... same as new Date().getDay();
+type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+type OpeningHours =
+  | {
+      day: Day;
+      isOpen: true;
+      hours: string;
+    }
+  | {
+      day: Day;
+      isOpen: false;
+    };
 
 export interface CrowdsourcedLocation {
   lat: number;
