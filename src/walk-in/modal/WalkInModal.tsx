@@ -9,7 +9,7 @@ import { enqueueAnalyticsEvent } from '../../utils/analytics';
 import { NoticeList, NoticeListItem } from "../../NoticeList";
 import { ModalGrid } from "../../VaxComponents";
 import { Instruction, WalkInLocation } from "../WalkInData";
-import { CancelBookingNotice } from "./CancelNotice";
+import { CancelBookingNotice } from "../../common/CancelNotice";
 import { useMediaQuery } from "react-responsive";
 
 type Props = {
