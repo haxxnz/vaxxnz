@@ -12,6 +12,7 @@ import LanguageSelect from "./LanguageSelect";
 
 import { ShareButtons } from "./ShareButtons";
 import { WalkInSection } from "./walk-in/WalkInSection";
+import i18next from "i18next";
 
 function App() {
   const { lat, lng } = useDefaultCoords();
@@ -28,7 +29,7 @@ function App() {
       <div className="App">
         <header className="menu-header">
           <a href="/" className="nolink menu-logo">
-            {t("core.title")}
+            {t("core.title")} ({i18next.language})
           </a>
           <div className="menu-divider">
             {" "}

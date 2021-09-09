@@ -1,12 +1,13 @@
 import { Button, KIND } from "baseui/button";
 import { formatDistance } from "date-fns";
 import { FunctionComponent, useEffect, useState } from "react";
-import { enqueueAnalyticsEvent } from '../utils/analytics';
+import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { Trans, useTranslation } from "react-i18next";
 import RadiusSelect from "../RadiusSelect";
 import { useSearchParams } from "../utils/url";
 import { HeaderMain } from "../VaxComponents";
 import LocationModal from "./LocationModal";
+import deLocale from "date-fns/locale/de";
 
 export interface Coords {
   lng: number;
@@ -76,12 +77,15 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
             />
           </h1>
           <p>
-            Last updated{" "}
-            {lastUpdateTime === null
-              ? "..."
-              : formatDistance(lastUpdateTime, new Date(), {
-                  addSuffix: true,
-                })}
+            {t("core.lastUpdated", {
+              updatedAt:
+                lastUpdateTime === null
+                  ? "..."
+                  : formatDistance(lastUpdateTime, new Date(), {
+                      addSuffix: true,
+                      locale: deLocale,
+                    }),
+            })}
           </p>
         </section>
 
@@ -89,9 +93,9 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
           <Button
             kind={KIND.primary}
             onClick={() => {
-              enqueueAnalyticsEvent('Location modal opened')
-              setIsOpen(true)}
-            }
+              enqueueAnalyticsEvent("Location modal opened");
+              setIsOpen(true);
+            }}
             overrides={{
               BaseButton: {
                 style: {
