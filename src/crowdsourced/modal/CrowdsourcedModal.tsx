@@ -7,7 +7,8 @@ import { CancelBookingNotice } from "./CancelNotice";
 import "../../App.css";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Instruction, CrowdsourcedLocation } from "../CrowdsourcedData";
+import { CrowdsourcedLocation } from "../CrowdsourcedData";
+import { Instruction } from "../../walk-in/WalkInData";
 
 type Props = {
   clearSelectedLocation: () => void;

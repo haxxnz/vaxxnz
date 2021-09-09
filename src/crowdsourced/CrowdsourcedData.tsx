@@ -1,20 +1,13 @@
 import { Coords } from "../location-picker/LocationPicker";
 import { getDistanceKm } from "../utils/distance";
+import { Instruction } from "../walk-in/WalkInData";
+import { crowdsourcedLocations } from "./CrowdsourcedLocations";
 
 interface OpeningHours {
   // 0 = monday, 1 = tuesday ... same as new Date().getDay();
   day: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   isOpen: boolean;
   hours: string;
-}
-
-export enum Instruction {
-  anyoneEligible = "Anyone currently eligible can access",
-  makeAppointment = "Make an appointment",
-  enrolledOnly = "Eligible GP enrolled patients only",
-  walkIn = "Walk in",
-  invitationOnly = "By invitation only",
-  driveThrough = "Drive through",
 }
 
 export interface CrowdsourcedLocation {
@@ -25,7 +18,7 @@ export interface CrowdsourcedLocation {
   address: string;
   telephone?: string;
   openingHours: OpeningHours[];
-  instructions: string;
+  instructions: Instruction[];
   website?: string;
   bookingWebsite?: string;
   additionalInformation?: string;
@@ -56,58 +49,7 @@ const useCrowdsourcedData = (): WalkInDataResult => {
   // }, []);
 
   return {
-    ok: [
-      {
-        name: "Auckland Airport Vaccination Centre",
-        address: "22 Verissimo Drive, Mangere",
-        lat: -36.9854795,
-        lng: 174.7885245,
-        instructions: Instruction.driveThrough,
-        website:
-          "https://www.aucklandairport.co.nz/information/drive-through-vaccination-centre",
-        bookingWebsite: undefined,
-        additionalInformation: undefined,
-        branch: undefined,
-        telephone: undefined,
-        openingHours: [
-          {
-            day: 0,
-            isOpen: true,
-            hours: "8:30am - 4:00pm",
-          },
-          {
-            day: 1,
-            isOpen: true,
-            hours: "8:30am - 4:00pm",
-          },
-          {
-            day: 2,
-            isOpen: true,
-            hours: "8:30am - 4:00pm",
-          },
-          {
-            day: 3,
-            isOpen: true,
-            hours: "8:30am - 4:00pm",
-          },
-          {
-            day: 4,
-            isOpen: true,
-            hours: "8:30am - 4:00pm",
-          },
-          {
-            day: 5,
-            isOpen: true,
-            hours: "8:30am - 4:00pm",
-          },
-          {
-            day: 6,
-            isOpen: true,
-            hours: "8:30am - 4:00pm",
-          },
-        ],
-      },
-    ],
+    ok: crowdsourcedLocations,
   };
 };
 
