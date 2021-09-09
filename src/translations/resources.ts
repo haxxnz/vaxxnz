@@ -5,7 +5,14 @@ import common_es from "./locales/common_es.json";
 import common_zh_cn from "./locales/common_zh_cn.json";
 import common_zh_tw from "./locales/common_zh_tw.json";
 
-const languages = [
+export type Language = {
+  common: typeof common_en,
+  label: string;
+  code: string;
+  flag?: string;
+}
+
+const languages: Language[] = [
   {
     common: common_en,
     label: "English",
