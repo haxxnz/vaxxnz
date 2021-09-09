@@ -48,6 +48,7 @@ a {
   padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
+  border-bottom: 1px solid lightgray;
 }
 
 .menu-divider {
@@ -159,7 +160,7 @@ a {
   .App-header {
     grid-template-columns: 1fr;
   }
-  .menu-header {
+  .menu-link {
     display: none;
   }
   .header-img-container {
