@@ -22,7 +22,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
   const { t } = useTranslation("common");
 
   const [selectedLocationIndex, setSelectedLocation] = useState<number>();
-  const [currentView, setCurrentView] = useState(3);
+  const [currentView, setCurrentView] = useState(!isMobileView ? 3 : 1);
   const openModal = (locationIndex: number) => {
     const location =
       "ok" in locations && locationIndex !== undefined
@@ -40,7 +40,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
   };
 
   const loadMore = () => {
-    setCurrentView((latest) => latest + (!isMobileView ? 3 : 1));
+    setCurrentView((latest) => latest + 3);
   };
 
   return "error" in locations ||
