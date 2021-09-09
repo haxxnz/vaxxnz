@@ -23,7 +23,7 @@ fs.readdirSync(join(__dirname, "../locales")).forEach((locale) => {
 
   try {
     data = JSON.parse(fs.readFileSync(filename, { encoding: "utf-8" }));
-  } catch (err) {
+  } catch (err: any) {
     throw new Error(`${locale}: ${err.message}`);
   }
 
