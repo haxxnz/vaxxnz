@@ -6,11 +6,11 @@ import common_zh_cn from "./locales/common_zh_cn.json";
 import common_zh_tw from "./locales/common_zh_tw.json";
 
 export type Language = {
-  common: typeof common_en,
+  common: typeof common_en;
   label: string;
   code: string;
   flag?: string;
-}
+};
 
 const languages: Language[] = [
   {
@@ -21,17 +21,17 @@ const languages: Language[] = [
   {
     common: common_es,
     label: "Español",
-    code: "es",
+    code: "es-ES",
   },
   {
     common: common_de,
     label: "Deutsch",
-    code: "de",
+    code: "de-DE",
   },
   {
     common: common_ru,
     label: "Русский",
-    code: "ru",
+    code: "ru-RU",
   },
   {
     common: common_zh_cn,

@@ -14,7 +14,7 @@ export const config = {
   ns: ["common"],
   defaultNS: "common",
   detection: options,
-  supportedLngs: ["en-NZ", "es", "de", "ru", "zh", "zh-CN", "zh-TW"],
+  supportedLngs: ["en-NZ", "es-ES", "de-DE", "ru-RU", "zh-CN", "zh-TW"],
   interpolation: { escapeValue: false },
   resources,
 };
