@@ -9,7 +9,7 @@ import {
 import { BookingData } from "./BookingData";
 import { DateLocationsPair } from "./BookingDataTypes";
 import { differenceInDays, parse } from "date-fns";
-import { enqueueAnalyticsEvent } from '../utils/analytics';
+import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 
@@ -19,26 +19,30 @@ interface BookingCalendarProps {
   radiusKm: number;
 }
 
-export const LoadingBookingCalendar: FunctionComponent = () => (
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      marginTop: "1rem",
-    }}
-  >
-    <Spinner color="black" />
+export const LoadingBookingCalendar: FunctionComponent = () => {
+  const { t } = useTranslation("common");
+
+  return (
     <div
       style={{
-        marginLeft: "1rem",
-        fontSize: "1.5rem",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "1rem",
       }}
     >
-      Loading...
+      <Spinner color="black" />
+      <div
+        style={{
+          marginLeft: "1rem",
+          fontSize: "1.5rem",
+        }}
+      >
+        {t("core.loading")}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   data,
@@ -53,16 +57,13 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
         <CalendarSectionContainer key={month}>
           <div className="MonthSection">
             <h2>
-              {
-                parse(
-                  month,
-                  "MMMM yyyy",
-                  new Date()
-                ).toLocaleDateString([i18next.language], {
+              {parse(month, "MMMM yyyy", new Date()).toLocaleDateString(
+                [i18next.language],
+                {
                   month: "long",
-                  year: "numeric"
-                })
-              }
+                  year: "numeric",
+                }
+              )}
             </h2>
           </div>
           <MonthContainer>
@@ -80,13 +81,16 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                 }
                 key={dateLocationsPair.dateStr}
                 onClick={() => {
-                  enqueueAnalyticsEvent('Calendar day picked', {
+                  enqueueAnalyticsEvent("Calendar day picked", {
                     datePicked: dateLocationsPair.dateStr,
-                    bookingDateInDays: differenceInDays(parse(
-                      dateLocationsPair.dateStr,
-                      "yyyy-MM-dd",
+                    bookingDateInDays: differenceInDays(
+                      parse(
+                        dateLocationsPair.dateStr,
+                        "yyyy-MM-dd",
+                        new Date()
+                      ),
                       new Date()
-                    ), new Date()),
+                    ),
                     radiusKm,
                     spotsAvailable: sum(
                       dateLocationsPair.locationSlotsPairs.map(
@@ -95,27 +99,27 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                       )
                     ),
                   });
-                  setActiveDate(dateLocationsPair)
+                  setActiveDate(dateLocationsPair);
                 }}
               >
                 <div>
                   <h3>
                     {parse(
-                        dateLocationsPair.dateStr,
-                        "yyyy-MM-dd",
-                        new Date()
-                      ).toLocaleDateString([i18next.language], {
-                        day: "numeric",
-                        month: "short",
+                      dateLocationsPair.dateStr,
+                      "yyyy-MM-dd",
+                      new Date()
+                    ).toLocaleDateString([i18next.language], {
+                      day: "numeric",
+                      month: "short",
                     })}
                     <br />{" "}
                     <aside aria-hidden="true">
                       {parse(
-                          dateLocationsPair.dateStr,
-                          "yyyy-MM-dd",
-                          new Date()
-                        ).toLocaleDateString([i18next.language], {
-                          weekday: "short",
+                        dateLocationsPair.dateStr,
+                        "yyyy-MM-dd",
+                        new Date()
+                      ).toLocaleDateString([i18next.language], {
+                        weekday: "short",
                       })}
                     </aside>
                   </h3>

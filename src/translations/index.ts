@@ -17,7 +17,6 @@ export const config = {
   supportedLngs: ["en-NZ", "es", "de", "ru", "zh", "zh-CN", "zh-TW"],
   interpolation: { escapeValue: false },
   resources,
-  debug: true,
 };
 
 export { languages };
