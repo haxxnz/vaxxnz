@@ -11,3 +11,9 @@ export function getSuburbIsh(
   const short_name = suburbish?.short_name;
   return short_name;
 }
+
+export const DEFAULT_LOCATION = {
+  lat: -36.853610199274385,
+  lng: 174.76054541484535,
+  placeName: "Auckland CBD"
+}

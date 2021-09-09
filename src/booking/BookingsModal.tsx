@@ -104,11 +104,11 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                 })
                 : ""}
             </h1>
-            <p>
+            <div>
               {" "}
               <br />
               <h3>{t("calendar.modal.howToBook.title")}</h3>
-            </p>
+            </div>
             <ol className="HelpList">
               <li>{t("calendar.modal.howToBook.stepOne")}</li>
               <li>

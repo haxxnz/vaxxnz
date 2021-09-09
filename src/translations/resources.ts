@@ -1,35 +1,35 @@
-import common_en from "./en/common.json";
-import common_de from "./de/common.json";
-import common_ru from "./ru/common.json";
-import common_es from "./es/common_es.json";
-import enFlag from "./flags/gbFlag.png";
-// import miFlag from "./flags/miFlag.png";
-// import esFlag from "./flags/miFlag.png";
+import common_en from "./locales/common_en.json";
+import common_de from "./locales/common_de.json";
+import common_ru from "./locales/common_ru.json";
+import common_es from "./locales/common_es.json";
 
-const languages = [
+export type Language = {
+  common: typeof common_en,
+  label: string;
+  code: string;
+  flag?: string;
+}
+
+const languages: Language[] = [
   {
     common: common_en,
     label: "English",
     code: "en",
-    flag: enFlag,
   },
   {
     common: common_es,
     label: "Español",
     code: "es",
-    // flag: esFlag
   },
   {
     common: common_de,
     label: "Deutsch",
     code: "de",
-    // flag: deFlag,
   },
   {
     common: common_ru,
     label: "Русский",
     code: "ru",
-    //  flag: enFlag
   },
 ];
 

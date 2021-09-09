@@ -1,9 +1,11 @@
 import { Button, KIND } from "baseui/button";
 import { formatDistance } from "date-fns";
 import { FunctionComponent, useEffect, useState } from "react";
-import { enqueueAnalyticsEvent } from '../utils/analytics';
 import { Trans, useTranslation } from "react-i18next";
 import RadiusSelect from "../RadiusSelect";
+import { enqueueAnalyticsEvent } from "../utils/analytics";
+import { getDateFnsLocale } from "../utils/locale";
+import { DEFAULT_LOCATION } from "../utils/location";
 import { useSearchParams } from "../utils/url";
 import { HeaderMain } from "../VaxComponents";
 import LocationModal from "./LocationModal";
@@ -21,22 +23,6 @@ interface LocationPickerProps {
   lastUpdateTime: Date | null;
 }
 
-export const useDefaultCoords = (): Coords => {
-  const { lat: urlLat, lng: urlLng } = useSearchParams();
-  const defaultLat = urlLat ? parseFloat(urlLat) : -36.853610199274385;
-  const defaultLng = urlLng ? parseFloat(urlLng) : 174.76054541484535;
-
-  return {
-    lat: defaultLat,
-    lng: defaultLng,
-  };
-};
-
-const useDefaultPlaceName = () => {
-  const { placeName: urlPlaceName } = useSearchParams();
-  return urlPlaceName ?? "Auckland CBD";
-};
-
 export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
   coords,
   setCoords,
@@ -44,10 +30,9 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
   setRadiusKm,
   lastUpdateTime,
 }) => {
-  const defaultCoords = useDefaultCoords();
-  const defaultPlaceName = useDefaultPlaceName();
-  const [placeName, setPlaceName] = useState(defaultPlaceName);
-  useEffect(() => setPlaceName(defaultPlaceName), [defaultPlaceName]);
+  const { placeName: urlPlaceName } = useSearchParams();
+  const [placeName, setPlaceName] = useState(urlPlaceName);
+  useEffect(() => setPlaceName(urlPlaceName), [urlPlaceName]);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -70,18 +55,21 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
               t={t}
               components={[
                 <strong>
-                  {{ location: placeName || "Unknown Location" }}
+                  {{ location: placeName || DEFAULT_LOCATION.placeName }}
                 </strong>,
               ]}
             />
           </h1>
           <p>
-            Last updated{" "}
-            {lastUpdateTime === null
-              ? "..."
-              : formatDistance(lastUpdateTime, new Date(), {
-                  addSuffix: true,
-                })}
+            {t("core.lastUpdated", {
+              updatedAt:
+                lastUpdateTime === null
+                  ? "..."
+                  : formatDistance(lastUpdateTime, new Date(), {
+                      addSuffix: true,
+                      locale: getDateFnsLocale(),
+                    }),
+            })}
           </p>
         </section>
 
@@ -89,9 +77,9 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
           <Button
             kind={KIND.primary}
             onClick={() => {
-              enqueueAnalyticsEvent('Location modal opened')
-              setIsOpen(true)}
-            }
+              enqueueAnalyticsEvent("Location modal opened");
+              setIsOpen(true);
+            }}
             overrides={{
               BaseButton: {
                 style: {
@@ -100,8 +88,8 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
               },
             }}
           >
-            {coords.lat === defaultCoords.lat &&
-            coords.lng === defaultCoords.lng
+            {coords.lat === DEFAULT_LOCATION.lat &&
+            coords.lng === DEFAULT_LOCATION.lng
               ? t("navigation.setLocation")
               : t("navigation.setLocationConfirmation")}
           </Button>
