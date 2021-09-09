@@ -37,7 +37,7 @@
   },
   "walkins": {
     "sectionHeader": "Walk-in- und Drive-Through-Impfungen <0>- Heute geöffnet</0>",
-    "openString": "Offen: {{openTimeString}}",
+    "openString": "Geöffnet: {{openTimeString}}",
     "cancellationNotice": {
       "info": "Bitte nicht doppelt buchen",
       "message": "Denken Sie daran, Ihre ursprüngliche Buchung zu stornieren, wenn Sie bereits eine bei <0>bookmyvaccine.nz</0> haben."
