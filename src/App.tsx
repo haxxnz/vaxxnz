@@ -4,9 +4,10 @@ import "./App.css";
 import { BookingSection } from "./booking/BookingSection";
 import {
   LocationPicker,
-  useDefaultCoords,
 } from "./location-picker/LocationPicker";
 import { enqueueAnalyticsEvent } from './utils/analytics';
+import { useSearchParams } from "./utils/url";
+import { DEFAULT_LOCATION } from "./utils/location";
 
 import LanguageSelect from "./LanguageSelect";
 
@@ -14,9 +15,14 @@ import { ShareButtons } from "./ShareButtons";
 import { WalkInSection } from "./walk-in/WalkInSection";
 
 function App() {
-  const { lat, lng } = useDefaultCoords();
-  const [coords, setCoords] = useState({ lat, lng });
-  useEffect(() => setCoords({ lat, lng }), [lat, lng]);
+  const {lat, lng} = useSearchParams();
+  const [coords, setCoords] = useState({ lat: DEFAULT_LOCATION.lat, lng: DEFAULT_LOCATION.lng });
+  useEffect(() => {
+      setCoords({ 
+        lat: lat ? parseFloat(lat) : DEFAULT_LOCATION.lat, 
+        lng: lng ? parseFloat(lng) : DEFAULT_LOCATION.lng 
+      })
+  }, [lat, lng]);
 
   const [radiusKm, setRadiusKm] = useState(10);
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
