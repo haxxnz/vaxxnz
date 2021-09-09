@@ -9,7 +9,8 @@
     "makeABooking": "Make a Booking",
     "kmAway": "{{distance}}km away",
     "lastUpdated": "Last updated {{updatedAt}}",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "website": "Website"
   },
   "navigation": {
     "about": "About",
@@ -68,8 +69,16 @@
       "availableSlots": "Available slots",
       "noBookingsAvailable": "No bookings are available on this day :(",
       "backToCalendar": "Back to Calendar"
+    },
+    "otherLocations": {
+      "sectionHeader": "Other Vaccination Locationz <0>- Open Today</0>",
+      "disclaimer": {
+        "title": "This location has been submitted by the public",
+        "message": "The information here may not be 100% accurate. Please refer to the locations website."
+      }
     }
   },
+
   "footer": {
     "message": "If this site helped you, please consider sharing",
     "links": {
