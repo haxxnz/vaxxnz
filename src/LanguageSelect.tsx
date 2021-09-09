@@ -6,8 +6,9 @@ import { enqueueAnalyticsEvent } from "./utils/analytics";
 
 
 const LanguageSelect = () => {
+  const langCode = localStorage.getItem("i18nextLng") || "en";
   const [language, setLanguage] = useState<Language | undefined>(
-    languages.find((lang) => lang.code === "en")
+    languages.find((lang) => lang.code === langCode),
   );
   const { i18n } = useTranslation();
 
@@ -15,8 +16,12 @@ const LanguageSelect = () => {
     let newLang = languages.find((lang) => lang.code === selectedLanguage.code);
     setLanguage(newLang);
     i18n.changeLanguage(newLang?.code);
-    enqueueAnalyticsEvent('Language changed', { code: newLang?.code })
-  }
+
+    // Persist to local storage.
+    localStorage.setItem("i18nextLng", selectedLanguage.code);
+
+    enqueueAnalyticsEvent("Language changed", { code: newLang?.code });
+  };
 
   return (
     <Select
