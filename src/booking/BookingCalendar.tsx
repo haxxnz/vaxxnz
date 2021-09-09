@@ -114,8 +114,8 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                     </aside>
                   </h3>
                   <p>
-                    {t("calendar.numberOfDoses", {
-                      numberOfDoses: sum(
+                    {t("calendar.numberOfAppointments", {
+                      sumAvailableTimes: sum(
                         dateLocationsPair.locationSlotsPairs.map(
                           (locationSlotsPair) =>
                             (locationSlotsPair.slots || []).length

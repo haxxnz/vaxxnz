@@ -56,7 +56,7 @@
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
-    "numberOfDoses": "{{numberOfDoses}} available",
+    "numberOfAppointments": "{{sumAvailableTimes}} available",
     "modal": {
       "howToBook": {
         "title": "How to Book",

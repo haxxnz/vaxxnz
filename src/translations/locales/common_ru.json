@@ -47,7 +47,7 @@
     },
     "calendar": {
       "month": "{{monthString, MMMM yyyy}}",
-      "numberOfDoses": "{{numberOfDoses}} доступно",
+      "numberOfAppointments": "{{sumAvailableTimes}} доступно",
       "modal": {
         "howToBook": {
           "title": "Как забронировать",

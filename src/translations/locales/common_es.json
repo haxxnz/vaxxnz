@@ -47,8 +47,8 @@
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
-    "numberOfDoses": "{{numberOfDoses}} disponible",
-    "numberOfDoses_plural": "{{numberOfDoses}} disponibles", 
+    "numberOfAppointments": "{{sumAvailableTimes}} disponible",
+    "numberOfAppointments_plural": "{{sumAvailableTimes}} disponibles", 
     "modal": {
       "howToBook": {
         "title": "Cómo reservar",
