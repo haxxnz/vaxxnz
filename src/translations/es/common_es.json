@@ -1,0 +1,74 @@
+{
+  "core": {
+    "title": "Vaxx.nz",
+    "tagline": "Encuentra una vacunación de COVID",
+    "subtitle": "Encuentra lugares de vacunación cerca a ti.",
+    "disclaimerNotAGovWebsite": "Esto no es un sitio web oficial del gobierno. Para vacunarse visite <0>bookmyvaccine.nz</0>",
+    "loading": "Cargando...",
+    "getDirections": "Obtener las direcciones",
+    "makeABooking": "Hacer una reserva",
+    "kmAway": "{{distance}}km de distancia"
+  },
+  "navigation": {
+    "about": "Sobre nosotros",
+    "contact": "Contacto",
+    "getInvolved": "Como participar",
+    "setLocation": "Establece tu ubicación",
+    "setLocationConfirmation": "Ubicación seleccionada",
+    "vaccinationsNear": "Vacunas disponibles <0>cerca a {{location}}</0>",
+    "distanceDropdown": {
+      "2km": "Dentro de 2km",
+      "5km": "Dentro de 5km",
+      "10km": "Dentro de 10km",
+      "25km": "Dentro de 25km",
+      "50km": "Dentro de 50km",
+      "100km": "Dentro de 100km"
+    }
+  },
+  "walkins": {
+    "sectionHeader": "Sin cita & Vacunas en el coche <0>- Open Today</0>",
+    "openString": "Abierto {{openTimeString}}",
+    "cancellationNotice": {
+      "info": "Por favor no reserve dos veces",
+      "message": " Recuerda cancelar tu reserva original si tienes una en <0>bookmyvaccine.nz</0>"
+    },
+    "cancelBooking": "Cancelar",
+    "noticeList": {
+      "title": "La disponibilidad no está garantizada",
+      "text": "Tenga en cuenta que es posible que las ubicaciones de acceso sin cita indicadas no tengan necesariamente capacidad disponible"
+    },
+    "walkinAwailable": "<0 /> Sin cita disponible",
+    "driveThroughAvailable": "<0 /> Servicio al carro disponible",
+    "phone": "Teléfono",
+    "hours": "Horas",
+    "publicHolidays": "Vacaciones públicas",
+    "otherExeptions": "Excepciones",
+    "seeMore": "Ver más"
+  },
+  "calendar": {
+    "month": "{{monthString, MMMM yyyy}}",
+    "numberOfDoses": "{{numberOfDoses}} disponible",
+    "numberOfDoses_plural": "{{numberOfDoses}} disponibles", 
+    "modal": {
+      "howToBook": {
+        "title": "Cómo reservar",
+        "stepOne": "Encuentre una ubicación y hora en la lista a continuación.",
+        "stepTwo": "Clickea en el <i>Make a Booking</i> botón, esto te llevará a <0>bookmyvaccine.nz</0>",
+        "stepThree": "Completa tus datos.",
+        "stepFour": "Cuando se le solicite, busque la ubicación y la hora deseada."
+      },
+      "availableSlots": "Espacios disponibles",
+      "noBookingsAvailable": "No hay reservas disponibles en este día :(",
+      "backToCalendar": "Volver al calendario"
+    }
+  },
+  "footer": {
+    "message": "Si este sitio le ayudó, considere compartir",
+    "links": {
+      "contactUs": "Contacta con nosotras",
+      "rawData": "Datos brutos",
+      "sourceCode": "Código fuente",
+      "roadmap": "mapa vial"
+    }
+  }
+}
