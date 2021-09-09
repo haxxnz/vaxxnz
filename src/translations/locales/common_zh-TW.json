@@ -9,7 +9,8 @@
     "makeABooking": "預約",
     "kmAway": "{{distance}} 公里",
     "lastUpdated": "最近更新於 {{updatedAt}}",
-    "cancel": "取消"
+    "cancel": "取消",
+    "website": "Website"
   },
   "navigation": {
     "about": "關於",
@@ -52,7 +53,14 @@
     "hours": "開放時間",
     "publicHolidays": "公共節假日",
     "otherExeptions": "Exceptions",
-    "seeMore": "瞭解更多"
+    "seeMore": "瞭解更多",
+    "otherLocations": {
+      "sectionHeader": "Other Vaccination Locations <0>- Open Today</0>",
+      "disclaimer": {
+        "title": "This location has been submitted by the public",
+        "message": "The information here may not be 100% accurate. Please refer to the locations website."
+      }
+    }
   },
   "calendar": {
     "month": "{{monthString, yyyy mmm}}",
