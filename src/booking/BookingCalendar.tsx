@@ -106,7 +106,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                       month: "short",
                     })}
                     <br />{" "}
-                    <aside>
+                    <aside aria-hidden="true">
                       {parse(
                         dateLocationsPair.dateStr,
                         "yyyy-MM-dd",
