@@ -11,7 +11,6 @@ export type Language = {
   label: string;
   code: string;
   flag?: string;
-  id: string;
 }
 
 const languages = [
@@ -20,28 +19,24 @@ const languages = [
     label: "English",
     code: "en",
     flag: enFlag,
-    id: 'en',
   },
   {
     common: common_es,
     label: "Español",
     code: "es",
     // flag: esFlag
-    id: 'es'
   },
   {
     common: common_de,
     label: "Deutsch",
     code: "de",
     // flag: deFlag,
-    id: "de",
   },
   {
     common: common_ru,
     label: "Русский",
     code: "ru",
     //  flag: enFlag
-    id: "ru"
   }
 ];
 

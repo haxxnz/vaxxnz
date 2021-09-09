@@ -30,6 +30,7 @@ const LanguageSelect = () => {
       searchable={false}
       clearable={false}
       options={languages}
+      valueKey="code"
       value={language ? [language] : undefined}
       placeholder="Language"
       onChange={(params) => {
