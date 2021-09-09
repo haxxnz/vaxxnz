@@ -16,10 +16,6 @@ const LanguageSelect = () => {
     let newLang = languages.find((lang) => lang.code === selectedLanguage.code);
     setLanguage(newLang);
     i18n.changeLanguage(newLang?.code);
-
-    // Persist to local storage.
-    localStorage.setItem("i18nextLng", selectedLanguage.code);
-
     enqueueAnalyticsEvent("Language changed", { code: newLang?.code });
   };
 
