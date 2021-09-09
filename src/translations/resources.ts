@@ -4,11 +4,11 @@ import common_ru from "./locales/common_ru.json";
 import common_es from "./locales/common_es.json";
 
 export type Language = {
-  common: typeof common_en,
+  common: typeof common_en;
   label: string;
   code: string;
   flag?: string;
-}
+};
 
 const languages: Language[] = [
   {
