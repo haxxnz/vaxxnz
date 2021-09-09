@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { Trans, useTranslation } from "react-i18next";
+import { useMediaQuery } from "react-responsive";
 
 export interface Props {
   coords: Coords;
@@ -16,6 +17,7 @@ export interface Props {
 }
 
 export function WalkInSection({ coords, radiusKm }: Props) {
+  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
   const locations = useWalkInLocations(coords, radiusKm);
   const { t } = useTranslation("common");
 
@@ -38,7 +40,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
   };
 
   const loadMore = () => {
-    setCurrentView((latest) => latest + 3);
+    setCurrentView((latest) => latest + (!isMobileView ? 3 : 1));
   };
 
   return "error" in locations ||
