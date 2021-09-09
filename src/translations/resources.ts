@@ -13,7 +13,7 @@ export type Language = {
   flag?: string;
 }
 
-const languages = [
+const languages: Language[] = [
   {
     common: common_en,
     label: "English",
