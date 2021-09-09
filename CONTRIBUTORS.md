@@ -16,6 +16,8 @@ Here are some ways to help:
 
 - [Review our roadmap ](https://github.com/CovidEngine/vaxxnz/projects/2) and join the discussion
 
+- Help us translate the page if you speak another language!
+
 - Propose a new idea or feature by [Creating an issue](https://github.com/CovidEngine/vaxxnz/issues)
 
 ## For Designers:

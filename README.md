@@ -1,10 +1,10 @@
-![Banner](https://i.imgur.com/rUx3XPw.png)
+![Banner](https://i.imgur.com/uQrEML4.png)
 
 ## Welcome to [Vaxx.nz](https://vaxx.nz)
 
 > The intuitive NZ COVID Vaccination Finder for New Zealand
 
-Perhaps you visited [bookmyvaccine.nz](https://bookmyvaccine.covid19.health.nz/), only to find that all of the places closest to you are booked out weeks or months in advance?
+Perhaps you visited [bookmyvaccine.nz](https://bookmyvaccine.nz), only to find that all of the places closest to you are booked out weeks or months in advance?
 
 In response to this, we've built [vaxx.nz](https://vaxx.nz) to make the experience of finding an earlier vaccine appointment close to you easier.
 
@@ -14,7 +14,7 @@ In response to this, we've built [vaxx.nz](https://vaxx.nz) to make the experien
 
 ## How does it work?
 
-Choose your location, set the distance you wish to travel and it will show ALL of the earliest available vaccination slots using those search parameters. After you find the vaccine clinic with your desirable slot, you can proceed to [bookmyvaccine.nz](https://bookmyvaccine.covid19.health.nz/) and book your appointment. We fetch data every 30 minutes from the official APIs, so slot information should be near real-time.
+Choose your location, set the distance you wish to travel and it will show ALL of the earliest available vaccination slots using those search parameters. After you find the vaccine clinic with your desirable slot, you can proceed to [bookmyvaccine.nz](https://bookmyvaccine.nz) and book your appointment. We fetch data every 30 minutes from the official APIs, so slot information should be near real-time.
 
 Over the course of one week, our team of 6 developers and 2 designers built a website to aide residents of New Zealand in booking their COVID-19 vaccine the intuitive way! Rather than selecting your location, and booking the next available slot, Vaxxed (aka. The Vaccination Calendar) let's you choose when you want to receive your vaccine at a provider near you. Eliminating the filtering hassle and subsequent frustration.
 

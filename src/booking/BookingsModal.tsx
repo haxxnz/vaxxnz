@@ -9,21 +9,51 @@ import { sortByAsc } from "../utils/array";
 import { NoticeList } from "../NoticeList";
 import { Coords } from "../location-picker/LocationPicker";
 import { FunctionComponent } from "react";
+import { useTranslation, Trans } from "react-i18next";
 
+import { enqueueAnalyticsEvent } from '../utils/analytics';
+import { differenceInDays } from 'date-fns/esm';
+
+import { useMediaQuery } from "react-responsive";
 type BookingsModalProps = {
   activeDate: DateLocationsPair | null;
   setActiveDate: (activeDate: DateLocationsPair | null) => void;
   coords: Coords;
+  radiusKm: number;
 };
 
 const BookingsModal: FunctionComponent<BookingsModalProps> = ({
   activeDate,
+  radiusKm,
   setActiveDate,
   coords,
 }) => {
+  const { t } = useTranslation("common");
+
   const close = () => {
     setActiveDate(null);
   };
+
+  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
+
+  const desktopDialogStyle = {
+    width: "80vw",
+  };
+  const mobileDialogStyle = {
+    width: "100vw",
+    margin: "0rem",
+    borderRadius: "0",
+  };
+  const sharedDialogStyle = {
+    maxWidth: "1200px",
+    display: "flex",
+    flexDirection: "column",
+    alignSelf: "center",
+    padding: "1.5rem",
+  };
+  const dialogStyle = isMobileView
+    ? { ...mobileDialogStyle, ...sharedDialogStyle }
+    : { ...desktopDialogStyle, ...sharedDialogStyle };
 
   function sortByDistance(
     locationSlotsPairs: LocationSlotsPair[] | undefined,
@@ -43,16 +73,8 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
       isOpen={!!activeDate}
       unstable_ModalBackdropScroll={true}
       overrides={{
-        // Root: { style: { zIndex: 1500 } },
         Dialog: {
-          style: {
-            width: "80vw",
-            maxWidth: "1200px",
-            display: "flex",
-            flexDirection: "column",
-            alignSelf: "center",
-            padding: "1.5rem",
-          },
+          style: dialogStyle as any,
         },
       }}
     >
@@ -62,43 +84,57 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
             <h1>
               {activeDate
                 ? parse(
-                    activeDate.dateStr,
-                    "yyyy-MM-dd",
-                    new Date()
-                  ).toLocaleDateString([], {
-                    weekday: "long",
-                  })
+                  activeDate.dateStr,
+                  "yyyy-MM-dd",
+                  new Date()
+                ).toLocaleDateString([], {
+                  weekday: "long",
+                })
                 : ""}
               <br />
               {activeDate
                 ? parse(
-                    activeDate.dateStr,
-                    "yyyy-MM-dd",
-                    new Date()
-                  ).toLocaleDateString([], {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })
+                  activeDate.dateStr,
+                  "yyyy-MM-dd",
+                  new Date()
+                ).toLocaleDateString([], {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })
                 : ""}
             </h1>
-            <p>
+            <div>
               {" "}
               <br />
-              <h3>How to Book</h3>
-            </p>
+              <h3>{t("calendar.modal.howToBook.title")}</h3>
+            </div>
             <ol className="HelpList">
-              <li>Find a location and time from the list below.</li>
+              <li>{t("calendar.modal.howToBook.stepOne")}</li>
               <li>
-                Click on the <i>Make a Booking</i> button, this will take you to{" "}
-                <a href="https://bookmyvaccine.covid19.health.nz//">bookmyvaccine.nz</a>
+                <Trans
+                  i18nKey="calendar.modal.howToBook.stepTwo"
+                  t={t}
+                  components={[
+                    <a
+                      href="https://bookmyvaccine.nz"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      https://bookmyvaccine.nz
+                    </a>,
+                  ]}
+                />
               </li>
-              <li>Enter your details.</li>
-              <li>When asked, search for your desired location and time.</li>
+              <li>{t("calendar.modal.howToBook.stepThree")}</li>
+              <li>{t("calendar.modal.howToBook.stepFour")}</li>
             </ol>
 
             <Button
-              onClick={() => setActiveDate(null)}
+              onClick={() => {
+                enqueueAnalyticsEvent('Back to Calendar clicked');
+                setActiveDate(null);
+              }}
               overrides={{
                 Root: {
                   style: {
@@ -112,7 +148,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
               }}
               kind={KIND.secondary}
             >
-              Back to calendar
+              {t("calendar.modal.backToCalendar")}
             </Button>
 
             <NoticeList />
@@ -120,7 +156,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
         </div>
 
         <div style={{ height: "100%" }}>
-          <h2>Available slots</h2>
+          <h2>{t("calendar.modal.availableSlots")}</h2>
           <hr />
 
           {activeDate?.locationSlotsPairs.filter(
@@ -133,22 +169,36 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                   <h3>{locationSlotsPair.location.name}</h3>
                   <p>
                     {locationSlotsPair.location.displayAddress} (
-                    {Math.floor(
-                      getDistanceKm(coords, locationSlotsPair.location.location)
-                    )}
-                    km away)
+                    {t("core.kmAway", {
+                      distance: Math.floor(
+                        getDistanceKm(
+                          coords,
+                          locationSlotsPair.location.location
+                        )
+                      ),
+                    })}
+                    )
                   </p>
                   <p>
                     <a
                       href={`https://www.google.com/maps/dir/?api=1&destination=${locationSlotsPair.location.location.lat},${locationSlotsPair.location.location.lng}`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => enqueueAnalyticsEvent('Get Directions clicked', {
+                        radiusKm,
+                        spotsAvailable: locationSlotsPair.slots?.length || 0,
+                        bookingDateInDays: differenceInDays(parse(
+                          activeDate.dateStr,
+                          "yyyy-MM-dd",
+                          new Date()
+                        ), new Date()),
+                      })}
                     >
-                      Get Directions
+                      {t("core.getDirections")}
                     </a>
                   </p>
                   <a
-                    href="https://bookmyvaccine.covid19.health.nz/"
+                    href="https://bookmyvaccine.covid19.health.nz"
                     target="_blank"
                     referrerPolicy="origin"
                     rel="noreferrer"
@@ -166,8 +216,19 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                             },
                           },
                         }}
+                        onClick={() =>
+                          enqueueAnalyticsEvent('Make a Booking clicked', {
+                            locationName: locationSlotsPair.location.name,
+                            radiusKm,
+                            spotsAvailable: locationSlotsPair.slots?.length || 0,
+                            bookingDateInDays: differenceInDays(parse(
+                              activeDate.dateStr,
+                              "yyyy-MM-dd",
+                              new Date()
+                            ), new Date()),
+                          })}
                       >
-                        Make a Booking
+                        {t("core.makeABooking")}
                       </Button>
                     </div>
                   </a>
@@ -179,7 +240,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                       marginLeft: 0,
                     }}
                   >
-                    Available slots:
+                    {t("calendar.modal.availableSlots")}
                   </p>
                   <section>
                     {/* <p>1am</p> */}
@@ -201,12 +262,8 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
               ))
           ) : (
             <>
-              <h1>
-                No bookings available on this day :(
-                <br />
-                Try changing your search!
-              </h1>
-              <Button
+              <h1>{t("calendar.modal.noBookingsAvailable")}</h1>
+              {/* <Button
                 onClick={() => setActiveDate(null)}
                 overrides={{
                   Root: {
@@ -222,12 +279,34 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
                 }}
                 kind={KIND.secondary}
               >
-                Back to calendar
-              </Button>
+                {t("calendar.modal.backToCalendar")}
+              </Button> */}
             </>
           )}
         </div>
       </ModalGrid>
+      <div className="MobileOnly">
+        <Button
+          onClick={() => {
+            setActiveDate(null)
+            enqueueAnalyticsEvent('Back to Calendar clicked');
+          }}
+          overrides={{
+            Root: {
+              style: {
+                width: "100%",
+                marginTop: "1rem",
+                marginRight: 0,
+                marginBottom: "1rem",
+                marginLeft: 0,
+              },
+            },
+          }}
+          kind={KIND.secondary}
+        >
+          {t("calendar.modal.backToCalendar")}
+        </Button>
+      </div>
     </Modal>
   );
 };

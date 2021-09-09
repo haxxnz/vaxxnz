@@ -1,13 +1,19 @@
 import { BaseProvider, LightTheme } from "baseui";
+import i18n from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
 import React from "react";
 import ReactDOM from "react-dom";
+import { initReactI18next } from "react-i18next";
 import { Client as Styletron } from "styletron-engine-atomic";
 import { Provider as StyletronProvider } from "styletron-react";
 import App from "./App";
+import { DateLocationsPair } from "./booking/BookingDataTypes";
 import { DateLocationsPairsContext } from "./contexts";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { DateLocationsPair } from "./booking/BookingDataTypes";
+import { config as i18nextConfig } from "./translations";
+
+i18n.use(LanguageDetector).use(initReactI18next).init(i18nextConfig);
 
 const engine = new Styletron();
 

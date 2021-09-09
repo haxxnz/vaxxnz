@@ -1,0 +1,82 @@
+{
+  "core": {
+    "title": "Vaxx.nz",
+    "tagline": "COVID-19 Impfungen",
+    "subtitle": "Impfungsmöglichkeiten, in Deiner Nähe.",
+    "disclaimerNotAGovWebsite": "Dies ist keine offizielle Website der Regierung. Um sich impfen zu lassen, besuchen Sie <0>bookmyvaccine.nz</0>",
+    "loading": "Laden...",
+    "getDirections": "Wegbeschreibung",
+    "makeABooking": "Buchung vornehmen",
+    "kmAway": "{{distance}}km entfernt",
+    "lastUpdated": "Actualisiert {{updatedAt}}",
+    "cancel": "Abbrechen"
+  },
+  "navigation": {
+    "about": "Über uns",
+    "contact": "Kontaktieren",
+    "getInvolved": "Mitmachen",
+    "setLocation": "Standort aktualisieren",
+    "setLocationConfirmation": "Standort aktualisiert",
+    "vaccinationsNear": "Verfügbare Buchungszeiten <0>bei {{location}}</0>",
+    "distanceDropdown": {
+      "2km": "Innerhalb von 2km",
+      "5km": "Innerhalb von 5km",
+      "10km": "Innerhalb von 10km",
+      "25km": "Innerhalb von 25km",
+      "50km": "Innerhalb von 50km",
+      "100km": "Innerhalb von 100km"
+    },
+    "locationModal": {
+      "locaitonTitle": "Standort",
+      "locationCTA": "Geben Sie eine Adresse oder einen Vorort ein",
+      "useCurrentLocation": "Meinen aktuellen Standort verwenden",
+      "geolocationNotSupported": "Geolocation wird von Ihrem Browser nicht unterstützt"
+    },
+    "unknownLocation": "Unbekannter Ort"
+  },
+  "walkins": {
+    "sectionHeader": "Walk-in- und Drive-Through-Impfungen <0>- Heute geöffnet</0>",
+    "openString": "Offen: {{openTimeString}}",
+    "cancellationNotice": {
+      "info": "Bitte nicht doppelt buchen",
+      "message": "Denken Sie daran, Ihre ursprüngliche Buchung zu stornieren, wenn Sie bereits eine bei <0>bookmyvaccine.nz</0> haben."
+    },
+    "cancelBooking": "Abbrechen",
+    "noticeList": {
+      "title": "Verfügbarkeit ist nicht garantiert",
+      "text": "Beachten Sie, dass die aufgeführten Walk-in-Standorte möglicherweise nicht unbedingt über Kapazitäten verfügen."
+    },
+    "walkinAwailable": "<0 /> Walk-in verfügbar",
+    "driveThroughAvailable": "<0 /> Drive-Through verfügbar",
+    "phone": "Telefonnummer",
+    "hours": "Öffnungszeiten",
+    "publicHolidays": "Feiertage",
+    "otherExeptions": "Ausnahmen",
+    "seeMore": "Mehr"
+  },
+  "calendar": {
+    "month": "{{monthString, MMMM yyyy}}",
+    "numberOfAppointments": "{{sumAvailableTimes}} Termine",
+    "modal": {
+      "howToBook": {
+        "title": "Wie buche ich?",
+        "stepOne": "Finden Sie einen Ort und eine Uhrzeit aus der Liste.",
+        "stepTwo": "Klicken Sie auf <i>Buchung vornehmen</i>, um Ihre Impfung bei <0>bookmyvaccine.nz</0> zu buchen.",
+        "stepThree": "Geben Sie Ihre Daten ein.",
+        "stepFour": "Suchen Sie nach Ihrem gewünschten Ort und Ihrer gewünschten Zeit."
+      },
+      "availableSlots": "Verfügbare Termine",
+      "noBookingsAvailable": "An diesem Tag sind keine Buchungen möglich :(",
+      "backToCalendar": "Zurück zum Kalender"
+    }
+  },
+  "footer": {
+    "message": "Wenn diese Seite Ihnen geholfen hat, bitte teilen Sie diese Seite.",
+    "links": {
+      "contactUs": "Kontaktieren",
+      "rawData": "Rohdaten",
+      "sourceCode": "Quellcode",
+      "roadmap": "Roadmap"
+    }
+  }
+}

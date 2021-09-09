@@ -2,6 +2,8 @@ import { Button, KIND } from "baseui/button";
 import { BaseInput } from "baseui/input";
 import { Modal } from "baseui/modal";
 import { useCallback, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { getSuburbIsh } from "../utils/location";
 import { Coords } from "./LocationPicker";
 
@@ -21,6 +23,8 @@ const LocationModal = (props: Props) => {
     []
   );
 
+  const { t } = useTranslation("common");
+
   const close = useCallback(() => {
     setLocationIsOpen(false);
   }, [setLocationIsOpen]);
@@ -35,6 +39,7 @@ const LocationModal = (props: Props) => {
       url.searchParams.set("lat", lat.toString());
       url.searchParams.set("lng", lng.toString());
       url.searchParams.set("placeName", placeName);
+      enqueueAnalyticsEvent("Location set");
       window.history.pushState({}, "", url.toString());
     },
     [close, setCoords, setPlaceName]
@@ -78,7 +83,7 @@ const LocationModal = (props: Props) => {
 
   const getLocation = () => {
     if (!navigator.geolocation) {
-      alert("Geolocation is not supported by your browser");
+      alert(t("navigation.locationModal.geolocationNotSupported"));
     } else {
       setLoading(true);
       navigator.geolocation.getCurrentPosition(async (position) => {
@@ -128,7 +133,7 @@ const LocationModal = (props: Props) => {
         },
       }}
     >
-      <h2>Location</h2>
+      <h2>{t("navigation.locationModal.locaitonTitle")}</h2>
       <p
         style={{
           marginTop: "1rem",
@@ -136,7 +141,7 @@ const LocationModal = (props: Props) => {
           marginRight: "1rem",
         }}
       >
-        Type in an address or suburb
+        {t("navigation.locationModal.locationCTA")}
       </p>
       <BaseInput
         id="pac-input"
@@ -154,9 +159,14 @@ const LocationModal = (props: Props) => {
           border: "none",
           backgroundColor: "white'",
         }}
-        onClick={() => getLocation()}
+        onClick={() => {
+          enqueueAnalyticsEvent("Use current location clicked");
+          getLocation();
+        }}
       >
-        {loading ? "Loading..." : "Use my current location"}
+        {loading
+          ? t("core.loading")
+          : t("navigation.locationModal.useCurrentLocation")}
       </button>
       <Button
         overrides={{
@@ -173,7 +183,7 @@ const LocationModal = (props: Props) => {
         kind={KIND.secondary}
         onClick={close}
       >
-        Cancel
+        {t("core.cancel")}
       </Button>
     </Modal>
   );

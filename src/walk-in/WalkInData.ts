@@ -8,7 +8,6 @@ export interface OpennningHours {
   notesHtml: string[];
 }
 
-
 export enum Instruction {
   anyoneEligible = "Anyone currently eligible can access",
   makeAppointment = "Make an appointment",
@@ -101,7 +100,8 @@ function filterWalkInLocation(
         getDistanceKm(coords, { lat: locationLat, lng: locationLng });
 
       const filterBoolean =
-        (bps.includes(Instruction.walkIn) || bps.includes(Instruction.driveThrough)) &&
+        (bps.includes(Instruction.walkIn) ||
+          bps.includes(Instruction.driveThrough)) &&
         !(
           bps.includes(Instruction.enrolledOnly) ||
           bps.includes(Instruction.invitationOnly)

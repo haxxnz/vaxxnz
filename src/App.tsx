@@ -1,42 +1,91 @@
-import "./App.css";
 import { useEffect, useState } from "react";
-import { ShareButtons } from "./ShareButtons";
-
-import { WalkInSection } from "./walk-in/WalkInSection";
-import {
-  LocationPicker,
-  useDefaultCoords,
-} from "./location-picker/LocationPicker";
+import { Trans, useTranslation } from "react-i18next";
+import "./App.css";
 import { BookingSection } from "./booking/BookingSection";
+import LanguageSelect from "./LanguageSelect";
+import { LocationPicker } from "./location-picker/LocationPicker";
+import { ShareButtons } from "./ShareButtons";
+import { enqueueAnalyticsEvent } from "./utils/analytics";
+import { DEFAULT_LOCATION } from "./utils/location";
+import { useSearchParams } from "./utils/url";
+import { WalkInSection } from "./walk-in/WalkInSection";
 import { CrowdSourcedSection } from "./crowdsourced/CrowdsourcedSection";
 
 function App() {
-  const {lat, lng} = useDefaultCoords();
-  const [coords, setCoords] = useState({lat, lng});
-  useEffect(() => setCoords({lat, lng}), [lat, lng]);
+  const { lat, lng } = useSearchParams();
+  const [coords, setCoords] = useState({
+    lat: DEFAULT_LOCATION.lat,
+    lng: DEFAULT_LOCATION.lng,
+  });
+  useEffect(() => {
+    setCoords({
+      lat: lat ? parseFloat(lat) : DEFAULT_LOCATION.lat,
+      lng: lng ? parseFloat(lng) : DEFAULT_LOCATION.lng,
+    });
+  }, [lat, lng]);
 
   const [radiusKm, setRadiusKm] = useState(10);
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
 
+  const { t } = useTranslation("common");
+
   return (
     <>
       <div className="App">
+        <header className="menu-header">
+          <a href="/" className="nolink menu-logo">
+            {t("core.title")}
+          </a>
+          <div className="menu-divider">
+            {" "}
+            <a
+              href="https://github.com/CovidEngine/vaxxnz"
+              target="_blank"
+              rel="noreferrer"
+              className="menu-link"
+            >
+              {t("navigation.about")}
+            </a>
+            <a
+              href="https://airtable.com/shrxuw3vSp2yRPrG7"
+              className="menu-link"
+            >
+              {t("navigation.contact")}
+            </a>
+            <a
+              href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTORS.md"
+              className="menu-link"
+            >
+              {t("navigation.getInvolved")}
+            </a>
+            <LanguageSelect />
+          </div>
+        </header>
         <section className="App-header">
-          <a href="/" className="nolink">
-            <h1>NZ COVID Vaccination Finder</h1>
-          </a>{" "}
-          <h3 style={{ fontWeight: "normal" }}>
-            See every available vaccination booking slot near you.{" "}
-          </h3>{" "}
-          <br />
-          <p>
-            This is not an official Government website.
-            <br /> To get vaccinated visit&nbsp;
-            <a href="https://bookmyvaccine.covid19.health.nz/" target="_blank" rel="noreferrer">
-              bookmyvaccine.nz
-            </a>{" "}
+          <div className="header-content">
+            <h1>{t("core.tagline")}</h1>
+            <h3 style={{ fontWeight: "normal" }}>{t("core.subtitle")}</h3>
             <br />
-          </p>
+            <p>
+              <Trans
+                i18nKey="core.disclaimerNotAGovWebsite"
+                t={t}
+                components={[
+                  <a
+                    href="https://bookmyvaccine.nz"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    https://bookmyvaccine.nz
+                  </a>,
+                ]}
+              />
+              <br />
+            </p>
+          </div>
+          <div className="header-img-container">
+            <img className="header-img" src="./doc.svg" alt=" a doctor"></img>
+          </div>
         </section>
         <div className={"big-old-container"}>
           <LocationPicker
@@ -55,10 +104,8 @@ function App() {
           <CrowdSourcedSection coords={coords} radiusKm={radiusKm} />
         </div>
 
-        <section className="App-header">
-          <p style={{ marginBottom: "0.5rem" }}>
-            If this site helped you please consider sharing:
-          </p>
+        <footer className="footer-header">
+          <p style={{ marginBottom: "0.5rem" }}>{t("footer.message")}</p>
           <div className={"social-container"}>
             <ShareButtons />
           </div>
@@ -69,36 +116,46 @@ function App() {
               target="_blank"
               rel="noreferrer"
             >
-              Contact us
+              {t("footer.links.contactUs")}
             </a>{" "}
             /{" "}
             <a
               href="https://github.com/CovidEngine/vaxxnzlocations"
               target="_blank"
               rel="noreferrer"
+              onClick={() => enqueueAnalyticsEvent("Raw data clicked")}
             >
-              Raw Data
+              {t("footer.links.rawData")}
             </a>{" "}
             /{" "}
             <a
               href="https://github.com/CovidEngine/vaxxnz"
               target="_blank"
               rel="noreferrer"
+              onClick={() => enqueueAnalyticsEvent("Source code clicked")}
             >
-              Source code
+              {t("footer.links.sourceCode")}
             </a>{" "}
             /{" "}
             <a
               href="https://github.com/CovidEngine/vaxxnz/projects/2"
               target="_blank"
               rel="noreferrer"
+              onClick={() => enqueueAnalyticsEvent("Roadmap clicked")}
             >
-              {" "}
-              Roadmap
+              {t("footer.links.roadmap")}
             </a>
           </p>
           <p></p>
-        </section>
+        </footer>
+      </div>
+      <div className="background">
+        <div
+          className="bg-impt"
+          style={{
+            backgroundImage: `url(${process.env.PUBLIC_URL + "./bg.svg"})`,
+          }}
+        ></div>
       </div>
     </>
   );

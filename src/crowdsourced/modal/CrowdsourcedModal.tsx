@@ -165,7 +165,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
               {location.openingHours.map((oh, index) => {
                 return (
                   <p key={index}>
-                    {dayOfWeekToString(oh.day)} {oh.hours}
+                    {dayOfWeekToString(oh.day)} {oh.isOpen ? oh.hours : undefined}
                     <br />
                   </p>
                 );
