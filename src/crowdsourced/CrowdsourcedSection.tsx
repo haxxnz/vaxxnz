@@ -42,7 +42,7 @@ export function CrowdSourcedSection({ coords, radiusKm }: Props) {
         }
       />
       <h2 className="WalkSection">
-        Crowdsourced Vaccination Locations<strong> - Open Today</strong>
+        Other Vaccination Locations<strong> - Open Today</strong>
       </h2>
       {"loading" in locations ? (
         <div
