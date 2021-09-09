@@ -7,7 +7,9 @@
     "loading": "Cargando...",
     "getDirections": "Obtener las direcciones",
     "makeABooking": "Hacer una reserva",
-    "kmAway": "{{distance}}km de distancia"
+    "kmAway": "{{distance}}km de distancia",
+    "lastUpdated": "Last updated {{updatedAt}}",
+    "cancel": "Cancel"
   },
   "navigation": {
     "about": "Sobre nosotros",
@@ -23,7 +25,14 @@
       "25km": "Dentro de 25km",
       "50km": "Dentro de 50km",
       "100km": "Dentro de 100km"
-    }
+    },
+    "locationModal": {
+      "locaitonTitle": "Location",
+      "locationCTA": "Type in an address or suburb",
+      "useCurrentLocation": "Use my current location",
+      "geolocationNotSupported": "Geolocation is not supported by your browser"
+    },
+    "unknownLocation": "Unknown Location"
   },
   "walkins": {
     "sectionHeader": "Sin cita & Vacunas en el coche <0>- Open Today</0>",
@@ -48,7 +57,7 @@
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
     "numberOfAppointments": "{{sumAvailableTimes}} disponible",
-    "numberOfAppointments_plural": "{{sumAvailableTimes}} disponibles", 
+    "numberOfAppointments_plural": "{{sumAvailableTimes}} disponibles",
     "modal": {
       "howToBook": {
         "title": "Cómo reservar",

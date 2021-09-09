@@ -8,7 +8,8 @@
     "getDirections": "Wegbeschreibung",
     "makeABooking": "Buchung vornehmen",
     "kmAway": "{{distance}}km entfernt",
-    "lastUpdated": "Actualisiert {{updatedAt}}"
+    "lastUpdated": "Actualisiert {{updatedAt}}",
+    "cancel": "Cancel"
   },
   "navigation": {
     "about": "Über uns",
@@ -24,7 +25,14 @@
       "25km": "Innerhalb von 25km",
       "50km": "Innerhalb von 50km",
       "100km": "Innerhalb von 100km"
-    }
+    },
+    "locationModal": {
+      "locaitonTitle": "Location",
+      "locationCTA": "Type in an address or suburb",
+      "useCurrentLocation": "Use my current location",
+      "geolocationNotSupported": "Geolocation is not supported by your browser"
+    },
+    "unknownLocation": "Unknown Location"
   },
   "walkins": {
     "sectionHeader": "Walk-in & Drive-thru Vaccinations <0>- Open Today</0>",
