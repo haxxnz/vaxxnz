@@ -6,7 +6,14 @@ import enFlag from "./flags/gbFlag.png";
 // import miFlag from "./flags/miFlag.png";
 // import esFlag from "./flags/miFlag.png";
 
-const languages = [
+export type Language = {
+  common: typeof common_en,
+  label: string;
+  code: string;
+  flag?: string;
+}
+
+const languages: Language[] = [
   {
     common: common_en,
     label: "English",
