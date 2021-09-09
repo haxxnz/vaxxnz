@@ -16,7 +16,7 @@ const languages: Language[] = [
   {
     common: common_en,
     label: "English",
-    code: "en",
+    code: "en-NZ",
   },
   {
     common: common_es,
