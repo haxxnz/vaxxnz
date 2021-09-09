@@ -1,5 +1,4 @@
 import { Select } from "baseui/select";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 
