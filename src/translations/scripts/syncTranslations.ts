@@ -1,4 +1,3 @@
-// @ts-nocheck
 import english from "../locales/common_en.json";
 import fs from "fs";
 import { join } from "path";
@@ -8,7 +7,7 @@ import { get, set } from "lodash";
 const paths = traverseTranslations();
 
 export interface IHash {
-  [locale: string]: string;
+  [locale: string]: number;
 }
 
 let missingKeys: IHash = {};
@@ -31,9 +30,7 @@ fs.readdirSync(join(__dirname, "../locales")).forEach((locale) => {
   paths.forEach((p) => {
     if (get(data, p, null) === null) {
       set(data, p, get(english, p));
-      missingKeys[locale] = missingKeys[locale]
-        ? parseInt(missingKeys[locale]) + 1
-        : 1;
+      missingKeys[locale] = missingKeys[locale] ? missingKeys[locale] + 1 : 1;
     }
   });
 
