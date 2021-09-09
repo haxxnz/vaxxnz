@@ -84,15 +84,21 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
           <div className="ModalHeader">
             <h1>
               {activeDate
-                ?
-                  new Date(activeDate.dateStr).toLocaleDateString([i18next.language], {
+                ? parse(
+                  activeDate.dateStr,
+                  "yyyy-MM-dd",
+                  new Date()
+                ).toLocaleDateString([i18next.language], {
                     weekday: "long"
-                  })
+                })
                 : ""}
               <br />
               {activeDate
-                ?
-                new Date(activeDate.dateStr).toLocaleDateString([i18next.language], {
+                ? parse(
+                  activeDate.dateStr,
+                  "yyyy-MM-dd",
+                  new Date()
+                ).toLocaleDateString([i18next.language], {
                   day: "numeric",
                   month: "short",
                   year: "numeric"

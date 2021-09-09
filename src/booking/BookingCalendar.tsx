@@ -100,16 +100,22 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
               >
                 <div>
                   <h3>
-                    {
-                      new Date(dateLocationsPair.dateStr).toLocaleDateString([i18next.language], {
-                      day: "numeric",
-                      month: "short",
+                    {parse(
+                        dateLocationsPair.dateStr,
+                        "yyyy-MM-dd",
+                        new Date()
+                      ).toLocaleDateString([i18next.language], {
+                        day: "numeric",
+                        month: "short",
                     })}
                     <br />{" "}
                     <aside aria-hidden="true">
-                      {
-                        new Date(dateLocationsPair.dateStr).toLocaleDateString([i18next.language], {
-                        weekday: "short",
+                      {parse(
+                          dateLocationsPair.dateStr,
+                          "yyyy-MM-dd",
+                          new Date()
+                        ).toLocaleDateString([i18next.language], {
+                          weekday: "short",
                       })}
                     </aside>
                   </h3>
