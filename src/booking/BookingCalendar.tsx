@@ -11,6 +11,7 @@ import { DateLocationsPair } from "./BookingDataTypes";
 import { differenceInDays, parse } from "date-fns";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
 interface BookingCalendarProps {
   data: BookingData;
@@ -55,7 +56,15 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
       {Array.from(data.entries()).map(([month, dateLocationsPairsForMonth]) => (
         <CalendarSectionContainer key={month}>
           <div className="MonthSection">
-            <h2>{t("calendar.month", { monthString: month })}</h2>
+            <h2>
+              {parse(month, "MMMM yyyy", new Date()).toLocaleDateString(
+                [i18next.language],
+                {
+                  month: "long",
+                  year: "numeric",
+                }
+              )}
+            </h2>
           </div>
           <MonthContainer>
             {dateLocationsPairsForMonth.map((dateLocationsPair) => (
@@ -99,14 +108,8 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                       dateLocationsPair.dateStr,
                       "yyyy-MM-dd",
                       new Date()
-                    ).toLocaleDateString([], {
+                    ).toLocaleDateString([i18next.language], {
                       day: "numeric",
-                    })}{" "}
-                    {parse(
-                      dateLocationsPair.dateStr,
-                      "yyyy-MM-dd",
-                      new Date()
-                    ).toLocaleDateString([], {
                       month: "short",
                     })}
                     <br />{" "}
@@ -115,7 +118,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                         dateLocationsPair.dateStr,
                         "yyyy-MM-dd",
                         new Date()
-                      ).toLocaleDateString([], {
+                      ).toLocaleDateString([i18next.language], {
                         weekday: "short",
                       })}
                     </aside>
