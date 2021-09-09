@@ -9,7 +9,7 @@
     "makeABooking": "Buchung vornehmen",
     "kmAway": "{{distance}}km entfernt",
     "lastUpdated": "Actualisiert {{updatedAt}}",
-    "cancel": "Cancel"
+    "cancel": "Abbrechen"
   },
   "navigation": {
     "about": "Über uns",
@@ -27,15 +27,15 @@
       "100km": "Innerhalb von 100km"
     },
     "locationModal": {
-      "locaitonTitle": "Location",
-      "locationCTA": "Type in an address or suburb",
-      "useCurrentLocation": "Use my current location",
-      "geolocationNotSupported": "Geolocation is not supported by your browser"
+      "locaitonTitle": "Standort",
+      "locationCTA": "Geben Sie eine Adresse oder einen Vorort ein",
+      "useCurrentLocation": "Meinen aktuellen Standort verwenden",
+      "geolocationNotSupported": "Geolocation wird von Ihrem Browser nicht unterstützt"
     },
-    "unknownLocation": "Unknown Location"
+    "unknownLocation": "Unbekannter Ort"
   },
   "walkins": {
-    "sectionHeader": "Walk-in & Drive-thru Vaccinations <0>- Open Today</0>",
+    "sectionHeader": "Walk-in- und Drive-Through-Impfungen <0>- Heute geöffnet</0>",
     "openString": "Offen: {{openTimeString}}",
     "cancellationNotice": {
       "info": "Bitte nicht doppelt buchen",
@@ -43,15 +43,15 @@
     },
     "cancelBooking": "Abbrechen",
     "noticeList": {
-      "title": "Availability Is Not Guaranteed",
-      "text": "Keep in mind that walk-in locations listed might not necessarily have capacity available."
+      "title": "Verfügbarkeit ist nicht garantiert",
+      "text": "Beachten Sie, dass die aufgeführten Walk-in-Standorte möglicherweise nicht unbedingt über Kapazitäten verfügen."
     },
     "walkinAwailable": "<0 /> Walk-in verfügbar",
     "driveThroughAvailable": "<0 /> Drive-Through verfügbar",
     "phone": "Telefonnummer",
     "hours": "Öffnungszeiten",
-    "publicHolidays": "Public Holidays",
-    "otherExeptions": "Feiertage",
+    "publicHolidays": "Feiertage",
+    "otherExeptions": "Ausnahmen",
     "seeMore": "Mehr"
   },
   "calendar": {
