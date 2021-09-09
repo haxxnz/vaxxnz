@@ -9,7 +9,8 @@
     "makeABooking": "Buchung vornehmen",
     "kmAway": "{{distance}}km entfernt",
     "lastUpdated": "Actualisiert {{updatedAt}}",
-    "cancel": "Abbrechen"
+    "cancel": "Abbrechen",
+    "website": "Webseite"
   },
   "navigation": {
     "about": "Über uns",
@@ -52,7 +53,14 @@
     "hours": "Öffnungszeiten",
     "publicHolidays": "Feiertage",
     "otherExeptions": "Ausnahmen",
-    "seeMore": "Mehr"
+    "seeMore": "Mehr",
+    "otherLocations": {
+      "sectionHeader": "Weitere Impfstellen <0>- Heute geöffnet</0>",
+      "disclaimer": {
+        "title": "Dieser Ort wurde von der Öffentlichkeit eingereicht",
+        "message": "Die Informationen hier sind möglicherweise nicht 100% genau. Bitte informieren Sie sich auf der Website der Impfstelle."
+      }
+    }
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
