@@ -53,7 +53,14 @@
     "hours": "Hours",
     "publicHolidays": "Public Holidays",
     "otherExeptions": "Exceptions",
-    "seeMore": "See More"
+    "seeMore": "See More",
+    "otherLocations": {
+      "sectionHeader": "Other Vaccination Locations <0>- Open Today</0>",
+      "disclaimer": {
+        "title": "This location has been submitted by the public",
+        "message": "The information here may not be 100% accurate. Please refer to the locations website."
+      }
+    }
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
@@ -69,13 +76,6 @@
       "availableSlots": "Available slots",
       "noBookingsAvailable": "No bookings are available on this day :(",
       "backToCalendar": "Back to Calendar"
-    },
-    "otherLocations": {
-      "sectionHeader": "Other Vaccination Locationz <0>- Open Today</0>",
-      "disclaimer": {
-        "title": "This location has been submitted by the public",
-        "message": "The information here may not be 100% accurate. Please refer to the locations website."
-      }
     }
   },
 
