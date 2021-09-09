@@ -30,7 +30,7 @@ const languages = [
     label: "Русский",
     code: "ru",
     //  flag: enFlag
-  }
+  },
 ];
 
 const resources = languages.reduce(
