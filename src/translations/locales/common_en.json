@@ -7,7 +7,9 @@
     "loading": "Loading...",
     "getDirections": "Get Directions",
     "makeABooking": "Make a Booking",
-    "kmAway": "{{distance}}km away"
+    "kmAway": "{{distance}}km away",
+    "lastUpdated": "Last updated {{updatedAt}}",
+    "cancel": "Cancel"
   },
   "navigation": {
     "about": "About",
@@ -15,7 +17,14 @@
     "getInvolved": "Get Involved",
     "setLocation": "Set your Location",
     "setLocationConfirmation": "Location Set",
+    "locationModal": {
+      "locaitonTitle": "Location",
+      "locationCTA": "Type in an address or suburb",
+      "useCurrentLocation": "Use my current location",
+      "geolocationNotSupported": "Geolocation is not supported by your browser"
+    },
     "vaccinationsNear": "Available Vaccinations <0>near {{location}}</0>",
+    "unknownLocation": "Unknown Location",
     "distanceDropdown": {
       "2km": "Within 2km",
       "5km": "Within 5km",
@@ -47,7 +56,7 @@
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
-    "numberOfDoses": "{{numberOfDoses}} available",
+    "numberOfAppointments": "{{sumAvailableTimes}} available",
     "modal": {
       "howToBook": {
         "title": "How to Book",

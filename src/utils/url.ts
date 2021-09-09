@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { DEFAULT_LOCATION } from "./location";
 
 export function useSearchParams() {
   function getSearchParams() {
@@ -11,6 +12,14 @@ export function useSearchParams() {
   const [searchParams, setSearchParams] = useState(getSearchParams());
   useEffect(() => {
     function onHistoryUpdate() {
+      const { lat, lng, placeName } = getSearchParams();
+      if (lat === null || lng === null || placeName === null) {
+        setSearchParams({
+          lat: DEFAULT_LOCATION.lat.toString(),
+          lng: DEFAULT_LOCATION.lng.toString(),
+          placeName: DEFAULT_LOCATION.placeName,
+        });
+      }
       setSearchParams(getSearchParams());
     }
     window.addEventListener("popstate", onHistoryUpdate);

@@ -9,7 +9,7 @@ import {
 import { BookingData } from "./BookingData";
 import { DateLocationsPair } from "./BookingDataTypes";
 import { differenceInDays, parse } from "date-fns";
-import { enqueueAnalyticsEvent } from '../utils/analytics';
+import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { useTranslation } from "react-i18next";
 
 interface BookingCalendarProps {
@@ -18,26 +18,30 @@ interface BookingCalendarProps {
   radiusKm: number;
 }
 
-export const LoadingBookingCalendar: FunctionComponent = () => (
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      marginTop: "1rem",
-    }}
-  >
-    <Spinner color="black" />
+export const LoadingBookingCalendar: FunctionComponent = () => {
+  const { t } = useTranslation("common");
+
+  return (
     <div
       style={{
-        marginLeft: "1rem",
-        fontSize: "1.5rem",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "1rem",
       }}
     >
-      Loading...
+      <Spinner color="black" />
+      <div
+        style={{
+          marginLeft: "1rem",
+          fontSize: "1.5rem",
+        }}
+      >
+        {t("core.loading")}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   data,
@@ -68,14 +72,17 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                 }
                 key={dateLocationsPair.dateStr}
                 onClick={() => {
-                  enqueueAnalyticsEvent('Calendar day picked', {
+                  enqueueAnalyticsEvent("Calendar day picked", {
                     datePicked: dateLocationsPair.dateStr,
-                    bookingDateInDays: differenceInDays(parse(
-                      dateLocationsPair.dateStr,
-                      "yyyy-MM-dd",
+                    bookingDateInDays: differenceInDays(
+                      parse(
+                        dateLocationsPair.dateStr,
+                        "yyyy-MM-dd",
+                        new Date()
+                      ),
                       new Date()
-                    ), new Date()),
-                    radiusKm, 
+                    ),
+                    radiusKm,
                     spotsAvailable: sum(
                       dateLocationsPair.locationSlotsPairs.map(
                         (locationSlotsPair) =>
@@ -83,7 +90,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                       )
                     ),
                   });
-                  setActiveDate(dateLocationsPair)
+                  setActiveDate(dateLocationsPair);
                 }}
               >
                 <div>
@@ -114,8 +121,8 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                     </aside>
                   </h3>
                   <p>
-                    {t("calendar.numberOfDoses", {
-                      numberOfDoses: sum(
+                    {t("calendar.numberOfAppointments", {
+                      sumAvailableTimes: sum(
                         dateLocationsPair.locationSlotsPairs.map(
                           (locationSlotsPair) =>
                             (locationSlotsPair.slots || []).length
