@@ -48,7 +48,7 @@ const LocationModal = (props: Props) => {
     (domNode) => {
       if (domNode != null) {
         const widget = new AddressFinder.Widget(
-          document.getElementById("addrs_1"),
+          domNode,
           "ARFHPVK67QXM49BEWDL3",
           "NZ",
           {
@@ -137,19 +137,12 @@ const LocationModal = (props: Props) => {
       >
         {t("navigation.locationModal.locationCTA")}
       </p>
-      {/* <BaseInput
+      <BaseInput
         id="pac-input"
         type="text"
         inputRef={(e) => inputRef(e)}
         onChange={(_e) => {}}
-      /> */}
-      <input
-        type="search"
-        className="form-input"
-        id="addrs_1"
-        placeholder="Search address here..."
-        ref={(e) => inputRef(e)}
-      ></input>
+      />
 
       <button
         className={"clickable"}
