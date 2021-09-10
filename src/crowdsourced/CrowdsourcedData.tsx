@@ -3,7 +3,7 @@ import { getDistanceKm } from "../utils/distance";
 import { Instruction } from "../walk-in/WalkInData";
 import { crowdsourcedLocations } from "./CrowdsourcedLocations";
 
-// 0 = monday, 1 = tuesday ... same as new Date().getDay();
+// 0 = sunday, 1 = monday ... same as new Date().getDay();
 type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 type OpeningHours =
   | {
