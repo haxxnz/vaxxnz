@@ -1,43 +1,54 @@
-import common_en from "./en/common.json";
-import common_de from "./de/common.json";
-import common_ru from "./ru/common.json";
-import common_es from "./es/common_es.json";
-import enFlag from "./flags/gbFlag.png";
-// import miFlag from "./flags/miFlag.png";
-// import esFlag from "./flags/miFlag.png";
+import common_en_NZ from "./locales/common_en-NZ.json";
+import common_de_DE from "./locales/common_de-DE.json";
+import common_ru_RU from "./locales/common_ru-RU.json";
+import common_es_ES from "./locales/common_es-ES.json";
+import common_ms_MY from "./locales/common_ms-MY.json";
+import common_zh_CN from "./locales/common_zh-CN.json";
+import common_zh_TW from "./locales/common_zh-TW.json";
 
 export type Language = {
-  common: typeof common_en,
+  common: Object; //typeof common_en_NZ;
   label: string;
   code: string;
   flag?: string;
-}
+};
 
 const languages: Language[] = [
   {
-    common: common_en,
+    common: common_en_NZ,
     label: "English",
-    code: "en",
-    flag: enFlag,
+    code: "en-NZ",
   },
   {
-    common: common_es,
+    common: common_es_ES,
     label: "Español",
-    code: "es",
-    // flag: esFlag
+    code: "es-ES",
   },
   {
-    common: common_de,
+    common: common_de_DE,
     label: "Deutsch",
-    code: "de",
-    // flag: deFlag,
+    code: "de-DE",
   },
   {
-    common: common_ru,
+    common: common_ru_RU,
     label: "Русский",
-    code: "ru",
-    //  flag: enFlag
-  }
+    code: "ru-RU",
+  },
+  {
+    common: common_zh_CN,
+    label: "中文（简体）",
+    code: "zh-CN",
+  },
+  {
+    common: common_zh_TW,
+    label: "中文（繁體）",
+    code: "zh-TW",
+  },
+  {
+    common: common_ms_MY,
+    label: "Bahasa Malaysia",
+    code: "ms-MY",
+  },
 ];
 
 const resources = languages.reduce(

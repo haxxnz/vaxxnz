@@ -7,7 +7,10 @@
     "loading": "Laden...",
     "getDirections": "Wegbeschreibung",
     "makeABooking": "Buchung vornehmen",
-    "kmAway": "{{distance}}km entfernt"
+    "kmAway": "{{distance}}km entfernt",
+    "lastUpdated": "Actualisiert {{updatedAt}}",
+    "cancel": "Abbrechen",
+    "website": "Webseite"
   },
   "navigation": {
     "about": "Über uns",
@@ -23,31 +26,45 @@
       "25km": "Innerhalb von 25km",
       "50km": "Innerhalb von 50km",
       "100km": "Innerhalb von 100km"
-    }
+    },
+    "locationModal": {
+      "locaitonTitle": "Standort",
+      "locationCTA": "Geben Sie eine Adresse oder einen Vorort ein",
+      "useCurrentLocation": "Meinen aktuellen Standort verwenden",
+      "geolocationNotSupported": "Geolocation wird von Ihrem Browser nicht unterstützt"
+    },
+    "unknownLocation": "Unbekannter Ort"
   },
   "walkins": {
-    "sectionHeader": "Walk-in & Drive-thru Vaccinations <0>- Open Today</0>",
-    "openString": "Offen: {{openTimeString}}",
+    "sectionHeader": "Walk-in- und Drive-Through-Impfungen <0>- Heute geöffnet</0>",
+    "openString": "Geöffnet: {{openTimeString}}",
     "cancellationNotice": {
       "info": "Bitte nicht doppelt buchen",
       "message": "Denken Sie daran, Ihre ursprüngliche Buchung zu stornieren, wenn Sie bereits eine bei <0>bookmyvaccine.nz</0> haben."
     },
     "cancelBooking": "Abbrechen",
     "noticeList": {
-      "title": "Availability Is Not Guaranteed",
-      "text": "Keep in mind that walk-in locations listed might not necessarily have capacity available."
+      "title": "Verfügbarkeit ist nicht garantiert",
+      "text": "Beachten Sie, dass die aufgeführten Walk-in-Standorte möglicherweise nicht unbedingt über Kapazitäten verfügen."
     },
     "walkinAwailable": "<0 /> Walk-in verfügbar",
     "driveThroughAvailable": "<0 /> Drive-Through verfügbar",
     "phone": "Telefonnummer",
     "hours": "Öffnungszeiten",
-    "publicHolidays": "Public Holidays",
-    "otherExeptions": "Feiertage",
-    "seeMore": "Mehr"
+    "publicHolidays": "Feiertage",
+    "otherExeptions": "Ausnahmen",
+    "seeMore": "Mehr",
+    "otherLocations": {
+      "sectionHeader": "Weitere Impfstellen <0>- Heute geöffnet</0>",
+      "disclaimer": {
+        "title": "Dieser Ort wurde von der Öffentlichkeit eingereicht",
+        "message": "Die Informationen hier sind möglicherweise nicht 100% genau. Bitte informieren Sie sich auf der Website der Impfstelle."
+      }
+    }
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
-    "numberOfDoses": "{{numberOfDoses}} Termine",
+    "numberOfAppointments": "{{sumAvailableTimes}} Termine",
     "modal": {
       "howToBook": {
         "title": "Wie buche ich?",
@@ -56,7 +73,7 @@
         "stepThree": "Geben Sie Ihre Daten ein.",
         "stepFour": "Suchen Sie nach Ihrem gewünschten Ort und Ihrer gewünschten Zeit."
       },
-      "availableSlots": "verfügbare Termine",
+      "availableSlots": "Verfügbare Termine",
       "noBookingsAvailable": "An diesem Tag sind keine Buchungen möglich :(",
       "backToCalendar": "Zurück zum Kalender"
     }

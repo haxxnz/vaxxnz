@@ -7,7 +7,10 @@
     "loading": "Loading...",
     "getDirections": "Get Directions",
     "makeABooking": "Make a Booking",
-    "kmAway": "{{distance}}km away"
+    "kmAway": "{{distance}}km away",
+    "lastUpdated": "Last updated {{updatedAt}}",
+    "cancel": "Cancel",
+    "website": "Website"
   },
   "navigation": {
     "about": "About",
@@ -15,7 +18,14 @@
     "getInvolved": "Get Involved",
     "setLocation": "Set your Location",
     "setLocationConfirmation": "Location Set",
+    "locationModal": {
+      "locaitonTitle": "Location",
+      "locationCTA": "Type in an address or suburb",
+      "useCurrentLocation": "Use my current location",
+      "geolocationNotSupported": "Geolocation is not supported by your browser"
+    },
     "vaccinationsNear": "Vaccinations <0>near {{location}}</0>",
+    "unknownLocation": "Unknown Location",
     "distanceDropdown": {
       "2km": "Within 2km",
       "5km": "Within 5km",
@@ -43,11 +53,18 @@
     "hours": "Hours",
     "publicHolidays": "Public Holidays",
     "otherExeptions": "Exceptions",
-    "seeMore": "See More"
+    "seeMore": "See More",
+    "otherLocations": {
+      "sectionHeader": "Other Vaccination Locations <0>- Open Today</0>",
+      "disclaimer": {
+        "title": "This location has been submitted by the public",
+        "message": "The information here may not be 100% accurate. Please refer to the location's website."
+      }
+    }
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
-    "numberOfDoses": "{{numberOfDoses}} available",
+    "numberOfAppointments": "{{sumAvailableTimes}} available",
     "modal": {
       "howToBook": {
         "title": "How to Book",
@@ -61,6 +78,7 @@
       "backToCalendar": "Back to Calendar"
     }
   },
+
   "footer": {
     "message": "If this site helped you, please consider sharing",
     "links": {

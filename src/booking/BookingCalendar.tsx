@@ -11,6 +11,7 @@ import { DateLocationsPair } from "./BookingDataTypes";
 import { differenceInDays, parse } from "date-fns";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 
 interface BookingCalendarProps {
   data: BookingData;
@@ -18,26 +19,30 @@ interface BookingCalendarProps {
   radiusKm: number;
 }
 
-export const LoadingBookingCalendar: FunctionComponent = () => (
-  <div
-    style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      marginTop: "1rem",
-    }}
-  >
-    <Spinner color="black" />
+export const LoadingBookingCalendar: FunctionComponent = () => {
+  const { t } = useTranslation("common");
+
+  return (
     <div
       style={{
-        marginLeft: "1rem",
-        fontSize: "1.5rem",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "1rem",
       }}
     >
-      Loading...
+      <Spinner color="black" />
+      <div
+        style={{
+          marginLeft: "1rem",
+          fontSize: "1.5rem",
+        }}
+      >
+        {t("core.loading")}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   data,
@@ -51,7 +56,15 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
       {Array.from(data.entries()).map(([month, dateLocationsPairsForMonth]) => (
         <CalendarSectionContainer key={month}>
           <div className="MonthSection">
-            <h2>{t("calendar.month", { monthString: month })}</h2>
+            <h2>
+              {parse(month, "MMMM yyyy", new Date()).toLocaleDateString(
+                [i18next.language],
+                {
+                  month: "long",
+                  year: "numeric",
+                }
+              )}
+            </h2>
           </div>
           <MonthContainer>
             {dateLocationsPairsForMonth.map((dateLocationsPair) => (
@@ -95,14 +108,8 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                       dateLocationsPair.dateStr,
                       "yyyy-MM-dd",
                       new Date()
-                    ).toLocaleDateString([], {
+                    ).toLocaleDateString([i18next.language], {
                       day: "numeric",
-                    })}{" "}
-                    {parse(
-                      dateLocationsPair.dateStr,
-                      "yyyy-MM-dd",
-                      new Date()
-                    ).toLocaleDateString([], {
                       month: "short",
                     })}
                     <br />{" "}
@@ -111,14 +118,14 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                         dateLocationsPair.dateStr,
                         "yyyy-MM-dd",
                         new Date()
-                      ).toLocaleDateString([], {
+                      ).toLocaleDateString([i18next.language], {
                         weekday: "short",
                       })}
                     </aside>
                   </h3>
                   <p>
-                    {t("calendar.numberOfDoses", {
-                      numberOfDoses: sum(
+                    {t("calendar.numberOfAppointments", {
+                      sumAvailableTimes: sum(
                         dateLocationsPair.locationSlotsPairs.map(
                           (locationSlotsPair) =>
                             (locationSlotsPair.slots || []).length

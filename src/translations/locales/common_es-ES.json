@@ -7,7 +7,10 @@
     "loading": "Cargando...",
     "getDirections": "Obtener las direcciones",
     "makeABooking": "Hacer una reserva",
-    "kmAway": "{{distance}}km de distancia"
+    "kmAway": "{{distance}}km de distancia",
+    "lastUpdated": "Última actualización {{updatedAt}}",
+    "cancel": "Cancelar",
+    "website": "Website"
   },
   "navigation": {
     "about": "Sobre nosotros",
@@ -23,7 +26,14 @@
       "25km": "Dentro de 25km",
       "50km": "Dentro de 50km",
       "100km": "Dentro de 100km"
-    }
+    },
+    "locationModal": {
+      "locaitonTitle": "Ubicación",
+      "locationCTA": "Escriba una dirección o suburbio",
+      "useCurrentLocation": "Usar mi ubicación actual",
+      "geolocationNotSupported": "La geolocalización no es compatible con su navegador"
+    },
+    "unknownLocation": "Ubicación desconocida"
   },
   "walkins": {
     "sectionHeader": "Sin cita & Vacunas en el coche <0>- Open Today</0>",
@@ -43,17 +53,24 @@
     "hours": "Horas",
     "publicHolidays": "Vacaciones públicas",
     "otherExeptions": "Excepciones",
-    "seeMore": "Ver más"
+    "seeMore": "Ver más",
+    "otherLocations": {
+      "sectionHeader": "Other Vaccination Locations <0>- Open Today</0>",
+      "disclaimer": {
+        "title": "This location has been submitted by the public",
+        "message": "The information here may not be 100% accurate. Please refer to the locations website."
+      }
+    }
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
-    "numberOfDoses": "{{numberOfDoses}} disponible",
-    "numberOfDoses_plural": "{{numberOfDoses}} disponibles", 
+    "numberOfAppointments": "{{sumAvailableTimes}} disponible",
+    "numberOfAppointments_plural": "{{sumAvailableTimes}} disponibles",
     "modal": {
       "howToBook": {
         "title": "Cómo reservar",
         "stepOne": "Encuentre una ubicación y hora en la lista a continuación.",
-        "stepTwo": "Clickea en el <i>Make a Booking</i> botón, esto te llevará a <0>bookmyvaccine.nz</0>",
+        "stepTwo": "Clickea en el botón <i>hacer una reserva</i>, esto te llevará a <0>bookmyvaccine.nz</0>",
         "stepThree": "Completa tus datos.",
         "stepFour": "Cuando se le solicite, busque la ubicación y la hora deseada."
       },
