@@ -63,7 +63,7 @@ const LocationModal = (props: Props) => {
           }
         );
 
-        widget.on("address:select", function (fullAddress, metaData) {
+        widget.on("result:select", function (fullAddress, metaData) {
           setLocation(
             parseFloat(metaData.y),
             parseFloat(metaData.x),
