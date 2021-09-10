@@ -5,7 +5,7 @@ import filterOldDates from "../../filterOldDates";
 import { Coords } from "../../location-picker/LocationPicker";
 import { getDistanceKm } from "../../utils/distance";
 import {
-  DateLocationsPair,
+  BookingDateLocations,
   Location,
   LocationsData,
   LocationSlotsPair,
@@ -77,7 +77,7 @@ async function getMyCalendar(coords: Coords, radiusKm: number) {
   );
 
   const today = new Date();
-  const dateLocationsPairs: DateLocationsPair[] = [];
+  const dateLocationsPairs: BookingDateLocations[] = [];
   for (let i = 0; i < 60; i++) {
     // 90 days in the future
     const date = new Date().setDate(today.getDate() + i);
@@ -102,7 +102,7 @@ type BookingDataResult =
   | { error: Error }
   | { loading: true };
 
-export type BookingData = Map<string, DateLocationsPair[]>;
+export type BookingData = Map<string, BookingDateLocations[]>;
 
 export const useBookingData = (
   coords: Coords,
@@ -134,7 +134,7 @@ export const useBookingData = (
     setLoading(false);
   }, [coords, radiusKm, setDateLocationsPairs, setLastUpdateTime]);
 
-  let byMonth = new Map<string, DateLocationsPair[]>();
+  let byMonth = new Map<string, BookingDateLocations[]>();
   dateLocationsPairs.forEach((dateLocationsPair) => {
     const date = parse(dateLocationsPair.dateStr, "yyyy-MM-dd", new Date());
     const month = date.toLocaleString("en-NZ", {

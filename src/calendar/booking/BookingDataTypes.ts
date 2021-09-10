@@ -46,7 +46,7 @@ export interface LocationSlotsPair {
   slots: SlotWithAvailability[] | undefined;
 }
 
-export interface DateLocationsPair {
+export interface BookingDateLocations {
   dateStr: string;
   locationSlotsPairs: LocationSlotsPair[];
 }

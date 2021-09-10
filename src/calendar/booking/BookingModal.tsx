@@ -2,7 +2,7 @@
 import { Modal } from "baseui/modal";
 import { Button, KIND } from "baseui/button";
 import { ModalGrid, VaccineCentre } from "../../VaxComponents";
-import { DateLocationsPair, LocationSlotsPair } from "./BookingDataTypes";
+import { BookingDateLocations, LocationSlotsPair } from "./BookingDataTypes";
 import { getDistanceKm } from "../../utils/distance";
 import { parse } from "date-fns";
 import { sortByAsc } from "../../utils/array";
@@ -17,8 +17,8 @@ import { differenceInDays } from "date-fns/esm";
 import { useMediaQuery } from "react-responsive";
 import i18next from "i18next";
 type BookingModalProps = {
-  activeDate: DateLocationsPair | null;
-  setActiveDate: (activeDate: DateLocationsPair | null) => void;
+  activeDate: BookingDateLocations | null;
+  setActiveDate: (activeDate: BookingDateLocations | null) => void;
   coords: Coords;
   radiusKm: number;
 };

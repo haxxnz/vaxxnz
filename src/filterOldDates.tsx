@@ -1,4 +1,4 @@
-import { DateLocationsPair } from "./calendar/booking/BookingDataTypes";
+import { BookingDateLocations } from "./calendar/booking/BookingDataTypes";
 
 const getTime = (string: string): number =>
   parseInt(string.substring(0, 5).replace(/:/g, ""), 10);
@@ -7,8 +7,8 @@ const getDate = (string: string): number =>
   parseInt(string.replace(/-/g, ""), 10);
 
 const filterOldDates = (
-  dateLocationsPairs: DateLocationsPair[]
-): DateLocationsPair[] => {
+  dateLocationsPairs: BookingDateLocations[]
+): BookingDateLocations[] => {
   const date = new Date();
   const [todayDate, todayTime] = new Date(
     date.getTime() - date.getTimezoneOffset() * 60000

@@ -12,7 +12,7 @@ import { DateLocationsPairsContext } from "./contexts";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { config as i18nextConfig } from "./translations";
-import { DateLocationsPair } from "./calendar/booking/BookingDataTypes";
+import { BookingDateLocations } from "./calendar/booking/BookingDataTypes";
 
 i18n.use(LanguageDetector).use(initReactI18next).init(i18nextConfig);
 
@@ -20,7 +20,7 @@ const engine = new Styletron();
 
 function Index() {
   const [dateLocationsPairs, setDateLocationsPairs] = React.useState<
-    DateLocationsPair[]
+    BookingDateLocations[]
   >([]);
   return (
     <React.StrictMode>
