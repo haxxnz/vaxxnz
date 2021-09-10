@@ -21,7 +21,7 @@ const languages: Language[] = [
     code: "en-NZ",
   },
   {
-    common: common_sa_SA,
+    common: common_sm_SM,
     label: "Gagana Samoa",
     code: "sm-SM",
   },
