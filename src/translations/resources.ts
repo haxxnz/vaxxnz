@@ -28,7 +28,7 @@ const languages: Language[] = [
   },
   {
     common: common_to_TO,
-    label: "lea faka-Tonga",
+    label: "Lea faka-Tonga",
     code: "to-TO",
   },
   {
