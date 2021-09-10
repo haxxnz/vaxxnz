@@ -51,7 +51,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
-    "postinstall": "file package-lock.json || echo 'Please use Yarn and not NPM'"
+    "postinstall": "test -f package-lock.json && echo \"$(tput setab 1)Vaxxnz uses Yarn and not NPM. Don't commit package-lock.json$(tput sgr0)\" || true"
   },
   "eslintConfig": {
     "extends": [
