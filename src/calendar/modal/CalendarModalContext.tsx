@@ -3,14 +3,14 @@ import { differenceInDays, parse } from "date-fns";
 import i18next from "i18next";
 import React, { FunctionComponent } from "react";
 import { useTranslation, Trans } from "react-i18next";
-import { Coords } from "../location-picker/LocationPicker";
-import { NoticeList } from "../NoticeList";
-import { Instruction } from "../today-locations/healthpoint/HealthpointData";
-import { enqueueAnalyticsEvent } from "../utils/analytics";
-import { sortByAsc } from "../utils/array";
-import { getDistanceKm } from "../utils/distance";
-import { ModalGrid, VaccineCentre } from "../VaxComponents";
-import { CalendarDate, CalendarLocation } from "./CalendarData";
+import { Coords } from "../../location-picker/LocationPicker";
+import { NoticeList } from "../../NoticeList";
+import { Instruction } from "../../today-locations/healthpoint/HealthpointData";
+import { enqueueAnalyticsEvent } from "../../utils/analytics";
+import { sortByAsc } from "../../utils/array";
+import { getDistanceKm } from "../../utils/distance";
+import { ModalGrid, VaccineCentre } from "../../VaxComponents";
+import { CalendarDate, CalendarLocation } from "../CalendarData";
 
 interface CalendarModalContentProps {
   activeDate: CalendarDate;
@@ -43,7 +43,8 @@ export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> 
     const sortedLocations = sortByDistance(locations, coords);
 
     const slotLocations = sortedLocations.filter(
-      (location) => "isBooking" in location
+      (location) =>
+        "isBooking" in location && location.slots && location.slots.length > 0
     );
     const crowdsourcedBookingLocations = sortedLocations.filter(
       (location) =>
