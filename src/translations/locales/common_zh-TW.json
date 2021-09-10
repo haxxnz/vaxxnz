@@ -10,7 +10,7 @@
     "kmAway": "{{distance}} 公里",
     "lastUpdated": "最近更新於 {{updatedAt}}",
     "cancel": "取消",
-    "website": "Website"
+    "website": "網站"
   },
   "navigation": {
     "about": "關於",
@@ -51,14 +51,14 @@
     "driveThroughAvailable": "<0 /> 可以得來速",
     "phone": "電話",
     "hours": "開放時間",
-    "publicHolidays": "公共節假日",
-    "otherExeptions": "Exceptions",
+    "publicHolidays": "公眾節假日",
+    "otherExeptions": "例外",
     "seeMore": "瞭解更多",
     "otherLocations": {
-      "sectionHeader": "Other Vaccination Locations <0>- Open Today</0>",
+      "sectionHeader": "<0>今日開放的</0>其他接種地點",
       "disclaimer": {
-        "title": "This location has been submitted by the public",
-        "message": "The information here may not be 100% accurate. Please refer to the locations website."
+        "title": "此資訊來自公眾",
+        "message": "不能保證 100% 準確。詳細請參考其網站。"
       }
     }
   },
@@ -73,7 +73,7 @@
         "stepThree": "輸入個人資訊",
         "stepFour": "搜尋想要的接種地點及時間段"
       },
-      "availableSlots": "時間段",
+      "availableSlots": "可選時間段",
       "noBookingsAvailable": "當天已約滿 :(",
       "backToCalendar": "回到日曆"
     },

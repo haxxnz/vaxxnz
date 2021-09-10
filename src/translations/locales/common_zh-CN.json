@@ -10,7 +10,7 @@
     "kmAway": "{{distance}} 公里",
     "lastUpdated": "最近更新于 {{updatedAt}}",
     "cancel": "取消",
-    "website": "Website"
+    "website": "网站"
   },
   "navigation": {
     "about": "关于",
@@ -52,13 +52,13 @@
     "phone": "电话",
     "hours": "开放时间",
     "publicHolidays": "公共节假日",
-    "otherExeptions": "Exceptions",
+    "otherExeptions": "例外",
     "seeMore": "了解更多",
     "otherLocations": {
-      "sectionHeader": "Other Vaccination Locations <0>- Open Today</0>",
+      "sectionHeader": "<0>今日开放的</0>其他接种场所",
       "disclaimer": {
-        "title": "This location has been submitted by the public",
-        "message": "The information here may not be 100% accurate. Please refer to the locations website."
+        "title": "此信息来自公众",
+        "message": "不能保证百分之百准确，详情请查询其网站。"
       }
     }
   },
@@ -73,7 +73,7 @@
         "stepThree": "输入个人信息",
         "stepFour": "搜索想要的接种点及时间段"
       },
-      "availableSlots": "时间段",
+      "availableSlots": "可选时间段",
       "noBookingsAvailable": "当天已约满 :(",
       "backToCalendar": "回到日历"
     },
