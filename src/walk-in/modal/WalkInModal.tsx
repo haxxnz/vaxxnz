@@ -6,11 +6,10 @@ import { FunctionComponent } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import "../../App.css";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
-import { NoticeList, NoticeListItem } from "../../NoticeList";
 import { WalkGrid } from "../../VaxComponents";
 import { Instruction, WalkInLocation } from "../WalkInData";
-import { CancelBookingNotice } from "../../common/CancelNotice";
 import { useMediaQuery } from "react-responsive";
+import { LocationNotice } from "../../common/LocationNotice";
 
 type Props = {
   clearSelectedLocation: () => void;
@@ -71,34 +70,9 @@ const WalkInModal: FunctionComponent<Props> = ({
           >
             {location.name}
           </h1>
-          <div className="WalkInTypes">
-            {location.instructionLis.includes(Instruction.walkIn) && (
-              <p>
-                <Trans
-                  i18nKey="walkins.walkinAwailable"
-                  t={t}
-                  components={[<FontAwesomeIcon icon={faWalking} />]}
-                />
-              </p>
-            )}
-            {location.instructionLis.includes(Instruction.driveThrough) && (
-              <p>
-                <Trans
-                  i18nKey="walkins.driveThroughAvailable"
-                  t={t}
-                  components={[<FontAwesomeIcon icon={faCar} />]}
-                />
-              </p>
-            )}
-          </div>
+          <LocationNotice instructions={location.instructionLis} />
           <hr />
-          <p>
-            <strong>{t("walkins.noticeList.title")}</strong>
-            <br /> Just go to the address and get in the queue. You don't need a
-            booking to get vaccinated here. {t("walkins.noticeList.text")}
-          </p>
 
-          <CancelBookingNotice className="mobile" />
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
             target="_blank"
@@ -146,8 +120,6 @@ const WalkInModal: FunctionComponent<Props> = ({
           </Button>
         </div>
         <div style={{ height: "100%" }}>
-          <CancelBookingNotice className="desktop" />
-
           <section>
             <h3>Address</h3>
             <p>{location.address}</p>

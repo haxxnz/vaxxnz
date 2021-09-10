@@ -46,7 +46,7 @@
     "cancelBooking": "Cancel",
     "noticeList": {
       "title": "How to get Vaccinated",
-      "text": "Keep in mind that this location might have a long queue, and this venue might not have vaccines available today."
+      "text": "Vaccinations might have a queue, and some places might not have spare vaccines available today - ring ahead if you can!"
     },
     "walkinAwailable": "<0 /> Walk-in vaccinations available",
     "driveThroughAvailable": "<0 /> Drive-through vaccinations available",
