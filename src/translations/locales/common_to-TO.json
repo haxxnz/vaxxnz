@@ -21,7 +21,7 @@
     "setLocationConfirmation": "Feitu'u kuo teuteu'i",
       "locationCTA": "Hiki'i ho'o tui'asila pe koe feitu'u",
       "useCurrentLocation": "Ngaue'aki ho'o feitu'u lolotonga",
-      "geolocationNotSupported": "Geolocation is not supported by your browser"
+      "geolocationNotSupported": "Feitu'u oku ikai a'u kiai ae intaneti"
     },
     "vaccinationsNear": "Vaccinations <0>near {{location}}</0>",
     "unknownLocation": "ikai fakapapau'i 'ae feitu'u",
@@ -82,10 +82,10 @@
     "message": "Kapau oku tokoni kiate koe ae uepisaiti koeni, kataki 'o vahevahe atu",
     "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup",
     "links": {
-      "contactUs": "Contact Us",
-      "rawData": "Raw Data",
-      "sourceCode": "Source Code",
-      "roadmap": "Roadmap"
+      "contactUs": "Fetu'utaki mai",
+      "rawData": "Ngaahi fakamatala",
+      "sourceCode": "Polokalama",
+      "roadmap": "Palani"
     }
   }
 }
