@@ -48,7 +48,6 @@ a {
   padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid lightgray;
 }
 
 .menu-divider {
