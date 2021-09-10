@@ -20,7 +20,7 @@ import { differenceInDays } from "date-fns/esm";
 import { useMediaQuery } from "react-responsive";
 import i18next from "i18next";
 import { CalendarDate } from "../CalendarData";
-import { CalendarModalContent } from "./CalendarModalContext";
+import { CalendarModalContent } from "./CalendarModalContent";
 
 interface BookingModalProps {
   activeDate: CalendarDate | null;
