@@ -16,7 +16,7 @@ In response to this, we've built [vaxx.nz](https://vaxx.nz) to make the experien
 
 Choose your location, set the distance you wish to travel and it will show ALL of the earliest available vaccination slots using those search parameters. After you find the vaccine clinic with your desirable slot, you can proceed to [bookmyvaccine.nz](https://bookmyvaccine.nz) and book your appointment. We fetch data every 30 minutes from the official APIs, so slot information should be near real-time.
 
-Over the course of one week, our team of 6 developers and 2 designers built a website to aide residents of New Zealand in booking their COVID-19 vaccine the intuitive way! Rather than selecting your location, and booking the next available slot, Vaxxed (aka. The Vaccination Calendar) let's you choose when you want to receive your vaccine at a provider near you. Eliminating the filtering hassle and subsequent frustration.
+Over the course of one week, our team of 6 developers and 2 designers built a website to aide residents of New Zealand in booking their COVID-19 vaccine the intuitive way! Rather than selecting your location, and booking the next available slot, Vaxx.nz (aka. The NZ COVID Vaccination Finder) let's you choose when you want to receive your vaccine at a provider near you. Eliminating the filtering hassle and subsequent frustration.
 
 ## A vaccine centre is missing!
 We automatically load any locations giving vaccines listed on [bookmyvaccine.nz](https://bookmyvaccine.nz), but if you know of one we don't have add it on [our spreadsheet](https://docs.google.com/spreadsheets/d/1dbAFVdtQParU78_j3eR1i5iA6XpzLsrR_WvzTATPK2Y/edit) and we will manually include it.

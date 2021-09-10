@@ -29,6 +29,18 @@ const LocationModal = (props: Props) => {
     setLocationIsOpen(false);
   }, [setLocationIsOpen]);
 
+  const getMetaDataLocation = (metaData: MetaData) => {
+    const { city, region, suburb } = metaData;
+
+    if (suburb == null && city == null) {
+      return region;
+    } else if (suburb == null) {
+      return city;
+    } else {
+      return suburb;
+    }
+  };
+
   const setLocation = useCallback(
     (lat: number, lng: number, name?: string | null) => {
       const placeName = name ?? `${lat} ${lng}`;
@@ -64,10 +76,12 @@ const LocationModal = (props: Props) => {
         );
 
         widget.on("result:select", function (fullAddress, metaData) {
+          const locationName = getMetaDataLocation(metaData);
+
           setLocation(
             parseFloat(metaData.y),
             parseFloat(metaData.x),
-            metaData.suburb
+            locationName
           );
         });
       }
