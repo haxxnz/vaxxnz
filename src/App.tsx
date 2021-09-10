@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import "./App.css";
-import { BookingSection } from "./booking/BookingSection";
+import { CalendarSection } from "./calendar/CalendarSection";
 import LanguageSelect from "./LanguageSelect";
 import { LocationPicker } from "./location-picker/LocationPicker";
 import { ShareButtons } from "./ShareButtons";
@@ -90,7 +90,7 @@ function App() {
           />
 
           <TodayLocationsSection coords={coords} radiusKm={radiusKm} />
-          <BookingSection
+          <CalendarSection
             coords={coords}
             radiusKm={radiusKm}
             setLastUpdateTime={setLastUpdateTime}

@@ -8,11 +8,11 @@ import { initReactI18next } from "react-i18next";
 import { Client as Styletron } from "styletron-engine-atomic";
 import { Provider as StyletronProvider } from "styletron-react";
 import App from "./App";
-import { DateLocationsPair } from "./booking/BookingDataTypes";
 import { DateLocationsPairsContext } from "./contexts";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { config as i18nextConfig } from "./translations";
+import { DateLocationsPair } from "./calendar/booking/BookingDataTypes";
 
 i18n.use(LanguageDetector).use(initReactI18next).init(i18nextConfig);
 

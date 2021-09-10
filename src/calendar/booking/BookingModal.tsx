@@ -1,29 +1,29 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { Modal } from "baseui/modal";
 import { Button, KIND } from "baseui/button";
-import { ModalGrid, VaccineCentre } from "../VaxComponents";
+import { ModalGrid, VaccineCentre } from "../../VaxComponents";
 import { DateLocationsPair, LocationSlotsPair } from "./BookingDataTypes";
-import { getDistanceKm } from "../utils/distance";
+import { getDistanceKm } from "../../utils/distance";
 import { parse } from "date-fns";
-import { sortByAsc } from "../utils/array";
-import { NoticeList } from "../NoticeList";
-import { Coords } from "../location-picker/LocationPicker";
+import { sortByAsc } from "../../utils/array";
+import { NoticeList } from "../../NoticeList";
+import { Coords } from "../../location-picker/LocationPicker";
 import { FunctionComponent } from "react";
 import { useTranslation, Trans } from "react-i18next";
 
-import { enqueueAnalyticsEvent } from "../utils/analytics";
+import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { differenceInDays } from "date-fns/esm";
 
 import { useMediaQuery } from "react-responsive";
 import i18next from "i18next";
-type BookingsModalProps = {
+type BookingModalProps = {
   activeDate: DateLocationsPair | null;
   setActiveDate: (activeDate: DateLocationsPair | null) => void;
   coords: Coords;
   radiusKm: number;
 };
 
-const BookingsModal: FunctionComponent<BookingsModalProps> = ({
+const BookingModal: FunctionComponent<BookingModalProps> = ({
   activeDate,
   radiusKm,
   setActiveDate,
@@ -330,4 +330,4 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
     </Modal>
   );
 };
-export default BookingsModal;
+export default BookingModal;

@@ -1,9 +1,9 @@
 import { format, parse } from "date-fns";
 import { useContext, useState, useCallback, useEffect } from "react";
-import { DateLocationsPairsContext } from "../contexts";
-import filterOldDates from "../filterOldDates";
-import { Coords } from "../location-picker/LocationPicker";
-import { getDistanceKm } from "../utils/distance";
+import { DateLocationsPairsContext } from "../../contexts";
+import filterOldDates from "../../filterOldDates";
+import { Coords } from "../../location-picker/LocationPicker";
+import { getDistanceKm } from "../../utils/distance";
 import {
   DateLocationsPair,
   Location,

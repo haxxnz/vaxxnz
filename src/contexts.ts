@@ -1,5 +1,5 @@
 import React from "react";
-import { DateLocationsPair } from "./booking/BookingDataTypes";
+import { DateLocationsPair } from "./calendar/booking/BookingDataTypes";
 
 export const DateLocationsPairsContext = React.createContext({
   setDateLocationsPairs: (_a: DateLocationsPair[]): void => {},

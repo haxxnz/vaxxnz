@@ -1,4 +1,4 @@
-import { DateLocationsPair } from "./booking/BookingDataTypes";
+import { DateLocationsPair } from "./calendar/booking/BookingDataTypes";
 
 const getTime = (string: string): number =>
   parseInt(string.substring(0, 5).replace(/:/g, ""), 10);

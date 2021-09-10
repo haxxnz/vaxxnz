@@ -1,4 +1,4 @@
-import { Coords } from "../location-picker/LocationPicker";
+import { Coords } from "../../location-picker/LocationPicker";
 
 export interface OpenHour {
   days: string[];

@@ -6,8 +6,8 @@ import {
   CalendarSectionContainer,
   MonthContainer,
 } from "../VaxComponents";
-import { BookingData } from "./BookingData";
-import { DateLocationsPair } from "./BookingDataTypes";
+import { BookingData } from "./booking/BookingData";
+import { DateLocationsPair } from "./booking/BookingDataTypes";
 import { differenceInDays, parse } from "date-fns";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { useTranslation } from "react-i18next";
