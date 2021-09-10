@@ -22,7 +22,7 @@ export const config = {
     "zh-CN",
     "zh-TW",
     "ms-MY",
-    "sa-SA",
+    "sm-SM",
   ],
   interpolation: { escapeValue: false },
   resources,

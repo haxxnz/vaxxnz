@@ -5,7 +5,7 @@ import common_es_ES from "./locales/common_es-ES.json";
 import common_ms_MY from "./locales/common_ms-MY.json";
 import common_zh_CN from "./locales/common_zh-CN.json";
 import common_zh_TW from "./locales/common_zh-TW.json";
-import common_sa_SA from "./locales/common_sa-SA.json";
+import common_sm_SM from "./locales/common_sm-SM.json";
 
 export type Language = {
   common: Object; //typeof common_en_NZ;
@@ -23,7 +23,7 @@ const languages: Language[] = [
   {
     common: common_sa_SA,
     label: "Gagana Samoa",
-    code: "sa-SA",
+    code: "sm-SM",
   },
   {
     common: common_zh_CN,
