@@ -1,6 +1,6 @@
-import { Coords } from "../../location-picker/LocationPicker";
-import { getDistanceKm } from "../../utils/distance";
-import { Instruction } from "../healthpoint/HealthpointData";
+import { Coords } from "../location-picker/LocationPicker";
+import { getDistanceKm } from "../utils/distance";
+import { Instruction } from "../today-locations/healthpoint/HealthpointData";
 import { crowdsourcedLocations } from "./CrowdsourcedLocations";
 
 // 0 = sunday, 1 = monday ... same as new Date().getDay();

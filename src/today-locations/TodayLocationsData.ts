@@ -3,15 +3,15 @@ import { getDistanceKm } from "../utils/distance";
 import {
   CrowdsourcedLocation,
   useCrowdsourcedLocations,
-} from "./crowdsourced/CrowdsourcedData";
+} from "../crowdsourced/CrowdsourcedData";
 import {
   useHealthpointLocations,
   HealthpointLocation,
 } from "./healthpoint/HealthpointData";
 
-export type OtherLocation = CrowdsourcedLocation | HealthpointLocation;
+export type TodayLocation = CrowdsourcedLocation | HealthpointLocation;
 
-export const useOtherLocationsData = (coords: Coords, radiusKm: number) => {
+export const useTodayLocationsData = (coords: Coords, radiusKm: number) => {
   const locations = useHealthpointLocations(coords, radiusKm);
   const crowdSourced = useCrowdsourcedLocations(coords, radiusKm);
   if ("ok" in locations) {

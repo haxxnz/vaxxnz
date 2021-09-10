@@ -38,6 +38,7 @@
   },
   "walkins": {
     "sectionHeader": "Open Today",
+    "sectionSubtitle": "Vaccinations that aren't booked through <0>bookmyvaccine.nz</0>.",
     "openString": "Open {{openTimeString}}",
     "cancellationNotice": {
       "info": "Please Don't Double-book",

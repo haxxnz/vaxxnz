@@ -2,9 +2,9 @@ import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
-import { LocationNotice } from "../../common/LocationNotice";
-import { NoticeList, NoticeListItem } from "../../NoticeList";
-import { ModalGrid } from "../../VaxComponents";
+import { LocationNotice } from "../common/LocationNotice";
+import { NoticeList, NoticeListItem } from "../NoticeList";
+import { ModalGrid } from "../VaxComponents";
 import { CrowdsourcedLocation } from "./CrowdsourcedData";
 
 type Props = {

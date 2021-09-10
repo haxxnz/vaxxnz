@@ -60,7 +60,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
               ]}
             />
           </h1>
-          <p>
+          <p style={{ color: "#666" }}>
             {t("core.lastUpdated", {
               updatedAt:
                 lastUpdateTime === null

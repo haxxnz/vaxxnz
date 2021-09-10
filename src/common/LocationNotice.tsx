@@ -2,7 +2,7 @@ import { faWalking, faCar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FunctionComponent } from "react";
 import { Trans, useTranslation } from "react-i18next";
-import { Instruction } from "../other-locations/healthpoint/HealthpointData";
+import { Instruction } from "../today-locations/healthpoint/HealthpointData";
 
 interface LocationNoticeProps {
   instructions: Instruction[];

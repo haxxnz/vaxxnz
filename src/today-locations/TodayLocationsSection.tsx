@@ -16,18 +16,18 @@ import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { Trans, useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
-import { useOtherLocationsData } from "./OtherLocationsData";
-import { CrowdsourcedLocation } from "./crowdsourced/CrowdsourcedData";
-import CrowdsourcedModal from "./crowdsourced/CrowdsourcedModal";
+import { useTodayLocationsData } from "./TodayLocationsData";
+import { CrowdsourcedLocation } from "../crowdsourced/CrowdsourcedData";
+import CrowdsourcedModal from "../crowdsourced/CrowdsourcedModal";
 
 export interface Props {
   coords: Coords;
   radiusKm: number;
 }
 
-export function OtherLocationsSection({ coords, radiusKm }: Props) {
+export function TodayLocationsSection({ coords, radiusKm }: Props) {
   const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
-  const locations = useOtherLocationsData(coords, radiusKm);
+  const locations = useTodayLocationsData(coords, radiusKm);
   const { t } = useTranslation("common");
 
   const [selectedLocationIndex, setSelectedLocation] = useState<number>();
@@ -75,13 +75,30 @@ export function OtherLocationsSection({ coords, radiusKm }: Props) {
         clearSelectedLocation={clearSelectedLocation}
         location={selectedCrowdsourced}
       />
-      <h2 className="WalkSection">
-        <Trans
-          i18nKey="walkins.sectionHeader"
-          t={t}
-          components={[<strong></strong>]}
-        />
-      </h2>
+      <div className="WalkSection">
+        <h2>
+          <Trans
+            i18nKey="walkins.sectionHeader"
+            t={t}
+            components={[<strong></strong>]}
+          />
+        </h2>
+        <p>
+          <Trans
+            i18nKey="walkins.sectionSubtitle"
+            t={t}
+            components={[
+              <a
+                href="https://bookmyvaccine.nz"
+                target="_blank"
+                rel="noreferrer"
+              >
+                bookmyvaccine.nz
+              </a>,
+            ]}
+          />
+        </p>
+      </div>
       {"loading" in locations ? (
         <div
           style={{

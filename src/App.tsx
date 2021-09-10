@@ -8,7 +8,7 @@ import { ShareButtons } from "./ShareButtons";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { DEFAULT_LOCATION } from "./utils/location";
 import { useSearchParams } from "./utils/url";
-import { OtherLocationsSection } from "./other-locations/OtherLocationsSection";
+import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
 
 function App() {
   const { lat, lng } = useSearchParams();
@@ -89,7 +89,7 @@ function App() {
             lastUpdateTime={lastUpdateTime}
           />
 
-          <OtherLocationsSection coords={coords} radiusKm={radiusKm} />
+          <TodayLocationsSection coords={coords} radiusKm={radiusKm} />
           <BookingSection
             coords={coords}
             radiusKm={radiusKm}
