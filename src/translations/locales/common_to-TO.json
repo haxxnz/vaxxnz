@@ -18,7 +18,9 @@
     "contact": "Fetu'utaki",
     "getInvolved": "Kau kiai",
     "setLocation": "Teuteu ho feitu'u",
-    "setLocationConfirmation": "Feitu'u kuo teuteu'i",
+    "locationModal": {
+      "locaitonTitle": "Location",
+      "setLocationConfirmation": "Feitu'u kuo teuteu'i",
       "locationCTA": "Hiki'i ho'o tui'asila pe koe feitu'u",
       "useCurrentLocation": "Ngaue'aki ho'o feitu'u lolotonga",
       "geolocationNotSupported": "Geolocation is not supported by your browser"
@@ -32,7 +34,8 @@
       "25km": "I loto  25km",
       "50km": "I loto  50km",
       "100km": "I loto  100km"
-    }
+    },
+    "setLocationConfirmation": "Location Set"
   },
   "walkins": {
     "sectionHeader": "Open Today",
@@ -59,7 +62,8 @@
         "title": "Koe ngaahi feitu'u eni 'oku ata kihe kakai",
         "message": "Koe ngaahi fakamatala koeni heikai 100% ka ke kataki vakai kihe uepisaiti"
       }
-    }
+    },
+    "closed": "Closed"
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
@@ -77,7 +81,6 @@
       "backToCalendar": "Vakai kihe tohi mahina"
     }
   },
-
   "footer": {
     "message": "Kapau oku tokoni kiate koe ae uepisaiti koeni, kataki 'o vahevahe atu",
     "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup",
