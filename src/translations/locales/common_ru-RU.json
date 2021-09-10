@@ -86,6 +86,7 @@
       "rawData": "Необработанные данные",
       "sourceCode": "Исходный код",
       "roadmap": "План продукта"
-    }
+    },
+    "addressFinderLinkCopy": "Спасибо <0>AddressFinder</0> за бесплатный поиск адреса"
   }
 }

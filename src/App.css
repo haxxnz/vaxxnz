@@ -208,3 +208,14 @@ ul.NoticeList li {
 .WalkModal section:not(:last-child) {
   border-bottom: 1px solid lightgray;
 }
+
+ul.af_list.af_list {
+  /* this is pretty atrocious, but the element is positioned at root so we have to calculate the width manually */
+  width: calc(min(100vw - 80px, 600px));
+  box-sizing: border-box;
+}
+
+ul.af_list.af_list li.af_item {
+	padding: 9px 13px;
+  font-size: 1rem;
+}
