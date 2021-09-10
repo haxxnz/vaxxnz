@@ -7,7 +7,7 @@ import common_zh_CN from "./locales/common_zh-CN.json";
 import common_zh_TW from "./locales/common_zh-TW.json";
 
 export type Language = {
-  common: Object;//typeof common_en_NZ;
+  common: Object; //typeof common_en_NZ;
   label: string;
   code: string;
   flag?: string;

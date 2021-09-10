@@ -8,7 +8,8 @@
 
 .pac-container {
   z-index: 1501;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 .pac-item-query {
@@ -23,16 +24,16 @@
 
 @media (hover: hover) {
   a.nolink:hover {
-    color: black
+    color: black;
   }
 }
 
 a.nolink:active {
-  color: black
+  color: black;
 }
 
 a.nolink {
-  color: black
+  color: black;
 }
 
 .zero-available {
@@ -57,7 +58,7 @@ button.zero-available div p {
   margin-top: 10px;
 }
 
-@media screen and (max-width:1024px) {
+@media screen and (max-width: 1024px) {
   .cancel-booking-notice.mobile {
     display: block !important;
   }
@@ -181,7 +182,7 @@ ul.NoticeList li {
 }
 
 .WalkInTypes {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 .WalkInTypes p:not(:first-child) {

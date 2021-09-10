@@ -8,5 +8,5 @@ import i18next from "i18next";
  */
 export const getDateFnsLocale = (): Locale => {
   const lang = i18next.language;
-  return Locales[lang.replace('-', '') as keyof typeof Locales] ?? Locales.enNZ;
+  return Locales[lang.replace("-", "") as keyof typeof Locales] ?? Locales.enNZ;
 };

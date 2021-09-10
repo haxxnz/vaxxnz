@@ -4,11 +4,10 @@ import { useTranslation } from "react-i18next";
 import languages, { Language } from "./translations/resources";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 
-
 const LanguageSelect = () => {
   const langCode = localStorage.getItem("i18nextLng") || "en-NZ";
   const [language, setLanguage] = useState<Language | undefined>(
-    languages.find((lang) => lang.code === langCode),
+    languages.find((lang) => lang.code === langCode)
   );
   const { i18n } = useTranslation();
 

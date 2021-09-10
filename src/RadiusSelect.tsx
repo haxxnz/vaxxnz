@@ -42,7 +42,7 @@ export default function RadiusSelect(props: Props) {
           const id = selectedOption.id;
           if (id && typeof id === "number") {
             props.setValue(id);
-            enqueueAnalyticsEvent('Radius changed', { radiusKm: id });
+            enqueueAnalyticsEvent("Radius changed", { radiusKm: id });
           }
         }
       }}
