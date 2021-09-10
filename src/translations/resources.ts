@@ -21,6 +21,21 @@ const languages: Language[] = [
     code: "en-NZ",
   },
   {
+    common: common_sa_SA,
+    label: "Gagaga Samoa",
+    code: "sa-SA",
+  },
+  {
+    common: common_zh_CN,
+    label: "中文（简体）",
+    code: "zh-CN",
+  },
+  {
+    common: common_zh_TW,
+    label: "中文（繁體）",
+    code: "zh-TW",
+  },
+  {
     common: common_es_ES,
     label: "Español",
     code: "es-ES",
@@ -36,25 +51,10 @@ const languages: Language[] = [
     code: "ru-RU",
   },
   {
-    common: common_zh_CN,
-    label: "中文（简体）",
-    code: "zh-CN",
-  },
-  {
-    common: common_zh_TW,
-    label: "中文（繁體）",
-    code: "zh-TW",
-  },
-  {
     common: common_ms_MY,
     label: "Bahasa Malaysia",
     code: "ms-MY",
-  },
-  {
-    common: common_sa_SA,
-    label: "Gagaga Samoa",
-    code: "sa-SA",
-  },
+  }
 ];
 
 const resources = languages.reduce(
