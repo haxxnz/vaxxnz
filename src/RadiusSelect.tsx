@@ -23,13 +23,6 @@ export default function RadiusSelect(props: Props) {
 
   return (
     <Select
-      overrides={{
-        Root: {
-          style: {
-            maxHeight: "40px",
-          },
-        },
-      }}
       searchable={false}
       clearable={false}
       options={options}

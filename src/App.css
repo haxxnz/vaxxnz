@@ -208,3 +208,7 @@ ul.NoticeList li {
 .WalkModal section:not(:last-child) {
   border-bottom: 1px solid lightgray;
 }
+
+[data-baseweb="select"] input[aria-hidden="true"] {
+  display: none;
+}
