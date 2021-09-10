@@ -11,7 +11,7 @@
     "lastUpdated": "Ongoongo fakamuimui taha {{updatedAt}}",
     "cancel": "Kaniseli",
     "website": "Uepi Saiti",
-    "address": "Address"
+    "address": "Tu'asila"
   },
   "navigation": {
     "about": "Fekau'aki",
@@ -35,7 +35,7 @@
     }
   },
   "walkins": {
-    "sectionHeader": "Open Today",
+    "sectionHeader": "Ava he aho ni",
     "openString": "Kamata{{openTimeString}}",
     "cancellationNotice": {
       "info": "Kataki' oua teke puka tu'a ua",
@@ -43,11 +43,11 @@
     },
     "cancelBooking": "Kaniseli",
     "noticeList": {
-      "title": "How to get Vaccinated",
-      "text": "Keep in mind that this location might have a long queue, and this venue might not have vaccines available today."
+      "title": "Fefe founga ho'o huhu",
+      "text": "Fakatokanga'i ange koe feitu'u ni e malava pe keke tatali fuoloa pea koe feitu'uni e malava pe ke ikai lava ha huhu he ahoni ai."
     },
-    "walkinAwailable": "<0 /> Walk-in vaccinations available",
-    "driveThroughAvailable": "<0 /> Drive-through vaccinations available",
+    "walkinAwailable": "<0 /> Fononga lalo feitu'u ata kihe huhu",
+    "driveThroughAvailable": "<0 /> Fononga mealele feitu'u ata kihe huhu",
     "phone": "Telefoni",
     "hours": "Houa'",
     "publicHolidays": "Aho malolo fakapuleanga",
@@ -68,19 +68,19 @@
       "howToBook": {
         "title": "founga ho'o puka ho'o 'apoinimeni",
         "stepOne": "E ma'u taimi moe feitu'u ihe lisi oku ha atu 'i lalo",
-        "stepTwo": "Lomi'i 'ihe <i>puka apoinimeni<i. tene 'ave koe kihe<0>bookmyvaccine.nz</0>",
+        "stepTwo": "Lomi'i 'ihe <i>puka apoinimeni<i> tene 'ave koe kihe<0>bookmyvaccine.nz</0>",
         "stepThree": "Fakafonu ho'o fakaikiiki",
         "stepFour": "Taimi e 'eke atu ai pea ke kumi kihe feitu'u moe taimi 'oku ke fiema'u"
       },
       "availableSlots": "Koe ngaahi feitu'u eni oku ata",
-      "noBookingsAvailable": "Aho oku ikai lava ha puka aponimeni:(",
+      "noBookingsAvailable": "Aho oku ikai lava ha puka aponimeni:",
       "backToCalendar": "Vakai kihe tohi mahina"
     }
   },
 
   "footer": {
     "message": "Kapau oku tokoni kiate koe ae uepisaiti koeni, kataki 'o vahevahe atu",
-    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup",
+    "addressFinderLinkCopy": "Fakamālō kia <0>Address Finder</0> 'ikai totongi sio kihe tu'sita",
     "links": {
       "contactUs": "Fetu'utaki mai",
       "rawData": "Ngaahi fakamatala",
