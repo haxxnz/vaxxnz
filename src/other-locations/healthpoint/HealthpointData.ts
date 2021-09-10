@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Coords } from "../location-picker/LocationPicker";
-import { getDistanceKm } from "../utils/distance";
+import { Coords } from "../../location-picker/LocationPicker";
+import { getDistanceKm } from "../../utils/distance";
 
 export interface OpennningHours {
   schedule: { [date: string]: string };
@@ -18,6 +18,7 @@ export enum Instruction {
 }
 
 export interface WalkInLocation {
+  isHealthpoint: true;
   lat: number;
   lng: number;
   name: string;
@@ -34,7 +35,7 @@ export interface WalkInLocation {
 const getWalkInData = (): Promise<WalkInLocation[]> =>
   fetch(
     "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/HEAD/healthpointLocations.json"
-  ).then((r) => r.json());
+  ).then((r) => ({ isHealthpoint: true, ...r.json() }));
 
 type WalkInDataResult =
   | { ok: WalkInLocation[] }

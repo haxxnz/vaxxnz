@@ -1,8 +1,9 @@
-import { Instruction } from "../walk-in/WalkInData";
+import { Instruction } from "../healthpoint/HealthpointData";
 import { CrowdsourcedLocation } from "./CrowdsourcedData";
 
 export const crowdsourcedLocations: CrowdsourcedLocation[] = [
   {
+    isCrowdSourced: true,
     name: "Auckland Airport Vaccination Centre",
     address: "22 Verissimo Drive, Mangere",
     lat: -36.9854795,
@@ -53,6 +54,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Kamo Pharmacy",
     address: "521A Kamo Road, Kamo, Whangārei 0112, New Zealand",
     lat: -35.6833483,
@@ -71,6 +73,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Alexandra Pharmacy",
     address: "4/6 Centennial Avenue, Alexandra 9340, New Zealand",
     lat: -45.2556964,
@@ -90,6 +93,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Queensgate",
     address:
       "Shop 130, Queensgate Shopping Centre Cnr Queens Drive and, Bunny Street, Hutt Central, Lower Hutt 5010, New Zealand",
@@ -109,6 +113,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Jeff Whittakers Pharmacy",
     address: "10 Napier Road, Havelock North 4130, New Zealand",
     lat: -39.6693175,
@@ -126,6 +131,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Waipukurau Pharmcy",
     address: "125 Ruataniwha Street, Waipukurau 4200, New Zealand",
     lat: -39.9950378,
@@ -144,6 +150,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Papakura",
     address:
       "102 Great South Road Roselands Shopping Centre, Papakura, Auckland 2110, New Zealand",
@@ -163,6 +170,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Thames Pharmacy",
     address: "546 Pollen Street, Thames 3500, New Zealand",
     lat: -37.1387619,
@@ -181,6 +189,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Marshalls Pharmacy",
     address: "220 Bank Street, Te Awamutu 3800, New Zealand",
     lat: -38.0111802,
@@ -200,6 +209,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Stephenson's Pharmacy",
     address: "Blacksmith Lane, Whitianga 3510, New Zealand",
     lat: -36.83455319999999,
@@ -208,6 +218,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     openingHours: [],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Flagstaff Pharmacy",
     address: "1158 River Road, Flagstaff, Hamilton 3210, New Zealand",
     lat: -37.738107,
@@ -226,6 +237,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Chartwell",
     address: "Shop 123/201 Hukanui Road, Chartwell, Hamilton 3248, New Zealand",
     lat: -37.75064589999999,
@@ -244,6 +256,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Tauranga",
     address: "53 Devonport Road, Tauranga 3141, New Zealand",
     lat: -37.6857931,
@@ -262,6 +275,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Barrington",
     address:
       "Barrington Shopping Centre, 54/54 Athelstan Street, CANTERBURY, Christchurch 8244, New Zealand",
@@ -281,6 +295,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Ashburton",
     address: "262 East Street, Ashburton 7700, New Zealand",
     lat: -43.9047955,
@@ -299,6 +314,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Hornby (via Maui Vaccination Clinic at The Hub Hornby)",
     address: "418 Main South Road, Hornby, Christchurch 8042, New Zealand",
     lat: -43.5426011,
@@ -317,6 +333,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Bishopdale Pharmacy",
     address: "37 Bishopdale Court, Bishopdale, Christchurch 8543, New Zealand",
     lat: -43.4887925,
@@ -335,6 +352,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy The Palms",
     address:
       "The Palms Shopping Centre 7, 19/21 Marshland Road, Shirley, Christchurch 8061, New Zealand",
@@ -354,6 +372,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Rangiora",
     address: "172-176 High Street, Rangiora 7400, New Zealand",
     lat: -43.30346,
@@ -372,6 +391,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Cashel Street Pharmacy",
     address:
       "111 Cashel Street, Christchurch Central City, Christchurch 8011, New Zealand",
@@ -391,6 +411,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Forte Pharmacy",
     address:
       "132 Peterborough Street, Christchurch Central City, Christchurch 8013, New Zealand",
@@ -410,6 +431,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Riccarton",
     address:
       "Shop 45/129 Riccarton Road, Riccarton, Christchurch 8440, New Zealand",
@@ -429,6 +451,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Centre City Pharmacy",
     address:
       "133 Great King Street, Dunedin Central, Dunedin 9016, New Zealand",
@@ -449,6 +472,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Knox Pharmacy",
     address: "402 George Street, North Dunedin, Dunedin 9016, New Zealand",
     lat: -45.8678529,
@@ -468,6 +492,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Taieri Pharmacy",
     address: "2 Factory Road, Mosgiel 9024, New Zealand",
     lat: -45.87390569999999,
@@ -486,6 +511,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Central Pharmacy Mosgiel",
     address: "130 Gordon Road, Fairfield, Mosgiel 9024, New Zealand",
     lat: -45.8750455,
@@ -504,6 +530,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Waikiwi Pharmacy",
     address: "280 North Road, Waikiwi, Invercargill 9810, New Zealand",
     lat: -46.3772221,
@@ -522,6 +549,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Dunedin",
     address:
       "Wall Street Mall, 211 George Street, Dunedin Central, Dunedin 9016, New Zealand",
@@ -541,6 +569,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Mangere East Pharmacy",
     address: "7A/359 Massey Road, Māngere East, Auckland 2024, New Zealand",
     lat: -36.9665141,
@@ -552,6 +581,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     openingHours: [],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Takanini Pharmacy",
     address: "3/226 Great South Road, Takanini, Auckland 2112, New Zealand",
     lat: -37.0480177,
@@ -571,6 +601,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Medi-Centre Pharmacy",
     address: "131 Lincoln Road, Henderson, Auckland 0610, New Zealand",
     lat: -36.8646558,
@@ -590,6 +621,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Whangarei Pharmacy",
     address: "32 Reyburn Street, Town Basin, Whangārei 0110, New Zealand",
     lat: -35.7269096,
@@ -608,6 +640,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Pacific Health Plus",
     address: "174 Bedford Street, Cannons Creek, Porirua 5024, New Zealand",
     lat: -41.142780414674775,

@@ -1,63 +1,52 @@
-import { WalkBox, WalkContainer } from "../VaxComponents";
-import WalkModal from "./modal/WalkInModal";
-import { getDistanceKm } from "../utils/distance";
-import { Coords } from "../location-picker/LocationPicker";
-import { Instruction, useWalkInLocations } from "./WalkInData";
+import { WalkBox, WalkContainer } from "../../VaxComponents";
+// import WalkModal from "./modal/WalkInModal";
+import { getDistanceKm } from "../../utils/distance";
+import { Coords } from "../../location-picker/LocationPicker";
+import { useCrowdsourcedLocations } from "./CrowdsourcedData";
 import { useState } from "react";
 import { Spinner } from "baseui/spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
-import { enqueueAnalyticsEvent } from "../utils/analytics";
+import CrowdsourcedModal from "./modal/CrowdsourcedModal";
+import { Instruction } from "../healthpoint/HealthpointData";
 import { Trans, useTranslation } from "react-i18next";
-import { useMediaQuery } from "react-responsive";
 
 export interface Props {
   coords: Coords;
   radiusKm: number;
 }
 
-export function WalkInSection({ coords, radiusKm }: Props) {
-  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
-  const locations = useWalkInLocations(coords, radiusKm);
-  const { t } = useTranslation("common");
+export function CrowdSourcedSection({ coords, radiusKm }: Props) {
+  const locations = useCrowdsourcedLocations(coords, radiusKm);
 
   const [selectedLocationIndex, setSelectedLocation] = useState<number>();
-  const [currentView, setCurrentView] = useState(!isMobileView ? 3 : 1);
+  const [currentView, setCurrentView] = useState(6);
   const openModal = (locationIndex: number) => {
-    const location =
-      "ok" in locations && locationIndex !== undefined
-        ? locations.ok[locationIndex]
-        : undefined;
-    enqueueAnalyticsEvent("Healthpoint location selected", {
-      locationName: location ? location.name : "",
-      radiusKm,
-    });
     setSelectedLocation(locationIndex);
   };
 
-  const clearSelectedLocation = () => {
-    setSelectedLocation(undefined);
-  };
+  const { t } = useTranslation("common");
+
+  const clearSelectedLocation = () => setSelectedLocation(undefined);
 
   const loadMore = () => {
-    setCurrentView((latest) => latest + 12);
+    setCurrentView((latest) => latest + 6);
   };
 
   return "error" in locations ||
     ("ok" in locations && locations.ok.length === 0) ? null : (
     <div>
-      <WalkModal
+      <CrowdsourcedModal
         clearSelectedLocation={clearSelectedLocation}
         location={
           "ok" in locations && selectedLocationIndex !== undefined
             ? locations.ok[selectedLocationIndex]
             : undefined
         }
-        radiusKm={radiusKm}
       />
       <h2 className="WalkSection">
         <Trans
-          i18nKey="walkins.sectionHeader"
+          i18nKey="walkins.otherLocations.sectionHeader"
           t={t}
           components={[<strong></strong>]}
         />
@@ -68,9 +57,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            minHeight: "20vh",
-            width: "100%",
-            backgroundColor: "white",
+            marginTop: "1rem",
           }}
         >
           <Spinner color="black" />
@@ -92,14 +79,17 @@ export function WalkInSection({ coords, radiusKm }: Props) {
                 (
                   {
                     name,
-                    isOpenToday,
                     lat: locationLat,
                     lng: locationLng,
-                    openTodayHours,
-                    instructionLis: instructions,
+                    openingHours,
+                    instructions,
                   },
                   index
                 ) => {
+                  const currentDay = new Date().getDay();
+                  const currentOpeningHours = openingHours.find(
+                    (oh) => oh.day === currentDay
+                  );
                   return (
                     <WalkBox onClick={() => openModal(index)} key={index}>
                       <section className="WalkItem">
@@ -128,10 +118,10 @@ export function WalkInSection({ coords, radiusKm }: Props) {
                           )}
                         </div>
 
-                        {isOpenToday && (
+                        {currentOpeningHours?.isOpen && (
                           <p>
                             {t("walkins.openString", {
-                              openTimeString: openTodayHours,
+                              openTimeString: currentOpeningHours.hours,
                             })}
                           </p>
                         )}
@@ -147,6 +137,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
               )}
           </WalkContainer>
 
+          {/* Over here @WALTS */}
           {"ok" in locations && locations.ok.length / currentView > 1 && (
             <button className="WalkSeeMore" onClick={loadMore}>
               {t("walkins.seeMore")}

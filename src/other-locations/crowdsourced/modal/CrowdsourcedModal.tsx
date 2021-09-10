@@ -5,10 +5,10 @@ import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import "../../App.css";
-import { CancelBookingNotice } from "../../common/CancelNotice";
-import { NoticeList, NoticeListItem } from "../../NoticeList";
-import { ModalGrid } from "../../VaxComponents";
-import { Instruction } from "../../walk-in/WalkInData";
+import { CancelBookingNotice } from "../../../common/CancelNotice";
+import { NoticeList, NoticeListItem } from "../../../NoticeList";
+import { ModalGrid } from "../../../VaxComponents";
+import { Instruction } from "../../healthpoint/HealthpointData";
 import { CrowdsourcedLocation } from "../CrowdsourcedData";
 
 type Props = {

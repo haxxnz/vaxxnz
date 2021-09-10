@@ -8,8 +8,8 @@ import { ShareButtons } from "./ShareButtons";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { DEFAULT_LOCATION } from "./utils/location";
 import { useSearchParams } from "./utils/url";
-import { WalkInSection } from "./walk-in/WalkInSection";
-import { CrowdSourcedSection } from "./crowdsourced/CrowdsourcedSection";
+import { OtherLocationsSection } from "./other-locations/OtherLocationsSection";
+import { CrowdSourcedSection } from "./other-locations/crowdsourced/CrowdsourcedSection";
 
 function App() {
   const { lat, lng } = useSearchParams();
@@ -90,7 +90,7 @@ function App() {
             lastUpdateTime={lastUpdateTime}
           />
 
-          <WalkInSection coords={coords} radiusKm={radiusKm} />
+          <OtherLocationsSection coords={coords} radiusKm={radiusKm} />
           <BookingSection
             coords={coords}
             radiusKm={radiusKm}

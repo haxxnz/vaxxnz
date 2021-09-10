@@ -8,7 +8,7 @@ import "../../App.css";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { NoticeList, NoticeListItem } from "../../NoticeList";
 import { WalkGrid } from "../../VaxComponents";
-import { Instruction, WalkInLocation } from "../WalkInData";
+import { Instruction, WalkInLocation } from "./HealthpointData";
 import { CancelBookingNotice } from "../../common/CancelNotice";
 import { useMediaQuery } from "react-responsive";
 
