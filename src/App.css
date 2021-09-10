@@ -224,6 +224,10 @@ div.WalkInTypes p:not(:first-of-type) {
   border-bottom: 1px solid lightgray;
 }
 
+[data-baseweb="select"] input[aria-hidden="true"] {
+  display: none;
+}
+
 ul.af_list.af_list {
   /* this is pretty atrocious, but the element is positioned at root so we have to calculate the width manually */
   width: calc(min(100vw - 80px, 600px));
