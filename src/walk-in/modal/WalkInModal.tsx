@@ -1,15 +1,13 @@
-import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "react-responsive";
 import "../../App.css";
+import { LocationNotice } from "../../common/LocationNotice";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { WalkGrid } from "../../VaxComponents";
-import { Instruction, WalkInLocation } from "../WalkInData";
-import { useMediaQuery } from "react-responsive";
-import { LocationNotice } from "../../common/LocationNotice";
+import { WalkInLocation } from "../WalkInData";
 
 type Props = {
   clearSelectedLocation: () => void;

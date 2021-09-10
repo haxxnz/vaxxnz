@@ -1,14 +1,11 @@
-import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import "../../App.css";
+import { LocationNotice } from "../../common/LocationNotice";
 import { NoticeList, NoticeListItem } from "../../NoticeList";
 import { ModalGrid } from "../../VaxComponents";
-import { LocationNotice } from "../../common/LocationNotice";
-import { Instruction } from "../../walk-in/WalkInData";
 import { CrowdsourcedLocation } from "../CrowdsourcedData";
 
 type Props = {
