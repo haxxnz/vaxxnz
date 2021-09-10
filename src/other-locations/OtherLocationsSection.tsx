@@ -1,4 +1,7 @@
-import { WalkBox, WalkContainer } from "../VaxComponents";
+import {
+  WalkBox as OtherBox,
+  WalkContainer as OtherContainer,
+} from "../VaxComponents";
 import WalkModal from "./healthpoint/HealthpointModal";
 import { getDistanceKm } from "../utils/distance";
 import { Coords } from "../location-picker/LocationPicker";
@@ -16,6 +19,7 @@ import { Trans, useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import { useOtherLocationsData } from "./OtherLocationsData";
 import { CrowdsourcedLocation } from "./crowdsourced/CrowdsourcedData";
+import CrowdsourcedModal from "./crowdsourced/CrowdsourcedModal";
 
 export interface Props {
   coords: Coords;
@@ -68,6 +72,10 @@ export function OtherLocationsSection({ coords, radiusKm }: Props) {
         location={selectedHealthpoint}
         radiusKm={radiusKm}
       />
+      <CrowdsourcedModal
+        clearSelectedLocation={clearSelectedLocation}
+        location={selectedCrowdsourced}
+      />
       <h2 className="WalkSection">
         <Trans
           i18nKey="walkins.sectionHeader"
@@ -98,23 +106,34 @@ export function OtherLocationsSection({ coords, radiusKm }: Props) {
         </div>
       ) : (
         <>
-          <WalkContainer>
+          <OtherContainer>
             {locations.ok
               .slice(0, currentView)
               .map(
                 (
-                  {
-                    name,
-                    isOpenToday,
-                    lat: locationLat,
-                    lng: locationLng,
-                    openTodayHours,
-                    instructionLis: instructions,
-                  },
+                  { name, lat: locationLat, lng: locationLng, ...location },
                   index
                 ) => {
+                  let openHours;
+                  let isOpenToday;
+                  let instructions;
+                  if ("isHealthpoint" in location) {
+                    openHours = location.openTodayHours;
+                    isOpenToday = location.isOpenToday;
+                    instructions = location.instructionLis;
+                  } else {
+                    instructions = location.instructions;
+                    const currentDay = new Date().getDay();
+                    const hours = location.openingHours.find(
+                      (oh) => oh.day === currentDay
+                    )!;
+                    isOpenToday = hours.isOpen;
+                    if (hours.isOpen) {
+                      openHours = hours.hours;
+                    }
+                  }
                   return (
-                    <WalkBox onClick={() => openModal(index)} key={index}>
+                    <OtherBox onClick={() => openModal(index)} key={index}>
                       <section className="WalkItem">
                         <div>
                           <h3>
@@ -144,7 +163,7 @@ export function OtherLocationsSection({ coords, radiusKm }: Props) {
                         {isOpenToday && (
                           <p>
                             {t("walkins.openString", {
-                              openTimeString: openTodayHours,
+                              openTimeString: openHours,
                             })}
                           </p>
                         )}
@@ -154,11 +173,11 @@ export function OtherLocationsSection({ coords, radiusKm }: Props) {
                         src="./arrow-right-1.svg"
                         alt=""
                       />
-                    </WalkBox>
+                    </OtherBox>
                   );
                 }
               )}
-          </WalkContainer>
+          </OtherContainer>
 
           {"ok" in locations && locations.ok.length / currentView > 1 && (
             <button className="WalkSeeMore" onClick={loadMore}>
