@@ -6,16 +6,15 @@ import {
   CalendarSectionContainer,
   MonthContainer,
 } from "../VaxComponents";
-import { BookingData } from "./booking/BookingData";
-import { BookingDateLocations } from "./booking/BookingDataTypes";
 import { differenceInDays, parse } from "date-fns";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
+import { CalendarData, CalendarDate } from "./CalendarData";
 
 interface BookingCalendarProps {
-  data: BookingData;
-  setActiveDate: (activeDate: BookingDateLocations | null) => void;
+  data: CalendarData;
+  setActiveDate: (activeDate: CalendarDate | null) => void;
   radiusKm: number;
 }
 
@@ -55,11 +54,11 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
 
   return (
     <CalendarContainer>
-      {Array.from(data.entries()).map(([month, dateLocationsPairsForMonth]) => (
-        <CalendarSectionContainer key={month}>
+      {Array.from(data.entries()).map(([monthStr, monthDates]) => (
+        <CalendarSectionContainer key={monthStr}>
           <div className="MonthSection">
             <h2>
-              {parse(month, "MMMM yyyy", new Date()).toLocaleDateString(
+              {parse(monthStr, "MMMM yyyy", new Date()).toLocaleDateString(
                 [i18next.language],
                 {
                   month: "long",
@@ -69,76 +68,60 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
             </h2>
           </div>
           <MonthContainer>
-            {dateLocationsPairsForMonth.map((dateLocationsPair) => (
-              <button
-                className={
-                  sum(
-                    dateLocationsPair.locationSlotsPairs.map(
-                      (locationSlotsPair) =>
-                        (locationSlotsPair.slots || []).length
-                    )
-                  ) === 0
-                    ? "zero-available"
-                    : ""
-                }
-                key={dateLocationsPair.dateStr}
-                onClick={() => {
-                  enqueueAnalyticsEvent("Calendar day picked", {
-                    datePicked: dateLocationsPair.dateStr,
-                    bookingDateInDays: differenceInDays(
-                      parse(
-                        dateLocationsPair.dateStr,
-                        "yyyy-MM-dd",
+            {Array.from(monthDates).map(([dateStr, locations]) => {
+              const availableCount = sum(
+                locations.map((location) =>
+                  "isBooking" in location ? location.slots?.length ?? 0 : 1
+                )
+              );
+              return (
+                <button
+                  className={availableCount === 0 ? "zero-available" : ""}
+                  key={dateStr}
+                  onClick={() => {
+                    enqueueAnalyticsEvent("Calendar day picked", {
+                      datePicked: dateStr,
+                      bookingDateInDays: differenceInDays(
+                        parse(dateStr, "yyyy-MM-dd", new Date()),
                         new Date()
                       ),
-                      new Date()
-                    ),
-                    radiusKm,
-                    spotsAvailable: sum(
-                      dateLocationsPair.locationSlotsPairs.map(
-                        (locationSlotsPair) =>
-                          (locationSlotsPair.slots || []).length
-                      )
-                    ),
-                  });
-                  setActiveDate(dateLocationsPair);
-                }}
-              >
-                <div>
-                  <h3>
-                    {parse(
-                      dateLocationsPair.dateStr,
-                      "yyyy-MM-dd",
-                      new Date()
-                    ).toLocaleDateString([i18next.language], {
-                      day: "numeric",
-                      month: "short",
-                    })}
-                    <br />{" "}
-                    <aside aria-hidden="true">
+                      radiusKm,
+                      spotsAvailable: availableCount,
+                    });
+                    setActiveDate(locations);
+                  }}
+                >
+                  <div>
+                    <h3>
                       {parse(
-                        dateLocationsPair.dateStr,
+                        dateStr,
                         "yyyy-MM-dd",
                         new Date()
                       ).toLocaleDateString([i18next.language], {
-                        weekday: "short",
+                        day: "numeric",
+                        month: "short",
                       })}
-                    </aside>
-                  </h3>
-                  <p>
-                    {t("calendar.numberOfAppointments", {
-                      sumAvailableTimes: sum(
-                        dateLocationsPair.locationSlotsPairs.map(
-                          (locationSlotsPair) =>
-                            (locationSlotsPair.slots || []).length
-                        )
-                      ),
-                    })}
-                  </p>
-                </div>
-                <img src="./arrow.svg" aria-hidden="true" alt="" />
-              </button>
-            ))}
+                      <br />{" "}
+                      <aside aria-hidden="true">
+                        {parse(
+                          dateStr,
+                          "yyyy-MM-dd",
+                          new Date()
+                        ).toLocaleDateString([i18next.language], {
+                          weekday: "short",
+                        })}
+                      </aside>
+                    </h3>
+                    <p>
+                      {t("calendar.numberOfAppointments", {
+                        sumAvailableTimes: availableCount,
+                      })}
+                    </p>
+                  </div>
+                  <img src="./arrow.svg" aria-hidden="true" alt="" />
+                </button>
+              );
+            })}
           </MonthContainer>
         </CalendarSectionContainer>
       ))}

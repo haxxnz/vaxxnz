@@ -2,8 +2,8 @@ import React, { FunctionComponent } from "react";
 import { Coords } from "../location-picker/LocationPicker";
 import { BookingCalendar, LoadingBookingCalendar } from "./Calendar";
 import { useBookingData } from "./booking/BookingData";
-import { BookingDateLocations } from "./booking/BookingDataTypes";
 import BookingModal from "./booking/BookingModal";
+import { CalendarDate, useCalendarLocations } from "./CalendarData";
 
 interface CalendarSectionProps {
   coords: Coords;
@@ -17,10 +17,9 @@ export const CalendarSection: FunctionComponent<CalendarSectionProps> = ({
   radiusKm,
   setLastUpdateTime,
 }) => {
-  const [activeDate, setActiveDate] =
-    React.useState<BookingDateLocations | null>(null);
+  const [activeDate, setActiveDate] = React.useState<CalendarDate | null>(null);
 
-  const data = useBookingData(coords, radiusKm, setLastUpdateTime);
+  const data = useCalendarLocations(coords, radiusKm, setLastUpdateTime);
   return (
     <>
       <BookingModal

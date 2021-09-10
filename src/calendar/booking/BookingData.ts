@@ -105,7 +105,7 @@ type BookingDataResult =
 
 export type BookingData = Map<
   MonthString,
-  Map<DateString, BookingDateLocations>
+  Map<DateString, BookingLocationSlotsPair[]>
 >;
 
 export const useBookingData = (
@@ -146,7 +146,10 @@ export const useBookingData = (
       year: "numeric",
     });
     const mapToPush = byMonth.get(month) ?? new Map();
-    mapToPush.set(dateLocationsPair.dateStr, dateLocationsPair);
+    mapToPush.set(
+      dateLocationsPair.dateStr,
+      dateLocationsPair.locationSlotsPairs
+    );
     byMonth.set(month, mapToPush);
   });
 

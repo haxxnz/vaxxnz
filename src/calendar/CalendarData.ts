@@ -14,12 +14,9 @@ export interface CrowdsourcedDateLocation {
   location: CrowdsourcedLocation;
 }
 
-type CalendarLocation = CrowdsourcedLocation | BookingLocationSlotsPair;
+export type CalendarLocation = CrowdsourcedLocation | BookingLocationSlotsPair;
 
-export interface CalendarDate {
-  dateStr: DateString;
-  locationSlotsPairs: CalendarLocation[];
-}
+export type CalendarDate = CalendarLocation[];
 
 export type CalendarMonth = Map<DateString, CalendarDate>;
 
@@ -53,18 +50,19 @@ export const useCalendarLocations = (
         });
         const month: CalendarMonth = months.get(monthStr) ?? new Map();
 
-        const day: CalendarDate = month.get(dateStr) ?? {
-          dateStr,
-          locationSlotsPairs: [],
-        };
+        const day: CalendarDate = month.get(dateStr) ?? [];
 
-        day.locationSlotsPairs.push(location);
+        day.push(location);
         month.set(dateStr, day);
         months.set(monthStr, month);
       }
     }
 
-    return { ok: months };
+    return {
+      ok: new Map(
+        Array.from(months).sort((a, b) => String(a[0]).localeCompare(b[0]))
+      ),
+    };
   } else {
     return bookingData;
   }
