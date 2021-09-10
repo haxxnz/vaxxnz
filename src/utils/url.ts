@@ -14,13 +14,11 @@ export function useSearchParams() {
     function onHistoryUpdate() {
       const { lat, lng, placeName } = getSearchParams();
       if (lat === null || lng === null || placeName === null) {
-        setSearchParams(
-          {
-            lat: DEFAULT_LOCATION.lat.toString(),
-            lng: DEFAULT_LOCATION.lng.toString(),
-            placeName: DEFAULT_LOCATION.placeName
-          }
-        )
+        setSearchParams({
+          lat: DEFAULT_LOCATION.lat.toString(),
+          lng: DEFAULT_LOCATION.lng.toString(),
+          placeName: DEFAULT_LOCATION.placeName,
+        });
       }
       setSearchParams(getSearchParams());
     }
