@@ -36,29 +36,28 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
   const [slots, setSlots] = useState<SlotWithAvailability[] | undefined>();
 
   const getSlots = async (url: string) => {
-    const res = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        vaccineData: "WyJhMVQ0YTAwMDAwMEhJS0NFQTQiXQ==",
-        groupSize: 1,
-        url: "https://app.bookmyvaccine.covid19.health.nz/appointment-select",
-        timeZone: "Pacific/Auckland",
-      }),
-    });
-    const dataStr = await res.text();
-    let data;
     try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          vaccineData: "WyJhMVQ0YTAwMDAwMEhJS0NFQTQiXQ==",
+          groupSize: 1,
+          url: "https://app.bookmyvaccine.covid19.health.nz/appointment-select",
+          timeZone: "Pacific/Auckland",
+        }),
+      });
+      const dataStr = await res.text();
+      let data;
+
       data = JSON.parse(dataStr);
+      return data;
     } catch (e) {
-      console.log("Couldn't parse JSON. Response text below");
-      console.log("res.status", res.status);
-      console.log(dataStr);
-      throw e;
+      console.log("Couldn't retreive slots");
+      return;
     }
-    return data;
   };
 
   useEffect(() => {
@@ -67,12 +66,20 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
         return;
       }
       const response = await getSlots(
-        `https://moh2.weston.sh/public/locations/${locationSlotsPair.location.extId}/date/${activeDate.dateStr}/slots`
+        `https://moh2.weston.sh/public/locationsz/${locationSlotsPair.location.extId}/date/${activeDate.dateStr}/slots`
       );
-      setSlots(response.slotsWithAvailability);
+      if (response) {
+        setSlots(response.slotsWithAvailability);
+      }
     }
     load();
-  }, [seen, slots, setSlots, locationSlotsPair.location.extId, activeDate.dateStr]);
+  }, [
+    seen,
+    slots,
+    setSlots,
+    locationSlotsPair.location.extId,
+    activeDate.dateStr,
+  ]);
 
   const slotsToDisplay =
     slots && slots.length > 0 ? slots : locationSlotsPair.slots;
