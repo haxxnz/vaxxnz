@@ -1,8 +1,11 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { Modal } from "baseui/modal";
 import { Button, KIND } from "baseui/button";
-import { ModalGrid, VaccineCentre } from "../VaxComponents";
-import { DateLocationsPair, LocationSlotsPair } from "./BookingDataTypes";
+import { ModalGrid } from "../VaxComponents";
+import {
+  DateLocationsPair,
+  LocationSlotsPair,
+} from "./BookingDataTypes";
 import { getDistanceKm } from "../utils/distance";
 import { parse } from "date-fns";
 import { sortByAsc } from "../utils/array";
@@ -11,10 +14,11 @@ import { Coords } from "../location-picker/LocationPicker";
 import { FunctionComponent } from "react";
 import { useTranslation, Trans } from "react-i18next";
 
-import { enqueueAnalyticsEvent } from '../utils/analytics';
-import { differenceInDays } from 'date-fns/esm';
+import { enqueueAnalyticsEvent } from "../utils/analytics";
 
 import { useMediaQuery } from "react-responsive";
+import BookingLocation from "./BookingLocation";
+
 type BookingsModalProps = {
   activeDate: DateLocationsPair | null;
   setActiveDate: (activeDate: DateLocationsPair | null) => void;
@@ -84,24 +88,24 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
             <h1>
               {activeDate
                 ? parse(
-                  activeDate.dateStr,
-                  "yyyy-MM-dd",
-                  new Date()
-                ).toLocaleDateString([], {
-                  weekday: "long",
-                })
+                    activeDate.dateStr,
+                    "yyyy-MM-dd",
+                    new Date()
+                  ).toLocaleDateString([], {
+                    weekday: "long",
+                  })
                 : ""}
               <br />
               {activeDate
                 ? parse(
-                  activeDate.dateStr,
-                  "yyyy-MM-dd",
-                  new Date()
-                ).toLocaleDateString([], {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                })
+                    activeDate.dateStr,
+                    "yyyy-MM-dd",
+                    new Date()
+                  ).toLocaleDateString([], {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })
                 : ""}
             </h1>
             <div>
@@ -132,7 +136,7 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
 
             <Button
               onClick={() => {
-                enqueueAnalyticsEvent('Back to Calendar clicked');
+                enqueueAnalyticsEvent("Back to Calendar clicked");
                 setActiveDate(null);
               }}
               overrides={{
@@ -165,100 +169,13 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
             sortByDistance(activeDate?.locationSlotsPairs, coords)
               .filter((locationSlotsPair) => locationSlotsPair.slots?.length)
               .map((locationSlotsPair) => (
-                <VaccineCentre key={locationSlotsPair.location.extId}>
-                  <h3>{locationSlotsPair.location.name}</h3>
-                  <p>
-                    {locationSlotsPair.location.displayAddress} (
-                    {t("core.kmAway", {
-                      distance: Math.floor(
-                        getDistanceKm(
-                          coords,
-                          locationSlotsPair.location.location
-                        )
-                      ),
-                    })}
-                    )
-                  </p>
-                  <p>
-                    <a
-                      href={`https://www.google.com/maps/dir/?api=1&destination=${locationSlotsPair.location.location.lat},${locationSlotsPair.location.location.lng}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() => enqueueAnalyticsEvent('Get Directions clicked', {
-                        radiusKm,
-                        spotsAvailable: locationSlotsPair.slots?.length || 0,
-                        bookingDateInDays: differenceInDays(parse(
-                          activeDate.dateStr,
-                          "yyyy-MM-dd",
-                          new Date()
-                        ), new Date()),
-                      })}
-                    >
-                      {t("core.getDirections")}
-                    </a>
-                  </p>
-                  <a
-                    href="https://bookmyvaccine.covid19.health.nz"
-                    target="_blank"
-                    referrerPolicy="origin"
-                    rel="noreferrer"
-                  >
-                    <div className="ButtonConstraint">
-                      <Button
-                        overrides={{
-                          Root: {
-                            style: {
-                              width: "100%",
-                              marginTop: "1rem",
-                              marginRight: 0,
-                              marginBottom: "1rem",
-                              marginLeft: 0,
-                            },
-                          },
-                        }}
-                        onClick={() =>
-                          enqueueAnalyticsEvent('Make a Booking clicked', {
-                            locationName: locationSlotsPair.location.name,
-                            radiusKm,
-                            spotsAvailable: locationSlotsPair.slots?.length || 0,
-                            bookingDateInDays: differenceInDays(parse(
-                              activeDate.dateStr,
-                              "yyyy-MM-dd",
-                              new Date()
-                            ), new Date()),
-                          })}
-                      >
-                        {t("core.makeABooking")}
-                      </Button>
-                    </div>
-                  </a>
-                  <p
-                    style={{
-                      marginTop: "0.25rem",
-                      marginRight: 0,
-                      marginBottom: "0.5rem",
-                      marginLeft: 0,
-                    }}
-                  >
-                    {t("calendar.modal.availableSlots")}
-                  </p>
-                  <section>
-                    {/* <p>1am</p> */}
-                    {locationSlotsPair.slots?.map((slot) => (
-                      <p key={slot.localStartTime}>
-                        {parse(
-                          slot.localStartTime,
-                          "HH:mm:ss",
-                          new Date()
-                        ).toLocaleTimeString("en-NZ", {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                          hour12: true,
-                        })}
-                      </p>
-                    ))}
-                  </section>
-                </VaccineCentre>
+                <BookingLocation
+                  key={locationSlotsPair.location.extId}
+                  locationSlotsPair={locationSlotsPair}
+                  coords={coords}
+                  radiusKm={radiusKm}
+                  activeDate={activeDate}
+                />
               ))
           ) : (
             <>
@@ -288,8 +205,8 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
       <div className="MobileOnly">
         <Button
           onClick={() => {
-            setActiveDate(null)
-            enqueueAnalyticsEvent('Back to Calendar clicked');
+            setActiveDate(null);
+            enqueueAnalyticsEvent("Back to Calendar clicked");
           }}
           overrides={{
             Root: {
@@ -311,3 +228,4 @@ const BookingsModal: FunctionComponent<BookingsModalProps> = ({
   );
 };
 export default BookingsModal;
+
