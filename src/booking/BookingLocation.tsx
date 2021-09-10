@@ -66,7 +66,7 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
         return;
       }
       const response = await getSlots(
-        `https://moh2.weston.sh/public/locationsz/${locationSlotsPair.location.extId}/date/${activeDate.dateStr}/slots`
+        `https://moh2.weston.sh/public/locations/${locationSlotsPair.location.extId}/date/${activeDate.dateStr}/slots`
       );
       if (response) {
         setSlots(response.slotsWithAvailability);
