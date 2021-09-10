@@ -5,6 +5,7 @@ import common_es_ES from "./locales/common_es-ES.json";
 import common_ms_MY from "./locales/common_ms-MY.json";
 import common_zh_CN from "./locales/common_zh-CN.json";
 import common_zh_TW from "./locales/common_zh-TW.json";
+import common_sm_SM from "./locales/common_sm-SM.json";
 
 export type Language = {
   common: Object; //typeof common_en_NZ;
@@ -20,6 +21,21 @@ const languages: Language[] = [
     code: "en-NZ",
   },
   {
+    common: common_sm_SM,
+    label: "Gagana Samoa",
+    code: "sm-SM",
+  },
+  {
+    common: common_zh_CN,
+    label: "中文（简体）",
+    code: "zh-CN",
+  },
+  {
+    common: common_zh_TW,
+    label: "中文（繁體）",
+    code: "zh-TW",
+  },
+  {
     common: common_es_ES,
     label: "Español",
     code: "es-ES",
@@ -33,16 +49,6 @@ const languages: Language[] = [
     common: common_ru_RU,
     label: "Русский",
     code: "ru-RU",
-  },
-  {
-    common: common_zh_CN,
-    label: "中文（简体）",
-    code: "zh-CN",
-  },
-  {
-    common: common_zh_TW,
-    label: "中文（繁體）",
-    code: "zh-TW",
   },
   {
     common: common_ms_MY,

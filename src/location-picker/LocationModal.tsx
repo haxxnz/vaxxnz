@@ -47,35 +47,29 @@ const LocationModal = (props: Props) => {
   const inputRef = useCallback(
     (domNode) => {
       if (domNode != null) {
-        const options = {
-          componentRestrictions: { country: "nz" },
-          fields: ["geometry", "name", "address_components"],
-          strictBounds: false,
-        };
-
-        const autocomplete = new google.maps.places.Autocomplete(
+        const widget = new AddressFinder.Widget(
           domNode,
-          options
+          "ARFHPVK67QXM49BEWDL3",
+          "NZ",
+          {
+            address_params: {
+              post_box: "0",
+              max: "7",
+            },
+            show_locations: true,
+            location_params: {
+              max: "4",
+            },
+          }
         );
 
-        autocomplete.addListener("place_changed", () => {
-          const place = autocomplete.getPlace();
-
-          if (
-            place.name &&
-            place.geometry != null &&
-            place.geometry.location != null
-          ) {
-            const { location } = place.geometry;
-            const lat = location.lat();
-            const lng = location.lng();
-            const suburbish = getSuburbIsh(place);
-            setLocation(lat, lng, suburbish);
-          }
+        widget.on("result:select", function (fullAddress, metaData) {
+          setLocation(
+            parseFloat(metaData.y),
+            parseFloat(metaData.x),
+            metaData.suburb
+          );
         });
-        return () => {
-          google.maps.event.clearListeners(autocomplete, "place_changed");
-        };
       }
     },
     [setLocation]
@@ -149,6 +143,7 @@ const LocationModal = (props: Props) => {
         inputRef={(e) => inputRef(e)}
         onChange={(_e) => {}}
       />
+
       <button
         className={"clickable"}
         style={{

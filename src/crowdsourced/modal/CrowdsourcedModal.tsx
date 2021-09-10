@@ -5,9 +5,9 @@ import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import "../../App.css";
-import { CancelBookingNotice } from "../../common/CancelNotice";
 import { NoticeList, NoticeListItem } from "../../NoticeList";
 import { ModalGrid } from "../../VaxComponents";
+import { LocationNotice } from "../../common/LocationNotice";
 import { Instruction } from "../../walk-in/WalkInData";
 import { CrowdsourcedLocation } from "../CrowdsourcedData";
 
@@ -56,7 +56,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
             flexDirection: "column",
             alignSelf: "center",
             padding: "1.5rem",
-            maxWidth: "860px",
+            maxWidth: "1200px",
           },
         },
       }}
@@ -70,31 +70,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
           >
             {location.name}
           </h1>
-          {location.instructions.includes(Instruction.walkIn) ??
-            (location.instructions.includes(Instruction.driveThrough) && (
-              <section>
-                <div className="WalkInTypes">
-                  {location.instructions.includes(Instruction.walkIn) && (
-                    <p>
-                      <Trans
-                        i18nKey="walkins.walkinAwailable"
-                        t={t}
-                        components={[<FontAwesomeIcon icon={faWalking} />]}
-                      />
-                    </p>
-                  )}
-                  {location.instructions.includes(Instruction.driveThrough) && (
-                    <p>
-                      <Trans
-                        i18nKey="walkins.driveThroughAvailable"
-                        t={t}
-                        components={[<FontAwesomeIcon icon={faCar} />]}
-                      />
-                    </p>
-                  )}
-                </div>
-              </section>
-            ))}
+          <LocationNotice instructions={location.instructions} />
 
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
@@ -146,7 +122,6 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
           </NoticeList>
         </div>
         <div style={{ height: "100%" }}>
-          <CancelBookingNotice className="desktop" />
           <section>
             <h3>{t("core.address")}</h3>
             <p>{location.address}</p>

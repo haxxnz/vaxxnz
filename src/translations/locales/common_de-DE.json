@@ -12,6 +12,7 @@
     "cancel": "Abbrechen",
     "website": "Webseite",
     "address": "Adresse"
+
   },
   "navigation": {
     "about": "Über uns",
@@ -87,6 +88,7 @@
       "rawData": "Rohdaten",
       "sourceCode": "Quellcode",
       "roadmap": "Roadmap"
-    }
+    },
+    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
   }
 }
