@@ -1,0 +1,91 @@
+{
+  "core": {
+    "title": "Vaxx.nz",
+    "tagline": "Feitu'u 'oku fai ai ae huhu COVID 19",
+    "subtitle": "Feitu'u eni oku ofi kiate koe keke huhu COVID 19",
+    "disclaimerNotAGovWebsite": "Oku 'ikai koe website ofiisiale 'eni ae puleanga. Ka oku ke fie huhu vakai kihe <0>bookmyvaccine.nz</0>",
+    "loading": "Fakahu...",
+    "getDirections": "Fiema'u fakahinohino",
+    "makeABooking": "Alea'i ha taimi",
+    "kmAway": "{{distance}}km mama'o'",
+    "lastUpdated": "Ongoongo fakamuimui taha {{updatedAt}}",
+    "cancel": "Kaniseli",
+    "website": "Uepi Saiti",
+    "address": "Address"
+  },
+  "navigation": {
+    "about": "Fekau'aki",
+    "contact": "Fetu'utaki",
+    "getInvolved": "Kau kiai",
+    "setLocation": "Teuteu ho feitu'u",
+    "setLocationConfirmation": "Feitu'u kuo teuteu'i",
+      "locationCTA": "Hiki'i ho'o tui'asila pe koe feitu'u",
+      "useCurrentLocation": "Ngaue'aki ho'o feitu'u lolotonga",
+      "geolocationNotSupported": "Geolocation is not supported by your browser"
+    },
+    "vaccinationsNear": "Vaccinations <0>near {{location}}</0>",
+    "unknownLocation": "ikai fakapapau'i 'ae feitu'u",
+    "distanceDropdown": {
+      "2km": "I loto  2km",
+      "5km": "I loto  5km",
+      "10km": "I loto  10km",
+      "25km": "I loto  25km",
+      "50km": "I loto  50km",
+      "100km": "I loto  100km"
+    }
+  },
+  "walkins": {
+    "sectionHeader": "Open Today",
+    "openString": "Kamata{{openTimeString}}",
+    "cancellationNotice": {
+      "info": "Kataki' oua teke puka tu'a ua",
+      "message": "Manatu'i ke kaniseli ho'o 'uluaki apoinimeni okapau 'oku 'i ai ha'o apoinimeni he <0>bookmyvaccine.nz</0>"
+    },
+    "cancelBooking": "Kaniseli",
+    "noticeList": {
+      "title": "How to get Vaccinated",
+      "text": "Keep in mind that this location might have a long queue, and this venue might not have vaccines available today."
+    },
+    "walkinAwailable": "<0 /> Walk-in vaccinations available",
+    "driveThroughAvailable": "<0 /> Drive-through vaccinations available",
+    "phone": "Telefoni",
+    "hours": "Houa'",
+    "publicHolidays": "Aho malolo fakapuleanga",
+    "otherExeptions": "Mea' oku ngofua",
+    "seeMore": "Kiha toe fakaikiiki",
+    "otherLocations": {
+      "sectionHeader": "Ngaahi feitu'u<0>- oku ava he 'ahoni ki he huhu</0>",
+      "disclaimer": {
+        "title": "Koe ngaahi feitu'u eni 'oku ata kihe kakai",
+        "message": "Koe ngaahi fakamatala koeni heikai 100% ka ke kataki vakai kihe uepisaiti"
+      }
+    }
+  },
+  "calendar": {
+    "month": "{{monthString, MMMM yyyy}}",
+    "numberOfAppointments": "{{sumAvailableTimes}} ngaahi taimi eni oku ata'",
+    "modal": {
+      "howToBook": {
+        "title": "founga ho'o puka ho'o 'apoinimeni",
+        "stepOne": "E ma'u taimi moe feitu'u ihe lisi oku ha atu 'i lalo",
+        "stepTwo": "Lomi'i 'ihe <i>puka apoinimeni<i. tene 'ave koe kihe<0>bookmyvaccine.nz</0>",
+        "stepThree": "Fakafonu ho'o fakaikiiki",
+        "stepFour": "Taimi e 'eke atu ai pea ke kumi kihe feitu'u moe taimi 'oku ke fiema'u"
+      },
+      "availableSlots": "Koe ngaahi feitu'u eni oku ata",
+      "noBookingsAvailable": "Aho oku ikai lava ha puka aponimeni:(",
+      "backToCalendar": "Vakai kihe tohi mahina"
+    }
+  },
+
+  "footer": {
+    "message": "Kapau oku tokoni kiate koe ae uepisaiti koeni, kataki 'o vahevahe atu",
+    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup",
+    "links": {
+      "contactUs": "Contact Us",
+      "rawData": "Raw Data",
+      "sourceCode": "Source Code",
+      "roadmap": "Roadmap"
+    }
+  }
+}
