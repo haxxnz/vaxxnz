@@ -10,7 +10,8 @@
     "kmAway": "{{distance}} 公里",
     "lastUpdated": "最近更新於 {{updatedAt}}",
     "cancel": "取消",
-    "website": "Website"
+    "website": "Website",
+    "address": "Address"
   },
   "navigation": {
     "about": "關於",
@@ -86,6 +87,7 @@
       "rawData": "原始資料",
       "sourceCode": "原始碼",
       "roadmap": "Roadmap"
-    }
+    },
+    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
   }
 }

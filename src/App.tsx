@@ -107,6 +107,15 @@ function App() {
           </div>
           <br />
           <p>
+            <Trans
+              i18nKey="footer.addressFinderLinkCopy"
+              t={t}
+              // eslint-disable-next-line jsx-a11y/anchor-has-content
+              components={[<a href="https://addressfinder.nz"></a>]}
+            />
+          </p>
+          <br />
+          <p>
             <a
               href="https://airtable.com/shrxuw3vSp2yRPrG7"
               target="_blank"

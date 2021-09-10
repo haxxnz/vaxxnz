@@ -616,7 +616,8 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     website: "https://www.phplus.co.nz",
     telephone: "0800 747 587",
     bookingWebsite: "https://calendly.com/pacifichealthplus/covidvaccine",
-    additionalInformation: "Book in for your first and/or second vaccine on an available day. If you are booking your second vaccine, please allow at least 6 weeks from the date of your first vaccination.",
+    additionalInformation:
+      "Book in for your first and/or second vaccine on an available day. If you are booking your second vaccine, please allow at least 6 weeks from the date of your first vaccination.",
     openingHours: [
       { day: 1, isOpen: true, hours: "9:00 AM – 4:30 PM" },
       { day: 2, isOpen: true, hours: "9:00 AM – 4:30 PM" },

@@ -10,7 +10,8 @@
     "kmAway": "{{distance}}km jauh",
     "lastUpdated": "Kemas kini terakhir {{updatedAt}}",
     "cancel": "Batal",
-    "website": "Website"
+    "website": "Website",
+    "address": "Address"
   },
   "navigation": {
     "about": "Mengenai",
@@ -85,6 +86,7 @@
       "rawData": "Maklumat Asli",
       "sourceCode": "Source Code",
       "roadmap": "Rancangan"
-    }
+    },
+    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
   }
 }

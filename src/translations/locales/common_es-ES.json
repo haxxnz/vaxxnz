@@ -10,7 +10,8 @@
     "kmAway": "{{distance}}km de distancia",
     "lastUpdated": "Última actualización {{updatedAt}}",
     "cancel": "Cancelar",
-    "website": "Website"
+    "website": "Website",
+    "address": "Address"
   },
   "navigation": {
     "about": "Sobre nosotros",
@@ -86,6 +87,7 @@
       "rawData": "Datos brutos",
       "sourceCode": "Código fuente",
       "roadmap": "mapa vial"
-    }
+    },
+    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
   }
 }
