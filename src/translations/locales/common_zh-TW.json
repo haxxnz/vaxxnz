@@ -10,7 +10,8 @@
     "kmAway": "{{distance}} 公里",
     "lastUpdated": "最近更新於 {{updatedAt}}",
     "cancel": "取消",
-    "website": "Website"
+    "website": "Website",
+    "address": "Address"
   },
   "navigation": {
     "about": "關於",
@@ -60,7 +61,8 @@
         "title": "This location has been submitted by the public",
         "message": "The information here may not be 100% accurate. Please refer to the locations website."
       }
-    }
+    },
+    "closed": "Closed"
   },
   "calendar": {
     "month": "{{monthString, yyyy mmm}}",

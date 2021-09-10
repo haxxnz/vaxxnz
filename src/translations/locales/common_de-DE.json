@@ -10,7 +10,8 @@
     "kmAway": "{{distance}}km entfernt",
     "lastUpdated": "Actualisiert {{updatedAt}}",
     "cancel": "Abbrechen",
-    "website": "Webseite"
+    "website": "Webseite",
+    "address": "Adresse"
   },
   "navigation": {
     "about": "Über uns",
@@ -60,7 +61,8 @@
         "title": "Dieser Ort wurde von der Öffentlichkeit eingereicht",
         "message": "Die Informationen hier sind möglicherweise nicht 100% genau. Bitte informieren Sie sich auf der Website der Impfstelle."
       }
-    }
+    },
+    "closed": "Geschlossen"
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",

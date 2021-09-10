@@ -10,7 +10,8 @@
     "kmAway": "{{distance}}km de distancia",
     "lastUpdated": "Última actualización {{updatedAt}}",
     "cancel": "Cancelar",
-    "website": "Website"
+    "website": "Website",
+    "address": "Address"
   },
   "navigation": {
     "about": "Sobre nosotros",
@@ -60,7 +61,8 @@
         "title": "This location has been submitted by the public",
         "message": "The information here may not be 100% accurate. Please refer to the locations website."
       }
-    }
+    },
+    "closed": "Closed"
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
