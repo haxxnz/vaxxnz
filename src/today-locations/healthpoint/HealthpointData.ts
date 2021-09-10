@@ -15,6 +15,7 @@ export enum Instruction {
   walkIn = "Walk in",
   invitationOnly = "By invitation only",
   driveThrough = "Drive through",
+  allowsBookings = "Allows bookings",
 }
 
 export interface HealthpointLocation {
