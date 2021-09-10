@@ -57,8 +57,8 @@
     "otherLocations": {
       "sectionHeader": "<0>今日开放的</0>其他接种场所",
       "disclaimer": {
-        "title": "此内容由公众发贴上传",
-        "message": "可能并非百分之百准确，详情请查询该接种场所网站。"
+        "title": "此信息来自公众",
+        "message": "不能保证百分之百准确，详情请查询其网站。"
       }
     }
   },
