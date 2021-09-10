@@ -22,7 +22,7 @@ const languages: Language[] = [
   },
   {
     common: common_sa_SA,
-    label: "Gagaga Samoa",
+    label: "Gagana Samoa",
     code: "sa-SA",
   },
   {
@@ -54,7 +54,7 @@ const languages: Language[] = [
     common: common_ms_MY,
     label: "Bahasa Malaysia",
     code: "ms-MY",
-  }
+  },
 ];
 
 const resources = languages.reduce(

@@ -3,14 +3,14 @@
     "title": "Vaxx.nz",
     "tagline": "Avanoa o Tuipuipui ole COVID-19",
     "subtitle": "Tagai i auala e faia ai tuipuipui i nofoaga latalata ane ia te oe.",
-    "disclaimerNotAGovWebsite": "O lenei 'upega tafailagi e lei faia ele Malo. Ile faatinoina o tuipuipui asiasi ane ile upega tafailagi lea, <0>bookmyvaccine.nz</0>",
+    "disclaimerNotAGovWebsite": "O lenei 'upega tafa'ilagi e lei faia ele Malo. Ile faatinoina o tuipuipui asiasi ane ile 'upega tafa'ilagi lea, <0>bookmyvaccine.nz</0>",
     "loading": "utaina",
     "getDirections": "Vaai fa'atonuga",
     "makeABooking": "Faamauina lou avanoa",
     "kmAway": "{{distance}} kilomita le alu",
     "lastUpdated": "Taimi mulimuli ga fa'afouina ai - {{updatedAt}}",
     "cancel": "Fa'aleaogaina",
-    "website": "Upega tafa'ilagi"
+    "website": "'Upega tafa'ilagi"
   },
   "navigation": {
     "about": "About",
@@ -22,7 +22,7 @@
       "locaitonTitle": "Nofoaga",
       "locationCTA": "Tusi i lalo lou tuatusi poo le alalafaga",
       "useCurrentLocation": "Fa'aoga le nofoaga o loo e nofo iai nei",
-      "geolocationNotSupported": "O nofoaga e le lagolagoina e le 'upega tafailagi"
+      "geolocationNotSupported": "O nofoaga e le lagolagoina e le 'upega tafa'ilagi"
     },
     "vaccinationsNear": "Avanoa mo tuipuipui <0>lata ane {{location}}</0>",
     "unknownLocation": "Nofoaga le mailoa",
@@ -40,7 +40,7 @@
     "openString": "Taimi matala - {{openTimeString}}",
     "cancellationNotice": {
       "info": "Faamolemole e aua le faia faalua se avanoa",
-      "message": "Manatua ia faaleaogaina se avanoa pe afai sa faia muamua sou avanoa ile upega tafailagi lea <0>bookmyvaccine.nz</0>"
+      "message": "Manatua ia faaleaogaina se avanoa pe afai sa faia muamua sou avanoa ile 'upega tafa'ilagi lea <0>bookmyvaccine.nz</0>"
     },
     "cancelBooking": "Fa'aleaogaina",
     "noticeList": {
@@ -58,7 +58,7 @@
       "sectionHeader": "O isi nofoaga mo tuipuipui <0>- mata ile asō</0>",
       "disclaimer": {
         "title": "O nofoaga nei sa tuuina mai e tagata ole Atunuu",
-        "message": "I lenei auiliiliga atonu e le 100 pasene sona atoatoa. Fa'amolemole tagai ane ile nofoaga ile 'upega tafailagi."
+        "message": "I lenei auiliiliga atonu e le 100 pasene sona atoatoa. Fa'amolemole tagai ane ile nofoaga ile 'upega tafa'ilagi."
       }
     }
   },
@@ -80,7 +80,7 @@
   },
 
   "footer": {
-    "message": "Afai sa fesoasoani lenei 'upega tafailagi mo oe, fa'amolemole faasoa atu i isi ",
+    "message": "Afai sa fesoasoani lenei 'upega tafa'ilagi mo oe, fa'amolemole faasoa atu i isi ",
     "links": {
       "contactUs": "Fa'afeso'otai matou",
       "rawData": "Raw Data",
