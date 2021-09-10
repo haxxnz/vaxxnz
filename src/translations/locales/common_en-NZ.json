@@ -52,6 +52,7 @@
     "driveThroughAvailable": "<0 /> Drive-through vaccinations available",
     "phone": "Phone",
     "hours": "Hours",
+    "closed": "Closed",
     "publicHolidays": "Public Holidays",
     "otherExeptions": "Exceptions",
     "seeMore": "See More",
