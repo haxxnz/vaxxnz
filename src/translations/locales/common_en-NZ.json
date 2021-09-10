@@ -82,6 +82,7 @@
 
   "footer": {
     "message": "If this site helped you, please consider sharing",
+    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup",
     "links": {
       "contactUs": "Contact Us",
       "rawData": "Raw Data",

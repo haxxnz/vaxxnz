@@ -107,8 +107,12 @@ function App() {
           </div>
           <br />
           <p>
-            Thanks to <a href="https://addressfinder.nz">AddressFinder</a> for
-            free-of-charge address lookup
+            <Trans
+              i18nKey="footer.addressFinderLinkCopy"
+              t={t}
+              // eslint-disable-next-line jsx-a11y/anchor-has-content
+              components={[<a href="https://addressfinder.nz"></a>]}
+            />
           </p>
           <br />
           <p>
