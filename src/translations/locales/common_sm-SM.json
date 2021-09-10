@@ -10,7 +10,8 @@
     "kmAway": "{{distance}} kilomita le alu",
     "lastUpdated": "Taimi mulimuli ga fa'afouina ai - {{updatedAt}}",
     "cancel": "Fa'aleaogaina",
-    "website": "'Upega tafa'ilagi"
+    "website": "'Upega tafa'ilagi",
+    "address": "Address"
   },
   "navigation": {
     "about": "About",
@@ -72,13 +73,12 @@
         "stepTwo": "Kiliki le <i>Faamauina lou avanoa</i> button, e taitai atu oe ile itulau lea  <0>bookmyvaccine.nz</0>",
         "stepThree": "Tusia lou tala'aga.",
         "stepFour": "Ole a fesiligia, e vaai se nofoaga ma se taimi e fetaui lelei ma oe."
-      },  
+      },
       "availableSlots": "Avanoa fetaui",
       "noBookingsAvailable": "Leai ni avanoa o maua ile asō :(",
       "backToCalendar": "Toe foi i tua ile Kalena"
     }
   },
-
   "footer": {
     "message": "Afai sa fesoasoani lenei 'upega tafa'ilagi mo oe, fa'amolemole faasoa atu i isi ",
     "links": {
@@ -86,6 +86,7 @@
       "rawData": "Raw Data",
       "sourceCode": "Source Code",
       "roadmap": "Roadmap"
-    }
+    },
+    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
   }
 }
