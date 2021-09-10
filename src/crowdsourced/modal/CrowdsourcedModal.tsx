@@ -175,12 +175,23 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
               <h3>{t("walkins.hours")}</h3>
               {location.openingHours.map((oh, index) => {
                 return (
-                  <p key={index}>
-                    {dayOfWeekToString(oh.day)}
-                    {": "}
-                    {oh.isOpen ? oh.hours : t("walkins.closed")}
-                    <br />
-                  </p>
+                  <>
+                    <p key={index} style={{ float: "left" }}>
+                      {dayOfWeekToString(oh.day)}{" "}
+                    </p>
+                    <p style={{ float: "right" }}>
+                      {oh.isOpen ? oh.hours : t("walkins.closed")}
+                    </p>
+                    <br style={{ lineHeight: "0.5rem" }} />
+                    <hr
+                      style={{
+                        width: "100%",
+                        height: 1,
+                        padding: 0,
+                        margin: "0 0 8px 0",
+                      }}
+                    />
+                  </>
                 );
               })}
             </section>
