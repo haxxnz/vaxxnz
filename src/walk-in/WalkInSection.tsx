@@ -7,8 +7,9 @@ import { useState } from "react";
 import { Spinner } from "baseui/spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
-import { enqueueAnalyticsEvent } from '../utils/analytics';
+import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { Trans, useTranslation } from "react-i18next";
+import { useMediaQuery } from "react-responsive";
 
 export interface Props {
   coords: Coords;
@@ -16,11 +17,12 @@ export interface Props {
 }
 
 export function WalkInSection({ coords, radiusKm }: Props) {
+  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
   const locations = useWalkInLocations(coords, radiusKm);
   const { t } = useTranslation("common");
 
   const [selectedLocationIndex, setSelectedLocation] = useState<number>();
-  const [currentView, setCurrentView] = useState(6);
+  const [currentView, setCurrentView] = useState(!isMobileView ? 3 : 1);
   const openModal = (locationIndex: number) => {
     const location =
       "ok" in locations && locationIndex !== undefined
@@ -34,11 +36,11 @@ export function WalkInSection({ coords, radiusKm }: Props) {
   };
 
   const clearSelectedLocation = () => {
-    setSelectedLocation(undefined)
+    setSelectedLocation(undefined);
   };
 
   const loadMore = () => {
-    setCurrentView((latest) => latest + 6);
+    setCurrentView((latest) => latest + 12);
   };
 
   return "error" in locations ||
@@ -66,8 +68,14 @@ export function WalkInSection({ coords, radiusKm }: Props) {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+<<<<<<< HEAD
             marginTop: "1rem",
             marginBottom: "1rem",
+=======
+            minHeight: "20vh",
+            width: "100%",
+            backgroundColor: "white",
+>>>>>>> a8d0e3354d6de97837d8728683bc4c81dc0079bc
           }}
         >
           <Spinner color="black" />

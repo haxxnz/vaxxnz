@@ -9,7 +9,9 @@
     "makeABooking": "Make a Booking",
     "kmAway": "{{distance}}km away",
     "lastUpdated": "Last updated {{updatedAt}}",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "website": "Website",
+    "address": "Address"
   },
   "navigation": {
     "about": "About",
@@ -23,7 +25,7 @@
       "useCurrentLocation": "Use my current location",
       "geolocationNotSupported": "Geolocation is not supported by your browser"
     },
-    "vaccinationsNear": "Available Vaccinations <0>near {{location}}</0>",
+    "vaccinationsNear": "Vaccinations <0>near {{location}}</0>",
     "unknownLocation": "Unknown Location",
     "distanceDropdown": {
       "2km": "Within 2km",
@@ -35,7 +37,7 @@
     }
   },
   "walkins": {
-    "sectionHeader": "Walk-in & Drive-thru Vaccinations <0>- Open Today</0>",
+    "sectionHeader": "Open Today",
     "openString": "Open {{openTimeString}}",
     "cancellationNotice": {
       "info": "Please Don't Double-book",
@@ -43,16 +45,23 @@
     },
     "cancelBooking": "Cancel",
     "noticeList": {
-      "title": "Availability Is Not Guaranteed",
-      "text": "Keep in mind that walk-in locations listed might not necessarily have capacity available."
+      "title": "How to get Vaccinated",
+      "text": "Keep in mind that this location might have a long queue, and this venue might not have vaccines available today."
     },
-    "walkinAwailable": "<0 /> Walk-in available",
-    "driveThroughAvailable": "<0 /> Drive-through available",
+    "walkinAwailable": "<0 /> Walk-in vaccinations available",
+    "driveThroughAvailable": "<0 /> Drive-through vaccinations available",
     "phone": "Phone",
     "hours": "Hours",
     "publicHolidays": "Public Holidays",
     "otherExeptions": "Exceptions",
-    "seeMore": "See More"
+    "seeMore": "See More",
+    "otherLocations": {
+      "sectionHeader": "Other Vaccination Locations <0>- Open Today</0>",
+      "disclaimer": {
+        "title": "This location has been submitted by the public",
+        "message": "The information here may not be 100% accurate. Please refer to the location's website."
+      }
+    }
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
@@ -70,6 +79,7 @@
       "backToCalendar": "Back to Calendar"
     }
   },
+
   "footer": {
     "message": "If this site helped you, please consider sharing",
     "links": {
