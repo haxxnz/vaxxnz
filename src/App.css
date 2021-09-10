@@ -51,8 +51,8 @@ button.zero-available div p {
 }
 
 .cancel-booking-notice {
-  background-color: rgba(39, 128, 11, 0.07);
-  color: rgb(39, 128, 11);
+  background-color: rgb(58 126 210 / 11%);
+  color: rgb(26 91 171);
   padding: 12px 13px;
   margin-top: 10px;
 }
@@ -181,15 +181,30 @@ ul.NoticeList li {
 
 .WalkInTypes {
   margin-top: 10px;
-  border-radius: 120px;
-  background-color: #E6F2ED;
-  color: black;
+  border-radius: 14px;
+  border: 2px solid #b9dacc;
   width: fit-content;
+  overflow: hidden;
+}
+
+.WalkInTypes h3 {
+  background-color: #E6F2ED;
+  color: #006138;
   padding: 0.5rem 1rem;
 }
 
-.WalkInTypes p:not(:first-child) {
-  margin-top: 5px;
+.WalkInTypes h3 svg {
+  margin-right: 10px;
+}
+
+div.WalkInTypes p {
+  padding: 0.5rem 0.5rem;
+  margin: 0 0.5rem;
+  font-size: 1rem;
+}
+
+div.WalkInTypes p:not(:first-of-type) {
+  border-top: 1px solid #b9dacc;
 }
 
 .WalkModal section {
