@@ -21,7 +21,7 @@
     "locationModal": {
       "locaitonTitle": "Nofoaga",
       "locationCTA": "Tusi i lalo lou tuatusi poo le alalafaga",
-      "useCurrentLocation": "Fa'aoga le nofoaga o loo e nofo iai nei",
+      "useCurrentLocation": "Fa'aoga le nofoaga o loo e nofo ai nei",
       "geolocationNotSupported": "O nofoaga e le lagolagoina e le 'upega tafa'ilagi"
     },
     "vaccinationsNear": "Avanoa mo tuipuipui <0>lata ane {{location}}</0>",
@@ -40,7 +40,7 @@
     "openString": "Taimi matala - {{openTimeString}}",
     "cancellationNotice": {
       "info": "Faamolemole e aua le faia faalua se avanoa",
-      "message": "Manatua ia faaleaogaina se avanoa pe afai sa faia muamua sou avanoa ile 'upega tafa'ilagi lea <0>bookmyvaccine.nz</0>"
+      "message": "Manatua ia faaleaogaina se isi avanoa sa faia muamua ile 'upega tafailagi lea <0>bookmyvaccine.nz</0>"
     },
     "cancelBooking": "Fa'aleaogaina",
     "noticeList": {
@@ -74,7 +74,7 @@
         "stepFour": "Ole a fesiligia, e vaai se nofoaga ma se taimi e fetaui lelei ma oe."
       },  
       "availableSlots": "Avanoa fetaui",
-      "noBookingsAvailable": "Leai ni avanoa o maua ile aso lenei :(",
+      "noBookingsAvailable": "Leai ni avanoa o maua ile asō :(",
       "backToCalendar": "Toe foi i tua ile Kalena"
     }
   },
