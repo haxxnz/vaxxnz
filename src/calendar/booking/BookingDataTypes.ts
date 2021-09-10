@@ -41,12 +41,13 @@ export interface LocationsData {
   lastUpdatedAt: string;
 }
 
-export interface LocationSlotsPair {
+export interface BookingLocationSlotsPair {
+  isBooking: true;
   location: Location;
   slots: SlotWithAvailability[] | undefined;
 }
 
 export interface BookingDateLocations {
   dateStr: string;
-  locationSlotsPairs: LocationSlotsPair[];
+  locationSlotsPairs: BookingLocationSlotsPair[];
 }

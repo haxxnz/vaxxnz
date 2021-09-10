@@ -2,7 +2,10 @@
 import { Modal } from "baseui/modal";
 import { Button, KIND } from "baseui/button";
 import { ModalGrid, VaccineCentre } from "../../VaxComponents";
-import { BookingDateLocations, LocationSlotsPair } from "./BookingDataTypes";
+import {
+  BookingDateLocations,
+  BookingLocationSlotsPair,
+} from "./BookingDataTypes";
 import { getDistanceKm } from "../../utils/distance";
 import { parse } from "date-fns";
 import { sortByAsc } from "../../utils/array";
@@ -57,9 +60,9 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
     : { ...desktopDialogStyle, ...sharedDialogStyle };
 
   function sortByDistance(
-    locationSlotsPairs: LocationSlotsPair[] | undefined,
+    locationSlotsPairs: BookingLocationSlotsPair[] | undefined,
     coords: Coords
-  ): LocationSlotsPair[] {
+  ): BookingLocationSlotsPair[] {
     return sortByAsc(locationSlotsPairs ?? [], (locationSlotsPair) => {
       const distanceKm = getDistanceKm(
         coords,

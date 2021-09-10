@@ -4,11 +4,12 @@ import { DateLocationsPairsContext } from "../../contexts";
 import filterOldDates from "../../filterOldDates";
 import { Coords } from "../../location-picker/LocationPicker";
 import { getDistanceKm } from "../../utils/distance";
+import { DateString, MonthString } from "../CalendarData";
 import {
   BookingDateLocations,
   Location,
   LocationsData,
-  LocationSlotsPair,
+  BookingLocationSlotsPair,
 } from "./BookingDataTypes";
 
 const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
@@ -82,12 +83,12 @@ async function getMyCalendar(coords: Coords, radiusKm: number) {
     // 90 days in the future
     const date = new Date().setDate(today.getDate() + i);
     const dateStr = format(date, "yyyy-MM-dd");
-    const locationSlotsPairs: LocationSlotsPair[] = [];
+    const locationSlotsPairs: BookingLocationSlotsPair[] = [];
     for (let j = 0; j < availabilityDatesAndLocations.length; j++) {
       const availabilityDatesAndLocation = availabilityDatesAndLocations[j];
       const { location, availabilityDates } = availabilityDatesAndLocation;
       const slots = availabilityDates ? availabilityDates[dateStr] : [];
-      locationSlotsPairs.push({ location, slots });
+      locationSlotsPairs.push({ isBooking: true, location, slots });
     }
     dateLocationsPairs.push({
       dateStr,
@@ -102,7 +103,10 @@ type BookingDataResult =
   | { error: Error }
   | { loading: true };
 
-export type BookingData = Map<string, BookingDateLocations[]>;
+export type BookingData = Map<
+  MonthString,
+  Map<DateString, BookingDateLocations>
+>;
 
 export const useBookingData = (
   coords: Coords,
@@ -134,16 +138,16 @@ export const useBookingData = (
     setLoading(false);
   }, [coords, radiusKm, setDateLocationsPairs, setLastUpdateTime]);
 
-  let byMonth = new Map<string, BookingDateLocations[]>();
+  let byMonth: BookingData = new Map();
   dateLocationsPairs.forEach((dateLocationsPair) => {
     const date = parse(dateLocationsPair.dateStr, "yyyy-MM-dd", new Date());
     const month = date.toLocaleString("en-NZ", {
       month: "long",
       year: "numeric",
     });
-    const arrayToPush = byMonth.get(month) ?? [];
-    arrayToPush.push(dateLocationsPair);
-    byMonth.set(month, arrayToPush);
+    const mapToPush = byMonth.get(month) ?? new Map();
+    mapToPush.set(dateLocationsPair.dateStr, dateLocationsPair);
+    byMonth.set(month, mapToPush);
   });
 
   useEffect(() => {
