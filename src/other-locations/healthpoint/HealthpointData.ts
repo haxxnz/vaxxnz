@@ -35,7 +35,9 @@ export interface WalkInLocation {
 const getWalkInData = (): Promise<WalkInLocation[]> =>
   fetch(
     "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/HEAD/healthpointLocations.json"
-  ).then((r) => ({ isHealthpoint: true, ...r.json() }));
+  )
+    .then((r) => r.json())
+    .then((locs) => locs.map((l: any) => ({ isHealthpoint: true, ...l })));
 
 type WalkInDataResult =
   | { ok: WalkInLocation[] }
