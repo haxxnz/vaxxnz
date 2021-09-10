@@ -5,14 +5,14 @@ import {
   useCrowdsourcedLocations,
 } from "./crowdsourced/CrowdsourcedData";
 import {
-  useWalkInLocations,
-  WalkInLocation,
+  useHealthpointLocations,
+  HealthpointLocation,
 } from "./healthpoint/HealthpointData";
 
-export type OtherLocation = CrowdsourcedLocation | WalkInLocation;
+export type OtherLocation = CrowdsourcedLocation | HealthpointLocation;
 
 export const useOtherLocationsData = (coords: Coords, radiusKm: number) => {
-  const locations = useWalkInLocations(coords, radiusKm);
+  const locations = useHealthpointLocations(coords, radiusKm);
   const crowdSourced = useCrowdsourcedLocations(coords, radiusKm);
   if ("ok" in locations) {
     const combined = [...crowdSourced, ...locations.ok];

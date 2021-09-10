@@ -7,8 +7,7 @@ import { getDistanceKm } from "../utils/distance";
 import { Coords } from "../location-picker/LocationPicker";
 import {
   Instruction,
-  useWalkInLocations,
-  WalkInLocation,
+  HealthpointLocation,
 } from "./healthpoint/HealthpointData";
 import { useState } from "react";
 import { Spinner } from "baseui/spinner";
@@ -53,7 +52,7 @@ export function OtherLocationsSection({ coords, radiusKm }: Props) {
     setCurrentView((latest) => latest + 12);
   };
 
-  let selectedHealthpoint: WalkInLocation | undefined;
+  let selectedHealthpoint: HealthpointLocation | undefined;
   let selectedCrowdsourced: CrowdsourcedLocation | undefined;
   if ("ok" in locations && selectedLocationIndex !== undefined) {
     const selected = locations.ok[selectedLocationIndex];

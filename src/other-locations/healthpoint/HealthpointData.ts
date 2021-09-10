@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Coords } from "../../location-picker/LocationPicker";
 import { getDistanceKm } from "../../utils/distance";
 
-export interface OpennningHours {
+export interface OpeningHours {
   schedule: { [date: string]: string };
   exceptions: { [date: string]: string };
   notesHtml: string[];
@@ -17,7 +17,7 @@ export enum Instruction {
   driveThrough = "Drive through",
 }
 
-export interface WalkInLocation {
+export interface HealthpointLocation {
   isHealthpoint: true;
   lat: number;
   lng: number;
@@ -29,64 +29,64 @@ export interface WalkInLocation {
   address: string;
   faxNumber: string;
   telephone: string;
-  opennningHours: OpennningHours;
+  opennningHours: OpeningHours;
 }
 
-const getWalkInData = (): Promise<WalkInLocation[]> =>
+const getHealthpointData = (): Promise<HealthpointLocation[]> =>
   fetch(
     "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/HEAD/healthpointLocations.json"
   )
     .then((r) => r.json())
     .then((locs) => locs.map((l: any) => ({ isHealthpoint: true, ...l })));
 
-type WalkInDataResult =
-  | { ok: WalkInLocation[] }
+type HealthpointDataResult =
+  | { ok: HealthpointLocation[] }
   | { error: Error }
   | { loading: true };
 
-const useWalkInData = (): WalkInDataResult => {
-  const [walkInLocations, setWalkinLocations] = useState<
-    WalkInLocation[] | null
+const useHealthpointData = (): HealthpointDataResult => {
+  const [healthpointLocations, setHealthpointLocations] = useState<
+    HealthpointLocation[] | null
   >(null);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    getWalkInData()
+    getHealthpointData()
       .then((locations) => {
-        setWalkinLocations(locations);
+        setHealthpointLocations(locations);
       })
       .catch((err) => setError(err));
   }, []);
 
   if (error) {
     return { error };
-  } else if (walkInLocations) {
-    return { ok: walkInLocations };
+  } else if (healthpointLocations) {
+    return { ok: healthpointLocations };
   } else {
     return { loading: true };
   }
 };
 
-type WalkInLocationsResult =
-  | { ok: WalkInLocation[] }
+type HealthpointLocationsResult =
+  | { ok: HealthpointLocation[] }
   | { error: Error }
   | { loading: true };
 
-export const useWalkInLocations = (
+export const useHealthpointLocations = (
   coords: Coords,
   radiusKm: number
-): WalkInLocationsResult => {
-  const allLocations = useWalkInData();
+): HealthpointLocationsResult => {
+  const allLocations = useHealthpointData();
 
   if ("ok" in allLocations) {
-    return { ok: filterWalkInLocation(allLocations.ok, coords, radiusKm) };
+    return { ok: filterHealthpointLocation(allLocations.ok, coords, radiusKm) };
   } else {
     return allLocations;
   }
 };
 
-function filterWalkInLocation(
-  allLocations: WalkInLocation[],
+function filterHealthpointLocation(
+  allLocations: HealthpointLocation[],
   coords: Coords,
   radiusKm: number
 ) {

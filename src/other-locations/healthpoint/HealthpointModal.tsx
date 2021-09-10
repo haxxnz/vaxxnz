@@ -6,17 +6,17 @@ import { FunctionComponent } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { WalkGrid } from "../../VaxComponents";
-import { Instruction, WalkInLocation } from "./HealthpointData";
+import { Instruction, HealthpointLocation } from "./HealthpointData";
 import { CancelBookingNotice } from "../../common/CancelNotice";
 import { useMediaQuery } from "react-responsive";
 
 type Props = {
   clearSelectedLocation: () => void;
-  location?: WalkInLocation;
+  location?: HealthpointLocation;
   radiusKm: number;
 };
 
-const WalkInModal: FunctionComponent<Props> = ({
+const HealthpointModal: FunctionComponent<Props> = ({
   clearSelectedLocation,
   location,
   radiusKm,
@@ -230,4 +230,4 @@ const WalkInModal: FunctionComponent<Props> = ({
   );
 };
 
-export default WalkInModal;
+export default HealthpointModal;
