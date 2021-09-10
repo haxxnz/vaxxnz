@@ -172,7 +172,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
 
           {location.openingHours.length > 0 && (
             <section>
-              <h3>{t("walkins.hours")}</h3>
+              <h3 style={{ marginBottom: "0.75rem" }}>{t("walkins.hours")}</h3>
               {location.openingHours.map((oh, index) => {
                 return (
                   <>
@@ -187,8 +187,10 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
                       style={{
                         width: "100%",
                         height: 1,
+                        backgroundColor: "#e9e9e9",
+                        border: "none",
                         padding: 0,
-                        margin: "0 0 8px 0",
+                        margin: "0 0 12px 0",
                       }}
                     />
                   </>
