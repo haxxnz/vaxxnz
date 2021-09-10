@@ -111,6 +111,11 @@ function App() {
           </div>
           <br />
           <p>
+            Thanks to <a href="https://addressfinder.nz">AddressFinder</a> for
+            free-of-charge address lookup
+          </p>
+          <br />
+          <p>
             <a
               href="https://airtable.com/shrxuw3vSp2yRPrG7"
               target="_blank"
