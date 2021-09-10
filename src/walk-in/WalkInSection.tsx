@@ -68,14 +68,9 @@ export function WalkInSection({ coords, radiusKm }: Props) {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-<<<<<<< HEAD
-            marginTop: "1rem",
-            marginBottom: "1rem",
-=======
             minHeight: "20vh",
             width: "100%",
             backgroundColor: "white",
->>>>>>> a8d0e3354d6de97837d8728683bc4c81dc0079bc
           }}
         >
           <Spinner color="black" />

@@ -58,6 +58,7 @@ export function CrowdSourcedSection({ coords, radiusKm }: Props) {
             justifyContent: "center",
             alignItems: "center",
             marginTop: "1rem",
+            marginBottom: "1rem",
           }}
         >
           <Spinner color="black" />
