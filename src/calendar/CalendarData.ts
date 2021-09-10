@@ -16,9 +16,14 @@ export interface CrowdsourcedDateLocation {
 
 export type CalendarLocation = CrowdsourcedLocation | BookingLocationSlotsPair;
 
-export type CalendarDate = CalendarLocation[];
+export type CalendarDateLocations = CalendarLocation[];
 
-export type CalendarMonth = Map<DateString, CalendarDate>;
+export interface CalendarDate {
+  dateStr: DateString;
+  locations: CalendarDateLocations;
+}
+
+export type CalendarMonth = Map<DateString, CalendarDateLocations>;
 
 export type CalendarData = Map<MonthString, CalendarMonth>;
 
@@ -50,7 +55,7 @@ export const useCalendarLocations = (
         });
         const month: CalendarMonth = months.get(monthStr) ?? new Map();
 
-        const day: CalendarDate = month.get(dateStr) ?? [];
+        const day: CalendarDateLocations = month.get(dateStr) ?? [];
 
         day.push(location);
         month.set(dateStr, day);

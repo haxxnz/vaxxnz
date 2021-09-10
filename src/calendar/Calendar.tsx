@@ -10,7 +10,11 @@ import { differenceInDays, parse } from "date-fns";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-import { CalendarData, CalendarDate } from "./CalendarData";
+import {
+  CalendarData,
+  CalendarDate,
+  CalendarDateLocations,
+} from "./CalendarData";
 
 interface BookingCalendarProps {
   data: CalendarData;
@@ -88,7 +92,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
                       radiusKm,
                       spotsAvailable: availableCount,
                     });
-                    setActiveDate(locations);
+                    setActiveDate({ dateStr, locations });
                   }}
                 >
                   <div>

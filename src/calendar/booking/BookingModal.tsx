@@ -19,12 +19,14 @@ import { differenceInDays } from "date-fns/esm";
 
 import { useMediaQuery } from "react-responsive";
 import i18next from "i18next";
-type BookingModalProps = {
-  activeDate: BookingDateLocations | null;
-  setActiveDate: (activeDate: BookingDateLocations | null) => void;
+import { CalendarDate } from "../CalendarData";
+
+interface BookingModalProps {
+  activeDate: CalendarDate | null;
+  setActiveDate: (activeDate: CalendarDate | null) => void;
   coords: Coords;
   radiusKm: number;
-};
+}
 
 const BookingModal: FunctionComponent<BookingModalProps> = ({
   activeDate,
