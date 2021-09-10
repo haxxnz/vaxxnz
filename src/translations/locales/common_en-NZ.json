@@ -10,7 +10,8 @@
     "kmAway": "{{distance}}km away",
     "lastUpdated": "Last updated {{updatedAt}}",
     "cancel": "Cancel",
-    "website": "Website"
+    "website": "Website",
+    "address": "Address"
   },
   "navigation": {
     "about": "About",
@@ -24,7 +25,7 @@
       "useCurrentLocation": "Use my current location",
       "geolocationNotSupported": "Geolocation is not supported by your browser"
     },
-    "vaccinationsNear": "Available Vaccinations <0>near {{location}}</0>",
+    "vaccinationsNear": "Vaccinations <0>near {{location}}</0>",
     "unknownLocation": "Unknown Location",
     "distanceDropdown": {
       "2km": "Within 2km",
@@ -36,7 +37,7 @@
     }
   },
   "walkins": {
-    "sectionHeader": "Walk-in & Drive-thru Vaccinations <0>- Open Today</0>",
+    "sectionHeader": "Open Today",
     "openString": "Open {{openTimeString}}",
     "cancellationNotice": {
       "info": "Please Don't Double-book",
@@ -44,11 +45,11 @@
     },
     "cancelBooking": "Cancel",
     "noticeList": {
-      "title": "Availability Is Not Guaranteed",
-      "text": "Keep in mind that walk-in locations listed might not necessarily have capacity available."
+      "title": "How to get Vaccinated",
+      "text": "Keep in mind that this location might have a long queue, and this venue might not have vaccines available today."
     },
-    "walkinAwailable": "<0 /> Walk-in available",
-    "driveThroughAvailable": "<0 /> Drive-through available",
+    "walkinAwailable": "<0 /> Walk-in vaccinations available",
+    "driveThroughAvailable": "<0 /> Drive-through vaccinations available",
     "phone": "Phone",
     "hours": "Hours",
     "publicHolidays": "Public Holidays",

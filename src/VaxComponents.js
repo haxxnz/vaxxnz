@@ -51,6 +51,10 @@ flex-direction: row;
 }
 @media screen and (max-width:768px) {
 flex-direction: column;
+h1 {
+ 
+  font-size: 1.5rem;
+}
 >div {
   flex-direction: column;
   width: 100%;
@@ -138,11 +142,11 @@ export const MonthContainer = styled.section`
       font-weight: 400;
     }
     aside {
-      color: #777;
+      color: #666;
       font-weight: 500;
-      font-size: 0.8rem;
-      opacity: 0.9;
+      font-size: 0.9rem;
     }
+
     p {
       font-size: 1.1rem;
       font-weight: 400;
@@ -158,6 +162,7 @@ export const MonthContainer = styled.section`
         }
       }
     }
+
     img {
       width: 1rem;
       height: 1rem;
@@ -185,7 +190,39 @@ export const MonthContainer = styled.section`
 export const ModalGrid = styled.section`
   display: grid;
   gap: 4rem;
-  grid-template-columns: 400px 1fr;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  overflow-y: initial;
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 300;
+  }
+  h2 {
+    font-weight: 400;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid lightgray;
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  @media screen and (max-width: 768px) {
+    gap: 0;
+    h1 {
+      font-size: 2rem;
+    }
+  }
+`;
+
+export const WalkGrid = styled.section`
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: 1fr 1fr;
   height: 100%;
   overflow-y: scroll;
   h1 {
@@ -201,7 +238,10 @@ export const ModalGrid = styled.section`
     margin-top: 1rem;
     padding-top: 1rem;
   }
-
+  p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
   @media screen and (max-width: 1024px) {
     grid-template-columns: 1fr;
     gap: 0;
@@ -232,6 +272,7 @@ export const VaccineCentre = styled.section`
     h3 {
       font-size: 1.5rem;
       margin-bottom: 0.25rem;
+       max-width: initial;
     }
   }
 

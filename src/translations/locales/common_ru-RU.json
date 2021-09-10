@@ -10,7 +10,8 @@
     "kmAway": "{{distance}} км отсюда",
     "lastUpdated": "Last updated {{updatedAt}}",
     "cancel": "Cancel",
-    "website": "Website"
+    "website": "Website",
+    "address": "Address"
   },
   "navigation": {
     "about": "О нас",

@@ -70,8 +70,31 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
           >
             {location.name}
           </h1>
-
-          <p>{location.address}</p>
+          {location.instructions.includes(Instruction.walkIn) ??
+            (location.instructions.includes(Instruction.driveThrough) && (
+              <section>
+                <div className="WalkInTypes">
+                  {location.instructions.includes(Instruction.walkIn) && (
+                    <p>
+                      <Trans
+                        i18nKey="walkins.walkinAwailable"
+                        t={t}
+                        components={[<FontAwesomeIcon icon={faWalking} />]}
+                      />
+                    </p>
+                  )}
+                  {location.instructions.includes(Instruction.driveThrough) && (
+                    <p>
+                      <Trans
+                        i18nKey="walkins.driveThroughAvailable"
+                        t={t}
+                        components={[<FontAwesomeIcon icon={faCar} />]}
+                      />
+                    </p>
+                  )}
+                </div>
+              </section>
+            ))}
 
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
@@ -115,51 +138,29 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
           </Button>
 
           <NoticeList>
-            <NoticeListItem title={t("walkins.otherLocations.disclaimer.title")}>
+            <NoticeListItem
+              title={t("walkins.otherLocations.disclaimer.title")}
+            >
               {t("walkins.otherLocations.disclaimer.message")}
             </NoticeListItem>
           </NoticeList>
         </div>
         <div style={{ height: "100%" }}>
           <CancelBookingNotice className="desktop" />
-
+          <section>
+            <h3>{t("core.address")}</h3>
+            <p>{location.address}</p>
+          </section>
           {location.website && (
             <section>
               <h3>{t("core.website")}</h3>
               <p>
-                <a
-                  href="https://bookmyvaccine.covid19.health.nz/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a href={location.website} target="_blank" rel="noreferrer">
                   {location.website}
                 </a>
               </p>
             </section>
           )}
-
-          <section>
-            <div className="WalkInTypes">
-              {location.instructions.includes(Instruction.walkIn) && (
-                <p>
-                  <Trans
-                    i18nKey="walkins.walkinAwailable"
-                    t={t}
-                    components={[<FontAwesomeIcon icon={faWalking} />]}
-                  />
-                </p>
-              )}
-              {location.instructions.includes(Instruction.driveThrough) && (
-                <p>
-                  <Trans
-                    i18nKey="walkins.driveThroughAvailable"
-                    t={t}
-                    components={[<FontAwesomeIcon icon={faCar} />]}
-                  />
-                </p>
-              )}
-            </div>
-          </section>
 
           {telephone && (
             <section>

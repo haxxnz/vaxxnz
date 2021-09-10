@@ -1,4 +1,5 @@
-import { BaseProvider, LightTheme } from "baseui";
+import { BaseProvider } from "baseui";
+import VaxxTheme from "./VaxxTheme";
 import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import React from "react";
@@ -24,7 +25,7 @@ function Index() {
   return (
     <React.StrictMode>
       <StyletronProvider value={engine}>
-        <BaseProvider theme={LightTheme}>
+        <BaseProvider theme={VaxxTheme}>
           <DateLocationsPairsContext.Provider
             value={{ dateLocationsPairs, setDateLocationsPairs }}
           >

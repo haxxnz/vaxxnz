@@ -10,7 +10,8 @@
     "kmAway": "{{distance}}km entfernt",
     "lastUpdated": "Actualisiert {{updatedAt}}",
     "cancel": "Abbrechen",
-    "website": "Webseite"
+    "website": "Webseite",
+    "address": "Address"
   },
   "navigation": {
     "about": "Über uns",

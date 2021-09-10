@@ -52,19 +52,13 @@ function App() {
             >
               {t("navigation.contact")}
             </a>
-            <a
-              href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTORS.md"
-              className="menu-link"
-            >
-              {t("navigation.getInvolved")}
-            </a>
             <LanguageSelect />
           </div>
         </header>
         <section className="App-header">
           <div className="header-content">
             <h1>{t("core.tagline")}</h1>
-            <h3 style={{ fontWeight: "normal" }}>{t("core.subtitle")}</h3>
+            <h2 style={{ fontWeight: "normal" }}>{t("core.subtitle")}</h2>
             <br />
             <p>
               <Trans
@@ -95,12 +89,14 @@ function App() {
             setRadiusKm={setRadiusKm}
             lastUpdateTime={lastUpdateTime}
           />
+
+          <WalkInSection coords={coords} radiusKm={radiusKm} />
           <BookingSection
             coords={coords}
             radiusKm={radiusKm}
             setLastUpdateTime={setLastUpdateTime}
           />
-          <WalkInSection coords={coords} radiusKm={radiusKm} />
+
           <CrowdSourcedSection coords={coords} radiusKm={radiusKm} />
         </div>
 
@@ -149,6 +145,14 @@ function App() {
               onClick={() => enqueueAnalyticsEvent("Roadmap clicked")}
             >
               {t("footer.links.roadmap")}
+            </a>{" "}
+            /{" "}
+            <a
+              href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTORS.md"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t("navigation.getInvolved")}
             </a>
           </p>
           <p></p>

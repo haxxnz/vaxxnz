@@ -10,7 +10,8 @@
     "kmAway": "{{distance}}km jauh",
     "lastUpdated": "Kemas kini terakhir {{updatedAt}}",
     "cancel": "Batal",
-    "website": "Website"
+    "website": "Website",
+    "address": "Address"
   },
   "navigation": {
     "about": "Mengenai",
