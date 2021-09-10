@@ -47,35 +47,6 @@ const LocationModal = (props: Props) => {
   const inputRef = useCallback(
     (domNode) => {
       if (domNode != null) {
-        // const options = {
-        //   componentRestrictions: { country: "nz" },
-        //   fields: ["geometry", "name", "address_components"],
-        //   strictBounds: false,
-        // };
-
-        // const autocomplete = new google.maps.places.Autocomplete(
-        //   domNode,
-        //   options
-        // );
-
-        // autocomplete.addListener("place_changed", () => {
-        //   const place = autocomplete.getPlace();
-        //   if (
-        //     place.name &&
-        //     place.geometry != null &&
-        //     place.geometry.location != null
-        //   ) {
-        //     const { location } = place.geometry;
-        //     const lat = location.lat();
-        //     const lng = location.lng();
-        //     const suburbish = getSuburbIsh(place);
-        //     setLocation(lat, lng, suburbish);
-        //   }
-        // });
-        // return () => {
-        //   google.maps.event.clearListeners(autocomplete, "place_changed");
-        // };
-
         const widget = new AddressFinder.Widget(
           document.getElementById("addrs_1"),
           "ARFHPVK67QXM49BEWDL3",
@@ -93,16 +64,11 @@ const LocationModal = (props: Props) => {
         );
 
         widget.on("address:select", function (fullAddress, metaData) {
-          // console.log("fullAddress", fullAddress);
-          // console.log("metaData", metaData);
           setLocation(
             parseFloat(metaData.y),
             parseFloat(metaData.x),
             metaData.suburb
           );
-          // document.getElementById("addrs_1").value = fullAddress;
-          // document.getElementById("addrs_2").value =
-          //   metaData.y + ", " + metaData.x;
         });
       }
     },
