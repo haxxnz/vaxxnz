@@ -1,4 +1,4 @@
-import english from "../locales/common_en.json";
+import english from "../locales/common_en-NZ.json";
 import fs from "fs";
 import { join } from "path";
 import { traverseTranslations } from "./traverseTranslations";
@@ -13,7 +13,7 @@ export interface IHash {
 let missingKeys: IHash = {};
 
 fs.readdirSync(join(__dirname, "../locales")).forEach((locale) => {
-  if (locale === "common_en.json") {
+  if (locale === "common_en-NZ.json") {
     return;
   }
 

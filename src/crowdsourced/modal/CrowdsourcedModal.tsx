@@ -1,14 +1,15 @@
-import { Button, KIND } from "baseui/button";
-import { Modal } from "baseui/modal";
-import { ModalGrid } from "../../VaxComponents";
-import { NoticeList, NoticeListItem } from "../../NoticeList";
-import { FunctionComponent } from "react";
-import { CancelBookingNotice } from "../../common/CancelNotice";
-import "../../App.css";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CrowdsourcedLocation } from "../CrowdsourcedData";
+import { Button, KIND } from "baseui/button";
+import { Modal } from "baseui/modal";
+import { FunctionComponent } from "react";
+import { Trans, useTranslation } from "react-i18next";
+import "../../App.css";
+import { CancelBookingNotice } from "../../common/CancelNotice";
+import { NoticeList, NoticeListItem } from "../../NoticeList";
+import { ModalGrid } from "../../VaxComponents";
 import { Instruction } from "../../walk-in/WalkInData";
+import { CrowdsourcedLocation } from "../CrowdsourcedData";
 
 type Props = {
   clearSelectedLocation: () => void;
@@ -33,6 +34,8 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
   clearSelectedLocation,
   location,
 }) => {
+  const { t } = useTranslation("common");
+
   const close = () => clearSelectedLocation();
   if (location == null) {
     return null;
@@ -89,7 +92,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
               }}
               kind={KIND.primary}
             >
-              Get Directions
+              {t("core.getDirections")}
             </Button>
           </a>
 
@@ -108,13 +111,12 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
             kind={KIND.secondary}
             onClick={close}
           >
-            Cancel
+            {t("core.cancel")}
           </Button>
 
           <NoticeList>
-            <NoticeListItem title="This location has been submitted by the public">
-              The information here may not be 100% accurate. Please refer to the
-              locations website.
+            <NoticeListItem title={t("walkins.otherLocations.disclaimer.title")}>
+              {t("walkins.otherLocations.disclaimer.message")}
             </NoticeListItem>
           </NoticeList>
         </div>
@@ -123,7 +125,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
 
           {location.website && (
             <section>
-              <h3> Website</h3>
+              <h3>{t("core.website")}</h3>
               <p>
                 <a
                   href="https://bookmyvaccine.covid19.health.nz/"
@@ -140,12 +142,20 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
             <div className="WalkInTypes">
               {location.instructions.includes(Instruction.walkIn) && (
                 <p>
-                  <FontAwesomeIcon icon={faWalking} /> Walk-in available
+                  <Trans
+                    i18nKey="walkins.walkinAwailable"
+                    t={t}
+                    components={[<FontAwesomeIcon icon={faWalking} />]}
+                  />
                 </p>
               )}
               {location.instructions.includes(Instruction.driveThrough) && (
                 <p>
-                  <FontAwesomeIcon icon={faCar} /> Drive-through available
+                  <Trans
+                    i18nKey="walkins.driveThroughAvailable"
+                    t={t}
+                    components={[<FontAwesomeIcon icon={faCar} />]}
+                  />
                 </p>
               )}
             </div>
@@ -153,7 +163,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
 
           {telephone && (
             <section>
-              <h3> Phone</h3>
+              <h3>{t("walkins.phone")}</h3>
 
               <a href={`tel:${telephone}`}>{telephone}</a>
             </section>
@@ -161,7 +171,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
 
           {location.openingHours.length > 0 && (
             <section>
-              <h3> Hours</h3>
+              <h3>{t("walkins.hours")}</h3>
               {location.openingHours.map((oh, index) => {
                 return (
                   <p key={index}>

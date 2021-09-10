@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import CrowdsourcedModal from "./modal/CrowdsourcedModal";
 import { Instruction } from "../walk-in/WalkInData";
+import { Trans, useTranslation } from "react-i18next";
 
 export interface Props {
   coords: Coords;
@@ -23,6 +24,8 @@ export function CrowdSourcedSection({ coords, radiusKm }: Props) {
   const openModal = (locationIndex: number) => {
     setSelectedLocation(locationIndex);
   };
+
+  const { t } = useTranslation("common");
 
   const clearSelectedLocation = () => setSelectedLocation(undefined);
 
@@ -42,7 +45,11 @@ export function CrowdSourcedSection({ coords, radiusKm }: Props) {
         }
       />
       <h2 className="WalkSection">
-        Other Vaccination Locations<strong> - Open Today</strong>
+        <Trans
+          i18nKey="walkins.otherLocations.sectionHeader"
+          t={t}
+          components={[<strong></strong>]}
+        />
       </h2>
       {"loading" in locations ? (
         <div
@@ -60,7 +67,7 @@ export function CrowdSourcedSection({ coords, radiusKm }: Props) {
               fontSize: "1.5rem",
             }}
           >
-            Loading...
+            {t("core.loading")}
           </div>
         </div>
       ) : (
@@ -98,20 +105,24 @@ export function CrowdSourcedSection({ coords, radiusKm }: Props) {
                           </h3>
                           {locationLat && locationLng && (
                             <p>
-                              {Math.round(
-                                getDistanceKm(coords, {
-                                  lat: locationLat,
-                                  lng: locationLng,
-                                }) * 10
-                              ) / 10}
-                              KM away
+                              {t("core.kmAway", {
+                                distance:
+                                  Math.round(
+                                    getDistanceKm(coords, {
+                                      lat: locationLat,
+                                      lng: locationLng,
+                                    }) * 10
+                                  ) / 10,
+                              })}
                             </p>
                           )}
                         </div>
 
                         {currentOpeningHours?.isOpen && (
                           <p>
-                            Open <span>{currentOpeningHours.hours}</span>
+                            {t("walkins.openString", {
+                              openTimeString: currentOpeningHours.hours,
+                            })}
                           </p>
                         )}
                       </section>
@@ -129,7 +140,7 @@ export function CrowdSourcedSection({ coords, radiusKm }: Props) {
           {/* Over here @WALTS */}
           {"ok" in locations && locations.ok.length / currentView > 1 && (
             <button className="WalkSeeMore" onClick={loadMore}>
-              See more
+              {t("walkins.seeMore")}
             </button>
           )}
         </>
