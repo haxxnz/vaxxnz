@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { Coords } from "../location-picker/LocationPicker";
 import { BookingCalendar, LoadingBookingCalendar } from "./Calendar";
 import { useBookingData } from "./booking/BookingData";
-import BookingModal from "./CalendarModal";
+import BookingModal from "./modal/CalendarModal";
 import { CalendarDate, useCalendarLocations } from "./CalendarData";
 
 interface CalendarSectionProps {

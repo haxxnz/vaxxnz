@@ -33,7 +33,7 @@ const filterOldDates = (
               const parsedLocalStartTime = getTime(localStartTime);
               return parsedLocalStartTime > parsedTodayTime;
             });
-            return { location, slots: newSlots };
+            return { isBooking: true, location, slots: newSlots };
           }
         );
       }

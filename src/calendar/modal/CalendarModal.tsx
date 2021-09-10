@@ -77,6 +77,8 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
         <CalendarModalContent
           activeDate={activeDate}
           close={() => setActiveDate(null)}
+          coords={coords}
+          radiusKm={radiusKm}
         />
       )}
       <div className="MobileOnly">

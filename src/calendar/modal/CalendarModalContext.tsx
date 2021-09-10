@@ -10,7 +10,9 @@ import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { sortByAsc } from "../../utils/array";
 import { getDistanceKm } from "../../utils/distance";
 import { ModalGrid, VaccineCentre } from "../../VaxComponents";
+import { BookingLocationSlotsPair } from "../booking/BookingDataTypes";
 import { CalendarDate, CalendarLocation } from "../CalendarData";
+import { SlotBookingLocation } from "./SlotBookingLocation";
 
 interface CalendarModalContentProps {
   activeDate: CalendarDate;
@@ -45,7 +47,7 @@ export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> 
     const slotLocations = sortedLocations.filter(
       (location) =>
         "isBooking" in location && location.slots && location.slots.length > 0
-    );
+    ) as BookingLocationSlotsPair[];
     const crowdsourcedBookingLocations = sortedLocations.filter(
       (location) =>
         "isCrowdSourced" in location &&
@@ -135,132 +137,21 @@ export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> 
           </h2>
           <hr />
 
-          {activeDate?.locationSlotsPairs.filter(
-            (locationSlotsPair) => locationSlotsPair.slots?.length
-          ).length ? (
-            sortByDistance(activeDate?.locationSlotsPairs, coords)
-              .filter((locationSlotsPair) => locationSlotsPair.slots?.length)
-              .map((locationSlotsPair) => (
-                <VaccineCentre key={locationSlotsPair.location.extId}>
-                  <h3>{locationSlotsPair.location.name}</h3>
-                  <p>
-                    {locationSlotsPair.location.displayAddress} (
-                    {t("core.kmAway", {
-                      distance: Math.floor(
-                        getDistanceKm(
-                          coords,
-                          locationSlotsPair.location.location
-                        )
-                      ),
-                    })}
-                    )
-                  </p>
-                  <p>
-                    <a
-                      href={`https://www.google.com/maps/dir/?api=1&destination=${locationSlotsPair.location.location.lat},${locationSlotsPair.location.location.lng}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={() =>
-                        enqueueAnalyticsEvent("Get Directions clicked", {
-                          radiusKm,
-                          spotsAvailable: locationSlotsPair.slots?.length || 0,
-                          bookingDateInDays: differenceInDays(
-                            parse(dateStr, "yyyy-MM-dd", new Date()),
-                            new Date()
-                          ),
-                        })
-                      }
-                    >
-                      {t("core.getDirections")}
-                    </a>
-                  </p>
-                  <a
-                    href="https://bookmyvaccine.covid19.health.nz"
-                    target="_blank"
-                    referrerPolicy="origin"
-                    rel="noreferrer"
-                  >
-                    <div className="ButtonConstraint">
-                      <Button
-                        overrides={{
-                          Root: {
-                            style: {
-                              width: "100%",
-                              marginTop: "1rem",
-                              marginRight: 0,
-                              marginBottom: "1rem",
-                              marginLeft: 0,
-                            },
-                          },
-                        }}
-                        onClick={() =>
-                          enqueueAnalyticsEvent("Make a Booking clicked", {
-                            locationName: locationSlotsPair.location.name,
-                            radiusKm,
-                            spotsAvailable:
-                              locationSlotsPair.slots?.length || 0,
-                            bookingDateInDays: differenceInDays(
-                              parse(dateStr, "yyyy-MM-dd", new Date()),
-                              new Date()
-                            ),
-                          })
-                        }
-                      >
-                        {t("core.makeABooking")}
-                      </Button>
-                    </div>
-                  </a>
-                  <p
-                    style={{
-                      marginTop: "0.25rem",
-                      marginRight: 0,
-                      marginBottom: "0.5rem",
-                      marginLeft: 0,
-                    }}
-                  >
-                    {t("calendar.modal.availableSlots")}
-                  </p>
-                  <section>
-                    {/* <p>1am</p> */}
-                    {locationSlotsPair.slots?.map((slot) => (
-                      <p key={slot.localStartTime}>
-                        {parse(
-                          slot.localStartTime,
-                          "HH:mm:ss",
-                          new Date()
-                        ).toLocaleTimeString("en-NZ", {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                          hour12: true,
-                        })}
-                      </p>
-                    ))}
-                  </section>
-                </VaccineCentre>
-              ))
-          ) : (
+          {slotLocations.map((location) => (
+            <SlotBookingLocation
+              location={location}
+              coords={coords}
+              date={date}
+              radiusKm={radiusKm}
+            />
+          ))}
+          {/*  { : (
             <>
+            TODO: include this message
               <h1>{t("calendar.modal.noBookingsAvailable")}</h1>
-              {/* <Button
-          onClick={() => setActiveDate(null)}
-          overrides={{
-            Root: {
-              style: {
-                width: "100%",
-                maxWidth: "400px",
-                marginTop: "2rem",
-                marginRight: 0,
-                marginBottom: "2rem",
-                marginLeft: 0,
-              },
-            },
-          }}
-          kind={KIND.secondary}
-        >
-          {t("calendar.modal.backToCalendar")}
-        </Button> */}
+              
             </>
-          )}
+          )} */}
         </div>
       </ModalGrid>
     );
