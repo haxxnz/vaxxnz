@@ -40,7 +40,7 @@ export function WalkInSection({ coords, radiusKm }: Props) {
   };
 
   const loadMore = () => {
-    setCurrentView((latest) => latest + 3);
+    setCurrentView((latest) => latest + 12);
   };
 
   return "error" in locations ||

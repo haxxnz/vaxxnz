@@ -10,7 +10,8 @@
     "kmAway": "{{distance}}km away",
     "lastUpdated": "Last updated {{updatedAt}}",
     "cancel": "Cancel",
-    "website": "Website"
+    "website": "Website",
+    "address": "Address"
   },
   "navigation": {
     "about": "About",
@@ -36,7 +37,7 @@
     }
   },
   "walkins": {
-    "sectionHeader": "Available Today",
+    "sectionHeader": "Open Today",
     "openString": "Open {{openTimeString}}",
     "cancellationNotice": {
       "info": "Please Don't Double-book",
@@ -45,7 +46,7 @@
     "cancelBooking": "Cancel",
     "noticeList": {
       "title": "How to get Vaccinated",
-      "text": "Keep in mind that this location might have a long queue."
+      "text": "Keep in mind that this location might have a long queue, and some might not have vaccines available today."
     },
     "walkinAwailable": "<0 /> Walk-in vaccinations available",
     "driveThroughAvailable": "<0 /> Drive-through vaccinations available",
