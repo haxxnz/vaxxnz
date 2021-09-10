@@ -4,11 +4,9 @@ import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
 import { Trans, useTranslation } from "react-i18next";
-import "../../App.css";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
-import { NoticeList, NoticeListItem } from "../../NoticeList";
 import { WalkGrid } from "../../VaxComponents";
-import { Instruction, WalkInLocation } from "../healthpoint/HealthpointData";
+import { Instruction, WalkInLocation } from "./HealthpointData";
 import { CancelBookingNotice } from "../../common/CancelNotice";
 import { useMediaQuery } from "react-responsive";
 
