@@ -9,7 +9,6 @@ import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { DEFAULT_LOCATION } from "./utils/location";
 import { useSearchParams } from "./utils/url";
 import { OtherLocationsSection } from "./other-locations/OtherLocationsSection";
-import { CrowdSourcedSection } from "./other-locations/crowdsourced/CrowdsourcedSection";
 
 function App() {
   const { lat, lng } = useSearchParams();
@@ -96,8 +95,6 @@ function App() {
             radiusKm={radiusKm}
             setLastUpdateTime={setLastUpdateTime}
           />
-
-          <CrowdSourcedSection coords={coords} radiusKm={radiusKm} />
         </div>
 
         <footer className="footer-header">
