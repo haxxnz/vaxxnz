@@ -1,42 +1,43 @@
 {
   "core": {
-    "title": "Tui.Niu Sila",
-    "tagline": "Faiga o Tui Puipui ole Koviti",
-    "subtitle": "Tagai i auala e faia ai Tui i nofoaga latalata ane ia te oe.",
-    "disclaimerNotAGovWebsite": "O lenei 'upega tafailagi e lei faia ele Malo. Ile faatinoina o Tui asiasi ane ile upega tafailagi lea. <0>bookmyvaccine.nz</0>",
+    "title": "Vaxx.nz",
+    "tagline": "Avanoa o Tuipuipui ole COVID-19",
+    "subtitle": "Tagai i auala e faia ai tuipuipui i nofoaga latalata ane ia te oe.",
+    "disclaimerNotAGovWebsite": "O lenei 'upega tafailagi e lei faia ele Malo. Ile faatinoina o tuipuipui asiasi ane ile upega tafailagi lea, <0>bookmyvaccine.nz</0>",
     "loading": "utaina",
     "getDirections": "Vaai fa'atonuga",
     "makeABooking": "Faamauina lou avanoa",
-    "kmAway": "{{mamao}}kilomita le alu",
-    "lastUpdated": "Taimi mulimuli ga Fa'afouina ai {{Fa'afouina ile}}",
+    "kmAway": "{{distance}} kilomita le alu",
+    "lastUpdated": "Taimi mulimuli ga fa'afouina ai - {{updatedAt}}",
     "cancel": "Fa'aleaogaina",
     "website": "Upega tafa'ilagi"
   },
   "navigation": {
-    "about": "Uiga Taua",
-    "contact": "Fa'afesootai",
-    "getInvolved": "Auai nei",
+    "about": "About",
+    "contact": "Contact",
+    "getInvolved": "Get Involved",
     "setLocation": "Faailoa lou nofoaga",
     "setLocationConfirmation": "Faamautinoa lou nofoaga",
     "locationModal": {
       "locaitonTitle": "Nofoaga",
       "locationCTA": "Tusi i lalo lou tuatusi poo le alalafaga",
       "useCurrentLocation": "Fa'aoga le nofoaga o loo e nofo iai nei",
-      "geolocationNotSupported": "O nofoaga Geo e le lagolagoina e le 'upega tafailagi"
+      "geolocationNotSupported": "O nofoaga e le lagolagoina e le 'upega tafailagi"
     },
-    "vaccinationsNear": "Avanoa mo Tui <0>lata ane {{nofoaga}}</0>",
+    "vaccinationsNear": "Avanoa mo tuipuipui <0>lata ane {{location}}</0>",
     "unknownLocation": "Nofoaga le mailoa",
     "distanceDropdown": {
-      "2km": "Totonu ole 2kilomita",
-      "5km": "Totonu ole 5kilomita",
-      "10km": "Totonu ole 10kilomita",
-      "25km": "Totonu ole 25kilomita",
-      "50km": "Totonu ole 50kilomita",
-      "100km": "Totonu ole 100kilomita"
+      "2km": "Totonu ole 2km",
+      "5km": "Totonu ole 5km",
+      "10km": "Totonu ole 10km",
+      "25km": "Totonu ole 25km",
+      "50km": "Totonu ole 50km",
+      "100km": "Totonu ole 100km"
     }
   },
   "walkins": {
-    "sectionHeader": "Ulufale atu poo le tala'ao atu i lau ta'avale {{Taimi e matala ai}}",
+    "sectionHeader": "Ulufale atu poo le tala'ao atu i lau ta'avale <0>- Matala ile asō</0>",
+    "openString": "Taimi matala - {{openTimeString}}",
     "cancellationNotice": {
       "info": "Faamolemole e aua le faia faalua se avanoa",
       "message": "Manatua ia faaleaogaina se avanoa pe afai sa faia muamua sou avanoa ile upega tafailagi lea <0>bookmyvaccine.nz</0>"
@@ -48,10 +49,10 @@
     },
     "walkinAwailable": "<0 /> Avanoa mo le Ulufale atu ",
     "driveThroughAvailable": "<0 /> Avanoa pe a talaa'ao atu i lau ta'avale",
-    "phone": "Telefoni ",
-    "hours": "Itula ",
+    "phone": "Telefoni",
+    "hours": "Itula",
     "publicHolidays": "Aso Malolo",
-    "otherExeptions": "O isi Vaega ",
+    "otherExeptions": "O isi Vaega",
     "seeMore": "Tagai ane pea",
     "otherLocations": {
       "sectionHeader": "O isi nofoaga mo Tui <0>- Matala Le Aso nei</0>",
@@ -62,14 +63,14 @@
     }
   },
   "calendar": {
-    "month": "{{Masina, MMMM yyyy}}",
-    "numberOfAppointments": "{{Nisi o Taimi Avanoa}} ",
+    "month": "{{monthString, MMMM yyyy}}",
+    "numberOfAppointments": "{{sumAvailableTimes}} avanoa",
     "modal": {
       "howToBook": {
         "title": "E faafefea ga faia avanoa",
         "stepOne": "Sue se avanoa ma se taimi mai le lisi o i lalo.",
-        "stepTwo": "Kiliki le <i>Make a Booking</i> button, e taitai atu oe ile itulau lea  <0>bookmyvaccine.nz</0>",
-        "stepThree": "tusia lou tala'aga.",
+        "stepTwo": "Kiliki le <i>Faamauina lou avanoa</i> button, e taitai atu oe ile itulau lea  <0>bookmyvaccine.nz</0>",
+        "stepThree": "Tusia lou tala'aga.",
         "stepFour": "Ole a fesiligia, e vaai se nofoaga ma se taimi e fetaui lelei ma oe."
       },  
       "availableSlots": "Avanoa fetaui",
