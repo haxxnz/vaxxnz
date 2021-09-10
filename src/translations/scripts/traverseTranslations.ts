@@ -1,4 +1,4 @@
-import translations from "../locales/common_en.json";
+import translations from "../locales/common_en-NZ.json";
 
 const keys: string[] = [];
 
