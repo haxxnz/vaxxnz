@@ -8,29 +8,20 @@ import { initReactI18next } from "react-i18next";
 import { Client as Styletron } from "styletron-engine-atomic";
 import { Provider as StyletronProvider } from "styletron-react";
 import App from "./App";
-import { DateLocationsPairsContext } from "./contexts";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { config as i18nextConfig } from "./translations";
-import { BookingDateLocations } from "./calendar/booking/BookingDataTypes";
 
 i18n.use(LanguageDetector).use(initReactI18next).init(i18nextConfig);
 
 const engine = new Styletron();
 
 function Index() {
-  const [dateLocationsPairs, setDateLocationsPairs] = React.useState<
-    BookingDateLocations[]
-  >([]);
   return (
     <React.StrictMode>
       <StyletronProvider value={engine}>
         <BaseProvider theme={VaxxTheme}>
-          <DateLocationsPairsContext.Provider
-            value={{ dateLocationsPairs, setDateLocationsPairs }}
-          >
-            <App />
-          </DateLocationsPairsContext.Provider>
+          <App />
         </BaseProvider>
       </StyletronProvider>
     </React.StrictMode>
