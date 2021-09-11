@@ -115,11 +115,10 @@ export const useBookingData = (
 ): BookingDataResult => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
+  const [dateLocationsPairsUnfiltered, setDateLocationsPairs] = useState<
+    BookingDateLocations[]
+  >([]);
 
-  const {
-    dateLocationsPairs: dateLocationsPairsUnfiltered,
-    setDateLocationsPairs,
-  } = useContext(DateLocationsPairsContext);
   const dateLocationsPairs = filterOldDates(dateLocationsPairsUnfiltered);
   const loadCalendar = useCallback(async () => {
     setLoading(true);
