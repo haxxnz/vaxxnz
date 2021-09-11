@@ -18,8 +18,7 @@ export enum Instruction {
   allowsBookings = "Allows bookings",
 }
 
-export interface HealthpointLocation {
-  isHealthpoint: true;
+export interface HealthpointLocationRaw {
   lat: number;
   lng: number;
   name: string;
@@ -33,13 +32,18 @@ export interface HealthpointLocation {
   telephone: string;
   opennningHours: OpeningHours;
 }
+export interface HealthpointLocation extends HealthpointLocationRaw {
+  isHealthpoint: true;
+}
 
 const getHealthpointData = (): Promise<HealthpointLocation[]> =>
   fetch(
     "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/HEAD/healthpointLocations.json"
   )
     .then((r) => r.json())
-    .then((locs) => locs.map((l: any) => ({ isHealthpoint: true, ...l })));
+    .then((locs) =>
+      locs.map((l: HealthpointLocationRaw) => ({ isHealthpoint: true, ...l }))
+    );
 
 type HealthpointDataResult =
   | { ok: HealthpointLocation[] }

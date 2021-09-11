@@ -1,7 +1,7 @@
 import { addDays, format } from "date-fns";
 import {
   CrowdsourcedLocation,
-  useCrowdsourcedLocations,
+  getCrowdsourcedLocations,
 } from "../crowdsourced/CrowdsourcedData";
 import { Coords } from "../location-picker/LocationPicker";
 import { useBookingData } from "./booking/BookingData";
@@ -32,7 +32,7 @@ export const useCalendarLocations = (
   radiusKm: number,
   setLastUpdateTime: (time: Date | null) => void
 ) => {
-  const crowdSourced = useCrowdsourcedLocations(coords, radiusKm);
+  const crowdSourced = getCrowdsourcedLocations(coords, radiusKm);
   const bookingData = useBookingData(coords, radiusKm, setLastUpdateTime);
   if ("ok" in bookingData) {
     const months: CalendarData = bookingData.ok;

@@ -11,7 +11,7 @@ const LanguageSelect = () => {
   );
   const { i18n } = useTranslation();
 
-  const changeLanguage = (selectedLanguage: any) => {
+  const changeLanguage = (selectedLanguage: Language) => {
     let newLang = languages.find((lang) => lang.code === selectedLanguage.code);
     setLanguage(newLang);
     i18n.changeLanguage(newLang?.code);
@@ -43,7 +43,7 @@ const LanguageSelect = () => {
       value={language ? [language] : undefined}
       placeholder="English"
       onChange={(params) => {
-        changeLanguage(params.option);
+        changeLanguage(params.option as Language);
       }}
     />
   );

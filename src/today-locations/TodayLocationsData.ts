@@ -2,7 +2,7 @@ import { Coords } from "../location-picker/LocationPicker";
 import { getDistanceKm } from "../utils/distance";
 import {
   CrowdsourcedLocation,
-  useCrowdsourcedLocations,
+  getCrowdsourcedLocations,
 } from "../crowdsourced/CrowdsourcedData";
 import {
   useHealthpointLocations,
@@ -13,7 +13,7 @@ export type TodayLocation = CrowdsourcedLocation | HealthpointLocation;
 
 export const useTodayLocationsData = (coords: Coords, radiusKm: number) => {
   const locations = useHealthpointLocations(coords, radiusKm);
-  const crowdSourced = useCrowdsourcedLocations(coords, radiusKm);
+  const crowdSourced = getCrowdsourcedLocations(coords, radiusKm);
   if ("ok" in locations) {
     const combined = [...crowdSourced, ...locations.ok];
     combined.sort(

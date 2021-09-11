@@ -31,7 +31,7 @@ export interface CrowdsourcedLocation {
   additionalInformation?: string;
 }
 
-export const useCrowdsourcedLocations = (
+export const getCrowdsourcedLocations = (
   coords: Coords,
   radiusKm: number
 ): CrowdsourcedLocation[] =>

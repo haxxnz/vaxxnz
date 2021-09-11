@@ -14,7 +14,9 @@ import {
   CalendarData,
   CalendarDate,
   CalendarDateLocations,
+  CalendarMonth,
 } from "./CalendarData";
+import React from "react";
 
 interface BookingCalendarProps {
   data: CalendarData;
@@ -54,81 +56,110 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   setActiveDate,
   radiusKm,
 }) => {
-  const { t } = useTranslation("common");
-
   return (
     <CalendarContainer>
-      {Array.from(data.entries()).map(([monthStr, monthDates]) => (
-        <CalendarSectionContainer key={monthStr}>
-          <div className="MonthSection">
-            <h2>
-              {parse(monthStr, "MMMM yyyy", new Date()).toLocaleDateString(
-                [i18next.language],
-                {
-                  month: "long",
-                  year: "numeric",
-                }
-              )}
-            </h2>
-          </div>
-          <MonthContainer>
-            {Array.from(monthDates).map(([dateStr, locations]) => {
-              const availableCount = sum(
-                locations.map((location) =>
-                  "isBooking" in location ? location.slots?.length ?? 0 : 1
-                )
-              );
-              return (
-                <button
-                  className={availableCount === 0 ? "zero-available" : ""}
-                  key={dateStr}
-                  onClick={() => {
-                    enqueueAnalyticsEvent("Calendar day picked", {
-                      datePicked: dateStr,
-                      bookingDateInDays: differenceInDays(
-                        parse(dateStr, "yyyy-MM-dd", new Date()),
-                        new Date()
-                      ),
-                      radiusKm,
-                      spotsAvailable: availableCount,
-                    });
-                    setActiveDate({ dateStr, locations });
-                  }}
-                >
-                  <div>
-                    <h3>
-                      {parse(
-                        dateStr,
-                        "yyyy-MM-dd",
-                        new Date()
-                      ).toLocaleDateString([i18next.language], {
-                        day: "numeric",
-                        month: "short",
-                      })}
-                      <br />{" "}
-                      <aside aria-hidden="true">
-                        {parse(
-                          dateStr,
-                          "yyyy-MM-dd",
-                          new Date()
-                        ).toLocaleDateString([i18next.language], {
-                          weekday: "short",
-                        })}
-                      </aside>
-                    </h3>
-                    <p>
-                      {t("calendar.numberOfAppointments", {
-                        sumAvailableTimes: availableCount,
-                      })}
-                    </p>
-                  </div>
-                  <img src="./arrow.svg" aria-hidden="true" alt="" />
-                </button>
-              );
-            })}
-          </MonthContainer>
-        </CalendarSectionContainer>
+      {Array.from(data).map(([monthStr, monthDates]) => (
+        <CalendarMonthContainer
+          monthStr={monthStr}
+          monthDates={monthDates}
+          radiusKm={radiusKm}
+          setActiveDate={setActiveDate}
+        />
       ))}
     </CalendarContainer>
   );
 };
+
+interface CalendarMonthContainerProps {
+  monthStr: string;
+  monthDates: CalendarMonth;
+  radiusKm: number;
+  setActiveDate: (activeDate: CalendarDate | null) => void;
+}
+function CalendarMonthContainerExpensive(
+  props: CalendarMonthContainerProps
+): JSX.Element {
+  const { monthStr, monthDates, radiusKm, setActiveDate } = props;
+  const date = parse(monthStr, "MMMM yyyy", new Date());
+  return (
+    <CalendarSectionContainer key={monthStr}>
+      <div className="MonthSection">
+        <h2>
+          {date.toLocaleDateString([i18next.language], {
+            month: "long",
+            year: "numeric",
+          })}
+        </h2>
+      </div>
+      <MonthContainer>
+        {Array.from(monthDates).map(([dateStr, locations]) => {
+          const availableCount = sum(
+            locations.map((location) =>
+              "isBooking" in location ? location.slots?.length ?? 0 : 1
+            )
+          );
+          return (
+            <CalendarDay
+              availableCount={availableCount}
+              dateStr={dateStr}
+              radiusKm={radiusKm}
+              setActiveDate={setActiveDate}
+              locations={locations}
+            />
+          );
+        })}
+      </MonthContainer>
+    </CalendarSectionContainer>
+  );
+}
+// FOR FUTURE: ideally we just have cheaper calendar month containers? Idk. Maybe useMemo or memoizeOne is a more elegant solution? Idk. This will do for now.
+const CalendarMonthContainer = React.memo(CalendarMonthContainerExpensive);
+
+interface CalendarDayProps {
+  availableCount: number;
+  dateStr: string;
+  radiusKm: number;
+  setActiveDate: (activeDate: CalendarDate | null) => void;
+  locations: CalendarDateLocations;
+}
+function CalendarDay(props: CalendarDayProps): JSX.Element {
+  const { t } = useTranslation("common");
+  const { availableCount, dateStr, radiusKm, setActiveDate, locations } = props;
+  const date = parse(dateStr, "yyyy-MM-dd", new Date());
+  return (
+    <button
+      className={availableCount === 0 ? "zero-available" : ""}
+      key={dateStr}
+      onClick={() => {
+        enqueueAnalyticsEvent("Calendar day picked", {
+          datePicked: dateStr,
+          bookingDateInDays: differenceInDays(date, new Date()),
+          radiusKm,
+          spotsAvailable: availableCount,
+        });
+        setActiveDate({ dateStr, locations });
+      }}
+    >
+      <div>
+        <h3>
+          {date.toLocaleDateString([i18next.language], {
+            day: "numeric",
+            month: "short",
+          })}
+          <br />{" "}
+          <aside aria-hidden="true">
+            {date.toLocaleDateString([i18next.language], {
+              weekday: "short",
+            })}
+          </aside>
+        </h3>
+        <p>
+          {t("calendar.numberOfAppointments", {
+            sumAvailableTimes: availableCount,
+          })}
+        </p>
+      </div>
+      <img src="./arrow.svg" aria-hidden="true" alt="" />
+    </button>
+  );
+}
