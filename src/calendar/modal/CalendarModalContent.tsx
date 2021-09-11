@@ -15,7 +15,6 @@ import { BookingLocationSlotsPair } from "../booking/BookingDataTypes";
 import BookingLocation from "../BookingLocation";
 import { CalendarDate, CalendarLocation } from "../CalendarData";
 import { CrowdsourcedBookingLocation } from "./CrowdsourcedBookingLocation";
-import { SlotBookingLocation } from "./SlotBookingLocation";
 
 interface CalendarModalContentProps {
   activeDate: CalendarDate;
