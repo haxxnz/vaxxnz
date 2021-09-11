@@ -4,20 +4,19 @@ import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
 import { Trans, useTranslation } from "react-i18next";
-import "../../App.css";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { WalkGrid } from "../../VaxComponents";
-import { Instruction, WalkInLocation } from "../WalkInData";
 import { useMediaQuery } from "react-responsive";
 import { LocationNotice } from "../../common/LocationNotice";
+import { HealthpointLocation } from "./HealthpointData";
 
 type Props = {
   clearSelectedLocation: () => void;
-  location?: WalkInLocation;
+  location?: HealthpointLocation;
   radiusKm: number;
 };
 
-const WalkInModal: FunctionComponent<Props> = ({
+const HealthpointModal: FunctionComponent<Props> = ({
   clearSelectedLocation,
   location,
   radiusKm,
@@ -125,6 +124,15 @@ const WalkInModal: FunctionComponent<Props> = ({
             <p>{location.address}</p>
           </section>
 
+          {location.url && (
+            <section>
+              <h3>{t("core.website")}</h3>
+              <a href={location.url} target="_blank" rel="noreferrer">
+                {location.url}
+              </a>
+            </section>
+          )}
+
           {telephone && (
             <section>
               <h3>{t("walkins.phone")}</h3>
@@ -204,4 +212,4 @@ const WalkInModal: FunctionComponent<Props> = ({
   );
 };
 
-export default WalkInModal;
+export default HealthpointModal;

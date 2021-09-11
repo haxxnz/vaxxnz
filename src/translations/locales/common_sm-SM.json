@@ -3,27 +3,27 @@
     "title": "Vaxx.nz",
     "tagline": "Avanoa o Tuipuipui ole COVID-19",
     "subtitle": "Tagai i auala e faia ai tuipuipui i nofoaga latalata ane ia te oe.",
-    "disclaimerNotAGovWebsite": "O lenei 'upega tafa'ilagi e lei faia ele Malo. Ile faatinoina o tuipuipui asiasi ane ile 'upega tafa'ilagi lea, <0>bookmyvaccine.nz</0>",
+    "disclaimerNotAGovWebsite": "O lenei upega tafa'ilagi e lei faia ele Malo. Ile faatinoina o tuipuipui asiasi ane ile upega tafa'ilagi lea, <0>bookmyvaccine.nz</0>",
     "loading": "utaina",
     "getDirections": "Vaai fa'atonuga",
     "makeABooking": "Faamauina lou avanoa",
     "kmAway": "{{distance}} kilomita le alu",
     "lastUpdated": "Taimi mulimuli ga fa'afouina ai - {{updatedAt}}",
     "cancel": "Fa'aleaogaina",
-    "website": "'Upega tafa'ilagi",
-    "address": "Address"
+    "website": "Upega tafa'ilagi",
+    "address": "Tuatusi"
   },
   "navigation": {
-    "about": "About",
-    "contact": "Contact",
-    "getInvolved": "Get Involved",
+    "about": "Uiga Tāua",
+    "contact": "Fa'afeso'ota'i",
+    "getInvolved": "Auai Nei",
     "setLocation": "Faailoa lou nofoaga",
     "setLocationConfirmation": "Faamautinoa lou nofoaga",
     "locationModal": {
       "locaitonTitle": "Nofoaga",
-      "locationCTA": "Tusi i lalo lou tuatusi poo le alalafaga",
+      "locationCTA": "Tusi i lalo lou tuatusi po'o le alalafaga",
       "useCurrentLocation": "Fa'aoga le nofoaga o loo e nofo ai nei",
-      "geolocationNotSupported": "O nofoaga e le lagolagoina e le 'upega tafa'ilagi"
+      "geolocationNotSupported": "O nofoaga e le lagolagoina e le upega tafa'ilagi"
     },
     "vaccinationsNear": "Avanoa mo tuipuipui <0>lata ane {{location}}</0>",
     "unknownLocation": "Nofoaga le mailoa",
@@ -37,18 +37,18 @@
     }
   },
   "walkins": {
-    "sectionHeader": "Ulufale atu poo le tala'ao atu i lau ta'avale <0>- Matala ile asō</0>",
+    "sectionHeader": "Matala ile asō",
     "openString": "Taimi matala - {{openTimeString}}",
     "cancellationNotice": {
       "info": "Faamolemole e aua le faia faalua se avanoa",
-      "message": "Manatua ia faaleaogaina se isi avanoa sa faia muamua ile 'upega tafailagi lea <0>bookmyvaccine.nz</0>"
+      "message": "Manatua ia faaleaogaina se isi avanoa sa faia muamua ile upega tafailagi lea <0>bookmyvaccine.nz</0>"
     },
     "cancelBooking": "Fa'aleaogaina",
     "noticeList": {
       "title": "O avanoa ele mautinoa",
-      "text": "Ia manatua o nofoaga oloo taua ai le Ulufale atu iai, ele mautinoa le maua o ni avanoa."
+      "text": "Ia manatua o nofoaga oloo taua ai le ulufale atu iai, ele mautinoa le maua o ni avanoa."
     },
-    "walkinAwailable": "<0 /> Avanoa mo le Ulufale atu ",
+    "walkinAwailable": "<0 /> Avanoa mo le ulufale atu ",
     "driveThroughAvailable": "<0 /> Avanoa pe a talaa'ao atu i lau ta'avale",
     "phone": "Telefoni",
     "hours": "Itula",
@@ -59,9 +59,10 @@
       "sectionHeader": "O isi nofoaga mo tuipuipui <0>- mata ile asō</0>",
       "disclaimer": {
         "title": "O nofoaga nei sa tuuina mai e tagata ole Atunuu",
-        "message": "I lenei auiliiliga atonu e le 100 pasene sona atoatoa. Fa'amolemole tagai ane ile nofoaga ile 'upega tafa'ilagi."
+        "message": "I lenei auiliiliga atonu e le 100 pasene sona atoatoa. Fa'amolemole tagai ane ile nofoaga ile upega tafa'ilagi."
       }
-    }
+    },
+    "closed": "Tapuni"
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
@@ -70,9 +71,9 @@
       "howToBook": {
         "title": "E faafefea ga faia avanoa",
         "stepOne": "Sue se avanoa ma se taimi mai le lisi o i lalo.",
-        "stepTwo": "Kiliki le <i>Faamauina lou avanoa</i> button, e taitai atu oe ile itulau lea  <0>bookmyvaccine.nz</0>",
+        "stepTwo": "Kiliki le <i>Faamauina lou avanoa</i>, e ta'ita'i atu oe ile itulau lea  <0>bookmyvaccine.nz</0>",
         "stepThree": "Tusia lou tala'aga.",
-        "stepFour": "Ole a fesiligia, e vaai se nofoaga ma se taimi e fetaui lelei ma oe."
+        "stepFour": "Ole ā fesiligia, e vaai se nofoaga ma se taimi e fetaui lelei ma oe."
       },
       "availableSlots": "Avanoa fetaui",
       "noBookingsAvailable": "Leai ni avanoa o maua ile asō :(",
@@ -80,7 +81,7 @@
     }
   },
   "footer": {
-    "message": "Afai sa fesoasoani lenei 'upega tafa'ilagi mo oe, fa'amolemole faasoa atu i isi ",
+    "message": "Afai sa fesoasoani lenei upega tafa'ilagi mo oe, fa'amolemole faasoa atu i isi ",
     "links": {
       "contactUs": "Contact Us",
       "rawData": "Raw Data",

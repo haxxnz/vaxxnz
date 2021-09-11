@@ -1,4 +1,4 @@
-import { Coords } from "../location-picker/LocationPicker";
+import { Coords } from "../../location-picker/LocationPicker";
 
 export interface OpenHour {
   days: string[];
@@ -41,12 +41,13 @@ export interface LocationsData {
   lastUpdatedAt: string;
 }
 
-export interface LocationSlotsPair {
+export interface BookingLocationSlotsPair {
+  isBooking: true;
   location: Location;
   slots: SlotWithAvailability[] | undefined;
 }
 
-export interface DateLocationsPair {
+export interface BookingDateLocations {
   dateStr: string;
-  locationSlotsPairs: LocationSlotsPair[];
+  locationSlotsPairs: BookingLocationSlotsPair[];
 }

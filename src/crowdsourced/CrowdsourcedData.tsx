@@ -1,6 +1,6 @@
 import { Coords } from "../location-picker/LocationPicker";
 import { getDistanceKm } from "../utils/distance";
-import { Instruction } from "../walk-in/WalkInData";
+import { Instruction } from "../today-locations/healthpoint/HealthpointData";
 import { crowdsourcedLocations } from "./CrowdsourcedLocations";
 
 // 0 = sunday, 1 = monday ... same as new Date().getDay();
@@ -17,6 +17,7 @@ type OpeningHours =
     };
 
 export interface CrowdsourcedLocation {
+  isCrowdSourced: true;
   lat: number;
   lng: number;
   name: string;
@@ -30,54 +31,11 @@ export interface CrowdsourcedLocation {
   additionalInformation?: string;
 }
 
-// const getWalkInData = (): Promise<CrowdsourcedLocation[]> =>
-//   fetch(
-//     "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/HEAD/healthpointLocations.json"
-//   ).then((r) => r.json());
-
-type WalkInDataResult =
-  | { ok: CrowdsourcedLocation[] }
-  | { error: Error }
-  | { loading: true };
-
-const useCrowdsourcedData = (): WalkInDataResult => {
-  // const [walkInLocations, setWalkinLocations] = useState<
-  //   WalkInLocation[] | null
-  // >(null);
-  // const [error, setError] = useState<Error | null>(null);
-
-  // useEffect(() => {
-  //   getWalkInData()
-  //     .then((locations) => {
-  //       setWalkinLocations(locations);
-  //     })
-  //     .catch((err) => setError(err));
-  // }, []);
-
-  return {
-    ok: crowdsourcedLocations,
-  };
-};
-
-type CrowdSourcedLocationResult =
-  | { ok: CrowdsourcedLocation[] }
-  | { error: Error }
-  | { loading: true };
-
 export const useCrowdsourcedLocations = (
   coords: Coords,
   radiusKm: number
-): CrowdSourcedLocationResult => {
-  const allLocations = useCrowdsourcedData();
-
-  if ("ok" in allLocations) {
-    return {
-      ok: filterCrowdsourcedLocations(allLocations.ok, coords, radiusKm),
-    };
-  } else {
-    return allLocations;
-  }
-};
+): CrowdsourcedLocation[] =>
+  filterCrowdsourcedLocations(crowdsourcedLocations, coords, radiusKm);
 
 function filterCrowdsourcedLocations(
   allLocations: CrowdsourcedLocation[],
@@ -97,22 +55,6 @@ function filterCrowdsourcedLocations(
         getDistanceKm(coords, { lat: locationLat, lng: locationLng });
 
       return distanceInKm < radiusKm && openingHoursToday?.isOpen;
-    }
-  );
-  matchedFilter.sort(
-    (
-      { lat: locationALat, lng: locationALng },
-      { lat: locationBLat, lng: locationBLng }
-    ) => {
-      const distanceKmLocationA = getDistanceKm(coords, {
-        lat: locationALat,
-        lng: locationALng,
-      });
-      const distanceKmLocationB = getDistanceKm(coords, {
-        lat: locationBLat,
-        lng: locationBLng,
-      });
-      return distanceKmLocationA - distanceKmLocationB;
     }
   );
   return matchedFilter;

@@ -1,30 +1,28 @@
 import React, { FunctionComponent } from "react";
 import { Coords } from "../location-picker/LocationPicker";
-import { BookingCalendar, LoadingBookingCalendar } from "./BookingCalendar";
-import { useBookingData } from "./BookingData";
-import { DateLocationsPair } from "./BookingDataTypes";
-import BookingsModal from "./BookingsModal";
+import { BookingCalendar, LoadingBookingCalendar } from "./Calendar";
+import { useBookingData } from "./booking/BookingData";
+import BookingModal from "./modal/CalendarModal";
+import { CalendarDate, useCalendarLocations } from "./CalendarData";
 
-interface BookingSectionProps {
+interface CalendarSectionProps {
   coords: Coords;
   radiusKm: number;
   setLastUpdateTime: (time: Date | null) => void;
 }
 
 /** Loads booking data, display the calendar or load errors. */
-export const BookingSection: FunctionComponent<BookingSectionProps> = ({
+export const CalendarSection: FunctionComponent<CalendarSectionProps> = ({
   coords,
   radiusKm,
   setLastUpdateTime,
 }) => {
-  const [activeDate, setActiveDate] = React.useState<DateLocationsPair | null>(
-    null
-  );
+  const [activeDate, setActiveDate] = React.useState<CalendarDate | null>(null);
 
-  const data = useBookingData(coords, radiusKm, setLastUpdateTime);
+  const data = useCalendarLocations(coords, radiusKm, setLastUpdateTime);
   return (
     <>
-      <BookingsModal
+      <BookingModal
         radiusKm={radiusKm}
         activeDate={activeDate}
         setActiveDate={setActiveDate}
@@ -32,7 +30,11 @@ export const BookingSection: FunctionComponent<BookingSectionProps> = ({
       />
 
       {"ok" in data ? (
-        <BookingCalendar setActiveDate={setActiveDate} data={data.ok} radiusKm={radiusKm} />
+        <BookingCalendar
+          setActiveDate={setActiveDate}
+          data={data.ok}
+          radiusKm={radiusKm}
+        />
       ) : "loading" in data ? (
         <LoadingBookingCalendar />
       ) : (

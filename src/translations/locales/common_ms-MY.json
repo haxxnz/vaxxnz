@@ -10,8 +10,8 @@
     "kmAway": "{{distance}}km jauh",
     "lastUpdated": "Kemas kini terakhir {{updatedAt}}",
     "cancel": "Batal",
-    "website": "Website",
-    "address": "Address"
+    "website": "Laman Web",
+    "address": "Alamat"
   },
   "navigation": {
     "about": "Mengenai",
@@ -45,7 +45,7 @@
     },
     "cancelBooking": "Batal",
     "noticeList": {
-      "title": "Availability Tidak Dijamin",
+      "title": "Tempat Kosong Tidak Dijamin",
       "text": "Perlu diingati bahawa lokasi tanpa tempahan yang disenaraikan tidak semestinya mempunyai kapasiti yang tersedia."
     },
     "walkinAwailable": "<0 /> Walk-in ada",
@@ -56,12 +56,13 @@
     "otherExeptions": "Kecualian",
     "seeMore": "Lagi",
     "otherLocations": {
-      "sectionHeader": "Other Vaccination Locations <0>- Open Today</0>",
+      "sectionHeader": "Other Vaccination Locations <0>- Buka Hari Ini</0>",
       "disclaimer": {
-        "title": "This location has been submitted by the public",
-        "message": "The information here may not be 100% accurate. Please refer to the locations website."
+        "title": "Tempat ini diberitahui dari orang awam",
+        "message": "Maklumat di sini tidak menjamin 100% tepat. Sila rujuk laman web lokasi."
       }
-    }
+    },
+    "closed": "Tutup"
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
@@ -70,7 +71,7 @@
       "howToBook": {
         "title": "Cara Membuat Tempahan",
         "stepOne": "Cari lokasi dan masa dari senarai di bawah.",
-        "stepTwo": "Tekan <i>Make a Booking</i> butang, ini akan membawa anda ke <0>bookmyvaccine.nz</0>",
+        "stepTwo": "Tekan <i>Buat Tempahan</i> butang, ini akan membawa anda ke <0>bookmyvaccine.nz</0>",
         "stepThree": "Masukkan maklumat anda.",
         "stepFour": "Apabila ditanya, cari lokasi dan masa yang anda inginkan."
       },
@@ -80,13 +81,13 @@
     }
   },
   "footer": {
-    "message": "Sekiranya laman web ini membantu anda, pertimbangkan untuk berkongsi",
+    "message": "Sekiranya laman web ini membantu anda, sila beritahu orang lain",
     "links": {
       "contactUs": "Hubungi Kami",
       "rawData": "Maklumat Asli",
       "sourceCode": "Source Code",
       "roadmap": "Rancangan"
     },
-    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
+    "addressFinderLinkCopy": "Terima Kasih kepada <0>AddressFinder</0> memberikan carian alamat percuma"
   }
 }

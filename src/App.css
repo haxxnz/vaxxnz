@@ -84,7 +84,7 @@ h3 {
   font-weight: 600;
 }
 
-h2.WalkSection {
+div.WalkSection {
   display: block;
   padding: 1.5rem 1rem;
   border-bottom: 1px solid lightgray;
@@ -94,6 +94,11 @@ h2.WalkSection {
   top: 0px;
   background-color: #fff;
   z-index: 2 !important;
+}
+
+div.WalkSection p {
+  margin-top: 3px;
+  color: #666;
 }
 
 i.StupidWalkHack {
@@ -224,6 +229,10 @@ div.WalkInTypes p:not(:first-of-type) {
   border-bottom: 1px solid lightgray;
 }
 
+[data-baseweb="select"] input[aria-hidden="true"] {
+  display: none;
+}
+
 ul.af_list.af_list {
   /* this is pretty atrocious, but the element is positioned at root so we have to calculate the width manually */
   width: calc(min(100vw - 80px, 600px));
@@ -233,4 +242,15 @@ ul.af_list.af_list {
 ul.af_list.af_list li.af_item {
 	padding: 9px 13px;
   font-size: 1rem;
+}
+
+.not-bmv {
+  display: block;
+  background-color: #E6F2ED;
+  border: 2px solid #b9dacc;
+  font-weight: 500;
+  border-radius: 14px;
+	color: #006138;
+	padding: 0.6rem 1rem;
+	margin-top: 0.8rem;
 }

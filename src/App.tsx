@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import "./App.css";
-import { BookingSection } from "./booking/BookingSection";
+import { CalendarSection } from "./calendar/CalendarSection";
 import LanguageSelect from "./LanguageSelect";
 import { LocationPicker } from "./location-picker/LocationPicker";
 import { ShareButtons } from "./ShareButtons";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { DEFAULT_LOCATION } from "./utils/location";
 import { useSearchParams } from "./utils/url";
-import { WalkInSection } from "./walk-in/WalkInSection";
-import { CrowdSourcedSection } from "./crowdsourced/CrowdsourcedSection";
+import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
 
 function App() {
   const { lat, lng } = useSearchParams();
@@ -90,14 +89,12 @@ function App() {
             lastUpdateTime={lastUpdateTime}
           />
 
-          <WalkInSection coords={coords} radiusKm={radiusKm} />
-          <BookingSection
+          <TodayLocationsSection coords={coords} radiusKm={radiusKm} />
+          <CalendarSection
             coords={coords}
             radiusKm={radiusKm}
             setLastUpdateTime={setLastUpdateTime}
           />
-
-          <CrowdSourcedSection coords={coords} radiusKm={radiusKm} />
         </div>
 
         <footer className="footer-header">

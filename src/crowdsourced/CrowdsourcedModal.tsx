@@ -1,15 +1,11 @@
-import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
-import { Trans, useTranslation } from "react-i18next";
-import "../../App.css";
-import { NoticeList, NoticeListItem } from "../../NoticeList";
-import { ModalGrid } from "../../VaxComponents";
-import { LocationNotice } from "../../common/LocationNotice";
-import { Instruction } from "../../walk-in/WalkInData";
-import { CrowdsourcedLocation } from "../CrowdsourcedData";
+import { useTranslation } from "react-i18next";
+import { LocationNotice } from "../common/LocationNotice";
+import { NoticeList, NoticeListItem } from "../NoticeList";
+import { ModalGrid } from "../VaxComponents";
+import { CrowdsourcedLocation } from "./CrowdsourcedData";
 
 type Props = {
   clearSelectedLocation: () => void;
@@ -144,17 +140,30 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
               <a href={`tel:${telephone}`}>{telephone}</a>
             </section>
           )}
-
           {location.openingHours.length > 0 && (
             <section>
-              <h3>{t("walkins.hours")}</h3>
+              <h3 style={{ marginBottom: "0.75rem" }}>{t("walkins.hours")}</h3>
               {location.openingHours.map((oh, index) => {
                 return (
-                  <p key={index}>
-                    {dayOfWeekToString(oh.day)}{" "}
-                    {oh.isOpen ? oh.hours : undefined}
-                    <br />
-                  </p>
+                  <>
+                    <p key={index} style={{ float: "left" }}>
+                      {dayOfWeekToString(oh.day)}{" "}
+                    </p>
+                    <p style={{ float: "right" }}>
+                      {oh.isOpen ? oh.hours : t("walkins.closed")}
+                    </p>
+                    <br style={{ lineHeight: "0.5rem" }} />
+                    <hr
+                      style={{
+                        width: "100%",
+                        height: 1,
+                        backgroundColor: "#e9e9e9",
+                        border: "none",
+                        padding: 0,
+                        margin: "0 0 12px 0",
+                      }}
+                    />
+                  </>
                 );
               })}
             </section>
