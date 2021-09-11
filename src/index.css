@@ -39,6 +39,7 @@ code {
 a {
   outline: none;
   text-decoration: none;
+  word-break: break-word;
 }
 
 .menu-header {
