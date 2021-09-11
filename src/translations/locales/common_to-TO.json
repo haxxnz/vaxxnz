@@ -23,7 +23,7 @@
       "useCurrentLocation": "Ngaue'aki ho'o feitu'u lolotonga",
       "geolocationNotSupported": "Feitu'u oku ikai a'u kiai ae intaneti"
     },
-    "vaccinationsNear": "Vaccinations <0>near {{location}}</0>",
+    "vaccinationsNear": "Feitu'u fai'anga huhu <0> ofi {{location}}</0>",
     "unknownLocation": "ikai fakapapau'i 'ae feitu'u",
     "distanceDropdown": {
       "2km": "I loto  2km",
