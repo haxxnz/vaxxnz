@@ -23,6 +23,7 @@ export const config = {
     "zh-TW",
     "ms-MY",
     "sm-SM",
+    "vi-VN",
   ],
   interpolation: { escapeValue: false },
   resources,
