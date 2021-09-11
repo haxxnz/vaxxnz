@@ -112,6 +112,7 @@ function CalendarMonthContainerExpensive(
     </CalendarSectionContainer>
   );
 }
+// FOR FUTURE: ideally we just have cheaper calendar month containers? Idk. Maybe useMemo or memoizeOne is a more elegant solution? Idk. This will do for now.
 const CalendarMonthContainer = React.memo(CalendarMonthContainerExpensive);
 
 interface CalendarDayProps {
