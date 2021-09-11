@@ -78,17 +78,15 @@ interface Props {
 }
 function CalendarMonthContainerExpensive(props: Props): JSX.Element {
   const { monthStr, monthDates, radiusKm, setActiveDate } = props;
+  const date = parse(monthStr, "MMMM yyyy", new Date());
   return (
     <CalendarSectionContainer key={monthStr}>
       <div className="MonthSection">
         <h2>
-          {parse(monthStr, "MMMM yyyy", new Date()).toLocaleDateString(
-            [i18next.language],
-            {
-              month: "long",
-              year: "numeric",
-            }
-          )}
+          {date.toLocaleDateString([i18next.language], {
+            month: "long",
+            year: "numeric",
+          })}
         </h2>
       </div>
       <MonthContainer>
