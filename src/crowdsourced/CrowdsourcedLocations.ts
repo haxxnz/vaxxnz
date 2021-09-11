@@ -1,8 +1,9 @@
-import { Instruction } from "../walk-in/WalkInData";
+import { Instruction } from "../today-locations/healthpoint/HealthpointData";
 import { CrowdsourcedLocation } from "./CrowdsourcedData";
 
 export const crowdsourcedLocations: CrowdsourcedLocation[] = [
   {
+    isCrowdSourced: true,
     name: "Auckland Airport Vaccination Centre",
     address: "22 Verissimo Drive, Mangere",
     lat: -36.9854795,
@@ -53,11 +54,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Kamo Pharmacy",
     address: "521A Kamo Road, Kamo, Whangārei 0112, New Zealand",
     lat: -35.6833483,
     lng: 174.3006356,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "http://www.kamopharmacy.nz/",
     telephone: "09-435 0174",
     openingHours: [
@@ -71,11 +73,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Alexandra Pharmacy",
     address: "4/6 Centennial Avenue, Alexandra 9340, New Zealand",
     lat: -45.2556964,
     lng: 169.3925704,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website:
       "http://www.unichem.co.nz/storelocator/store?id=2535814283&sid=Alexandra",
     telephone: "03-448 8871",
@@ -90,12 +93,13 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Queensgate",
     address:
       "Shop 130, Queensgate Shopping Centre Cnr Queens Drive and, Bunny Street, Hutt Central, Lower Hutt 5010, New Zealand",
     lat: -41.2099569,
     lng: 174.9064448,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "http://www.lifepharmacyqueensgate.co.nz/",
     telephone: "04-570 0473",
     openingHours: [
@@ -109,11 +113,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Jeff Whittakers Pharmacy",
     address: "10 Napier Road, Havelock North 4130, New Zealand",
     lat: -39.6693175,
     lng: 176.8781991,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     telephone: "06-877 7848",
     openingHours: [
       { day: 1, isOpen: true, hours: "8:30 AM – 5:00 PM" },
@@ -126,11 +131,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Waipukurau Pharmcy",
     address: "125 Ruataniwha Street, Waipukurau 4200, New Zealand",
     lat: -39.9950378,
     lng: 176.5526205,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "http://www.unichem.co.nz/storelocator/store?id=2535814162",
     telephone: "06-858 8060",
     openingHours: [
@@ -144,12 +150,13 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Papakura",
     address:
       "102 Great South Road Roselands Shopping Centre, Papakura, Auckland 2110, New Zealand",
     lat: -37.0592787,
     lng: 174.9416109,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "https://www.lifepharmacy.co.nz/pharmacy-finder/",
     telephone: "09-298 5615",
     openingHours: [
@@ -163,11 +170,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Thames Pharmacy",
     address: "546 Pollen Street, Thames 3500, New Zealand",
     lat: -37.1387619,
     lng: 175.5422873,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "https://www.facebook.com/thamesunichempharmacy/",
     telephone: "07-868 6363",
     openingHours: [
@@ -181,11 +189,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Marshalls Pharmacy",
     address: "220 Bank Street, Te Awamutu 3800, New Zealand",
     lat: -38.0111802,
     lng: 175.3224171,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website:
       "https://unichem-marshalls-medical-pharmacy.business.site/?utm_source=gmb&utm_medium=referral",
     telephone: "07-871 4918",
@@ -200,19 +209,21 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Stephenson's Pharmacy",
     address: "Blacksmith Lane, Whitianga 3510, New Zealand",
     lat: -36.83455319999999,
     lng: 175.7047758,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     openingHours: [],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Flagstaff Pharmacy",
     address: "1158 River Road, Flagstaff, Hamilton 3210, New Zealand",
     lat: -37.738107,
     lng: 175.2527438,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "https://www.flagstaffpharmacy.co.nz/",
     telephone: "07-854 0445",
     openingHours: [
@@ -226,11 +237,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Chartwell",
     address: "Shop 123/201 Hukanui Road, Chartwell, Hamilton 3248, New Zealand",
     lat: -37.75064589999999,
     lng: 175.2785653,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "https://www.lifepharmacy.co.nz/pharmacy-finder/",
     telephone: "07-855 6024",
     openingHours: [
@@ -244,11 +256,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Tauranga",
     address: "53 Devonport Road, Tauranga 3141, New Zealand",
     lat: -37.6857931,
     lng: 176.1693219,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "http://www.lifepharmacy.co.nz/",
     telephone: "07-578 3177",
     openingHours: [
@@ -262,12 +275,13 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Barrington",
     address:
       "Barrington Shopping Centre, 54/54 Athelstan Street, CANTERBURY, Christchurch 8244, New Zealand",
     lat: -43.556075,
     lng: 172.6209287,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "http://www.lifepharmacybarrington.co.nz/",
     telephone: "03-337 5527",
     openingHours: [
@@ -281,11 +295,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Ashburton",
     address: "262 East Street, Ashburton 7700, New Zealand",
     lat: -43.9047955,
     lng: 171.7474449,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "http://www.lifepharmacy.co.nz/",
     telephone: "03-308 7222",
     openingHours: [
@@ -299,11 +314,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Hornby (via Maui Vaccination Clinic at The Hub Hornby)",
     address: "418 Main South Road, Hornby, Christchurch 8042, New Zealand",
     lat: -43.5426011,
     lng: 172.5231493,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "https://www.lifepharmacy.co.nz/",
     telephone: "03-349 1130",
     openingHours: [
@@ -317,11 +333,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Bishopdale Pharmacy",
     address: "37 Bishopdale Court, Bishopdale, Christchurch 8543, New Zealand",
     lat: -43.4887925,
     lng: 172.5874003,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "https://www.bishopdalepharmacy.co.nz/",
     telephone: "03-359 8302",
     openingHours: [
@@ -335,12 +352,13 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy The Palms",
     address:
       "The Palms Shopping Centre 7, 19/21 Marshland Road, Shirley, Christchurch 8061, New Zealand",
     lat: -43.50649569999999,
     lng: 172.6647955,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "http://www.lifepharmacy.co.nz/",
     telephone: "03-385 2725",
     openingHours: [
@@ -354,11 +372,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Rangiora",
     address: "172-176 High Street, Rangiora 7400, New Zealand",
     lat: -43.30346,
     lng: 172.5936399,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "http://www.lifepharmacy.co.nz/",
     telephone: "03-313 6340",
     openingHours: [
@@ -372,12 +391,13 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Cashel Street Pharmacy",
     address:
       "111 Cashel Street, Christchurch Central City, Christchurch 8011, New Zealand",
     lat: -43.5330091,
     lng: 172.6357581,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "http://www.cashelpharmacy.co.nz/",
     telephone: "03-595 1289",
     openingHours: [
@@ -391,12 +411,13 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Forte Pharmacy",
     address:
       "132 Peterborough Street, Christchurch Central City, Christchurch 8013, New Zealand",
     lat: -43.526354,
     lng: 172.6377364,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "http://www.fortepharmacy.co.nz/",
     telephone: "03-595 5493",
     openingHours: [
@@ -410,12 +431,13 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Riccarton",
     address:
       "Shop 45/129 Riccarton Road, Riccarton, Christchurch 8440, New Zealand",
     lat: -43.5312303,
     lng: 172.5974232,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "http://www.lifepharmacy.co.nz/",
     telephone: "03-348 9723",
     openingHours: [
@@ -429,12 +451,13 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Centre City Pharmacy",
     address:
       "133 Great King Street, Dunedin Central, Dunedin 9016, New Zealand",
     lat: -45.8708886,
     lng: 170.5072221,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website:
       "http://www.greencrosshealth.co.nz/store/store/Unichem-Centre-City-Pharmacy?i=69",
     telephone: "03-477 8118",
@@ -449,11 +472,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Knox Pharmacy",
     address: "402 George Street, North Dunedin, Dunedin 9016, New Zealand",
     lat: -45.8678529,
     lng: 170.5073532,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website:
       "http://www.unichem.co.nz/storelocator/store?id=2535814106&sid=taieri",
     telephone: "03-477 0635",
@@ -468,11 +492,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Taieri Pharmacy",
     address: "2 Factory Road, Mosgiel 9024, New Zealand",
     lat: -45.87390569999999,
     lng: 170.3481553,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "http://www.unichem.co.nz/storelocator/store?id=2535814157",
     telephone: "03-489 5171",
     openingHours: [
@@ -486,11 +511,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Central Pharmacy Mosgiel",
     address: "130 Gordon Road, Fairfield, Mosgiel 9024, New Zealand",
     lat: -45.8750455,
     lng: 170.348077,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "http://www.unichem.co.nz/storelocator/store?id=2535814188",
     telephone: "03-489 6141",
     openingHours: [
@@ -504,11 +530,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Waikiwi Pharmacy",
     address: "280 North Road, Waikiwi, Invercargill 9810, New Zealand",
     lat: -46.3772221,
     lng: 168.3470346,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "https://womenshealthexpert.nz/",
     telephone: "03-215 7422",
     openingHours: [
@@ -522,12 +549,13 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Life Pharmacy Dunedin",
     address:
       "Wall Street Mall, 211 George Street, Dunedin Central, Dunedin 9016, New Zealand",
     lat: -45.8707911,
     lng: 170.5039487,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "http://www.lifepharmacy.co.nz/",
     telephone: "03-477 5433",
     openingHours: [
@@ -541,22 +569,24 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Mangere East Pharmacy",
     address: "7A/359 Massey Road, Māngere East, Auckland 2024, New Zealand",
     lat: -36.9665141,
     lng: 174.8251079,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website:
       "https://bookings.gettimely.com/unichemmangereeastpharmacy/bb/book",
     telephone: "09-222 0161",
     openingHours: [],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Takanini Pharmacy",
     address: "3/226 Great South Road, Takanini, Auckland 2112, New Zealand",
     lat: -37.0480177,
     lng: 174.927583,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website:
       "http://www.unichem.co.nz/storelocator/store?id=2535814158&sid=Takanini",
     telephone: "09-951 5334",
@@ -571,11 +601,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Medi-Centre Pharmacy",
     address: "131 Lincoln Road, Henderson, Auckland 0610, New Zealand",
     lat: -36.8646558,
     lng: 174.6301203,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website:
       "http://www.unichem.co.nz/storelocator/store?id=2535814139&sid=Piha",
     telephone: "09-838 8404",
@@ -590,11 +621,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Unichem Whangarei Pharmacy",
     address: "32 Reyburn Street, Town Basin, Whangārei 0110, New Zealand",
     lat: -35.7269096,
     lng: 174.3264007,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "http://www.unichem.co.nz/",
     telephone: "09-222 7070",
     openingHours: [
@@ -608,11 +640,12 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
     ],
   },
   {
+    isCrowdSourced: true,
     name: "Pacific Health Plus",
     address: "174 Bedford Street, Cannons Creek, Porirua 5024, New Zealand",
     lat: -41.142780414674775,
     lng: 174.86621188934612,
-    instructions: [],
+    instructions: [Instruction.allowsBookings],
     website: "https://www.phplus.co.nz",
     telephone: "0800 747 587",
     bookingWebsite: "https://calendly.com/pacifichealthplus/covidvaccine",
