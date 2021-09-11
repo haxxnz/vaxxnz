@@ -77,7 +77,8 @@
       },
       "availableSlots": "Avanoa fetaui",
       "noBookingsAvailable": "Leai ni avanoa o maua ile asō :(",
-      "backToCalendar": "Toe foi i tua ile Kalena"
+      "backToCalendar": "Toe foi i tua ile Kalena",
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
     }
   },
   "footer": {

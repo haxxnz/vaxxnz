@@ -78,7 +78,8 @@
       },
       "availableSlots": "Espacios disponibles",
       "noBookingsAvailable": "No hay reservas disponibles en este día :(",
-      "backToCalendar": "Volver al calendario"
+      "backToCalendar": "Volver al calendario",
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
     }
   },
   "footer": {
