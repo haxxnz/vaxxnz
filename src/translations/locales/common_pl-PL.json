@@ -2,8 +2,8 @@
   "core": {
     "title": "Vaxx.nz",
     "tagline": "Znajdź szczepionkę przeciw COVID-19",
-    "subtitle": "Zobacz sposoby na zaszczepienie się w twojej okolicy.",
-    "disclaimerNotAGovWebsite": "To nie jest oficjalna strona rządu. Aby zaszczepić się odwiedź stronę <0>bookmyvaccine.nz</0>",
+    "subtitle": "Sprawdź możliwości zaszczepienia się w twojej okolicy.",
+    "disclaimerNotAGovWebsite": "Nie jest to oficjalna strona rządu. Aby zaszczepić się odwiedź stronę <0>bookmyvaccine.nz</0>",
     "loading": "Ładowanie...",
     "getDirections": "Jak dojechać",
     "makeABooking": "Zrób rezerwacje",
