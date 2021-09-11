@@ -19,6 +19,7 @@
     "getInvolved": "Kau kiai",
     "setLocation": "Teuteu ho feitu'u",
     "setLocationConfirmation": "Feitu'u kuo teuteu'i",
+    "locationModal": {
       "locationCTA": "Hiki'i ho'o tui'asila pe koe feitu'u",
       "useCurrentLocation": "Ngaue'aki ho'o feitu'u lolotonga",
       "geolocationNotSupported": "Feitu'u oku ikai a'u kiai ae intaneti"
