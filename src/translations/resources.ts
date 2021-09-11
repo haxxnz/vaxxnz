@@ -6,7 +6,9 @@ import common_ms_MY from "./locales/common_ms-MY.json";
 import common_zh_CN from "./locales/common_zh-CN.json";
 import common_zh_TW from "./locales/common_zh-TW.json";
 import common_sm_SM from "./locales/common_sm-SM.json";
+import common_to_TO from "./locales/common_to-TO.json";
 import common_vi_VN from "./locales/common_vi-VN.json";
+
 
 export type Language = {
   common: Object; //typeof common_en_NZ;
@@ -25,6 +27,11 @@ const languages: Language[] = [
     common: common_sm_SM,
     label: "Gagana Samoa",
     code: "sm-SM",
+  },
+  {
+    common: common_to_TO,
+    label: "Lea faka-Tonga",
+    code: "to-TO",
   },
   {
     common: common_zh_CN,
