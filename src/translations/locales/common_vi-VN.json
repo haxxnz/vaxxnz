@@ -77,7 +77,7 @@
       },
       "availableSlots": "Chỗ trống",
       "noBookingsAvailable": "Không còn chỗ trống nào vào ngày này :(",
-      "backToCalendar": "Quay về lich",
+      "backToCalendar": "Quay về lịch",
       "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
     },
     "numberOfAppointments": "{{sumAvailableTimes}} chỗ trống"
@@ -90,6 +90,6 @@
       "sourceCode": "Mã nguồn",
       "roadmap": "Lộ trình"
     },
-    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
+    "addressFinderLinkCopy": "Cảm ơn <0>AddressFinder</0> đã hỗ trợ địa chỉ tìm kiếm"
   }
 }
