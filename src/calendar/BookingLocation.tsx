@@ -24,6 +24,15 @@ type BookingLocationProps = {
   radiusKm: number;
 };
 
+const IS_UAT =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1" ||
+  window.location.hostname.endsWith("netlify.app");
+
+const MOH_PROXY = IS_UAT
+  ? "https://dev-moh-f3a4edb2.vaxx.nz"
+  : "https://moh.vaxx.nz";
+
 const BookingLocation: FunctionComponent<BookingLocationProps> = ({
   locationSlotsPair,
   coords,
@@ -66,7 +75,7 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
         return;
       }
       const response = await getSlots(
-        `https://dev-moh-f3a4edb2.vaxx.nz/public/locations/${locationSlotsPair.location.extId}/date/${activeDate.dateStr}/slots`
+        `${MOH_PROXY}/public/locations/${locationSlotsPair.location.extId}/date/${activeDate.dateStr}/slots`
       );
       if (response) {
         setSlots(response.slotsWithAvailability);
