@@ -15,6 +15,9 @@ const LanguageSelect = () => {
     let newLang = languages.find((lang) => lang.code === selectedLanguage.code);
     setLanguage(newLang);
     i18n.changeLanguage(newLang?.code);
+    const url = new URL(window.location.toString());
+    url.searchParams.set("locale", String(newLang?.code.toLocaleLowerCase()));
+    window.history.pushState({}, "", url.toString());
     enqueueAnalyticsEvent("Language changed", { code: newLang?.code });
   };
 

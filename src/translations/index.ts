@@ -1,15 +1,12 @@
 import { resources } from "./resources";
 import languages from "./resources";
 
-let initLanguage = localStorage.getItem("i18nextLng") || "en-NZ";
-
 const options = {
-  order: ["querystring", "navigator"],
-  lookupQuerystring: "lang",
+  order: ["querystring", "localStorage", "navigator"],
+  lookupQuerystring: "locale",
 };
 
 export const config = {
-  lng: initLanguage,
   fallbackLng: "en-NZ",
   ns: ["common"],
   defaultNS: "common",

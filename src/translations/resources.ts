@@ -9,7 +9,6 @@ import common_sm_SM from "./locales/common_sm-SM.json";
 import common_to_TO from "./locales/common_to-TO.json";
 import common_vi_VN from "./locales/common_vi-VN.json";
 
-
 export type Language = {
   common: Object; //typeof common_en_NZ;
   label: string;
