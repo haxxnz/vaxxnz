@@ -19,9 +19,11 @@
     "getInvolved": "Kau kiai",
     "setLocation": "Teuteu ho feitu'u",
     "setLocationConfirmation": "Feitu'u kuo teuteu'i",
+    "locationModal": {
       "locationCTA": "Hiki'i ho'o tui'asila pe koe feitu'u",
       "useCurrentLocation": "Ngaue'aki ho'o feitu'u lolotonga",
-      "geolocationNotSupported": "Feitu'u oku ikai a'u kiai ae intaneti"
+      "geolocationNotSupported": "Feitu'u oku ikai a'u kiai ae intaneti",
+      "locaitonTitle": "Location"
     },
     "vaccinationsNear": "Feitu'u fai'anga huhu <0> ofi {{location}}</0>",
     "unknownLocation": "ikai fakapapau'i 'ae feitu'u",
@@ -59,7 +61,8 @@
         "title": "Koe ngaahi feitu'u eni 'oku ata kihe kakai",
         "message": "Koe ngaahi fakamatala koeni heikai 100% ka ke kataki vakai kihe uepisaiti"
       }
-    }
+    },
+    "closed": "Closed"
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
@@ -74,10 +77,10 @@
       },
       "availableSlots": "Koe ngaahi feitu'u eni oku ata",
       "noBookingsAvailable": "Aho oku ikai lava ha puka aponimeni:",
-      "backToCalendar": "Vakai kihe tohi mahina"
+      "backToCalendar": "Vakai kihe tohi mahina",
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
     }
   },
-
   "footer": {
     "message": "Kapau oku tokoni kiate koe ae uepisaiti koeni, kataki 'o vahevahe atu",
     "addressFinderLinkCopy": "Fakamālō kia <0>Address Finder</0> 'ikai totongi sio kihe tu'sita",

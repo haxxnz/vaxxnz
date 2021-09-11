@@ -77,7 +77,8 @@
       },
       "availableSlots": "時間段",
       "noBookingsAvailable": "當天已約滿 :(",
-      "backToCalendar": "回到日曆"
+      "backToCalendar": "回到日曆",
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
     },
     "numberOfAppointments": "{{sumAvailableTimes}} 個空餘預約"
   },

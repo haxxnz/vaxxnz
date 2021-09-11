@@ -77,7 +77,8 @@
       },
       "availableSlots": "Slots yang ada",
       "noBookingsAvailable": "Tiada tempahan tersedia pada hari ini :(",
-      "backToCalendar": "Kembali ke Kalendar"
+      "backToCalendar": "Kembali ke Kalendar",
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
     }
   },
   "footer": {

@@ -10,7 +10,8 @@
     "kmAway": "Cách địa chỉ lựa chọn {{distance}} km",
     "lastUpdated": "Cập nhật cách đây {{updatedAt}}",
     "cancel": "Huỷ bỏ",
-    "website": "Trang web"
+    "website": "Trang web",
+    "address": "Address"
   },
   "navigation": {
     "about": "Về Vaxx.nz",
@@ -76,7 +77,8 @@
       },
       "availableSlots": "Chỗ trống",
       "noBookingsAvailable": "Không còn chỗ trống nào vào ngày này :(",
-      "backToCalendar": "Quay về lich"
+      "backToCalendar": "Quay về lich",
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
     },
     "numberOfAppointments": "{{sumAvailableTimes}} chỗ trống"
   },
@@ -87,6 +89,7 @@
       "rawData": "Dữ liệu thô",
       "sourceCode": "Mã nguồn",
       "roadmap": "Lộ trình"
-    }
+    },
+    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
   }
 }
