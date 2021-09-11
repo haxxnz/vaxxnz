@@ -24,6 +24,7 @@ export const config = {
     "ms-MY",
     "sm-SM",
     "vi-VN",
+    "to-TO",
   ],
   interpolation: { escapeValue: false },
   resources,
