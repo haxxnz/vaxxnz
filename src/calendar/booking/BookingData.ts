@@ -1,14 +1,14 @@
 import { format, parse } from "date-fns";
-import { useContext, useState, useCallback, useEffect } from "react";
-import { DateLocationsPairsContext } from "../contexts";
-import filterOldDates from "../filterOldDates";
-import { Coords } from "../location-picker/LocationPicker";
-import { getDistanceKm } from "../utils/distance";
+import { useState, useCallback, useEffect, useMemo } from "react";
+import filterOldDates from "../../filterOldDates";
+import { Coords } from "../../location-picker/LocationPicker";
+import { getDistanceKm } from "../../utils/distance";
+import { DateString, MonthString } from "../CalendarData";
 import {
-  DateLocationsPair,
+  BookingDateLocations,
   Location,
   LocationsData,
-  LocationSlotsPair,
+  BookingLocationSlotsPair,
 } from "./BookingDataTypes";
 
 const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
@@ -77,17 +77,17 @@ async function getMyCalendar(coords: Coords, radiusKm: number) {
   );
 
   const today = new Date();
-  const dateLocationsPairs: DateLocationsPair[] = [];
+  const dateLocationsPairs: BookingDateLocations[] = [];
   for (let i = 0; i < 60; i++) {
     // 90 days in the future
     const date = new Date().setDate(today.getDate() + i);
     const dateStr = format(date, "yyyy-MM-dd");
-    const locationSlotsPairs: LocationSlotsPair[] = [];
+    const locationSlotsPairs: BookingLocationSlotsPair[] = [];
     for (let j = 0; j < availabilityDatesAndLocations.length; j++) {
       const availabilityDatesAndLocation = availabilityDatesAndLocations[j];
       const { location, availabilityDates } = availabilityDatesAndLocation;
       const slots = availabilityDates ? availabilityDates[dateStr] : [];
-      locationSlotsPairs.push({ location, slots });
+      locationSlotsPairs.push({ isBooking: true, location, slots });
     }
     dateLocationsPairs.push({
       dateStr,
@@ -102,7 +102,29 @@ type BookingDataResult =
   | { error: Error }
   | { loading: true };
 
-export type BookingData = Map<string, DateLocationsPair[]>;
+export type BookingData = Map<
+  MonthString,
+  Map<DateString, BookingLocationSlotsPair[]>
+>;
+
+function getBookingData(bookingDateLocations: BookingDateLocations[]) {
+  const dateLocationsPairs = filterOldDates(bookingDateLocations);
+  let byMonth: BookingData = new Map();
+  dateLocationsPairs.forEach((dateLocationsPair) => {
+    const date = parse(dateLocationsPair.dateStr, "yyyy-MM-dd", new Date());
+    const month = date.toLocaleString("en-NZ", {
+      month: "long",
+      year: "numeric",
+    });
+    const mapToPush = byMonth.get(month) ?? new Map();
+    mapToPush.set(
+      dateLocationsPair.dateStr,
+      dateLocationsPair.locationSlotsPairs
+    );
+    byMonth.set(month, mapToPush);
+  });
+  return byMonth;
+}
 
 export const useBookingData = (
   coords: Coords,
@@ -111,12 +133,10 @@ export const useBookingData = (
 ): BookingDataResult => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
+  const [dateLocationsPairs, setDateLocationsPairs] = useState<
+    BookingDateLocations[]
+  >([]);
 
-  const {
-    dateLocationsPairs: dateLocationsPairsUnfiltered,
-    setDateLocationsPairs,
-  } = useContext(DateLocationsPairsContext);
-  const dateLocationsPairs = filterOldDates(dateLocationsPairsUnfiltered);
   const loadCalendar = useCallback(async () => {
     setLoading(true);
     setError(null);
@@ -134,17 +154,11 @@ export const useBookingData = (
     setLoading(false);
   }, [coords, radiusKm, setDateLocationsPairs, setLastUpdateTime]);
 
-  let byMonth = new Map<string, DateLocationsPair[]>();
-  dateLocationsPairs.forEach((dateLocationsPair) => {
-    const date = parse(dateLocationsPair.dateStr, "yyyy-MM-dd", new Date());
-    const month = date.toLocaleString("en-NZ", {
-      month: "long",
-      year: "numeric",
-    });
-    const arrayToPush = byMonth.get(month) ?? [];
-    arrayToPush.push(dateLocationsPair);
-    byMonth.set(month, arrayToPush);
-  });
+  // FOR FUTURE: set directly in setState to reduce RAM usage?
+  const byMonth = useMemo(
+    () => getBookingData(dateLocationsPairs),
+    [dateLocationsPairs]
+  );
 
   useEffect(() => {
     loadCalendar();

@@ -4,24 +4,22 @@ import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
 import { Trans, useTranslation } from "react-i18next";
-import "../../App.css";
-import { enqueueAnalyticsEvent } from '../../utils/analytics';
-import { NoticeList, NoticeListItem } from "../../NoticeList";
-import { ModalGrid } from "../../VaxComponents";
-import { Instruction, WalkInLocation } from "../WalkInData";
-import { CancelBookingNotice } from "./CancelNotice";
+import { enqueueAnalyticsEvent } from "../../utils/analytics";
+import { WalkGrid } from "../../VaxComponents";
 import { useMediaQuery } from "react-responsive";
+import { LocationNotice } from "../../common/LocationNotice";
+import { HealthpointLocation } from "./HealthpointData";
 
 type Props = {
   clearSelectedLocation: () => void;
-  location?: WalkInLocation;
+  location?: HealthpointLocation;
   radiusKm: number;
 };
 
-const WalkInModal: FunctionComponent<Props> = ({
+const HealthpointModal: FunctionComponent<Props> = ({
   clearSelectedLocation,
   location,
-  radiusKm
+  radiusKm,
 }) => {
   const close = () => clearSelectedLocation();
   const { t } = useTranslation("common");
@@ -62,7 +60,7 @@ const WalkInModal: FunctionComponent<Props> = ({
         },
       }}
     >
-      <ModalGrid className={"modal-container WalkModal"}>
+      <WalkGrid className={"modal-container WalkModal"}>
         <div>
           <h1
             style={{
@@ -71,10 +69,7 @@ const WalkInModal: FunctionComponent<Props> = ({
           >
             {location.name}
           </h1>
-
-          <p>{location.address}</p>
-
-          <CancelBookingNotice className="mobile" />
+          <LocationNotice instructions={location.instructionLis} />
 
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
@@ -94,12 +89,16 @@ const WalkInModal: FunctionComponent<Props> = ({
                 },
               }}
               kind={KIND.primary}
-              onClick={() => enqueueAnalyticsEvent('Healthpoint Get Directions clicked', { locationName: location.name, radiusKm })}
+              onClick={() =>
+                enqueueAnalyticsEvent("Healthpoint Get Directions clicked", {
+                  locationName: location.name,
+                  radiusKm,
+                })
+              }
             >
               {t("core.getDirections")}
             </Button>
           </a>
-
           <Button
             overrides={{
               Root: {
@@ -117,37 +116,21 @@ const WalkInModal: FunctionComponent<Props> = ({
           >
             {t("walkins.cancelBooking")}
           </Button>
-
-          <NoticeList>
-            <NoticeListItem title={t("walkins.noticeList.title")}>
-              {t("walkins.noticeList.text")}
-            </NoticeListItem>
-          </NoticeList>
         </div>
         <div style={{ height: "100%" }}>
-          <CancelBookingNotice className="desktop" />
           <section>
-            <div className="WalkInTypes">
-              {location.instructionLis.includes(Instruction.walkIn) && (
-                <p>
-                  <Trans
-                    i18nKey="walkins.walkinAwailable"
-                    t={t}
-                    components={[<FontAwesomeIcon icon={faWalking} />]}
-                  />
-                </p>
-              )}
-              {location.instructionLis.includes(Instruction.driveThrough) && (
-                <p>
-                  <Trans
-                    i18nKey="walkins.driveThroughAvailable"
-                    t={t}
-                    components={[<FontAwesomeIcon icon={faCar} />]}
-                  />
-                </p>
-              )}
-            </div>
+            <h3>Address</h3>
+            <p>{location.address}</p>
           </section>
+
+          {location.url && (
+            <section>
+              <h3>{t("core.website")}</h3>
+              <a href={location.url} target="_blank" rel="noreferrer">
+                {location.url}
+              </a>
+            </section>
+          )}
 
           {telephone && (
             <section>
@@ -158,14 +141,26 @@ const WalkInModal: FunctionComponent<Props> = ({
 
           {location.opennningHours.schedule && (
             <section>
-              <h3>{t("walkins.hours")}</h3>
+              <h3 style={{ marginBottom: "0.25rem" }}>{t("walkins.hours")}</h3>
               {Object.keys(location.opennningHours.schedule).map(
                 (openDate, index) => {
                   return (
-                    <p key={index}>
-                      {openDate} {location.opennningHours.schedule[openDate]}
-                      <br />
-                    </p>
+                    <>
+                      <div
+                        key={index}
+                        style={{
+                          fontSize: "1.25rem",
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                          borderBottom: "1px solid rgb(233, 233, 233)",
+                          padding: "12px 0 4px 0",
+                        }}
+                      >
+                        <p>{openDate}</p>
+                        <p>{location.opennningHours.schedule[openDate]}</p>
+                      </div>
+                    </>
                   );
                 }
               )}
@@ -204,7 +199,7 @@ const WalkInModal: FunctionComponent<Props> = ({
             );
           })}
         </div>
-      </ModalGrid>
+      </WalkGrid>
       <div className="MobileOnly">
         <Button
           onClick={close}
@@ -228,4 +223,4 @@ const WalkInModal: FunctionComponent<Props> = ({
   );
 };
 
-export default WalkInModal;
+export default HealthpointModal;

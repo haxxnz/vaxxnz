@@ -9,7 +9,9 @@
     "makeABooking": "Hacer una reserva",
     "kmAway": "{{distance}}km de distancia",
     "lastUpdated": "Última actualización {{updatedAt}}",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "website": "Website",
+    "address": "Address"
   },
   "navigation": {
     "about": "Sobre nosotros",
@@ -52,7 +54,15 @@
     "hours": "Horas",
     "publicHolidays": "Vacaciones públicas",
     "otherExeptions": "Excepciones",
-    "seeMore": "Ver más"
+    "seeMore": "Ver más",
+    "otherLocations": {
+      "sectionHeader": "Other Vaccination Locations <0>- Open Today</0>",
+      "disclaimer": {
+        "title": "This location has been submitted by the public",
+        "message": "The information here may not be 100% accurate. Please refer to the locations website."
+      }
+    },
+    "closed": "Closed"
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
@@ -68,7 +78,8 @@
       },
       "availableSlots": "Espacios disponibles",
       "noBookingsAvailable": "No hay reservas disponibles en este día :(",
-      "backToCalendar": "Volver al calendario"
+      "backToCalendar": "Volver al calendario",
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
     }
   },
   "footer": {
@@ -78,6 +89,7 @@
       "rawData": "Datos brutos",
       "sourceCode": "Código fuente",
       "roadmap": "mapa vial"
-    }
+    },
+    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
   }
 }

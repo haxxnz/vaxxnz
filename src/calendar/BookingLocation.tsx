@@ -1,11 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { Button } from "baseui/button";
 import { VaccineCentre } from "../VaxComponents";
-import {
-  DateLocationsPair,
-  LocationSlotsPair,
-  SlotWithAvailability,
-} from "./BookingDataTypes";
 import { getDistanceKm } from "../utils/distance";
 import { parse } from "date-fns";
 import { Coords } from "../location-picker/LocationPicker";
@@ -16,11 +11,16 @@ import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { differenceInDays } from "date-fns/esm";
 
 import { useSeen } from "../utils/useSeen";
+import {
+  BookingLocationSlotsPair,
+  SlotWithAvailability,
+} from "./booking/BookingDataTypes";
+import { CalendarDate } from "./CalendarData";
 
 type BookingLocationProps = {
-  locationSlotsPair: LocationSlotsPair;
+  locationSlotsPair: BookingLocationSlotsPair;
   coords: Coords;
-  activeDate: DateLocationsPair;
+  activeDate: CalendarDate;
   radiusKm: number;
 };
 

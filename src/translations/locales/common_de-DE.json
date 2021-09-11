@@ -9,7 +9,9 @@
     "makeABooking": "Buchung vornehmen",
     "kmAway": "{{distance}}km entfernt",
     "lastUpdated": "Actualisiert {{updatedAt}}",
-    "cancel": "Abbrechen"
+    "cancel": "Abbrechen",
+    "website": "Webseite",
+    "address": "Adresse"
   },
   "navigation": {
     "about": "Über uns",
@@ -36,7 +38,7 @@
   },
   "walkins": {
     "sectionHeader": "Walk-in- und Drive-Through-Impfungen <0>- Heute geöffnet</0>",
-    "openString": "Offen: {{openTimeString}}",
+    "openString": "Geöffnet: {{openTimeString}}",
     "cancellationNotice": {
       "info": "Bitte nicht doppelt buchen",
       "message": "Denken Sie daran, Ihre ursprüngliche Buchung zu stornieren, wenn Sie bereits eine bei <0>bookmyvaccine.nz</0> haben."
@@ -52,7 +54,15 @@
     "hours": "Öffnungszeiten",
     "publicHolidays": "Feiertage",
     "otherExeptions": "Ausnahmen",
-    "seeMore": "Mehr"
+    "seeMore": "Mehr",
+    "otherLocations": {
+      "sectionHeader": "Weitere Impfstellen <0>- Heute geöffnet</0>",
+      "disclaimer": {
+        "title": "Dieser Ort wurde von der Öffentlichkeit eingereicht",
+        "message": "Die Informationen hier sind möglicherweise nicht 100% genau. Bitte informieren Sie sich auf der Website der Impfstelle."
+      }
+    },
+    "closed": "Geschlossen"
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
@@ -67,7 +77,8 @@
       },
       "availableSlots": "Verfügbare Termine",
       "noBookingsAvailable": "An diesem Tag sind keine Buchungen möglich :(",
-      "backToCalendar": "Zurück zum Kalender"
+      "backToCalendar": "Zurück zum Kalender",
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
     }
   },
   "footer": {
@@ -77,6 +88,7 @@
       "rawData": "Rohdaten",
       "sourceCode": "Quellcode",
       "roadmap": "Roadmap"
-    }
+    },
+    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
   }
 }

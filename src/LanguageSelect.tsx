@@ -4,15 +4,14 @@ import { useTranslation } from "react-i18next";
 import languages, { Language } from "./translations/resources";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 
-
 const LanguageSelect = () => {
-  const langCode = localStorage.getItem("i18nextLng") || "en";
+  const langCode = localStorage.getItem("i18nextLng") || "en-NZ";
   const [language, setLanguage] = useState<Language | undefined>(
-    languages.find((lang) => lang.code === langCode),
+    languages.find((lang) => lang.code === langCode)
   );
   const { i18n } = useTranslation();
 
-  const changeLanguage = (selectedLanguage: any) => {
+  const changeLanguage = (selectedLanguage: Language) => {
     let newLang = languages.find((lang) => lang.code === selectedLanguage.code);
     setLanguage(newLang);
     i18n.changeLanguage(newLang?.code);
@@ -25,6 +24,15 @@ const LanguageSelect = () => {
         Root: {
           style: {
             maxHeight: "40px",
+            alignSelf: "center",
+            marginTop: "-4px",
+          },
+        },
+        ControlContainer: {
+          style: {
+            Color: "rgba(0,0,0,0)",
+            minWidth: "144px",
+            // fontSize: "1.1rem",
           },
         },
       }}
@@ -33,9 +41,9 @@ const LanguageSelect = () => {
       options={languages}
       valueKey="code"
       value={language ? [language] : undefined}
-      placeholder="Language"
+      placeholder="English"
       onChange={(params) => {
-        changeLanguage(params.option);
+        changeLanguage(params.option as Language);
       }}
     />
   );

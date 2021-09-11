@@ -38,7 +38,11 @@
     "@types/styletron-react": "^5.0.3",
     "@types/styletron-standard": "^2.0.2",
     "fs": "^0.0.1-security",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.1.2",
     "lodash": "^4.17.21",
+    "prettier": "^2.3.2",
+    "ts-node": "^10.2.1",
     "typescript": "^4.1.2"
   },
   "scripts": {
@@ -46,12 +50,20 @@
     "sync:i18n": "ts-node --project src/translations/scripts/tsconfig.json src/translations/scripts/syncTranslations.ts",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install",
+    "postinstall": "test -f package-lock.json && echo \"$(tput setab 1)Vaxxnz uses Yarn and not NPM. Don't commit package-lock.json$(tput sgr0)\" || true"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
     ]
   },
   "browserslist": {

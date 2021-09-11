@@ -3,13 +3,15 @@
     "title": "Vaxx.nz",
     "tagline": "Найдите COVID вакцинацию",
     "subtitle": "Узнайте, как пройти вакцинацию рядом с вами",
-    "disclaimerNotAGovWebsite": "Это не оффициальный вебсайт правительства. Чтобы провакцинироваться, посетите <0>bookmyvaccine.nz</0>",
+    "disclaimerNotAGovWebsite": "Это не официальный вебсайт правительства. Чтобы провакцинироваться, посетите <0>bookmyvaccine.nz</0>",
     "loading": "Загрузка...",
     "getDirections": "Получить направления",
     "makeABooking": "Выполнить бронирование",
     "kmAway": "{{distance}} км отсюда",
-    "lastUpdated": "Last updated {{updatedAt}}",
-    "cancel": "Cancel"
+    "lastUpdated": "Последнее обновление {{updatedAt}}",
+    "cancel": "Отменить",
+    "website": "Вебсайт",
+    "address": "Адрес"
   },
   "navigation": {
     "about": "О нас",
@@ -17,7 +19,7 @@
     "getInvolved": "Примите участие",
     "setLocation": "Установить местоположение",
     "setLocationConfirmation": "Местоположение установлено",
-    "vaccinationsNear": "Доступные слоты для вакцин <0>рядом с {{location}}</0>",
+    "vaccinationsNear": "Доступные вакцинации <0>рядом с {{location}}</0>",
     "distanceDropdown": {
       "2km": "В пределах 2 км",
       "5km": "В пределах 5 км",
@@ -27,15 +29,15 @@
       "100km": "В пределах 100 км"
     },
     "locationModal": {
-      "locaitonTitle": "Location",
-      "locationCTA": "Type in an address or suburb",
-      "useCurrentLocation": "Use my current location",
-      "geolocationNotSupported": "Geolocation is not supported by your browser"
+      "locaitonTitle": "Местоположение",
+      "locationCTA": "Введите адрес или suburb",
+      "useCurrentLocation": "Использовать мое текущее местоположение",
+      "geolocationNotSupported": "Геолокация не поддерживается вашим браузером"
     },
-    "unknownLocation": "Unknown Location"
+    "unknownLocation": "Неизвестная локация"
   },
   "walkins": {
-    "sectionHeader": "Вакцинация без регистрации и Drive-Through <0>- Открыто сегодня</0>",
+    "sectionHeader": "Открыто сегодня",
     "openString": "Открыто с {{openTimeString}}",
     "cancellationNotice": {
       "info": "Пожалуйста, не бронируйте дважды",
@@ -44,15 +46,23 @@
     "cancelBooking": "Отменить",
     "noticeList": {
       "title": "Наличие не гарантируется",
-      "text": "Имейте в виду, что локации без регистрации могут не иметь свободных мест."
+      "text": "Имейте в виду, что локации без бронирования могут не иметь свободных мест."
     },
-    "walkinAwailable": "<0 /> доступно без регистрации",
-    "driveThroughAvailable": "<0 /> доступно как Drive-through",
+    "walkinAwailable": "<0 /> доступно без бронирования",
+    "driveThroughAvailable": "<0 /> доступно как Drive-Thru",
     "phone": "Телефон",
     "hours": "Часы работы",
     "publicHolidays": "Праздничные дни",
     "otherExeptions": "Исключения",
-    "seeMore": "Смотрите больше"
+    "seeMore": "Смотрите больше",
+    "otherLocations": {
+      "sectionHeader": "Другие локации вакцинации <0>- Открыты сегодня</0>",
+      "disclaimer": {
+        "title": "Это место было предоставлено общественностью",
+        "message": "Информация здесь может быть не на 100% точной. Пожалуйста, обратитесь на сайт данной локации."
+      }
+    },
+    "closed": "Закрыто"
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
@@ -67,7 +77,8 @@
       },
       "availableSlots": "Доступные слоты",
       "noBookingsAvailable": "В этот день нет доступных бронирований :(",
-      "backToCalendar": "Вернуться к календарю"
+      "backToCalendar": "Вернуться к календарю",
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
     }
   },
   "footer": {
@@ -77,6 +88,7 @@
       "rawData": "Необработанные данные",
       "sourceCode": "Исходный код",
       "roadmap": "План продукта"
-    }
+    },
+    "addressFinderLinkCopy": "Спасибо <0>AddressFinder</0> за бесплатный поиск адреса"
   }
 }

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import "./App.css";
-import { BookingSection } from "./booking/BookingSection";
+import { CalendarSection } from "./calendar/CalendarSection";
 import LanguageSelect from "./LanguageSelect";
 import { LocationPicker } from "./location-picker/LocationPicker";
 import { ShareButtons } from "./ShareButtons";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { DEFAULT_LOCATION } from "./utils/location";
 import { useSearchParams } from "./utils/url";
-import { WalkInSection } from "./walk-in/WalkInSection";
+import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
 
 function App() {
   const { lat, lng } = useSearchParams();
@@ -51,19 +51,13 @@ function App() {
             >
               {t("navigation.contact")}
             </a>
-            <a
-              href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTORS.md"
-              className="menu-link"
-            >
-              {t("navigation.getInvolved")}
-            </a>
             <LanguageSelect />
           </div>
         </header>
         <section className="App-header">
           <div className="header-content">
             <h1>{t("core.tagline")}</h1>
-            <h3 style={{ fontWeight: "normal" }}>{t("core.subtitle")}</h3>
+            <h2 style={{ fontWeight: "normal" }}>{t("core.subtitle")}</h2>
             <br />
             <p>
               <Trans
@@ -95,12 +89,12 @@ function App() {
             lastUpdateTime={lastUpdateTime}
           />
 
-          <BookingSection
+          <TodayLocationsSection coords={coords} radiusKm={radiusKm} />
+          <CalendarSection
             coords={coords}
             radiusKm={radiusKm}
             setLastUpdateTime={setLastUpdateTime}
           />
-          <WalkInSection coords={coords} radiusKm={radiusKm} />
         </div>
 
         <footer className="footer-header">
@@ -108,6 +102,15 @@ function App() {
           <div className={"social-container"}>
             <ShareButtons />
           </div>
+          <br />
+          <p>
+            <Trans
+              i18nKey="footer.addressFinderLinkCopy"
+              t={t}
+              // eslint-disable-next-line jsx-a11y/anchor-has-content
+              components={[<a href="https://addressfinder.nz"></a>]}
+            />
+          </p>
           <br />
           <p>
             <a
@@ -143,6 +146,14 @@ function App() {
               onClick={() => enqueueAnalyticsEvent("Roadmap clicked")}
             >
               {t("footer.links.roadmap")}
+            </a>{" "}
+            /{" "}
+            <a
+              href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTORS.md"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t("navigation.getInvolved")}
             </a>
           </p>
           <p></p>

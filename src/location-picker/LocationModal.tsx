@@ -29,6 +29,18 @@ const LocationModal = (props: Props) => {
     setLocationIsOpen(false);
   }, [setLocationIsOpen]);
 
+  const getMetaDataLocation = (metaData: MetaData) => {
+    const { city, region, suburb } = metaData;
+
+    if (suburb == null && city == null) {
+      return region;
+    } else if (suburb == null) {
+      return city;
+    } else {
+      return suburb;
+    }
+  };
+
   const setLocation = useCallback(
     (lat: number, lng: number, name?: string | null) => {
       const placeName = name ?? `${lat} ${lng}`;
@@ -47,35 +59,31 @@ const LocationModal = (props: Props) => {
   const inputRef = useCallback(
     (domNode) => {
       if (domNode != null) {
-        const options = {
-          componentRestrictions: { country: "nz" },
-          fields: ["geometry", "name", "address_components"],
-          strictBounds: false,
-        };
-
-        const autocomplete = new google.maps.places.Autocomplete(
+        const widget = new AddressFinder.Widget(
           domNode,
-          options
+          "ARFHPVK67QXM49BEWDL3",
+          "NZ",
+          {
+            address_params: {
+              post_box: "0",
+              max: "7",
+            },
+            show_locations: true,
+            location_params: {
+              max: "4",
+            },
+          }
         );
 
-        autocomplete.addListener("place_changed", () => {
-          const place = autocomplete.getPlace();
+        widget.on("result:select", function (fullAddress, metaData) {
+          const locationName = getMetaDataLocation(metaData);
 
-          if (
-            place.name &&
-            place.geometry != null &&
-            place.geometry.location != null
-          ) {
-            const { location } = place.geometry;
-            const lat = location.lat();
-            const lng = location.lng();
-            const suburbish = getSuburbIsh(place);
-            setLocation(lat, lng, suburbish);
-          }
+          setLocation(
+            parseFloat(metaData.y),
+            parseFloat(metaData.x),
+            locationName
+          );
         });
-        return () => {
-          google.maps.event.clearListeners(autocomplete, "place_changed");
-        };
       }
     },
     [setLocation]
@@ -149,6 +157,7 @@ const LocationModal = (props: Props) => {
         inputRef={(e) => inputRef(e)}
         onChange={(_e) => {}}
       />
+
       <button
         className={"clickable"}
         style={{

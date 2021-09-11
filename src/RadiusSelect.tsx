@@ -23,13 +23,6 @@ export default function RadiusSelect(props: Props) {
 
   return (
     <Select
-      overrides={{
-        Root: {
-          style: {
-            maxHeight: "40px",
-          },
-        },
-      }}
       searchable={false}
       clearable={false}
       options={options}
@@ -42,7 +35,7 @@ export default function RadiusSelect(props: Props) {
           const id = selectedOption.id;
           if (id && typeof id === "number") {
             props.setValue(id);
-            enqueueAnalyticsEvent('Radius changed', { radiusKm: id });
+            enqueueAnalyticsEvent("Radius changed", { radiusKm: id });
           }
         }
       }}
