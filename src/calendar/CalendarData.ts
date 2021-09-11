@@ -65,7 +65,7 @@ export const useCalendarLocations = (
 
     return {
       ok: new Map(
-        Array.from(months).sort((a, b) => String(a[0]).localeCompare(b[0]))
+        Array.from(months).sort((a, b) => String(b[0]).localeCompare(a[0]))
       ),
     };
   } else {

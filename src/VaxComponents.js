@@ -276,7 +276,7 @@ export const VaccineCentre = styled.section`
     }
   }
 
-  section {
+  section.slot {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

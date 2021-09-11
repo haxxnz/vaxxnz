@@ -83,21 +83,6 @@ export function TodayLocationsSection({ coords, radiusKm }: Props) {
             components={[<strong></strong>]}
           />
         </h2>
-        <p>
-          <Trans
-            i18nKey="walkins.sectionSubtitle"
-            t={t}
-            components={[
-              <a
-                href="https://bookmyvaccine.nz"
-                target="_blank"
-                rel="noreferrer"
-              >
-                bookmyvaccine.nz
-              </a>,
-            ]}
-          />
-        </p>
       </div>
       {"loading" in locations ? (
         <div

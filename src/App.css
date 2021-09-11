@@ -239,3 +239,14 @@ ul.af_list.af_list li.af_item {
 	padding: 9px 13px;
   font-size: 1rem;
 }
+
+.not-bmv {
+  display: block;
+  background-color: #E6F2ED;
+  border: 2px solid #b9dacc;
+  font-weight: 500;
+  border-radius: 14px;
+	color: #006138;
+	padding: 0.6rem 1rem;
+	margin-top: 0.8rem;
+}

@@ -19,7 +19,7 @@ export const SlotBookingLocation: FunctionComponent<SlotBookingLocationProps> =
   ({ location: { location, slots }, radiusKm, coords, date }) => {
     const { t } = useTranslation("common");
     return (
-      <VaccineCentre key={location.extId}>
+      <VaccineCentre>
         <h3>{location.name}</h3>
         <p>
           {location.displayAddress} (
@@ -86,7 +86,7 @@ export const SlotBookingLocation: FunctionComponent<SlotBookingLocationProps> =
         >
           {t("calendar.modal.availableSlots")}
         </p>
-        <section>
+        <section className="slot">
           {/* <p>1am</p> */}
           {slots?.map((slot) => (
             <p key={slot.localStartTime}>

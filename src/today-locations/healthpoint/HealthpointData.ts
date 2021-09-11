@@ -26,6 +26,7 @@ export interface HealthpointLocation {
   branch: string;
   isOpenToday: boolean;
   openTodayHours: string;
+  url: string;
   instructionLis: Instruction[];
   address: string;
   faxNumber: string;

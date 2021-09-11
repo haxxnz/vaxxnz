@@ -3,6 +3,7 @@ import { differenceInDays, parse } from "date-fns";
 import i18next from "i18next";
 import React, { FunctionComponent } from "react";
 import { useTranslation, Trans } from "react-i18next";
+import { CrowdsourcedLocation } from "../../crowdsourced/CrowdsourcedData";
 import { Coords } from "../../location-picker/LocationPicker";
 import { NoticeList } from "../../NoticeList";
 import { Instruction } from "../../today-locations/healthpoint/HealthpointData";
@@ -12,6 +13,7 @@ import { getDistanceKm } from "../../utils/distance";
 import { ModalGrid, VaccineCentre } from "../../VaxComponents";
 import { BookingLocationSlotsPair } from "../booking/BookingDataTypes";
 import { CalendarDate, CalendarLocation } from "../CalendarData";
+import { CrowdsourcedBookingLocation } from "./CrowdsourcedBookingLocation";
 import { SlotBookingLocation } from "./SlotBookingLocation";
 
 interface CalendarModalContentProps {
@@ -52,13 +54,13 @@ export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> 
       (location) =>
         "isCrowdSourced" in location &&
         location.instructions.includes(Instruction.allowsBookings)
-    );
+    ) as CrowdsourcedLocation[];
     const walkinBookingLocations = sortedLocations.filter(
       (location) =>
         "isCrowdSourced" in location &&
         (location.instructions.includes(Instruction.driveThrough) ||
           location.instructions.includes(Instruction.walkIn))
-    );
+    ) as CrowdsourcedLocation[];
 
     return (
       <ModalGrid className={"modal-container"}>
@@ -139,19 +141,30 @@ export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> 
 
           {slotLocations.map((location) => (
             <SlotBookingLocation
+              key={location.location.extId}
               location={location}
               coords={coords}
               date={date}
               radiusKm={radiusKm}
             />
           ))}
-          {/*  { : (
-            <>
-            TODO: include this message
-              <h1>{t("calendar.modal.noBookingsAvailable")}</h1>
-              
-            </>
-          )} */}
+
+          {crowdsourcedBookingLocations.map((location) => (
+            <CrowdsourcedBookingLocation
+              key={location.name}
+              location={location}
+              coords={coords}
+              date={date}
+              radiusKm={radiusKm}
+            />
+          ))}
+
+          {slotLocations.length === 0 &&
+            crowdsourcedBookingLocations.length === 0 && (
+              <>
+                <h1>{t("calendar.modal.noBookingsAvailable")}</h1>
+              </>
+            )}
         </div>
       </ModalGrid>
     );

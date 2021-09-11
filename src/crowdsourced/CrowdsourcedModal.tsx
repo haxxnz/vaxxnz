@@ -140,7 +140,6 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
               <a href={`tel:${telephone}`}>{telephone}</a>
             </section>
           )}
-
           {location.openingHours.length > 0 && (
             <section>
               <h3>{t("walkins.hours")}</h3>

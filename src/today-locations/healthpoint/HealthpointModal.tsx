@@ -124,6 +124,15 @@ const HealthpointModal: FunctionComponent<Props> = ({
             <p>{location.address}</p>
           </section>
 
+          {location.url && (
+            <section>
+              <h3>{t("core.website")}</h3>
+              <a href={location.url} target="_blank" rel="noreferrer">
+                {location.url}
+              </a>
+            </section>
+          )}
+
           {telephone && (
             <section>
               <h3>{t("walkins.phone")}</h3>
