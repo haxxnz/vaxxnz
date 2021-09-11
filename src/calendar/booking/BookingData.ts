@@ -107,6 +107,25 @@ export type BookingData = Map<
   Map<DateString, BookingLocationSlotsPair[]>
 >;
 
+function getBookingData(bookingDateLocations: BookingDateLocations[]) {
+  const dateLocationsPairs = filterOldDates(bookingDateLocations);
+  let byMonth: BookingData = new Map();
+  dateLocationsPairs.forEach((dateLocationsPair) => {
+    const date = parse(dateLocationsPair.dateStr, "yyyy-MM-dd", new Date());
+    const month = date.toLocaleString("en-NZ", {
+      month: "long",
+      year: "numeric",
+    });
+    const mapToPush = byMonth.get(month) ?? new Map();
+    mapToPush.set(
+      dateLocationsPair.dateStr,
+      dateLocationsPair.locationSlotsPairs
+    );
+    byMonth.set(month, mapToPush);
+  });
+  return byMonth;
+}
+
 export const useBookingData = (
   coords: Coords,
   radiusKm: number,
@@ -114,11 +133,10 @@ export const useBookingData = (
 ): BookingDataResult => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
-  const [dateLocationsPairsUnfiltered, setDateLocationsPairs] = useState<
+  const [dateLocationsPairs, setDateLocationsPairs] = useState<
     BookingDateLocations[]
   >([]);
 
-  const dateLocationsPairs = filterOldDates(dateLocationsPairsUnfiltered);
   const loadCalendar = useCallback(async () => {
     setLoading(true);
     setError(null);
@@ -136,20 +154,7 @@ export const useBookingData = (
     setLoading(false);
   }, [coords, radiusKm, setDateLocationsPairs, setLastUpdateTime]);
 
-  let byMonth: BookingData = new Map();
-  dateLocationsPairs.forEach((dateLocationsPair) => {
-    const date = parse(dateLocationsPair.dateStr, "yyyy-MM-dd", new Date());
-    const month = date.toLocaleString("en-NZ", {
-      month: "long",
-      year: "numeric",
-    });
-    const mapToPush = byMonth.get(month) ?? new Map();
-    mapToPush.set(
-      dateLocationsPair.dateStr,
-      dateLocationsPair.locationSlotsPairs
-    );
-    byMonth.set(month, mapToPush);
-  });
+  const byMonth = getBookingData(dateLocationsPairs);
 
   useEffect(() => {
     loadCalendar();
