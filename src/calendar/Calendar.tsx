@@ -77,7 +77,6 @@ interface Props {
 }
 function CalendarMonthContainer(props: Props): JSX.Element {
   const { monthStr, monthDates, radiusKm, setActiveDate } = props;
-  const { t } = useTranslation("common");
   return (
     <CalendarSectionContainer key={monthStr}>
       <div className="MonthSection">
@@ -99,53 +98,73 @@ function CalendarMonthContainer(props: Props): JSX.Element {
             )
           );
           return (
-            <button
-              className={availableCount === 0 ? "zero-available" : ""}
-              key={dateStr}
-              onClick={() => {
-                enqueueAnalyticsEvent("Calendar day picked", {
-                  datePicked: dateStr,
-                  bookingDateInDays: differenceInDays(
-                    parse(dateStr, "yyyy-MM-dd", new Date()),
-                    new Date()
-                  ),
-                  radiusKm,
-                  spotsAvailable: availableCount,
-                });
-                setActiveDate({ dateStr, locations });
-              }}
-            >
-              <div>
-                <h3>
-                  {parse(dateStr, "yyyy-MM-dd", new Date()).toLocaleDateString(
-                    [i18next.language],
-                    {
-                      day: "numeric",
-                      month: "short",
-                    }
-                  )}
-                  <br />{" "}
-                  <aside aria-hidden="true">
-                    {parse(
-                      dateStr,
-                      "yyyy-MM-dd",
-                      new Date()
-                    ).toLocaleDateString([i18next.language], {
-                      weekday: "short",
-                    })}
-                  </aside>
-                </h3>
-                <p>
-                  {t("calendar.numberOfAppointments", {
-                    sumAvailableTimes: availableCount,
-                  })}
-                </p>
-              </div>
-              <img src="./arrow.svg" aria-hidden="true" alt="" />
-            </button>
+            <CalendarDay
+              availableCount={availableCount}
+              dateStr={dateStr}
+              radiusKm={radiusKm}
+              setActiveDate={setActiveDate}
+              locations={locations}
+            />
           );
         })}
       </MonthContainer>
     </CalendarSectionContainer>
+  );
+}
+
+interface CalendarDayProps {
+  availableCount: number;
+  dateStr: string;
+  radiusKm: number;
+  setActiveDate: (activeDate: CalendarDate | null) => void;
+  locations: CalendarDateLocations;
+}
+function CalendarDay(props: CalendarDayProps): JSX.Element {
+  const { t } = useTranslation("common");
+  const { availableCount, dateStr, radiusKm, setActiveDate, locations } = props;
+  return (
+    <button
+      className={availableCount === 0 ? "zero-available" : ""}
+      key={dateStr}
+      onClick={() => {
+        enqueueAnalyticsEvent("Calendar day picked", {
+          datePicked: dateStr,
+          bookingDateInDays: differenceInDays(
+            parse(dateStr, "yyyy-MM-dd", new Date()),
+            new Date()
+          ),
+          radiusKm,
+          spotsAvailable: availableCount,
+        });
+        setActiveDate({ dateStr, locations });
+      }}
+    >
+      <div>
+        <h3>
+          {parse(dateStr, "yyyy-MM-dd", new Date()).toLocaleDateString(
+            [i18next.language],
+            {
+              day: "numeric",
+              month: "short",
+            }
+          )}
+          <br />{" "}
+          <aside aria-hidden="true">
+            {parse(dateStr, "yyyy-MM-dd", new Date()).toLocaleDateString(
+              [i18next.language],
+              {
+                weekday: "short",
+              }
+            )}
+          </aside>
+        </h3>
+        <p>
+          {t("calendar.numberOfAppointments", {
+            sumAvailableTimes: availableCount,
+          })}
+        </p>
+      </div>
+      <img src="./arrow.svg" aria-hidden="true" alt="" />
+    </button>
   );
 }
