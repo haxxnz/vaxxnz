@@ -64,13 +64,12 @@ const HealthpointModal: FunctionComponent<Props> = ({
         <div>
           <h1
             style={{
-              marginBottom: "0.5rem",
+              marginBottom: "1rem",
             }}
           >
             {location.name}
           </h1>
           <LocationNotice instructions={location.instructionLis} />
-          <hr />
 
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
@@ -142,14 +141,26 @@ const HealthpointModal: FunctionComponent<Props> = ({
 
           {location.opennningHours.schedule && (
             <section>
-              <h3>{t("walkins.hours")}</h3>
+              <h3 style={{ marginBottom: "0.25rem" }}>{t("walkins.hours")}</h3>
               {Object.keys(location.opennningHours.schedule).map(
                 (openDate, index) => {
                   return (
-                    <p key={index}>
-                      {openDate} {location.opennningHours.schedule[openDate]}
-                      <br />
-                    </p>
+                    <>
+                      <div
+                        key={index}
+                        style={{
+                          fontSize: "1.25rem",
+                          display: "flex",
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                          borderBottom: "1px solid rgb(233, 233, 233)",
+                          padding: "12px 0 4px 0",
+                        }}
+                      >
+                        <p>{openDate}</p>
+                        <p>{location.opennningHours.schedule[openDate]}</p>
+                      </div>
+                    </>
                   );
                 }
               )}
