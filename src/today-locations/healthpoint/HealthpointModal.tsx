@@ -141,7 +141,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
 
           {location.opennningHours.schedule && (
             <section>
-              <h3 style={{ marginBottom: "0.5rem" }}>{t("walkins.hours")}</h3>
+              <h3 style={{ marginBottom: "0.25rem" }}>{t("walkins.hours")}</h3>
               {Object.keys(location.opennningHours.schedule).map(
                 (openDate, index) => {
                   return (
@@ -153,8 +153,8 @@ const HealthpointModal: FunctionComponent<Props> = ({
                           display: "flex",
                           flexDirection: "row",
                           justifyContent: "space-between",
-                          borderTop: "1px solid lightgray",
-                          padding: "12px 0",
+                          borderBottom: "1px solid rgb(233, 233, 233)",
+                          padding: "12px 0 4px 0",
                         }}
                       >
                         <p>{openDate}</p>
