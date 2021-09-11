@@ -132,6 +132,7 @@ const LocationModal = (props: Props) => {
         Root: { style: { zIndex: 1500 } },
         Dialog: {
           style: {
+            border: "1px solid lightgray",
             height: "auto",
             width: "600px",
             display: "flex",
