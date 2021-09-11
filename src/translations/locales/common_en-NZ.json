@@ -74,7 +74,7 @@
         "stepThree": "Enter your details.",
         "stepFour": "When asked, search for your desired location and time."
       },
-      "availableSlots": "Available slots",
+      "availableSlots": "Available to Book",
       "noBookingsAvailable": "No bookings are available on this day :(",
       "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots.",
       "backToCalendar": "Back to Calendar"
