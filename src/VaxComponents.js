@@ -262,7 +262,7 @@ export const VaccineCentre = styled.section`
   h3 {
     font-size: 1.75rem;
     font-weight: 400;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   @media screen and (min-width: 1024px) {
