@@ -66,7 +66,7 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
         return;
       }
       const response = await getSlots(
-        `https://moh2.weston.sh/public/locations/${locationSlotsPair.location.extId}/date/${activeDate.dateStr}/slots`
+        `https://dev-moh-f3a4edb2.vaxx.nz/public/locations/${locationSlotsPair.location.extId}/date/${activeDate.dateStr}/slots`
       );
       if (response) {
         setSlots(response.slotsWithAvailability);
@@ -83,31 +83,28 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
 
   const slotsToDisplay =
     slots && slots.length > 0 ? slots : locationSlotsPair.slots;
+  const location = locationSlotsPair.location;
+  const date = parse(activeDate.dateStr, "yyyy-MM-dd", new Date());
   return (
     <VaccineCentre ref={ref}>
-      <h3>{locationSlotsPair.location.name}</h3>
+      <h3>{location.name}</h3>
       <p>
-        {locationSlotsPair.location.displayAddress} (
+        {location.displayAddress} (
         {t("core.kmAway", {
-          distance: Math.floor(
-            getDistanceKm(coords, locationSlotsPair.location.location)
-          ),
+          distance: Math.floor(getDistanceKm(coords, location.location)),
         })}
         )
       </p>
       <p>
         <a
-          href={`https://www.google.com/maps/dir/?api=1&destination=${locationSlotsPair.location.location.lat},${locationSlotsPair.location.location.lng}`}
+          href={`https://www.google.com/maps/dir/?api=1&destination=${location.location.lat},${location.location.lng}`}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() =>
             enqueueAnalyticsEvent("Get Directions clicked", {
               radiusKm,
-              spotsAvailable: locationSlotsPair.slots?.length || 0,
-              bookingDateInDays: differenceInDays(
-                parse(activeDate.dateStr, "yyyy-MM-dd", new Date()),
-                new Date()
-              ),
+              spotsAvailable: slots?.length || 0,
+              bookingDateInDays: differenceInDays(date, new Date()),
             })
           }
         >
@@ -135,13 +132,10 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
             }}
             onClick={() =>
               enqueueAnalyticsEvent("Make a Booking clicked", {
-                locationName: locationSlotsPair.location.name,
+                locationName: location.name,
                 radiusKm,
-                spotsAvailable: slotsToDisplay?.length || 0,
-                bookingDateInDays: differenceInDays(
-                  parse(activeDate.dateStr, "yyyy-MM-dd", new Date()),
-                  new Date()
-                ),
+                spotsAvailable: slots?.length || 0,
+                bookingDateInDays: differenceInDays(date, new Date()),
               })
             }
           >
@@ -159,7 +153,7 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
       >
         {t("calendar.modal.availableSlots")}
       </p>
-      <section>
+      <section className="slot">
         {/* <p>1am</p> */}
         {slotsToDisplay?.map((slot) => (
           <p key={slot.localStartTime}>
