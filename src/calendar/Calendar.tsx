@@ -122,6 +122,7 @@ interface CalendarDayProps {
 function CalendarDay(props: CalendarDayProps): JSX.Element {
   const { t } = useTranslation("common");
   const { availableCount, dateStr, radiusKm, setActiveDate, locations } = props;
+  const date = parse(dateStr, "yyyy-MM-dd", new Date());
   return (
     <button
       className={availableCount === 0 ? "zero-available" : ""}
@@ -129,10 +130,7 @@ function CalendarDay(props: CalendarDayProps): JSX.Element {
       onClick={() => {
         enqueueAnalyticsEvent("Calendar day picked", {
           datePicked: dateStr,
-          bookingDateInDays: differenceInDays(
-            parse(dateStr, "yyyy-MM-dd", new Date()),
-            new Date()
-          ),
+          bookingDateInDays: differenceInDays(date, new Date()),
           radiusKm,
           spotsAvailable: availableCount,
         });
@@ -141,21 +139,15 @@ function CalendarDay(props: CalendarDayProps): JSX.Element {
     >
       <div>
         <h3>
-          {parse(dateStr, "yyyy-MM-dd", new Date()).toLocaleDateString(
-            [i18next.language],
-            {
-              day: "numeric",
-              month: "short",
-            }
-          )}
+          {date.toLocaleDateString([i18next.language], {
+            day: "numeric",
+            month: "short",
+          })}
           <br />{" "}
           <aside aria-hidden="true">
-            {parse(dateStr, "yyyy-MM-dd", new Date()).toLocaleDateString(
-              [i18next.language],
-              {
-                weekday: "short",
-              }
-            )}
+            {date.toLocaleDateString([i18next.language], {
+              weekday: "short",
+            })}
           </aside>
         </h3>
         <p>
