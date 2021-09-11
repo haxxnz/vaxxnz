@@ -16,6 +16,7 @@ import {
   CalendarDateLocations,
   CalendarMonth,
 } from "./CalendarData";
+import React from "react";
 
 interface BookingCalendarProps {
   data: CalendarData;
@@ -75,7 +76,7 @@ interface Props {
   radiusKm: number;
   setActiveDate: (activeDate: CalendarDate | null) => void;
 }
-function CalendarMonthContainer(props: Props): JSX.Element {
+function CalendarMonthContainerExpensive(props: Props): JSX.Element {
   const { monthStr, monthDates, radiusKm, setActiveDate } = props;
   return (
     <CalendarSectionContainer key={monthStr}>
@@ -111,6 +112,7 @@ function CalendarMonthContainer(props: Props): JSX.Element {
     </CalendarSectionContainer>
   );
 }
+const CalendarMonthContainer = React.memo(CalendarMonthContainerExpensive);
 
 interface CalendarDayProps {
   availableCount: number;
