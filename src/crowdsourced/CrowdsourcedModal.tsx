@@ -1,15 +1,11 @@
-import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
-import { Trans, useTranslation } from "react-i18next";
-import "../../App.css";
-import { NoticeList, NoticeListItem } from "../../NoticeList";
-import { ModalGrid } from "../../VaxComponents";
-import { LocationNotice } from "../../common/LocationNotice";
-import { Instruction } from "../../walk-in/WalkInData";
-import { CrowdsourcedLocation } from "../CrowdsourcedData";
+import { useTranslation } from "react-i18next";
+import { LocationNotice } from "../common/LocationNotice";
+import { NoticeList, NoticeListItem } from "../NoticeList";
+import { ModalGrid } from "../VaxComponents";
+import { CrowdsourcedLocation } from "./CrowdsourcedData";
 
 type Props = {
   clearSelectedLocation: () => void;
@@ -144,7 +140,6 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
               <a href={`tel:${telephone}`}>{telephone}</a>
             </section>
           )}
-
           {location.openingHours.length > 0 && (
             <section>
               <h3 style={{ marginBottom: "0.75rem" }}>{t("walkins.hours")}</h3>

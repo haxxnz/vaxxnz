@@ -14,9 +14,9 @@
     "address": "Tuatusi"
   },
   "navigation": {
-    "about": "About",
-    "contact": "Contact",
-    "getInvolved": "Get Involved",
+    "about": "Uiga Tāua",
+    "contact": "Fa'afeso'ota'i",
+    "getInvolved": "Auai Nei",
     "setLocation": "Faailoa lou nofoaga",
     "setLocationConfirmation": "Faamautinoa lou nofoaga",
     "locationModal": {
@@ -62,7 +62,7 @@
         "message": "I lenei auiliiliga atonu e le 100 pasene sona atoatoa. Fa'amolemole tagai ane ile nofoaga ile upega tafa'ilagi."
       }
     },
-    "closed": "Closed"
+    "closed": "Tapuni"
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
