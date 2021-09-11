@@ -60,6 +60,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
     <CalendarContainer>
       {Array.from(data).map(([monthStr, monthDates]) => (
         <CalendarMonthContainer
+          key={monthStr}
           monthStr={monthStr}
           monthDates={monthDates}
           radiusKm={radiusKm}
@@ -100,6 +101,7 @@ function CalendarMonthContainerExpensive(
           );
           return (
             <CalendarDay
+              key={dateStr}
               availableCount={availableCount}
               dateStr={dateStr}
               radiusKm={radiusKm}

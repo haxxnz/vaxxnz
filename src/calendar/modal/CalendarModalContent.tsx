@@ -12,9 +12,9 @@ import { sortByAsc } from "../../utils/array";
 import { getDistanceKm } from "../../utils/distance";
 import { ModalGrid, VaccineCentre } from "../../VaxComponents";
 import { BookingLocationSlotsPair } from "../booking/BookingDataTypes";
+import BookingLocation from "../BookingLocation";
 import { CalendarDate, CalendarLocation } from "../CalendarData";
 import { CrowdsourcedBookingLocation } from "./CrowdsourcedBookingLocation";
-import { SlotBookingLocation } from "./SlotBookingLocation";
 
 interface CalendarModalContentProps {
   activeDate: CalendarDate;
@@ -140,12 +140,12 @@ export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> 
           <hr />
 
           {slotLocations.map((location) => (
-            <SlotBookingLocation
+            <BookingLocation
               key={location.location.extId}
-              location={location}
+              locationSlotsPair={location}
               coords={coords}
-              date={date}
               radiusKm={radiusKm}
+              activeDate={{ dateStr, locations }}
             />
           ))}
 
