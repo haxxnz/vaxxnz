@@ -58,7 +58,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
 }) => {
   return (
     <CalendarContainer>
-      {Array.from(data.entries()).map(([monthStr, monthDates]) => (
+      {Array.from(data).map(([monthStr, monthDates]) => (
         <CalendarMonthContainer
           monthStr={monthStr}
           monthDates={monthDates}
