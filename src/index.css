@@ -32,6 +32,21 @@ h1, h2, h3, h4, h5, h6, p {
   margin: 0;
 }
 
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+h2 strong {
+  font-weight: 400;
+  font-style: normal;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }

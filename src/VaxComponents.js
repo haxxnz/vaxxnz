@@ -190,15 +190,16 @@ export const MonthContainer = styled.section`
 export const ModalGrid = styled.section`
   display: grid;
   gap: 4rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.6fr 1fr;
   height: 100%;
   overflow-y: initial;
   h1 {
     font-size: 2.5rem;
     font-weight: 600;
   }
-  h2 {
-    font-weight: 400;
+  p {
+    font-size: 1.1rem;
+    line-height: 1.5;
   }
   hr {
     border: none;
@@ -288,6 +289,7 @@ export const VaccineCentre = styled.section`
       border: 1px solid #e8e8e8;
       color: black;
       font-weight: 600;
+      font-size: 1rem;
       padding: 0.5rem;
       min-width: 80px;
       text-align: center;
