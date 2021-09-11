@@ -8,7 +8,7 @@
     "getDirections": "Jak dojechać",
     "makeABooking": "Zrób rezerwacje",
     "kmAway": "{{distance}}km odległości",
-    "lastUpdated": "Last updated {{updatedAt}}",
+    "lastUpdated": "Dane sprzed {{updatedAt}}",
     "cancel": "Cancel",
     "website": "Website",
     "address": "Address"
@@ -17,7 +17,7 @@
     "about": "O Nas",
     "contact": "Kontakt",
     "getInvolved": "Włącz się do akcji",
-    "setLocation": "Wskaż miejsce gdzie jesteś",
+    "setLocation": "Wskaż miejsce, w którym się znajdujesz.",
     "setLocationConfirmation": "Lokalizacja ustawiona",
     "vaccinationsNear": "Dostępne szczepionki <0> w pobliżu {{location}}</0>",
     "distanceDropdown": {
@@ -80,7 +80,7 @@
       "backToCalendar": "Powrót do kalendarza",
       "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
     },
-    "numberOfAppointments": "{{sumAvailableTimes}} available"
+    "numberOfAppointments": "{{sumAvailableTimes}} dost"
   },
   "footer": {
     "message": "Jeżeli ta strona pomogła ci, rozważ udostępnienie jej innym",
