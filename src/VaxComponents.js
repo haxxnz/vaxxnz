@@ -194,8 +194,8 @@ export const ModalGrid = styled.section`
   height: 100%;
   overflow-y: initial;
   h1 {
-    font-size: 3.5rem;
-    font-weight: 300;
+    font-size: 2.5rem;
+    font-weight: 600;
   }
   h2 {
     font-weight: 400;
@@ -221,13 +221,13 @@ export const ModalGrid = styled.section`
 
 export const WalkGrid = styled.section`
   display: grid;
-  gap: 4rem;
+  gap: 2.5rem;
   grid-template-columns: 1fr 1fr;
   height: 100%;
   overflow-y: scroll;
   h1 {
-    font-size: 3.5rem;
-    font-weight: 300;
+    font-size: 2.5rem;
+    font-weight: 600;
   }
   h2 {
     font-weight: 400;
@@ -259,20 +259,22 @@ export const VaccineCentre = styled.section`
   margin-bottom: 1.5rem;
   border-bottom: 2px solid lightgray;
   h3 {
-    font-size: 2rem;
-    max-width: 80%;
+    font-size: 1.75rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
   }
 
   @media screen and (min-width: 1024px) {
     .ButtonConstraint {
       max-width: 400px;
     }
+  
   }
   @media screen and (max-width: 768px) {
     h3 {
       font-size: 1.5rem;
       margin-bottom: 0.25rem;
-       max-width: initial;
+ 
     }
   }
 
@@ -292,8 +294,9 @@ export const VaccineCentre = styled.section`
     }
 
     @media screen and (max-width: 500px) {
-           p { flex: 1;
-        }
+           p {
+             flex: 1;
+            }
 }
     }
   }
