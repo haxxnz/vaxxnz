@@ -17,7 +17,7 @@ type Props = {
 const HealthpointModal: FunctionComponent<Props> = ({
   clearSelectedLocation,
   location,
-  radiusKm,
+  radiusKm
 }) => {
   const close = () => clearSelectedLocation();
   const { t } = useTranslation("common");
@@ -28,19 +28,20 @@ const HealthpointModal: FunctionComponent<Props> = ({
   const telephone = location.telephone.replace(/\[.*\]/g, "");
 
   const desktopDialogStyle = {
-    width: "80vw",
+    border: "1px",
+    width: "80vw"
   };
   const mobileDialogStyle = {
     width: "100vw",
     margin: "0rem",
-    borderRadius: "0",
+    borderRadius: "0"
   };
   const sharedDialogStyle = {
     maxWidth: "1200px",
     display: "flex",
     flexDirection: "column",
     alignSelf: "center",
-    padding: "1.5rem",
+    padding: "1.5rem"
   };
   const dialogStyle = isMobileView
     ? { ...mobileDialogStyle, ...sharedDialogStyle }
@@ -54,15 +55,15 @@ const HealthpointModal: FunctionComponent<Props> = ({
       overrides={{
         Root: { style: { zIndex: 1500 } },
         Dialog: {
-          style: dialogStyle as any,
-        },
+          style: dialogStyle as any
+        }
       }}
     >
       <WalkGrid className={"modal-container WalkModal"}>
         <div>
           <h1
             style={{
-              marginBottom: "1rem",
+              marginBottom: "1rem"
             }}
           >
             {location.name}
@@ -82,15 +83,15 @@ const HealthpointModal: FunctionComponent<Props> = ({
                     marginTop: "1.5rem",
                     marginRight: 0,
                     marginBottom: "0.5rem",
-                    marginLeft: 0,
-                  },
-                },
+                    marginLeft: 0
+                  }
+                }
               }}
               kind={KIND.primary}
               onClick={() =>
                 enqueueAnalyticsEvent("Healthpoint Get Directions clicked", {
                   locationName: location.name,
-                  radiusKm,
+                  radiusKm
                 })
               }
             >
@@ -105,9 +106,9 @@ const HealthpointModal: FunctionComponent<Props> = ({
                   marginTop: "0.5rem",
                   marginRight: 0,
                   marginBottom: "0.5rem",
-                  marginLeft: 0,
-                },
-              },
+                  marginLeft: 0
+                }
+              }
             }}
             kind={KIND.secondary}
             onClick={close}
@@ -152,7 +153,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
                           flexDirection: "row",
                           justifyContent: "space-between",
                           borderBottom: "1px solid rgb(233, 233, 233)",
-                          padding: "12px 0 4px 0",
+                          padding: "12px 0 4px 0"
                         }}
                       >
                         <p>{openDate}</p>
@@ -172,7 +173,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
                   key={index}
                   style={{
                     marginTop: "1rem",
-                    lineHeight: "1.5",
+                    lineHeight: "1.5"
                   }}
                 >
                   <h3>
@@ -208,9 +209,9 @@ const HealthpointModal: FunctionComponent<Props> = ({
                 marginTop: "1rem",
                 marginRight: 0,
                 marginBottom: "1rem",
-                marginLeft: 0,
-              },
-            },
+                marginLeft: 0
+              }
+            }
           }}
           kind={KIND.secondary}
         >
