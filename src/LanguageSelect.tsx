@@ -41,7 +41,7 @@ const LanguageSelect = () => {
       options={languages}
       valueKey="code"
       value={language ? [language] : undefined}
-      placeholder="Language"
+      placeholder="English"
       onChange={(params) => {
         changeLanguage(params.option);
       }}
