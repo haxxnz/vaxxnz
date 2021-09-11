@@ -3,7 +3,7 @@ import languages from "./resources";
 
 const options = {
   order: ["querystring", "localStorage", "navigator"],
-  lookupQuerystring: "lang",
+  lookupQuerystring: "locale",
 };
 
 export const config = {
