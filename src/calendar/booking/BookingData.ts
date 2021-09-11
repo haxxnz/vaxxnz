@@ -1,5 +1,5 @@
 import { format, parse } from "date-fns";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useMemo } from "react";
 import filterOldDates from "../../filterOldDates";
 import { Coords } from "../../location-picker/LocationPicker";
 import { getDistanceKm } from "../../utils/distance";
@@ -154,7 +154,10 @@ export const useBookingData = (
     setLoading(false);
   }, [coords, radiusKm, setDateLocationsPairs, setLastUpdateTime]);
 
-  const byMonth = getBookingData(dateLocationsPairs);
+  const byMonth = useMemo(
+    () => getBookingData(dateLocationsPairs),
+    [dateLocationsPairs]
+  );
 
   useEffect(() => {
     loadCalendar();
