@@ -8,7 +8,8 @@
 
 .pac-container {
   z-index: 1501;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 .pac-item-query {
@@ -23,16 +24,16 @@
 
 @media (hover: hover) {
   a.nolink:hover {
-    color: black
+    color: black;
   }
 }
 
 a.nolink:active {
-  color: black
+  color: black;
 }
 
 a.nolink {
-  color: black
+  color: black;
 }
 
 .zero-available {
@@ -57,7 +58,7 @@ button.zero-available div p {
   margin-top: 10px;
 }
 
-@media screen and (max-width:1024px) {
+@media screen and (max-width: 1024px) {
   .cancel-booking-notice.mobile {
     display: block !important;
   }
@@ -73,8 +74,6 @@ button.zero-available div p {
 .cancel-booking-notice.desktop {
   padding: 10px 17px;
 }
-
-
 
 div.WalkSection {
   display: block;
@@ -97,7 +96,6 @@ i.StupidWalkHack {
   font-weight: 400;
   font-style: normal;
 }
-
 
 .WalkSeeMore {
   width: 100%;
@@ -181,7 +179,7 @@ ul.NoticeList li {
 }
 
 .WalkInTypes h3 {
-  background-color: #E6F2ED;
+  background-color: #e6f2ed;
   color: #006138;
   padding: 0.5rem 1rem;
 }
@@ -228,17 +226,17 @@ ul.af_list.af_list {
 }
 
 ul.af_list.af_list li.af_item {
-	padding: 9px 13px;
+  padding: 9px 13px;
   font-size: 1rem;
 }
 
 .not-bmv {
   display: block;
-  background-color: #E6F2ED;
+  background-color: #e6f2ed;
   border: 2px solid #b9dacc;
   font-weight: 500;
   border-radius: 14px;
-	color: #006138;
-	padding: 0.6rem 1rem;
-	margin-top: 0.8rem;
+  color: #006138;
+  padding: 0.6rem 1rem;
+  margin-top: 0.8rem;
 }
