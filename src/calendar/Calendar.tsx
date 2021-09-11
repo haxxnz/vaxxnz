@@ -70,13 +70,15 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   );
 };
 
-interface Props {
+interface CalendarMonthContainerProps {
   monthStr: string;
   monthDates: CalendarMonth;
   radiusKm: number;
   setActiveDate: (activeDate: CalendarDate | null) => void;
 }
-function CalendarMonthContainerExpensive(props: Props): JSX.Element {
+function CalendarMonthContainerExpensive(
+  props: CalendarMonthContainerProps
+): JSX.Element {
   const { monthStr, monthDates, radiusKm, setActiveDate } = props;
   const date = parse(monthStr, "MMMM yyyy", new Date());
   return (
