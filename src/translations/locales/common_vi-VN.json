@@ -11,7 +11,9 @@
     "lastUpdated": "Cập nhật cách đây {{updatedAt}}",
     "cancel": "Huỷ bỏ",
     "website": "Trang web",
-    "address": "Address"
+    "address": "Address",
+    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius."
   },
   "navigation": {
     "about": "Về Vaxx.nz",

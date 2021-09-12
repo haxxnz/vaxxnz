@@ -11,7 +11,9 @@
     "lastUpdated": "Dane sprzed {{updatedAt}}",
     "cancel": "Odwołać",
     "website": "Strona Internetowa",
-    "address": "Adres"
+    "address": "Adres",
+    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius."
   },
   "navigation": {
     "about": "O Nas",
