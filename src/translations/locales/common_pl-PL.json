@@ -1,0 +1,95 @@
+{
+  "core": {
+    "title": "Vaxx.nz",
+    "tagline": "Znajdź szczepionkę przeciw COVID-19",
+    "subtitle": "Sprawdź możliwości zaszczepienia się w twojej okolicy.",
+    "disclaimerNotAGovWebsite": "Nie jest to oficjalna strona rządu. Aby zaszczepić się odwiedź stronę <0>bookmyvaccine.nz</0>",
+    "loading": "Ładowanie...",
+    "getDirections": "Jak dojechać",
+    "makeABooking": "Zrób rezerwacje",
+    "kmAway": "{{distance}}km odległości",
+    "lastUpdated": "Dane sprzed {{updatedAt}}",
+    "cancel": "Odwołać",
+    "website": "Strona Internetowa",
+    "address": "Adres"
+  },
+  "navigation": {
+    "about": "O Nas",
+    "contact": "Kontakt",
+    "getInvolved": "Włącz się do akcji",
+    "setLocation": "Wskaż miejsce, w którym się znajdujesz.",
+    "setLocationConfirmation": "Lokalizacja ustawiona",
+    "vaccinationsNear": "Dostępne szczepionki <0> w pobliżu {{location}}</0>",
+    "distanceDropdown": {
+      "2km": "W zasięgu 2km",
+      "5km": "W zasięgu 5km",
+      "10km": "W zasięgu 10km",
+      "25km": "W zasięgu 25km",
+      "50km": "W zasięgu 50km",
+      "100km": "W zasięgu 100km"
+    },
+    "locationModal": {
+      "locaitonTitle": "Lokalizacja",
+      "locationCTA": "Wpisz adres lub okolice",
+      "useCurrentLocation": "Użyj moją obecną lokalizacje",
+      "geolocationNotSupported": "twój browser nie pozwala użycia geolokalizacji"
+    },
+    "unknownLocation": "Nieznane miejsce"
+  },
+  "walkins": {
+    "sectionHeader": "Centra szczepienia dostępne bez rezerwacji i Drive-through <0>- Otwarte dzisiaj</0>",
+    "openString": "Otwarte {{openTimeString}}",
+    "cancellationNotice": {
+      "info": "Proszę nie rezerwować się podwójnie",
+      "message": "Pamiętaj odwołać ustaloną poprzednią rezerwacje jeżeli masz nową na stronie <0>bookmyvaccine.nz</0>"
+    },
+    "cancelBooking": "Odwołać",
+    "noticeList": {
+      "title": "Dostępność nie jest zagwarantowana",
+      "text": "Pamiętaj że centra niewymagające rezerwacji mogą nie mieć miejsc."
+    },
+    "walkinAwailable": "<0 /> Dostępne centra bez rezerwacji",
+    "driveThroughAvailable": "<0 /> Dostępne Drive-through",
+    "phone": "Telefon",
+    "hours": "Godziny",
+    "publicHolidays": "Święta państwowe",
+    "otherExeptions": "Wyjątki",
+    "seeMore": "Zobacz więcej",
+    "closed": "Closed",
+    "otherLocations": {
+      "sectionHeader": "inne miejsca szczepienia <0>- otwarte dzisiaj</0>",
+      "disclaimer": {
+        "title": "to miejsce było zgłoszone przez mieszkańców",
+        "message": "Informacja na tej stronie może nie być poprawna w 100%. Sprawdź informacje na stronie danego centrum."
+      }
+    }
+  },
+  "calendar": {
+    "month": "{{monthString, MMMM yyyy}}",
+    "numberOfDoses": "{{numberOfDoses}} dostępne",
+    "modal": {
+      "howToBook": {
+        "title": "Jak zarezerwować",
+        "stepOne": "Wybierz lokalizację i godzinę z następującej listy",
+        "stepTwo": "Naciśnij na <i>Zrób rezerwacje</i> guzik, który cię przeniesie do strony <0>bookmyvaccine.nz</0>",
+        "stepThree": "Wpisz Swoje dane.",
+        "stepFour": "Następnie odpowiedz na pytanie, które miejsce i czas ci odpowiada."
+      },
+      "availableSlots": "Dostępne miejsca",
+      "noBookingsAvailable": "Nie ma dostępnych rezerwacji w tym dniu :(",
+      "backToCalendar": "Powrót do kalendarza",
+      "notBMV": "Ta lokalizacja nie używa <0>bookmyvaccine.nz</0> i może nie mieć wolnych miejsc."
+    },
+    "numberOfAppointments": "{{sumAvailableTimes}} dost"
+  },
+  "footer": {
+    "message": "Jeżeli ta strona pomogła ci, rozważ udostępnienie jej innym",
+    "links": {
+      "contactUs": "Zkontaktuj się z Nami",
+      "rawData": "Dane podstawowe",
+      "sourceCode": "Kod źródłowy",
+      "roadmap": "Mapa drogowa"
+    },
+    "addressFinderLinkCopy": "Dziękujemy <0>AddressFinder</0> za darmowy dostęp do wyszukiwań adresów"
+  }
+}
