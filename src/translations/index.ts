@@ -19,6 +19,7 @@ export const config = {
     "zh-CN",
     "zh-TW",
     "ms-MY",
+    "id-ID",
     "sm-SM",
     "vi-VN",
     "to-TO",
