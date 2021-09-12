@@ -1,11 +1,11 @@
-import { enNZ, de, es, ru, vi, zhCN, zhTW, mn, pl, id } from "date-fns/locale"; // Only import locale we support. Don't use import * it is bad
+import { enNZ, de, es, ru, vi, zhCN, zhTW, ms, pl, id } from "date-fns/locale"; // Only import locale we support. Don't use import * it is bad
 import { Locale } from "date-fns";
 import i18next from "i18next";
 
 const supportedDateLocale: { [localeString: string]: Locale } = {
   "en-NZ": enNZ,
   "de-DE": de,
-  "ms-MY": mn, // Same issue
+  "ms-MY": ms, // Same issue
   "es-ES": es,
   "ru-RU": ru,
   "pl-PL": pl,
