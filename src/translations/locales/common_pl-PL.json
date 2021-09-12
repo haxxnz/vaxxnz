@@ -82,6 +82,7 @@
       "backToCalendar": "Powrót do kalendarza",
       "notBMV": "Ta lokalizacja nie używa <0>bookmyvaccine.nz</0> i może nie mieć wolnych miejsc."
     },
+    "numberOfAppointments": "{{sumAvailableTimes}} dost"
   },
   "footer": {
     "message": "Jeżeli ta strona pomogła ci, rozważ udostępnienie jej innym",
