@@ -1,4 +1,16 @@
-import { enNZ, de, es, ru, vi, zhCN, zhTW, mn, pl, id } from "date-fns/locale"; // Only import locale we support. Don't use import * it is bad
+import {
+  enNZ,
+  de,
+  es,
+  ru,
+  vi,
+  zhCN,
+  zhTW,
+  mn,
+  pl,
+  id,
+  hi,
+} from "date-fns/locale"; // Only import locale we support. Don't use import * it is bad
 import { Locale } from "date-fns";
 import i18next from "i18next";
 
@@ -13,6 +25,7 @@ const supportedDateLocale: { [localeString: string]: Locale } = {
   "zh-TW": zhTW,
   "zh-CN": zhCN,
   "id-ID": id,
+  "hi-HI": hi,
 };
 
 /**
