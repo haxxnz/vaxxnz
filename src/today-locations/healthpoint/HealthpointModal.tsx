@@ -117,7 +117,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
         </div>
         <div style={{ height: "100%" }}>
           <section>
-            <h3>Address</h3>
+            <h3>{t("core.address")}</h3>
             <p>{location.address}</p>
           </section>
 
