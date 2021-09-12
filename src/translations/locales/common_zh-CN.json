@@ -7,7 +7,7 @@
     "loading": "正在加载...",
     "getDirections": "查询路线",
     "makeABooking": "预约",
-    "kmAway": "{{distance}} 公里",
+    "kmAway": "{{distance}}",
     "lastUpdated": "最近更新于 {{updatedAt}}",
     "cancel": "取消",
     "website": "网站",

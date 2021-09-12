@@ -7,7 +7,7 @@
     "loading": "載入中...",
     "getDirections": "查詢路線",
     "makeABooking": "預約",
-    "kmAway": "{{distance}} 公里",
+    "kmAway": "{{distance}}",
     "lastUpdated": "最近更新於 {{updatedAt}}",
     "cancel": "取消",
     "website": "Website",

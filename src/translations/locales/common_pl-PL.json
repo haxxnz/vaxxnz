@@ -7,7 +7,7 @@
     "loading": "Ładowanie...",
     "getDirections": "Jak dojechać",
     "makeABooking": "Zrób rezerwacje",
-    "kmAway": "{{distance}}km odległości",
+    "kmAway": "{{distance}} odległości",
     "lastUpdated": "Dane sprzed {{updatedAt}}",
     "cancel": "Odwołać",
     "website": "Strona Internetowa",
