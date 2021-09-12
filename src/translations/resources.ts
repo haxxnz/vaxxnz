@@ -62,7 +62,7 @@ const languages: Language[] = [
   {
     common: common_id_ID,
     label: "Bahasa Indo",
-    code: "in-ID",
+    code: "id-ID",
   },
   {
     common: common_ms_MY,
