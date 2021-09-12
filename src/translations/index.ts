@@ -15,6 +15,7 @@ export const config = {
     "en-NZ",
     "es-ES",
     "de-DE",
+    "id-ID",
     "ru-RU",
     "zh-CN",
     "zh-TW",
