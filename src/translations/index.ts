@@ -13,6 +13,7 @@ export const config = {
   detection: options,
   supportedLngs: [
     "en-NZ",
+    "mi-NZ",
     "es-ES",
     "de-DE",
     "ru-RU",
