@@ -1,10 +1,30 @@
-import english from "../locales/common_en-NZ.json";
 import fs from "fs";
 import { join } from "path";
+import english from "../locales/common_en-NZ.json";
 import { traverseTranslations } from "./traverseTranslations";
-import { get, set } from "lodash";
 
 const paths = traverseTranslations();
+
+const set = (string: string, obj: any, value: string) => {
+  const [current, ...rest] = string.split(".");
+  rest.length >= 1
+    ? set(rest.join("."), (obj[current] = obj[current] || {}), value)
+    : (obj[current] = value);
+  return obj;
+};
+
+const get = (value: object, path: string, defaultValue: string) => {
+  return String(path)
+    .split(".")
+    .reduce((acc: any, v: any) => {
+      try {
+        acc = acc[v];
+      } catch (e) {
+        return defaultValue;
+      }
+      return acc;
+    }, value);
+};
 
 export interface IHash {
   [locale: string]: number;
@@ -28,8 +48,8 @@ fs.readdirSync(join(__dirname, "../locales")).forEach((locale) => {
   }
 
   paths.forEach((p) => {
-    if (get(data, p, null) === null) {
-      set(data, p, get(english, p));
+    if (get(data, p, "") === undefined) {
+      set(p, data, get(english, p, ""));
       missingKeys[locale] = missingKeys[locale] ? missingKeys[locale] + 1 : 1;
     }
   });

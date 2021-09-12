@@ -60,7 +60,7 @@ const languages: Language[] = [
   },
   {
     common: common_ms_MY,
-    label: "Bahasa Malaysia",
+    label: "Bahasa Melayu",
     code: "ms-MY",
   },
   {

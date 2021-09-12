@@ -38,7 +38,7 @@ export interface HealthpointLocation extends HealthpointLocationRaw {
 
 const getHealthpointData = (): Promise<HealthpointLocation[]> =>
   fetch(
-    "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/HEAD/healthpointLocations.json"
+    "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/healthpointLocations.json"
   )
     .then((r) => r.json())
     .then((locs) =>
