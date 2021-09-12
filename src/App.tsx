@@ -122,6 +122,23 @@ function App() {
             </a>{" "}
             /{" "}
             <a
+              href="https://github.com/CovidEngine/vaxxnz/projects/2"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => enqueueAnalyticsEvent("Roadmap clicked")}
+            >
+              {t("footer.links.roadmap")}
+            </a>{" "}
+            /{" "}
+            <a
+              href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTORS.md"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t("navigation.getInvolved")}
+            </a>
+            <br />{" "}
+            <a
               href="https://github.com/CovidEngine/vaxxnzlocations"
               target="_blank"
               rel="noreferrer"
@@ -138,23 +155,6 @@ function App() {
             >
               {t("footer.links.sourceCode")}
             </a>{" "}
-            /{" "}
-            <a
-              href="https://github.com/CovidEngine/vaxxnz/projects/2"
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => enqueueAnalyticsEvent("Roadmap clicked")}
-            >
-              {t("footer.links.roadmap")}
-            </a>{" "}
-            /{" "}
-            <a
-              href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTORS.md"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {t("navigation.getInvolved")}
-            </a>
           </p>
           <p></p>
         </footer>
