@@ -1,4 +1,5 @@
 import common_en_NZ from "./locales/common_en-NZ.json";
+import common_mi_NZ from "./locales/common_mi-NZ.json";
 import common_de_DE from "./locales/common_de-DE.json";
 import common_ru_RU from "./locales/common_ru-RU.json";
 import common_es_ES from "./locales/common_es-ES.json";
@@ -22,6 +23,11 @@ const languages: Language[] = [
     common: common_en_NZ,
     label: "English",
     code: "en-NZ",
+  },
+  {
+    common: common_mi_NZ,
+    label: "Te Reo Māori",
+    code: "mi-NZ",
   },
   {
     common: common_sm_SM,

@@ -1,0 +1,95 @@
+{
+  "core": {
+    "title": "Vaxx.nz",
+    "tagline": "Rapua he rongoā āraimate",
+    "subtitle": "Rapua he whare hauora e tata ana ki a koe",
+    "disclaimerNotAGovWebsite": "Ehara tēnei I te whārangi ipurangi o te kāwanatanga, ki te pīrangi tāpui I tāu wero Korouna, haere ki  <0>bookmyvaccine.nz</0>",
+    "loading": "Taihoa...",
+    "getDirections": "Pūnaha rapua taunga",
+    "makeABooking": "Tāpuitia ",
+    "kmAway": "{{distance}}km te tawhiti",
+    "lastUpdated": "I whakahou i te pae tukutuku {{updatedAt}}",
+    "cancel": "Whakakorengia",
+    "website": "Pae tukutuku",
+    "address": "Wāhi noho"
+  },
+  "navigation": {
+    "about": "He aha",
+    "contact": "Whakapā mai",
+    "getInvolved": "Hono mai",
+    "setLocation": "Ahutia tāu tūwahi ",
+    "setLocationConfirmation": "Kua ahu tāu tūwahi",
+    "locationModal": {
+      "locaitonTitle": "Tūwahi",
+      "locationCTA": "Pātuhi mai tāu wāhi noho",
+      "useCurrentLocation": "Whakamahia tāku tūwahi",
+      "geolocationNotSupported": "Geolocation is not supported by your browser"
+    },
+    "vaccinationsNear": "He whare hauora e tata <0>ana {{location}}</0>",
+    "unknownLocation": "Kāore e tāea te kimi I te tūwāhi nei",
+    "distanceDropdown": {
+      "2km": "Roto ō 2km",
+      "5km": "Roto ō 5km",
+      "10km": "Roto ō 10km",
+      "25km": "Roto ō 25km",
+      "50km": "Roto ō 50km",
+      "100km": "Roto ō 100km"
+    }
+  },
+  "walkins": {
+    "sectionHeader": "Kei te tūwhera I tēnei rā",
+    "openString": "Tūwhera {{openTimeString}}",
+    "cancellationNotice": {
+      "info": "Kaua e tāpuitia i ngā wāhi e rua",
+      "message": "Tēnā koa, whakakorengia i tāu wero ki <0>bookmyvaccine.nz</0> mēnā he wero tāu kei wāhi kē" 
+    },
+    "cancelBooking": "Whakakorengia",
+    "noticeList": {
+      "title": "Ngā whakaritenga mo te rapua rongoā āraimate",
+      "text": "He rārāngi kei ētahi o ngā whare hauora. Hei māmā ake, waea atu kia kaua e tatari."
+    },
+    "walkinAwailable": "<0 /> Walk-in vaccinations available",
+    "driveThroughAvailable": "<0 /> Drive-through vaccinations available",
+    "phone": "Wāea",
+    "hours": "Haora",
+    "closed": "Kua kati",
+    "publicHolidays": "Ngā hararei",
+    "otherExeptions": "Ngā hāunga ",
+    "seeMore": "He kõrero nuku atu",
+    "otherLocations": {
+      "sectionHeader": "Ngā whare hauora e tūwhera ana I tēnei rā",
+      "disclaimer": {
+        "title": "Nā te hāpori I whakatau i te tūwāhi nei",
+        "message": "Tēnā pea kāore te pārongo nei tika ana 100%. Hoki atu ki te pae tukutuku tūwāhi."
+      }
+    }
+  },
+  "calendar": {
+    "month": "{{monthString, MMMM yyyy}}",
+    "numberOfAppointments": "{{sumAvailableTimes}} kei te wātea",
+    "modal": {
+      "howToBook": {
+        "title": "Me pēhea te rapua rongoā āraimate",
+        "stepOne": "Rapua he tūwāhi, he wā hoki,tata ana ki a koe.",
+        "stepTwo": "Panaia te pātene <i>Make a Booking</i> ka haria i a koe whārangi ipurangi o <0>bookmyvaccine.nz</0>",
+        "stepThree": "Tāuru i āu pārongo.",
+        "stepFour": "Rapua i te whare hauora e tata ana ki a koe." 
+      },
+      "availableSlots": "Ngā wā e wātea ana", 
+      "noBookingsAvailable": "Kaore he wā wātea I tēnei rā :(",
+      "notBMV": "Kāore tēnei wāhi e whakamahi ana i te pae tukutuku o <0>bookmyvaccine.nz</0> ka kī pea ngā āputa wero",
+      "backToCalendar": "Hoki atu ki te wātaka"
+    }
+  },
+  "footer": {
+    "message": "Mēnā I pai ki a koe te whārangi nei, tēnā koa tohatoha atu",
+    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup",
+    "links": {
+      "contactUs": "Whakapā mai",
+      "rawData": "Raw Data",
+      "sourceCode": "Source Code",
+      "roadmap": "Roadmap"
+    }
+  }
+}
+
