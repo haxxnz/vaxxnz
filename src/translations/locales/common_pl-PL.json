@@ -32,7 +32,7 @@
       "locaitonTitle": "Lokalizacja",
       "locationCTA": "Wpisz adres lub okolice",
       "useCurrentLocation": "Użyj moją obecną lokalizacje",
-      "geolocationNotSupported": "Geolocation is not supported by your browser"
+      "geolocationNotSupported": "twój browser nie pozwala użycia geolokalizacji"
     },
     "unknownLocation": "Unknown Location"
   },
