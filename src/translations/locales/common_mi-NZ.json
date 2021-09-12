@@ -41,7 +41,7 @@
     "openString": "Tūwhera {{openTimeString}}",
     "cancellationNotice": {
       "info": "Kaua e tāpuitia i ngā wāhi e rua",
-      "message": "Tēnā koa, whakakorengia i tāu wero ki <0>bookmyvaccine.nz</0> mēnā he wero tāu kei wāhi kē" 
+      "message": "Tēnā koa, whakakorengia i tāu wero ki <0>bookmyvaccine.nz</0> mēnā he wero tāu kei wāhi kē"
     },
     "cancelBooking": "Whakakorengia",
     "noticeList": {
@@ -73,9 +73,9 @@
         "stepOne": "Rapua he tūwāhi, he wā hoki,tata ana ki a koe.",
         "stepTwo": "Panaia te pātene <i>Make a Booking</i> ka haria i a koe whārangi ipurangi o <0>bookmyvaccine.nz</0>",
         "stepThree": "Tāuru i āu pārongo.",
-        "stepFour": "Rapua i te whare hauora e tata ana ki a koe." 
+        "stepFour": "Rapua i te whare hauora e tata ana ki a koe."
       },
-      "availableSlots": "Ngā wā e wātea ana", 
+      "availableSlots": "Ngā wā e wātea ana",
       "noBookingsAvailable": "Kaore he wā wātea I tēnei rā :(",
       "notBMV": "Kāore tēnei wāhi e whakamahi ana i te pae tukutuku o <0>bookmyvaccine.nz</0> ka kī pea ngā āputa wero",
       "backToCalendar": "Hoki atu ki te wātaka"
@@ -92,4 +92,3 @@
     }
   }
 }
-
