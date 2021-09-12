@@ -9,9 +9,9 @@
     "makeABooking": "Zrób rezerwacje",
     "kmAway": "{{distance}}km odległości",
     "lastUpdated": "Dane sprzed {{updatedAt}}",
-    "cancel": "Cancel",
-    "website": "Website",
-    "address": "Address"
+    "cancel": "Odwołać",
+    "website": "Strona Internetowa",
+    "address": "Adres"
   },
   "navigation": {
     "about": "O Nas",
@@ -29,8 +29,8 @@
       "100km": "W zasięgu 100km"
     },
     "locationModal": {
-      "locaitonTitle": "Location",
-      "locationCTA": "Type in an address or suburb",
+      "locaitonTitle": "Lokalizacja",
+      "locationCTA": "Wpisz adres lub okolice",
       "useCurrentLocation": "Use my current location",
       "geolocationNotSupported": "Geolocation is not supported by your browser"
     },
