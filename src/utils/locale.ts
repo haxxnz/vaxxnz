@@ -6,7 +6,7 @@ import {
   vi,
   zhCN,
   zhTW,
-  mn,
+  ms,
   pl,
   id,
   hi,
@@ -17,7 +17,7 @@ import i18next from "i18next";
 const supportedDateLocale: { [localeString: string]: Locale } = {
   "en-NZ": enNZ,
   "de-DE": de,
-  "ms-MY": mn,
+  "ms-MY": ms,
   "es-ES": es,
   "ru-RU": ru,
   "pl-PL": pl,
