@@ -23,7 +23,7 @@
         "setLocationConfirmation": "Set Lokasi",
         "locationModal": {
             "locaitonTitle": "Lokasi",
-            "locationCTA": "Ketik alamat atau bagaian pinggir kota (suburb)",
+            "locationCTA": "Ketik alamat atau bagian pinggir kota (suburb)",
             "useCurrentLocation": "Gunakan lokasi saya",
             "geolocationNotSupported": "Geolokasi tidak didukung oleh browser anda"
         },

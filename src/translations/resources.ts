@@ -2,7 +2,7 @@ import common_en_NZ from "./locales/common_en-NZ.json";
 import common_de_DE from "./locales/common_de-DE.json";
 import common_ru_RU from "./locales/common_ru-RU.json";
 import common_es_ES from "./locales/common_es-ES.json";
-import common_in_ID from "./locales/common_in-ID.json";
+import common_id_ID from "./locales/common_id-ID.json";
 import common_ms_MY from "./locales/common_ms-MY.json";
 import common_zh_CN from "./locales/common_zh-CN.json";
 import common_zh_TW from "./locales/common_zh-TW.json";
@@ -60,7 +60,7 @@ const languages: Language[] = [
     code: "ru-RU",
   },
   {
-    common: common_in_ID,
+    common: common_id_ID,
     label: "Bahasa Indo",
     code: "in-ID",
   },
