@@ -3,7 +3,7 @@ import {
   WalkContainer as OtherContainer,
 } from "../VaxComponents";
 import WalkModal from "./healthpoint/HealthpointModal";
-import { getDistanceKm } from "../utils/distance";
+import { formatDistanceKm, getDistanceKm } from "../utils/distance";
 import { Coords } from "../location-picker/LocationPicker";
 import {
   Instruction,
@@ -149,13 +149,12 @@ export function TodayLocationsSection({ coords, radiusKm }: Props) {
                           {locationLat && locationLng && (
                             <p>
                               {t("core.kmAway", {
-                                distance:
-                                  Math.round(
-                                    getDistanceKm(coords, {
-                                      lat: locationLat,
-                                      lng: locationLng,
-                                    }) * 10
-                                  ) / 10,
+                                distance: formatDistanceKm(
+                                  getDistanceKm(coords, {
+                                    lat: locationLat,
+                                    lng: locationLng,
+                                  })
+                                ),
                               })}
                             </p>
                           )}

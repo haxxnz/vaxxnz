@@ -4,7 +4,7 @@ import { Trans, useTranslation } from "react-i18next";
 import { CrowdsourcedLocation } from "../../crowdsourced/CrowdsourcedData";
 import { Coords } from "../../location-picker/LocationPicker";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
-import { getDistanceKm } from "../../utils/distance";
+import { formatDistanceKm, getDistanceKm } from "../../utils/distance";
 import { VaccineCentre } from "../../VaxComponents";
 
 interface CrowdsourcedBookingLocationProps {
@@ -25,7 +25,7 @@ export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingL
         <p>
           {location.address} (
           {t("core.kmAway", {
-            distance: Math.floor(getDistanceKm(coords, locationCoords)),
+            distance: formatDistanceKm(getDistanceKm(coords, locationCoords)),
           })}
           )
         </p>

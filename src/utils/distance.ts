@@ -8,3 +8,7 @@ export function getDistanceKm(coords1: Coords, coords2: Coords) {
   const d = distance(from, to, { units: "kilometers" });
   return d;
 }
+
+export function formatDistanceKm(distanceKm: number) {
+  return Math.round(distanceKm * 10) / 10;
+}

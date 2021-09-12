@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { Button } from "baseui/button";
 import { VaccineCentre } from "../VaxComponents";
-import { getDistanceKm } from "../utils/distance";
+import { formatDistanceKm, getDistanceKm } from "../utils/distance";
 import { parse } from "date-fns";
 import { Coords } from "../location-picker/LocationPicker";
 import { FunctionComponent, useEffect, useRef, useState } from "react";
@@ -100,7 +100,7 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
       <p>
         {location.displayAddress} (
         {t("core.kmAway", {
-          distance: Math.floor(getDistanceKm(coords, location.location)),
+          distance: formatDistanceKm(getDistanceKm(coords, location.location)),
         })}
         )
       </p>
