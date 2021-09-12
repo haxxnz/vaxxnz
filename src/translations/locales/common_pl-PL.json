@@ -34,7 +34,7 @@
       "useCurrentLocation": "Użyj moją obecną lokalizacje",
       "geolocationNotSupported": "twój browser nie pozwala użycia geolokalizacji"
     },
-    "unknownLocation": "Unknown Location"
+    "unknownLocation": "Nieznane miejsce"
   },
   "walkins": {
     "sectionHeader": "Centra szczepienia dostępne bez rezerwacji i Drive-through <0>- Otwarte dzisiaj</0>",
