@@ -11,7 +11,9 @@
     "lastUpdated": "I whakahou i te pae tukutuku {{updatedAt}}",
     "cancel": "Whakakorengia",
     "website": "Pae tukutuku",
-    "address": "Wāhi noho"
+    "address": "Wāhi noho",
+    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius."
   },
   "navigation": {
     "about": "He aha",
