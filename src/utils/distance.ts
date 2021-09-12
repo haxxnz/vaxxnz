@@ -9,6 +9,19 @@ export function getDistanceKm(coords1: Coords, coords2: Coords) {
   return d;
 }
 
-export function formatDistanceKm(distanceKm: number) {
-  return Math.round(distanceKm * 10) / 10;
+export function formatDistanceKm(km: number, language: string) {
+  if (km < 1) {
+    const meters = km * 1000;
+    return new Intl.NumberFormat(language, {
+      style: "unit",
+      unit: "meter",
+      notation: "compact",
+    }).format(meters);
+  } else {
+    return new Intl.NumberFormat(language, {
+      style: "unit",
+      unit: "kilometer",
+      notation: "compact",
+    }).format(km);
+  }
 }

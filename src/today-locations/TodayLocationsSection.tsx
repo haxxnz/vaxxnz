@@ -28,7 +28,7 @@ export interface Props {
 export function TodayLocationsSection({ coords, radiusKm }: Props) {
   const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
   const locations = useTodayLocationsData(coords, radiusKm);
-  const { t } = useTranslation("common");
+  const { t, i18n } = useTranslation("common");
 
   const [selectedLocationIndex, setSelectedLocation] = useState<number>();
   const [currentView, setCurrentView] = useState(!isMobileView ? 3 : 1);
@@ -153,7 +153,8 @@ export function TodayLocationsSection({ coords, radiusKm }: Props) {
                                   getDistanceKm(coords, {
                                     lat: locationLat,
                                     lng: locationLng,
-                                  })
+                                  }),
+                                  i18n.language
                                 ),
                               })}
                             </p>

@@ -16,7 +16,7 @@ interface CrowdsourcedBookingLocationProps {
 
 export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingLocationProps> =
   ({ location, radiusKm, coords, date }) => {
-    const { t } = useTranslation("common");
+    const { t, i18n } = useTranslation("common");
     const locationCoords = { lat: location.lat, lng: location.lng };
     const hours = location.openingHours[date.getDay()];
     return (
@@ -25,7 +25,10 @@ export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingL
         <p>
           {location.address} (
           {t("core.kmAway", {
-            distance: formatDistanceKm(getDistanceKm(coords, locationCoords)),
+            distance: formatDistanceKm(
+              getDistanceKm(coords, locationCoords),
+              i18n.language
+            ),
           })}
           )
         </p>

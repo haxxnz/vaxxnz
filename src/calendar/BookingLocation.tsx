@@ -39,7 +39,7 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
   radiusKm,
   activeDate,
 }) => {
-  const { t } = useTranslation("common");
+  const { t, i18n } = useTranslation("common");
   const ref = useRef() as any;
   const seen = useSeen(ref, "20px");
   const [slots, setSlots] = useState<SlotWithAvailability[] | undefined>();
@@ -100,7 +100,10 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
       <p>
         {location.displayAddress} (
         {t("core.kmAway", {
-          distance: formatDistanceKm(getDistanceKm(coords, location.location)),
+          distance: formatDistanceKm(
+            getDistanceKm(coords, location.location),
+            i18n.language
+          ),
         })}
         )
       </p>
