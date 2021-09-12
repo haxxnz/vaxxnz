@@ -31,7 +31,7 @@
     "locationModal": {
       "locaitonTitle": "Lokalizacja",
       "locationCTA": "Wpisz adres lub okolice",
-      "useCurrentLocation": "Use my current location",
+      "useCurrentLocation": "Użyj moją obecną lokalizacje",
       "geolocationNotSupported": "Geolocation is not supported by your browser"
     },
     "unknownLocation": "Unknown Location"
