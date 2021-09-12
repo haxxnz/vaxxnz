@@ -11,10 +11,13 @@ const LanguageSelect = () => {
   );
   const { i18n } = useTranslation();
 
-  const changeLanguage = (selectedLanguage: any) => {
+  const changeLanguage = (selectedLanguage: Language) => {
     let newLang = languages.find((lang) => lang.code === selectedLanguage.code);
     setLanguage(newLang);
     i18n.changeLanguage(newLang?.code);
+    const url = new URL(window.location.toString());
+    url.searchParams.set("locale", String(newLang?.code.toLocaleLowerCase()));
+    window.history.pushState({}, "", url.toString());
     enqueueAnalyticsEvent("Language changed", { code: newLang?.code });
   };
 
@@ -24,6 +27,15 @@ const LanguageSelect = () => {
         Root: {
           style: {
             maxHeight: "40px",
+            alignSelf: "center",
+            marginTop: "-4px",
+          },
+        },
+        ControlContainer: {
+          style: {
+            Color: "rgba(0,0,0,0)",
+            minWidth: "144px",
+            // fontSize: "1.1rem",
           },
         },
       }}
@@ -32,9 +44,9 @@ const LanguageSelect = () => {
       options={languages}
       valueKey="code"
       value={language ? [language] : undefined}
-      placeholder="Language"
+      placeholder="English"
       onChange={(params) => {
-        changeLanguage(params.option);
+        changeLanguage(params.option as Language);
       }}
     />
   );

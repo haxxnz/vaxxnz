@@ -12,18 +12,49 @@ Then create a Pull Request for us to review.
 
 **NO**: Follow these steps to add a new language...
 
-1. Duplicate the default translations from `common_en.json` into a file called `common_[LOCALE].json`.
-2. Replace the values (NEVER THE KEYS!) from English text into your language, ensuring context is preserved.
-3. Import your language in the `resources.ts` file and add it to the `languages` array so that it shows up in the dropdown on the website.
-4. Once completed. Test the usability of the page to make sure it follows a consistent language (and formal/informal mentions are consistently applied).
-5. Create a Pull Request and get a maintainer to approve. Ideally, you find another speaker of that language to provide a second look at the chosen words.
-6. We merge it and take it live!
+1. Find your locale code here:
+   - https://en.wikipedia.org/wiki/Language_localisation
+   - or https://www.science.co.il/language/Locale-codes.php
+2. Add the new locale entry e.g. `vi-VN` in [index.ts](index.ts).
+
+   E.g.
+
+   ```javascript
+   supportedLngs: [
+     "en-NZ",
+     "es-ES",
+     "de-DE",
+     "ru-RU",
+     "zh-CN",
+     "zh-TW",
+     "ms-MY",
+     "vi-VN", // new locale entry
+   ];
+   ```
+
+3. Duplicate the default translations from `common_en.json` into a file called `common_[LOCALE].json`
+
+   E.g. `common_vi-VN.json`
+
+4. Replace the values **(NOT THE KEYS!)** from English text into your language, ensuring context is preserved.
+5. Import your language in the `resources.ts` file and add it to the `languages` array so that it shows up in the dropdown on the website.
+6. Once completed. Test the usability of the page to make sure it follows a consistent language (and formal/informal mentions are consistently applied).
+7. Create a Pull Request and get a maintainer to approve. Ideally, you find another speaker of that language to provide a second look at the chosen words.
+8. We merge it and take it live!
 
 ## Synchronising Translations
 
-If you feel that translation keys are missing, please run `yarn run sync:i18n`
+If you feel that translation keys are missing, please do the following:
 
-This looks at the `common_en.json` file (source of truth) and syncs its key/value pairs with all other translation files. The console output will tell you how many changes where made to each file. You may then go ahead and add the missing translations.
+1. Install `ts-node`:
+   ```bash
+   $ yarn add ts-node
+   ```
+2. Sync translation:
+   ```bash
+   $ yarn run sync:i18n
+   ```
+   This looks at the `common_en.json` file (source of truth) and syncs its key/value pairs with all other translation files. The console output will tell you how many changes where made to each file. You may then go ahead and add the missing translations.
 
 ## Need a hand?
 

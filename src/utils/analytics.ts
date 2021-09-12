@@ -1,6 +1,6 @@
 export type AnalyticsMetaData = {
   event: string;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
 declare global {
@@ -11,7 +11,7 @@ declare global {
 
 export function enqueueAnalyticsEvent(
   event: string,
-  metaData?: { [metaDataField: string]: any }
+  metaData?: { [metaDataField: string]: unknown }
 ) {
   if (
     window.location.hostname === "localhost" ||

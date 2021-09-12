@@ -1,15 +1,11 @@
-import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
-import { Trans, useTranslation } from "react-i18next";
-import "../../App.css";
-import { CancelBookingNotice } from "../../common/CancelNotice";
-import { NoticeList, NoticeListItem } from "../../NoticeList";
-import { ModalGrid } from "../../VaxComponents";
-import { Instruction } from "../../walk-in/WalkInData";
-import { CrowdsourcedLocation } from "../CrowdsourcedData";
+import { useTranslation } from "react-i18next";
+import { LocationNotice } from "../common/LocationNotice";
+import { NoticeList, NoticeListItem } from "../NoticeList";
+import { ModalGrid } from "../VaxComponents";
+import { CrowdsourcedLocation } from "./CrowdsourcedData";
 
 type Props = {
   clearSelectedLocation: () => void;
@@ -56,7 +52,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
             flexDirection: "column",
             alignSelf: "center",
             padding: "1.5rem",
-            maxWidth: "860px",
+            maxWidth: "1200px",
           },
         },
       }}
@@ -70,8 +66,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
           >
             {location.name}
           </h1>
-
-          <p>{location.address}</p>
+          <LocationNotice instructions={location.instructions} />
 
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
@@ -123,45 +118,20 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
           </NoticeList>
         </div>
         <div style={{ height: "100%" }}>
-          <CancelBookingNotice className="desktop" />
-
+          <section>
+            <h3>{t("core.address")}</h3>
+            <p>{location.address}</p>
+          </section>
           {location.website && (
             <section>
               <h3>{t("core.website")}</h3>
               <p>
-                <a
-                  href="https://bookmyvaccine.covid19.health.nz/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a href={location.website} target="_blank" rel="noreferrer">
                   {location.website}
                 </a>
               </p>
             </section>
           )}
-
-          <section>
-            <div className="WalkInTypes">
-              {location.instructions.includes(Instruction.walkIn) && (
-                <p>
-                  <Trans
-                    i18nKey="walkins.walkinAwailable"
-                    t={t}
-                    components={[<FontAwesomeIcon icon={faWalking} />]}
-                  />
-                </p>
-              )}
-              {location.instructions.includes(Instruction.driveThrough) && (
-                <p>
-                  <Trans
-                    i18nKey="walkins.driveThroughAvailable"
-                    t={t}
-                    components={[<FontAwesomeIcon icon={faCar} />]}
-                  />
-                </p>
-              )}
-            </div>
-          </section>
 
           {telephone && (
             <section>
@@ -170,17 +140,30 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
               <a href={`tel:${telephone}`}>{telephone}</a>
             </section>
           )}
-
           {location.openingHours.length > 0 && (
             <section>
-              <h3>{t("walkins.hours")}</h3>
+              <h3 style={{ marginBottom: "0.75rem" }}>{t("walkins.hours")}</h3>
               {location.openingHours.map((oh, index) => {
                 return (
-                  <p key={index}>
-                    {dayOfWeekToString(oh.day)}{" "}
-                    {oh.isOpen ? oh.hours : undefined}
-                    <br />
-                  </p>
+                  <>
+                    <p key={index} style={{ float: "left" }}>
+                      {dayOfWeekToString(oh.day)}{" "}
+                    </p>
+                    <p style={{ float: "right" }}>
+                      {oh.isOpen ? oh.hours : t("walkins.closed")}
+                    </p>
+                    <br style={{ lineHeight: "0.5rem" }} />
+                    <hr
+                      style={{
+                        width: "100%",
+                        height: 1,
+                        backgroundColor: "#e9e9e9",
+                        border: "none",
+                        padding: 0,
+                        margin: "0 0 12px 0",
+                      }}
+                    />
+                  </>
                 );
               })}
             </section>

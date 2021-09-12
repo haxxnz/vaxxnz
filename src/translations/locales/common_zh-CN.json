@@ -10,7 +10,8 @@
     "kmAway": "{{distance}} 公里",
     "lastUpdated": "最近更新于 {{updatedAt}}",
     "cancel": "取消",
-    "website": "Website"
+    "website": "网站",
+    "address": "地址"
   },
   "navigation": {
     "about": "关于",
@@ -52,15 +53,16 @@
     "phone": "电话",
     "hours": "开放时间",
     "publicHolidays": "公共节假日",
-    "otherExeptions": "Exceptions",
+    "otherExeptions": "例外",
     "seeMore": "了解更多",
     "otherLocations": {
-      "sectionHeader": "Other Vaccination Locations <0>- Open Today</0>",
+      "sectionHeader": "其他疫苗接种地点 <0>- 今日开放</0>",
       "disclaimer": {
-        "title": "This location has been submitted by the public",
-        "message": "The information here may not be 100% accurate. Please refer to the locations website."
+        "title": "此位置已被公众提交",
+        "message": "这里的信息可能不是100%准确. 请参考地点网站."
       }
-    }
+    },
+    "closed": "关闭"
   },
   "calendar": {
     "month": "{{monthString, yyyy mmm}}",
@@ -75,7 +77,8 @@
       },
       "availableSlots": "时间段",
       "noBookingsAvailable": "当天已约满 :(",
-      "backToCalendar": "回到日历"
+      "backToCalendar": "回到日历",
+      "notBMV": "此位置不使用 <0>bookmyvaccine.nz</0> 并且可能没有空槽."
     },
     "numberOfAppointments": "{{sumAvailableTimes}} 个空余预约"
   },
@@ -85,7 +88,8 @@
       "contactUs": "联系我们",
       "rawData": "原始数据",
       "sourceCode": "源代码",
-      "roadmap": "Roadmap"
-    }
+      "roadmap": "策划"
+    },
+    "addressFinderLinkCopy": "感谢 <0>AddressFinder</0> 提供免费地址查询"
   }
 }

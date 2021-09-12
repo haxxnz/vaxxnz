@@ -10,7 +10,8 @@
     "kmAway": "{{distance}}km away",
     "lastUpdated": "Last updated {{updatedAt}}",
     "cancel": "Cancel",
-    "website": "Website"
+    "website": "Website",
+    "address": "Address"
   },
   "navigation": {
     "about": "About",
@@ -24,7 +25,7 @@
       "useCurrentLocation": "Use my current location",
       "geolocationNotSupported": "Geolocation is not supported by your browser"
     },
-    "vaccinationsNear": "Available Vaccinations <0>near {{location}}</0>",
+    "vaccinationsNear": "Vaccinations <0>near {{location}}</0>",
     "unknownLocation": "Unknown Location",
     "distanceDropdown": {
       "2km": "Within 2km",
@@ -36,7 +37,7 @@
     }
   },
   "walkins": {
-    "sectionHeader": "Walk-in & Drive-thru Vaccinations <0>- Open Today</0>",
+    "sectionHeader": "Open Today",
     "openString": "Open {{openTimeString}}",
     "cancellationNotice": {
       "info": "Please Don't Double-book",
@@ -44,13 +45,14 @@
     },
     "cancelBooking": "Cancel",
     "noticeList": {
-      "title": "Availability Is Not Guaranteed",
-      "text": "Keep in mind that walk-in locations listed might not necessarily have capacity available."
+      "title": "How to get Vaccinated",
+      "text": "Vaccinations might have a queue, and some places might not have spare vaccines available today - ring ahead if you can!"
     },
-    "walkinAwailable": "<0 /> Walk-in available",
-    "driveThroughAvailable": "<0 /> Drive-through available",
+    "walkinAwailable": "<0 /> Walk-in vaccinations available",
+    "driveThroughAvailable": "<0 /> Drive-through vaccinations available",
     "phone": "Phone",
     "hours": "Hours",
+    "closed": "Closed",
     "publicHolidays": "Public Holidays",
     "otherExeptions": "Exceptions",
     "seeMore": "See More",
@@ -73,14 +75,16 @@
         "stepThree": "Enter your details.",
         "stepFour": "When asked, search for your desired location and time."
       },
-      "availableSlots": "Available slots",
+      "availableSlots": "Available to Book",
       "noBookingsAvailable": "No bookings are available on this day :(",
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots.",
       "backToCalendar": "Back to Calendar"
     }
   },
 
   "footer": {
     "message": "If this site helped you, please consider sharing",
+    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup",
     "links": {
       "contactUs": "Contact Us",
       "rawData": "Raw Data",

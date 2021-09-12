@@ -40,6 +40,21 @@ p {
   margin: 0;
 }
 
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+h2 strong {
+  font-weight: 400;
+  font-style: normal;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -48,6 +63,7 @@ code {
 a {
   outline: none;
   text-decoration: none;
+  word-break: break-word;
 }
 
 .menu-header {
@@ -66,7 +82,7 @@ a {
 }
 
 .menu-link {
-  color: #254dff;
+  color: #000;
   font-size: 1.1rem;
   text-align: center;
   white-space: nowrap;
@@ -108,7 +124,7 @@ a {
   font-size: 3rem;
 }
 
-.App-header h3 {
+.App-header h2 {
   margin-top: 0.5rem;
   font-size: 1.5rem;
 }
@@ -123,6 +139,7 @@ a {
   max-height: 280px;
   overflow: hidden;
   display: block;
+  margin: auto auto 0 auto;
 }
 
 .header-img {
@@ -153,7 +170,7 @@ a {
   .App-header h1 {
     font-size: 2rem;
   }
-  .App-header h3 {
+  .App-header h2 {
     font-size: 1.25rem;
   }
   .App-header p {
@@ -168,11 +185,17 @@ a {
   .App-header {
     grid-template-columns: 1fr;
   }
-  .menu-header {
+  .menu-link {
     display: none;
   }
   .header-img-container {
     display: none;
+  }
+  .header-content {
+    padding: 1.5rem;
+  }
+  .header-content h1 {
+    font-size: 2.5rem;
   }
 }
 
@@ -183,11 +206,14 @@ a {
   .header-content {
     padding: 1.5rem;
   }
+  .header-content h1 {
+    font-size: 2rem;
+  }
 }
 
 .ModalHeader {
   position: sticky;
-  top: 0;
+  top: 1.5rem;
   display: block;
 }
 

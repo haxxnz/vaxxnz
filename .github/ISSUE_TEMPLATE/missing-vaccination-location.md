@@ -4,20 +4,19 @@ about: Describe this issue template's purpose here.
 title: ''
 labels: enhancement
 assignees: ''
-
 ---
 
-*Address*:
+_Address_:
 changeme
 
-*Openning hours*:
+_Openning hours_:
 changeme
 
-*Holiday hours*:
+_Holiday hours_:
 changeme
 
-*Walk-in/drive through/invite only?*:
+_Walk-in/drive through/invite only?_:
 changeme
 
-*Website*:
+_Website_:
 changeme
