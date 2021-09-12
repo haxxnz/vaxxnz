@@ -661,4 +661,25 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
       { day: 0, isOpen: false },
     ],
   },
+  {
+    isCrowdSourced: true,
+    name: "Trusts Arena",
+    address: "65-67 Central Park Drive, Henderson, Auckland 0610",
+    lat: -36.8605461,
+    lng: 174.6352461,
+    instructions: [Instruction.driveThrough],
+    website: "https://www.facebook.com/thetrustsarena/",
+    telephone: "09-970 5200",
+    additionalInformation:
+      "Drive-through site, was mentioned during COVID presser",
+    openingHours: [
+      { day: 1, isOpen: true, hours: "10:00 AM – 6:00 PM (uncertain)" },
+      { day: 2, isOpen: true, hours: "10:00 AM – 6:00 PM (uncertain)" },
+      { day: 3, isOpen: true, hours: "10:00 AM – 6:00 PM (uncertain)" },
+      { day: 4, isOpen: true, hours: "10:00 AM – 6:00 PM (uncertain)" },
+      { day: 5, isOpen: true, hours: "10:00 AM – 6:00 PM (uncertain)" },
+      { day: 6, isOpen: true, hours: "10:00 AM – 6:00 PM (uncertain)" },
+      { day: 0, isOpen: true, hours: "10:00 AM – 6:00 PM (uncertain)" },
+    ],
+  },
 ];
