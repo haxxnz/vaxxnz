@@ -17,11 +17,11 @@ import i18next from "i18next";
 const supportedDateLocale: { [localeString: string]: Locale } = {
   "en-NZ": enNZ,
   "de-DE": de,
-  "ms-MY": mn, // Same issue
+  "ms-MY": mn,
   "es-ES": es,
   "ru-RU": ru,
   "pl-PL": pl,
-  "vi-VN": vi, // Don't ask me i18 locale string is different than date-fns locale string so ¯\_(ツ)_/¯
+  "vi-VN": vi,
   "zh-TW": zhTW,
   "zh-CN": zhCN,
   "id-ID": id,
