@@ -9,6 +9,7 @@ import common_sm_SM from "./locales/common_sm-SM.json";
 import common_to_TO from "./locales/common_to-TO.json";
 import common_vi_VN from "./locales/common_vi-VN.json";
 import common_pl_PL from "./locales/common_pl-PL.json";
+import common_ar_IQ from "./locales/common_ar-IQ.json";
 
 export type Language = {
   common: Object; //typeof common_en_NZ;
@@ -72,6 +73,11 @@ const languages: Language[] = [
     common: common_pl_PL,
     label: "Polski",
     code: "pl-PL",
+  },
+  {
+    common: common_ar_IQ,
+    label: "عربي",
+    code: "ar-IQ",
   },
 ];
 
