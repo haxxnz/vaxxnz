@@ -47,7 +47,7 @@ const languages: Language[] = [
   {
     common: common_hi_HI,
     label: "हिन्दी (Hindi)",
-    code: "zh-TW",
+    code: "hi-HI",
   },
   {
     common: common_es_ES,
