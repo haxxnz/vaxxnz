@@ -7,7 +7,7 @@
     "loading": "Đang tải...",
     "getDirections": "Định hướng",
     "makeABooking": "Đặt hẹn",
-    "kmAway": "Cách địa chỉ lựa chọn {{distance}}",
+    "distanceAway": "Cách địa chỉ lựa chọn {{distance}}",
     "lastUpdated": "Cập nhật cách đây {{updatedAt}}",
     "cancel": "Huỷ bỏ",
     "website": "Trang web",

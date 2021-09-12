@@ -7,7 +7,7 @@
     "loading": "Загрузка...",
     "getDirections": "Получить направления",
     "makeABooking": "Выполнить бронирование",
-    "kmAway": "{{distance}} отсюда",
+    "distanceAway": "{{distance}} отсюда",
     "lastUpdated": "Последнее обновление {{updatedAt}}",
     "cancel": "Отменить",
     "website": "Вебсайт",

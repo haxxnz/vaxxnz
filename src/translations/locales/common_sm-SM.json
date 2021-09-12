@@ -7,7 +7,7 @@
     "loading": "utaina",
     "getDirections": "Vaai fa'atonuga",
     "makeABooking": "Faamauina lou avanoa",
-    "kmAway": "{{distance}} le alu",
+    "distanceAway": "{{distance}} le alu",
     "lastUpdated": "Taimi mulimuli ga fa'afouina ai - {{updatedAt}}",
     "cancel": "Fa'aleaogaina",
     "website": "Upega tafa'ilagi",

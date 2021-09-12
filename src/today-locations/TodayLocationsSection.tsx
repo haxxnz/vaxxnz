@@ -148,7 +148,7 @@ export function TodayLocationsSection({ coords, radiusKm }: Props) {
                           </h3>
                           {locationLat && locationLng && (
                             <p>
-                              {t("core.kmAway", {
+                              {t("core.distanceAway", {
                                 distance: formatDistanceKm(
                                   getDistanceKm(coords, {
                                     lat: locationLat,

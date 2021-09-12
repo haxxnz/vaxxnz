@@ -24,7 +24,7 @@ export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingL
         <h3>{location.name}</h3>
         <p>
           {location.address} (
-          {t("core.kmAway", {
+          {t("core.distanceAway", {
             distance: formatDistanceKm(
               getDistanceKm(coords, locationCoords),
               i18n.language

@@ -99,7 +99,7 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
       <h3>{location.name}</h3>
       <p>
         {location.displayAddress} (
-        {t("core.kmAway", {
+        {t("core.distanceAway", {
           distance: formatDistanceKm(
             getDistanceKm(coords, location.location),
             i18n.language
