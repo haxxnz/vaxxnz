@@ -62,7 +62,7 @@
         "message": "The information here may not be 100% accurate. Please refer to the locations website."
       }
     },
-    "closed": "Closed"
+    "closed": "关闭"
   },
   "calendar": {
     "month": "{{monthString, yyyy mmm}}",
