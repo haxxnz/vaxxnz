@@ -57,10 +57,10 @@
     "seeMore": "Zobacz więcej",
     "closed": "Closed",
     "otherLocations": {
-      "sectionHeader": "Other Vaccination Locations <0>- Open Today</0>",
+      "sectionHeader": "inne miejsca szczepienia <0>- otwarte dzisiaj</0>",
       "disclaimer": {
-        "title": "This location has been submitted by the public",
-        "message": "The information here may not be 100% accurate. Please refer to the location's website."
+        "title": "to miejsce było zgłoszone przez mieszkańców",
+        "message": "Informacja na tej stronie może nie być poprawna w 100%. Sprawdź informacje na stronie danego centrum."
       }
     }
   },
@@ -78,7 +78,7 @@
       "availableSlots": "Dostępne miejsca",
       "noBookingsAvailable": "Nie ma dostępnych rezerwacji w tym dniu :(",
       "backToCalendar": "Powrót do kalendarza",
-      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
+      "notBMV": "Ta lokalizacja nie używa <0>bookmyvaccine.nz</0> i może nie mieć wolnych miejsc."
     },
     "numberOfAppointments": "{{sumAvailableTimes}} dost"
   },
@@ -90,6 +90,6 @@
       "sourceCode": "Kod źródłowy",
       "roadmap": "Mapa drogowa"
     },
-    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
+    "addressFinderLinkCopy": "Dziękujemy <0>AddressFinder</0> za darmowy dostęp do wyszukiwań adresów"
   }
 }
