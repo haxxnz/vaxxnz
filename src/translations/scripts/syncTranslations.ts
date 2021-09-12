@@ -1,5 +1,6 @@
 import fs from "fs";
 import { join } from "path";
+import prettier from "prettier";
 import english from "../locales/common_en-NZ.json";
 import { traverseTranslations } from "./traverseTranslations";
 
@@ -54,7 +55,12 @@ fs.readdirSync(join(__dirname, "../locales")).forEach((locale) => {
     }
   });
 
-  fs.writeFileSync(filename, JSON.stringify(data, null, 2));
+  fs.writeFileSync(
+    filename,
+    prettier.format(JSON.stringify(data), {
+      parser: "json",
+    })
+  );
 });
 
 console.log("NEW TRANSLATIONS REQUIRED:");
