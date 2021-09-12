@@ -2,63 +2,62 @@
   "core": {
     "title": "Vaxx.nz",
     "tagline": "अपने पास Covid-19टीकाकरण खोजें",
-    "subtitle": "अपने आस-पास टीकाकरण कराने के तरीके देखें", 
-    "disclaimerNotAGovWebsite": "यह एक आधिकारिक सरकारी वेबसाइट नहीं है। टीका लगवाने के लिए कृपया देखें <0>bookmyvaccine.nz</0>", 
-    "loading": "लोड हो रहा है", 
-    "getDirections": "दिशा - निर्देश प्राप्त करें", 
-    "makeABooking": "बुकिंग करें", 
-    "kmAway": "{{distance}}किमी दूर", 
-    "lastUpdated": "आखरी अपडेट{{updatedAt}}", 
-    "cancel": "रद्द करें", 
+    "subtitle": "अपने आस-पास टीकाकरण कराने के तरीके देखें",
+    "disclaimerNotAGovWebsite": "यह एक आधिकारिक सरकारी वेबसाइट नहीं है। टीका लगवाने के लिए कृपया देखें <0>bookmyvaccine.nz</0>",
+    "loading": "लोड हो रहा है",
+    "getDirections": "दिशा - निर्देश प्राप्त करें",
+    "makeABooking": "बुकिंग करें",
+    "kmAway": "{{distance}}किमी दूर",
+    "lastUpdated": "आखरी अपडेट{{updatedAt}}",
+    "cancel": "रद्द करें",
     "website": "वेबसाइट",
-    "address": "पता" 
+    "address": "पता"
   },
-
   "navigation": {
     "about": "के बारे में",
-    "contact": "संपर्क", 
+    "contact": "संपर्क",
     "getInvolved": "उलझना",
     "setLocation": "अपना स्थान तय करे",
-    "setLocationConfirmation": "स्थान सेट", 
+    "setLocationConfirmation": "स्थान सेट",
     "locationModal": {
-      "locaitonTitle": "स्थान",  
-      "locationCTA": "कोई पता या उपनगर लिखें", 
-      "useCurrentLocation": "मेरे वर्तमान स्थान का उपयोग करें", 
-      "geolocationNotSupported": "भौगोलिक स्थान आपके ब्राउज़र द्वारा समर्थित नहीं है" 
+      "locaitonTitle": "स्थान",
+      "locationCTA": "कोई पता या उपनगर लिखें",
+      "useCurrentLocation": "मेरे वर्तमान स्थान का उपयोग करें",
+      "geolocationNotSupported": "भौगोलिक स्थान आपके ब्राउज़र द्वारा समर्थित नहीं है"
     },
-    "vaccinationsNear": "टीकाकरण <0>निकट {{location}}</0>",  
+    "vaccinationsNear": "टीकाकरण <0>निकट {{location}}</0>",
     "unknownLocation": "अज्ञात स्थान",
     "distanceDropdown": {
-      "2km": "2 किमी . के भीतर", 
-      "5km": "5 . के भीतर किमी", 
-      "10km": "10 . के भीतर किमी", 
-      "25km": "25 . के भीतर किमी", 
-      "50km": "50 . के भीतर किमी", 
-      "100km": "100 . के भीतर किमी" 
+      "2km": "2 किमी . के भीतर",
+      "5km": "5 . के भीतर किमी",
+      "10km": "10 . के भीतर किमी",
+      "25km": "25 . के भीतर किमी",
+      "50km": "50 . के भीतर किमी",
+      "100km": "100 . के भीतर किमी"
     }
   },
   "walkins": {
-    "sectionHeader": "आज खुला है", 
+    "sectionHeader": "आज खुला है",
     "openString": "Open {{openTimeString}}",
-    "cancellationNotice": { 
-      "info": "कृपया दो बार बुक न करें", 
+    "cancellationNotice": {
+      "info": "कृपया दो बार बुक न करें",
       "message": " यदि आपके पास एक बुकिंग है, तो अपनी मूल बुकिंग रद्द करना याद रखें <0>bookmyvaccine.nz</0>"
     },
-    "cancelBooking": "रद्द करें", 
+    "cancelBooking": "रद्द करें",
     "noticeList": {
       "title": "टीका कैसे लगवाएं",
-      "text": "टीकाकरण की कतार हो सकती है, और कुछ केंद्रों में आज अतिरिक्त टीके उपलब्ध नहीं हो सकते हैं - यदि आप कर सकते हैं तो आगे फोन करें!" 
+      "text": "टीकाकरण की कतार हो सकती है, और कुछ केंद्रों में आज अतिरिक्त टीके उपलब्ध नहीं हो सकते हैं - यदि आप कर सकते हैं तो आगे फोन करें!"
     },
     "walkinAwailable": "<0 />बिना नियोजित भेंट टीकाकरण उपलब्ध",
-    "driveThroughAvailable": "<0 /> ड्राइव करते हुए टीकाकरण उपलब्ध", 
+    "driveThroughAvailable": "<0 /> ड्राइव करते हुए टीकाकरण उपलब्ध",
     "phone": "फ़ोन",
     "hours": "घंटे",
-    "closed": "बंद", 
+    "closed": "बंद",
     "publicHolidays": "Public Holidays",
     "otherExeptions": "सार्वजनिक छुट्टियाँ",
-    "seeMore": "और देखें", 
+    "seeMore": "और देखें",
     "otherLocations": {
-      "sectionHeader": "अन्य टीकाकरण स्थान  <0>- आज ही खोलें </0>", 
+      "sectionHeader": "अन्य टीकाकरण स्थान  <0>- आज ही खोलें </0>",
       "disclaimer": {
         "title": "यह स्थान जनता द्वारा सबमिट किया गया है",
         "message": " यहां दी गई जानकारी 100% सटीक नहीं हो सकती है। कृपया स्थान की वेबसाइट देखें"
@@ -71,13 +70,13 @@
     "modal": {
       "howToBook": {
         "title": "कैसे बुक करें",
-        "stepOne": "नीचे दी गई सूची से स्थान और समय खोजें", 
-        "stepTwo": "पर क्लिक करें बुकिंग करने के लिए, यह आपको ले जाएगा <0>bookmyvaccine.nz</0>", 
+        "stepOne": "नीचे दी गई सूची से स्थान और समय खोजें",
+        "stepTwo": "पर क्लिक करें बुकिंग करने के लिए, यह आपको ले जाएगा <0>bookmyvaccine.nz</0>",
         "stepThree": "अपना विवरण दर्ज करें",
-        "stepFour": "पूछे जाने पर, अपना इच्छित स्थान और समय खोजें" 
+        "stepFour": "पूछे जाने पर, अपना इच्छित स्थान और समय खोजें"
       },
       "availableSlots": "बुक करने के लिए उपलब्ध",
-      "noBookingsAvailable": "इस दिन कोई बुकिंग उपलब्ध नहीं है", 
+      "noBookingsAvailable": "इस दिन कोई बुकिंग उपलब्ध नहीं है",
       "notBMV": "यह स्थान उपयोग नहीं करता  <0>bookmyvaccine.nz</0>  और खाली स्लॉट नहीं हो सकते हैं"
     }
   },
