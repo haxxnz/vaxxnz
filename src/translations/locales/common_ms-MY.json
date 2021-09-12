@@ -11,7 +11,9 @@
     "lastUpdated": "Dikemas kini {{updatedAt}}",
     "cancel": "Batal",
     "website": "Laman Web",
-    "address": "Alamat"
+    "address": "Alamat",
+    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius."
   },
   "navigation": {
     "about": "Mengenai",

@@ -11,7 +11,9 @@
     "lastUpdated": "Taimi mulimuli ga fa'afouina ai - {{updatedAt}}",
     "cancel": "Fa'aleaogaina",
     "website": "Upega tafa'ilagi",
-    "address": "Tuatusi"
+    "address": "Tuatusi",
+    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius."
   },
   "navigation": {
     "about": "Uiga Tāua",

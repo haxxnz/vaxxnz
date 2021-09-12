@@ -11,7 +11,9 @@
     "lastUpdated": "Ongoongo fakamuimui taha {{updatedAt}}",
     "cancel": "Kaniseli",
     "website": "Uepi Saiti",
-    "address": "Tu'asila"
+    "address": "Tu'asila",
+    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius."
   },
   "navigation": {
     "about": "Fekau'aki",

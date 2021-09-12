@@ -11,7 +11,9 @@
     "lastUpdated": "最近更新於 {{updatedAt}}",
     "cancel": "取消",
     "website": "Website",
-    "address": "Address"
+    "address": "Address",
+    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius."
   },
   "navigation": {
     "about": "關於",
