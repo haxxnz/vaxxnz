@@ -662,4 +662,25 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
       { day: 0, isOpen: true, hours: "10:00 AM – 6:00 PM (uncertain)" },
     ],
   },
+  {
+    isCrowdSourced: true,
+    name: "The Palms Medical Centre",
+    address: "445 Ferguson Street, Palmerston North 4410",
+    lat: -40.3565159,
+    lng: 175.6194385,
+    instructions: [Instruction.allowsBookings],
+    website: "https://palmsmedical.co.nz/",
+    telephone: "06 354 7737",
+    additionalInformation:
+      "We are currently by appointment only from the hours of 9am-4pm Tuesday to Friday. We presently have quite a bit of availability. Anyone wanting to book can call the medical centre on 06 354 7737.",
+    openingHours: [
+      { day: 1, isOpen: false },
+      { day: 2, isOpen: true, hours: "9:00 AM – 4:00 PM" },
+      { day: 3, isOpen: true, hours: "9:00 AM – 4:00 PM" },
+      { day: 4, isOpen: true, hours: "9:00 AM – 4:00 PM" },
+      { day: 5, isOpen: true, hours: "9:00 AM – 4:00 PM" },
+      { day: 6, isOpen: false },
+      { day: 0, isOpen: false },
+    ],
+  },
 ];
