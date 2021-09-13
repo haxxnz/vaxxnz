@@ -31,7 +31,7 @@ async function getSuburb(lat: number, lng: number): Promise<string> {
 function extractSuburb(addr: string): string {
   let components = addr.split(",");
 
-  if (components.length === 0) {
+  if (components.length < 2) {
     return "";
   }
 
