@@ -43,7 +43,9 @@ export const useCalendarLocations = (
       for (let i = 0; i < MAX_DAYS; i++) {
         // add crowd sourced locations to each calendar day they're open
         const date = addDays(today, i);
-        const isOpen = !!location.openingHours[date.getDay()]?.isOpen;
+        const isOpen = location.openingHours.find(
+          (a) => a.day === date.getDay()
+        )?.isOpen;
         if (!isOpen) {
           continue;
         }
