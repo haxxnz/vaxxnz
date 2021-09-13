@@ -1,11 +1,11 @@
 import { Button, KIND } from "baseui/button";
 import { BaseInput } from "baseui/input";
 import { Modal } from "baseui/modal";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
-import { getSuburbIsh } from "../utils/location";
 import { Coords } from "./LocationPicker";
+import getSuburb from "../addressfinder/reverseGeocode";
 
 type Props = {
   locationIsOpen: boolean;
@@ -17,11 +17,6 @@ type Props = {
 const LocationModal = (props: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
   const { setCoords, setPlaceName, setLocationIsOpen } = props;
-  const geocoder = useMemo(() => new google.maps.Geocoder(), []);
-  const placesService = useMemo(
-    () => new google.maps.places.PlacesService(document.createElement("div")),
-    []
-  );
 
   const { t } = useTranslation("common");
 
@@ -96,25 +91,10 @@ const LocationModal = (props: Props) => {
       setLoading(true);
       navigator.geolocation.getCurrentPosition(async (position) => {
         const { latitude, longitude } = position.coords;
-        const response = await geocoder.geocode({
-          location: {
-            lat: latitude,
-            lng: longitude,
-          },
-        });
-        const { results } = response;
-        if (results.length > 0) {
-          placesService.getDetails(
-            {
-              placeId: results[0].place_id,
-              fields: ["geometry", "name", "address_components"],
-            },
-            (place, status: string) => {
-              const suburbish = place ? getSuburbIsh(place) : null;
-              setLocation(latitude, longitude, suburbish);
-              setLoading(false);
-            }
-          );
+        const suburb = await getSuburb(latitude, longitude);
+        if (suburb !== "") {
+          setLocation(latitude, longitude, suburb);
+          setLoading(false);
         } else {
           setLocation(latitude, longitude);
           setLoading(false);
