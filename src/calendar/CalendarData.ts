@@ -32,38 +32,38 @@ export const useCalendarLocations = (
   radiusKm: number,
   setLastUpdateTime: (time: Date | null) => void
 ) => {
-  const crowdSourced = getCrowdsourcedLocations(coords, radiusKm);
+  // const crowdSourced = getCrowdsourcedLocations(coords, radiusKm);
   const bookingData = useBookingData(coords, radiusKm, setLastUpdateTime);
   if ("ok" in bookingData) {
     const months: CalendarData = bookingData.ok;
 
-    const MAX_DAYS = 60;
-    const today = new Date();
-    for (const location of crowdSourced) {
-      for (let i = 0; i < MAX_DAYS; i++) {
-        // add crowd sourced locations to each calendar day they're open
-        const date = addDays(today, i);
-        const isOpen = location.openingHours.find(
-          (a) => a.day === date.getDay()
-        )?.isOpen;
-        if (!isOpen) {
-          continue;
-        }
+    // const MAX_DAYS = 60;
+    // const today = new Date();
+    // for (const location of crowdSourced) {
+    //   for (let i = 0; i < MAX_DAYS; i++) {
+    //     // add crowd sourced locations to each calendar day they're open
+    //     const date = addDays(today, i);
+    //     const isOpen = location.openingHours.find(
+    //       (a) => a.day === date.getDay()
+    //     )?.isOpen;
+    //     if (!isOpen) {
+    //       continue;
+    //     }
 
-        const dateStr = format(date, "yyyy-MM-dd");
-        const monthStr = date.toLocaleString("en-NZ", {
-          month: "long",
-          year: "numeric",
-        });
-        const month: CalendarMonth = months.get(monthStr) ?? new Map();
+    //     const dateStr = format(date, "yyyy-MM-dd");
+    //     const monthStr = date.toLocaleString("en-NZ", {
+    //       month: "long",
+    //       year: "numeric",
+    //     });
+    //     const month: CalendarMonth = months.get(monthStr) ?? new Map();
 
-        const day: CalendarDateLocations = month.get(dateStr) ?? [];
+    //     const day: CalendarDateLocations = month.get(dateStr) ?? [];
 
-        day.push(location);
-        month.set(dateStr, day);
-        months.set(monthStr, month);
-      }
-    }
+    //     day.push(location);
+    //     month.set(dateStr, day);
+    //     months.set(monthStr, month);
+    //   }
+    // }
 
     return {
       ok: new Map(
