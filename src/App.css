@@ -173,7 +173,7 @@ ul.NoticeList li {
 .WalkInTypes {
   margin-top: 10px;
   border-radius: 14px;
-  border: 2px solid #b9dacc;
+  border: 1px solid #b9dacc;
   width: fit-content;
   overflow: hidden;
 }

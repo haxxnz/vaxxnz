@@ -28,7 +28,6 @@ const HealthpointModal: FunctionComponent<Props> = ({
   const telephone = location.telephone.replace(/\[.*\]/g, "");
 
   const desktopDialogStyle = {
-    border: "1px solid lightgray",
     width: "80vw",
   };
   const mobileDialogStyle = {
