@@ -5,7 +5,7 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
   {
     isCrowdSourced: true,
     name: "Auckland Airport Vaccination Centre",
-    address: "22 Verissimo Drive, Mangere",
+    address: "42 Verissimo Drive, Mangere",
     lat: -36.9854795,
     lng: 174.7885245,
     instructions: [Instruction.driveThrough],
