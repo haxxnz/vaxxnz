@@ -118,7 +118,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
         </div>
         <div style={{ height: "100%" }}>
           <section>
-            <h3>Address</h3>
+            <h3>{t("core.address")}</h3>
             <p>{location.address}</p>
           </section>
 
@@ -144,22 +144,20 @@ const HealthpointModal: FunctionComponent<Props> = ({
               {Object.keys(location.opennningHours.schedule).map(
                 (openDate, index) => {
                   return (
-                    <>
-                      <div
-                        key={index}
-                        style={{
-                          fontSize: "1.25rem",
-                          display: "flex",
-                          flexDirection: "row",
-                          justifyContent: "space-between",
-                          borderBottom: "1px solid rgb(233, 233, 233)",
-                          padding: "12px 0 4px 0",
-                        }}
-                      >
-                        <p>{openDate}</p>
-                        <p>{location.opennningHours.schedule[openDate]}</p>
-                      </div>
-                    </>
+                    <div
+                      key={index}
+                      style={{
+                        fontSize: "1.25rem",
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        borderBottom: "1px solid rgb(233, 233, 233)",
+                        padding: "12px 0 4px 0",
+                      }}
+                    >
+                      <p>{openDate}</p>
+                      <p>{location.opennningHours.schedule[openDate]}</p>
+                    </div>
                   );
                 }
               )}

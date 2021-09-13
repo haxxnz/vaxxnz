@@ -1,14 +1,15 @@
 import { format, parse } from "date-fns";
-import { useState, useCallback, useEffect, useMemo } from "react";
+import i18next from "i18next";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import filterOldDates from "../../filterOldDates";
 import { Coords } from "../../location-picker/LocationPicker";
 import { getDistanceKm } from "../../utils/distance";
 import { DateString, MonthString } from "../CalendarData";
 import {
   BookingDateLocations,
+  BookingLocationSlotsPair,
   Location,
   LocationsData,
-  BookingLocationSlotsPair,
 } from "./BookingDataTypes";
 
 const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
@@ -44,13 +45,9 @@ async function getMyCalendar(coords: Coords, radiusKm: number) {
         coords.lng < NZbbox[2]
       )
     ) {
-      throw new Error(
-        "No vaccination sites found for this search query. Are you in New Zealand?"
-      );
+      throw new Error(i18next.t("core.noResultsNotInNZ"));
     }
-    throw new Error(
-      "No vaccination sites found for this search query. Try a different kilometer radius?"
-    );
+    throw new Error(i18next.t("core.noResultsInRadius"));
   }
   let oldestLastUpdatedTimestamp = Infinity;
   const availabilityDatesAndLocations = await Promise.all(
@@ -155,10 +152,11 @@ export const useBookingData = (
   }, [coords, radiusKm, setDateLocationsPairs, setLastUpdateTime]);
 
   // FOR FUTURE: set directly in setState to reduce RAM usage?
-  const byMonth = useMemo(
-    () => getBookingData(dateLocationsPairs),
-    [dateLocationsPairs]
-  );
+  // const byMonth = useMemo(
+  //   () => getBookingData(dateLocationsPairs),
+  //   [dateLocationsPairs]
+  // );
+  const byMonth = getBookingData(dateLocationsPairs);
 
   useEffect(() => {
     loadCalendar();

@@ -2,12 +2,14 @@ import common_en_NZ from "./locales/common_en-NZ.json";
 import common_de_DE from "./locales/common_de-DE.json";
 import common_ru_RU from "./locales/common_ru-RU.json";
 import common_es_ES from "./locales/common_es-ES.json";
+import common_id_ID from "./locales/common_id-ID.json";
 import common_ms_MY from "./locales/common_ms-MY.json";
 import common_zh_CN from "./locales/common_zh-CN.json";
 import common_zh_TW from "./locales/common_zh-TW.json";
 import common_sm_SM from "./locales/common_sm-SM.json";
 import common_to_TO from "./locales/common_to-TO.json";
 import common_vi_VN from "./locales/common_vi-VN.json";
+import common_pl_PL from "./locales/common_pl-PL.json";
 
 export type Language = {
   common: Object; //typeof common_en_NZ;
@@ -58,6 +60,11 @@ const languages: Language[] = [
     code: "ru-RU",
   },
   {
+    common: common_id_ID,
+    label: "Bahasa Indo",
+    code: "id-ID",
+  },
+  {
     common: common_ms_MY,
     label: "Bahasa Melayu",
     code: "ms-MY",
@@ -66,6 +73,11 @@ const languages: Language[] = [
     common: common_vi_VN,
     label: "Tiếng Việt",
     code: "vi-VN",
+  },
+  {
+    common: common_pl_PL,
+    label: "Polski",
+    code: "pl-PL",
   },
 ];
 

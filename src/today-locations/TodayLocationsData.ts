@@ -12,8 +12,14 @@ import {
 export type TodayLocation = CrowdsourcedLocation | HealthpointLocation;
 
 export const useTodayLocationsData = (coords: Coords, radiusKm: number) => {
+  const currentDay = new Date().getDay();
   const locations = useHealthpointLocations(coords, radiusKm);
-  const crowdSourced = getCrowdsourcedLocations(coords, radiusKm);
+  const crowdSourced = getCrowdsourcedLocations(coords, radiusKm).filter(
+    ({ openingHours }) =>
+      openingHours.find(
+        (opennningHoursItem) => opennningHoursItem.day === currentDay
+      )?.isOpen
+  );
   if ("ok" in locations) {
     const combined = [...crowdSourced, ...locations.ok];
     combined.sort(
