@@ -87,20 +87,23 @@ const LocationModal = (props: Props) => {
   const getLocation = () => {
     if (!navigator.geolocation) {
       alert(t("navigation.locationModal.geolocationNotSupported"));
-    } else {
-      setLoading(true);
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        const { latitude, longitude } = position.coords;
-        const suburb = await getSuburb(latitude, longitude);
-        if (suburb !== "") {
-          setLocation(latitude, longitude, suburb);
-          setLoading(false);
-        } else {
-          setLocation(latitude, longitude);
-          setLoading(false);
-        }
-      });
+      return;
     }
+
+    setLoading(true);
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      const { latitude, longitude } = position.coords;
+
+      try {
+        const suburb = await getSuburb(latitude, longitude);
+        setLocation(latitude, longitude, suburb);
+      } catch (err) {
+        console.log("Could not reverse geocode to a suburb.", err);
+        setLocation(latitude, longitude);
+      } finally {
+        setLoading(false);
+      }
+    });
   };
 
   return (
