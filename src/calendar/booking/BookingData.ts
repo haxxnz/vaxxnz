@@ -152,10 +152,11 @@ export const useBookingData = (
   }, [coords, radiusKm, setDateLocationsPairs, setLastUpdateTime]);
 
   // FOR FUTURE: set directly in setState to reduce RAM usage?
-  const byMonth = useMemo(
-    () => getBookingData(dateLocationsPairs),
-    [dateLocationsPairs]
-  );
+  // const byMonth = useMemo(
+  //   () => getBookingData(dateLocationsPairs),
+  //   [dateLocationsPairs]
+  // );
+  const byMonth = getBookingData(dateLocationsPairs);
 
   useEffect(() => {
     loadCalendar();
