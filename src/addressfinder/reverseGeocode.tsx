@@ -1,14 +1,14 @@
 const addressFinderAPIKey = "ARFHPVK67QXM49BEWDL3";
 const reverseGeocodeURL = `https://api.addressfinder.io/api/nz/address/reverse_geocode/?key=${addressFinderAPIKey}&format=json`;
 
-export interface reverseGeocodeResp {
-  completions: addressResp[];
+export interface ReverseGeocodeResp {
+  completions: AddressResponse[];
   paid: boolean;
   demo: boolean;
   success: boolean;
 }
 
-interface addressResp {
+interface AddressResponse {
   a: string;
   pxid: string;
 }
@@ -16,8 +16,8 @@ interface addressResp {
 // TODO(2021-09-13): handle error/edge cases better!
 async function getSuburb(lat: number, lng: number): Promise<string> {
   try {
-    let resp = await fetch(reverseGeocodeURL + `&y=${lat}&x=${lng}`);
-    let data: reverseGeocodeResp = await resp.json();
+    let response = await fetch(`${reverseGeocodeURL}&y=${lat}&x=${lng}`);
+    let data: ReverseGeocodeResp = await response.json();
     if (data.completions.length === 0 || !data.success) {
       return "";
     }
