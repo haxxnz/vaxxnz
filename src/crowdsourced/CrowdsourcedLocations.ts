@@ -276,26 +276,6 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
   },
   {
     isCrowdSourced: true,
-    name: "Life Pharmacy Barrington",
-    address:
-      "Barrington Shopping Centre, 54/54 Athelstan Street, CANTERBURY, Christchurch 8244, New Zealand",
-    lat: -43.556075,
-    lng: 172.6209287,
-    instructions: [Instruction.allowsBookings],
-    website: "http://www.lifepharmacybarrington.co.nz/",
-    telephone: "03-337 5527",
-    openingHours: [
-      { day: 1, isOpen: true, hours: "8:30 AM – 6:00 PM" },
-      { day: 2, isOpen: true, hours: "8:30 AM – 6:00 PM" },
-      { day: 3, isOpen: true, hours: "8:30 AM – 6:00 PM" },
-      { day: 4, isOpen: true, hours: "8:30 AM – 7:00 PM" },
-      { day: 5, isOpen: true, hours: "8:30 AM – 6:00 PM" },
-      { day: 6, isOpen: true, hours: "9:00 AM – 6:00 PM" },
-      { day: 0, isOpen: true, hours: "10:00 AM – 5:00 PM" },
-    ],
-  },
-  {
-    isCrowdSourced: true,
     name: "Life Pharmacy Ashburton",
     address: "262 East Street, Ashburton 7700, New Zealand",
     lat: -43.9047955,
