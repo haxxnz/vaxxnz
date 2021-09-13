@@ -3,9 +3,9 @@
     "title": "Vaxx.nz",
     "tagline": "ابحث عن لقاح كوفيد-19",
     "subtitle": ".كيف الحصول على اللقاح بقربك",
-    "disclaimerNotAGovWebsite": "هاذا ليس موقع حكومي٠ للحصول على اللقاح الرجاء زيارة",
-    "loading": "جار التحميل...",
-    "getDirections": "احصل علىالاتجاهات",
+    "disclaimerNotAGovWebsite": "<0>bookmyvaccine.nz</0> هاذا ليس موقع حكومي٠ للحصول على اللقاح الرجاء زيارة",
+    "loading": " التحميل...",
+    "getDirections": "احصل على الاتجاهات",
     "makeABooking": "احجز موعد",
     "kmAway": "{{distance}}km على بعد",
     "lastUpdated": "{{updatedAt}} التحديث الاخير",
@@ -27,15 +27,15 @@
       "useCurrentLocation": "استعمل عنواني الحالي",
       "geolocationNotSupported": "تحديد موقعك الجغرافي لا يدعمه متصفحك"
     },
-    "vaccinationsNear": "Vaccinations <0>near {{location}}</0>",
+    "vaccinationsNear": "<0>{{location}}</0> موقع القاح القريب",
     "unknownLocation": "موقع غير معروف",
     "distanceDropdown": {
-      "2km": "في نطاق 2km",
-      "5km": "في نطاق 5km",
-      "10km": "في نطاق 10km",
-      "25km": "في نطاق 25km",
-      "50km": "في نطاق 50km",
-      "100km": "في نطاق 100km"
+      "2km": "في نطاق 2كم",
+      "5km": "في نطاق 5كم",
+      "10km": "في نطاق 10كم",
+      "25km": "في نطاق 25كم",
+      "50km": "في نطاق 50كم",
+      "100km": "في نطاق 100كم"
     }
   },
   "walkins": {
@@ -43,7 +43,7 @@
     "openString": "مفتوح {{openTimeString}}",
     "cancellationNotice": {
       "info": "الرجاء لا تحجز مرتين",
-      "message": "تذكر ان تلغي موعدك الاصلي اذا حجزت هنا <0>bookmyvaccine.nz</0>"
+      "message": "<0>bookmyvaccine.nz</0> تذكر ان تلغي موعدك الاصلي اذا حجزت هنا"
     },
     "cancelBooking": "إلغاء",
     "noticeList": {
@@ -86,7 +86,7 @@
     "otherLocations": {
       "disclaimer": {
         "title": "هذا الموقع مقدم من الجمهور العام",
-        "message": "100%المعلومات قد لا تكون دقيقة"
+        "message": "يرجى زيارة الموقع المعلومات قد لا تكون دقيقة"
       },
       "sectionHeader": "مواقع اللقاح الاخرى<0>- مفتوحه اليوم</0>"
     }
