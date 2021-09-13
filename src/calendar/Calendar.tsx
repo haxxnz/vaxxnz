@@ -56,6 +56,8 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   setActiveDate,
   radiusKm,
 }) => {
+  const { i18n } = useTranslation();
+
   return (
     <CalendarContainer>
       {Array.from(data).map(([monthStr, monthDates]) => (
@@ -65,6 +67,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
           monthDates={monthDates}
           radiusKm={radiusKm}
           setActiveDate={setActiveDate}
+          language={i18n.language}
         />
       ))}
     </CalendarContainer>
@@ -76,6 +79,7 @@ interface CalendarMonthContainerProps {
   monthDates: CalendarMonth;
   radiusKm: number;
   setActiveDate: (activeDate: CalendarDate | null) => void;
+  language: string;
 }
 function CalendarMonthContainerExpensive(
   props: CalendarMonthContainerProps
