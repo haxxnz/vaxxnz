@@ -116,3 +116,4 @@ async function extractSuburb(geocoded: AddressResp): Promise<string> {
 }
 
 export default getSuburb;
+export { reverseGeocode, extractSuburb };
