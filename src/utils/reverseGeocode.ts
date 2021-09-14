@@ -1,8 +1,8 @@
-const addressFinderAPIKey = "ARFHPVK67QXM49BEWDL3";
-const reverseGeocodeURL =
-  "https://api.addressfinder.io/api/nz/address/reverse_geocode/?";
-const addressMetadataURL =
-  "https://api.addressfinder.io/api/nz/address/metadata/?";
+import {
+  addressFinderAPIKey,
+  reverseGeocodeURL,
+  addressMetadataURL,
+} from "./consts";
 
 /**
  * An interface to describe the reverse geocode API response.
