@@ -30,12 +30,12 @@
     "vaccinationsNear": "<0>{{location}}</0> 付近のワクチン接種会場",
     "unknownLocation": "未知の場所",
     "distanceDropdown": {
-      "2km": "2km以内",
-      "5km": "5km以内",
-      "10km": "10km以内",
-      "25km": "25km以内",
-      "50km": "50km以内",
-      "100km": "100km以内"
+      "2km": "2km 以内",
+      "5km": "5km 以内",
+      "10km": "10km 以内",
+      "25km": "25km 以内",
+      "50km": "50km 以内",
+      "100km": "100km 以内"
     }
   },
   "walkins": {
