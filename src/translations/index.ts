@@ -27,6 +27,7 @@ export const config = {
     "vi-VN",
     "to-TO",
     "pl-PL",
+    "ar-IQ",
   ],
   interpolation: { escapeValue: false },
   resources,
