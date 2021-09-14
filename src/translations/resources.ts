@@ -47,6 +47,11 @@ const languages: Language[] = [
     code: "zh-TW",
   },
   {
+    common: common_ja_JP,
+    label: "日本語",
+    code: "ja-JP",
+  },
+  {
     common: common_es_ES,
     label: "Español",
     code: "es-ES",
@@ -80,11 +85,6 @@ const languages: Language[] = [
     common: common_pl_PL,
     label: "Polski",
     code: "pl-PL",
-  },
-  {
-    common: common_ja_JP,
-    label: "日本語",
-    code: "ja-JP",
   },
   {
     common: common_tl_PH,
