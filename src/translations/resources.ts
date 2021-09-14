@@ -13,7 +13,6 @@ import common_pl_PL from "./locales/common_pl-PL.json";
 import common_ja_JP from "./locales/common_ja-JP.json";
 import common_tl_PH from "./locales/common_tl-PH.json";
 
-
 export type Language = {
   common: Object; //typeof common_en_NZ;
   label: string;

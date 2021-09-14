@@ -1,4 +1,16 @@
-import { enNZ, de, es, ru, vi, zhCN, zhTW, ms, pl, id, ja } from "date-fns/locale"; // Only import locale we support. Don't use import * it is bad
+import {
+  enNZ,
+  de,
+  es,
+  ru,
+  vi,
+  zhCN,
+  zhTW,
+  ms,
+  pl,
+  id,
+  ja,
+} from "date-fns/locale"; // Only import locale we support. Don't use import * it is bad
 import { Locale } from "date-fns";
 import i18next from "i18next";
 
