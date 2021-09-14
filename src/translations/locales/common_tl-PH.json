@@ -1,0 +1,97 @@
+{
+  "core": {
+    "title": "Vaxx.nz",
+    "tagline": "Maghanap ng bakuna para sa COVID",
+    "subtitle": "Tingnan ang mga paraan upang mabakunahan sa lugar na malapit sa iyo.",
+    "disclaimerNotAGovWebsite": "Ito po ay hindi opisyal na website ng gobyerno. Para mabakunahan, pumunta sa <0>bookmyvaccine.nz</0>",
+    "loading": "Naglo-load...",
+    "getDirections": "Kumuha ng direksyon",
+    "makeABooking": "Magpa-book",
+    "kmAway": "Layo ng {{distance}}km",
+    "lastUpdated": "Huling update {{updatedAt}}",
+    "cancel": "Kanselahin",
+    "website": "Website",
+    "address": "Address",
+    "noResultsNotInNZ": "Walang tumugmang lugar ng pagpapabakuna base sa iyong search. Ikaw ba ay nasa New Zealand?",
+    "noResultsInRadius": "Walang tumugmang lugar ng pagpapabakuna base sa iyong search. Sumubok ng ibang distansya (km)."
+  },
+  "navigation": {
+    "about": "Tungkol",
+    "contact": "Makipag-ugnay",
+    "getInvolved": "Makisali",
+    "setLocation": "Magtakda ng iyong lokasyon",
+    "setLocationConfirmation": "Naitakda na ang lokasyon",
+    "locationModal": {
+      "locaitonTitle": "Lokasyon",
+      "locationCTA": "I-type ang address or suburb",
+      "useCurrentLocation": "Gamitin ang aking kasalukuyang lokasyon",
+      "geolocationNotSupported": "Ang Geolocation ay hindi suportado ng iyong browser"
+    },
+    "vaccinationsNear": "Mga lugar ng pagpapa-bakuna <0> malapit sa{{location}}</0>",
+    "unknownLocation": "Hindi alam na lokasyon",
+    "distanceDropdown": {
+      "2km": "Hindi lalayo ng 2km",
+      "5km": "Hindi lalayo ng 5km",
+      "10km": "Hindi lalayo ng 10km",
+      "25km": "Hindi lalayo ng 25km",
+      "50km": "Hindi lalayo ng 50km",
+      "100km": "Hindi lalayo ng 100km"
+    }
+  },
+  "walkins": {
+    "sectionHeader": "Bukas ngayon",
+    "openString": "Bukas {{openTimeString}}",
+    "cancellationNotice": {
+      "info": "Huwag mag-book ng doble",
+      "message": "Alalahaning kanselahin ang iyong orihinal na booking, kung mayroon na sa<0>bookmyvaccine.nz</0>"
+    },
+    "cancelBooking": "Kanselahin",
+    "noticeList": {
+      "title": "Paano magpa-bakuna",
+      "text": "Maaaring may pila sa lugar ng pagpapa-bakuna, at maari ring walang spare na bakuna ngayon - kung maaari tumawag po muna!"
+    },
+    "walkinAwailable": "<0 /> Mayroong walk-in na pagpapa-bakuna",
+    "driveThroughAvailable": "<0 /> Mayroong drive-through na pagpapa-bakuna",
+    "phone": "Telepono",
+    "hours": "Oras",
+    "closed": "Sarado",
+    "publicHolidays": "Public Holidays",
+    "otherExeptions": "Exceptions",
+    "seeMore": "Karagdagang impormasyon",
+    "otherLocations": {
+      "sectionHeader": "Ibang lugar ng pagpapa-bakuna <0>- Bukas ngayon</0>",
+      "disclaimer": {
+        "title": "Ang lokasyon na ito ay ibinahagi mula sa publiko",
+        "message": "Ang impormasyon dito ay maaaring hindi 100% tama. Maaring sumangguni sa website kung saan kayo magpapa-bakuna."
+      }
+    }
+  },
+  "calendar": {
+    "month": "{{monthString, MMMM yyyy}}",
+    "numberOfAppointments": "{{sumAvailableTimes}} available",
+    "modal": {
+      "howToBook": {
+        "title": "Paano mag-book",
+        "stepOne": "Maghanap ng lokasyon at oras mula sa listahan sa ibaba.",
+        "stepTwo": "I-click ang pindutan na <i>Make a Booking</i>, dadalhin ka nito sa <0>bookmyvaccine.nz</0>",
+        "stepThree": "Ilagay ang iyong mga detalye",
+        "stepFour": "Kapag tinanong, hanapin ang iyong ninanais na lokasyon at oras."
+      },
+      "availableSlots": "Puwedeng i-Book",
+      "noBookingsAvailable": "Walang bookings sa araw na ito:(",
+      "notBMV": "Ang lokasyon na ito ay hindi gumagamit ng <0>bookmyvaccine.nz</0> at maaaring walang slot.",
+      "backToCalendar": "Bumalik sa Kalendaryo"
+    }
+  },
+
+  "footer": {
+    "message": "Kung natulungan ka ng site na ito, maaaring paki-share",
+    "addressFinderLinkCopy": "Salamat sa <0>AddressFinder</0> para sa libreng paghahanap ng address",
+    "links": {
+      "contactUs": "Makipag-ugnayan sa amin",
+      "rawData": "Raw Data",
+      "sourceCode": "Source Code",
+      "roadmap": "Roadmap"
+    }
+  }
+}
