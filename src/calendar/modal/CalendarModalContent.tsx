@@ -131,7 +131,7 @@ export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> 
         <div style={{ height: "100%" }}>
           <h2>
             {t("calendar.modal.availableSlots")} -{" "}
-            {date.toLocaleDateString([], {
+            {date.toLocaleDateString([i18next.language], {
               month: "short",
               day: "numeric",
               year: "numeric",

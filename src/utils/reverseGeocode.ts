@@ -1,8 +1,8 @@
-const addressFinderAPIKey = "ARFHPVK67QXM49BEWDL3";
-const reverseGeocodeURL =
-  "https://api.addressfinder.io/api/nz/address/reverse_geocode/?";
-const addressMetadataURL =
-  "https://api.addressfinder.io/api/nz/address/metadata/?";
+import {
+  ADDRESS_FINDER_API_KEY,
+  REVERSE_GEOCODE_URL,
+  ADDRESS_METADATA_URL,
+} from "./consts";
 
 /**
  * An interface to describe the reverse geocode API response.
@@ -61,13 +61,13 @@ async function getSuburb(lat: number, lng: number): Promise<string> {
 async function reverseGeocode(lat: number, lng: number): Promise<AddressResp> {
   try {
     let params = new URLSearchParams({
-      key: addressFinderAPIKey,
+      key: ADDRESS_FINDER_API_KEY,
       format: "json",
       y: lat.toString(),
       x: lng.toString(),
     });
 
-    let resp = await fetch(reverseGeocodeURL + params);
+    let resp = await fetch(REVERSE_GEOCODE_URL + params);
     let data: ReverseGeocodeResp = await resp.json();
     if (!data.success || data.completions.length === 0) {
       throw new Error("no result returned from reverse geocode query");
@@ -90,12 +90,12 @@ async function reverseGeocode(lat: number, lng: number): Promise<AddressResp> {
 async function extractSuburb(geocoded: AddressResp): Promise<string> {
   try {
     let params = new URLSearchParams({
-      key: addressFinderAPIKey,
+      key: ADDRESS_FINDER_API_KEY,
       format: "json",
       pxid: geocoded.pxid,
     });
 
-    let resp = await fetch(addressMetadataURL + params);
+    let resp = await fetch(ADDRESS_METADATA_URL + params);
     let data: AddressMetaResp = await resp.json();
 
     if (!data.success || (!data.suburb && !data.city)) {
