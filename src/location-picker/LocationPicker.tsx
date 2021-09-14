@@ -1,8 +1,10 @@
 import { Button, KIND } from "baseui/button";
 import { formatDistance } from "date-fns";
+import i18next from "i18next";
 import { FunctionComponent, useEffect, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import RadiusSelect from "../RadiusSelect";
+import { unsupportedLocales } from "../translations";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { getDateFnsLocale } from "../utils/locale";
 import { DEFAULT_LOCATION } from "../utils/location";
@@ -38,6 +40,8 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
 
   const { t } = useTranslation("common");
 
+  const isUnsupported = unsupportedLocales.indexOf(i18next.language) > -1;
+
   return (
     <>
       <LocationModal
@@ -65,6 +69,11 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
               updatedAt:
                 lastUpdateTime === null
                   ? "..."
+                  : isUnsupported
+                  ? new Date(lastUpdateTime).toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })
                   : formatDistance(lastUpdateTime, new Date(), {
                       addSuffix: true,
                       locale: getDateFnsLocale(),

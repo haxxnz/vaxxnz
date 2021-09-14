@@ -42,19 +42,14 @@ function filterCrowdsourcedLocations(
   coords: Coords,
   radiusKm: number
 ) {
-  const currentDay = new Date().getDay();
   const matchedFilter = allLocations.filter(
     ({ lat: locationLat, lng: locationLng, openingHours }) => {
-      const openingHoursToday = openingHours.find(
-        (oh) => oh.day === currentDay
-      );
-
       const distanceInKm =
         locationLat &&
         locationLng &&
         getDistanceKm(coords, { lat: locationLat, lng: locationLng });
 
-      return distanceInKm < radiusKm && openingHoursToday?.isOpen;
+      return distanceInKm < radiusKm;
     }
   );
   return matchedFilter;

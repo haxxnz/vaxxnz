@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { Button } from "baseui/button";
+import { isToday, isAfter } from "date-fns";
 import { VaccineCentre } from "../VaxComponents";
 import { getDistanceKm } from "../utils/distance";
 import { parse } from "date-fns";
@@ -32,6 +33,19 @@ const IS_UAT =
 const MOH_PROXY = IS_UAT
   ? "https://dev-moh-f3a4edb2.vaxx.nz"
   : "https://moh.vaxx.nz";
+
+const filterOldSlots = (
+  slots: SlotWithAvailability[],
+  isTodayDate: boolean
+) => {
+  if (isTodayDate) {
+    return slots.filter(({ localStartTime }) => {
+      const startTime = parse(localStartTime, "HH:mm:ss", new Date());
+      return isAfter(startTime, new Date());
+    });
+  }
+  return slots;
+};
 
 const BookingLocation: FunctionComponent<BookingLocationProps> = ({
   locationSlotsPair,
@@ -90,8 +104,15 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
     activeDate.dateStr,
   ]);
 
+  const isTodayDate = activeDate?.dateStr
+    ? isToday(new Date(activeDate.dateStr))
+    : false;
+
   const slotsToDisplay =
-    slots && slots.length > 0 ? slots : locationSlotsPair.slots;
+    slots && slots.length > 0
+      ? filterOldSlots(slots, isTodayDate)
+      : filterOldSlots(locationSlotsPair.slots ?? [], isTodayDate);
+
   const location = locationSlotsPair.location;
   const date = parse(activeDate.dateStr, "yyyy-MM-dd", new Date());
   return (
