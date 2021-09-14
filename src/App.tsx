@@ -9,6 +9,7 @@ import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { DEFAULT_LOCATION } from "./utils/location";
 import { useSearchParams } from "./utils/url";
 import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
+import CookieConsent from "react-cookie-consent";
 
 function App() {
   const { lat, lng } = useSearchParams();
@@ -166,6 +167,25 @@ function App() {
             backgroundImage: `url(${process.env.PUBLIC_URL + "./bg.svg"})`,
           }}
         ></div>
+        <CookieConsent
+          location="bottom"
+          buttonText="I Understand"
+          declineButtonText="Cookie Settings"
+          cookieName="myAwesomeCookieName2"
+          style={{ background: "#000000" }}
+          buttonStyle={{ color: "#4e503b", fontSize: "13px", fontWeight: "Bold" }}
+          declineButtonStyle={{ background: "#000000", textDecoration: "underline" }}
+          expires={150}
+          onAccept={(byScroll) => {
+            alert(`consent given. \n\n By scrolling? ${byScroll}`);
+          }}
+          enableDeclineButton
+          onDecline={() => {
+            alert("Cookie Settings");
+          }}
+        >
+          <p style={{ fontFamily: "sans-serif" }}>This website uses cookies to enhance the user experience.</p>
+        </CookieConsent>
       </div>
     </>
   );
