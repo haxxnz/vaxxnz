@@ -8,8 +8,8 @@
  * @export
  * @template T
  * @param {T[]} notes
- * @param {(note: T) => T} [comparator=(x) => x]
- * @return {T[]} Sorted array.
+ * @param {((note: T) => number | string)} [comparator=(x) => x as any]
+ * @return {T[]}
  */
 export function sortByAsc<T = unknown>(
   notes: T[],
