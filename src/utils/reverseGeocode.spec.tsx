@@ -1,8 +1,22 @@
 import getSuburb, { reverseGeocode, extractSuburb } from "./reverseGeocode";
 
+/**
+ * A simple function to returned mocked responses when fetch is called. This supports
+ * multiple different responses by passing in an array of wanted responses.
+ *
+ * @param {number} status
+ * @param {{ [key: string]: any }[]} data
+ * @return {*}
+ */
 const mockFetch = (status: number, data: { [key: string]: any }[]) => {
   // Simple iterator/generator to loop through available data responses.
   let counter = () => {
+    // Handle when we always want to respond with the same response in sequential fetch
+    // calls.
+    if (data.length === 1) {
+      return () => 0;
+    }
+
     let count = 0;
     return () => {
       return count++;
