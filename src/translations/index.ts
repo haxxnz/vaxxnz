@@ -21,6 +21,7 @@ export const config = {
     "ru-RU",
     "zh-CN",
     "zh-TW",
+    "hi-HI",
     "ms-MY",
     "sm-SM",
     "vi-VN",
