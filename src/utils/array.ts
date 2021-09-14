@@ -13,7 +13,7 @@
  */
 export function sortByAsc<T = unknown>(
   notes: T[],
-  comparator: (note: T) => T = (x) => x
+  comparator: (note: T) => number | string = (x) => x as any
 ): T[] {
   return [...notes].sort((a: T, b: T) => {
     if (comparator(a) < comparator(b)) {
