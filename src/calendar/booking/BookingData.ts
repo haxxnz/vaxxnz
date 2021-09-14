@@ -37,8 +37,11 @@ async function getAvailabilityData(extId: string) {
   return data;
 }
 
-async function getMyCalendar(coords: Coords, radiusKm: number) {
-  const locations = await getLocations();
+async function getMyCalendar(
+  coords: Coords,
+  radiusKm: number,
+  locations: Location[]
+) {
   const filtredLocations = locations.filter((location) => {
     const distance = getDistanceKm(coords, location.location);
     return distance < radiusKm;
@@ -175,12 +178,13 @@ export const useBookingData = (
   const [dateLocationsPairs, setDateLocationsPairs] = useState<
     BookingDateLocations[]
   >([]);
+  const [locations, setLocation] = useState<Location[]>([]);
 
   const loadCalendar = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const data = await getMyCalendar(coords, radiusKm);
+      const data = await getMyCalendar(coords, radiusKm, locations);
       setDateLocationsPairs(data.dateLocationsPairs);
       setLastUpdateTime(
         data.oldestLastUpdatedTimestamp === Infinity
@@ -191,7 +195,7 @@ export const useBookingData = (
       setError(error as Error);
     }
     setLoading(false);
-  }, [coords, radiusKm, setDateLocationsPairs, setLastUpdateTime]);
+  }, [coords, locations, radiusKm, setLastUpdateTime]);
 
   // FOR FUTURE: set directly in setState to reduce RAM usage?
   const byMonth = useMemo(
@@ -199,9 +203,19 @@ export const useBookingData = (
     [coords, dateLocationsPairs, radiusKm]
   );
 
+  const loadLocations = useCallback(async () => {
+    setLocation(await getLocations());
+  }, []);
+
   useEffect(() => {
-    loadCalendar();
-  }, [loadCalendar]);
+    if (locations) {
+      loadCalendar();
+    }
+  }, [loadCalendar, locations]);
+
+  useEffect(() => {
+    loadLocations();
+  }, [loadLocations]);
 
   if (loading) {
     return { loading: true };
