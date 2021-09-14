@@ -16,7 +16,7 @@ import {
   BookingDateLocations,
   BookingLocationSlotsPair,
   Location,
-  LocationsData,
+  AvailabilityData,
 } from "./BookingDataTypes";
 
 const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
@@ -29,11 +29,11 @@ async function getLocations() {
   return data;
 }
 
-async function getLocationData(extId: string) {
+async function getAvailabilityData(extId: string) {
   const res = await fetch(
     `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/availability/${extId}.json`
   );
-  const data: LocationsData = await res.json();
+  const data: AvailabilityData = await res.json();
   return data;
 }
 
@@ -59,9 +59,9 @@ async function getMyCalendar(coords: Coords, radiusKm: number) {
   let oldestLastUpdatedTimestamp = Infinity;
   const availabilityDatesAndLocations = await Promise.all(
     filtredLocations.map(async (location) => {
-      let locationsData: LocationsData | undefined = undefined;
+      let locationsData: AvailabilityData | undefined = undefined;
       try {
-        locationsData = await getLocationData(location.extId);
+        locationsData = await getAvailabilityData(location.extId);
       } catch (e) {
         console.error("getMyCalendar e", e);
       }
@@ -111,7 +111,7 @@ export type BookingData = Map<
   Map<DateString, BookingLocationSlotsPair[]>
 >;
 
-function getBookingData(
+function generateBookingData(
   bookingDateLocations: BookingDateLocations[],
   coords: Coords,
   radiusKm: number
@@ -195,7 +195,7 @@ export const useBookingData = (
 
   // FOR FUTURE: set directly in setState to reduce RAM usage?
   const byMonth = useMemo(
-    () => getBookingData(dateLocationsPairs, coords, radiusKm),
+    () => generateBookingData(dateLocationsPairs, coords, radiusKm),
     [coords, dateLocationsPairs, radiusKm]
   );
 
