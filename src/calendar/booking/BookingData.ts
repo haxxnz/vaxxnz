@@ -208,6 +208,10 @@ export const useBookingData = (
   } else if (error) {
     return { error };
   } else {
-    return { ok: byMonth };
+    return {
+      ok: new Map(
+        Array.from(byMonth).sort((a, b) => String(b[0]).localeCompare(a[0]))
+      ),
+    };
   }
 };
