@@ -1,5 +1,6 @@
 import { addDays, format, parse } from "date-fns";
 import i18next from "i18next";
+import memoizeOne from "memoize-one";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { getCrowdsourcedLocations } from "../../crowdsourced/CrowdsourcedData";
 import filterOldDates from "../../filterOldDates";
@@ -21,13 +22,13 @@ import {
 
 const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
 
-async function getLocations() {
+const getLocations = memoizeOne(async function () {
   const res = await fetch(
     "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/uniqLocations.json"
   );
   const data: Location[] = await res.json();
   return data;
-}
+});
 
 async function getAvailabilityData(extId: string) {
   const res = await fetch(
@@ -37,11 +38,8 @@ async function getAvailabilityData(extId: string) {
   return data;
 }
 
-async function getMyCalendar(
-  coords: Coords,
-  radiusKm: number,
-  locations: Location[]
-) {
+async function getMyCalendar(coords: Coords, radiusKm: number) {
+  const locations = await getLocations();
   const filtredLocations = locations.filter((location) => {
     const distance = getDistanceKm(coords, location.location);
     return distance < radiusKm;
@@ -178,13 +176,12 @@ export const useBookingData = (
   const [dateLocationsPairs, setDateLocationsPairs] = useState<
     BookingDateLocations[]
   >([]);
-  const [locations, setLocation] = useState<Location[]>([]);
 
   const loadCalendar = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const data = await getMyCalendar(coords, radiusKm, locations);
+      const data = await getMyCalendar(coords, radiusKm);
       setDateLocationsPairs(data.dateLocationsPairs);
       setLastUpdateTime(
         data.oldestLastUpdatedTimestamp === Infinity
@@ -195,7 +192,7 @@ export const useBookingData = (
       setError(error as Error);
     }
     setLoading(false);
-  }, [coords, locations, radiusKm, setLastUpdateTime]);
+  }, [coords, radiusKm, setDateLocationsPairs, setLastUpdateTime]);
 
   // FOR FUTURE: set directly in setState to reduce RAM usage?
   const byMonth = useMemo(
@@ -203,19 +200,9 @@ export const useBookingData = (
     [coords, dateLocationsPairs, radiusKm]
   );
 
-  const loadLocations = useCallback(async () => {
-    setLocation(await getLocations());
-  }, []);
-
   useEffect(() => {
-    if (locations) {
-      loadCalendar();
-    }
-  }, [loadCalendar, locations]);
-
-  useEffect(() => {
-    loadLocations();
-  }, [loadLocations]);
+    loadCalendar();
+  }, [loadCalendar]);
 
   if (loading) {
     return { loading: true };
