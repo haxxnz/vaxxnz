@@ -58,10 +58,8 @@
     ]
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
+    "*.{ts,tsx,json}": "prettier --write",
+    "*.{ts,tsx}": "eslint --fix"
   },
   "browserslist": {
     "production": [

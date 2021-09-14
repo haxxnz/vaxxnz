@@ -18,7 +18,7 @@ export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingL
   ({ location, radiusKm, coords, date }) => {
     const { t } = useTranslation("common");
     const locationCoords = { lat: location.lat, lng: location.lng };
-    const hours = location.openingHours[date.getDay()];
+    const hours = location.openingHours.find((a) => a.day === date.getDay());
     return (
       <VaccineCentre>
         <h3>{location.name}</h3>
@@ -64,7 +64,7 @@ export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingL
         <section style={{ marginTop: "0.8rem" }}>
           <h4>{t("walkins.hours")}</h4>
           {/* Closed should never happen */}
-          <p>{hours.isOpen ? hours.hours : "Closed"}</p>{" "}
+          <p>{hours?.isOpen ? hours?.hours : "Closed"}</p>{" "}
         </section>
 
         {location.website && (
