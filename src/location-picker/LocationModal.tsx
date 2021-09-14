@@ -5,7 +5,7 @@ import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { Coords } from "./LocationPicker";
-import getSuburb from "../addressfinder/reverseGeocode";
+import getSuburb from "../utils/reverseGeocode";
 
 type Props = {
   locationIsOpen: boolean;
