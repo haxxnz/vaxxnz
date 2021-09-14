@@ -10,6 +10,7 @@ import {
   pl,
   id,
   hi,
+  arSA,
 } from "date-fns/locale"; // Only import locale we support. Don't use import * it is bad
 import { Locale } from "date-fns";
 import i18next from "i18next";
@@ -26,6 +27,7 @@ const supportedDateLocale: { [localeString: string]: Locale } = {
   "zh-CN": zhCN,
   "id-ID": id,
   "hi-HI": hi,
+  "ar-IQ": arSA,
 };
 
 /**
