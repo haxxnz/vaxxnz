@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { Button } from "baseui/button";
-import isToday from "date-fns/isToday";
-import isAfter from "date-fns/isAfter";
+import { isToday, isAfter } from "date-fns";
 import { VaccineCentre } from "../VaxComponents";
 import { getDistanceKm } from "../utils/distance";
 import { parse } from "date-fns";
