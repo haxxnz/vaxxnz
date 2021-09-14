@@ -5,6 +5,7 @@ import { getCrowdsourcedLocations } from "../../crowdsourced/CrowdsourcedData";
 import filterOldDates from "../../filterOldDates";
 import { Coords } from "../../location-picker/LocationPicker";
 import { getDistanceKm } from "../../utils/distance";
+import { memoizeOnce } from "../../utils/memoize";
 import {
   CalendarData,
   CalendarDateLocations,
@@ -21,13 +22,13 @@ import {
 
 const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
 
-async function getLocations() {
+const getLocations = memoizeOnce(async function () {
   const res = await fetch(
     "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/uniqLocations.json"
   );
   const data: Location[] = await res.json();
   return data;
-}
+});
 
 async function getAvailabilityData(extId: string) {
   const res = await fetch(
@@ -208,6 +209,10 @@ export const useBookingData = (
   } else if (error) {
     return { error };
   } else {
-    return { ok: byMonth };
+    return {
+      ok: new Map(
+        Array.from(byMonth).sort((a, b) => String(b[0]).localeCompare(a[0]))
+      ),
+    };
   }
 };
