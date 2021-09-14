@@ -40,7 +40,7 @@
   },
   "walkins": {
     "sectionHeader": "مفتوح اليوم",
-    "openString": "مفتوح {{openTimeString}}",
+    "openString": "{{openTimeString}} مفتوح",
     "cancellationNotice": {
       "info": "الرجاء لا تحجز مرتين",
       "message": "<0>bookmyvaccine.nz</0> تذكر ان تلغي موعدك الاصلي اذا حجزت هنا"
