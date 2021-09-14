@@ -10,6 +10,9 @@ import common_sm_SM from "./locales/common_sm-SM.json";
 import common_to_TO from "./locales/common_to-TO.json";
 import common_vi_VN from "./locales/common_vi-VN.json";
 import common_pl_PL from "./locales/common_pl-PL.json";
+import common_ja_JP from "./locales/common_ja-JP.json";
+import common_tl_PH from "./locales/common_tl-PH.json";
+
 
 export type Language = {
   common: Object; //typeof common_en_NZ;
@@ -78,6 +81,16 @@ const languages: Language[] = [
     common: common_pl_PL,
     label: "Polski",
     code: "pl-PL",
+  },
+  {
+    common: common_ja_JP,
+    label: "日本語",
+    code: "ja-JP",
+  },
+  {
+    common: common_tl_PH,
+    label: "Tagalog",
+    code: "tl-PH",
   },
 ];
 
