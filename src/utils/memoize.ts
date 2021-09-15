@@ -7,7 +7,7 @@
  * @param {() => T} fn
  * @return {*}
  */
-export function memoizeOnce<T = unknown>(fn: () => T): any {
+export function memoizeOnce<T = unknown>(fn: () => T) {
   let cache: T;
   return function () {
     if (cache) {
