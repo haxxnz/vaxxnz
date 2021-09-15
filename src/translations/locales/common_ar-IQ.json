@@ -7,7 +7,7 @@
     "loading": " التحميل...",
     "getDirections": "احصل على الاتجاهات",
     "makeABooking": "احجز موعد",
-    "kmAway": "{{distance}} على بعد",
+    "distanceAway": "{{distance}} على بعد",
     "lastUpdated": "{{updatedAt}} التحديث الاخير",
     "cancel": "الغاء",
     "website": "موقع اليكتروني",

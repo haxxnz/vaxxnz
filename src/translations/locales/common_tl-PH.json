@@ -7,7 +7,7 @@
     "loading": "Naglo-load...",
     "getDirections": "Kumuha ng direksyon",
     "makeABooking": "Magpa-book",
-    "kmAway": "Layo ng {{distance}}",
+    "distanceAway": "Layo ng {{distance}}",
     "lastUpdated": "Huling update {{updatedAt}}",
     "cancel": "Kanselahin",
     "website": "Website",
