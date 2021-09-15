@@ -1,11 +1,20 @@
+/**
+ * Caches the output of a function call so subsequent calls don't
+ * need to be re-computed.
+ *
+ * @export
+ * @template T
+ * @param {() => T} fn
+ * @return {*}
+ */
 export function memoizeOnce<T = unknown>(fn: () => T) {
   let cache: T;
   return function () {
     if (cache) {
       return cache;
     }
-    const result = fn();
-    cache = result;
-    return result;
+
+    cache = fn();
+    return cache;
   };
 }
