@@ -3,8 +3,8 @@
     "title": "Vaxx.nz",
     "tagline": "Maghanap ng bakuna para sa COVID",
     "subtitle": "Tingnan ang mga paraan upang mabakunahan sa lugar na malapit sa iyo.",
-    "disclaimerNotAGovWebsite": "Ito po ay hindi opisyal na website ng gobyerno. Para mabakunahan, pumunta sa <0>bookmyvaccine.nz</0>",
-    "loading": "Naglo-load....",
+    "disclaimerNotAGovWebsite": "Ito ay hindi opisyal na website ng gobyerno. Para mabakunahan, pumunta sa <0>bookmyvaccine.nz</0>",
+    "loading": "Naglo-load...",
     "getDirections": "Kumuha ng direksyon",
     "makeABooking": "Magpa-book",
     "kmAway": "Layo ng {{distance}}km",
@@ -23,11 +23,11 @@
     "setLocationConfirmation": "Naitakda na ang lokasyon",
     "locationModal": {
       "locaitonTitle": "Lokasyon",
-      "locationCTA": "I-type ang address or suburb",
+      "locationCTA": "I-type ang address o suburb",
       "useCurrentLocation": "Gamitin ang aking kasalukuyang lokasyon",
       "geolocationNotSupported": "Ang Geolocation ay hindi suportado ng iyong browser"
     },
-    "vaccinationsNear": "Mga lugar ng pagpapa-bakuna <0> malapit sa{{location}}</0>",
+    "vaccinationsNear": "Mga lugar ng pagpapa-bakuna <0> malapit sa {{location}}</0>",
     "unknownLocation": "Hindi alam na lokasyon",
     "distanceDropdown": {
       "2km": "Hindi lalayo ng 2km",
@@ -39,16 +39,16 @@
     }
   },
   "walkins": {
-    "sectionHeader": "Bukas ngayon",
-    "openString": "Bukas {{openTimeString}}",
+    "sectionHeader": "Mga lokasyong bukas sa araw na ito",
+    "openString": "Bukas ng {{openTimeString}}",
     "cancellationNotice": {
       "info": "Huwag mag-book ng doble",
-      "message": "Alalahaning kanselahin ang iyong orihinal na booking, kung mayroon na sa<0>bookmyvaccine.nz</0>"
+      "message": "Alalahaning kanselahin ang iyong orihinal na booking, kung mayroon na sa <0>bookmyvaccine.nz</0>"
     },
     "cancelBooking": "Kanselahin",
     "noticeList": {
       "title": "Paano magpa-bakuna",
-      "text": "Maaaring may pila sa lugar ng pagpapa-bakuna, at maari ring walang spare na bakuna ngayon - kung maaari tumawag po muna!"
+      "text": "Maaaring may pila sa lugar ng pagpapa-bakuna, at maari ring wala ng sobrang bakuna sa lugar na ito - kung maaari tumawag muna!"
     },
     "walkinAwailable": "<0 /> Mayroong walk-in na pagpapa-bakuna",
     "driveThroughAvailable": "<0 /> Mayroong drive-through na pagpapa-bakuna",

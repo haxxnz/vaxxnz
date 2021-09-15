@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { Coords } from "./LocationPicker";
 import getSuburb from "../utils/reverseGeocode";
+import { ADDRESS_FINDER_API_KEY } from "../utils/consts";
 
 type Props = {
   locationIsOpen: boolean;
@@ -56,7 +57,7 @@ const LocationModal = (props: Props) => {
       if (domNode != null) {
         const widget = new AddressFinder.Widget(
           domNode,
-          "ARFHPVK67QXM49BEWDL3",
+          ADDRESS_FINDER_API_KEY,
           "NZ",
           {
             address_params: {

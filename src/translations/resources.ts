@@ -12,6 +12,8 @@ import common_vi_VN from "./locales/common_vi-VN.json";
 import common_pl_PL from "./locales/common_pl-PL.json";
 import common_ja_JP from "./locales/common_ja-JP.json";
 import common_tl_PH from "./locales/common_tl-PH.json";
+import common_ar_IQ from "./locales/common_ar-IQ.json";
+import common_hi_HI from "./locales/common_hi-HI.json";
 
 export type Language = {
   common: Object; //typeof common_en_NZ;
@@ -52,6 +54,11 @@ const languages: Language[] = [
     code: "ja-JP",
   },
   {
+    common: common_hi_HI,
+    label: "हिन्दी (Hindi)",
+    code: "hi-HI",
+  },
+  {
     common: common_es_ES,
     label: "Español",
     code: "es-ES",
@@ -87,10 +94,16 @@ const languages: Language[] = [
     code: "pl-PL",
   },
   {
+    common: common_ar_IQ,
+    label: "عربي",
+    code: "ar-IQ",
+  },
+  {
     common: common_tl_PH,
-    label: "Tagalog",
+    label: "Filipino",
     code: "tl-PH",
   },
+  
 ];
 
 const resources = languages.reduce(

@@ -6,7 +6,7 @@ import LanguageSelect from "./LanguageSelect";
 import { LocationPicker } from "./location-picker/LocationPicker";
 import { ShareButtons } from "./ShareButtons";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
-import { DEFAULT_LOCATION } from "./utils/location";
+import { DEFAULT_LOCATION } from "./utils/consts";
 import { useSearchParams } from "./utils/url";
 import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
 
