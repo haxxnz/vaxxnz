@@ -1,32 +1,40 @@
-import { format, parse } from "date-fns";
+import { addDays, format, parse } from "date-fns";
 import i18next from "i18next";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { getCrowdsourcedLocations } from "../../crowdsourced/CrowdsourcedData";
 import filterOldDates from "../../filterOldDates";
 import { Coords } from "../../location-picker/LocationPicker";
 import { getDistanceKm } from "../../utils/distance";
-import { DateString, MonthString } from "../CalendarData";
+import { memoizeOnce } from "../../utils/memoize";
+import {
+  CalendarData,
+  CalendarDateLocations,
+  CalendarMonth,
+  DateString,
+  MonthString,
+} from "../CalendarData";
 import {
   BookingDateLocations,
   BookingLocationSlotsPair,
   Location,
-  LocationsData,
+  AvailabilityData,
 } from "./BookingDataTypes";
 
 const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
 
-async function getLocations() {
+const getLocations = memoizeOnce(async function () {
   const res = await fetch(
     "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/uniqLocations.json"
   );
   const data: Location[] = await res.json();
   return data;
-}
+});
 
-async function getLocationData(extId: string) {
+async function getAvailabilityData(extId: string) {
   const res = await fetch(
     `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/availability/${extId}.json`
   );
-  const data: LocationsData = await res.json();
+  const data: AvailabilityData = await res.json();
   return data;
 }
 
@@ -52,9 +60,9 @@ async function getMyCalendar(coords: Coords, radiusKm: number) {
   let oldestLastUpdatedTimestamp = Infinity;
   const availabilityDatesAndLocations = await Promise.all(
     filtredLocations.map(async (location) => {
-      let locationsData: LocationsData | undefined = undefined;
+      let locationsData: AvailabilityData | undefined = undefined;
       try {
-        locationsData = await getLocationData(location.extId);
+        locationsData = await getAvailabilityData(location.extId);
       } catch (e) {
         console.error("getMyCalendar e", e);
       }
@@ -104,7 +112,11 @@ export type BookingData = Map<
   Map<DateString, BookingLocationSlotsPair[]>
 >;
 
-function getBookingData(bookingDateLocations: BookingDateLocations[]) {
+function generateBookingData(
+  bookingDateLocations: BookingDateLocations[],
+  coords: Coords,
+  radiusKm: number
+) {
   const dateLocationsPairs = filterOldDates(bookingDateLocations);
   let byMonth: BookingData = new Map();
   dateLocationsPairs.forEach((dateLocationsPair) => {
@@ -120,6 +132,37 @@ function getBookingData(bookingDateLocations: BookingDateLocations[]) {
     );
     byMonth.set(month, mapToPush);
   });
+  const crowdSourced = getCrowdsourcedLocations(coords, radiusKm);
+
+  const months: CalendarData = byMonth;
+  const MAX_DAYS = 60;
+  const today = new Date();
+  for (const location of crowdSourced) {
+    for (let i = 0; i < MAX_DAYS; i++) {
+      // add crowd sourced locations to each calendar day they're open
+      const date = addDays(today, i);
+      const isOpen = location.openingHours.find(
+        (a) => a.day === date.getDay()
+      )?.isOpen;
+      if (!isOpen) {
+        continue;
+      }
+
+      const dateStr = format(date, "yyyy-MM-dd");
+      const monthStr = date.toLocaleString("en-NZ", {
+        month: "long",
+        year: "numeric",
+      });
+      const month: CalendarMonth = months.get(monthStr) ?? new Map();
+
+      const day: CalendarDateLocations = month.get(dateStr) ?? [];
+
+      day.push(location);
+      month.set(dateStr, day);
+      months.set(monthStr, month);
+    }
+  }
+
   return byMonth;
 }
 
@@ -153,8 +196,8 @@ export const useBookingData = (
 
   // FOR FUTURE: set directly in setState to reduce RAM usage?
   const byMonth = useMemo(
-    () => getBookingData(dateLocationsPairs),
-    [dateLocationsPairs]
+    () => generateBookingData(dateLocationsPairs, coords, radiusKm),
+    [coords, dateLocationsPairs, radiusKm]
   );
 
   useEffect(() => {
@@ -166,6 +209,10 @@ export const useBookingData = (
   } else if (error) {
     return { error };
   } else {
-    return { ok: byMonth };
+    return {
+      ok: new Map(
+        Array.from(byMonth).sort((a, b) => String(b[0]).localeCompare(a[0]))
+      ),
+    };
   }
 };

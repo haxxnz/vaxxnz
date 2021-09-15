@@ -36,7 +36,7 @@ export interface AvailabilityDates {
   [key: string]: SlotWithAvailability[] | undefined;
 }
 
-export interface LocationsData {
+export interface AvailabilityData {
   availabilityDates: AvailabilityDates;
   lastUpdatedAt: string;
 }

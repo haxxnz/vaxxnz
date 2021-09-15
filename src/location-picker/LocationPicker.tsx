@@ -7,7 +7,7 @@ import RadiusSelect from "../RadiusSelect";
 import { unsupportedLocales } from "../translations";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { getDateFnsLocale } from "../utils/locale";
-import { DEFAULT_LOCATION } from "../utils/location";
+import { DEFAULT_LOCATION } from "../utils/consts";
 import { useSearchParams } from "../utils/url";
 import { HeaderMain } from "../VaxComponents";
 import LocationModal from "./LocationModal";
