@@ -132,7 +132,7 @@ function App() {
             </a>{" "}
             /{" "}
             <a
-              href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTORS.md"
+              href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTING.md"
               target="_blank"
               rel="noreferrer"
             >
@@ -157,7 +157,16 @@ function App() {
               {t("footer.links.sourceCode")}
             </a>{" "}
           </p>
-          <p></p>
+          <p>
+            <a
+              href="https://twitter.com/vaxxnz"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => enqueueAnalyticsEvent("Twitter Clicked")}
+            >
+              Twitter
+            </a>{" "}
+          </p>
         </footer>
       </div>
       <div className="background">

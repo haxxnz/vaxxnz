@@ -17,7 +17,16 @@ export function getDistanceKm(coords1: Coords, coords2: Coords): number {
   return d;
 }
 
-export function formatDistanceKm(km: number, language: string) {
+/**
+ * Formats a given distance in kilometers to meters, if the distance is
+ * less than 1000 meters.
+ *
+ * @export
+ * @param {number} km
+ * @param {string} language
+ * @return {string}
+ */
+export function formatDistanceKm(km: number, language: string): string {
   if (km < 1) {
     const meters = km * 1000;
     return new Intl.NumberFormat(language, {

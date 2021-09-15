@@ -1,6 +1,4 @@
 import { CrowdsourcedLocation } from "../crowdsourced/CrowdsourcedData";
-import { Coords } from "../location-picker/LocationPicker";
-import { useBookingData } from "./booking/BookingData";
 import { BookingLocationSlotsPair } from "./booking/BookingDataTypes";
 
 export type DateString = string;
