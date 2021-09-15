@@ -193,11 +193,11 @@ function App() {
           }}
           expires={150}
           onAccept={(byScroll) => {
-            alert(`consent given. \n\n By scrolling? ${byScroll}`);
+            
           }}
           enableDeclineButton
           onDecline={() => {
-            alert("Cookie Settings");
+            
           }}
         >
           <p style={{ fontFamily: "sans-serif" }}>
