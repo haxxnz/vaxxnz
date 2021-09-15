@@ -26,7 +26,7 @@ We automatically load any locations giving vaccines listed on [bookmyvaccine.nz]
 
 We recognise that the best projects aren't built alone. If you would like to contribute, check out the guides below:
 
-[Getting Started Guide](CONTRIBUTORS.md) / [Developer Guide](CONTRIBUTORS_DEV.md)
+[Getting Started Guide](CONTRIBUTING.md) / [Developer Guide](CONTRIBUTING_DEV.md)
 
 ## Press
 
