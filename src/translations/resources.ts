@@ -103,7 +103,6 @@ const languages: Language[] = [
     label: "Filipino",
     code: "tl-PH",
   },
-  
 ];
 
 const resources = languages.reduce(
