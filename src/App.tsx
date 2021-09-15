@@ -173,8 +173,15 @@ function App() {
           declineButtonText="Cookie Settings"
           cookieName="myAwesomeCookieName2"
           style={{ background: "#000000" }}
-          buttonStyle={{ color: "#4e503b", fontSize: "13px", fontWeight: "Bold" }}
-          declineButtonStyle={{ background: "#000000", textDecoration: "underline" }}
+          buttonStyle={{
+            color: "#4e503b",
+            fontSize: "13px",
+            fontWeight: "Bold",
+          }}
+          declineButtonStyle={{
+            background: "#000000",
+            textDecoration: "underline",
+          }}
           expires={150}
           onAccept={(byScroll) => {
             alert(`consent given. \n\n By scrolling? ${byScroll}`);
@@ -184,7 +191,9 @@ function App() {
             alert("Cookie Settings");
           }}
         >
-          <p style={{ fontFamily: "sans-serif" }}>This website uses cookies to enhance the user experience.</p>
+          <p style={{ fontFamily: "sans-serif" }}>
+            This website uses cookies to enhance the user experience.
+          </p>
         </CookieConsent>
       </div>
     </>
