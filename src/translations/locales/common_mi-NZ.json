@@ -39,7 +39,7 @@
     }
   },
   "walkins": {
-    "sectionHeader": "Kei te tūwhera I tēnei rā",
+    "sectionHeader": "Kei te tūwhera i tēnei rā",
     "openString": "Tūwhera {{openTimeString}}",
     "cancellationNotice": {
       "info": "Kaua e tāpuitia i ngā wāhi e rua",
