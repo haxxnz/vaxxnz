@@ -7,7 +7,7 @@
     "loading": "検索中...",
     "getDirections": "最寄りの会場が見つかりました。",
     "makeABooking": "ワクチン接種の予約をする",
-    "kmAway": "{{distance}}km 先にあります。",
+    "kmAway": "{{distance}} 先にあります。",
     "lastUpdated": "最新の更新 {{updatedAt}}",
     "cancel": "キャンセル",
     "website": "ウェブサイト",

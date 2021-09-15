@@ -7,7 +7,7 @@
     "loading": "Taihoa...",
     "getDirections": "Tikina rapua taunga",
     "makeABooking": "Tāpuitia ",
-    "kmAway": "{{distance}}km te tawhiti",
+    "kmAway": "{{distance}} te tawhiti",
     "lastUpdated": "I whakahou koe i {{updatedAt}}",
     "cancel": "Whakakorengia",
     "website": "Pae tukutuku",

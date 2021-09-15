@@ -7,7 +7,7 @@
     "loading": "लोड हो रहा है",
     "getDirections": "दिशा - निर्देश प्राप्त करें",
     "makeABooking": "बुकिंग करें",
-    "kmAway": "{{distance}}किमी दूर",
+    "kmAway": "{{distance}} दूर",
     "lastUpdated": "आखरी अपडेट{{updatedAt}}",
     "cancel": "रद्द करें",
     "website": "वेबसाइट",
