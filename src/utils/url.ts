@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DEFAULT_LOCATION } from "./location";
+import { DEFAULT_LOCATION } from "./consts";
 
 export function useSearchParams() {
   function getSearchParams() {

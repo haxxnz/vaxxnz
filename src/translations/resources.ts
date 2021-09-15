@@ -11,6 +11,8 @@ import common_sm_SM from "./locales/common_sm-SM.json";
 import common_to_TO from "./locales/common_to-TO.json";
 import common_vi_VN from "./locales/common_vi-VN.json";
 import common_pl_PL from "./locales/common_pl-PL.json";
+import common_ar_IQ from "./locales/common_ar-IQ.json";
+import common_hi_HI from "./locales/common_hi-HI.json";
 
 export type Language = {
   common: Object; //typeof common_en_NZ;
@@ -51,6 +53,11 @@ const languages: Language[] = [
     code: "zh-TW",
   },
   {
+    common: common_hi_HI,
+    label: "हिन्दी (Hindi)",
+    code: "hi-HI",
+  },
+  {
     common: common_es_ES,
     label: "Español",
     code: "es-ES",
@@ -84,6 +91,11 @@ const languages: Language[] = [
     common: common_pl_PL,
     label: "Polski",
     code: "pl-PL",
+  },
+  {
+    common: common_ar_IQ,
+    label: "عربي",
+    code: "ar-IQ",
   },
 ];
 
