@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { Button } from "baseui/button";
+import i18next from "i18next";
 import { isToday, isAfter } from "date-fns";
 import { VaccineCentre } from "../VaxComponents";
 import { formatDistanceKm, getDistanceKm } from "../utils/distance";
@@ -9,6 +10,7 @@ import { FunctionComponent, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { enqueueAnalyticsEvent } from "../utils/analytics";
+import { formatToLocaleTimeString } from "../utils/date";
 import { differenceInDays } from "date-fns/esm";
 
 import { useSeen } from "../utils/useSeen";
@@ -190,15 +192,7 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
         {/* <p>1am</p> */}
         {slotsToDisplay?.map((slot) => (
           <p key={slot.localStartTime}>
-            {parse(
-              slot.localStartTime,
-              "HH:mm:ss",
-              new Date()
-            ).toLocaleTimeString("en-NZ", {
-              hour: "2-digit",
-              minute: "2-digit",
-              hour12: true,
-            })}
+            {formatToLocaleTimeString(slot.localStartTime, i18n.language)}
           </p>
         ))}
       </section>
