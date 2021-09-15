@@ -21,9 +21,12 @@ jobs:
           node-version: '14'
           cache: 'yarn'
 
+      - name: Ensure package-lock.json does not exist
+        run: |
+          ! test -f package-lock.json || echo "Please remove package-lock.json and re-run dependency installation with yarn. We use yarn v1 for package management."
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile || echo "Drifiting has occurred between package.json and yarn.lock. Run `yarn install` to update the lock file."
       - name: Run prettier
-        run: yarn prettier --check src
+        run: yarn prettier --check src || echo "Please make sure your code is prettified by running `yarn prettier --write src` before committing."
       - name: Run tests
-        run: CI=true yarn test
+        run: CI=true yarn test --coverage
