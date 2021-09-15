@@ -131,7 +131,7 @@ function App() {
             </a>{" "}
             /{" "}
             <a
-              href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTORS.md"
+              href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTING.md"
               target="_blank"
               rel="noreferrer"
             >
