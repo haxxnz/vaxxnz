@@ -3,11 +3,11 @@
     "title": "Vaxx.nz",
     "tagline": "Rapua he rongoā āraimate",
     "subtitle": "Rapua he whare hauora e tata ana ki a koe",
-    "disclaimerNotAGovWebsite": "Ehara tēnei I te whārangi ipurangi o te kāwanatanga, ki te pīrangi tāpui I tāu wero Korouna, haere ki  <0>bookmyvaccine.nz</0>",
+    "disclaimerNotAGovWebsite": "Ehara tēnei i te whārangi ipurangi o te kāwanatanga, ki te pīrangi tāpui I tāu wero Korouna, haere ki  <0>bookmyvaccine.nz</0>",
     "loading": "Taihoa...",
     "getDirections": "Tikina rapua taunga",
     "makeABooking": "Tāpuitia ",
-    "kmAway": "{{distance}}km te tawhiti",
+    "distanceAway": "{{distance}} te tawhiti",
     "lastUpdated": "I whakahou koe i {{updatedAt}}",
     "cancel": "Whakakorengia",
     "website": "Pae tukutuku",
@@ -84,7 +84,7 @@
     }
   },
   "footer": {
-    "message": "Mēnā I pai ki a koe te whārangi nei, tēnā koa tohatoha atu",
+    "message": "Mēnā i pai ki a koe te whārangi nei, tēnā koa tohatoha atu",
     "addressFinderLinkCopy": "Ngā mihi whakawhetai kia <0>AddressFinder</0> mō te tiro wāhitau utu-kore",
     "links": {
       "contactUs": "Whakapā mai",

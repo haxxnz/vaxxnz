@@ -11,6 +11,8 @@ import common_sm_SM from "./locales/common_sm-SM.json";
 import common_to_TO from "./locales/common_to-TO.json";
 import common_vi_VN from "./locales/common_vi-VN.json";
 import common_pl_PL from "./locales/common_pl-PL.json";
+import common_ja_JP from "./locales/common_ja-JP.json";
+import common_tl_PH from "./locales/common_tl-PH.json";
 import common_ar_IQ from "./locales/common_ar-IQ.json";
 import common_hi_HI from "./locales/common_hi-HI.json";
 
@@ -51,6 +53,11 @@ const languages: Language[] = [
     common: common_zh_TW,
     label: "中文（繁體）",
     code: "zh-TW",
+  },
+  {
+    common: common_ja_JP,
+    label: "日本語",
+    code: "ja-JP",
   },
   {
     common: common_hi_HI,
@@ -96,6 +103,11 @@ const languages: Language[] = [
     common: common_ar_IQ,
     label: "عربي",
     code: "ar-IQ",
+  },
+  {
+    common: common_tl_PH,
+    label: "Filipino",
+    code: "tl-PH",
   },
 ];
 

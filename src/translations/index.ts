@@ -29,6 +29,8 @@ export const config = {
     "to-TO",
     "pl-PL",
     "ar-IQ",
+    "ja-JP",
+    "tl-PH",
   ],
   interpolation: { escapeValue: false },
   resources,

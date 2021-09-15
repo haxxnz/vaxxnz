@@ -2,7 +2,7 @@
 import { Button } from "baseui/button";
 import { isToday, isAfter } from "date-fns";
 import { VaccineCentre } from "../VaxComponents";
-import { getDistanceKm } from "../utils/distance";
+import { formatDistanceKm, getDistanceKm } from "../utils/distance";
 import { parse } from "date-fns";
 import { Coords } from "../location-picker/LocationPicker";
 import { FunctionComponent, useEffect, useRef, useState } from "react";
@@ -53,7 +53,7 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
   radiusKm,
   activeDate,
 }) => {
-  const { t } = useTranslation("common");
+  const { t, i18n } = useTranslation("common");
   const ref = useRef() as any;
   const seen = useSeen(ref, "20px");
   const [slots, setSlots] = useState<SlotWithAvailability[] | undefined>();
@@ -120,8 +120,11 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
       <h3>{location.name}</h3>
       <p>
         {location.displayAddress} (
-        {t("core.kmAway", {
-          distance: Math.floor(getDistanceKm(coords, location.location)),
+        {t("core.distanceAway", {
+          distance: formatDistanceKm(
+            getDistanceKm(coords, location.location),
+            i18n.language
+          ),
         })}
         )
       </p>

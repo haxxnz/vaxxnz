@@ -7,7 +7,7 @@
     "loading": "Fakahu...",
     "getDirections": "Fiema'u fakahinohino",
     "makeABooking": "Alea'i ha taimi",
-    "kmAway": "{{distance}}km mama'o'",
+    "distanceAway": "{{distance}} mama'o'",
     "lastUpdated": "Ongoongo fakamuimui taha {{updatedAt}}",
     "cancel": "Kaniseli",
     "website": "Uepi Saiti",
