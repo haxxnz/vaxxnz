@@ -48,7 +48,7 @@
     "cancelBooking": "キャンセル",
     "noticeList": {
       "title": "ワクチン接種のやり方",
-      "text": "ワクチン接種の際には並ぶことがあるかもしれません。もしくは幾つかの会場では本日摂取可能な余剰分がないかもしれません。気になる場合は、電話で確認して下さい。"
+      "text": "ワクチン接種の際には並ぶことがあるかもしれません。もしくは幾つかの会場では本日接種可能な余剰分がないかもしれません。気になる場合は、電話で確認して下さい。"
     },
     "walkinAwailable": "<0 /> ワクチン接種が可能",
     "driveThroughAvailable": "<0 /> ドライブスルーでのワクチン接種が可能",
@@ -68,7 +68,7 @@
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
-    "numberOfAppointments": "{{sumAvailableTimes}} 分接種可能",
+    "numberOfAppointments": "{{sumAvailableTimes}} 回接種可能",
     "modal": {
       "howToBook": {
         "title": "予約のやり方",
