@@ -8,7 +8,7 @@ Here are some ways to help:
 
 - Add missing vaccination centres to [our spreadsheet](https://docs.google.com/spreadsheets/d/1dbAFVdtQParU78_j3eR1i5iA6XpzLsrR_WvzTATPK2Y/edit)! Please add as much info as you can find :heart:
 
-- Join the Vaxx Discord and introduce yourself at https://discord.gg/6qcQxf4V
+- Join the Vaxx Discord and introduce yourself at https://discord.gg/nkbnqhR8A8
 
 - Once you've joined the Discord, introduce yourself, and let the channel know you would like to contribute in #introductions 🥳
 
