@@ -4,7 +4,7 @@ import { Trans, useTranslation } from "react-i18next";
 import { CrowdsourcedLocation } from "../../crowdsourced/CrowdsourcedData";
 import { Coords } from "../../location-picker/LocationPicker";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
-import { getDistanceKm } from "../../utils/distance";
+import { formatDistanceKm, getDistanceKm } from "../../utils/distance";
 import { VaccineCentre } from "../../VaxComponents";
 
 interface CrowdsourcedBookingLocationProps {
@@ -16,7 +16,7 @@ interface CrowdsourcedBookingLocationProps {
 
 export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingLocationProps> =
   ({ location, radiusKm, coords, date }) => {
-    const { t } = useTranslation("common");
+    const { t, i18n } = useTranslation("common");
     const locationCoords = { lat: location.lat, lng: location.lng };
     const hours = location.openingHours.find((a) => a.day === date.getDay());
     return (
@@ -24,8 +24,11 @@ export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingL
         <h3>{location.name}</h3>
         <p>
           {location.address} (
-          {t("core.kmAway", {
-            distance: Math.floor(getDistanceKm(coords, locationCoords)),
+          {t("core.distanceAway", {
+            distance: formatDistanceKm(
+              getDistanceKm(coords, locationCoords),
+              i18n.language
+            ),
           })}
           )
         </p>

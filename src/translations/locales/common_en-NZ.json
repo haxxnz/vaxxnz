@@ -7,7 +7,7 @@
     "loading": "Loading...",
     "getDirections": "Get Directions",
     "makeABooking": "Make a Booking",
-    "kmAway": "{{distance}}km away",
+    "distanceAway": "{{distance}} away",
     "lastUpdated": "Last updated {{updatedAt}}",
     "cancel": "Cancel",
     "website": "Website",

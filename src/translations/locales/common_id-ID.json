@@ -7,7 +7,7 @@
     "loading": "Loading...",
     "getDirections": "Petunjuk Jalan",
     "makeABooking": "Lakukan Pemesanan",
-    "kmAway": "Jarak {{distance}}km",
+    "distanceAway": "Jarak {{distance}}",
     "lastUpdated": "Terkahir diperbahurui {{updatedAt}}",
     "cancel": "Batal",
     "website": "Situs Web",

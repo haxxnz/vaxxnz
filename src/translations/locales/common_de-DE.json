@@ -7,7 +7,7 @@
     "loading": "Laden...",
     "getDirections": "Wegbeschreibung",
     "makeABooking": "Buchung vornehmen",
-    "kmAway": "{{distance}}km entfernt",
+    "distanceAway": "{{distance}} entfernt",
     "lastUpdated": "Actualisiert {{updatedAt}}",
     "cancel": "Abbrechen",
     "website": "Webseite",
