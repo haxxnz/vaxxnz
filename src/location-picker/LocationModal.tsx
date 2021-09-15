@@ -67,6 +67,7 @@ const LocationModal = (props: Props) => {
             show_locations: true,
             location_params: {
               max: "4",
+              region: 0,
             },
           }
         );
