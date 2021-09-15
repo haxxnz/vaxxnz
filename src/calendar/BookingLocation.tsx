@@ -142,7 +142,7 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
         </a>
       </p>
       <a
-        href="https://bookmyvaccine.covid19.health.nz"
+        href={`https://app.bookmyvaccine.covid19.health.nz/deep-linking?location=${locationSlotsPair.location.extId}&date=${activeDate.dateStr}`}
         target="_blank"
         referrerPolicy="origin"
         rel="noreferrer"
