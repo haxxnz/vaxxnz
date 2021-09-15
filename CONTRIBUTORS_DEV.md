@@ -85,6 +85,6 @@ You are good to start coding!
 
 ## Help! I'm stuck!
 
-If you need any help, we have our [Discord Server](https://discord.com/channels/884578058911219743/884714023323586600). Feel free to join and ask us anything, we don't bite!
+If you need any help, we have our [Discord Server](https://discord.gg/nkbnqhR8A8). Feel free to join and ask us anything, we don't bite!
 
 If you need some guidance of what to do or are stuck on an issue feel free to message in the #dev channel or @Oliver for help.
