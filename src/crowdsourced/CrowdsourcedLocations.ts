@@ -353,25 +353,6 @@ export const crowdsourcedLocations: CrowdsourcedLocation[] = [
   },
   {
     isCrowdSourced: true,
-    name: "Life Pharmacy Rangiora",
-    address: "172-176 High Street, Rangiora 7400, New Zealand",
-    lat: -43.30346,
-    lng: 172.5936399,
-    instructions: [Instruction.allowsBookings],
-    website: "http://www.lifepharmacy.co.nz/",
-    telephone: "03-313 6340",
-    openingHours: [
-      { day: 1, isOpen: true, hours: "9:00 AM – 5:30 PM" },
-      { day: 2, isOpen: true, hours: "9:00 AM – 5:30 PM" },
-      { day: 3, isOpen: true, hours: "9:00 AM – 5:30 PM" },
-      { day: 4, isOpen: true, hours: "9:00 AM – 5:30 PM" },
-      { day: 5, isOpen: true, hours: "9:00 AM – 5:30 PM" },
-      { day: 6, isOpen: true, hours: "9:00 AM – 4:00 PM" },
-      { day: 0, isOpen: true, hours: "10:00 AM – 4:00 PM" },
-    ],
-  },
-  {
-    isCrowdSourced: true,
     name: "Unichem Cashel Street Pharmacy",
     address:
       "111 Cashel Street, Christchurch Central City, Christchurch 8011, New Zealand",
