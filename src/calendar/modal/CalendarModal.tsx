@@ -51,6 +51,7 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
 
   return (
     <Modal
+      animate={false}
       onClose={close}
       isOpen={!!activeDate}
       unstable_ModalBackdropScroll={true}
