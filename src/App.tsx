@@ -13,6 +13,7 @@ import CookieConsent from "react-cookie-consent";
 
 function App() {
   const { lat, lng } = useSearchParams();
+  const EUbbox = [-12.0792755076,35.9674116355,40.6576894187,58.9861052075]
   const [coords, setCoords] = useState({
     lat: DEFAULT_LOCATION.lat,
     lng: DEFAULT_LOCATION.lng,
@@ -179,7 +180,7 @@ function App() {
         <CookieConsent
           location="bottom"
           buttonText="I Understand"
-          declineButtonText="Cookie Settings"
+          declineButtonText="Decline Cookies"
           cookieName="myAwesomeCookieName2"
           style={{ background: "#000000" }}
           buttonStyle={{
@@ -197,7 +198,7 @@ function App() {
           }}
           enableDeclineButton
           onDecline={() => {
-            
+            (window as { [key: string]: any })['ga-disable-G-PXHVR76F27']=true
           }}
         >
           <p style={{ fontFamily: "sans-serif" }}>
