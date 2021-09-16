@@ -13,7 +13,7 @@ export function formatToLocaleTimeString(
   timeString: string,
   language: string
 ): string {
-  return format(parse(timeString, "HH:mm:ss", new Date()), "HH:mm aa", {
+  return format(parse(timeString, "HH:mm:ss", new Date()), "hh:mm aa", {
     locale: getDateFnsLocale(),
   });
 }
