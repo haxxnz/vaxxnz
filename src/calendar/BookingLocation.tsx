@@ -1,19 +1,15 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { Button } from "baseui/button";
-import i18next from "i18next";
-import { isToday, isAfter } from "date-fns";
-import { VaccineCentre } from "../VaxComponents";
-import { formatDistanceKm, getDistanceKm } from "../utils/distance";
-import { parse } from "date-fns";
-import { Coords } from "../location-picker/LocationPicker";
+import { isAfter, isToday, parse } from "date-fns";
+import { differenceInDays } from "date-fns/esm";
 import { FunctionComponent, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-
+import { Coords } from "../location-picker/LocationPicker";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { formatToLocaleTimeString } from "../utils/date";
-import { differenceInDays } from "date-fns/esm";
-
+import { formatDistanceKm, getDistanceKm } from "../utils/distance";
 import { useSeen } from "../utils/useSeen";
+import { VaccineCentre } from "../VaxComponents";
 import {
   BookingLocationSlotsPair,
   SlotWithAvailability,

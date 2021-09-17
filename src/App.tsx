@@ -176,7 +176,7 @@ function App() {
             backgroundImage: `url(${process.env.PUBLIC_URL + "./bg.svg"})`,
           }}
         ></div>
-        <CookiesBar lng={coords.lng} lat={coords.lat}></CookiesBar>
+        <CookiesBar lng={coords.lng} lat={coords.lat} />
       </div>
     </>
   );
