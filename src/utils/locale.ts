@@ -25,7 +25,6 @@ const supportedDateLocale: { [localeString: string]: Locale } = {
   "zh-TW": zhTW,
   "zh-CN": zhCN,
   "id-ID": id,
-  "hi-HI": hi,
 };
 
 /**
