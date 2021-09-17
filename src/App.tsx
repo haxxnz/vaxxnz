@@ -9,6 +9,7 @@ import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { DEFAULT_LOCATION } from "./utils/consts";
 import { useSearchParams } from "./utils/url";
 import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
+import CookiesBar from "./Cookies";
 
 function App() {
   const { lat, lng } = useSearchParams();
@@ -175,6 +176,7 @@ function App() {
             backgroundImage: `url(${process.env.PUBLIC_URL + "./bg.svg"})`,
           }}
         ></div>
+        <CookiesBar lng={coords.lng} lat={coords.lat}></CookiesBar>
       </div>
     </>
   );
