@@ -8,11 +8,12 @@ import {
   useHealthpointLocations,
   HealthpointLocation,
 } from "./healthpoint/HealthpointData";
-import { Radius } from "../utils/locationTypes";
+import { useRadiusKm } from "../utils/useRadiusKm";
 
 export type TodayLocation = CrowdsourcedLocation | HealthpointLocation;
 
-export const useTodayLocationsData = (coords: Coords, radiusKm: Radius) => {
+export const useTodayLocationsData = (coords: Coords) => {
+  const radiusKm = useRadiusKm();
   const currentDay = new Date().getDay();
   const locations = useHealthpointLocations(coords, radiusKm);
   const crowdSourced = getCrowdsourcedLocations(coords, radiusKm).filter(

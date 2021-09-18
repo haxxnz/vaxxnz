@@ -5,21 +5,21 @@ import { CrowdsourcedLocation } from "../../crowdsourced/CrowdsourcedData";
 import { Coords } from "../../location-picker/LocationPicker";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { formatDistanceKm, getDistanceKm } from "../../utils/distance";
-import { Radius } from "../../utils/locationTypes";
+import { useRadiusKm } from "../../utils/useRadiusKm";
 import { VaccineCentre } from "../../VaxComponents";
 
 interface CrowdsourcedBookingLocationProps {
   location: CrowdsourcedLocation;
   coords: Coords;
   date: Date;
-  radiusKm: Radius;
 }
 
 export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingLocationProps> =
-  ({ location, radiusKm, coords, date }) => {
+  ({ location, coords, date }) => {
     const { t, i18n } = useTranslation("common");
     const locationCoords = { lat: location.lat, lng: location.lng };
     const hours = location.openingHours.find((a) => a.day === date.getDay());
+    const radiusKm = useRadiusKm();
     return (
       <VaccineCentre>
         <h3>{location.name}</h3>

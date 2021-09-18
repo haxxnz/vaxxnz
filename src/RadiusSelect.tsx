@@ -3,13 +3,13 @@ import { useTranslation } from "react-i18next";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { Radius } from "./utils/locationTypes";
 import { eventedPushState } from "./utils/url";
+import { useRadiusKm } from "./utils/useRadiusKm";
 
-interface Props {
-  radiusKm: Radius;
-}
+interface Props {}
 
 export default function RadiusSelect(props: Props) {
   const { t } = useTranslation("common");
+  const radiusKm = useRadiusKm();
 
   const setRadiusKm = (radiusKm: Radius) => {
     const url = new URL(window.location.toString());
@@ -27,7 +27,7 @@ export default function RadiusSelect(props: Props) {
     { label: t("navigation.distanceDropdown.auto"), id: "auto" },
   ];
 
-  const selectedOption = options.find((o) => o.id === props.radiusKm);
+  const selectedOption = options.find((o) => o.id === radiusKm);
 
   return (
     <Select

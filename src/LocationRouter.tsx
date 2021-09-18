@@ -9,9 +9,8 @@ import CrowdsourcedModal from "./crowdsourced/CrowdsourcedModal";
 import { useParams, useHistory } from "react-router-dom";
 import { simpleHash } from "./utils/simpleHash";
 import { crowdsourcedLocations } from "./crowdsourced/CrowdsourcedLocations";
-import { Radius } from "./utils/locationTypes";
 
-export function LocationRouter({ radiusKm }: { radiusKm: Radius }) {
+export function LocationRouter() {
   const { slug } = useParams<{ slug: string }>();
   const [hash] = slug.split("-").slice(-1);
   const history = useHistory();
@@ -67,7 +66,6 @@ export function LocationRouter({ radiusKm }: { radiusKm: Radius }) {
       {"isHealthpoint" in location ? (
         <WalkModal
           clearSelectedLocation={() => history.push("/")}
-          radiusKm={radiusKm}
           location={location as HealthpointLocation}
         />
       ) : (

@@ -17,11 +17,10 @@ import {
 } from "./CalendarData";
 import { useHistory } from "react-router-dom";
 import React from "react";
-import { Radius } from "../utils/locationTypes";
+import { useRadiusKm } from "../utils/useRadiusKm";
 
 interface BookingCalendarProps {
   data: CalendarData;
-  radiusKm: Radius;
 }
 
 export const LoadingBookingCalendar: FunctionComponent = () => {
@@ -53,7 +52,6 @@ export const LoadingBookingCalendar: FunctionComponent = () => {
 
 export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   data,
-  radiusKm,
 }) => {
   const { i18n } = useTranslation();
 
@@ -64,7 +62,6 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
           key={monthStr}
           monthStr={monthStr}
           monthDates={monthDates}
-          radiusKm={radiusKm}
           language={i18n.language}
         />
       ))}
@@ -75,13 +72,12 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
 interface CalendarMonthContainerProps {
   monthStr: string;
   monthDates: CalendarMonth;
-  radiusKm: Radius;
   language: string;
 }
 function CalendarMonthContainerExpensive(
   props: CalendarMonthContainerProps
 ): JSX.Element {
-  const { monthStr, monthDates, radiusKm } = props;
+  const { monthStr, monthDates } = props;
   const date = parse(monthStr, "MMMM yyyy", new Date());
   return (
     <CalendarSectionContainer key={monthStr}>
@@ -105,7 +101,6 @@ function CalendarMonthContainerExpensive(
               key={dateStr}
               availableCount={availableCount}
               dateStr={dateStr}
-              radiusKm={radiusKm}
               locations={locations}
             />
           );
@@ -120,14 +115,14 @@ const CalendarMonthContainer = React.memo(CalendarMonthContainerExpensive);
 interface CalendarDayProps {
   availableCount: number;
   dateStr: string;
-  radiusKm: Radius;
   locations: CalendarDateLocations;
 }
 function CalendarDay(props: CalendarDayProps): JSX.Element {
   const { t } = useTranslation("common");
-  const { availableCount, dateStr, radiusKm } = props;
+  const { availableCount, dateStr } = props;
   const date = parse(dateStr, "yyyy-MM-dd", new Date());
   const history = useHistory();
+  const radiusKm = useRadiusKm();
   return (
     <button
       className={availableCount === 0 ? "zero-available" : ""}

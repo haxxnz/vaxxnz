@@ -2,25 +2,22 @@ import React, { FunctionComponent } from "react";
 import { Coords } from "../location-picker/LocationPicker";
 import { BookingCalendar, LoadingBookingCalendar } from "./Calendar";
 import { useBookingData } from "./booking/BookingData";
-import { Radius } from "../utils/locationTypes";
 
 interface CalendarSectionProps {
   coords: Coords;
-  radiusKm: Radius;
   setLastUpdateTime: (time: Date | null) => void;
 }
 
 /** Loads booking data, display the calendar or load errors. */
 export const CalendarSection: FunctionComponent<CalendarSectionProps> = ({
   coords,
-  radiusKm,
   setLastUpdateTime,
 }) => {
-  const data = useBookingData(coords, radiusKm, setLastUpdateTime);
+  const data = useBookingData(coords, setLastUpdateTime);
   return (
     <>
       {"ok" in data ? (
-        <BookingCalendar data={data.ok} radiusKm={radiusKm} />
+        <BookingCalendar data={data.ok} />
       ) : "loading" in data ? (
         <LoadingBookingCalendar />
       ) : (

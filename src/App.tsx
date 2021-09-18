@@ -15,7 +15,7 @@ import { Header } from "./Header";
 import { Banner } from "./Banner";
 
 function App() {
-  const { lat, lng, radius } = useSearchParams();
+  const { lat, lng } = useSearchParams();
   const coords = useMemo(
     () => ({
       lat: lat ? parseFloat(lat) : DEFAULT_LOCATION.lat,
@@ -23,17 +23,12 @@ function App() {
     }),
     [lat, lng]
   );
-  const radiusKm = radius
-    ? radius === "auto"
-      ? "auto"
-      : parseInt(radius, 10)
-    : 10;
   const { pathname } = useLocation();
 
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
   const [selectedLocationIndex, setSelectedLocationIndex] = useState<number>();
 
-  const bookingData = useBookingData(coords, radiusKm, setLastUpdateTime);
+  const bookingData = useBookingData(coords, setLastUpdateTime);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -48,14 +43,13 @@ function App() {
             <div className={"big-old-container"}>
               <BookingModal
                 coords={coords}
-                radiusKm={radiusKm}
                 bookingData={"ok" in bookingData ? bookingData.ok : undefined}
               />
             </div>
           </Route>
           <Route path="/:slug">
             <div className={"big-old-container"}>
-              <LocationRouter radiusKm={radiusKm} />
+              <LocationRouter />
             </div>
           </Route>
           <Route path="/">
@@ -64,18 +58,15 @@ function App() {
               <div className={"big-old-container"}>
                 <LocationPicker
                   coords={coords}
-                  radiusKm={radiusKm}
                   lastUpdateTime={lastUpdateTime}
                 />
                 <TodayLocationsSection
                   coords={coords}
-                  radiusKm={radiusKm}
                   selectedLocationIndex={selectedLocationIndex}
                   setSelectedLocation={setSelectedLocationIndex}
                 />
                 <CalendarSection
                   coords={coords}
-                  radiusKm={radiusKm}
                   setLastUpdateTime={setLastUpdateTime}
                 />
               </div>

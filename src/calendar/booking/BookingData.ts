@@ -7,6 +7,7 @@ import { Coords } from "../../location-picker/LocationPicker";
 import { getDistanceKm } from "../../utils/distance";
 import { Radius } from "../../utils/locationTypes";
 import { memoize0, memoizeOnce } from "../../utils/memoize";
+import { useRadiusKm } from "../../utils/useRadiusKm";
 import {
   CalendarData,
   CalendarDateLocations,
@@ -169,7 +170,6 @@ function generateBookingData(
 
 export const useBookingData = (
   coords: Coords,
-  radiusKm: Radius,
   setLastUpdateTime: (time: Date | null) => void
 ): BookingDataResult => {
   const [loading, setLoading] = useState(false);
@@ -177,6 +177,7 @@ export const useBookingData = (
   const [dateLocationsPairs, setDateLocationsPairs] = useState<
     BookingDateLocations[]
   >([]);
+  const radiusKm = useRadiusKm();
 
   const loadCalendar = useCallback(async () => {
     setLoading(true);

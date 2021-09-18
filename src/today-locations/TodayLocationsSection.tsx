@@ -16,23 +16,22 @@ import { useTodayLocationsData } from "./TodayLocationsData";
 import { useHistory } from "react-router-dom";
 import { simpleHash } from "../utils/simpleHash";
 import { slug } from "../utils/slug";
-import { Radius } from "../utils/locationTypes";
+import { useRadiusKm } from "../utils/useRadiusKm";
 
 export interface Props {
   coords: Coords;
-  radiusKm: Radius;
   selectedLocationIndex?: number;
   setSelectedLocation: (num?: number) => void;
 }
 
 export function TodayLocationsSection({
   coords,
-  radiusKm,
   selectedLocationIndex,
   setSelectedLocation,
 }: Props) {
+  const radiusKm = useRadiusKm();
   const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
-  const locations = useTodayLocationsData(coords, radiusKm);
+  const locations = useTodayLocationsData(coords);
   const { t, i18n } = useTranslation("common");
   const history = useHistory();
 

@@ -8,7 +8,7 @@ import { Coords } from "../location-picker/LocationPicker";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { formatToLocaleTimeString } from "../utils/date";
 import { formatDistanceKm, getDistanceKm } from "../utils/distance";
-import { Radius } from "../utils/locationTypes";
+import { useRadiusKm } from "../utils/useRadiusKm";
 import { useSeen } from "../utils/useSeen";
 import { VaccineCentre } from "../VaxComponents";
 import {
@@ -21,7 +21,6 @@ type BookingLocationProps = {
   locationSlotsPair: BookingLocationSlotsPair;
   coords: Coords;
   activeDate: CalendarDate;
-  radiusKm: Radius;
 };
 
 const IS_UAT =
@@ -49,13 +48,13 @@ const filterOldSlots = (
 const BookingLocation: FunctionComponent<BookingLocationProps> = ({
   locationSlotsPair,
   coords,
-  radiusKm,
   activeDate,
 }) => {
   const { t, i18n } = useTranslation("common");
   const ref = useRef() as any;
   const seen = useSeen(ref, "20px");
   const [slots, setSlots] = useState<SlotWithAvailability[] | undefined>();
+  const radiusKm = useRadiusKm();
 
   const getSlots = async (url: string) => {
     try {
