@@ -10,6 +10,13 @@ import { DEFAULT_LOCATION } from "./utils/consts";
 import { useSearchParams } from "./utils/url";
 import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
 import CookiesBar from "./Cookies";
+import { CalendarDate } from "./calendar/CalendarData";
+import BookingModal from "./calendar/modal/CalendarModal";
+import { useTodayLocationsData } from "./today-locations/TodayLocationsData";
+import WalkModal from "./today-locations/healthpoint/HealthpointModal";
+import { HealthpointLocation } from "./today-locations/healthpoint/HealthpointData";
+import { CrowdsourcedLocation } from "./crowdsourced/CrowdsourcedData";
+import CrowdsourcedModal from "./crowdsourced/CrowdsourcedModal";
 
 function App() {
   const { lat, lng } = useSearchParams();
@@ -26,6 +33,11 @@ function App() {
 
   const [radiusKm, setRadiusKm] = useState(10);
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
+  const [activeDate, setActiveDate] = useState<CalendarDate | null>(null);
+  const [selectedLocationIndex, setSelectedLocationIndex] = useState<number>();
+  const locations = useTodayLocationsData(coords, radiusKm);
+
+  console.log(selectedLocationIndex);
 
   const { t } = useTranslation("common");
 
@@ -82,20 +94,67 @@ function App() {
           </div>
         </section>
         <div className={"big-old-container"}>
-          <LocationPicker
-            coords={coords}
-            setCoords={setCoords}
-            radiusKm={radiusKm}
-            setRadiusKm={setRadiusKm}
-            lastUpdateTime={lastUpdateTime}
-          />
+          {activeDate ? (
+            <BookingModal
+              activeDate={activeDate}
+              coords={coords}
+              radiusKm={radiusKm}
+              setActiveDate={setActiveDate}
+            />
+          ) : selectedLocationIndex !== undefined ? (
+            <>
+              {"ok" in locations &&
+                locations.ok[selectedLocationIndex] &&
+                "isHealthpoint" in locations.ok[selectedLocationIndex] && (
+                  <WalkModal
+                    clearSelectedLocation={() =>
+                      setSelectedLocationIndex(undefined)
+                    }
+                    radiusKm={radiusKm}
+                    location={
+                      locations.ok[selectedLocationIndex] as HealthpointLocation
+                    }
+                  />
+                )}
+              {"ok" in locations &&
+                locations.ok[selectedLocationIndex] &&
+                !("isHealthpoint" in locations.ok[selectedLocationIndex]) && (
+                  <CrowdsourcedModal
+                    clearSelectedLocation={() =>
+                      setSelectedLocationIndex(undefined)
+                    }
+                    location={
+                      locations.ok[
+                        selectedLocationIndex
+                      ] as CrowdsourcedLocation
+                    }
+                  />
+                )}
+            </>
+          ) : (
+            <>
+              <LocationPicker
+                coords={coords}
+                setCoords={setCoords}
+                radiusKm={radiusKm}
+                setRadiusKm={setRadiusKm}
+                lastUpdateTime={lastUpdateTime}
+              />
 
-          <TodayLocationsSection coords={coords} radiusKm={radiusKm} />
-          <CalendarSection
-            coords={coords}
-            radiusKm={radiusKm}
-            setLastUpdateTime={setLastUpdateTime}
-          />
+              <TodayLocationsSection
+                coords={coords}
+                radiusKm={radiusKm}
+                selectedLocationIndex={selectedLocationIndex}
+                setSelectedLocation={setSelectedLocationIndex}
+              />
+              <CalendarSection
+                coords={coords}
+                radiusKm={radiusKm}
+                setLastUpdateTime={setLastUpdateTime}
+                setActiveDate={setActiveDate}
+              />
+            </>
+          )}
         </div>
 
         <footer className="footer-header">

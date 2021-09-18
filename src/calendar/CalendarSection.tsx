@@ -9,6 +9,7 @@ interface CalendarSectionProps {
   coords: Coords;
   radiusKm: number;
   setLastUpdateTime: (time: Date | null) => void;
+  setActiveDate: (activeDate: CalendarDate | null) => void;
 }
 
 /** Loads booking data, display the calendar or load errors. */
@@ -16,19 +17,11 @@ export const CalendarSection: FunctionComponent<CalendarSectionProps> = ({
   coords,
   radiusKm,
   setLastUpdateTime,
+  setActiveDate,
 }) => {
-  const [activeDate, setActiveDate] = React.useState<CalendarDate | null>(null);
-
   const data = useBookingData(coords, radiusKm, setLastUpdateTime);
   return (
     <>
-      <BookingModal
-        radiusKm={radiusKm}
-        activeDate={activeDate}
-        setActiveDate={setActiveDate}
-        coords={coords}
-      />
-
       {"ok" in data ? (
         <BookingCalendar
           setActiveDate={setActiveDate}

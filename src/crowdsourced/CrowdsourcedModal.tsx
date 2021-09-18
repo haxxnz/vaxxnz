@@ -2,6 +2,7 @@ import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "react-responsive";
 import { LocationNotice } from "../common/LocationNotice";
 import { NoticeList, NoticeListItem } from "../NoticeList";
 import { ModalGrid } from "../VaxComponents";
@@ -31,6 +32,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
   location,
 }) => {
   const { t } = useTranslation("common");
+  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
 
   const close = () => clearSelectedLocation();
   if (location == null) {
@@ -38,25 +40,28 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
   }
   const telephone = location.telephone?.replace(/\[.*\]/g, "");
 
+  const desktopDialogStyle = {
+    width: "80vw",
+  };
+  const mobileDialogStyle = {
+    width: "100vw",
+    margin: "0rem",
+    borderRadius: "0",
+  };
+  const sharedDialogStyle = {
+    maxWidth: "1200px",
+    display: "flex",
+    flexDirection: "column",
+    alignSelf: "center",
+    padding: "1.5rem",
+    backgroundColor: "white",
+    border: "1px solid lightgray",
+  };
+  const dialogStyle = isMobileView
+    ? { ...mobileDialogStyle, ...sharedDialogStyle }
+    : { ...desktopDialogStyle, ...sharedDialogStyle };
   return (
-    <Modal
-      onClose={close}
-      isOpen={!!location}
-      unstable_ModalBackdropScroll={true}
-      size="full"
-      overrides={{
-        Root: { style: { zIndex: 1500 } },
-        Dialog: {
-          style: {
-            display: "flex",
-            flexDirection: "column",
-            alignSelf: "center",
-            padding: "1.5rem",
-            maxWidth: "1200px",
-          },
-        },
-      }}
-    >
+    <div>
       <ModalGrid className={"modal-container WalkModal"}>
         <div>
           <h1
@@ -170,7 +175,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
           )}
         </div>
       </ModalGrid>
-    </Modal>
+    </div>
   );
 };
 

@@ -41,23 +41,14 @@ const HealthpointModal: FunctionComponent<Props> = ({
     flexDirection: "column",
     alignSelf: "center",
     padding: "1.5rem",
+    backgroundColor: "white",
+    border: "1px solid lightgray",
   };
   const dialogStyle = isMobileView
     ? { ...mobileDialogStyle, ...sharedDialogStyle }
     : { ...desktopDialogStyle, ...sharedDialogStyle };
   return (
-    <Modal
-      onClose={close}
-      isOpen={!!location}
-      unstable_ModalBackdropScroll={true}
-      size="full"
-      overrides={{
-        Root: { style: { zIndex: 1500 } },
-        Dialog: {
-          style: dialogStyle as any,
-        },
-      }}
-    >
+    <div style={dialogStyle as any}>
       <WalkGrid className={"modal-container WalkModal"}>
         <div>
           <h1
@@ -215,7 +206,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
           {t("walkins.cancelBooking")}
         </Button>
       </div>
-    </Modal>
+    </div>
   );
 };
 

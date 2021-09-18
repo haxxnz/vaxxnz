@@ -23,14 +23,20 @@ import CrowdsourcedModal from "../crowdsourced/CrowdsourcedModal";
 export interface Props {
   coords: Coords;
   radiusKm: number;
+  selectedLocationIndex?: number;
+  setSelectedLocation: (num?: number) => void;
 }
 
-export function TodayLocationsSection({ coords, radiusKm }: Props) {
+export function TodayLocationsSection({
+  coords,
+  radiusKm,
+  selectedLocationIndex,
+  setSelectedLocation,
+}: Props) {
   const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
   const locations = useTodayLocationsData(coords, radiusKm);
   const { t, i18n } = useTranslation("common");
 
-  const [selectedLocationIndex, setSelectedLocation] = useState<number>();
   const [currentView, setCurrentView] = useState(!isMobileView ? 3 : 1);
   const openModal = (locationIndex: number) => {
     const location =
@@ -44,37 +50,13 @@ export function TodayLocationsSection({ coords, radiusKm }: Props) {
     setSelectedLocation(locationIndex);
   };
 
-  const clearSelectedLocation = () => {
-    setSelectedLocation(undefined);
-  };
-
   const loadMore = () => {
     setCurrentView((latest) => latest + 12);
   };
 
-  let selectedHealthpoint: HealthpointLocation | undefined;
-  let selectedCrowdsourced: CrowdsourcedLocation | undefined;
-  if ("ok" in locations && selectedLocationIndex !== undefined) {
-    const selected = locations.ok[selectedLocationIndex];
-    if ("isHealthpoint" in selected) {
-      selectedHealthpoint = selected;
-    } else {
-      selectedCrowdsourced = selected;
-    }
-  }
-
   return "error" in locations ||
     ("ok" in locations && locations.ok.length === 0) ? null : (
     <div>
-      <WalkModal
-        clearSelectedLocation={clearSelectedLocation}
-        location={selectedHealthpoint}
-        radiusKm={radiusKm}
-      />
-      <CrowdsourcedModal
-        clearSelectedLocation={clearSelectedLocation}
-        location={selectedCrowdsourced}
-      />
       <div className="WalkSection">
         <h2>
           <Trans

@@ -44,23 +44,15 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
     flexDirection: "column",
     alignSelf: "center",
     padding: "1.5rem",
+    backgroundColor: "white",
+    border: "1px solid lightgray",
   };
   const dialogStyle = isMobileView
     ? { ...mobileDialogStyle, ...sharedDialogStyle }
     : { ...desktopDialogStyle, ...sharedDialogStyle };
 
   return (
-    <Modal
-      animate={false}
-      onClose={close}
-      isOpen={!!activeDate}
-      unstable_ModalBackdropScroll={true}
-      overrides={{
-        Dialog: {
-          style: dialogStyle as any,
-        },
-      }}
-    >
+    <div style={dialogStyle as any}>
       {activeDate && (
         <CalendarModalContent
           activeDate={activeDate}
@@ -91,7 +83,7 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
           {t("calendar.modal.backToCalendar")}
         </Button>
       </div>
-    </Modal>
+    </div>
   );
 };
 export default BookingModal;
