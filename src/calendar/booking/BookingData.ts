@@ -137,11 +137,17 @@ function generateBookingData(
     byMonth.set(month, mapToPush);
   });
   const crowdSourced = getCrowdsourcedLocations(coords, radiusKm);
+  const crowdSourcedFiltered = filterLocations(
+    crowdSourced,
+    coords,
+    radiusKm,
+    (l) => [l.lat, l.lng]
+  );
 
   const months: CalendarData = byMonth;
   const MAX_DAYS = 60;
   const today = new Date();
-  for (const location of crowdSourced) {
+  for (const location of crowdSourcedFiltered) {
     for (let i = 0; i < MAX_DAYS; i++) {
       // add crowd sourced locations to each calendar day they're open
       const date = addDays(today, i);
