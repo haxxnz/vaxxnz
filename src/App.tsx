@@ -67,72 +67,76 @@ function App() {
             <LanguageSelect />
           </div>
         </header>
-        <section className="App-header">
-          <div className="header-content">
-            <h1>{t("core.tagline")}</h1>
-            <h2 style={{ fontWeight: "normal" }}>{t("core.subtitle")}</h2>
-            <br />
-            <p>
-              <Trans
-                i18nKey="core.disclaimerNotAGovWebsite"
-                t={t}
-                components={[
-                  <a
-                    href="https://bookmyvaccine.nz"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    https://bookmyvaccine.nz
-                  </a>,
-                ]}
-              />
-              <br />
-            </p>
-          </div>
-          <div className="header-img-container">
-            <img className="header-img" src="./doc.svg" alt=" a doctor"></img>
-          </div>
-        </section>
-        <div className={"big-old-container"}>
-          {activeDate ? (
+        {activeDate ? (
+          <div className={"big-old-container"}>
             <BookingModal
               activeDate={activeDate}
               coords={coords}
               radiusKm={radiusKm}
               setActiveDate={setActiveDate}
             />
-          ) : selectedLocationIndex !== undefined ? (
-            <>
-              {"ok" in locations &&
-                locations.ok[selectedLocationIndex] &&
-                "isHealthpoint" in locations.ok[selectedLocationIndex] && (
-                  <WalkModal
-                    clearSelectedLocation={() =>
-                      setSelectedLocationIndex(undefined)
-                    }
-                    radiusKm={radiusKm}
-                    location={
-                      locations.ok[selectedLocationIndex] as HealthpointLocation
-                    }
+          </div>
+        ) : selectedLocationIndex !== undefined ? (
+          <div className={"big-old-container"}>
+            {"ok" in locations &&
+              locations.ok[selectedLocationIndex] &&
+              "isHealthpoint" in locations.ok[selectedLocationIndex] && (
+                <WalkModal
+                  clearSelectedLocation={() =>
+                    setSelectedLocationIndex(undefined)
+                  }
+                  radiusKm={radiusKm}
+                  location={
+                    locations.ok[selectedLocationIndex] as HealthpointLocation
+                  }
+                />
+              )}
+            {"ok" in locations &&
+              locations.ok[selectedLocationIndex] &&
+              !("isHealthpoint" in locations.ok[selectedLocationIndex]) && (
+                <CrowdsourcedModal
+                  clearSelectedLocation={() =>
+                    setSelectedLocationIndex(undefined)
+                  }
+                  location={
+                    locations.ok[selectedLocationIndex] as CrowdsourcedLocation
+                  }
+                />
+              )}
+          </div>
+        ) : (
+          <>
+            <section className="App-header">
+              <div className="header-content">
+                <h1>{t("core.tagline")}</h1>
+                <h2 style={{ fontWeight: "normal" }}>{t("core.subtitle")}</h2>
+                <br />
+                <p>
+                  <Trans
+                    i18nKey="core.disclaimerNotAGovWebsite"
+                    t={t}
+                    components={[
+                      <a
+                        href="https://bookmyvaccine.nz"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        https://bookmyvaccine.nz
+                      </a>,
+                    ]}
                   />
-                )}
-              {"ok" in locations &&
-                locations.ok[selectedLocationIndex] &&
-                !("isHealthpoint" in locations.ok[selectedLocationIndex]) && (
-                  <CrowdsourcedModal
-                    clearSelectedLocation={() =>
-                      setSelectedLocationIndex(undefined)
-                    }
-                    location={
-                      locations.ok[
-                        selectedLocationIndex
-                      ] as CrowdsourcedLocation
-                    }
-                  />
-                )}
-            </>
-          ) : (
-            <>
+                  <br />
+                </p>
+              </div>
+              <div className="header-img-container">
+                <img
+                  className="header-img"
+                  src="./doc.svg"
+                  alt=" a doctor"
+                ></img>
+              </div>
+            </section>
+            <div className={"big-old-container"}>
               <LocationPicker
                 coords={coords}
                 setCoords={setCoords}
@@ -153,9 +157,9 @@ function App() {
                 setLastUpdateTime={setLastUpdateTime}
                 setActiveDate={setActiveDate}
               />
-            </>
-          )}
-        </div>
+            </div>
+          </>
+        )}
 
         <footer className="footer-header">
           <p style={{ marginBottom: "0.5rem" }}>{t("footer.message")}</p>
