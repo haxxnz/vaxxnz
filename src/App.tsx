@@ -37,7 +37,9 @@ function App() {
   const [selectedLocationIndex, setSelectedLocationIndex] = useState<number>();
   const locations = useTodayLocationsData(coords, radiusKm);
 
-  console.log(selectedLocationIndex);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [selectedLocationIndex, activeDate]);
 
   const { t } = useTranslation("common");
 
