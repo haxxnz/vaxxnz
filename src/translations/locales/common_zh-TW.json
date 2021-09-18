@@ -29,7 +29,7 @@
       "25km": "25 公里內",
       "50km": "50 公里內",
       "100km": "100 公里內",
-      "auto": "Auto"
+      "10closest": "10 closest"
     },
     "locationModal": {
       "locaitonTitle": "位置",

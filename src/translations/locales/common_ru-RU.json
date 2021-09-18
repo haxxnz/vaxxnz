@@ -29,7 +29,7 @@
       "25km": "В пределах 25 км",
       "50km": "В пределах 50 км",
       "100km": "В пределах 100 км",
-      "auto": "Auto"
+      "10closest": "10 closest"
     },
     "locationModal": {
       "locaitonTitle": "Местоположение",

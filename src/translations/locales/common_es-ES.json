@@ -29,7 +29,7 @@
       "25km": "Dentro de 25km",
       "50km": "Dentro de 50km",
       "100km": "Dentro de 100km",
-      "auto": "Auto"
+      "10closest": "10 closest"
     },
     "locationModal": {
       "locaitonTitle": "Ubicación",

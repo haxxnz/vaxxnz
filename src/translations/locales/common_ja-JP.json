@@ -36,7 +36,7 @@
       "25km": "25km以内",
       "50km": "50km以内",
       "100km": "100km以内",
-      "auto": "Auto"
+      "10closest": "10 closest"
     }
   },
   "walkins": {
