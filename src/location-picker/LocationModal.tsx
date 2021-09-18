@@ -4,20 +4,21 @@ import { Modal } from "baseui/modal";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
-import { Coords } from "./LocationPicker";
+// import { Coords } from "./LocationPicker";
 import getSuburb from "../utils/reverseGeocode";
 import { ADDRESS_FINDER_API_KEY } from "../utils/consts";
+import { handledPushState } from "../utils/url";
 
 type Props = {
   locationIsOpen: boolean;
   setLocationIsOpen: (isOpen: boolean) => void;
-  setCoords: (coords: Coords) => void;
-  setPlaceName: (name: string) => void;
+  // setCoords: (coords: Coords) => void;
+  // setPlaceName: (name: string) => void;
 };
 
 const LocationModal = (props: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const { setCoords, setPlaceName, setLocationIsOpen } = props;
+  const { setLocationIsOpen } = props;
 
   const { t } = useTranslation("common");
 
@@ -40,17 +41,17 @@ const LocationModal = (props: Props) => {
   const setLocation = useCallback(
     (lat: number, lng: number, name?: string | null) => {
       const placeName = name ?? `${lat} ${lng}`;
-      setCoords({ lat, lng });
-      setPlaceName(placeName);
+      // setCoords({ lat, lng });
+      // setPlaceName(placeName);
       close();
       const url = new URL(window.location.toString());
       url.searchParams.set("lat", lat.toString());
       url.searchParams.set("lng", lng.toString());
       url.searchParams.set("placeName", placeName);
       enqueueAnalyticsEvent("Location set");
-      window.history.pushState({}, "", url.toString());
+      handledPushState(url.toString());
     },
-    [close, setCoords, setPlaceName]
+    [close]
   );
   const inputRef = useCallback(
     (domNode) => {

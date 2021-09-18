@@ -1,7 +1,7 @@
 import { Button, KIND } from "baseui/button";
 import { formatDistance } from "date-fns";
 import i18next from "i18next";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import RadiusSelect from "../RadiusSelect";
 import { unsupportedLocales } from "../translations";
@@ -19,7 +19,7 @@ export interface Coords {
 
 interface LocationPickerProps {
   coords: Coords;
-  setCoords: (coords: Coords) => void;
+  // setCoords: (coords: Coords) => void;
   radiusKm: number;
   setRadiusKm: (radiusKm: number) => void;
   lastUpdateTime: Date | null;
@@ -27,14 +27,14 @@ interface LocationPickerProps {
 
 export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
   coords,
-  setCoords,
+  // setCoords,
   radiusKm,
   setRadiusKm,
   lastUpdateTime,
 }) => {
-  const { placeName: urlPlaceName } = useSearchParams();
-  const [placeName, setPlaceName] = useState(urlPlaceName);
-  useEffect(() => setPlaceName(urlPlaceName), [urlPlaceName]);
+  const { placeName } = useSearchParams();
+  // const [placeName, setPlaceName] = useState(urlPlaceName);
+  // useEffect(() => setPlaceName(urlPlaceName), [urlPlaceName]);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -47,8 +47,8 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
       <LocationModal
         locationIsOpen={isOpen}
         setLocationIsOpen={setIsOpen}
-        setCoords={setCoords}
-        setPlaceName={setPlaceName}
+        // setCoords={setCoords}
+        // setPlaceName={setPlaceName}
       />
 
       <HeaderMain>
