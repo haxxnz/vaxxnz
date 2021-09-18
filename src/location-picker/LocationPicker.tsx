@@ -20,14 +20,12 @@ export interface Coords {
 interface LocationPickerProps {
   coords: Coords;
   radiusKm: number;
-  // setRadiusKm: (radiusKm: number) => void;
   lastUpdateTime: Date | null;
 }
 
 export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
   coords,
   radiusKm,
-  // setRadiusKm,
   lastUpdateTime,
 }) => {
   const { placeName } = useSearchParams();

@@ -5,7 +5,6 @@ import { eventedPushState } from "./utils/url";
 
 interface Props {
   value: number;
-  // setValue: (value: number) => void;
 }
 
 export default function RadiusSelect(props: Props) {
