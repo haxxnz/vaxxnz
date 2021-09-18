@@ -13,6 +13,16 @@ function point(latlng: LatLng) {
   return geometry;
 }
 
+function getGetDistanceInKm<T>(
+  myPoint: { type: "Point"; coordinates: LatLng },
+  getLatLng: (location: T) => LatLng
+) {
+  return (l: T) =>
+    distance(myPoint, point(getLatLng(l)), {
+      units: "kilometers",
+    });
+}
+
 export function filterLocations<T>(
   locations: T[],
   coords: Coords,
@@ -20,20 +30,13 @@ export function filterLocations<T>(
   getLatLng: (location: T) => LatLng
 ) {
   const myPoint = point([coords.lat, coords.lng]);
+  const getDistanceKm = getGetDistanceInKm(myPoint, getLatLng);
   if (radiusKm === "auto") {
-    const sortedLocations = sortByAsc(locations, (l) => {
-      const distanceInKm = distance(myPoint, point(getLatLng(l)), {
-        units: "kilometers",
-      });
-      return distanceInKm;
-    });
-    return sortedLocations.slice(0, 10);
+    return sortByAsc(locations, (l) => getDistanceKm(l)).slice(0, 10);
   } else {
-    return locations.filter((l) => {
-      const distanceInKm = distance(myPoint, point(getLatLng(l)), {
-        units: "kilometers",
-      });
-      return distanceInKm < radiusKm;
-    });
+    return sortByAsc(
+      locations.filter((l) => getDistanceKm(l) < radiusKm),
+      (l) => getDistanceKm(l)
+    );
   }
 }
