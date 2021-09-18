@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Coords } from "../../location-picker/LocationPicker";
 import { getDistanceKm } from "../../utils/distance";
+import { memoizeOnce } from "../../utils/memoize";
 
 export interface OpeningHours {
   schedule: { [date: string]: string };
@@ -36,15 +37,18 @@ export interface HealthpointLocation extends HealthpointLocationRaw {
   isHealthpoint: true;
 }
 
-const getHealthpointData = (): Promise<HealthpointLocation[]> =>
-  fetch(
-    "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/healthpointLocations.json"
-  )
-    .then((r) => r.json())
-    .then((locs) =>
-      locs.map((l: HealthpointLocationRaw) => ({ isHealthpoint: true, ...l }))
+export const getHealthpointData = memoizeOnce(
+  async (): Promise<HealthpointLocation[]> => {
+    const r = await fetch(
+      "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/healthpointLocations.json"
     );
-
+    const locs = await r.json();
+    return locs.map((l: HealthpointLocationRaw) => ({
+      isHealthpoint: true,
+      ...l,
+    }));
+  }
+);
 type HealthpointDataResult =
   | { ok: HealthpointLocation[] }
   | { error: Error }

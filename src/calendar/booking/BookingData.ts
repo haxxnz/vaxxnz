@@ -5,7 +5,7 @@ import { getCrowdsourcedLocations } from "../../crowdsourced/CrowdsourcedData";
 import filterOldDates from "../../filterOldDates";
 import { Coords } from "../../location-picker/LocationPicker";
 import { getDistanceKm } from "../../utils/distance";
-import { memoizeOnce } from "../../utils/memoize";
+import { memoize0, memoizeOnce } from "../../utils/memoize";
 import {
   CalendarData,
   CalendarDateLocations,
@@ -30,13 +30,13 @@ const getLocations = memoizeOnce(async function () {
   return data;
 });
 
-async function getAvailabilityData(extId: string) {
+const getAvailabilityData = memoize0(async function (extId: string) {
   const res = await fetch(
     `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/availability/${extId}.json`
   );
   const data: AvailabilityData = await res.json();
   return data;
-}
+});
 
 async function getMyCalendar(coords: Coords, radiusKm: number) {
   const locations = await getLocations();
