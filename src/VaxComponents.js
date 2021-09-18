@@ -223,7 +223,7 @@ export const ModalGrid = styled.section`
 export const WalkGrid = styled.section`
   display: grid;
   gap: 2.5rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.6fr 1fr;
   height: 100%;
   overflow-y: scroll;
   h1 {

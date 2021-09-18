@@ -31,7 +31,7 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
   const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
 
   const desktopDialogStyle = {
-    width: "80vw",
+    width: "100%",
   };
   const mobileDialogStyle = {
     width: "100vw",
@@ -39,7 +39,6 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
     borderRadius: "0",
   };
   const sharedDialogStyle = {
-    maxWidth: "1200px",
     display: "flex",
     flexDirection: "column",
     alignSelf: "center",
