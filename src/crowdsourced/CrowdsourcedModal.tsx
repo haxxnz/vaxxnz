@@ -55,6 +55,8 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
     padding: "1.5rem",
     backgroundColor: "white",
     border: "1px solid lightgray",
+    maxWidth: "1440px",
+    boxSizing: "border-box",
   };
   const dialogStyle = isMobileView
     ? { ...mobileDialogStyle, ...sharedDialogStyle }

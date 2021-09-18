@@ -42,6 +42,8 @@ const HealthpointModal: FunctionComponent<Props> = ({
     padding: "1.5rem",
     backgroundColor: "white",
     border: "1px solid lightgray",
+    maxWidth: "1440px",
+    boxSizing: "border-box",
   };
   const dialogStyle = isMobileView
     ? { ...mobileDialogStyle, ...sharedDialogStyle }
@@ -111,15 +113,6 @@ const HealthpointModal: FunctionComponent<Props> = ({
             <p>{location.address}</p>
           </section>
 
-          {location.url && (
-            <section>
-              <h3>{t("core.website")}</h3>
-              <a href={location.url} target="_blank" rel="noreferrer">
-                {location.url}
-              </a>
-            </section>
-          )}
-
           {telephone && (
             <section>
               <h3>{t("walkins.phone")}</h3>
@@ -150,6 +143,14 @@ const HealthpointModal: FunctionComponent<Props> = ({
                   );
                 }
               )}
+            </section>
+          )}
+          {location.url && (
+            <section>
+              <h3>{t("core.website")}</h3>
+              <a href={location.url} target="_blank" rel="noreferrer">
+                {location.url}
+              </a>
             </section>
           )}
 
