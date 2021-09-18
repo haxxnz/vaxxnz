@@ -1,6 +1,7 @@
 import { Button, KIND } from "baseui/button";
 import { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "react-responsive";
 import { LocationNotice } from "../common/LocationNotice";
 import { NoticeList, NoticeListItem } from "../NoticeList";
 import { ModalGrid } from "../VaxComponents";
@@ -30,6 +31,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
   location,
 }) => {
   const { t } = useTranslation("common");
+  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
 
   const close = () => clearSelectedLocation();
   if (location == null) {
@@ -37,8 +39,29 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
   }
   const telephone = location.telephone?.replace(/\[.*\]/g, "");
 
+  const desktopDialogStyle = {
+    width: "100%",
+  };
+  const mobileDialogStyle = {
+    width: "100vw",
+    margin: "0rem",
+    borderRadius: "0",
+  };
+  const sharedDialogStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignSelf: "center",
+    padding: "1.5rem",
+    backgroundColor: "white",
+    border: "1px solid lightgray",
+    maxWidth: "1440px",
+    boxSizing: "border-box",
+  };
+  const dialogStyle = isMobileView
+    ? { ...mobileDialogStyle, ...sharedDialogStyle }
+    : { ...desktopDialogStyle, ...sharedDialogStyle };
   return (
-    <div>
+    <div style={dialogStyle as any}>
       <ModalGrid className={"modal-container WalkModal"}>
         <div>
           <h1
