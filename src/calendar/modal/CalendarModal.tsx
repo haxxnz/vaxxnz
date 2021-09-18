@@ -8,6 +8,7 @@ import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { CalendarModalContent } from "./CalendarModalContent";
 import { useParams, useHistory } from "react-router-dom";
 import { BookingData } from "../booking/BookingData";
+import { getSearch } from "../../utils/url";
 
 interface BookingModalProps {
   coords: Coords;
@@ -44,7 +45,7 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
   const activeDate = { dateStr: unwind[0], locations: unwind[1] };
 
   const close = () => {
-    history.push("/");
+    history.push(`/${getSearch()}`);
   };
 
   const desktopDialogStyle = {

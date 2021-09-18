@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 
+export function getSearch() {
+  return new URL(window.location.toString()).search;
+}
+
 export function useSearchParams() {
   function getSearchParams() {
     const searchParams = new URL(window.location.toString()).searchParams;
@@ -7,7 +11,8 @@ export function useSearchParams() {
     const lng = searchParams.get("lng");
     const placeName = searchParams.get("placeName");
     const radius = searchParams.get("radius");
-    return { lat, lng, placeName, radius };
+    const locale = searchParams.get("locale");
+    return { lat, lng, placeName, radius, locale };
   }
   const [searchParams, setSearchParams] = useState(getSearchParams());
   useEffect(() => {

@@ -17,6 +17,7 @@ import { useHistory } from "react-router-dom";
 import { simpleHash } from "../utils/simpleHash";
 import { slug } from "../utils/slug";
 import { useRadiusKm } from "../utils/useRadiusKm";
+import { getSearch } from "../utils/url";
 
 export interface Props {
   coords: Coords;
@@ -49,7 +50,9 @@ export function TodayLocationsSection({
       radiusKm,
     });
     history.push(
-      `/${slug(location.name)}-${simpleHash(`${location.lat}${location.lng}`)}`
+      `/${slug(location.name)}-${simpleHash(
+        `${location.lat}${location.lng}`
+      )}${getSearch()}`
     );
   };
 
