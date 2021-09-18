@@ -3,7 +3,6 @@ import {
   WalkContainer as OtherContainer,
 } from "../VaxComponents";
 import { formatDistanceKm, getDistanceKm } from "../utils/distance";
-import { Coords } from "../location-picker/LocationPicker";
 import { Instruction } from "./healthpoint/HealthpointData";
 import { useState } from "react";
 import { Spinner } from "baseui/spinner";
@@ -18,21 +17,21 @@ import { simpleHash } from "../utils/simpleHash";
 import { slug } from "../utils/slug";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { getSearch } from "../utils/url";
+import { useCoords } from "../utils/useCoords";
 
 export interface Props {
-  coords: Coords;
   selectedLocationIndex?: number;
   setSelectedLocation: (num?: number) => void;
 }
 
 export function TodayLocationsSection({
-  coords,
   selectedLocationIndex,
   setSelectedLocation,
 }: Props) {
   const radiusKm = useRadiusKm();
+  const coords = useCoords();
   const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
-  const locations = useTodayLocationsData(coords);
+  const locations = useTodayLocationsData();
   const { t, i18n } = useTranslation("common");
   const history = useHistory();
 

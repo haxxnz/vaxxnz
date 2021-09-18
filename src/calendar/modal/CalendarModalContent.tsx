@@ -10,6 +10,7 @@ import { Instruction } from "../../today-locations/healthpoint/HealthpointData";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { sortByAsc } from "../../utils/array";
 import { getDistanceKm } from "../../utils/distance";
+import { useCoords } from "../../utils/useCoords";
 import { ModalGrid } from "../../VaxComponents";
 import { BookingLocationSlotsPair } from "../booking/BookingDataTypes";
 import BookingLocation from "../BookingLocation";
@@ -19,7 +20,6 @@ import { CrowdsourcedBookingLocation } from "./CrowdsourcedBookingLocation";
 interface CalendarModalContentProps {
   activeDate: CalendarDate;
   close: () => void;
-  coords: Coords;
 }
 
 function sortByDistance(
@@ -38,9 +38,10 @@ function sortByDistance(
 }
 
 export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> =
-  ({ activeDate: { dateStr, locations }, close, coords }) => {
+  ({ activeDate: { dateStr, locations }, close }) => {
     const date = parse(dateStr, "yyyy-MM-dd", new Date());
     const { t } = useTranslation("common");
+    const coords = useCoords();
 
     // TODO: useMemo, or move this to the data source hook
     const sortedLocations = sortByDistance(locations, coords);
@@ -142,7 +143,6 @@ export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> 
             <BookingLocation
               key={location.location.extId}
               locationSlotsPair={location}
-              coords={coords}
               activeDate={{ dateStr, locations }}
             />
           ))}
@@ -151,7 +151,6 @@ export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> 
             <CrowdsourcedBookingLocation
               key={location.name}
               location={location}
-              coords={coords}
               date={date}
             />
           ))}

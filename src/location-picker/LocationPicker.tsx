@@ -11,6 +11,7 @@ import { DEFAULT_LOCATION } from "../utils/consts";
 import { useSearchParams } from "../utils/url";
 import { HeaderMain } from "../VaxComponents";
 import LocationModal from "./LocationModal";
+import { useCoords } from "../utils/useCoords";
 
 export interface Coords {
   lng: number;
@@ -18,15 +19,14 @@ export interface Coords {
 }
 
 interface LocationPickerProps {
-  coords: Coords;
   lastUpdateTime: Date | null;
 }
 
 export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
-  coords,
   lastUpdateTime,
 }) => {
   const { placeName } = useSearchParams();
+  const coords = useCoords();
 
   const [isOpen, setIsOpen] = useState(false);
 

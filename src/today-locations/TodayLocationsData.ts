@@ -1,4 +1,3 @@
-import { Coords } from "../location-picker/LocationPicker";
 import {
   CrowdsourcedLocation,
   getCrowdsourcedLocations,
@@ -9,11 +8,13 @@ import {
 } from "./healthpoint/HealthpointData";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { filterLocations } from "../utils/location";
+import { useCoords } from "../utils/useCoords";
 
 export type TodayLocation = CrowdsourcedLocation | HealthpointLocation;
 
-export const useTodayLocationsData = (coords: Coords) => {
+export const useTodayLocationsData = () => {
   const radiusKm = useRadiusKm();
+  const coords = useCoords();
   const currentDay = new Date().getDay();
   const locations = useHealthpointLocations();
   const crowdSourced = getCrowdsourcedLocations().filter(

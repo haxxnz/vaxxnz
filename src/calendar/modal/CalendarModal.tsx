@@ -3,7 +3,6 @@ import { Button, KIND } from "baseui/button";
 import { FunctionComponent, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
-import { Coords } from "../../location-picker/LocationPicker";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { CalendarModalContent } from "./CalendarModalContent";
 import { useParams, useHistory } from "react-router-dom";
@@ -11,12 +10,10 @@ import { BookingData } from "../booking/BookingData";
 import { getSearch } from "../../utils/url";
 
 interface BookingModalProps {
-  coords: Coords;
   bookingData?: BookingData;
 }
 
 const BookingModal: FunctionComponent<BookingModalProps> = ({
-  coords,
   bookingData,
 }) => {
   const { t } = useTranslation("common");
@@ -73,11 +70,7 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
   return (
     <div style={dialogStyle as any}>
       {activeDate && (
-        <CalendarModalContent
-          close={close}
-          activeDate={activeDate}
-          coords={coords}
-        />
+        <CalendarModalContent close={close} activeDate={activeDate} />
       )}
       <div className="MobileOnly">
         <Button

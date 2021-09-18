@@ -1,7 +1,8 @@
 import CookieConsent from "react-cookie-consent";
-import { Coords } from "./location-picker/LocationPicker";
+import { useCoords } from "./utils/useCoords";
 
-const CookiesBar = (coords: Coords) => {
+const CookiesBar = () => {
+  const coords = useCoords();
   const EUbbox = [-12.0792755076, 35.9674116355, 40.6576894187, 58.9861052075];
   if (
     coords.lat > EUbbox[1] &&

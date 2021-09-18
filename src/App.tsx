@@ -1,9 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { CalendarSection } from "./calendar/CalendarSection";
 import { LocationPicker } from "./location-picker/LocationPicker";
-import { DEFAULT_LOCATION } from "./utils/consts";
-import { useSearchParams } from "./utils/url";
 import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
 import CookiesBar from "./Cookies";
 import BookingModal from "./calendar/modal/CalendarModal";
@@ -15,20 +13,12 @@ import { Header } from "./Header";
 import { Banner } from "./Banner";
 
 function App() {
-  const { lat, lng } = useSearchParams();
-  const coords = useMemo(
-    () => ({
-      lat: lat ? parseFloat(lat) : DEFAULT_LOCATION.lat,
-      lng: lng ? parseFloat(lng) : DEFAULT_LOCATION.lng,
-    }),
-    [lat, lng]
-  );
   const { pathname } = useLocation();
 
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
   const [selectedLocationIndex, setSelectedLocationIndex] = useState<number>();
 
-  const bookingData = useBookingData(coords, setLastUpdateTime);
+  const bookingData = useBookingData(setLastUpdateTime);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -42,7 +32,6 @@ function App() {
           <Route path="/bookings/:date">
             <div className={"big-old-container"}>
               <BookingModal
-                coords={coords}
                 bookingData={"ok" in bookingData ? bookingData.ok : undefined}
               />
             </div>
@@ -56,19 +45,12 @@ function App() {
             <>
               <Banner />
               <div className={"big-old-container"}>
-                <LocationPicker
-                  coords={coords}
-                  lastUpdateTime={lastUpdateTime}
-                />
+                <LocationPicker lastUpdateTime={lastUpdateTime} />
                 <TodayLocationsSection
-                  coords={coords}
                   selectedLocationIndex={selectedLocationIndex}
                   setSelectedLocation={setSelectedLocationIndex}
                 />
-                <CalendarSection
-                  coords={coords}
-                  setLastUpdateTime={setLastUpdateTime}
-                />
+                <CalendarSection setLastUpdateTime={setLastUpdateTime} />
               </div>
             </>
           </Route>
@@ -82,7 +64,7 @@ function App() {
             backgroundImage: `url(${process.env.PUBLIC_URL + "/bg.svg"})`,
           }}
         ></div>
-        <CookiesBar lng={coords.lng} lat={coords.lat} />
+        <CookiesBar />
       </div>
     </>
   );
