@@ -38,7 +38,7 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
   );
 
   if (!bookingData || !unwind) {
-    return <p>err</p>;
+    return <p>Loading...</p>;
   }
 
   const activeDate = { dateStr: unwind[0], locations: unwind[1] };
