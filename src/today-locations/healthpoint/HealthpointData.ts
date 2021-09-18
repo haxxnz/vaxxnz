@@ -1,8 +1,4 @@
 import { useState, useEffect } from "react";
-import { Coords } from "../../location-picker/LocationPicker";
-import { getDistanceKm } from "../../utils/distance";
-import { filterLocations } from "../../utils/location";
-import { Radius } from "../../utils/locationTypes";
 import { memoizeOnce } from "../../utils/memoize";
 
 export interface OpeningHours {
@@ -84,24 +80,17 @@ type HealthpointLocationsResult =
   | { error: Error }
   | { loading: true };
 
-export const useHealthpointLocations = (
-  coords: Coords,
-  radiusKm: Radius
-): HealthpointLocationsResult => {
+export const useHealthpointLocations = (): HealthpointLocationsResult => {
   const allLocations = useHealthpointData();
 
   if ("ok" in allLocations) {
-    return { ok: filterHealthpointLocation(allLocations.ok, coords, radiusKm) };
+    return { ok: filterHealthpointLocation(allLocations.ok) };
   } else {
     return allLocations;
   }
 };
 
-function filterHealthpointLocation(
-  allLocations: HealthpointLocation[],
-  coords: Coords,
-  radiusKm: Radius
-) {
+function filterHealthpointLocation(allLocations: HealthpointLocation[]) {
   const matchedFilter = allLocations.filter(
     ({ isOpenToday, instructionLis: bps }) => {
       const filterBoolean =

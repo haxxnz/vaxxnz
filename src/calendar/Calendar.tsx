@@ -18,7 +18,6 @@ import {
 import { useHistory } from "react-router-dom";
 import React from "react";
 import { useRadiusKm } from "../utils/useRadiusKm";
-import { Coords } from "../location-picker/LocationPicker";
 
 interface BookingCalendarProps {
   data: CalendarData;

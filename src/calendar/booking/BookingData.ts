@@ -1,5 +1,4 @@
 import { addDays, format, parse } from "date-fns";
-import i18next from "i18next";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   CrowdsourcedLocation,
@@ -7,19 +6,11 @@ import {
 } from "../../crowdsourced/CrowdsourcedData";
 import { filterSlots, getTodayDateStr } from "../../filterOldDates";
 import { Coords } from "../../location-picker/LocationPicker";
-import { sortByAsc } from "../../utils/array";
-import { getDistanceKm } from "../../utils/distance";
 import { filterLocations } from "../../utils/location";
 import { Radius } from "../../utils/locationTypes";
 import { memoize0, memoizeOnce } from "../../utils/memoize";
 import { useRadiusKm } from "../../utils/useRadiusKm";
-import {
-  CalendarData,
-  CalendarDateLocations,
-  CalendarMonth,
-  DateString,
-  MonthString,
-} from "../CalendarData";
+import { DateString, MonthString } from "../CalendarData";
 import {
   BookingDateLocations,
   BookingLocationSlotsPair,
@@ -79,7 +70,7 @@ async function getMyCalendar(coords: Coords, radiusKm: Radius) {
     })
   );
 
-  const crowdSourced = getCrowdsourcedLocations(coords, radiusKm);
+  const crowdSourced = getCrowdsourcedLocations();
   const crowdSourcedFiltered = filterLocations(
     crowdSourced,
     coords,

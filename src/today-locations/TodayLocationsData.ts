@@ -15,8 +15,8 @@ export type TodayLocation = CrowdsourcedLocation | HealthpointLocation;
 export const useTodayLocationsData = (coords: Coords) => {
   const radiusKm = useRadiusKm();
   const currentDay = new Date().getDay();
-  const locations = useHealthpointLocations(coords, radiusKm);
-  const crowdSourced = getCrowdsourcedLocations(coords, radiusKm).filter(
+  const locations = useHealthpointLocations();
+  const crowdSourced = getCrowdsourcedLocations().filter(
     ({ openingHours }) =>
       openingHours.find(
         (opennningHoursItem) => opennningHoursItem.day === currentDay
