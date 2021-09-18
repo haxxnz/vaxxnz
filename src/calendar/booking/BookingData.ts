@@ -24,8 +24,6 @@ import {
   AvailabilityData,
 } from "./BookingDataTypes";
 
-const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
-
 const getLocations = memoizeOnce(async function () {
   const res = await fetch(
     "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/uniqLocations.json"
@@ -48,19 +46,6 @@ async function getMyCalendar(coords: Coords, radiusKm: Radius) {
     l.location.lat,
     l.location.lng,
   ]);
-  if (filtredLocations.length === 0) {
-    if (
-      !(
-        coords.lat > NZbbox[1] &&
-        coords.lat < NZbbox[3] &&
-        coords.lng > NZbbox[0] &&
-        coords.lng < NZbbox[2]
-      )
-    ) {
-      throw new Error(i18next.t("core.noResultsNotInNZ"));
-    }
-    throw new Error(i18next.t("core.noResultsInRadius"));
-  }
   let oldestLastUpdatedTimestamp = Infinity;
   const availabilityDatesAndLocations = await Promise.all(
     filtredLocations.map(async (location) => {

@@ -18,6 +18,7 @@ import {
 import { useHistory } from "react-router-dom";
 import React from "react";
 import { useRadiusKm } from "../utils/useRadiusKm";
+import { Coords } from "../location-picker/LocationPicker";
 
 interface BookingCalendarProps {
   data: CalendarData;
@@ -54,10 +55,11 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   data,
 }) => {
   const { i18n } = useTranslation();
+  const calendarData = Array.from(data);
 
   return (
     <CalendarContainer>
-      {Array.from(data).map(([monthStr, monthDates]) => (
+      {calendarData.map(([monthStr, monthDates]) => (
         <CalendarMonthContainer
           key={monthStr}
           monthStr={monthStr}

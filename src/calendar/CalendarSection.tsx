@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import { Coords } from "../location-picker/LocationPicker";
 import { BookingCalendar, LoadingBookingCalendar } from "./Calendar";
 import { useBookingData } from "./booking/BookingData";
+import { CalendarError } from "./CalendarError";
 
 interface CalendarSectionProps {
   coords: Coords;
@@ -21,19 +22,7 @@ export const CalendarSection: FunctionComponent<CalendarSectionProps> = ({
       ) : "loading" in data ? (
         <LoadingBookingCalendar />
       ) : (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "1rem",
-          }}
-        >
-          {/* <Spinner color="black" /> */}
-          <div style={{ marginLeft: "1rem", fontSize: "1.5rem" }}>
-            {data.error.message}
-          </div>
-        </div>
+        <CalendarError errorMessage={data.error.message} />
       )}
     </>
   );
