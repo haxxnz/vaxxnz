@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import "./App.css";
 import { CalendarSection } from "./calendar/CalendarSection";
 import { LocationPicker } from "./location-picker/LocationPicker";
@@ -13,6 +13,7 @@ import { useBookingData } from "./calendar/booking/BookingData";
 import { LocationRouter } from "./LocationRouter";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
+import { Banner } from "./Banner";
 
 function App() {
   const { lat, lng, radius } = useSearchParams();
@@ -58,36 +59,7 @@ function App() {
           </Route>
           <Route path="/">
             <>
-              <section className="App-header">
-                <div className="header-content">
-                  <h1>{t("core.tagline")}</h1>
-                  <h2 style={{ fontWeight: "normal" }}>{t("core.subtitle")}</h2>
-                  <br />
-                  <p>
-                    <Trans
-                      i18nKey="core.disclaimerNotAGovWebsite"
-                      t={t}
-                      components={[
-                        <a
-                          href="https://bookmyvaccine.nz"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          https://bookmyvaccine.nz
-                        </a>,
-                      ]}
-                    />
-                    <br />
-                  </p>
-                </div>
-                <div className="header-img-container">
-                  <img
-                    className="header-img"
-                    src="./doc.svg"
-                    alt=" a doctor"
-                  ></img>
-                </div>
-              </section>
+              <Banner />
               <div className={"big-old-container"}>
                 <LocationPicker
                   coords={coords}
