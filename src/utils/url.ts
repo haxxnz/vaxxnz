@@ -30,8 +30,8 @@ export function useSearchParams() {
   return searchParams;
 }
 
-export function handledPushState(url: string) {
-  // pushState does NOT fire onpopstate
+export function eventedPushState(url: string) {
+  // pushState does NOT fire onpopstate by itself
   window.history.pushState({}, "", url);
   window.dispatchEvent(new CustomEvent("pushstate", {}));
 }

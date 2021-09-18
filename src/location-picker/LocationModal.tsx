@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import getSuburb from "../utils/reverseGeocode";
 import { ADDRESS_FINDER_API_KEY } from "../utils/consts";
-import { handledPushState } from "../utils/url";
+import { eventedPushState } from "../utils/url";
 
 type Props = {
   locationIsOpen: boolean;
@@ -44,7 +44,7 @@ const LocationModal = (props: Props) => {
       url.searchParams.set("lng", lng.toString());
       url.searchParams.set("placeName", placeName);
       enqueueAnalyticsEvent("Location set");
-      handledPushState(url.toString());
+      eventedPushState(url.toString());
     },
     [close]
   );
