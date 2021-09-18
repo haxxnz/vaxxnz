@@ -10,15 +10,66 @@ import { DEFAULT_LOCATION } from "./utils/consts";
 import { useSearchParams } from "./utils/url";
 import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
 import CookiesBar from "./Cookies";
-import { CalendarDate } from "./calendar/CalendarData";
 import BookingModal from "./calendar/modal/CalendarModal";
 import { useTodayLocationsData } from "./today-locations/TodayLocationsData";
 import WalkModal from "./today-locations/healthpoint/HealthpointModal";
 import { HealthpointLocation } from "./today-locations/healthpoint/HealthpointData";
 import { CrowdsourcedLocation } from "./crowdsourced/CrowdsourcedData";
 import CrowdsourcedModal from "./crowdsourced/CrowdsourcedModal";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useParams,
+  useHistory,
+} from "react-router-dom";
 import { useBookingData } from "./calendar/booking/BookingData";
+import { simpleHash } from "./utils/simpleHash";
+
+function LocationRouter({
+  locations,
+  radiusKm,
+}: {
+  locations?: (CrowdsourcedLocation | HealthpointLocation)[];
+  radiusKm: number;
+}) {
+  const { slug } = useParams<{ slug: string }>();
+  const [hash] = slug.split("-").slice(-1);
+  const history = useHistory();
+
+  if (!locations) {
+    return <p>err</p>;
+  }
+
+  const location = locations.find(
+    (loc) => simpleHash(`${loc.lat}${loc.lng}`) === hash
+  );
+
+  if (!location) {
+    return (
+      <p>
+        {slug}|{hash}
+      </p>
+    );
+  }
+
+  return (
+    <>
+      {"isHealthpoint" in location ? (
+        <WalkModal
+          clearSelectedLocation={() => history.push("/")}
+          radiusKm={radiusKm}
+          location={location as HealthpointLocation}
+        />
+      ) : (
+        <CrowdsourcedModal
+          clearSelectedLocation={() => history.push("/")}
+          location={location as CrowdsourcedLocation}
+        />
+      )}
+    </>
+  );
+}
 
 function App() {
   const { lat, lng } = useSearchParams();
@@ -82,93 +133,71 @@ function App() {
                   bookingData={"ok" in bookingData ? bookingData.ok : undefined}
                 />
               </Route>
+              <Route path="/:slug">
+                <LocationRouter
+                  locations={"ok" in locations ? locations.ok : undefined}
+                  radiusKm={radiusKm}
+                />
+              </Route>
+              <Route path="/">
+                <>
+                  <section className="App-header">
+                    <div className="header-content">
+                      <h1>{t("core.tagline")}</h1>
+                      <h2 style={{ fontWeight: "normal" }}>
+                        {t("core.subtitle")}
+                      </h2>
+                      <br />
+                      <p>
+                        <Trans
+                          i18nKey="core.disclaimerNotAGovWebsite"
+                          t={t}
+                          components={[
+                            <a
+                              href="https://bookmyvaccine.nz"
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              https://bookmyvaccine.nz
+                            </a>,
+                          ]}
+                        />
+                        <br />
+                      </p>
+                    </div>
+                    <div className="header-img-container">
+                      <img
+                        className="header-img"
+                        src="./doc.svg"
+                        alt=" a doctor"
+                      ></img>
+                    </div>
+                  </section>
+                  <div className={"big-old-container"}>
+                    <LocationPicker
+                      coords={coords}
+                      setCoords={setCoords}
+                      radiusKm={radiusKm}
+                      setRadiusKm={setRadiusKm}
+                      lastUpdateTime={lastUpdateTime}
+                    />
+
+                    <TodayLocationsSection
+                      coords={coords}
+                      radiusKm={radiusKm}
+                      selectedLocationIndex={selectedLocationIndex}
+                      setSelectedLocation={setSelectedLocationIndex}
+                    />
+                    <CalendarSection
+                      coords={coords}
+                      radiusKm={radiusKm}
+                      setLastUpdateTime={setLastUpdateTime}
+                    />
+                  </div>
+                </>
+              </Route>
             </Switch>
           </div>
-          {selectedLocationIndex !== undefined ? (
-            <div className={"big-old-container"}>
-              {"ok" in locations &&
-                locations.ok[selectedLocationIndex] &&
-                "isHealthpoint" in locations.ok[selectedLocationIndex] && (
-                  <WalkModal
-                    clearSelectedLocation={() =>
-                      setSelectedLocationIndex(undefined)
-                    }
-                    radiusKm={radiusKm}
-                    location={
-                      locations.ok[selectedLocationIndex] as HealthpointLocation
-                    }
-                  />
-                )}
-              {"ok" in locations &&
-                locations.ok[selectedLocationIndex] &&
-                !("isHealthpoint" in locations.ok[selectedLocationIndex]) && (
-                  <CrowdsourcedModal
-                    clearSelectedLocation={() =>
-                      setSelectedLocationIndex(undefined)
-                    }
-                    location={
-                      locations.ok[
-                        selectedLocationIndex
-                      ] as CrowdsourcedLocation
-                    }
-                  />
-                )}
-            </div>
-          ) : (
-            <>
-              <section className="App-header">
-                <div className="header-content">
-                  <h1>{t("core.tagline")}</h1>
-                  <h2 style={{ fontWeight: "normal" }}>{t("core.subtitle")}</h2>
-                  <br />
-                  <p>
-                    <Trans
-                      i18nKey="core.disclaimerNotAGovWebsite"
-                      t={t}
-                      components={[
-                        <a
-                          href="https://bookmyvaccine.nz"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          https://bookmyvaccine.nz
-                        </a>,
-                      ]}
-                    />
-                    <br />
-                  </p>
-                </div>
-                <div className="header-img-container">
-                  <img
-                    className="header-img"
-                    src="./doc.svg"
-                    alt=" a doctor"
-                  ></img>
-                </div>
-              </section>
-              <div className={"big-old-container"}>
-                <LocationPicker
-                  coords={coords}
-                  setCoords={setCoords}
-                  radiusKm={radiusKm}
-                  setRadiusKm={setRadiusKm}
-                  lastUpdateTime={lastUpdateTime}
-                />
-
-                <TodayLocationsSection
-                  coords={coords}
-                  radiusKm={radiusKm}
-                  selectedLocationIndex={selectedLocationIndex}
-                  setSelectedLocation={setSelectedLocationIndex}
-                />
-                <CalendarSection
-                  coords={coords}
-                  radiusKm={radiusKm}
-                  setLastUpdateTime={setLastUpdateTime}
-                />
-              </div>
-            </>
-          )}
         </Router>
         <footer className="footer-header">
           <p style={{ marginBottom: "0.5rem" }}>{t("footer.message")}</p>

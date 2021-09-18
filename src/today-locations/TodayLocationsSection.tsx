@@ -19,6 +19,9 @@ import { useMediaQuery } from "react-responsive";
 import { useTodayLocationsData } from "./TodayLocationsData";
 import { CrowdsourcedLocation } from "../crowdsourced/CrowdsourcedData";
 import CrowdsourcedModal from "../crowdsourced/CrowdsourcedModal";
+import { useHistory } from "react-router-dom";
+import { simpleHash } from "../utils/simpleHash";
+import { slug } from "../utils/slug";
 
 export interface Props {
   coords: Coords;
@@ -36,6 +39,7 @@ export function TodayLocationsSection({
   const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
   const locations = useTodayLocationsData(coords, radiusKm);
   const { t, i18n } = useTranslation("common");
+  const history = useHistory();
 
   const [currentView, setCurrentView] = useState(!isMobileView ? 3 : 1);
   const openModal = (locationIndex: number) => {
@@ -43,11 +47,16 @@ export function TodayLocationsSection({
       "ok" in locations && locationIndex !== undefined
         ? locations.ok[locationIndex]
         : undefined;
+    if (!location) {
+      return;
+    }
     enqueueAnalyticsEvent("Healthpoint location selected", {
       locationName: location ? location.name : "",
       radiusKm,
     });
-    setSelectedLocation(locationIndex);
+    history.push(
+      `/${slug(location.name)}-${simpleHash(`${location.lat}${location.lng}`)}`
+    );
   };
 
   const loadMore = () => {

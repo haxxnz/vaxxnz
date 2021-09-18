@@ -102,7 +102,7 @@ async function getMyCalendar(coords: Coords, radiusKm: number) {
   return { dateLocationsPairs, oldestLastUpdatedTimestamp };
 }
 
-type BookingDataResult =
+export type BookingDataResult =
   | { ok: BookingData }
   | { error: Error }
   | { loading: true };
