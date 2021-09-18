@@ -79,16 +79,6 @@ function App() {
       lng: lng ? parseFloat(lng) : DEFAULT_LOCATION.lng,
     };
   }, [lat, lng]);
-  // const [coords, setCoords] = useState({
-  //   lat: DEFAULT_LOCATION.lat,
-  //   lng: DEFAULT_LOCATION.lng,
-  // });
-  // useEffect(() => {
-  //   setCoords({
-  //     lat: lat ? parseFloat(lat) : DEFAULT_LOCATION.lat,
-  //     lng: lng ? parseFloat(lng) : DEFAULT_LOCATION.lng,
-  //   });
-  // }, [lat, lng]);
   const { pathname } = useLocation();
 
   const [radiusKm, setRadiusKm] = useState(10);
@@ -183,7 +173,6 @@ function App() {
                 <div className={"big-old-container"}>
                   <LocationPicker
                     coords={coords}
-                    // setCoords={setCoords}
                     radiusKm={radiusKm}
                     setRadiusKm={setRadiusKm}
                     lastUpdateTime={lastUpdateTime}

@@ -19,7 +19,6 @@ export interface Coords {
 
 interface LocationPickerProps {
   coords: Coords;
-  // setCoords: (coords: Coords) => void;
   radiusKm: number;
   setRadiusKm: (radiusKm: number) => void;
   lastUpdateTime: Date | null;
@@ -27,14 +26,11 @@ interface LocationPickerProps {
 
 export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
   coords,
-  // setCoords,
   radiusKm,
   setRadiusKm,
   lastUpdateTime,
 }) => {
   const { placeName } = useSearchParams();
-  // const [placeName, setPlaceName] = useState(urlPlaceName);
-  // useEffect(() => setPlaceName(urlPlaceName), [urlPlaceName]);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -44,12 +40,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
 
   return (
     <>
-      <LocationModal
-        locationIsOpen={isOpen}
-        setLocationIsOpen={setIsOpen}
-        // setCoords={setCoords}
-        // setPlaceName={setPlaceName}
-      />
+      <LocationModal locationIsOpen={isOpen} setLocationIsOpen={setIsOpen} />
 
       <HeaderMain>
         <section>

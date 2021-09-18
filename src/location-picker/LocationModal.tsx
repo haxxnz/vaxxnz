@@ -4,7 +4,6 @@ import { Modal } from "baseui/modal";
 import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
-// import { Coords } from "./LocationPicker";
 import getSuburb from "../utils/reverseGeocode";
 import { ADDRESS_FINDER_API_KEY } from "../utils/consts";
 import { handledPushState } from "../utils/url";
@@ -12,8 +11,6 @@ import { handledPushState } from "../utils/url";
 type Props = {
   locationIsOpen: boolean;
   setLocationIsOpen: (isOpen: boolean) => void;
-  // setCoords: (coords: Coords) => void;
-  // setPlaceName: (name: string) => void;
 };
 
 const LocationModal = (props: Props) => {
@@ -41,8 +38,6 @@ const LocationModal = (props: Props) => {
   const setLocation = useCallback(
     (lat: number, lng: number, name?: string | null) => {
       const placeName = name ?? `${lat} ${lng}`;
-      // setCoords({ lat, lng });
-      // setPlaceName(placeName);
       close();
       const url = new URL(window.location.toString());
       url.searchParams.set("lat", lat.toString());
