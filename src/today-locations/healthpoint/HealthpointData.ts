@@ -102,13 +102,7 @@ function filterHealthpointLocation(
   coords: Coords,
   radiusKm: Radius
 ) {
-  const filteredLocations = filterLocations(
-    allLocations,
-    coords,
-    radiusKm,
-    ({ lat, lng }) => [lat, lng]
-  );
-  const matchedFilter = filteredLocations.filter(
+  const matchedFilter = allLocations.filter(
     ({ isOpenToday, instructionLis: bps }) => {
       const filterBoolean =
         (bps.includes(Instruction.walkIn) ||

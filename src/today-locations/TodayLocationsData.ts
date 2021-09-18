@@ -1,5 +1,4 @@
 import { Coords } from "../location-picker/LocationPicker";
-import { getDistanceKm } from "../utils/distance";
 import {
   CrowdsourcedLocation,
   getCrowdsourcedLocations,
@@ -9,6 +8,7 @@ import {
   HealthpointLocation,
 } from "./healthpoint/HealthpointData";
 import { useRadiusKm } from "../utils/useRadiusKm";
+import { filterLocations } from "../utils/location";
 
 export type TodayLocation = CrowdsourcedLocation | HealthpointLocation;
 
@@ -24,23 +24,11 @@ export const useTodayLocationsData = (coords: Coords) => {
   );
   if ("ok" in locations) {
     const combined = [...crowdSourced, ...locations.ok];
-    combined.sort(
-      (
-        { lat: locationALat, lng: locationALng },
-        { lat: locationBLat, lng: locationBLng }
-      ) => {
-        const distanceKmLocationA = getDistanceKm(coords, {
-          lat: locationALat,
-          lng: locationALng,
-        });
-        const distanceKmLocationB = getDistanceKm(coords, {
-          lat: locationBLat,
-          lng: locationBLng,
-        });
-        return distanceKmLocationA - distanceKmLocationB;
-      }
-    );
-    return { ok: combined };
+    const sortedCombined = filterLocations(combined, coords, radiusKm, (l) => [
+      l.lat,
+      l.lng,
+    ]);
+    return { ok: sortedCombined };
   } else {
     return locations;
   }

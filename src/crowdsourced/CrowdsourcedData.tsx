@@ -45,11 +45,5 @@ function filterCrowdsourcedLocations(
   coords: Coords,
   radiusKm: Radius
 ) {
-  const filteredLocations = filterLocations(
-    allLocations,
-    coords,
-    radiusKm,
-    ({ lat, lng }) => [lat, lng]
-  );
-  return filteredLocations;
+  return allLocations;
 }
