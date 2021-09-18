@@ -99,16 +99,18 @@ function LocationRouter({ radiusKm }: { radiusKm: number }) {
 }
 
 function App() {
-  const { lat, lng } = useSearchParams();
+  const { lat, lng, radius } = useSearchParams();
   const coords = useMemo(() => {
     return {
       lat: lat ? parseFloat(lat) : DEFAULT_LOCATION.lat,
       lng: lng ? parseFloat(lng) : DEFAULT_LOCATION.lng,
     };
   }, [lat, lng]);
+  // const radius
+  const radiusKm = radius ? parseInt(radius, 10) : 10;
   const { pathname } = useLocation();
 
-  const [radiusKm, setRadiusKm] = useState(10);
+  // const [radiusKm, setRadiusKm] = useState(10);
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
   const [selectedLocationIndex, setSelectedLocationIndex] = useState<number>();
 
@@ -197,7 +199,7 @@ function App() {
                   <LocationPicker
                     coords={coords}
                     radiusKm={radiusKm}
-                    setRadiusKm={setRadiusKm}
+                    // setRadiusKm={setRadiusKm}
                     lastUpdateTime={lastUpdateTime}
                   />
 

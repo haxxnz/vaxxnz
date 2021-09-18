@@ -6,7 +6,8 @@ export function useSearchParams() {
     const lat = searchParams.get("lat");
     const lng = searchParams.get("lng");
     const placeName = searchParams.get("placeName");
-    return { lat, lng, placeName };
+    const radius = searchParams.get("radius");
+    return { lat, lng, placeName, radius };
   }
   const [searchParams, setSearchParams] = useState(getSearchParams());
   useEffect(() => {

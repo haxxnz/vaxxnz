@@ -1,14 +1,21 @@
 import { Select } from "baseui/select";
 import { useTranslation } from "react-i18next";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
+import { eventedPushState } from "./utils/url";
 
 interface Props {
   value: number;
-  setValue: (value: number) => void;
+  // setValue: (value: number) => void;
 }
 
 export default function RadiusSelect(props: Props) {
   const { t } = useTranslation("common");
+
+  const setRadiusKm = (radiusKm: number) => {
+    const url = new URL(window.location.toString());
+    url.searchParams.set("radius", radiusKm.toString());
+    eventedPushState(url.toString());
+  };
 
   const options = [
     { label: t("navigation.distanceDropdown.2km"), id: 2 },
@@ -34,7 +41,7 @@ export default function RadiusSelect(props: Props) {
           const selectedOption = selectedOptions[0];
           const id = selectedOption.id;
           if (id && typeof id === "number") {
-            props.setValue(id);
+            setRadiusKm(id);
             enqueueAnalyticsEvent("Radius changed", { radiusKm: id });
           }
         }
