@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import { useTranslation } from "react-i18next";
 import "./App.css";
 import { CalendarSection } from "./calendar/CalendarSection";
 import { LocationPicker } from "./location-picker/LocationPicker";
@@ -17,12 +16,13 @@ import { Banner } from "./Banner";
 
 function App() {
   const { lat, lng, radius } = useSearchParams();
-  const coords = useMemo(() => {
-    return {
+  const coords = useMemo(
+    () => ({
       lat: lat ? parseFloat(lat) : DEFAULT_LOCATION.lat,
       lng: lng ? parseFloat(lng) : DEFAULT_LOCATION.lng,
-    };
-  }, [lat, lng]);
+    }),
+    [lat, lng]
+  );
   const radiusKm = radius ? parseInt(radius, 10) : 10;
   const { pathname } = useLocation();
 
@@ -35,13 +35,10 @@ function App() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  const { t } = useTranslation("common");
-
   return (
     <>
       <div className="App">
         <Header />
-        {/* <div> */}
         <Switch>
           <Route path="/bookings/:date">
             <div className={"big-old-container"}>
@@ -66,7 +63,6 @@ function App() {
                   radiusKm={radiusKm}
                   lastUpdateTime={lastUpdateTime}
                 />
-
                 <TodayLocationsSection
                   coords={coords}
                   radiusKm={radiusKm}
@@ -82,7 +78,6 @@ function App() {
             </>
           </Route>
         </Switch>
-        {/* </div> */}
         <Footer />
       </div>
       <div className="background">
