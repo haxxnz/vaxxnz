@@ -15,17 +15,10 @@ export function useSearchParams() {
       setSearchParams(getSearchParams());
     }
     window.addEventListener("popstate", onHistoryUpdate);
+    window.addEventListener("pushstate", onHistoryUpdate);
     return () => {
       window.removeEventListener("popstate", onHistoryUpdate);
-    };
-  }, []);
-  useEffect(() => {
-    function onPushState() {
-      setSearchParams(getSearchParams());
-    }
-    window.addEventListener("pushstate", onPushState);
-    return () => {
-      window.removeEventListener("pushstate", onPushState);
+      window.removeEventListener("pushstate", onHistoryUpdate);
     };
   }, []);
   return searchParams;
