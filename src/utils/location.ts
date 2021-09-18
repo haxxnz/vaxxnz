@@ -31,7 +31,7 @@ export function filterLocations<T>(
 ) {
   const myPoint = point([coords.lat, coords.lng]);
   const getDistanceKm = getGetDistanceInKm(myPoint, getLatLng);
-  if (radiusKm === "auto") {
+  if (radiusKm === "10closest") {
     return sortByAsc(locations, (l) => getDistanceKm(l)).slice(0, 10);
   } else {
     return sortByAsc(

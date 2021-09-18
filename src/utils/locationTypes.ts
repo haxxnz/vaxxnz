@@ -1,1 +1,1 @@
-export type Radius = number | "auto";
+export type Radius = number | "10closest";

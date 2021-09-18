@@ -24,7 +24,7 @@ export default function RadiusSelect(props: Props) {
     { label: t("navigation.distanceDropdown.25km"), id: 25 },
     { label: t("navigation.distanceDropdown.50km"), id: 50 },
     { label: t("navigation.distanceDropdown.100km"), id: 100 },
-    { label: t("navigation.distanceDropdown.auto"), id: "auto" },
+    { label: t("navigation.distanceDropdown.10closest"), id: "10closest" },
   ];
 
   const selectedOption = options.find((o) => o.id === radiusKm);
@@ -41,7 +41,7 @@ export default function RadiusSelect(props: Props) {
         if (selectedOptions.length > 0) {
           const selectedOption = selectedOptions[0];
           const id = selectedOption.id;
-          if (id && (typeof id === "number" || id === "auto")) {
+          if (id && (typeof id === "number" || id === "10closest")) {
             setRadiusKm(id);
             enqueueAnalyticsEvent("Radius changed", { radiusKm: id });
           }
