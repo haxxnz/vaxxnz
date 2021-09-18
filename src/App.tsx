@@ -17,7 +17,6 @@ import { HealthpointLocation } from "./today-locations/healthpoint/HealthpointDa
 import { CrowdsourcedLocation } from "./crowdsourced/CrowdsourcedData";
 import CrowdsourcedModal from "./crowdsourced/CrowdsourcedModal";
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   useParams,

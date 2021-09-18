@@ -2,13 +2,9 @@ import {
   WalkBox as OtherBox,
   WalkContainer as OtherContainer,
 } from "../VaxComponents";
-import WalkModal from "./healthpoint/HealthpointModal";
 import { formatDistanceKm, getDistanceKm } from "../utils/distance";
 import { Coords } from "../location-picker/LocationPicker";
-import {
-  Instruction,
-  HealthpointLocation,
-} from "./healthpoint/HealthpointData";
+import { Instruction } from "./healthpoint/HealthpointData";
 import { useState } from "react";
 import { Spinner } from "baseui/spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,8 +13,6 @@ import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { Trans, useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import { useTodayLocationsData } from "./TodayLocationsData";
-import { CrowdsourcedLocation } from "../crowdsourced/CrowdsourcedData";
-import CrowdsourcedModal from "../crowdsourced/CrowdsourcedModal";
 import { useHistory } from "react-router-dom";
 import { simpleHash } from "../utils/simpleHash";
 import { slug } from "../utils/slug";

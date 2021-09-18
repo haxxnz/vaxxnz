@@ -1,16 +1,13 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { Button, KIND } from "baseui/button";
-import { Modal } from "baseui/modal";
 import { FunctionComponent, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import { Coords } from "../../location-picker/LocationPicker";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
-import { CalendarDate } from "../CalendarData";
 import { CalendarModalContent } from "./CalendarModalContent";
 import { useParams, useHistory } from "react-router-dom";
 import { BookingData } from "../booking/BookingData";
-import { BookingLocationSlotsPair } from "../booking/BookingDataTypes";
 
 interface BookingModalProps {
   coords: Coords;

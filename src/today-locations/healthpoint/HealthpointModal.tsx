@@ -1,5 +1,4 @@
 import { Button, KIND } from "baseui/button";
-import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";

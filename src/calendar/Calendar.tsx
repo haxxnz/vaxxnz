@@ -12,7 +12,6 @@ import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import {
   CalendarData,
-  CalendarDate,
   CalendarDateLocations,
   CalendarMonth,
 } from "./CalendarData";
@@ -125,7 +124,7 @@ interface CalendarDayProps {
 }
 function CalendarDay(props: CalendarDayProps): JSX.Element {
   const { t } = useTranslation("common");
-  const { availableCount, dateStr, radiusKm, locations } = props;
+  const { availableCount, dateStr, radiusKm } = props;
   const date = parse(dateStr, "yyyy-MM-dd", new Date());
   const history = useHistory();
   return (
