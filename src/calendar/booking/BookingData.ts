@@ -17,13 +17,20 @@ import {
   BookingLocationSlotsPair,
   Location,
   AvailabilityData,
+  LocationRaw,
 } from "./BookingDataTypes";
 
 const getLocations = memoizeOnce(async function () {
   const res = await fetch(
     "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/uniqLocations.json"
   );
-  const data: Location[] = await res.json();
+  const dataRaw: LocationRaw[] = await res.json();
+  const data: Location[] = dataRaw.map((l) => ({
+    ...l,
+    isBooking: true,
+    lat: l.location.lat,
+    lng: l.location.lng,
+  }));
   return data;
 });
 
@@ -37,13 +44,23 @@ const getAvailabilityData = memoize0(async function (extId: string) {
 
 async function getMyCalendar(coords: Coords, radiusKm: Radius) {
   const locations = await getLocations();
-  const filtredLocations = filterLocations(locations, coords, radiusKm, (l) => [
-    l.location.lat,
-    l.location.lng,
-  ]);
+  const crowdSourced = getCrowdsourcedLocations();
+  const combinedSorted = filterLocations(
+    [...locations, ...crowdSourced],
+    coords,
+    radiusKm,
+    (l) => [l.lat, l.lng]
+  );
+
   let oldestLastUpdatedTimestamp = Infinity;
+  const bmvLocations = combinedSorted.filter((l) =>
+    "isBooking" in l ? true : false
+  ) as Location[];
+  const crowdSourcedLocations = combinedSorted.filter((l) =>
+    "isCrowdSourced" in l ? true : false
+  ) as CrowdsourcedLocation[];
   const availabilityDatesAndLocations = await Promise.all(
-    filtredLocations.map(async (location) => {
+    bmvLocations.map(async (location) => {
       let locationsData: AvailabilityData | undefined = undefined;
       try {
         locationsData = await getAvailabilityData(location.extId);
@@ -71,14 +88,6 @@ async function getMyCalendar(coords: Coords, radiusKm: Radius) {
     })
   );
 
-  const crowdSourced = getCrowdsourcedLocations();
-  const crowdSourcedFiltered = filterLocations(
-    crowdSourced,
-    coords,
-    radiusKm,
-    (l) => [l.lat, l.lng]
-  );
-
   const today = new Date();
   const dateLocationsPairs: BookingDateLocations[] = [];
   for (let i = 0; i < 60; i++) {
@@ -96,7 +105,7 @@ async function getMyCalendar(coords: Coords, radiusKm: Radius) {
       locationSlotsPairs.push({ isBooking: true, location, slots });
     }
 
-    for (const location of crowdSourcedFiltered) {
+    for (const location of crowdSourcedLocations) {
       const date = addDays(today, i);
       const isOpen = location.openingHours.find(
         (a) => a.day === date.getDay()

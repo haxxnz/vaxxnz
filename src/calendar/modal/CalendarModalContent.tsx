@@ -41,10 +41,8 @@ export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> 
   ({ activeDate: { dateStr, locations }, close }) => {
     const date = parse(dateStr, "yyyy-MM-dd", new Date());
     const { t } = useTranslation("common");
-    const coords = useCoords();
 
-    // TODO: useMemo, or move this to the data source hook
-    const sortedLocations = sortByDistance(locations, coords);
+    const sortedLocations = locations;
 
     const slotLocations = sortedLocations.filter(
       (location) =>
