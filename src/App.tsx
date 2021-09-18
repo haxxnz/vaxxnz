@@ -22,6 +22,7 @@ import {
   Route,
   useParams,
   useHistory,
+  useLocation,
 } from "react-router-dom";
 import { useBookingData } from "./calendar/booking/BookingData";
 import { simpleHash } from "./utils/simpleHash";
@@ -83,6 +84,7 @@ function App() {
       lng: lng ? parseFloat(lng) : DEFAULT_LOCATION.lng,
     });
   }, [lat, lng]);
+  const { pathname } = useLocation();
 
   const [radiusKm, setRadiusKm] = useState(10);
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
@@ -93,7 +95,7 @@ function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [selectedLocationIndex]);
+  }, [pathname]);
 
   const { t } = useTranslation("common");
 
@@ -123,82 +125,81 @@ function App() {
             <LanguageSelect />
           </div>
         </header>
-        <Router>
-          <div className={"big-old-container"}>
-            <Switch>
-              <Route path="/bookings/:date">
-                <BookingModal
-                  coords={coords}
-                  radiusKm={radiusKm}
-                  bookingData={"ok" in bookingData ? bookingData.ok : undefined}
-                />
-              </Route>
-              <Route path="/:slug">
-                <LocationRouter
-                  locations={"ok" in locations ? locations.ok : undefined}
-                  radiusKm={radiusKm}
-                />
-              </Route>
-              <Route path="/">
-                <>
-                  <section className="App-header">
-                    <div className="header-content">
-                      <h1>{t("core.tagline")}</h1>
-                      <h2 style={{ fontWeight: "normal" }}>
-                        {t("core.subtitle")}
-                      </h2>
-                      <br />
-                      <p>
-                        <Trans
-                          i18nKey="core.disclaimerNotAGovWebsite"
-                          t={t}
-                          components={[
-                            <a
-                              href="https://bookmyvaccine.nz"
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              https://bookmyvaccine.nz
-                            </a>,
-                          ]}
-                        />
-                        <br />
-                      </p>
-                    </div>
-                    <div className="header-img-container">
-                      <img
-                        className="header-img"
-                        src="./doc.svg"
-                        alt=" a doctor"
-                      ></img>
-                    </div>
-                  </section>
-                  <div className={"big-old-container"}>
-                    <LocationPicker
-                      coords={coords}
-                      setCoords={setCoords}
-                      radiusKm={radiusKm}
-                      setRadiusKm={setRadiusKm}
-                      lastUpdateTime={lastUpdateTime}
-                    />
 
-                    <TodayLocationsSection
-                      coords={coords}
-                      radiusKm={radiusKm}
-                      selectedLocationIndex={selectedLocationIndex}
-                      setSelectedLocation={setSelectedLocationIndex}
-                    />
-                    <CalendarSection
-                      coords={coords}
-                      radiusKm={radiusKm}
-                      setLastUpdateTime={setLastUpdateTime}
-                    />
+        <div className={"big-old-container"}>
+          <Switch>
+            <Route path="/bookings/:date">
+              <BookingModal
+                coords={coords}
+                radiusKm={radiusKm}
+                bookingData={"ok" in bookingData ? bookingData.ok : undefined}
+              />
+            </Route>
+            <Route path="/:slug">
+              <LocationRouter
+                locations={"ok" in locations ? locations.ok : undefined}
+                radiusKm={radiusKm}
+              />
+            </Route>
+            <Route path="/">
+              <>
+                <section className="App-header">
+                  <div className="header-content">
+                    <h1>{t("core.tagline")}</h1>
+                    <h2 style={{ fontWeight: "normal" }}>
+                      {t("core.subtitle")}
+                    </h2>
+                    <br />
+                    <p>
+                      <Trans
+                        i18nKey="core.disclaimerNotAGovWebsite"
+                        t={t}
+                        components={[
+                          <a
+                            href="https://bookmyvaccine.nz"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            https://bookmyvaccine.nz
+                          </a>,
+                        ]}
+                      />
+                      <br />
+                    </p>
                   </div>
-                </>
-              </Route>
-            </Switch>
-          </div>
-        </Router>
+                  <div className="header-img-container">
+                    <img
+                      className="header-img"
+                      src="./doc.svg"
+                      alt=" a doctor"
+                    ></img>
+                  </div>
+                </section>
+                <div className={"big-old-container"}>
+                  <LocationPicker
+                    coords={coords}
+                    setCoords={setCoords}
+                    radiusKm={radiusKm}
+                    setRadiusKm={setRadiusKm}
+                    lastUpdateTime={lastUpdateTime}
+                  />
+
+                  <TodayLocationsSection
+                    coords={coords}
+                    radiusKm={radiusKm}
+                    selectedLocationIndex={selectedLocationIndex}
+                    setSelectedLocation={setSelectedLocationIndex}
+                  />
+                  <CalendarSection
+                    coords={coords}
+                    radiusKm={radiusKm}
+                    setLastUpdateTime={setLastUpdateTime}
+                  />
+                </div>
+              </>
+            </Route>
+          </Switch>
+        </div>
         <footer className="footer-header">
           <p style={{ marginBottom: "0.5rem" }}>{t("footer.message")}</p>
           <div className={"social-container"}>
