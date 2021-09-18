@@ -5,13 +5,14 @@ import { CrowdsourcedLocation } from "../../crowdsourced/CrowdsourcedData";
 import { Coords } from "../../location-picker/LocationPicker";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { formatDistanceKm, getDistanceKm } from "../../utils/distance";
+import { Radius } from "../../utils/locationTypes";
 import { VaccineCentre } from "../../VaxComponents";
 
 interface CrowdsourcedBookingLocationProps {
   location: CrowdsourcedLocation;
   coords: Coords;
   date: Date;
-  radiusKm: number;
+  radiusKm: Radius;
 }
 
 export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingLocationProps> =

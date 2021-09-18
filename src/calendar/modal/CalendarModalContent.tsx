@@ -10,6 +10,7 @@ import { Instruction } from "../../today-locations/healthpoint/HealthpointData";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { sortByAsc } from "../../utils/array";
 import { getDistanceKm } from "../../utils/distance";
+import { Radius } from "../../utils/locationTypes";
 import { ModalGrid } from "../../VaxComponents";
 import { BookingLocationSlotsPair } from "../booking/BookingDataTypes";
 import BookingLocation from "../BookingLocation";
@@ -20,7 +21,7 @@ interface CalendarModalContentProps {
   activeDate: CalendarDate;
   close: () => void;
   coords: Coords;
-  radiusKm: number;
+  radiusKm: Radius;
 }
 
 function sortByDistance(

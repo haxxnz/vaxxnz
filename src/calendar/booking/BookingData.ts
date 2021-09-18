@@ -5,6 +5,7 @@ import { getCrowdsourcedLocations } from "../../crowdsourced/CrowdsourcedData";
 import filterOldDates from "../../filterOldDates";
 import { Coords } from "../../location-picker/LocationPicker";
 import { getDistanceKm } from "../../utils/distance";
+import { Radius } from "../../utils/locationTypes";
 import { memoize0, memoizeOnce } from "../../utils/memoize";
 import {
   CalendarData,
@@ -38,7 +39,7 @@ const getAvailabilityData = memoize0(async function (extId: string) {
   return data;
 });
 
-async function getMyCalendar(coords: Coords, radiusKm: number) {
+async function getMyCalendar(coords: Coords, radiusKm: Radius) {
   const locations = await getLocations();
   const filtredLocations = locations.filter((location) => {
     const distance = getDistanceKm(coords, location.location);
@@ -115,7 +116,7 @@ export type BookingData = Map<
 function generateBookingData(
   bookingDateLocations: BookingDateLocations[],
   coords: Coords,
-  radiusKm: number
+  radiusKm: Radius
 ) {
   const dateLocationsPairs = filterOldDates(bookingDateLocations);
   let byMonth: BookingData = new Map();
@@ -168,7 +169,7 @@ function generateBookingData(
 
 export const useBookingData = (
   coords: Coords,
-  radiusKm: number,
+  radiusKm: Radius,
   setLastUpdateTime: (time: Date | null) => void
 ): BookingDataResult => {
   const [loading, setLoading] = useState(false);

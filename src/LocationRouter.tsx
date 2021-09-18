@@ -9,8 +9,9 @@ import CrowdsourcedModal from "./crowdsourced/CrowdsourcedModal";
 import { useParams, useHistory } from "react-router-dom";
 import { simpleHash } from "./utils/simpleHash";
 import { crowdsourcedLocations } from "./crowdsourced/CrowdsourcedLocations";
+import { Radius } from "./utils/locationTypes";
 
-export function LocationRouter({ radiusKm }: { radiusKm: number }) {
+export function LocationRouter({ radiusKm }: { radiusKm: Radius }) {
   const { slug } = useParams<{ slug: string }>();
   const [hash] = slug.split("-").slice(-1);
   const history = useHistory();

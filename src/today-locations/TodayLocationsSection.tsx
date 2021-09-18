@@ -16,10 +16,11 @@ import { useTodayLocationsData } from "./TodayLocationsData";
 import { useHistory } from "react-router-dom";
 import { simpleHash } from "../utils/simpleHash";
 import { slug } from "../utils/slug";
+import { Radius } from "../utils/locationTypes";
 
 export interface Props {
   coords: Coords;
-  radiusKm: number;
+  radiusKm: Radius;
   selectedLocationIndex?: number;
   setSelectedLocation: (num?: number) => void;
 }

@@ -2,10 +2,11 @@ import React, { FunctionComponent } from "react";
 import { Coords } from "../location-picker/LocationPicker";
 import { BookingCalendar, LoadingBookingCalendar } from "./Calendar";
 import { useBookingData } from "./booking/BookingData";
+import { Radius } from "../utils/locationTypes";
 
 interface CalendarSectionProps {
   coords: Coords;
-  radiusKm: number;
+  radiusKm: Radius;
   setLastUpdateTime: (time: Date | null) => void;
 }
 

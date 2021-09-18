@@ -2,6 +2,7 @@ import { Coords } from "../location-picker/LocationPicker";
 import { getDistanceKm } from "../utils/distance";
 import { Instruction } from "../today-locations/healthpoint/HealthpointData";
 import { crowdsourcedLocations } from "./CrowdsourcedLocations";
+import { Radius } from "../utils/locationTypes";
 
 // 0 = sunday, 1 = monday ... same as new Date().getDay();
 type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6;
@@ -33,14 +34,14 @@ export interface CrowdsourcedLocation {
 
 export const getCrowdsourcedLocations = (
   coords: Coords,
-  radiusKm: number
+  radiusKm: Radius
 ): CrowdsourcedLocation[] =>
   filterCrowdsourcedLocations(crowdsourcedLocations, coords, radiusKm);
 
 function filterCrowdsourcedLocations(
   allLocations: CrowdsourcedLocation[],
   coords: Coords,
-  radiusKm: number
+  radiusKm: Radius
 ) {
   const matchedFilter = allLocations.filter(
     ({ lat: locationLat, lng: locationLng, openingHours }) => {

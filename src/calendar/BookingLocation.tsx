@@ -8,6 +8,7 @@ import { Coords } from "../location-picker/LocationPicker";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { formatToLocaleTimeString } from "../utils/date";
 import { formatDistanceKm, getDistanceKm } from "../utils/distance";
+import { Radius } from "../utils/locationTypes";
 import { useSeen } from "../utils/useSeen";
 import { VaccineCentre } from "../VaxComponents";
 import {
@@ -20,7 +21,7 @@ type BookingLocationProps = {
   locationSlotsPair: BookingLocationSlotsPair;
   coords: Coords;
   activeDate: CalendarDate;
-  radiusKm: number;
+  radiusKm: Radius;
 };
 
 const IS_UAT =

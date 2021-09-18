@@ -4,13 +4,14 @@ import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import { LocationNotice } from "../../common/LocationNotice";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
+import { Radius } from "../../utils/locationTypes";
 import { WalkGrid } from "../../VaxComponents";
 import { HealthpointLocation } from "./HealthpointData";
 
 type Props = {
   clearSelectedLocation: () => void;
   location?: HealthpointLocation;
-  radiusKm: number;
+  radiusKm: Radius;
 };
 
 const HealthpointModal: FunctionComponent<Props> = ({

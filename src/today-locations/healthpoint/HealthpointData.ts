@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Coords } from "../../location-picker/LocationPicker";
 import { getDistanceKm } from "../../utils/distance";
+import { Radius } from "../../utils/locationTypes";
 import { memoizeOnce } from "../../utils/memoize";
 
 export interface OpeningHours {
@@ -84,7 +85,7 @@ type HealthpointLocationsResult =
 
 export const useHealthpointLocations = (
   coords: Coords,
-  radiusKm: number
+  radiusKm: Radius
 ): HealthpointLocationsResult => {
   const allLocations = useHealthpointData();
 
@@ -98,7 +99,7 @@ export const useHealthpointLocations = (
 function filterHealthpointLocation(
   allLocations: HealthpointLocation[],
   coords: Coords,
-  radiusKm: number
+  radiusKm: Radius
 ) {
   const matchedFilter = allLocations.filter(
     ({

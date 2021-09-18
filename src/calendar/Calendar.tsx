@@ -17,10 +17,11 @@ import {
 } from "./CalendarData";
 import { useHistory } from "react-router-dom";
 import React from "react";
+import { Radius } from "../utils/locationTypes";
 
 interface BookingCalendarProps {
   data: CalendarData;
-  radiusKm: number;
+  radiusKm: Radius;
 }
 
 export const LoadingBookingCalendar: FunctionComponent = () => {
@@ -74,7 +75,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
 interface CalendarMonthContainerProps {
   monthStr: string;
   monthDates: CalendarMonth;
-  radiusKm: number;
+  radiusKm: Radius;
   language: string;
 }
 function CalendarMonthContainerExpensive(
@@ -119,7 +120,7 @@ const CalendarMonthContainer = React.memo(CalendarMonthContainerExpensive);
 interface CalendarDayProps {
   availableCount: number;
   dateStr: string;
-  radiusKm: number;
+  radiusKm: Radius;
   locations: CalendarDateLocations;
 }
 function CalendarDay(props: CalendarDayProps): JSX.Element {

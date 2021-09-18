@@ -8,10 +8,11 @@ import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { CalendarModalContent } from "./CalendarModalContent";
 import { useParams, useHistory } from "react-router-dom";
 import { BookingData } from "../booking/BookingData";
+import { Radius } from "../../utils/locationTypes";
 
 interface BookingModalProps {
   coords: Coords;
-  radiusKm: number;
+  radiusKm: Radius;
   bookingData?: BookingData;
 }
 

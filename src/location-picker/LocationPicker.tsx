@@ -11,6 +11,7 @@ import { DEFAULT_LOCATION } from "../utils/consts";
 import { useSearchParams } from "../utils/url";
 import { HeaderMain } from "../VaxComponents";
 import LocationModal from "./LocationModal";
+import { Radius } from "../utils/locationTypes";
 
 export interface Coords {
   lng: number;
@@ -19,7 +20,7 @@ export interface Coords {
 
 interface LocationPickerProps {
   coords: Coords;
-  radiusKm: number;
+  radiusKm: Radius;
   lastUpdateTime: Date | null;
 }
 
@@ -91,7 +92,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
               ? t("navigation.setLocation")
               : t("navigation.setLocationConfirmation")}
           </Button>
-          <RadiusSelect value={radiusKm} />
+          <RadiusSelect radiusKm={radiusKm} />
         </div>
       </HeaderMain>
     </>
