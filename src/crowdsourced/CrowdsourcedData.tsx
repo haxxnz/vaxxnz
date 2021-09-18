@@ -3,6 +3,8 @@ import { getDistanceKm } from "../utils/distance";
 import { Instruction } from "../today-locations/healthpoint/HealthpointData";
 import { crowdsourcedLocations } from "./CrowdsourcedLocations";
 import { Radius } from "../utils/locationTypes";
+import { sortByAsc } from "../utils/array";
+import { filterLocations } from "../utils/location";
 
 // 0 = sunday, 1 = monday ... same as new Date().getDay();
 type Day = 0 | 1 | 2 | 3 | 4 | 5 | 6;
@@ -43,15 +45,11 @@ function filterCrowdsourcedLocations(
   coords: Coords,
   radiusKm: Radius
 ) {
-  const matchedFilter = allLocations.filter(
-    ({ lat: locationLat, lng: locationLng, openingHours }) => {
-      const distanceInKm =
-        locationLat &&
-        locationLng &&
-        getDistanceKm(coords, { lat: locationLat, lng: locationLng });
-
-      return distanceInKm < radiusKm;
-    }
+  const filteredLocations = filterLocations(
+    allLocations,
+    coords,
+    radiusKm,
+    ({ lat, lng }) => [lat, lng]
   );
-  return matchedFilter;
+  return filteredLocations;
 }

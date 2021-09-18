@@ -4,7 +4,9 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { getCrowdsourcedLocations } from "../../crowdsourced/CrowdsourcedData";
 import filterOldDates from "../../filterOldDates";
 import { Coords } from "../../location-picker/LocationPicker";
+import { sortByAsc } from "../../utils/array";
 import { getDistanceKm } from "../../utils/distance";
+import { filterLocations } from "../../utils/location";
 import { Radius } from "../../utils/locationTypes";
 import { memoize0, memoizeOnce } from "../../utils/memoize";
 import { useRadiusKm } from "../../utils/useRadiusKm";
@@ -42,10 +44,10 @@ const getAvailabilityData = memoize0(async function (extId: string) {
 
 async function getMyCalendar(coords: Coords, radiusKm: Radius) {
   const locations = await getLocations();
-  const filtredLocations = locations.filter((location) => {
-    const distance = getDistanceKm(coords, location.location);
-    return distance < radiusKm;
-  });
+  const filtredLocations = filterLocations(locations, coords, radiusKm, (l) => [
+    l.location.lat,
+    l.location.lng,
+  ]);
   if (filtredLocations.length === 0) {
     if (
       !(

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Coords } from "../../location-picker/LocationPicker";
 import { getDistanceKm } from "../../utils/distance";
+import { filterLocations } from "../../utils/location";
 import { Radius } from "../../utils/locationTypes";
 import { memoizeOnce } from "../../utils/memoize";
 
@@ -101,18 +102,14 @@ function filterHealthpointLocation(
   coords: Coords,
   radiusKm: Radius
 ) {
-  const matchedFilter = allLocations.filter(
-    ({
-      lat: locationLat,
-      lng: locationLng,
-      isOpenToday,
-      instructionLis: bps,
-    }) => {
-      const distanceInKm =
-        locationLat &&
-        locationLng &&
-        getDistanceKm(coords, { lat: locationLat, lng: locationLng });
-
+  const filteredLocations = filterLocations(
+    allLocations,
+    coords,
+    radiusKm,
+    ({ lat, lng }) => [lat, lng]
+  );
+  const matchedFilter = filteredLocations.filter(
+    ({ isOpenToday, instructionLis: bps }) => {
       const filterBoolean =
         (bps.includes(Instruction.walkIn) ||
           bps.includes(Instruction.driveThrough)) &&
@@ -121,23 +118,7 @@ function filterHealthpointLocation(
           bps.includes(Instruction.invitationOnly)
         );
 
-      return distanceInKm < radiusKm && isOpenToday && filterBoolean;
-    }
-  );
-  matchedFilter.sort(
-    (
-      { lat: locationALat, lng: locationALng },
-      { lat: locationBLat, lng: locationBLng }
-    ) => {
-      const distanceKmLocationA = getDistanceKm(coords, {
-        lat: locationALat,
-        lng: locationALng,
-      });
-      const distanceKmLocationB = getDistanceKm(coords, {
-        lat: locationBLat,
-        lng: locationBLng,
-      });
-      return distanceKmLocationA - distanceKmLocationB;
+      return isOpenToday && filterBoolean;
     }
   );
   return matchedFilter;
