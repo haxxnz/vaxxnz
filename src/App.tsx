@@ -17,6 +17,8 @@ import WalkModal from "./today-locations/healthpoint/HealthpointModal";
 import { HealthpointLocation } from "./today-locations/healthpoint/HealthpointData";
 import { CrowdsourcedLocation } from "./crowdsourced/CrowdsourcedData";
 import CrowdsourcedModal from "./crowdsourced/CrowdsourcedModal";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useBookingData } from "./calendar/booking/BookingData";
 
 function App() {
   const { lat, lng } = useSearchParams();
@@ -33,13 +35,14 @@ function App() {
 
   const [radiusKm, setRadiusKm] = useState(10);
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
-  const [activeDate, setActiveDate] = useState<CalendarDate | null>(null);
   const [selectedLocationIndex, setSelectedLocationIndex] = useState<number>();
   const locations = useTodayLocationsData(coords, radiusKm);
 
+  const bookingData = useBookingData(coords, radiusKm, setLastUpdateTime);
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [selectedLocationIndex, activeDate]);
+  }, [selectedLocationIndex]);
 
   const { t } = useTranslation("common");
 
@@ -69,100 +72,104 @@ function App() {
             <LanguageSelect />
           </div>
         </header>
-        {activeDate ? (
+        <Router>
           <div className={"big-old-container"}>
-            <BookingModal
-              activeDate={activeDate}
-              coords={coords}
-              radiusKm={radiusKm}
-              setActiveDate={setActiveDate}
-            />
-          </div>
-        ) : selectedLocationIndex !== undefined ? (
-          <div className={"big-old-container"}>
-            {"ok" in locations &&
-              locations.ok[selectedLocationIndex] &&
-              "isHealthpoint" in locations.ok[selectedLocationIndex] && (
-                <WalkModal
-                  clearSelectedLocation={() =>
-                    setSelectedLocationIndex(undefined)
-                  }
+            <Switch>
+              <Route path="/bookings/:date">
+                <BookingModal
+                  coords={coords}
                   radiusKm={radiusKm}
-                  location={
-                    locations.ok[selectedLocationIndex] as HealthpointLocation
-                  }
+                  bookingData={"ok" in bookingData ? bookingData.ok : undefined}
                 />
-              )}
-            {"ok" in locations &&
-              locations.ok[selectedLocationIndex] &&
-              !("isHealthpoint" in locations.ok[selectedLocationIndex]) && (
-                <CrowdsourcedModal
-                  clearSelectedLocation={() =>
-                    setSelectedLocationIndex(undefined)
-                  }
-                  location={
-                    locations.ok[selectedLocationIndex] as CrowdsourcedLocation
-                  }
-                />
-              )}
+              </Route>
+            </Switch>
           </div>
-        ) : (
-          <>
-            <section className="App-header">
-              <div className="header-content">
-                <h1>{t("core.tagline")}</h1>
-                <h2 style={{ fontWeight: "normal" }}>{t("core.subtitle")}</h2>
-                <br />
-                <p>
-                  <Trans
-                    i18nKey="core.disclaimerNotAGovWebsite"
-                    t={t}
-                    components={[
-                      <a
-                        href="https://bookmyvaccine.nz"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        https://bookmyvaccine.nz
-                      </a>,
-                    ]}
-                  />
-                  <br />
-                </p>
-              </div>
-              <div className="header-img-container">
-                <img
-                  className="header-img"
-                  src="./doc.svg"
-                  alt=" a doctor"
-                ></img>
-              </div>
-            </section>
+          {selectedLocationIndex !== undefined ? (
             <div className={"big-old-container"}>
-              <LocationPicker
-                coords={coords}
-                setCoords={setCoords}
-                radiusKm={radiusKm}
-                setRadiusKm={setRadiusKm}
-                lastUpdateTime={lastUpdateTime}
-              />
-
-              <TodayLocationsSection
-                coords={coords}
-                radiusKm={radiusKm}
-                selectedLocationIndex={selectedLocationIndex}
-                setSelectedLocation={setSelectedLocationIndex}
-              />
-              <CalendarSection
-                coords={coords}
-                radiusKm={radiusKm}
-                setLastUpdateTime={setLastUpdateTime}
-                setActiveDate={setActiveDate}
-              />
+              {"ok" in locations &&
+                locations.ok[selectedLocationIndex] &&
+                "isHealthpoint" in locations.ok[selectedLocationIndex] && (
+                  <WalkModal
+                    clearSelectedLocation={() =>
+                      setSelectedLocationIndex(undefined)
+                    }
+                    radiusKm={radiusKm}
+                    location={
+                      locations.ok[selectedLocationIndex] as HealthpointLocation
+                    }
+                  />
+                )}
+              {"ok" in locations &&
+                locations.ok[selectedLocationIndex] &&
+                !("isHealthpoint" in locations.ok[selectedLocationIndex]) && (
+                  <CrowdsourcedModal
+                    clearSelectedLocation={() =>
+                      setSelectedLocationIndex(undefined)
+                    }
+                    location={
+                      locations.ok[
+                        selectedLocationIndex
+                      ] as CrowdsourcedLocation
+                    }
+                  />
+                )}
             </div>
-          </>
-        )}
+          ) : (
+            <>
+              <section className="App-header">
+                <div className="header-content">
+                  <h1>{t("core.tagline")}</h1>
+                  <h2 style={{ fontWeight: "normal" }}>{t("core.subtitle")}</h2>
+                  <br />
+                  <p>
+                    <Trans
+                      i18nKey="core.disclaimerNotAGovWebsite"
+                      t={t}
+                      components={[
+                        <a
+                          href="https://bookmyvaccine.nz"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          https://bookmyvaccine.nz
+                        </a>,
+                      ]}
+                    />
+                    <br />
+                  </p>
+                </div>
+                <div className="header-img-container">
+                  <img
+                    className="header-img"
+                    src="./doc.svg"
+                    alt=" a doctor"
+                  ></img>
+                </div>
+              </section>
+              <div className={"big-old-container"}>
+                <LocationPicker
+                  coords={coords}
+                  setCoords={setCoords}
+                  radiusKm={radiusKm}
+                  setRadiusKm={setRadiusKm}
+                  lastUpdateTime={lastUpdateTime}
+                />
 
+                <TodayLocationsSection
+                  coords={coords}
+                  radiusKm={radiusKm}
+                  selectedLocationIndex={selectedLocationIndex}
+                  setSelectedLocation={setSelectedLocationIndex}
+                />
+                <CalendarSection
+                  coords={coords}
+                  radiusKm={radiusKm}
+                  setLastUpdateTime={setLastUpdateTime}
+                />
+              </div>
+            </>
+          )}
+        </Router>
         <footer className="footer-header">
           <p style={{ marginBottom: "0.5rem" }}>{t("footer.message")}</p>
           <div className={"social-container"}>
@@ -238,7 +245,7 @@ function App() {
         <div
           className="bg-impt"
           style={{
-            backgroundImage: `url(${process.env.PUBLIC_URL + "./bg.svg"})`,
+            backgroundImage: `url(${process.env.PUBLIC_URL + "/bg.svg"})`,
           }}
         ></div>
         <CookiesBar lng={coords.lng} lat={coords.lat} />

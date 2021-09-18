@@ -16,11 +16,11 @@ import {
   CalendarDateLocations,
   CalendarMonth,
 } from "./CalendarData";
+import { useHistory } from "react-router-dom";
 import React from "react";
 
 interface BookingCalendarProps {
   data: CalendarData;
-  setActiveDate: (activeDate: CalendarDate | null) => void;
   radiusKm: number;
 }
 
@@ -53,7 +53,6 @@ export const LoadingBookingCalendar: FunctionComponent = () => {
 
 export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   data,
-  setActiveDate,
   radiusKm,
 }) => {
   const { i18n } = useTranslation();
@@ -66,7 +65,6 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
           monthStr={monthStr}
           monthDates={monthDates}
           radiusKm={radiusKm}
-          setActiveDate={setActiveDate}
           language={i18n.language}
         />
       ))}
@@ -78,13 +76,12 @@ interface CalendarMonthContainerProps {
   monthStr: string;
   monthDates: CalendarMonth;
   radiusKm: number;
-  setActiveDate: (activeDate: CalendarDate | null) => void;
   language: string;
 }
 function CalendarMonthContainerExpensive(
   props: CalendarMonthContainerProps
 ): JSX.Element {
-  const { monthStr, monthDates, radiusKm, setActiveDate } = props;
+  const { monthStr, monthDates, radiusKm } = props;
   const date = parse(monthStr, "MMMM yyyy", new Date());
   return (
     <CalendarSectionContainer key={monthStr}>
@@ -109,7 +106,6 @@ function CalendarMonthContainerExpensive(
               availableCount={availableCount}
               dateStr={dateStr}
               radiusKm={radiusKm}
-              setActiveDate={setActiveDate}
               locations={locations}
             />
           );
@@ -125,13 +121,13 @@ interface CalendarDayProps {
   availableCount: number;
   dateStr: string;
   radiusKm: number;
-  setActiveDate: (activeDate: CalendarDate | null) => void;
   locations: CalendarDateLocations;
 }
 function CalendarDay(props: CalendarDayProps): JSX.Element {
   const { t } = useTranslation("common");
-  const { availableCount, dateStr, radiusKm, setActiveDate, locations } = props;
+  const { availableCount, dateStr, radiusKm, locations } = props;
   const date = parse(dateStr, "yyyy-MM-dd", new Date());
+  const history = useHistory();
   return (
     <button
       className={availableCount === 0 ? "zero-available" : ""}
@@ -143,7 +139,7 @@ function CalendarDay(props: CalendarDayProps): JSX.Element {
           radiusKm,
           spotsAvailable: availableCount,
         });
-        setActiveDate({ dateStr, locations });
+        history.push(`/bookings/${dateStr}`);
       }}
     >
       <div>

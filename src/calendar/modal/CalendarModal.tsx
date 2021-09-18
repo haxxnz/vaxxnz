@@ -1,34 +1,56 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { Button, KIND } from "baseui/button";
 import { Modal } from "baseui/modal";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import { Coords } from "../../location-picker/LocationPicker";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { CalendarDate } from "../CalendarData";
 import { CalendarModalContent } from "./CalendarModalContent";
+import { useParams, useHistory } from "react-router-dom";
+import { BookingData } from "../booking/BookingData";
+import { BookingLocationSlotsPair } from "../booking/BookingDataTypes";
 
 interface BookingModalProps {
-  activeDate: CalendarDate | null;
-  setActiveDate: (activeDate: CalendarDate | null) => void;
   coords: Coords;
   radiusKm: number;
+  bookingData?: BookingData;
 }
 
 const BookingModal: FunctionComponent<BookingModalProps> = ({
-  activeDate,
   radiusKm,
-  setActiveDate,
   coords,
+  bookingData,
 }) => {
   const { t } = useTranslation("common");
+  const { date } = useParams<{ date: string }>();
+  const history = useHistory();
+  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
+
+  // Fixme: this is trash because the data structure is trash
+  const unwind = useMemo(
+    () =>
+      Array.from(bookingData?.values() || [])
+        .flatMap((map) => Array.from(map.entries()))
+        .find((obj) => {
+          if (date === obj[0]) {
+            return true;
+          }
+          return false;
+        }),
+    [bookingData, date]
+  );
+
+  if (!bookingData || !unwind) {
+    return <p>err</p>;
+  }
+
+  const activeDate = { dateStr: unwind[0], locations: unwind[1] };
 
   const close = () => {
-    setActiveDate(null);
+    history.push("/");
   };
-
-  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
 
   const desktopDialogStyle = {
     width: "100%",
@@ -54,8 +76,8 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
     <div style={dialogStyle as any}>
       {activeDate && (
         <CalendarModalContent
+          close={close}
           activeDate={activeDate}
-          close={() => setActiveDate(null)}
           coords={coords}
           radiusKm={radiusKm}
         />
@@ -63,8 +85,8 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
       <div className="MobileOnly">
         <Button
           onClick={() => {
-            setActiveDate(null);
             enqueueAnalyticsEvent("Back to Calendar clicked");
+            close();
           }}
           overrides={{
             Root: {
