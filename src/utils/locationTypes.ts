@@ -1,1 +1,1 @@
-export type Radius = number;
+export type Radius = number | "auto";

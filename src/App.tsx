@@ -23,7 +23,11 @@ function App() {
     }),
     [lat, lng]
   );
-  const radiusKm = radius ? parseInt(radius, 10) : 10;
+  const radiusKm = radius
+    ? radius === "auto"
+      ? "auto"
+      : parseInt(radius, 10)
+    : 10;
   const { pathname } = useLocation();
 
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
