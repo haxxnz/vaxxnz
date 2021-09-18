@@ -11,7 +11,6 @@ import { useSearchParams } from "./utils/url";
 import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
 import CookiesBar from "./Cookies";
 import BookingModal from "./calendar/modal/CalendarModal";
-import { useTodayLocationsData } from "./today-locations/TodayLocationsData";
 import WalkModal from "./today-locations/healthpoint/HealthpointModal";
 import {
   getHealthpointData,
