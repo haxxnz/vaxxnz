@@ -13,7 +13,10 @@ import CookiesBar from "./Cookies";
 import BookingModal from "./calendar/modal/CalendarModal";
 import { useTodayLocationsData } from "./today-locations/TodayLocationsData";
 import WalkModal from "./today-locations/healthpoint/HealthpointModal";
-import { HealthpointLocation } from "./today-locations/healthpoint/HealthpointData";
+import {
+  getHealthpointData,
+  HealthpointLocation,
+} from "./today-locations/healthpoint/HealthpointData";
 import { CrowdsourcedLocation } from "./crowdsourced/CrowdsourcedData";
 import CrowdsourcedModal from "./crowdsourced/CrowdsourcedModal";
 import {
@@ -25,20 +28,45 @@ import {
 } from "react-router-dom";
 import { useBookingData } from "./calendar/booking/BookingData";
 import { simpleHash } from "./utils/simpleHash";
+import { crowdsourcedLocations } from "./crowdsourced/CrowdsourcedLocations";
 
-function LocationRouter({
-  locations,
-  radiusKm,
-}: {
-  locations?: (CrowdsourcedLocation | HealthpointLocation)[];
-  radiusKm: number;
-}) {
+function LocationRouter({ radiusKm }: { radiusKm: number }) {
   const { slug } = useParams<{ slug: string }>();
   const [hash] = slug.split("-").slice(-1);
   const history = useHistory();
 
-  if (!locations) {
-    return <p>err</p>;
+  const [healthpointLocations, setHealthpointLocations] = useState<
+    HealthpointLocation[]
+  >([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    async function load() {
+      setLoading(true);
+      setError(null);
+      try {
+        setHealthpointLocations(await getHealthpointData());
+      } catch (e) {
+        setError(e as Error);
+      }
+      setLoading(false);
+    }
+    load();
+  }, []);
+
+  const locations = [...healthpointLocations, ...crowdsourcedLocations];
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
+  if (!locations.length) {
+    return <p>No locations found</p>;
   }
 
   const location = locations.find(
@@ -84,7 +112,6 @@ function App() {
   const [radiusKm, setRadiusKm] = useState(10);
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
   const [selectedLocationIndex, setSelectedLocationIndex] = useState<number>();
-  const locations = useTodayLocationsData(coords, radiusKm);
 
   const bookingData = useBookingData(coords, radiusKm, setLastUpdateTime);
 
@@ -131,10 +158,7 @@ function App() {
               />
             </Route>
             <Route path="/:slug">
-              <LocationRouter
-                locations={"ok" in locations ? locations.ok : undefined}
-                radiusKm={radiusKm}
-              />
+              <LocationRouter radiusKm={radiusKm} />
             </Route>
             <Route path="/">
               <>
