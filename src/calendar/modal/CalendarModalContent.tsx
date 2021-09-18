@@ -4,37 +4,18 @@ import i18next from "i18next";
 import { FunctionComponent } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { CrowdsourcedLocation } from "../../crowdsourced/CrowdsourcedData";
-import { Coords } from "../../location-picker/LocationPicker";
 import { NoticeList } from "../../NoticeList";
 import { Instruction } from "../../today-locations/healthpoint/HealthpointData";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
-import { sortByAsc } from "../../utils/array";
-import { getDistanceKm } from "../../utils/distance";
-import { useCoords } from "../../utils/useCoords";
 import { ModalGrid } from "../../VaxComponents";
 import { BookingLocationSlotsPair } from "../booking/BookingDataTypes";
 import BookingLocation from "../BookingLocation";
-import { CalendarDate, CalendarLocation } from "../CalendarData";
+import { CalendarDate } from "../CalendarData";
 import { CrowdsourcedBookingLocation } from "./CrowdsourcedBookingLocation";
 
 interface CalendarModalContentProps {
   activeDate: CalendarDate;
   close: () => void;
-}
-
-function sortByDistance(
-  locations: CalendarLocation[],
-  coords: Coords
-): CalendarLocation[] {
-  return sortByAsc(locations ?? [], (location) => {
-    const distanceKm = getDistanceKm(
-      coords,
-      "isBooking" in location
-        ? location.location.location
-        : { lat: location.lat, lng: location.lng }
-    );
-    return distanceKm;
-  });
 }
 
 export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> =
