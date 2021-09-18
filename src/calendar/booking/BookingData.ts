@@ -1,8 +1,11 @@
 import { addDays, format, parse } from "date-fns";
 import i18next from "i18next";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { getCrowdsourcedLocations } from "../../crowdsourced/CrowdsourcedData";
-import filterOldDates from "../../filterOldDates";
+import {
+  CrowdsourcedLocation,
+  getCrowdsourcedLocations,
+} from "../../crowdsourced/CrowdsourcedData";
+import { filterSlots, getTodayDateStr } from "../../filterOldDates";
 import { Coords } from "../../location-picker/LocationPicker";
 import { sortByAsc } from "../../utils/array";
 import { getDistanceKm } from "../../utils/distance";
@@ -63,11 +66,25 @@ async function getMyCalendar(coords: Coords, radiusKm: Radius) {
         oldestLastUpdatedTimestamp = lastUpdatedTimestamp;
       }
 
+      const todayDateStr = getTodayDateStr();
+      const slots = filterSlots(locationsData?.availabilityDates[todayDateStr]);
+
       return {
         location,
-        availabilityDates: locationsData?.availabilityDates,
+        availabilityDates: {
+          ...locationsData?.availabilityDates,
+          [todayDateStr]: slots,
+        },
       };
     })
+  );
+
+  const crowdSourced = getCrowdsourcedLocations(coords, radiusKm);
+  const crowdSourcedFiltered = filterLocations(
+    crowdSourced,
+    coords,
+    radiusKm,
+    (l) => [l.lat, l.lng]
   );
 
   const today = new Date();
@@ -76,13 +93,28 @@ async function getMyCalendar(coords: Coords, radiusKm: Radius) {
     // 90 days in the future
     const date = new Date().setDate(today.getDate() + i);
     const dateStr = format(date, "yyyy-MM-dd");
-    const locationSlotsPairs: BookingLocationSlotsPair[] = [];
+    const locationSlotsPairs: (
+      | BookingLocationSlotsPair
+      | CrowdsourcedLocation
+    )[] = [];
     for (let j = 0; j < availabilityDatesAndLocations.length; j++) {
       const availabilityDatesAndLocation = availabilityDatesAndLocations[j];
       const { location, availabilityDates } = availabilityDatesAndLocation;
       const slots = availabilityDates ? availabilityDates[dateStr] : [];
       locationSlotsPairs.push({ isBooking: true, location, slots });
     }
+
+    for (const location of crowdSourcedFiltered) {
+      const date = addDays(today, i);
+      const isOpen = location.openingHours.find(
+        (a) => a.day === date.getDay()
+      )?.isOpen;
+      if (!isOpen) {
+        continue;
+      }
+      locationSlotsPairs.push(location);
+    }
+
     dateLocationsPairs.push({
       dateStr,
       locationSlotsPairs,
@@ -106,7 +138,7 @@ function generateBookingData(
   coords: Coords,
   radiusKm: Radius
 ) {
-  const dateLocationsPairs = filterOldDates(bookingDateLocations);
+  const dateLocationsPairs = bookingDateLocations;
   let byMonth: BookingData = new Map();
   dateLocationsPairs.forEach((dateLocationsPair) => {
     const date = parse(dateLocationsPair.dateStr, "yyyy-MM-dd", new Date());
@@ -121,43 +153,6 @@ function generateBookingData(
     );
     byMonth.set(month, mapToPush);
   });
-  const crowdSourced = getCrowdsourcedLocations(coords, radiusKm);
-  const crowdSourcedFiltered = filterLocations(
-    crowdSourced,
-    coords,
-    radiusKm,
-    (l) => [l.lat, l.lng]
-  );
-
-  const months: CalendarData = byMonth;
-  const MAX_DAYS = 60;
-  const today = new Date();
-  for (const location of crowdSourcedFiltered) {
-    for (let i = 0; i < MAX_DAYS; i++) {
-      // add crowd sourced locations to each calendar day they're open
-      const date = addDays(today, i);
-      const isOpen = location.openingHours.find(
-        (a) => a.day === date.getDay()
-      )?.isOpen;
-      if (!isOpen) {
-        continue;
-      }
-
-      const dateStr = format(date, "yyyy-MM-dd");
-      const monthStr = date.toLocaleString("en-NZ", {
-        month: "long",
-        year: "numeric",
-      });
-      const month: CalendarMonth = months.get(monthStr) ?? new Map();
-
-      const day: CalendarDateLocations = month.get(dateStr) ?? [];
-
-      day.push(location);
-      month.set(dateStr, day);
-      months.set(monthStr, month);
-    }
-  }
-
   return byMonth;
 }
 

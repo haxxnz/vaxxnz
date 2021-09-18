@@ -1,3 +1,4 @@
+import { CrowdsourcedLocation } from "../../crowdsourced/CrowdsourcedData";
 import { Coords } from "../../location-picker/LocationPicker";
 
 export interface OpenHour {
@@ -49,5 +50,5 @@ export interface BookingLocationSlotsPair {
 
 export interface BookingDateLocations {
   dateStr: string;
-  locationSlotsPairs: BookingLocationSlotsPair[];
+  locationSlotsPairs: (BookingLocationSlotsPair | CrowdsourcedLocation)[];
 }
