@@ -35,7 +35,8 @@
       "10km": "Totonu ole 10km",
       "25km": "Totonu ole 25km",
       "50km": "Totonu ole 50km",
-      "100km": "Totonu ole 100km"
+      "100km": "Totonu ole 100km",
+      "auto": "Auto"
     }
   },
   "walkins": {

@@ -35,7 +35,8 @@
       "10km": "Roto ō 10km",
       "25km": "Roto ō 25km",
       "50km": "Roto ō 50km",
-      "100km": "Roto ō 100km"
+      "100km": "Roto ō 100km",
+      "auto": "Auto"
     }
   },
   "walkins": {

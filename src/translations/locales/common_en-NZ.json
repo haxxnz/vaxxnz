@@ -35,7 +35,8 @@
       "10km": "Within 10km",
       "25km": "Within 25km",
       "50km": "Within 50km",
-      "100km": "Within 100km"
+      "100km": "Within 100km",
+      "auto": "Auto"
     }
   },
   "walkins": {
