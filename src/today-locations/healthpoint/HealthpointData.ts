@@ -49,17 +49,19 @@ export const getHealthpointData = memoizeOnce(
   }
 );
 
+// TODO: rename to useHealthpointLocationsResult
 export function useHealthpointLocations() {
   const { value, setValue } = useContext(HealthpointLocationsContext);
   useEffect(() => {
-    if (value === null) {
+    // setValue({ loading: true });
+    if ("loading" in value) {
       getHealthpointData()
         .then((locations) => {
-          setValue(locations);
+          setValue({ value: locations });
         })
         .catch((e) => {
           console.error("useHealthpointLocations e", e);
-          setValue([]);
+          setValue({ error: e });
         });
     }
   }, [setValue, value]);
@@ -71,24 +73,26 @@ type HealthpointDataResult =
   | { error: Error }
   | { loading: true };
 
-const useHealthpointData = (): HealthpointDataResult => {
-  const [healthpointLocations, setHealthpointLocations] = useState<
-    HealthpointLocation[] | null
-  >(null);
-  const [error, setError] = useState<Error | null>(null);
+export const useHealthpointData = (): HealthpointDataResult => {
+  // const [healthpointLocations, setHealthpointLocations] = useState<
+  //   HealthpointLocation[] | null
+  // >(null);
+  // const [error, setError] = useState<Error | null>(null);
 
-  useEffect(() => {
-    getHealthpointData()
-      .then((locations) => {
-        setHealthpointLocations(locations);
-      })
-      .catch((err) => setError(err));
-  }, []);
+  // useEffect(() => {
+  //   getHealthpointData()
+  //     .then((locations) => {
+  //       setHealthpointLocations(locations);
+  //     })
+  //     .catch((err) => setError(err));
+  // }, []);
 
-  if (error) {
-    return { error };
-  } else if (healthpointLocations) {
-    return { ok: healthpointLocations };
+  const value = useHealthpointLocations();
+
+  if ("error" in value) {
+    return { error: value.error };
+  } else if ("value" in value) {
+    return { ok: value.value };
   } else {
     return { loading: true };
   }

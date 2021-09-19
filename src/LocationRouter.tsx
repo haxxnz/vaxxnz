@@ -3,6 +3,8 @@ import WalkModal from "./today-locations/healthpoint/HealthpointModal";
 import {
   getHealthpointData,
   HealthpointLocation,
+  useHealthpointData,
+  useHealthpointLocations,
 } from "./today-locations/healthpoint/HealthpointData";
 import { CrowdsourcedLocation } from "./crowdsourced/CrowdsourcedData";
 import CrowdsourcedModal from "./crowdsourced/CrowdsourcedModal";
@@ -16,25 +18,36 @@ export function LocationRouter() {
   const [hash] = slug.split("-").slice(-1);
   const history = useHistory();
 
-  const [healthpointLocations, setHealthpointLocations] = useState<
-    HealthpointLocation[]
-  >([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
+  // const [healthpointLocations, setHealthpointLocations] = useState<
+  //   HealthpointLocation[]
+  // >([]);
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState<Error | null>(null);
 
-  useEffect(() => {
-    async function load() {
-      setLoading(true);
-      setError(null);
-      try {
-        setHealthpointLocations(await getHealthpointData());
-      } catch (e) {
-        setError(e as Error);
-      }
-      setLoading(false);
-    }
-    load();
-  }, []);
+  const healthpointLocationsResult = useHealthpointLocations();
+  const loading = "loading" in healthpointLocationsResult;
+  const error =
+    "error" in healthpointLocationsResult
+      ? healthpointLocationsResult.error
+      : null;
+  const healthpointLocations =
+    "value" in healthpointLocationsResult
+      ? healthpointLocationsResult.value
+      : [];
+
+  // useEffect(() => {
+  //   async function load() {
+  //     setLoading(true);
+  //     setError(null);
+  //     try {
+  //       setHealthpointLocations(await getHealthpointData());
+  //     } catch (e) {
+  //       setError(e as Error);
+  //     }
+  //     setLoading(false);
+  //   }
+  //   load();
+  // }, []);
 
   const locations = [...healthpointLocations, ...crowdsourcedLocations];
 

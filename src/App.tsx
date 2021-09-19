@@ -14,7 +14,9 @@ import { Banner } from "./Banner";
 import {
   AvailabilityDataContext,
   HealthpointLocationsContext,
+  HealthpointLocationsResult,
   LocationsContext,
+  LocationsResult,
 } from "./contexts";
 import {
   AvailabilityData,
@@ -23,10 +25,11 @@ import {
 import { HealthpointLocation } from "./today-locations/healthpoint/HealthpointData";
 
 const Contexts: React.FC<{}> = (props) => {
-  const [locations, setLocations] = useState<Location[] | null>(null);
-  const [healthpointLocations, setHealthpointLocations] = useState<
-    HealthpointLocation[] | null
-  >(null);
+  const [locations, setLocations] = useState<LocationsResult>({
+    loading: true,
+  });
+  const [healthpointLocations, setHealthpointLocations] =
+    useState<HealthpointLocationsResult>({ loading: true });
   const [availabilityData, setAvailabilityData] =
     useState<AvailabilityData | null>(null);
 

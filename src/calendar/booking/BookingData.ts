@@ -38,14 +38,15 @@ const getLocations = memoizeOnce(async function () {
 export function useLocations() {
   const { value, setValue } = useContext(LocationsContext);
   useEffect(() => {
-    if (value === null) {
+    // setValue({ loading: true });
+    if ("loading" in value) {
       getLocations()
         .then((locations) => {
-          setValue(locations);
+          setValue({ value: locations });
         })
         .catch((e) => {
           console.error("useLocations e", e);
-          setValue([]);
+          setValue({ error: e });
         });
     }
   }, [setValue, value]);

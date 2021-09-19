@@ -3,7 +3,7 @@ import {
   getCrowdsourcedLocations,
 } from "../crowdsourced/CrowdsourcedData";
 import {
-  useHealthpointLocations,
+  useHealthpointLocationsFiltered,
   HealthpointLocation,
 } from "./healthpoint/HealthpointData";
 import { useRadiusKm } from "../utils/useRadiusKm";
