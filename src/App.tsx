@@ -91,7 +91,10 @@ function App() {
                   selectedLocationIndex={selectedLocationIndex}
                   setSelectedLocation={setSelectedLocationIndex}
                 />
-                <CalendarSection setLastUpdateTime={setLastUpdateTime} />
+                <CalendarSection
+                  setLastUpdateTime={setLastUpdateTime}
+                  data={bookingData}
+                />
               </div>
             </>
           </Route>
