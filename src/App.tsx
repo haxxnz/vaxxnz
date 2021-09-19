@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { CalendarSection } from "./calendar/CalendarSection";
 import { LocationPicker } from "./location-picker/LocationPicker";
 import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
 import CookiesBar from "./Cookies";
 import BookingModal from "./calendar/modal/CalendarModal";
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { useBookingData } from "./calendar/booking/BookingData";
 import { LocationRouter } from "./LocationRouter";
 import { Footer } from "./Footer";
@@ -33,8 +33,6 @@ const Contexts: React.FC<{}> = (props) => {
 };
 
 function App() {
-  const { pathname } = useLocation();
-
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
   const [selectedLocationIndex, setSelectedLocationIndex] = useState<number>();
 

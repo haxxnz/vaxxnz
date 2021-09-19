@@ -19,6 +19,7 @@ import { useHistory } from "react-router-dom";
 import React from "react";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { getSearch } from "../utils/url";
+import { saveScrollAndGo } from "../scroll";
 
 interface BookingCalendarProps {
   data: CalendarData;
@@ -136,8 +137,9 @@ function CalendarDay(props: CalendarDayProps): JSX.Element {
           radiusKm,
           spotsAvailable: availableCount,
         });
-        window.scrollTo(0, 0);
-        history.push(`/bookings/${dateStr}${getSearch()}`);
+        const path = `/bookings/${dateStr}`;
+        saveScrollAndGo(path);
+        history.push(`${path}${getSearch()}`);
       }}
     >
       <div>

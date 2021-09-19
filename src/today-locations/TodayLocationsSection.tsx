@@ -18,6 +18,7 @@ import { slug } from "../utils/slug";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { getSearch } from "../utils/url";
 import { useCoords } from "../utils/useCoords";
+import { saveScrollAndGo } from "../scroll";
 
 export interface Props {
   selectedLocationIndex?: number;
@@ -48,12 +49,11 @@ export function TodayLocationsSection({
       locationName: location ? location.name : "",
       radiusKm,
     });
-    window.scrollTo(0, 0);
-    history.push(
-      `/${slug(location.name)}-${simpleHash(
-        `${location.lat}${location.lng}`
-      )}${getSearch()}`
-    );
+    const path = `/${slug(location.name)}-${simpleHash(
+      `${location.lat}${location.lng}`
+    )}`;
+    saveScrollAndGo(path);
+    history.push(`${path}${getSearch()}`);
   };
 
   const loadMore = () => {

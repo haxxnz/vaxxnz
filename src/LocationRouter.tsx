@@ -9,6 +9,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { simpleHash } from "./utils/simpleHash";
 import { crowdsourcedLocations } from "./crowdsourced/CrowdsourcedLocations";
 import { getSearch } from "./utils/url";
+import { saveScrollAndGo } from "./scroll";
 
 export function LocationRouter() {
   const { slug } = useParams<{ slug: string }>();
@@ -57,16 +58,18 @@ export function LocationRouter() {
       {"isHealthpoint" in location ? (
         <WalkModal
           clearSelectedLocation={() => {
-            window.scrollTo(0, 0);
-            history.push(`/${getSearch()}`);
+            const path = "/";
+            saveScrollAndGo(path);
+            history.push(`${path}${getSearch()}`);
           }}
           location={location as HealthpointLocation}
         />
       ) : (
         <CrowdsourcedModal
           clearSelectedLocation={() => {
-            window.scrollTo(0, 0);
-            history.push(`/${getSearch()}`);
+            const path = "/";
+            saveScrollAndGo(path);
+            history.push(`${path}${getSearch()}`);
           }}
           location={location as CrowdsourcedLocation}
         />

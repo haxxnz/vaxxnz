@@ -8,6 +8,7 @@ import { CalendarModalContent } from "./CalendarModalContent";
 import { useParams, useHistory } from "react-router-dom";
 import { BookingData } from "../booking/BookingData";
 import { getSearch } from "../../utils/url";
+import { saveScrollAndGo } from "../../scroll";
 
 interface BookingModalProps {
   bookingData?: BookingData;
@@ -42,8 +43,9 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
   const activeDate = { dateStr: unwind[0], locations: unwind[1] };
 
   const close = () => {
-    window.scrollTo(0, 0);
-    history.push(`/${getSearch()}`);
+    const path = "/";
+    saveScrollAndGo(path);
+    history.push(`${path}${getSearch()}`);
   };
 
   const desktopDialogStyle = {
