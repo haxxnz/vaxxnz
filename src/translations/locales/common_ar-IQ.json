@@ -64,17 +64,6 @@
         "title": "هذا الموقع مقدم من الجمهور العام",
         "message": "المعلومات قد لا تكون دقيقة 100% "
       }
-    },
-
-    "footer": {
-      "message": "الرجاء شارك الموقع إن أفادك ا",
-      "addressFinderLinkCopy": "البحث عن العنوان بفضل<0>AddressFinder</0>",
-      "links": {
-        "contactUs": "للاتصال بنا",
-        "rawData": "مسودة بيانات",
-        "sourceCode": "مصدر الرمز",
-        "roadmap": "خريطة المشروع"
-      }
     }
   },
   "calendar": {
@@ -95,13 +84,13 @@
     }
   },
   "footer": {
+    "message": "الرجاء شارك الموقع إن أفادك ا",
+    "addressFinderLinkCopy": "البحث عن العنوان بفضل <0>AddressFinder</0>",
     "links": {
       "contactUs": "للاتصال بنا",
       "rawData": "مسودة بيانات",
       "sourceCode": "مصدر الرمز",
       "roadmap": "خريطة المشروع"
-    },
-    "message": "الرجاء شارك الموقع إن أفادك ا",
-    "addressFinderLinkCopy": "البحث عن العنوان بفضل <0>AddressFinder</0>"
+    }
   }
 }
