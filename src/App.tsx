@@ -103,13 +103,13 @@ function App() {
                       data={bookingData}
                     />
                   </Tab>
-                  <Tab title="Booking">
+                  <Tab title="Bookings">
                     <CalendarSection
                       setLastUpdateTime={setLastUpdateTime}
                       data={bookingData}
                     />
                   </Tab>
-                  <Tab title="Walk In">
+                  <Tab title="Walk-in's">
                     <TodayLocationsSection
                       selectedLocationIndex={selectedLocationIndex}
                       setSelectedLocation={setSelectedLocationIndex}

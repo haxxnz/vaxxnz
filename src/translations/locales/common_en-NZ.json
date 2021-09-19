@@ -40,7 +40,7 @@
     }
   },
   "walkins": {
-    "sectionHeader": "Open Today",
+    "sectionHeader": "Walk-in's",
     "openString": "Open {{openTimeString}}",
     "cancellationNotice": {
       "info": "Please Don't Double-book",

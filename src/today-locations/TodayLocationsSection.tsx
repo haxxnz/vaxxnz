@@ -36,7 +36,7 @@ export function TodayLocationsSection({
   const { t, i18n } = useTranslation("common");
   const history = useHistory();
 
-  const [currentView, setCurrentView] = useState(!isMobileView ? 12 : 12);
+  const [currentView, setCurrentView] = useState(!isMobileView ? 3 : 1);
   const openModal = (locationIndex: number) => {
     const location =
       "ok" in locations && locationIndex !== undefined
@@ -71,10 +71,7 @@ export function TodayLocationsSection({
             components={[<strong></strong>]}
           />
         </h2>
-        <p>
-          Walkin's are locations that are open now which do vaccinations without
-          bookings.
-        </p>
+        <p>Don't require booking ahead but may have queues</p>
       </div>
       {"loading" in locations ? (
         <div
