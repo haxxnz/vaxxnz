@@ -15,6 +15,7 @@ import {
   HealthpointLocationsContext,
   HealthpointLocationsResult,
 } from "./contexts";
+import { Tabs, Tab } from "baseui/tabs";
 
 const Contexts: React.FC<{}> = (props) => {
   const [healthpointLocations, setHealthpointLocations] =
@@ -37,6 +38,7 @@ function App() {
   const [selectedLocationIndex, setSelectedLocationIndex] = useState<number>();
 
   const bookingData = useBookingData(setLastUpdateTime);
+  const [activeKey, setActiveKey] = useState<React.Key>("0");
 
   return (
     <Contexts>
@@ -64,14 +66,44 @@ function App() {
               <Banner />
               <div className={"big-old-container"}>
                 <LocationPicker lastUpdateTime={lastUpdateTime} />
-                <TodayLocationsSection
-                  selectedLocationIndex={selectedLocationIndex}
-                  setSelectedLocation={setSelectedLocationIndex}
-                />
-                <CalendarSection
-                  setLastUpdateTime={setLastUpdateTime}
-                  data={bookingData}
-                />
+                <Tabs
+                  onChange={({ activeKey }) => {
+                    setActiveKey(activeKey);
+                  }}
+                  activeKey={activeKey}
+                  overrides={{
+                    TabBar: {
+                      style: {
+                        backgroundColor: "white",
+                        borderBottom: "1px solid lightgray",
+                        borderLeft: "1px solid lightgray",
+                        borderRight: "1px solid lightgray",
+                      },
+                    },
+                    // TabContent: {
+                    //   style: tabContentStyle,
+                    // },
+                    Tab: {
+                      style: {
+                        fontSize: "1.25rem",
+                        fontWeight: "bold",
+                      },
+                    },
+                  }}
+                >
+                  <Tab title="Walk In">
+                    <TodayLocationsSection
+                      selectedLocationIndex={selectedLocationIndex}
+                      setSelectedLocation={setSelectedLocationIndex}
+                    />
+                  </Tab>
+                  <Tab title="Booking">
+                    <CalendarSection
+                      setLastUpdateTime={setLastUpdateTime}
+                      data={bookingData}
+                    />
+                  </Tab>
+                </Tabs>
               </div>
             </>
           </Route>

@@ -36,7 +36,7 @@ export function TodayLocationsSection({
   const { t, i18n } = useTranslation("common");
   const history = useHistory();
 
-  const [currentView, setCurrentView] = useState(!isMobileView ? 3 : 1);
+  const [currentView, setCurrentView] = useState(!isMobileView ? 12 : 12);
   const openModal = (locationIndex: number) => {
     const location =
       "ok" in locations && locationIndex !== undefined
@@ -64,13 +64,10 @@ export function TodayLocationsSection({
     ("ok" in locations && locations.ok.length === 0) ? null : (
     <div>
       <div className="WalkSection">
-        <h2>
-          <Trans
-            i18nKey="walkins.sectionHeader"
-            t={t}
-            components={[<strong></strong>]}
-          />
-        </h2>
+        <p>
+          Walkin's are locations that are open now which do vaccinations without
+          bookings.
+        </p>
       </div>
       {"loading" in locations ? (
         <div
