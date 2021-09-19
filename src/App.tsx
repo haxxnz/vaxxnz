@@ -53,6 +53,10 @@ function App() {
           <Route path="/:slug">
             <div className={"big-old-container"}>
               <LocationRouter />
+              <TodayLocationsSection
+                selectedLocationIndex={selectedLocationIndex}
+                setSelectedLocation={setSelectedLocationIndex}
+              />
             </div>
           </Route>
           <Route path="/">
