@@ -64,6 +64,13 @@ export function TodayLocationsSection({
     ("ok" in locations && locations.ok.length === 0) ? null : (
     <div>
       <div className="WalkSection">
+        <h2>
+          <Trans
+            i18nKey="walkins.sectionHeader"
+            t={t}
+            components={[<strong></strong>]}
+          />
+        </h2>
         <p>
           Walkin's are locations that are open now which do vaccinations without
           bookings.

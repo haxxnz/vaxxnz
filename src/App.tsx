@@ -91,16 +91,26 @@ function App() {
                     },
                   }}
                 >
-                  <Tab title="Walk In">
+                  <Tab title="All">
                     <TodayLocationsSection
                       selectedLocationIndex={selectedLocationIndex}
                       setSelectedLocation={setSelectedLocationIndex}
+                    />
+                    <CalendarSection
+                      setLastUpdateTime={setLastUpdateTime}
+                      data={bookingData}
                     />
                   </Tab>
                   <Tab title="Booking">
                     <CalendarSection
                       setLastUpdateTime={setLastUpdateTime}
                       data={bookingData}
+                    />
+                  </Tab>
+                  <Tab title="Walk In">
+                    <TodayLocationsSection
+                      selectedLocationIndex={selectedLocationIndex}
+                      setSelectedLocation={setSelectedLocationIndex}
                     />
                   </Tab>
                 </Tabs>
