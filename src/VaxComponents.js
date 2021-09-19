@@ -219,20 +219,21 @@ export const ModalGrid = styled.section`
     }
   }
 `;
-
+export const WalkInstructions = styled.div`
+  padding: 1.5rem;
+  border-right: 1px solid lightgray;
+`;
 export const WalkGrid = styled.section`
   display: grid;
   gap: 2.5rem;
-  grid-template-columns: 0.6fr 1fr;
+  grid-template-columns: 1fr 1fr;
   height: 100%;
   overflow-y: scroll;
   h1 {
     font-size: 2.5rem;
     font-weight: 600;
   }
-  h2 {
-    font-weight: 400;
-  }
+
   hr {
     border: none;
     border-top: 1px solid lightgray;
@@ -303,6 +304,15 @@ export const VaccineCentre = styled.section`
     }
   }
 `;
+
+export const WalkHeading = styled.section`
+  border-bottom: 1px solid lightgray;
+  padding: 1.5rem;
+  h1 {
+    font-size: 2rem;
+  }
+`;
+
 export const WalkContainer = styled.div`
   border-left: 1px solid lightgray;
   border-right: 1px solid lightgray;

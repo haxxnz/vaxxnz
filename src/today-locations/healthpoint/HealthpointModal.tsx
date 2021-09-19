@@ -5,7 +5,7 @@ import { useMediaQuery } from "react-responsive";
 import { LocationNotice } from "../../common/LocationNotice";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { useRadiusKm } from "../../utils/useRadiusKm";
-import { WalkGrid } from "../../VaxComponents";
+import { WalkGrid, WalkHeading, WalkInstructions } from "../../VaxComponents";
 import { HealthpointLocation } from "./HealthpointData";
 
 type Props = {
@@ -39,56 +39,58 @@ const HealthpointModal: FunctionComponent<Props> = ({
     display: "flex",
     flexDirection: "column",
     alignSelf: "center",
-    padding: "1.5rem",
     backgroundColor: "white",
     border: "1px solid lightgray",
     maxWidth: "1440px",
     boxSizing: "border-box",
   };
+
   const dialogStyle = isMobileView
     ? { ...mobileDialogStyle, ...sharedDialogStyle }
     : { ...desktopDialogStyle, ...sharedDialogStyle };
   return (
     <div style={dialogStyle as any}>
+      <WalkHeading>
+        <h1>{location.name}</h1>
+      </WalkHeading>
       <WalkGrid className={"modal-container WalkModal"}>
-        <div>
-          <h1
-            style={{
-              marginBottom: "1rem",
-            }}
-          >
-            {location.name}
-          </h1>
-          <LocationNotice instructions={location.instructionLis} />
+        <WalkInstructions>
+          <h2>How to get vaccinated here</h2>
 
+          <LocationNotice instructions={location.instructionLis} />
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button
-              overrides={{
-                Root: {
-                  style: {
-                    width: "100%",
-                    marginTop: "1.5rem",
-                    marginRight: 0,
-                    marginBottom: "0.5rem",
-                    marginLeft: 0,
-                  },
-                },
-              }}
-              kind={KIND.primary}
-              onClick={() =>
-                enqueueAnalyticsEvent("Healthpoint Get Directions clicked", {
-                  locationName: location.name,
-                  radiusKm,
-                })
-              }
-            >
-              {t("core.getDirections")}
-            </Button>
+            <section>
+              <h3>{t("core.address")}</h3>
+              <p>{location.address}</p>
+            </section>
           </a>
+          <Button
+            overrides={{
+              Root: {
+                style: {
+                  width: "100%",
+                  marginTop: "1.5rem",
+                  marginRight: 0,
+                  marginBottom: "0.5rem",
+                  marginLeft: 0,
+                },
+              },
+            }}
+            kind={KIND.primary}
+            onClick={() =>
+              enqueueAnalyticsEvent("Healthpoint Get Directions clicked", {
+                locationName: location.name,
+                radiusKm,
+              })
+            }
+          >
+            {t("core.getDirections")}
+          </Button>
+
           <Button
             overrides={{
               Root: {
@@ -106,12 +108,6 @@ const HealthpointModal: FunctionComponent<Props> = ({
           >
             {t("walkins.cancelBooking")}
           </Button>
-        </div>
-        <div style={{ height: "100%" }}>
-          <section>
-            <h3>{t("core.address")}</h3>
-            <p>{location.address}</p>
-          </section>
 
           {telephone && (
             <section>
@@ -185,7 +181,8 @@ const HealthpointModal: FunctionComponent<Props> = ({
               </div>
             );
           })}
-        </div>
+        </WalkInstructions>
+        <div style={{ height: "100%" }}></div>
       </WalkGrid>
       <div className="MobileOnly">
         <Button
