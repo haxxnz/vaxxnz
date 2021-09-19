@@ -42,6 +42,7 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
   const activeDate = { dateStr: unwind[0], locations: unwind[1] };
 
   const close = () => {
+    window.scrollTo(0, 0);
     history.push(`/${getSearch()}`);
   };
 

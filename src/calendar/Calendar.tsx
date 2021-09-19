@@ -136,6 +136,7 @@ function CalendarDay(props: CalendarDayProps): JSX.Element {
           radiusKm,
           spotsAvailable: availableCount,
         });
+        window.scrollTo(0, 0);
         history.push(`/bookings/${dateStr}${getSearch()}`);
       }}
     >

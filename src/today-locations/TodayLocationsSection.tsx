@@ -48,6 +48,7 @@ export function TodayLocationsSection({
       locationName: location ? location.name : "",
       radiusKm,
     });
+    window.scrollTo(0, 0);
     history.push(
       `/${slug(location.name)}-${simpleHash(
         `${location.lat}${location.lng}`

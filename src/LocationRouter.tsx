@@ -56,12 +56,18 @@ export function LocationRouter() {
     <>
       {"isHealthpoint" in location ? (
         <WalkModal
-          clearSelectedLocation={() => history.push(`/${getSearch()}`)}
+          clearSelectedLocation={() => {
+            window.scrollTo(0, 0);
+            history.push(`/${getSearch()}`);
+          }}
           location={location as HealthpointLocation}
         />
       ) : (
         <CrowdsourcedModal
-          clearSelectedLocation={() => history.push(`/${getSearch()}`)}
+          clearSelectedLocation={() => {
+            window.scrollTo(0, 0);
+            history.push(`/${getSearch()}`);
+          }}
           location={location as CrowdsourcedLocation}
         />
       )}
