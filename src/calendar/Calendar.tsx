@@ -59,16 +59,23 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   const calendarData = Array.from(data);
 
   return (
-    <CalendarContainer>
-      {calendarData.map(([monthStr, monthDates]) => (
-        <CalendarMonthContainer
-          key={monthStr}
-          monthStr={monthStr}
-          monthDates={monthDates}
-          language={i18n.language}
-        />
-      ))}
-    </CalendarContainer>
+    <>
+      <div className="WalkSection">
+        <h2>Available Booking Slots</h2>
+        <p>Get a fixed vaccination date and time.</p>
+      </div>
+
+      <CalendarContainer>
+        {calendarData.map(([monthStr, monthDates]) => (
+          <CalendarMonthContainer
+            key={monthStr}
+            monthStr={monthStr}
+            monthDates={monthDates}
+            language={i18n.language}
+          />
+        ))}
+      </CalendarContainer>
+    </>
   );
 };
 
