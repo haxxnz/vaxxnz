@@ -15,11 +15,6 @@ import {
   HealthpointLocationsContext,
   HealthpointLocationsResult,
 } from "./contexts";
-import {
-  AvailabilityData,
-  Location,
-} from "./calendar/booking/BookingDataTypes";
-import { HealthpointLocation } from "./today-locations/healthpoint/HealthpointData";
 
 const Contexts: React.FC<{}> = (props) => {
   const [healthpointLocations, setHealthpointLocations] =

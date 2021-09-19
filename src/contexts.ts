@@ -1,8 +1,4 @@
 import { createContext } from "react";
-import {
-  Location,
-  AvailabilityData,
-} from "./calendar/booking/BookingDataTypes";
 import { HealthpointLocation } from "./today-locations/healthpoint/HealthpointData";
 
 function defaultContextValue<T>(defaultValue: T) {

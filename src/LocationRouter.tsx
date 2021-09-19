@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
 import WalkModal from "./today-locations/healthpoint/HealthpointModal";
 import {
-  getHealthpointData,
   HealthpointLocation,
-  useHealthpointData,
   useHealthpointLocations,
 } from "./today-locations/healthpoint/HealthpointData";
 import { CrowdsourcedLocation } from "./crowdsourced/CrowdsourcedData";

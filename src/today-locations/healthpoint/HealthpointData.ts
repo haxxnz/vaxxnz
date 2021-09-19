@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { HealthpointLocationsContext } from "../../contexts";
 import { memoizeOnce } from "../../utils/memoize";
 

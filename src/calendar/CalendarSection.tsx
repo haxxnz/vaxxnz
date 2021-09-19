@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { BookingCalendar, LoadingBookingCalendar } from "./Calendar";
-import { BookingDataResult, useBookingData } from "./booking/BookingData";
+import { BookingDataResult } from "./booking/BookingData";
 import { CalendarError } from "./CalendarError";
 
 interface CalendarSectionProps {
