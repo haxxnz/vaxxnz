@@ -36,7 +36,7 @@ export function TodayLocationsSection({
   const { t, i18n } = useTranslation("common");
   const history = useHistory();
 
-  const [currentView, setCurrentView] = useState(!isMobileView ? 3 : 1);
+  const [currentView, setCurrentView] = useState(!isMobileView ? 12 : 12);
   const openModal = (locationIndex: number) => {
     const location =
       "ok" in locations && locationIndex !== undefined

@@ -93,16 +93,6 @@ function App() {
                     },
                   }}
                 >
-                  <Tab title="All">
-                    <TodayLocationsSection
-                      selectedLocationIndex={selectedLocationIndex}
-                      setSelectedLocation={setSelectedLocationIndex}
-                    />
-                    <CalendarSection
-                      setLastUpdateTime={setLastUpdateTime}
-                      data={bookingData}
-                    />
-                  </Tab>
                   <Tab title="Bookings">
                     <CalendarSection
                       setLastUpdateTime={setLastUpdateTime}
