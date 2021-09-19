@@ -25,19 +25,7 @@ export type HealthpointLocationsResult =
   | { value: HealthpointLocation[] }
   | { error: Error }
   | { loading: true };
-export type LocationsResult =
-  | { value: Location[] }
-  | { error: Error }
-  | { loading: true };
 
 export const HealthpointLocationsContext = contextCreate({
   loading: true,
 } as HealthpointLocationsResult);
-export const LocationsContext = contextCreate({
-  loading: true,
-} as LocationsResult);
-
-// DON'T USE
-export const AvailabilityDataContext = contextCreate(
-  null as AvailabilityData | null
-);

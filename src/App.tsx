@@ -12,11 +12,8 @@ import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { Banner } from "./Banner";
 import {
-  AvailabilityDataContext,
   HealthpointLocationsContext,
   HealthpointLocationsResult,
-  LocationsContext,
-  LocationsResult,
 } from "./contexts";
 import {
   AvailabilityData,
@@ -25,31 +22,18 @@ import {
 import { HealthpointLocation } from "./today-locations/healthpoint/HealthpointData";
 
 const Contexts: React.FC<{}> = (props) => {
-  const [locations, setLocations] = useState<LocationsResult>({
-    loading: true,
-  });
   const [healthpointLocations, setHealthpointLocations] =
     useState<HealthpointLocationsResult>({ loading: true });
-  const [availabilityData, setAvailabilityData] =
-    useState<AvailabilityData | null>(null);
 
   return (
-    <LocationsContext.Provider
-      value={{ value: locations, setValue: setLocations }}
+    <HealthpointLocationsContext.Provider
+      value={{
+        value: healthpointLocations,
+        setValue: setHealthpointLocations,
+      }}
     >
-      <AvailabilityDataContext.Provider
-        value={{ value: availabilityData, setValue: setAvailabilityData }}
-      >
-        <HealthpointLocationsContext.Provider
-          value={{
-            value: healthpointLocations,
-            setValue: setHealthpointLocations,
-          }}
-        >
-          {props.children}
-        </HealthpointLocationsContext.Provider>
-      </AvailabilityDataContext.Provider>
-    </LocationsContext.Provider>
+      {props.children}
+    </HealthpointLocationsContext.Provider>
   );
 };
 

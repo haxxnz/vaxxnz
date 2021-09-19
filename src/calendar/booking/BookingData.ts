@@ -1,6 +1,5 @@
 import { addDays, format, parse } from "date-fns";
 import { useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { AvailabilityDataContext, LocationsContext } from "../../contexts";
 import {
   CrowdsourcedLocation,
   getCrowdsourcedLocations,
@@ -34,25 +33,6 @@ const getLocations = memoizeOnce(async function () {
   }));
   return data;
 });
-
-// TODO: rename to useLocationsResult
-export function useLocations() {
-  const { value, setValue } = useContext(LocationsContext);
-  useEffect(() => {
-    // setValue({ loading: true });
-    if ("loading" in value) {
-      getLocations()
-        .then((locations) => {
-          setValue({ value: locations });
-        })
-        .catch((e) => {
-          console.error("useLocations e", e);
-          setValue({ error: e });
-        });
-    }
-  }, [setValue, value]);
-  return value;
-}
 
 const getAvailabilityData = memoize0(async function (extId: string) {
   const res = await fetch(
