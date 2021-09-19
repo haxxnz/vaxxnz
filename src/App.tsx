@@ -78,28 +78,46 @@ function App() {
                         borderBottom: "1px solid lightgray",
                         borderLeft: "1px solid lightgray",
                         borderRight: "1px solid lightgray",
+
+                        padding: "0px",
                       },
                     },
                     TabContent: {
                       style: {
-                        padding: "0px",
+                        padding: "0px !important",
+                        marginTop: "1.5rem",
+                        borderTop: "1px solid lightgray",
                       },
                     },
                     Tab: {
                       style: {
                         fontSize: "1.25rem",
                         fontWeight: "bold",
+                        textAlign: "center",
+                        margin: "0px",
+                        padding: "16px 0px",
+                        flex: "1",
+                        color: "#0076FF",
                       },
                     },
                   }}
                 >
-                  <Tab title="Bookings">
+                  <Tab
+                    title="Make a Booking"
+                    overrides={{
+                      Tab: {
+                        style: {
+                          borderRight: "1px solid lightgray",
+                        },
+                      },
+                    }}
+                  >
                     <CalendarSection
                       setLastUpdateTime={setLastUpdateTime}
                       data={bookingData}
                     />
                   </Tab>
-                  <Tab title="Walk-in's">
+                  <Tab title="Find a walk-in">
                     <TodayLocationsSection
                       selectedLocationIndex={selectedLocationIndex}
                       setSelectedLocation={setSelectedLocationIndex}

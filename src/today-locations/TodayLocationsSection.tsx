@@ -64,13 +64,7 @@ export function TodayLocationsSection({
     ("ok" in locations && locations.ok.length === 0) ? null : (
     <div>
       <div className="WalkSection">
-        <h2>
-          <Trans
-            i18nKey="walkins.sectionHeader"
-            t={t}
-            components={[<strong></strong>]}
-          />
-        </h2>
+        <h2>Find a walk-in vaccination</h2>
         <p>Don't require booking ahead but may have queues</p>
       </div>
       {"loading" in locations ? (

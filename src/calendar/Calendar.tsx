@@ -60,7 +60,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
 
   return (
     <>
-      <div className="WalkSection">
+      <div className="WalkSection2">
         <h2>Available Booking Slots</h2>
         <p>Get a fixed vaccination date and time.</p>
       </div>

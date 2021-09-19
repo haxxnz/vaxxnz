@@ -8,8 +8,7 @@
 
 .pac-container {
   z-index: 1501;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .pac-item-query {
@@ -88,6 +87,22 @@ div.WalkSection {
 }
 
 div.WalkSection p {
+  margin-top: 3px;
+  color: #666;
+}
+
+div.WalkSection2 {
+  display: block;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-left: 1px solid lightgray;
+
+  background-color: #fff;
+  z-index: 2 !important;
+}
+
+div.WalkSection2 p {
   margin-top: 3px;
   color: #666;
 }
