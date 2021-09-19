@@ -16,7 +16,7 @@ export const useTodayLocationsData = () => {
   const radiusKm = useRadiusKm();
   const coords = useCoords();
   const currentDay = new Date().getDay();
-  const locations = useHealthpointLocations();
+  const locations = useHealthpointLocationsFiltered();
   const crowdSourced = getCrowdsourcedLocations().filter(
     ({ openingHours }) =>
       openingHours.find(

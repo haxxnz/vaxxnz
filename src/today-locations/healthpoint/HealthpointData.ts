@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { HealthpointLocationsContext } from "../../contexts";
 import { memoizeOnce } from "../../utils/memoize";
 
 export interface OpeningHours {
@@ -47,6 +48,24 @@ export const getHealthpointData = memoizeOnce(
     }));
   }
 );
+
+export function useHealthpointLocations() {
+  const { value, setValue } = useContext(HealthpointLocationsContext);
+  useEffect(() => {
+    if (value === null) {
+      getHealthpointData()
+        .then((locations) => {
+          setValue(locations);
+        })
+        .catch((e) => {
+          console.error("useHealthpointLocations e", e);
+          setValue([]);
+        });
+    }
+  }, [setValue, value]);
+  return value;
+}
+
 type HealthpointDataResult =
   | { ok: HealthpointLocation[] }
   | { error: Error }
@@ -80,15 +99,16 @@ type HealthpointLocationsResult =
   | { error: Error }
   | { loading: true };
 
-export const useHealthpointLocations = (): HealthpointLocationsResult => {
-  const allLocations = useHealthpointData();
+export const useHealthpointLocationsFiltered =
+  (): HealthpointLocationsResult => {
+    const allLocations = useHealthpointData();
 
-  if ("ok" in allLocations) {
-    return { ok: filterHealthpointLocation(allLocations.ok) };
-  } else {
-    return allLocations;
-  }
-};
+    if ("ok" in allLocations) {
+      return { ok: filterHealthpointLocation(allLocations.ok) };
+    } else {
+      return allLocations;
+    }
+  };
 
 function filterHealthpointLocation(allLocations: HealthpointLocation[]) {
   const matchedFilter = allLocations.filter(
