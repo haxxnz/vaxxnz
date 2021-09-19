@@ -97,7 +97,6 @@ div.WalkSection2 {
   border-bottom: 1px solid lightgray;
   border-right: 1px solid lightgray;
   border-left: 1px solid lightgray;
-
   background-color: #fff;
   z-index: 2 !important;
 }
@@ -254,4 +253,51 @@ ul.af_list.af_list li.af_item {
   color: #006138;
   padding: 0.6rem 1rem;
   margin-top: 0.8rem;
+}
+
+.address-card {
+  border: 2px solid lightgray;
+  padding: 1rem;
+  border-radius: 8px;
+  display: block;
+  margin: 1.5rem 0 0.5rem 0;
+  display: flex;
+  gap: 1rem;
+  color: rgb(26 91 171);
+}
+
+.address-card:hover {
+  background-color: #e4eeff;
+  cursor: pointer;
+}
+
+.address-card section {
+  padding: 0;
+  margin: 0;
+}
+
+.address-card p {
+  padding: 0;
+  font-weight: 500;
+  color: black;
+}
+
+.address-icon {
+  font-size: 2rem;
+  align-self: center;
+}
+
+.address-header {
+  margin-top: 2.5rem;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 0.5rem;
+}
+.mappymap {
+  border-bottom: 1px solid lightgray;
+}
+@media screen and (max-width: 768px) {
+  .mappymap {
+   display: none;
+  }
+  
 }

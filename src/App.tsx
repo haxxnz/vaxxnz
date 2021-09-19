@@ -98,6 +98,9 @@ function App() {
                         padding: "16px 0px",
                         flex: "1",
                         color: "#0076FF",
+                        ":hover": {
+                          backgroundColor: "#e4eeff",
+                        },
                       },
                     },
                   }}

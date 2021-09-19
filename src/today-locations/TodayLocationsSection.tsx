@@ -65,7 +65,7 @@ export function TodayLocationsSection({
     <div>
       <div className="WalkSection">
         <h2>Find a walk-in vaccination</h2>
-        <p>Don't require booking ahead but may have queues</p>
+        <p>You don't need a booking to get vaccinated at any of these venues</p>
       </div>
       {"loading" in locations ? (
         <div

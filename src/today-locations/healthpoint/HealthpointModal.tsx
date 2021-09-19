@@ -8,6 +8,8 @@ import { useRadiusKm } from "../../utils/useRadiusKm";
 import { WalkGrid, WalkHeading, WalkInstructions } from "../../VaxComponents";
 import { HealthpointLocation } from "./HealthpointData";
 
+import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 type Props = {
   clearSelectedLocation: () => void;
   location?: HealthpointLocation;
@@ -43,6 +45,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
     border: "1px solid lightgray",
     maxWidth: "1440px",
     boxSizing: "border-box",
+    marginBottom: "1.5rem",
   };
 
   const dialogStyle = isMobileView
@@ -66,15 +69,14 @@ const HealthpointModal: FunctionComponent<Props> = ({
       </WalkHeading>
       <WalkGrid className={"modal-container WalkModal"}>
         <WalkInstructions>
-          <h2>How to get vaccinated here</h2>
-          <p>
-            Go to the address below in person and ask for a COVID vaccination{" "}
-          </p>
+          <h2 style={{ marginBottom: "0.5rem" }}>How to get vaccinated here</h2>
+          <p>Visit the address below and ask for a free COVID vaccination.</p>
 
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
             target="_blank"
             rel="noopener noreferrer"
+            className="address-card"
             onClick={() =>
               enqueueAnalyticsEvent("Healthpoint Get Directions clicked", {
                 locationName: location.name,
@@ -82,13 +84,21 @@ const HealthpointModal: FunctionComponent<Props> = ({
               })
             }
           >
+            <FontAwesomeIcon className="address-icon" icon={faMapMarkerAlt} />
             <section>
               <p>{location.address}</p>
-              {t("core.getDirections")}
+              <aside>{t("core.getDirections")}</aside>
             </section>
           </a>
+          {telephone && (
+            <p>
+              You can also call <a href={`tel:${telephone}`}>{telephone}</a> to
+              check how long the queues are.
+            </p>
+          )}
 
           <LocationNotice instructions={location.instructionLis} />
+          <h2 className="address-header">Venue Details</h2>
 
           {telephone && (
             <section>
@@ -96,6 +106,11 @@ const HealthpointModal: FunctionComponent<Props> = ({
               <a href={`tel:${telephone}`}>{telephone}</a>
             </section>
           )}
+
+          <section>
+            <h3>{t("core.address")}</h3>
+            <p>{location.address}</p>
+          </section>
 
           {location.opennningHours.schedule && (
             <section>
@@ -163,7 +178,18 @@ const HealthpointModal: FunctionComponent<Props> = ({
             );
           })}
         </WalkInstructions>
-        <div style={{ height: "100%" }}></div>
+        <div style={{ height: "100%" }}>
+          <iframe
+            className="mappymap"
+            width="100%"
+            height="600px"
+            frameBorder="0"
+            scrolling="no"
+            loading="lazy"
+            src={`https://www.google.com/maps/embed/v1/view?zoom=18&center=${location.lat}%2C${location.lng}&key=AIzaSyAcCqT9f9Oe5dTmK81lFC1IyVHJmxwv_eg`}
+          ></iframe>
+          <br />
+        </div>
       </WalkGrid>
       <div className="MobileOnly">
         <Button

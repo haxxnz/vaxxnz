@@ -6,7 +6,6 @@ import { LocationNotice } from "../common/LocationNotice";
 import { NoticeList, NoticeListItem } from "../NoticeList";
 import { ModalGrid } from "../VaxComponents";
 import { CrowdsourcedLocation } from "./CrowdsourcedData";
-
 type Props = {
   clearSelectedLocation: () => void;
   location?: CrowdsourcedLocation;

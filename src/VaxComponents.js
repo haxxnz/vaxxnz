@@ -223,9 +223,9 @@ export const WalkInstructions = styled.div`
   padding: 1.5rem;
   border-right: 1px solid lightgray;
 `;
+
 export const WalkGrid = styled.section`
   display: grid;
-  gap: 2.5rem;
   grid-template-columns: 1fr 1fr;
   height: 100%;
   overflow-y: scroll;
