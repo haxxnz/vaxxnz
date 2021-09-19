@@ -80,9 +80,11 @@ function App() {
                         borderRight: "1px solid lightgray",
                       },
                     },
-                    // TabContent: {
-                    //   style: tabContentStyle,
-                    // },
+                    TabContent: {
+                      style: {
+                        padding: "0px",
+                      },
+                    },
                     Tab: {
                       style: {
                         fontSize: "1.25rem",
