@@ -308,8 +308,15 @@ export const VaccineCentre = styled.section`
 export const WalkHeading = styled.section`
   border-bottom: 1px solid lightgray;
   padding: 1.5rem;
+
+  display: flex;
+
+  width: 100%;
+  box-sizing: border-box;
   h1 {
+    flex: 1;
     font-size: 2rem;
+    align-self: center;
   }
 `;
 

@@ -52,35 +52,29 @@ const HealthpointModal: FunctionComponent<Props> = ({
     <div style={dialogStyle as any}>
       <WalkHeading>
         <h1>{location.name}</h1>
+        <Button
+          overrides={{
+            Root: {
+              style: {},
+            },
+          }}
+          kind={KIND.secondary}
+          onClick={close}
+        >
+          {t("walkins.cancelBooking")}
+        </Button>
       </WalkHeading>
       <WalkGrid className={"modal-container WalkModal"}>
         <WalkInstructions>
           <h2>How to get vaccinated here</h2>
+          <p>
+            Go to the address below in person and ask for a COVID vaccination{" "}
+          </p>
 
-          <LocationNotice instructions={location.instructionLis} />
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
             target="_blank"
             rel="noopener noreferrer"
-          >
-            <section>
-              <h3>{t("core.address")}</h3>
-              <p>{location.address}</p>
-            </section>
-          </a>
-          <Button
-            overrides={{
-              Root: {
-                style: {
-                  width: "100%",
-                  marginTop: "1.5rem",
-                  marginRight: 0,
-                  marginBottom: "0.5rem",
-                  marginLeft: 0,
-                },
-              },
-            }}
-            kind={KIND.primary}
             onClick={() =>
               enqueueAnalyticsEvent("Healthpoint Get Directions clicked", {
                 locationName: location.name,
@@ -88,26 +82,13 @@ const HealthpointModal: FunctionComponent<Props> = ({
               })
             }
           >
-            {t("core.getDirections")}
-          </Button>
+            <section>
+              <p>{location.address}</p>
+              {t("core.getDirections")}
+            </section>
+          </a>
 
-          <Button
-            overrides={{
-              Root: {
-                style: {
-                  width: "100%",
-                  marginTop: "0.5rem",
-                  marginRight: 0,
-                  marginBottom: "0.5rem",
-                  marginLeft: 0,
-                },
-              },
-            }}
-            kind={KIND.secondary}
-            onClick={close}
-          >
-            {t("walkins.cancelBooking")}
-          </Button>
+          <LocationNotice instructions={location.instructionLis} />
 
           {telephone && (
             <section>
