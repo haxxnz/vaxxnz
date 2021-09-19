@@ -48,32 +48,7 @@
     "cancelBooking": "إلغاء",
     "noticeList": {
       "title": "كيف الحصول على اللقاح",
-      "text": "احتمال يكون طابور - الرجاء اتصل قبل الذهاب للتأكد من توفر اللقاح اليوم",
-      "walkinAwailable": "<0 /> لقاح بدون موعد",
-      "driveThroughAvailable": "<0 /> لقاح من السيارة متوفر",
-      "phone": "الهاتف",
-      "hours": "الاوقات",
-      "closed": "مغلق",
-      "publicHolidays": "عطلة رسمية",
-      "otherExeptions": "استثناءات",
-      "seeMore": "معلومات مزيده",
-      "otherLocations": {
-        "sectionHeader": "مواقع اللقاح الاخرى<0>- مفتوحه اليوم</0>",
-        "disclaimer": {
-          "title": "هذا الموقع مقدم من الجمهور العام",
-          "message": "المعلومات قد لا تكون دقيقة 100% "
-        }
-      }
-    },
-    "footer": {
-      "message": "الرجاء شارك الموقع إن أفادك ا",
-      "addressFinderLinkCopy": "البحث عن العنوان بفضل<0>AddressFinder</0>",
-      "links": {
-        "contactUs": "للاتصال بنا",
-        "rawData": "مسودة بيانات",
-        "sourceCode": "مصدر الرمز",
-        "roadmap": "خريطة المشروع"
-      }
+      "text": "احتمال يكون طابور - الرجاء اتصل قبل الذهاب للتأكد من توفر اللقاح اليوم"
     },
     "walkinAwailable": "<0 /> لقاح بدون موعد",
     "driveThroughAvailable": "<0 /> لقاح من السيارة متوفر",
@@ -84,11 +59,22 @@
     "otherExeptions": "استثناءات",
     "seeMore": "معلومات مزيده",
     "otherLocations": {
+      "sectionHeader": "مواقع اللقاح الاخرى<0>- مفتوحه اليوم</0>",
       "disclaimer": {
         "title": "هذا الموقع مقدم من الجمهور العام",
-        "message": "يرجى زيارة الموقع المعلومات قد لا تكون دقيقة"
-      },
-      "sectionHeader": "مواقع اللقاح الاخرى<0>- مفتوحه اليوم</0>"
+        "message": "المعلومات قد لا تكون دقيقة 100% "
+      }
+    },
+
+    "footer": {
+      "message": "الرجاء شارك الموقع إن أفادك ا",
+      "addressFinderLinkCopy": "البحث عن العنوان بفضل<0>AddressFinder</0>",
+      "links": {
+        "contactUs": "للاتصال بنا",
+        "rawData": "مسودة بيانات",
+        "sourceCode": "مصدر الرمز",
+        "roadmap": "خريطة المشروع"
+      }
     }
   },
   "calendar": {
