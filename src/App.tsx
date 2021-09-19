@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { CalendarSection } from "./calendar/CalendarSection";
 import { LocationPicker } from "./location-picker/LocationPicker";
@@ -11,6 +11,44 @@ import { LocationRouter } from "./LocationRouter";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { Banner } from "./Banner";
+import {
+  AvailabilityDataContext,
+  HealthpointLocationsContext,
+  LocationsContext,
+} from "./contexts";
+import {
+  AvailabilityData,
+  Location,
+} from "./calendar/booking/BookingDataTypes";
+import { HealthpointLocation } from "./today-locations/healthpoint/HealthpointData";
+
+const Contexts: React.FC<{}> = (props) => {
+  const [locations, setLocations] = useState<Location[] | null>(null);
+  const [healthpointLocations, setHealthpointLocations] = useState<
+    HealthpointLocation[] | null
+  >(null);
+  const [availabilityData, setAvailabilityData] =
+    useState<AvailabilityData | null>(null);
+
+  return (
+    <LocationsContext.Provider
+      value={{ value: locations, setValue: setLocations }}
+    >
+      <AvailabilityDataContext.Provider
+        value={{ value: availabilityData, setValue: setAvailabilityData }}
+      >
+        <HealthpointLocationsContext.Provider
+          value={{
+            value: healthpointLocations,
+            setValue: setHealthpointLocations,
+          }}
+        >
+          {props.children}
+        </HealthpointLocationsContext.Provider>
+      </AvailabilityDataContext.Provider>
+    </LocationsContext.Provider>
+  );
+};
 
 function App() {
   const { pathname } = useLocation();
@@ -25,7 +63,7 @@ function App() {
   }, [pathname]);
 
   return (
-    <>
+    <Contexts>
       <div className="App">
         <Header />
         <Switch>
@@ -66,7 +104,7 @@ function App() {
         ></div>
         <CookiesBar />
       </div>
-    </>
+    </Contexts>
   );
 }
 
