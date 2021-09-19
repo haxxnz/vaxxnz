@@ -40,10 +40,6 @@ function App() {
 
   const bookingData = useBookingData(setLastUpdateTime);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
   return (
     <Contexts>
       <div className="App">
