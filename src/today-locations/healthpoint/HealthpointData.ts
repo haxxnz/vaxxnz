@@ -53,7 +53,6 @@ export const getHealthpointData = memoizeOnce(
 export function useHealthpointLocations() {
   const { value, setValue } = useContext(HealthpointLocationsContext);
   useEffect(() => {
-    // setValue({ loading: true });
     if ("loading" in value) {
       getHealthpointData()
         .then((locations) => {
@@ -74,19 +73,6 @@ type HealthpointDataResult =
   | { loading: true };
 
 export const useHealthpointData = (): HealthpointDataResult => {
-  // const [healthpointLocations, setHealthpointLocations] = useState<
-  //   HealthpointLocation[] | null
-  // >(null);
-  // const [error, setError] = useState<Error | null>(null);
-
-  // useEffect(() => {
-  //   getHealthpointData()
-  //     .then((locations) => {
-  //       setHealthpointLocations(locations);
-  //     })
-  //     .catch((err) => setError(err));
-  // }, []);
-
   const value = useHealthpointLocations();
 
   if ("error" in value) {

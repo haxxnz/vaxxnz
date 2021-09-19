@@ -18,12 +18,6 @@ export function LocationRouter() {
   const [hash] = slug.split("-").slice(-1);
   const history = useHistory();
 
-  // const [healthpointLocations, setHealthpointLocations] = useState<
-  //   HealthpointLocation[]
-  // >([]);
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState<Error | null>(null);
-
   const healthpointLocationsResult = useHealthpointLocations();
   const loading = "loading" in healthpointLocationsResult;
   const error =
@@ -34,20 +28,6 @@ export function LocationRouter() {
     "value" in healthpointLocationsResult
       ? healthpointLocationsResult.value
       : [];
-
-  // useEffect(() => {
-  //   async function load() {
-  //     setLoading(true);
-  //     setError(null);
-  //     try {
-  //       setHealthpointLocations(await getHealthpointData());
-  //     } catch (e) {
-  //       setError(e as Error);
-  //     }
-  //     setLoading(false);
-  //   }
-  //   load();
-  // }, []);
 
   const locations = [...healthpointLocations, ...crowdsourcedLocations];
 

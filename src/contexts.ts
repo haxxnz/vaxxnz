@@ -21,10 +21,6 @@ function contextCreate<T>(defaultValue: T): React.Context<Context<T>> {
   return createContext<Context<T>>(defaultContextValue(defaultValue as T));
 }
 
-// export const HealthpointLocationContext = createContext<Context<HealthpointLocation[]>>(defaultContextValue([] as HealthpointLocation[]));
-// export const AvailabilityDataContext = createContext<Context<AvailabilityData>>(defaultContextValue(null as AvailabilityData));
-// export const LocationContext = createContext<Context<Location[]>>(defaultContextValue([] as Location[]));
-
 export type HealthpointLocationsResult =
   | { value: HealthpointLocation[] }
   | { error: Error }

@@ -35,6 +35,7 @@ const getLocations = memoizeOnce(async function () {
   return data;
 });
 
+// TODO: rename to useLocationsResult
 export function useLocations() {
   const { value, setValue } = useContext(LocationsContext);
   useEffect(() => {
