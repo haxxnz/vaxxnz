@@ -180,6 +180,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
         </WalkInstructions>
         <div style={{ height: "100%" }}>
           <iframe
+            title="Map"
             className="mappymap"
             width="100%"
             height="600px"

@@ -86,7 +86,6 @@ function App() {
                       style: {
                         padding: "0px !important",
                         marginTop: "1.5rem",
-                        borderTop: "1px solid lightgray",
                       },
                     },
                     Tab: {
@@ -99,9 +98,11 @@ function App() {
                         flex: "1",
                         ":hover": {
                           backgroundColor: "#e4eeff",
+                          color: "#0050ac",
                         },
-                        color: $active ? "#0076FF" : "#444",
-                        borderBottomColor: $active ? "#0076FF" : "transparent",
+                        color: $active ? "#000" : "#0076FF",
+                        borderBottomColor: $active ? "#000" : "transparent",
+                        borderRadius: "0",
                       }),
                     },
                   }}
