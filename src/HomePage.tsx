@@ -6,6 +6,7 @@ import {
   CalendarSection,
   CalendarSectionProps,
 } from "./calendar/CalendarSection";
+import { PageLink } from "./PageLink";
 import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
 
 interface HomePageProps extends CalendarSectionProps {}
@@ -53,12 +54,12 @@ const StyledTabs = styled.div`
 
 const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => (
   <StyledTabs role="tablist">
-    <Link to="/bookings">
+    <PageLink to="/bookings">
       <Tab isActive={activeTab === TabType.bookings}>Make a Booking</Tab>
-    </Link>
-    <Link to="/locations">
+    </PageLink>
+    <PageLink to="/locations">
       <Tab isActive={activeTab === TabType.walkIn}>Walk-in/Drive Thru</Tab>
-    </Link>
+    </PageLink>
   </StyledTabs>
 );
 

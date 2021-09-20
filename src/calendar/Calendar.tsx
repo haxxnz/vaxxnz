@@ -20,6 +20,7 @@ import React from "react";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { getSearch } from "../utils/url";
 import { saveScrollAndGo } from "../scroll";
+import { PageLink } from "../PageLink";
 
 interface BookingCalendarProps {
   data: CalendarData;
@@ -131,44 +132,44 @@ function CalendarDay(props: CalendarDayProps): JSX.Element {
   const { t } = useTranslation("common");
   const { availableCount, dateStr } = props;
   const date = parse(dateStr, "yyyy-MM-dd", new Date());
-  const history = useHistory();
   const radiusKm = useRadiusKm();
+  const path = `/bookings/${dateStr}`;
   return (
-    <button
-      className={availableCount === 0 ? "zero-available" : ""}
-      key={dateStr}
-      onClick={() => {
-        enqueueAnalyticsEvent("Calendar day picked", {
-          datePicked: dateStr,
-          bookingDateInDays: differenceInDays(date, new Date()),
-          radiusKm,
-          spotsAvailable: availableCount,
-        });
-        const path = `/bookings/${dateStr}`;
-        saveScrollAndGo(path);
-        history.push(`${path}${getSearch()}`);
-      }}
-    >
-      <div>
-        <h3>
-          {date.toLocaleDateString([i18next.language], {
-            day: "numeric",
-            month: "short",
-          })}
-          <br />{" "}
-          <aside aria-hidden="true">
+    <PageLink to={path}>
+      <button
+        className={availableCount === 0 ? "zero-available" : ""}
+        key={dateStr}
+        onClick={() => {
+          enqueueAnalyticsEvent("Calendar day picked", {
+            datePicked: dateStr,
+            bookingDateInDays: differenceInDays(date, new Date()),
+            radiusKm,
+            spotsAvailable: availableCount,
+          });
+          saveScrollAndGo(path);
+        }}
+      >
+        <div>
+          <h3>
             {date.toLocaleDateString([i18next.language], {
-              weekday: "short",
+              day: "numeric",
+              month: "short",
             })}
-          </aside>
-        </h3>
-        <p>
-          {t("calendar.numberOfAppointments", {
-            sumAvailableTimes: availableCount,
-          })}
-        </p>
-      </div>
-      <img src="./arrow.svg" aria-hidden="true" alt="" />
-    </button>
+            <br />{" "}
+            <aside aria-hidden="true">
+              {date.toLocaleDateString([i18next.language], {
+                weekday: "short",
+              })}
+            </aside>
+          </h3>
+          <p>
+            {t("calendar.numberOfAppointments", {
+              sumAvailableTimes: availableCount,
+            })}
+          </p>
+        </div>
+        <img src="./arrow.svg" aria-hidden="true" alt="" />
+      </button>
+    </PageLink>
   );
 }

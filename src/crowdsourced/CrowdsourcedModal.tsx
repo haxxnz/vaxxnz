@@ -4,10 +4,11 @@ import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import { LocationNotice } from "../common/LocationNotice";
 import { NoticeList, NoticeListItem } from "../NoticeList";
+import { PageLink } from "../PageLink";
 import { ModalGrid } from "../VaxComponents";
 import { CrowdsourcedLocation } from "./CrowdsourcedData";
 type Props = {
-  clearSelectedLocation: () => void;
+  cancelPath: string;
   location?: CrowdsourcedLocation;
 };
 
@@ -26,13 +27,12 @@ function dayOfWeekToString(dayIdx: number) {
 }
 
 const CrowdsourcedModal: FunctionComponent<Props> = ({
-  clearSelectedLocation,
+  cancelPath,
   location,
 }) => {
   const { t } = useTranslation("common");
   const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
 
-  const close = () => clearSelectedLocation();
   if (location == null) {
     return null;
   }
@@ -94,25 +94,24 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
               {t("core.getDirections")}
             </Button>
           </a>
-
-          <Button
-            overrides={{
-              Root: {
-                style: {
-                  width: "100%",
-                  marginTop: "0.5rem",
-                  marginRight: 0,
-                  marginBottom: "0.5rem",
-                  marginLeft: 0,
+          <PageLink to={cancelPath}>
+            <Button
+              overrides={{
+                Root: {
+                  style: {
+                    width: "100%",
+                    marginTop: "0.5rem",
+                    marginRight: 0,
+                    marginBottom: "0.5rem",
+                    marginLeft: 0,
+                  },
                 },
-              },
-            }}
-            kind={KIND.secondary}
-            onClick={close}
-          >
-            {t("core.cancel")}
-          </Button>
-
+              }}
+              kind={KIND.secondary}
+            >
+              {t("core.cancel")}
+            </Button>
+          </PageLink>
           <NoticeList>
             <NoticeListItem
               title={t("walkins.otherLocations.disclaimer.title")}

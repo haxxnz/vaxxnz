@@ -10,16 +10,17 @@ import { HealthpointLocation } from "./HealthpointData";
 
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { PageLink } from "../../PageLink";
+
 type Props = {
-  clearSelectedLocation: () => void;
+  cancelPath: string;
   location?: HealthpointLocation;
 };
 
 const HealthpointModal: FunctionComponent<Props> = ({
-  clearSelectedLocation,
+  cancelPath,
   location,
 }) => {
-  const close = () => clearSelectedLocation();
   const { t } = useTranslation("common");
   const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
   const radiusKm = useRadiusKm();
@@ -55,17 +56,18 @@ const HealthpointModal: FunctionComponent<Props> = ({
     <div style={dialogStyle as any}>
       <WalkHeading>
         <h1>{location.name}</h1>
-        <Button
-          overrides={{
-            Root: {
-              style: {},
-            },
-          }}
-          kind={KIND.secondary}
-          onClick={close}
-        >
-          {t("walkins.cancelBooking")}
-        </Button>
+        <PageLink to={cancelPath}>
+          <Button
+            overrides={{
+              Root: {
+                style: {},
+              },
+            }}
+            kind={KIND.secondary}
+          >
+            {t("walkins.cancelBooking")}
+          </Button>
+        </PageLink>
       </WalkHeading>
       <WalkGrid className={"modal-container WalkModal"}>
         <WalkInstructions>
@@ -193,23 +195,24 @@ const HealthpointModal: FunctionComponent<Props> = ({
         </div>
       </WalkGrid>
       <div className="MobileOnly">
-        <Button
-          onClick={close}
-          overrides={{
-            Root: {
-              style: {
-                width: "100%",
-                marginTop: "1rem",
-                marginRight: 0,
-                marginBottom: "1rem",
-                marginLeft: 0,
+        <PageLink to={cancelPath}>
+          <Button
+            overrides={{
+              Root: {
+                style: {
+                  width: "100%",
+                  marginTop: "1rem",
+                  marginRight: 0,
+                  marginBottom: "1rem",
+                  marginLeft: 0,
+                },
               },
-            },
-          }}
-          kind={KIND.secondary}
-        >
-          {t("walkins.cancelBooking")}
-        </Button>
+            }}
+            kind={KIND.secondary}
+          >
+            {t("walkins.cancelBooking")}
+          </Button>
+        </PageLink>
       </div>
     </div>
   );

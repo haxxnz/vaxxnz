@@ -5,6 +5,7 @@ import { FunctionComponent } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { CrowdsourcedLocation } from "../../crowdsourced/CrowdsourcedData";
 import { NoticeList } from "../../NoticeList";
+import { PageLink } from "../../PageLink";
 import { Instruction } from "../../today-locations/healthpoint/HealthpointData";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { ModalGrid } from "../../VaxComponents";
@@ -15,11 +16,10 @@ import { CrowdsourcedBookingLocation } from "./CrowdsourcedBookingLocation";
 
 interface CalendarModalContentProps {
   activeDate: CalendarDate;
-  close: () => void;
 }
 
 export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> =
-  ({ activeDate: { dateStr, locations }, close }) => {
+  ({ activeDate: { dateStr, locations } }) => {
     const date = parse(dateStr, "yyyy-MM-dd", new Date());
     const { t } = useTranslation("common");
 
@@ -82,26 +82,27 @@ export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> 
               <li>{t("calendar.modal.howToBook.stepFour")}</li>
             </ol>
 
-            <Button
-              onClick={() => {
-                enqueueAnalyticsEvent("Back to Calendar clicked");
-                close();
-              }}
-              overrides={{
-                Root: {
-                  style: {
-                    width: "100%",
-                    marginTop: "1rem",
-                    marginRight: 0,
-                    marginBottom: "1rem",
-                    marginLeft: 0,
+            <PageLink to="/">
+              <Button
+                onClick={() => {
+                  enqueueAnalyticsEvent("Back to Calendar clicked");
+                }}
+                overrides={{
+                  Root: {
+                    style: {
+                      width: "100%",
+                      marginTop: "1rem",
+                      marginRight: 0,
+                      marginBottom: "1rem",
+                      marginLeft: 0,
+                    },
                   },
-                },
-              }}
-              kind={KIND.secondary}
-            >
-              {t("calendar.modal.backToCalendar")}
-            </Button>
+                }}
+                kind={KIND.secondary}
+              >
+                {t("calendar.modal.backToCalendar")}
+              </Button>
+            </PageLink>
 
             <NoticeList />
           </div>

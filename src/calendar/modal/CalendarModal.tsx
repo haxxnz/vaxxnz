@@ -10,6 +10,7 @@ import { BookingData } from "../booking/BookingData";
 import { getSearch } from "../../utils/url";
 import { saveScrollAndGo } from "../../scroll";
 import { LoadingBookingCalendar } from "../Calendar";
+import { PageLink } from "../../PageLink";
 
 interface BookingModalProps {
   bookingData?: BookingData;
@@ -43,12 +44,6 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
 
   const activeDate = { dateStr: unwind[0], locations: unwind[1] };
 
-  const close = () => {
-    const path = "/";
-    saveScrollAndGo(path);
-    history.push(`${path}${getSearch()}`);
-  };
-
   const desktopDialogStyle = {
     width: "100%",
   };
@@ -73,30 +68,29 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
 
   return (
     <div style={dialogStyle as any}>
-      {activeDate && (
-        <CalendarModalContent close={close} activeDate={activeDate} />
-      )}
+      {activeDate && <CalendarModalContent activeDate={activeDate} />}
       <div className="MobileOnly">
-        <Button
-          onClick={() => {
-            enqueueAnalyticsEvent("Back to Calendar clicked");
-            close();
-          }}
-          overrides={{
-            Root: {
-              style: {
-                width: "100%",
-                marginTop: "1rem",
-                marginRight: 0,
-                marginBottom: "1rem",
-                marginLeft: 0,
+        <PageLink to="/">
+          <Button
+            onClick={() => {
+              enqueueAnalyticsEvent("Back to Calendar clicked");
+            }}
+            overrides={{
+              Root: {
+                style: {
+                  width: "100%",
+                  marginTop: "1rem",
+                  marginRight: 0,
+                  marginBottom: "1rem",
+                  marginLeft: 0,
+                },
               },
-            },
-          }}
-          kind={KIND.secondary}
-        >
-          {t("calendar.modal.backToCalendar")}
-        </Button>
+            }}
+            kind={KIND.secondary}
+          >
+            {t("calendar.modal.backToCalendar")}
+          </Button>
+        </PageLink>
       </div>
     </div>
   );

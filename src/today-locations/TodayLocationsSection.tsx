@@ -20,6 +20,7 @@ import { useRadiusKm } from "../utils/useRadiusKm";
 import { getSearch } from "../utils/url";
 import { useCoords } from "../utils/useCoords";
 import { saveScrollAndGo } from "../scroll";
+import { PageLink } from "../PageLink";
 
 export function TodayLocationsSection() {
   const radiusKm = useRadiusKm();
@@ -30,23 +31,30 @@ export function TodayLocationsSection() {
   const history = useHistory();
 
   const [currentView, setCurrentView] = useState(!isMobileView ? 12 : 12);
-  const openModal = (locationIndex: number) => {
+
+  const modalPath = (locationIndex: number) => {
     const location =
       "ok" in locations && locationIndex !== undefined
         ? locations.ok[locationIndex]
         : undefined;
     if (!location) {
-      return;
+      return "";
     }
+    return `/locations/${slug(location.name)}-${simpleHash(
+      `${location.lat}${location.lng}`
+    )}`;
+  };
+
+  const openModal = (locationIndex: number) => {
+    const location =
+      "ok" in locations && locationIndex !== undefined
+        ? locations.ok[locationIndex]
+        : undefined;
+
     enqueueAnalyticsEvent("Healthpoint location selected", {
       locationName: location ? location.name : "",
       radiusKm,
     });
-    const path = `/locations/${slug(location.name)}-${simpleHash(
-      `${location.lat}${location.lng}`
-    )}`;
-    saveScrollAndGo(path);
-    history.push(`${path}${getSearch()}`);
   };
 
   const loadMore = () => {
@@ -113,47 +121,49 @@ export function TodayLocationsSection() {
                     }
                   }
                   return (
-                    <OtherBox onClick={() => openModal(index)} key={index}>
-                      <section className="WalkItem">
-                        <div>
-                          <h3>
-                            {name}
-                            {instructions.includes(Instruction.walkIn) && (
-                              <FontAwesomeIcon icon={faWalking} />
+                    <PageLink to={modalPath(index)}>
+                      <OtherBox onClick={() => openModal(index)} key={index}>
+                        <section className="WalkItem">
+                          <div>
+                            <h3>
+                              {name}
+                              {instructions.includes(Instruction.walkIn) && (
+                                <FontAwesomeIcon icon={faWalking} />
+                              )}
+                              {instructions.includes(
+                                Instruction.driveThrough
+                              ) && <FontAwesomeIcon icon={faCar} />}
+                            </h3>
+                            {locationLat && locationLng && (
+                              <p>
+                                {t("core.distanceAway", {
+                                  distance: formatDistanceKm(
+                                    getDistanceKm(coords, {
+                                      lat: locationLat,
+                                      lng: locationLng,
+                                    }),
+                                    i18n.language
+                                  ),
+                                })}
+                              </p>
                             )}
-                            {instructions.includes(
-                              Instruction.driveThrough
-                            ) && <FontAwesomeIcon icon={faCar} />}
-                          </h3>
-                          {locationLat && locationLng && (
+                          </div>
+
+                          {isOpenToday && (
                             <p>
-                              {t("core.distanceAway", {
-                                distance: formatDistanceKm(
-                                  getDistanceKm(coords, {
-                                    lat: locationLat,
-                                    lng: locationLng,
-                                  }),
-                                  i18n.language
-                                ),
+                              {t("walkins.openString", {
+                                openTimeString: openHours,
                               })}
                             </p>
                           )}
-                        </div>
-
-                        {isOpenToday && (
-                          <p>
-                            {t("walkins.openString", {
-                              openTimeString: openHours,
-                            })}
-                          </p>
-                        )}
-                      </section>
-                      <img
-                        className="Chevron"
-                        src="./arrow-right-1.svg"
-                        alt=""
-                      />
-                    </OtherBox>
+                        </section>
+                        <img
+                          className="Chevron"
+                          src="./arrow-right-1.svg"
+                          alt=""
+                        />
+                      </OtherBox>
+                    </PageLink>
                   );
                 }
               )}
