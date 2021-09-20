@@ -28,7 +28,8 @@
       "10km": "W zasięgu 10km",
       "25km": "W zasięgu 25km",
       "50km": "W zasięgu 50km",
-      "100km": "W zasięgu 100km"
+      "100km": "W zasięgu 100km",
+      "10closest": "10 closest"
     },
     "locationModal": {
       "locaitonTitle": "Lokalizacja",

@@ -11,6 +11,7 @@ import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { config as i18nextConfig } from "./translations";
+import { BrowserRouter as Router } from "react-router-dom";
 
 i18n.use(LanguageDetector).use(initReactI18next).init(i18nextConfig);
 
@@ -21,7 +22,9 @@ function Index() {
     <React.StrictMode>
       <StyletronProvider value={engine}>
         <BaseProvider theme={VaxxTheme}>
-          <App />
+          <Router>
+            <App />
+          </Router>
         </BaseProvider>
       </StyletronProvider>
     </React.StrictMode>

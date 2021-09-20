@@ -1,3 +1,4 @@
+import { CrowdsourcedLocation } from "../../crowdsourced/CrowdsourcedData";
 import { Coords } from "../../location-picker/LocationPicker";
 
 export interface OpenHour {
@@ -6,7 +7,7 @@ export interface OpenHour {
   localEnd: string;
 }
 
-export interface Location {
+export interface LocationRaw {
   displayAddress: string;
   distanceInMeters: number;
   extId: string;
@@ -25,6 +26,11 @@ export interface Location {
   exhausted: boolean;
   excludeFromSearch: boolean;
   vaccineData: string;
+}
+export interface Location extends LocationRaw {
+  lat: number;
+  lng: number;
+  isBooking: true; // having isBooking in two places might confuse us one day
 }
 
 export interface SlotWithAvailability {
@@ -49,5 +55,5 @@ export interface BookingLocationSlotsPair {
 
 export interface BookingDateLocations {
   dateStr: string;
-  locationSlotsPairs: BookingLocationSlotsPair[];
+  locationSlotsPairs: (BookingLocationSlotsPair | CrowdsourcedLocation)[];
 }

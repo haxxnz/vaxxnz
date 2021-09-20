@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import languages, { Language } from "./translations/resources";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
+import { eventedPushState } from "./utils/url";
 
 const LanguageSelect = () => {
   const langCode = localStorage.getItem("i18nextLng") || "en-NZ";
@@ -17,7 +18,7 @@ const LanguageSelect = () => {
     i18n.changeLanguage(newLang?.code);
     const url = new URL(window.location.toString());
     url.searchParams.set("locale", String(newLang?.code.toLocaleLowerCase()));
-    window.history.pushState({}, "", url.toString());
+    eventedPushState(url.toString());
     enqueueAnalyticsEvent("Language changed", { code: newLang?.code });
   };
 

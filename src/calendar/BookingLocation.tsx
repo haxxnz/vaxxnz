@@ -4,10 +4,11 @@ import { isAfter, isToday, parse } from "date-fns";
 import { differenceInDays } from "date-fns/esm";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Coords } from "../location-picker/LocationPicker";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { formatToLocaleTimeString } from "../utils/date";
 import { formatDistanceKm, getDistanceKm } from "../utils/distance";
+import { useCoords } from "../utils/useCoords";
+import { useRadiusKm } from "../utils/useRadiusKm";
 import { useSeen } from "../utils/useSeen";
 import { VaccineCentre } from "../VaxComponents";
 import {
@@ -18,9 +19,7 @@ import { CalendarDate } from "./CalendarData";
 
 type BookingLocationProps = {
   locationSlotsPair: BookingLocationSlotsPair;
-  coords: Coords;
   activeDate: CalendarDate;
-  radiusKm: number;
 };
 
 const IS_UAT =
@@ -47,14 +46,14 @@ const filterOldSlots = (
 
 const BookingLocation = ({
   locationSlotsPair,
-  coords,
-  radiusKm,
   activeDate,
 }: BookingLocationProps) => {
   const { t, i18n } = useTranslation("common");
   const ref = useRef() as any;
   const seen = useSeen(ref, "20px");
   const [slots, setSlots] = useState<SlotWithAvailability[] | undefined>();
+  const radiusKm = useRadiusKm();
+  const coords = useCoords();
 
   const getSlots = async (url: string) => {
     try {

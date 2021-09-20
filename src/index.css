@@ -67,10 +67,10 @@ a {
 }
 
 .menu-header {
-  max-width: 1440px;
+  max-width: 1488px;
   margin: 0 auto;
   box-sizing: border-box;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem;
   display: flex;
   justify-content: space-between;
 }

@@ -1,7 +1,7 @@
 import { Button, KIND } from "baseui/button";
 import { formatDistance } from "date-fns";
 import i18next from "i18next";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useState } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import RadiusSelect from "../RadiusSelect";
 import { unsupportedLocales } from "../translations";
@@ -11,6 +11,7 @@ import { DEFAULT_LOCATION } from "../utils/consts";
 import { useSearchParams } from "../utils/url";
 import { HeaderMain } from "../VaxComponents";
 import LocationModal from "./LocationModal";
+import { useCoords } from "../utils/useCoords";
 
 export interface Coords {
   lng: number;
@@ -18,23 +19,14 @@ export interface Coords {
 }
 
 interface LocationPickerProps {
-  coords: Coords;
-  setCoords: (coords: Coords) => void;
-  radiusKm: number;
-  setRadiusKm: (radiusKm: number) => void;
   lastUpdateTime: Date | null;
 }
 
 export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
-  coords,
-  setCoords,
-  radiusKm,
-  setRadiusKm,
   lastUpdateTime,
 }) => {
-  const { placeName: urlPlaceName } = useSearchParams();
-  const [placeName, setPlaceName] = useState(urlPlaceName);
-  useEffect(() => setPlaceName(urlPlaceName), [urlPlaceName]);
+  const { placeName } = useSearchParams();
+  const coords = useCoords();
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -44,12 +36,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
 
   return (
     <>
-      <LocationModal
-        locationIsOpen={isOpen}
-        setLocationIsOpen={setIsOpen}
-        setCoords={setCoords}
-        setPlaceName={setPlaceName}
-      />
+      <LocationModal locationIsOpen={isOpen} setLocationIsOpen={setIsOpen} />
 
       <HeaderMain>
         <section>
@@ -102,7 +89,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
               ? t("navigation.setLocation")
               : t("navigation.setLocationConfirmation")}
           </Button>
-          <RadiusSelect value={radiusKm} setValue={setRadiusKm} />
+          <RadiusSelect />
         </div>
       </HeaderMain>
     </>

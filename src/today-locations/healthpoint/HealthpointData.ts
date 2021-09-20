@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { Coords } from "../../location-picker/LocationPicker";
-import { getDistanceKm } from "../../utils/distance";
+import { useEffect, useContext } from "react";
+import { HealthpointLocationsContext } from "../../contexts";
+import { memoizeOnce } from "../../utils/memoize";
 
 export interface OpeningHours {
   schedule: { [date: string]: string };
@@ -36,38 +36,49 @@ export interface HealthpointLocation extends HealthpointLocationRaw {
   isHealthpoint: true;
 }
 
-const getHealthpointData = (): Promise<HealthpointLocation[]> =>
-  fetch(
-    "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/healthpointLocations.json"
-  )
-    .then((r) => r.json())
-    .then((locs) =>
-      locs.map((l: HealthpointLocationRaw) => ({ isHealthpoint: true, ...l }))
+export const getHealthpointData = memoizeOnce(
+  async (): Promise<HealthpointLocation[]> => {
+    const r = await fetch(
+      "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/healthpointLocations.json"
     );
+    const locs = await r.json();
+    return locs.map((l: HealthpointLocationRaw) => ({
+      isHealthpoint: true,
+      ...l,
+    }));
+  }
+);
+
+// TODO: rename to useHealthpointLocationsResult
+export function useHealthpointLocations() {
+  const { value, setValue } = useContext(HealthpointLocationsContext);
+  useEffect(() => {
+    if ("loading" in value) {
+      getHealthpointData()
+        .then((locations) => {
+          setValue({ value: locations });
+        })
+        .catch((e) => {
+          console.error("useHealthpointLocations e", e);
+          setValue({ error: e });
+        });
+    }
+  }, [setValue, value]);
+  return value;
+}
 
 type HealthpointDataResult =
   | { ok: HealthpointLocation[] }
   | { error: Error }
   | { loading: true };
 
-const useHealthpointData = (): HealthpointDataResult => {
-  const [healthpointLocations, setHealthpointLocations] = useState<
-    HealthpointLocation[] | null
-  >(null);
-  const [error, setError] = useState<Error | null>(null);
+export const useHealthpointData = (): HealthpointDataResult => {
+  const value = useHealthpointLocations();
 
-  useEffect(() => {
-    getHealthpointData()
-      .then((locations) => {
-        setHealthpointLocations(locations);
-      })
-      .catch((err) => setError(err));
-  }, []);
-
-  if (error) {
-    return { error };
-  } else if (healthpointLocations) {
-    return { ok: healthpointLocations };
+  if ("error" in value) {
+    return { error: value.error };
+  } else if ("value" in value) {
+    return { ok: value.value };
   } else {
     return { loading: true };
   }
@@ -78,36 +89,20 @@ type HealthpointLocationsResult =
   | { error: Error }
   | { loading: true };
 
-export const useHealthpointLocations = (
-  coords: Coords,
-  radiusKm: number
-): HealthpointLocationsResult => {
-  const allLocations = useHealthpointData();
+export const useHealthpointLocationsFiltered =
+  (): HealthpointLocationsResult => {
+    const allLocations = useHealthpointData();
 
-  if ("ok" in allLocations) {
-    return { ok: filterHealthpointLocation(allLocations.ok, coords, radiusKm) };
-  } else {
-    return allLocations;
-  }
-};
+    if ("ok" in allLocations) {
+      return { ok: filterHealthpointLocation(allLocations.ok) };
+    } else {
+      return allLocations;
+    }
+  };
 
-function filterHealthpointLocation(
-  allLocations: HealthpointLocation[],
-  coords: Coords,
-  radiusKm: number
-) {
+function filterHealthpointLocation(allLocations: HealthpointLocation[]) {
   const matchedFilter = allLocations.filter(
-    ({
-      lat: locationLat,
-      lng: locationLng,
-      isOpenToday,
-      instructionLis: bps,
-    }) => {
-      const distanceInKm =
-        locationLat &&
-        locationLng &&
-        getDistanceKm(coords, { lat: locationLat, lng: locationLng });
-
+    ({ isOpenToday, instructionLis: bps }) => {
       const filterBoolean =
         (bps.includes(Instruction.walkIn) ||
           bps.includes(Instruction.driveThrough)) &&
@@ -116,23 +111,7 @@ function filterHealthpointLocation(
           bps.includes(Instruction.invitationOnly)
         );
 
-      return distanceInKm < radiusKm && isOpenToday && filterBoolean;
-    }
-  );
-  matchedFilter.sort(
-    (
-      { lat: locationALat, lng: locationALng },
-      { lat: locationBLat, lng: locationBLng }
-    ) => {
-      const distanceKmLocationA = getDistanceKm(coords, {
-        lat: locationALat,
-        lng: locationALng,
-      });
-      const distanceKmLocationB = getDistanceKm(coords, {
-        lat: locationBLat,
-        lng: locationBLng,
-      });
-      return distanceKmLocationA - distanceKmLocationB;
+      return isOpenToday && filterBoolean;
     }
   );
   return matchedFilter;

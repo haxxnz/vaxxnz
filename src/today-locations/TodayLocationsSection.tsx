@@ -1,14 +1,10 @@
 import {
   WalkBox as OtherBox,
   WalkContainer as OtherContainer,
+  WalkMessage,
 } from "../VaxComponents";
-import WalkModal from "./healthpoint/HealthpointModal";
 import { formatDistanceKm, getDistanceKm } from "../utils/distance";
-import { Coords } from "../location-picker/LocationPicker";
-import {
-  Instruction,
-  HealthpointLocation,
-} from "./healthpoint/HealthpointData";
+import { Instruction } from "./healthpoint/HealthpointData";
 import { useState } from "react";
 import { Spinner } from "baseui/spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,84 +13,67 @@ import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { Trans, useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import { useTodayLocationsData } from "./TodayLocationsData";
-import { CrowdsourcedLocation } from "../crowdsourced/CrowdsourcedData";
-import CrowdsourcedModal from "../crowdsourced/CrowdsourcedModal";
+import { useHistory } from "react-router-dom";
+import { simpleHash } from "../utils/simpleHash";
+import { slug } from "../utils/slug";
+import { useRadiusKm } from "../utils/useRadiusKm";
+import { getSearch } from "../utils/url";
+import { useCoords } from "../utils/useCoords";
+import { PageLink } from "../PageLink";
 
-export interface Props {
-  coords: Coords;
-  radiusKm: number;
-}
-
-export function TodayLocationsSection({ coords, radiusKm }: Props) {
+export function TodayLocationsSection() {
+  const radiusKm = useRadiusKm();
+  const coords = useCoords();
   const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
-  const locations = useTodayLocationsData(coords, radiusKm);
+  const locations = useTodayLocationsData();
   const { t, i18n } = useTranslation("common");
+  const history = useHistory();
 
-  const [selectedLocationIndex, setSelectedLocation] = useState<number>();
-  const [currentView, setCurrentView] = useState(!isMobileView ? 3 : 1);
+  const [currentView, setCurrentView] = useState(!isMobileView ? 12 : 12);
+
+  const modalPath = (locationIndex: number) => {
+    const location =
+      "ok" in locations && locationIndex !== undefined
+        ? locations.ok[locationIndex]
+        : undefined;
+    if (!location) {
+      return "";
+    }
+    return `/locations/${slug(location.name)}-${simpleHash(
+      `${location.lat}${location.lng}`
+    )}`;
+  };
+
   const openModal = (locationIndex: number) => {
     const location =
       "ok" in locations && locationIndex !== undefined
         ? locations.ok[locationIndex]
         : undefined;
+
     enqueueAnalyticsEvent("Healthpoint location selected", {
       locationName: location ? location.name : "",
       radiusKm,
     });
-    setSelectedLocation(locationIndex);
-  };
-
-  const clearSelectedLocation = () => {
-    setSelectedLocation(undefined);
   };
 
   const loadMore = () => {
     setCurrentView((latest) => latest + 12);
   };
 
-  let selectedHealthpoint: HealthpointLocation | undefined;
-  let selectedCrowdsourced: CrowdsourcedLocation | undefined;
-  if ("ok" in locations && selectedLocationIndex !== undefined) {
-    const selected = locations.ok[selectedLocationIndex];
-    if ("isHealthpoint" in selected) {
-      selectedHealthpoint = selected;
-    } else {
-      selectedCrowdsourced = selected;
-    }
-  }
-
-  return "error" in locations ||
-    ("ok" in locations && locations.ok.length === 0) ? null : (
+  return (
     <div>
-      <WalkModal
-        clearSelectedLocation={clearSelectedLocation}
-        location={selectedHealthpoint}
-        radiusKm={radiusKm}
-      />
-      <CrowdsourcedModal
-        clearSelectedLocation={clearSelectedLocation}
-        location={selectedCrowdsourced}
-      />
-      <div className="WalkSection">
-        <h2>
-          <Trans
-            i18nKey="walkins.sectionHeader"
-            t={t}
-            components={[<strong></strong>]}
-          />
-        </h2>
+      <div className="WalkSection2">
+        <h2>Walk-in and Drive Thru Vaccination Centres</h2>
+        <p>
+          You don't need an appointment to get vaccinated at these venues. Visit{" "}
+          <a href="https://covid19.govt.nz/covid-19-vaccines/how-to-get-a-covid-19-vaccination/walk-in-and-drive-through-vaccination-centres/">
+            covid19.govt.nz
+          </a>{" "}
+          for more information.
+        </p>
       </div>
       {"loading" in locations ? (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            minHeight: "20vh",
-            width: "100%",
-            backgroundColor: "white",
-          }}
-        >
+        <WalkMessage>
           <Spinner color="black" />
           <div
             style={{
@@ -104,7 +83,14 @@ export function TodayLocationsSection({ coords, radiusKm }: Props) {
           >
             {t("core.loading")}
           </div>
-        </div>
+        </WalkMessage>
+      ) : "error" in locations ? (
+        <WalkMessage>Loading failed: {locations.error.message}</WalkMessage>
+      ) : locations.ok.length === 0 ? (
+        <WalkMessage>
+          There aren't any walk-in or drive thru vaccination centres in your
+          area. Try make a booking instead.
+        </WalkMessage>
       ) : (
         <>
           <OtherContainer>
@@ -134,47 +120,48 @@ export function TodayLocationsSection({ coords, radiusKm }: Props) {
                     }
                   }
                   return (
-                    <OtherBox onClick={() => openModal(index)} key={index}>
-                      <section className="WalkItem">
-                        <div>
-                          <h3>
-                            {name}
-                            {instructions.includes(Instruction.walkIn) && (
-                              <FontAwesomeIcon icon={faWalking} />
+                    <PageLink to={modalPath(index)}>
+                      <OtherBox onClick={() => openModal(index)} key={index}>
+                        <section className="WalkItem">
+                          <div>
+                            <h3>{name}</h3>
+
+                            {locationLat && locationLng && (
+                              <p>
+                                {t("core.distanceAway", {
+                                  distance: formatDistanceKm(
+                                    getDistanceKm(coords, {
+                                      lat: locationLat,
+                                      lng: locationLng,
+                                    }),
+                                    i18n.language
+                                  ),
+                                })}{" "}
+                                {instructions.includes(Instruction.walkIn) && (
+                                  <FontAwesomeIcon icon={faWalking} />
+                                )}
+                                {instructions.includes(
+                                  Instruction.driveThrough
+                                ) && <FontAwesomeIcon icon={faCar} />}
+                              </p>
                             )}
-                            {instructions.includes(
-                              Instruction.driveThrough
-                            ) && <FontAwesomeIcon icon={faCar} />}
-                          </h3>
-                          {locationLat && locationLng && (
+                          </div>
+
+                          {isOpenToday && (
                             <p>
-                              {t("core.distanceAway", {
-                                distance: formatDistanceKm(
-                                  getDistanceKm(coords, {
-                                    lat: locationLat,
-                                    lng: locationLng,
-                                  }),
-                                  i18n.language
-                                ),
+                              {t("walkins.openString", {
+                                openTimeString: openHours,
                               })}
                             </p>
                           )}
-                        </div>
-
-                        {isOpenToday && (
-                          <p>
-                            {t("walkins.openString", {
-                              openTimeString: openHours,
-                            })}
-                          </p>
-                        )}
-                      </section>
-                      <img
-                        className="Chevron"
-                        src="./arrow-right-1.svg"
-                        alt=""
-                      />
-                    </OtherBox>
+                        </section>
+                        <img
+                          className="Chevron"
+                          src="./arrow-right-1.svg"
+                          alt=""
+                        />
+                      </OtherBox>
+                    </PageLink>
                   );
                 }
               )}

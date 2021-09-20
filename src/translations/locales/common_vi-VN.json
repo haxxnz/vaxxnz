@@ -28,7 +28,8 @@
       "10km": "Trong phạm vi 10km",
       "25km": "Trong phạm vi 25km",
       "50km": "Trong phạm vi 50km",
-      "100km": "Trong phạm vi 100km"
+      "100km": "Trong phạm vi 100km",
+      "10closest": "10 closest"
     },
     "locationModal": {
       "locaitonTitle": "Địa chỉ của bạn",

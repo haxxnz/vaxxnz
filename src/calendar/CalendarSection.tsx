@@ -1,56 +1,24 @@
 import React, { FunctionComponent } from "react";
-import { Coords } from "../location-picker/LocationPicker";
 import { BookingCalendar, LoadingBookingCalendar } from "./Calendar";
-import BookingModal from "./modal/CalendarModal";
-import { CalendarDate } from "./CalendarData";
-import { useBookingData } from "./booking/BookingData";
+import { BookingDataResult } from "./booking/BookingData";
+import { CalendarError } from "./CalendarError";
 
-interface CalendarSectionProps {
-  coords: Coords;
-  radiusKm: number;
-  setLastUpdateTime: (time: Date | null) => void;
+export interface CalendarSectionProps {
+  bookingData: BookingDataResult;
 }
 
 /** Loads booking data, display the calendar or load errors. */
 export const CalendarSection: FunctionComponent<CalendarSectionProps> = ({
-  coords,
-  radiusKm,
-  setLastUpdateTime,
+  bookingData: data,
 }) => {
-  const [activeDate, setActiveDate] = React.useState<CalendarDate | null>(null);
-
-  const data = useBookingData(coords, radiusKm, setLastUpdateTime);
   return (
     <>
-      <BookingModal
-        radiusKm={radiusKm}
-        activeDate={activeDate}
-        setActiveDate={setActiveDate}
-        coords={coords}
-      />
-
       {"ok" in data ? (
-        <BookingCalendar
-          setActiveDate={setActiveDate}
-          data={data.ok}
-          radiusKm={radiusKm}
-        />
+        <BookingCalendar data={data.ok} />
       ) : "loading" in data ? (
         <LoadingBookingCalendar />
       ) : (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "1rem",
-          }}
-        >
-          {/* <Spinner color="black" /> */}
-          <div style={{ marginLeft: "1rem", fontSize: "1.5rem" }}>
-            {data.error.message}
-          </div>
-        </div>
+        <CalendarError errorMessage={data.error.message} />
       )}
     </>
   );
