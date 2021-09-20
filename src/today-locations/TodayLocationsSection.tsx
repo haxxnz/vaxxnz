@@ -42,7 +42,7 @@ export function TodayLocationsSection() {
       locationName: location ? location.name : "",
       radiusKm,
     });
-    const path = `locations/${slug(location.name)}-${simpleHash(
+    const path = `/locations/${slug(location.name)}-${simpleHash(
       `${location.lat}${location.lng}`
     )}`;
     saveScrollAndGo(path);
