@@ -77,9 +77,8 @@ button.zero-available div p {
 div.WalkSection {
   display: block;
   padding: 1.5rem 1rem;
-  border-bottom: 1px solid lightgray;
-  border-right: 1px solid lightgray;
-  border-left: 1px solid lightgray;
+  
+  border: 1px solid lightgray;
   position: sticky;
   top: 0px;
   background-color: #fff;
@@ -94,9 +93,7 @@ div.WalkSection p {
 div.WalkSection2 {
   display: block;
   padding: 1.5rem 1rem;
-  border-bottom: 1px solid lightgray;
-  border-right: 1px solid lightgray;
-  border-left: 1px solid lightgray;
+  border: 1px solid lightgray;
   background-color: #fff;
   z-index: 2 !important;
 }
@@ -294,6 +291,9 @@ ul.af_list.af_list li.af_item {
 }
 .mappymap {
   border-bottom: 1px solid lightgray;
+  position: sticky;
+  top: 0;
+  display: block;
 }
 @media screen and (max-width: 768px) {
   .mappymap {
