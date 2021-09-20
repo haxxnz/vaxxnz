@@ -7,6 +7,8 @@ import { NoticeList, NoticeListItem } from "../NoticeList";
 import { PageLink } from "../PageLink";
 import { ModalGrid } from "../VaxComponents";
 import { CrowdsourcedLocation } from "./CrowdsourcedData";
+import { parsePhoneNumber } from "../utils/parsePhone";
+
 type Props = {
   cancelPath: string;
   location?: CrowdsourcedLocation;
@@ -36,7 +38,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
   if (location == null) {
     return null;
   }
-  const telephone = location.telephone?.replace(/\[.*\]/g, "");
+  const telephone = parsePhoneNumber(location.telephone);
 
   const desktopDialogStyle = {
     width: "100%",

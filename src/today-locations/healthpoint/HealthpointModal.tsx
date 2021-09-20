@@ -7,6 +7,7 @@ import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { useRadiusKm } from "../../utils/useRadiusKm";
 import { WalkGrid, WalkHeading, WalkInstructions } from "../../VaxComponents";
 import { HealthpointLocation } from "./HealthpointData";
+import { parsePhoneNumber } from "../../utils/parsePhone";
 
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,7 +29,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
   if (location == null) {
     return null;
   }
-  const telephone = location.telephone.replace(/\[.*\]/g, "");
+  const telephone = parsePhoneNumber(location.telephone);
 
   const desktopDialogStyle = {
     width: "100%",
