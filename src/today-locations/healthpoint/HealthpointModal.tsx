@@ -26,7 +26,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
   if (location == null) {
     return null;
   }
-  const telephone = parsePhoneNumber(location.telephone);
+  const telephone = parsePhoneNumber(location.telephone) ?? location.telephone;
 
   const desktopDialogStyle = {
     width: "80vw",

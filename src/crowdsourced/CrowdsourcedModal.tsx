@@ -37,7 +37,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
   if (location == null) {
     return null;
   }
-  const telephone = parsePhoneNumber(location.telephone);
+  const telephone = parsePhoneNumber(location.telephone) ?? location.telephone;
 
   return (
     <Modal
