@@ -6,7 +6,7 @@ import { LocationNotice } from "../common/LocationNotice";
 import { NoticeList, NoticeListItem } from "../NoticeList";
 import { ModalGrid } from "../VaxComponents";
 import { CrowdsourcedLocation } from "./CrowdsourcedData";
-import {parsePhoneNumber} from "../utils/parsePhone";
+import { parsePhoneNumber } from "../utils/parsePhone";
 
 type Props = {
   clearSelectedLocation: () => void;
@@ -37,7 +37,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
   if (location == null) {
     return null;
   }
-  const telephone = parsePhoneNumber(location.telephone) ?? location.telephone;
+  const telephone = parsePhoneNumber(location.telephone);
 
   return (
     <Modal
