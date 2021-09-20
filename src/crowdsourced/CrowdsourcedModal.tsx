@@ -1,15 +1,16 @@
 import { Button, KIND } from "baseui/button";
-import { Modal } from "baseui/modal";
 import { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "react-responsive";
 import { LocationNotice } from "../common/LocationNotice";
 import { NoticeList, NoticeListItem } from "../NoticeList";
+import { PageLink } from "../PageLink";
 import { ModalGrid } from "../VaxComponents";
 import { CrowdsourcedLocation } from "./CrowdsourcedData";
 import { parsePhoneNumber } from "../utils/parsePhone";
 
 type Props = {
-  clearSelectedLocation: () => void;
+  cancelPath: string;
   location?: CrowdsourcedLocation;
 };
 
@@ -28,36 +29,40 @@ function dayOfWeekToString(dayIdx: number) {
 }
 
 const CrowdsourcedModal: FunctionComponent<Props> = ({
-  clearSelectedLocation,
+  cancelPath,
   location,
 }) => {
   const { t } = useTranslation("common");
+  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
 
-  const close = () => clearSelectedLocation();
   if (location == null) {
     return null;
   }
   const telephone = parsePhoneNumber(location.telephone);
 
+  const desktopDialogStyle = {
+    width: "100%",
+  };
+  const mobileDialogStyle = {
+    width: "100vw",
+    margin: "0rem",
+    borderRadius: "0",
+  };
+  const sharedDialogStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignSelf: "center",
+    padding: "1.5rem",
+    backgroundColor: "white",
+    border: "1px solid lightgray",
+    maxWidth: "1440px",
+    boxSizing: "border-box",
+  };
+  const dialogStyle = isMobileView
+    ? { ...mobileDialogStyle, ...sharedDialogStyle }
+    : { ...desktopDialogStyle, ...sharedDialogStyle };
   return (
-    <Modal
-      onClose={close}
-      isOpen={!!location}
-      unstable_ModalBackdropScroll={true}
-      size="full"
-      overrides={{
-        Root: { style: { zIndex: 1500 } },
-        Dialog: {
-          style: {
-            display: "flex",
-            flexDirection: "column",
-            alignSelf: "center",
-            padding: "1.5rem",
-            maxWidth: "1200px",
-          },
-        },
-      }}
-    >
+    <div style={dialogStyle as any}>
       <ModalGrid className={"modal-container WalkModal"}>
         <div>
           <h1
@@ -91,25 +96,24 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
               {t("core.getDirections")}
             </Button>
           </a>
-
-          <Button
-            overrides={{
-              Root: {
-                style: {
-                  width: "100%",
-                  marginTop: "0.5rem",
-                  marginRight: 0,
-                  marginBottom: "0.5rem",
-                  marginLeft: 0,
+          <PageLink to={cancelPath}>
+            <Button
+              overrides={{
+                Root: {
+                  style: {
+                    width: "100%",
+                    marginTop: "0.5rem",
+                    marginRight: 0,
+                    marginBottom: "0.5rem",
+                    marginLeft: 0,
+                  },
                 },
-              },
-            }}
-            kind={KIND.secondary}
-            onClick={close}
-          >
-            {t("core.cancel")}
-          </Button>
-
+              }}
+              kind={KIND.secondary}
+            >
+              {t("core.cancel")}
+            </Button>
+          </PageLink>
           <NoticeList>
             <NoticeListItem
               title={t("walkins.otherLocations.disclaimer.title")}
@@ -171,7 +175,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
           )}
         </div>
       </ModalGrid>
-    </Modal>
+    </div>
   );
 };
 

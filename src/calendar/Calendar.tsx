@@ -12,16 +12,15 @@ import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import {
   CalendarData,
-  CalendarDate,
   CalendarDateLocations,
   CalendarMonth,
 } from "./CalendarData";
 import React from "react";
+import { useRadiusKm } from "../utils/useRadiusKm";
+import { PageLink } from "../PageLink";
 
 interface BookingCalendarProps {
   data: CalendarData;
-  setActiveDate: (activeDate: CalendarDate | null) => void;
-  radiusKm: number;
 }
 
 export const LoadingBookingCalendar: FunctionComponent = () => {
@@ -53,48 +52,50 @@ export const LoadingBookingCalendar: FunctionComponent = () => {
 
 export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   data,
-  setActiveDate,
-  radiusKm,
 }) => {
   const { i18n } = useTranslation();
+  const calendarData = Array.from(data);
 
   return (
-    <CalendarContainer>
-      {Array.from(data).map(([monthStr, monthDates]) => (
-        <CalendarMonthContainer
-          key={monthStr}
-          monthStr={monthStr}
-          monthDates={monthDates}
-          radiusKm={radiusKm}
-          setActiveDate={setActiveDate}
-          language={i18n.language}
-        />
-      ))}
-    </CalendarContainer>
+    <>
+      <div className="WalkSection2">
+        <h2>Available Booking Slots</h2>
+        <p>Vaccination appointments available to book right now.</p>
+      </div>
+
+      <CalendarContainer>
+        {calendarData.map(([monthStr, monthDates]) => (
+          <CalendarMonthContainer
+            key={monthStr}
+            monthStr={monthStr}
+            monthDates={monthDates}
+            language={i18n.language}
+          />
+        ))}
+      </CalendarContainer>
+    </>
   );
 };
 
 interface CalendarMonthContainerProps {
   monthStr: string;
   monthDates: CalendarMonth;
-  radiusKm: number;
-  setActiveDate: (activeDate: CalendarDate | null) => void;
   language: string;
 }
 function CalendarMonthContainerExpensive(
   props: CalendarMonthContainerProps
 ): JSX.Element {
-  const { monthStr, monthDates, radiusKm, setActiveDate } = props;
+  const { monthStr, monthDates } = props;
   const date = parse(monthStr, "MMMM yyyy", new Date());
   return (
     <CalendarSectionContainer key={monthStr}>
       <div className="MonthSection">
-        <h2>
+        <h3>
           {date.toLocaleDateString([i18next.language], {
             month: "long",
             year: "numeric",
           })}
-        </h2>
+        </h3>
       </div>
       <MonthContainer>
         {Array.from(monthDates).map(([dateStr, locations]) => {
@@ -108,8 +109,6 @@ function CalendarMonthContainerExpensive(
               key={dateStr}
               availableCount={availableCount}
               dateStr={dateStr}
-              radiusKm={radiusKm}
-              setActiveDate={setActiveDate}
               locations={locations}
             />
           );
@@ -124,48 +123,49 @@ const CalendarMonthContainer = React.memo(CalendarMonthContainerExpensive);
 interface CalendarDayProps {
   availableCount: number;
   dateStr: string;
-  radiusKm: number;
-  setActiveDate: (activeDate: CalendarDate | null) => void;
   locations: CalendarDateLocations;
 }
 function CalendarDay(props: CalendarDayProps): JSX.Element {
   const { t } = useTranslation("common");
-  const { availableCount, dateStr, radiusKm, setActiveDate, locations } = props;
+  const { availableCount, dateStr } = props;
   const date = parse(dateStr, "yyyy-MM-dd", new Date());
+  const radiusKm = useRadiusKm();
+  const path = `/bookings/${dateStr}`;
   return (
-    <button
-      className={availableCount === 0 ? "zero-available" : ""}
-      key={dateStr}
-      onClick={() => {
-        enqueueAnalyticsEvent("Calendar day picked", {
-          datePicked: dateStr,
-          bookingDateInDays: differenceInDays(date, new Date()),
-          radiusKm,
-          spotsAvailable: availableCount,
-        });
-        setActiveDate({ dateStr, locations });
-      }}
-    >
-      <div>
-        <h3>
-          {date.toLocaleDateString([i18next.language], {
-            day: "numeric",
-            month: "short",
-          })}
-          <br />{" "}
-          <aside aria-hidden="true">
+    <PageLink to={path}>
+      <button
+        className={availableCount === 0 ? "zero-available" : ""}
+        key={dateStr}
+        onClick={() => {
+          enqueueAnalyticsEvent("Calendar day picked", {
+            datePicked: dateStr,
+            bookingDateInDays: differenceInDays(date, new Date()),
+            radiusKm,
+            spotsAvailable: availableCount,
+          });
+        }}
+      >
+        <div>
+          <h3>
             {date.toLocaleDateString([i18next.language], {
-              weekday: "short",
+              day: "numeric",
+              month: "short",
             })}
-          </aside>
-        </h3>
-        <p>
-          {t("calendar.numberOfAppointments", {
-            sumAvailableTimes: availableCount,
-          })}
-        </p>
-      </div>
-      <img src="./arrow.svg" aria-hidden="true" alt="" />
-    </button>
+            <br />{" "}
+            <aside aria-hidden="true">
+              {date.toLocaleDateString([i18next.language], {
+                weekday: "short",
+              })}
+            </aside>
+          </h3>
+          <p>
+            {t("calendar.numberOfAppointments", {
+              sumAvailableTimes: availableCount,
+            })}
+          </p>
+        </div>
+        <img src="./arrow.svg" aria-hidden="true" alt="" />
+      </button>
+    </PageLink>
   );
 }

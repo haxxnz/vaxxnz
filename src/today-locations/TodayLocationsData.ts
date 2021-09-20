@@ -1,20 +1,23 @@
-import { Coords } from "../location-picker/LocationPicker";
-import { getDistanceKm } from "../utils/distance";
 import {
   CrowdsourcedLocation,
   getCrowdsourcedLocations,
 } from "../crowdsourced/CrowdsourcedData";
 import {
-  useHealthpointLocations,
+  useHealthpointLocationsFiltered,
   HealthpointLocation,
 } from "./healthpoint/HealthpointData";
+import { useRadiusKm } from "../utils/useRadiusKm";
+import { filterLocations } from "../utils/location";
+import { useCoords } from "../utils/useCoords";
 
 export type TodayLocation = CrowdsourcedLocation | HealthpointLocation;
 
-export const useTodayLocationsData = (coords: Coords, radiusKm: number) => {
+export const useTodayLocationsData = () => {
+  const radiusKm = useRadiusKm();
+  const coords = useCoords();
   const currentDay = new Date().getDay();
-  const locations = useHealthpointLocations(coords, radiusKm);
-  const crowdSourced = getCrowdsourcedLocations(coords, radiusKm).filter(
+  const locations = useHealthpointLocationsFiltered();
+  const crowdSourced = getCrowdsourcedLocations().filter(
     ({ openingHours }) =>
       openingHours.find(
         (opennningHoursItem) => opennningHoursItem.day === currentDay
@@ -22,23 +25,11 @@ export const useTodayLocationsData = (coords: Coords, radiusKm: number) => {
   );
   if ("ok" in locations) {
     const combined = [...crowdSourced, ...locations.ok];
-    combined.sort(
-      (
-        { lat: locationALat, lng: locationALng },
-        { lat: locationBLat, lng: locationBLng }
-      ) => {
-        const distanceKmLocationA = getDistanceKm(coords, {
-          lat: locationALat,
-          lng: locationALng,
-        });
-        const distanceKmLocationB = getDistanceKm(coords, {
-          lat: locationBLat,
-          lng: locationBLng,
-        });
-        return distanceKmLocationA - distanceKmLocationB;
-      }
-    );
-    return { ok: combined };
+    const sortedCombined = filterLocations(combined, coords, radiusKm, (l) => [
+      l.lat,
+      l.lng,
+    ]);
+    return { ok: sortedCombined };
   } else {
     return locations;
   }

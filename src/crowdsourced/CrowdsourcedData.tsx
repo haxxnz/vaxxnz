@@ -1,5 +1,3 @@
-import { Coords } from "../location-picker/LocationPicker";
-import { getDistanceKm } from "../utils/distance";
 import { Instruction } from "../today-locations/healthpoint/HealthpointData";
 import { crowdsourcedLocations } from "./CrowdsourcedLocations";
 
@@ -31,26 +29,9 @@ export interface CrowdsourcedLocation {
   additionalInformation?: string;
 }
 
-export const getCrowdsourcedLocations = (
-  coords: Coords,
-  radiusKm: number
-): CrowdsourcedLocation[] =>
-  filterCrowdsourcedLocations(crowdsourcedLocations, coords, radiusKm);
+export const getCrowdsourcedLocations = (): CrowdsourcedLocation[] =>
+  filterCrowdsourcedLocations(crowdsourcedLocations);
 
-function filterCrowdsourcedLocations(
-  allLocations: CrowdsourcedLocation[],
-  coords: Coords,
-  radiusKm: number
-) {
-  const matchedFilter = allLocations.filter(
-    ({ lat: locationLat, lng: locationLng, openingHours }) => {
-      const distanceInKm =
-        locationLat &&
-        locationLng &&
-        getDistanceKm(coords, { lat: locationLat, lng: locationLng });
-
-      return distanceInKm < radiusKm;
-    }
-  );
-  return matchedFilter;
+function filterCrowdsourcedLocations(allLocations: CrowdsourcedLocation[]) {
+  return allLocations;
 }

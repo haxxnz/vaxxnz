@@ -35,7 +35,8 @@
       "10km": "Dalam 10km",
       "25km": "Dalam 25km",
       "50km": "Dalam 50km",
-      "100km": "Dalam 100km"
+      "100km": "Dalam 100km",
+      "10closest": "10 closest"
     }
   },
   "walkins": {

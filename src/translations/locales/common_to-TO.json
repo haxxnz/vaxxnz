@@ -35,7 +35,8 @@
       "10km": "I loto  10km",
       "25km": "I loto  25km",
       "50km": "I loto  50km",
-      "100km": "I loto  100km"
+      "100km": "I loto  100km",
+      "10closest": "10 closest"
     }
   },
   "walkins": {
