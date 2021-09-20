@@ -10,7 +10,7 @@ import { Spinner } from "baseui/spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import { useTodayLocationsData } from "./TodayLocationsData";
 import { simpleHash } from "../utils/simpleHash";
@@ -60,13 +60,21 @@ export function TodayLocationsSection() {
   return (
     <div>
       <div className="WalkSection2">
-        <h2>Walk-in and Drive Thru Vaccination Centres</h2>
+        <h2>{t("walkins.sectionHeader")}</h2>
         <p>
-          You don't need an appointment to get vaccinated at these venues. Visit{" "}
-          <a href="https://covid19.govt.nz/covid-19-vaccines/how-to-get-a-covid-19-vaccination/walk-in-and-drive-through-vaccination-centres/">
-            covid19.govt.nz
-          </a>{" "}
-          for more information.
+          <Trans
+            i18nKey="walkins.subHeader"
+            t={t}
+            components={[
+              <a
+                href="https://covid19.govt.nz/covid-19-vaccines/how-to-get-a-covid-19-vaccination/walk-in-and-drive-through-vaccination-centres/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                covid19.govt.nz
+              </a>,
+            ]}
+          />
         </p>
       </div>
       {"loading" in locations ? (
@@ -84,10 +92,7 @@ export function TodayLocationsSection() {
       ) : "error" in locations ? (
         <WalkMessage>Loading failed: {locations.error.message}</WalkMessage>
       ) : locations.ok.length === 0 ? (
-        <WalkMessage>
-          There aren't any walk-in or drive thru vaccination centres in your
-          area. Try make a booking instead.
-        </WalkMessage>
+        <WalkMessage>{t("walkins.noWalkinDriveThruFound")}</WalkMessage>
       ) : (
         <>
           <OtherContainer>
