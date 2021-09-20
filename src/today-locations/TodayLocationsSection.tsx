@@ -63,7 +63,7 @@ export function TodayLocationsSection() {
 
   return (
     <div>
-      <div className="WalkSection">
+      <div className="WalkSection2">
         <h2>Walk-in and Drive Thru Vaccination Centres</h2>
         <p>
           You don't need an appointment to get vaccinated at these venues. Visit{" "}
