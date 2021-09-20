@@ -86,7 +86,7 @@ export const CalendarContainer = styled.section`
 export const CalendarSectionContainer = styled.section`
   .MonthSection {
     display: block;
-    padding: 1.5rem 1rem;
+    padding: 1.1rem 1rem;
     border-bottom: 1px solid lightgray;
     position: sticky;
     top: 0px;
@@ -94,8 +94,8 @@ export const CalendarSectionContainer = styled.section`
     background-color: #fff;
     z-index: 2 !important;
   }
-  h2 {
-    font-size: 1.5rem;
+  h3 {
+    font-size: 1.25rem;
   }
 
   @media screen and (max-width: 1024px) {

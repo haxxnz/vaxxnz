@@ -62,7 +62,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
     <>
       <div className="WalkSection2">
         <h2>Available Booking Slots</h2>
-        <p>Get a fixed vaccination date and time.</p>
+        <p>Vaccination appointments available to book right now.</p>
       </div>
 
       <CalendarContainer>
@@ -92,12 +92,12 @@ function CalendarMonthContainerExpensive(
   return (
     <CalendarSectionContainer key={monthStr}>
       <div className="MonthSection">
-        <h2>
+        <h3>
           {date.toLocaleDateString([i18next.language], {
             month: "long",
             year: "numeric",
           })}
-        </h2>
+        </h3>
       </div>
       <MonthContainer>
         {Array.from(monthDates).map(([dateStr, locations]) => {
