@@ -7,10 +7,13 @@
     "loading": "Cargando...",
     "getDirections": "Obtener las direcciones",
     "makeABooking": "Hacer una reserva",
-    "kmAway": "{{distance}}km de distancia",
+    "distanceAway": "{{distance}} de distancia",
     "lastUpdated": "Última actualización {{updatedAt}}",
     "cancel": "Cancelar",
-    "website": "Website"
+    "website": "Website",
+    "address": "Address",
+    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius."
   },
   "navigation": {
     "about": "Sobre nosotros",
@@ -25,7 +28,8 @@
       "10km": "Dentro de 10km",
       "25km": "Dentro de 25km",
       "50km": "Dentro de 50km",
-      "100km": "Dentro de 100km"
+      "100km": "Dentro de 100km",
+      "10closest": "10 closest"
     },
     "locationModal": {
       "locaitonTitle": "Ubicación",
@@ -60,7 +64,8 @@
         "title": "This location has been submitted by the public",
         "message": "The information here may not be 100% accurate. Please refer to the locations website."
       }
-    }
+    },
+    "closed": "Closed"
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
@@ -76,7 +81,8 @@
       },
       "availableSlots": "Espacios disponibles",
       "noBookingsAvailable": "No hay reservas disponibles en este día :(",
-      "backToCalendar": "Volver al calendario"
+      "backToCalendar": "Volver al calendario",
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
     }
   },
   "footer": {
@@ -86,6 +92,7 @@
       "rawData": "Datos brutos",
       "sourceCode": "Código fuente",
       "roadmap": "mapa vial"
-    }
+    },
+    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
   }
 }

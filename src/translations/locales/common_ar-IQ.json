@@ -1,0 +1,122 @@
+{
+  "core": {
+    "title": "Vaxx.nz",
+    "tagline": "ابحث عن لقاح كوفيد-19",
+    "subtitle": ".كيف الحصول على اللقاح بقربك",
+    "disclaimerNotAGovWebsite": "<0>bookmyvaccine.nz</0> هاذا ليس موقع حكومي٠ للحصول على اللقاح الرجاء زيارة",
+    "loading": " التحميل...",
+    "getDirections": "احصل على الاتجاهات",
+    "makeABooking": "احجز موعد",
+    "distanceAway": "{{distance}} على بعد",
+    "lastUpdated": "{{updatedAt}} التحديث الاخير",
+    "cancel": "الغاء",
+    "website": "موقع اليكتروني",
+    "address": "العنوان",
+    "noResultsNotInNZ": "لم يتم العثور على مواقع التطعيم لاستعلام البحث هذا. هل انت في نيوزيلندا",
+    "noResultsInRadius": "لم يتم العثور على مواقع التطعيم لاستعلام البحث هذا. جرب نصف قطر كيلومتر مختلف"
+  },
+  "navigation": {
+    "about": "معلومات",
+    "contact": "للاتصال",
+    "getInvolved": "للمشاركة",
+    "setLocation": "ادخل عنوانك",
+    "setLocationConfirmation": "تحديد العنوان",
+    "locationModal": {
+      "locaitonTitle": "عنوانك",
+      "locationCTA": "اطبع عنوانك",
+      "useCurrentLocation": "استعمل عنواني الحالي",
+      "geolocationNotSupported": "تحديد موقعك الجغرافي لا يدعمه متصفحك"
+    },
+    "vaccinationsNear": "<0>{{location}}</0> موقع القاح القريب",
+    "unknownLocation": "موقع غير معروف",
+    "distanceDropdown": {
+      "2km": "في نطاق 2كم",
+      "5km": "في نطاق 5كم",
+      "10km": "في نطاق 10كم",
+      "25km": "في نطاق 25كم",
+      "50km": "في نطاق 50كم",
+      "100km": "في نطاق 100كم",
+      "10closest": "10 closest"
+    }
+  },
+  "walkins": {
+    "sectionHeader": "مفتوح اليوم",
+    "openString": "{{openTimeString}} مفتوح",
+    "cancellationNotice": {
+      "info": "الرجاء لا تحجز مرتين",
+      "message": "<0>bookmyvaccine.nz</0> تذكر ان تلغي موعدك الاصلي اذا حجزت هنا"
+    },
+    "cancelBooking": "إلغاء",
+    "noticeList": {
+      "title": "كيف الحصول على اللقاح",
+      "text": "احتمال يكون طابور - الرجاء اتصل قبل الذهاب للتأكد من توفر اللقاح اليوم",
+      "walkinAwailable": "<0 /> لقاح بدون موعد",
+      "driveThroughAvailable": "<0 /> لقاح من السيارة متوفر",
+      "phone": "الهاتف",
+      "hours": "الاوقات",
+      "closed": "مغلق",
+      "publicHolidays": "عطلة رسمية",
+      "otherExeptions": "استثناءات",
+      "seeMore": "معلومات مزيده",
+      "otherLocations": {
+        "sectionHeader": "مواقع اللقاح الاخرى<0>- مفتوحه اليوم</0>",
+        "disclaimer": {
+          "title": "هذا الموقع مقدم من الجمهور العام",
+          "message": "المعلومات قد لا تكون دقيقة 100% "
+        }
+      }
+    },
+    "footer": {
+      "message": "الرجاء شارك الموقع إن أفادك ا",
+      "addressFinderLinkCopy": "البحث عن العنوان بفضل<0>AddressFinder</0>",
+      "links": {
+        "contactUs": "للاتصال بنا",
+        "rawData": "مسودة بيانات",
+        "sourceCode": "مصدر الرمز",
+        "roadmap": "خريطة المشروع"
+      }
+    },
+    "walkinAwailable": "<0 /> لقاح بدون موعد",
+    "driveThroughAvailable": "<0 /> لقاح من السيارة متوفر",
+    "phone": "الهاتف",
+    "hours": "الاوقات",
+    "closed": "مغلق",
+    "publicHolidays": "عطلة رسمية",
+    "otherExeptions": "استثناءات",
+    "seeMore": "معلومات مزيده",
+    "otherLocations": {
+      "disclaimer": {
+        "title": "هذا الموقع مقدم من الجمهور العام",
+        "message": "يرجى زيارة الموقع المعلومات قد لا تكون دقيقة"
+      },
+      "sectionHeader": "مواقع اللقاح الاخرى<0>- مفتوحه اليوم</0>"
+    }
+  },
+  "calendar": {
+    "month": "{{monthString, MMMM yyyy}}",
+    "numberOfAppointments": "{{sumAvailableTimes}} متوفر",
+    "modal": {
+      "howToBook": {
+        "title": "احجز موعد",
+        "stepOne": "للحصول على المكان والوقت",
+        "stepTwo": "اضغط على <i>احجز موعد</i> لتذهب الى <0>bookmyvaccine.nz</0>",
+        "stepThree": "ادخل معلوماتك",
+        "stepFour": "ثم اختار الموقع و الوقت المرغوب به"
+      },
+      "availableSlots": "المواعيد المتوفرة",
+      "noBookingsAvailable": "لا يوجد مواعيد متوفرة لهذا اليوم :(",
+      "notBMV": "<0>bookmyvaccine.nz</0> هذا الموقع قد لا يحوي مواعيد متوفرة لأنه لا يستعمل",
+      "backToCalendar": "الرجوع الى التقويم"
+    }
+  },
+  "footer": {
+    "links": {
+      "contactUs": "للاتصال بنا",
+      "rawData": "مسودة بيانات",
+      "sourceCode": "مصدر الرمز",
+      "roadmap": "خريطة المشروع"
+    },
+    "message": "الرجاء شارك الموقع إن أفادك ا",
+    "addressFinderLinkCopy": "البحث عن العنوان بفضل <0>AddressFinder</0>"
+  }
+}

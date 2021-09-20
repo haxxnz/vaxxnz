@@ -1,27 +1,21 @@
 import { Button, KIND } from "baseui/button";
 import { BaseInput } from "baseui/input";
 import { Modal } from "baseui/modal";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
-import { getSuburbIsh } from "../utils/location";
-import { Coords } from "./LocationPicker";
+import getSuburb from "../utils/reverseGeocode";
+import { ADDRESS_FINDER_API_KEY } from "../utils/consts";
+import { eventedPushState } from "../utils/url";
 
 type Props = {
   locationIsOpen: boolean;
   setLocationIsOpen: (isOpen: boolean) => void;
-  setCoords: (coords: Coords) => void;
-  setPlaceName: (name: string) => void;
 };
 
 const LocationModal = (props: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const { setCoords, setPlaceName, setLocationIsOpen } = props;
-  const geocoder = useMemo(() => new google.maps.Geocoder(), []);
-  const placesService = useMemo(
-    () => new google.maps.places.PlacesService(document.createElement("div")),
-    []
-  );
+  const { setLocationIsOpen } = props;
 
   const { t } = useTranslation("common");
 
@@ -29,53 +23,60 @@ const LocationModal = (props: Props) => {
     setLocationIsOpen(false);
   }, [setLocationIsOpen]);
 
+  const getMetaDataLocation = (metaData: MetaData) => {
+    const { city, region, suburb } = metaData;
+
+    if (suburb == null && city == null) {
+      return region;
+    } else if (suburb == null) {
+      return city;
+    } else {
+      return suburb;
+    }
+  };
+
   const setLocation = useCallback(
     (lat: number, lng: number, name?: string | null) => {
       const placeName = name ?? `${lat} ${lng}`;
-      setCoords({ lat, lng });
-      setPlaceName(placeName);
       close();
       const url = new URL(window.location.toString());
       url.searchParams.set("lat", lat.toString());
       url.searchParams.set("lng", lng.toString());
       url.searchParams.set("placeName", placeName);
       enqueueAnalyticsEvent("Location set");
-      window.history.pushState({}, "", url.toString());
+      eventedPushState(url.toString());
     },
-    [close, setCoords, setPlaceName]
+    [close]
   );
   const inputRef = useCallback(
     (domNode) => {
       if (domNode != null) {
-        const options = {
-          componentRestrictions: { country: "nz" },
-          fields: ["geometry", "name", "address_components"],
-          strictBounds: false,
-        };
-
-        const autocomplete = new google.maps.places.Autocomplete(
+        const widget = new AddressFinder.Widget(
           domNode,
-          options
+          ADDRESS_FINDER_API_KEY,
+          "NZ",
+          {
+            address_params: {
+              post_box: "0",
+              max: "7",
+            },
+            show_locations: true,
+            location_params: {
+              max: "4",
+              region: 0,
+            },
+          }
         );
 
-        autocomplete.addListener("place_changed", () => {
-          const place = autocomplete.getPlace();
+        widget.on("result:select", function (fullAddress, metaData) {
+          const locationName = getMetaDataLocation(metaData);
 
-          if (
-            place.name &&
-            place.geometry != null &&
-            place.geometry.location != null
-          ) {
-            const { location } = place.geometry;
-            const lat = location.lat();
-            const lng = location.lng();
-            const suburbish = getSuburbIsh(place);
-            setLocation(lat, lng, suburbish);
-          }
+          setLocation(
+            parseFloat(metaData.y),
+            parseFloat(metaData.x),
+            locationName
+          );
         });
-        return () => {
-          google.maps.event.clearListeners(autocomplete, "place_changed");
-        };
       }
     },
     [setLocation]
@@ -84,35 +85,23 @@ const LocationModal = (props: Props) => {
   const getLocation = () => {
     if (!navigator.geolocation) {
       alert(t("navigation.locationModal.geolocationNotSupported"));
-    } else {
-      setLoading(true);
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        const { latitude, longitude } = position.coords;
-        const response = await geocoder.geocode({
-          location: {
-            lat: latitude,
-            lng: longitude,
-          },
-        });
-        const { results } = response;
-        if (results.length > 0) {
-          placesService.getDetails(
-            {
-              placeId: results[0].place_id,
-              fields: ["geometry", "name", "address_components"],
-            },
-            (place, status: string) => {
-              const suburbish = place ? getSuburbIsh(place) : null;
-              setLocation(latitude, longitude, suburbish);
-              setLoading(false);
-            }
-          );
-        } else {
-          setLocation(latitude, longitude);
-          setLoading(false);
-        }
-      });
+      return;
     }
+
+    setLoading(true);
+    navigator.geolocation.getCurrentPosition(async (position) => {
+      const { latitude, longitude } = position.coords;
+
+      try {
+        const suburb = await getSuburb(latitude, longitude);
+        setLocation(latitude, longitude, suburb);
+      } catch (err) {
+        console.log("Could not reverse geocode to a suburb.", err);
+        setLocation(latitude, longitude);
+      } finally {
+        setLoading(false);
+      }
+    });
   };
 
   return (
@@ -149,6 +138,7 @@ const LocationModal = (props: Props) => {
         inputRef={(e) => inputRef(e)}
         onChange={(_e) => {}}
       />
+
       <button
         className={"clickable"}
         style={{

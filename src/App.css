@@ -23,16 +23,16 @@
 
 @media (hover: hover) {
   a.nolink:hover {
-    color: black
+    color: black;
   }
 }
 
 a.nolink:active {
-  color: black
+  color: black;
 }
 
 a.nolink {
-  color: black
+  color: black;
 }
 
 .zero-available {
@@ -51,17 +51,16 @@ button.zero-available div p {
 }
 
 .cancel-booking-notice {
-  background-color: rgba(39, 128, 11, 0.07);
-  color: rgb(39, 128, 11);
+  background-color: rgb(58 126 210 / 11%);
+  color: rgb(26 91 171);
   padding: 12px 13px;
   margin-top: 10px;
 }
 
-@media screen and (max-width:1024px) {
+@media screen and (max-width: 1024px) {
   .cancel-booking-notice.mobile {
     display: block !important;
   }
-
   .cancel-booking-notice.desktop {
     display: none;
   }
@@ -75,34 +74,36 @@ button.zero-available div p {
   padding: 10px 17px;
 }
 
-h2 {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
-h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-h2.WalkSection {
+div.WalkSection {
   display: block;
   padding: 1.5rem 1rem;
-  border-bottom: 1px solid lightgray;
-  border-right: 1px solid lightgray;
-  border-left: 1px solid lightgray;
+  
+  border: 1px solid lightgray;
   position: sticky;
   top: 0px;
   background-color: #fff;
   z-index: 2 !important;
 }
 
-i.StupidWalkHack {
-  font-weight: 400;
-  font-style: normal;
+div.WalkSection p {
+  margin-top: 3px;
+  color: #666;
 }
 
-h2 strong {
+div.WalkSection2 {
+  display: block;
+  padding: 1.5rem 1rem;
+  border: 1px solid lightgray;
+  background-color: #fff;
+  z-index: 2 !important;
+}
+
+div.WalkSection2 p {
+  margin-top: 3px;
+  color: #666;
+}
+
+i.StupidWalkHack {
   font-weight: 400;
   font-style: normal;
 }
@@ -177,31 +178,126 @@ ul.NoticeList li {
 }
 
 .WalkItem svg {
-  margin-left: 12px;
+  margin-left: 4px;
 }
 
 .WalkInTypes {
-	margin-top: 10px;
+  margin-top: 10px;
+  border-radius: 14px;
+  border: 1px solid #b9dacc;
+  width: fit-content;
+  overflow: hidden;
 }
 
-.WalkInTypes p:not(:first-child) {
-  margin-top: 5px;
+.WalkInTypes h3 {
+  background-color: #e6f2ed;
+  color: #006138;
+  padding: 0.5rem 1rem;
+}
+
+.WalkInTypes h3 svg {
+  margin-right: 10px;
+}
+
+div.WalkInTypes p {
+  padding: 0.5rem 0.5rem;
+  margin: 0 0.5rem;
+  font-size: 1rem;
+}
+
+div.WalkInTypes p:not(:first-of-type) {
+  border-top: 1px solid #b9dacc;
 }
 
 .WalkModal section {
   margin-bottom: 0.5rem;
   margin-right: 1rem;
   font-size: 1.25rem;
-
   padding-top: 1rem;
   padding-bottom: 1rem;
   line-height: 1.5;
 }
 
 .WalkModal section p {
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .WalkModal section:not(:last-child) {
   border-bottom: 1px solid lightgray;
+}
+
+[data-baseweb="select"] input[aria-hidden="true"] {
+  display: none;
+}
+
+ul.af_list.af_list {
+  /* this is pretty atrocious, but the element is positioned at root so we have to calculate the width manually */
+  width: calc(min(100vw - 80px, 600px));
+  box-sizing: border-box;
+}
+
+ul.af_list.af_list li.af_item {
+  padding: 9px 13px;
+  font-size: 1rem;
+}
+
+.not-bmv {
+  display: block;
+  background-color: #e6f2ed;
+  border: 2px solid #b9dacc;
+  font-weight: 500;
+  border-radius: 14px;
+  color: #006138;
+  padding: 0.6rem 1rem;
+  margin-top: 0.8rem;
+}
+
+.address-card {
+  border: 2px solid lightgray;
+  padding: 1rem;
+  border-radius: 8px;
+  display: block;
+  margin: 1.5rem 0 0.5rem 0;
+  display: flex;
+  gap: 1rem;
+  color: rgb(26 91 171);
+}
+
+.address-card:hover {
+  background-color: #e4eeff;
+  cursor: pointer;
+}
+
+.address-card section {
+  padding: 0;
+  margin: 0;
+}
+
+.address-card p {
+  padding: 0;
+  font-weight: 500;
+  color: black;
+}
+
+.address-icon {
+  font-size: 2rem;
+  align-self: center;
+}
+
+.address-header {
+  margin-top: 2.5rem;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 0.5rem;
+}
+.mappymap {
+  border-bottom: 1px solid lightgray;
+  position: sticky;
+  top: 0;
+  display: block;
+}
+@media screen and (max-width: 768px) {
+  .mappymap {
+   display: none;
+  }
+  
 }

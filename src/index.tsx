@@ -1,4 +1,5 @@
-import { BaseProvider, LightTheme } from "baseui";
+import { BaseProvider } from "baseui";
+import VaxxTheme from "./VaxxTheme";
 import i18n from "i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import React from "react";
@@ -7,29 +8,23 @@ import { initReactI18next } from "react-i18next";
 import { Client as Styletron } from "styletron-engine-atomic";
 import { Provider as StyletronProvider } from "styletron-react";
 import App from "./App";
-import { DateLocationsPair } from "./booking/BookingDataTypes";
-import { DateLocationsPairsContext } from "./contexts";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { config as i18nextConfig } from "./translations";
+import { BrowserRouter as Router } from "react-router-dom";
 
 i18n.use(LanguageDetector).use(initReactI18next).init(i18nextConfig);
 
 const engine = new Styletron();
 
 function Index() {
-  const [dateLocationsPairs, setDateLocationsPairs] = React.useState<
-    DateLocationsPair[]
-  >([]);
   return (
     <React.StrictMode>
       <StyletronProvider value={engine}>
-        <BaseProvider theme={LightTheme}>
-          <DateLocationsPairsContext.Provider
-            value={{ dateLocationsPairs, setDateLocationsPairs }}
-          >
+        <BaseProvider theme={VaxxTheme}>
+          <Router>
             <App />
-          </DateLocationsPairsContext.Provider>
+          </Router>
         </BaseProvider>
       </StyletronProvider>
     </React.StrictMode>

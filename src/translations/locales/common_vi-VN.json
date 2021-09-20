@@ -1,0 +1,98 @@
+{
+  "core": {
+    "title": "Vaxx.nz",
+    "tagline": "Tìm kiếm địa điểm chích vaccine ngừa COVID 19",
+    "subtitle": "Xác định các địa điểm chích ngừa gần bạn",
+    "disclaimerNotAGovWebsite": "Đây không phải là trang web chính phủ. Để đặt lịch hẹn chích ngừa, xin hãy truy cập trang web <0>bookmyvaccine.nz</0>",
+    "loading": "Đang tải...",
+    "getDirections": "Định hướng",
+    "makeABooking": "Đặt hẹn",
+    "distanceAway": "Cách địa chỉ lựa chọn {{distance}}",
+    "lastUpdated": "Cập nhật cách đây {{updatedAt}}",
+    "cancel": "Huỷ bỏ",
+    "website": "Trang web",
+    "address": "Address",
+    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius."
+  },
+  "navigation": {
+    "about": "Về Vaxx.nz",
+    "contact": "Liên hệ",
+    "getInvolved": "Gia nhập chúng tôi",
+    "setLocation": "Nhập địa chỉ",
+    "setLocationConfirmation": "Đã tìm được địa chỉ",
+    "vaccinationsNear": "Những địa điểm chích ngừa <0>gần {{location}}</0>",
+    "distanceDropdown": {
+      "2km": "Trong phạm vi 2km",
+      "5km": "Trong phạm vi 5km",
+      "10km": "Trong phạm vi 10km",
+      "25km": "Trong phạm vi 25km",
+      "50km": "Trong phạm vi 50km",
+      "100km": "Trong phạm vi 100km",
+      "10closest": "10 closest"
+    },
+    "locationModal": {
+      "locaitonTitle": "Địa chỉ của bạn",
+      "locationCTA": "Nhập địa chỉ hoặc vùng ngoại ô",
+      "useCurrentLocation": "Sử dụng vị trí hiện tại của tôi",
+      "geolocationNotSupported": "Trình duyệt của bạn không hỗ trợ định vị địa lý"
+    },
+    "unknownLocation": "Không tìm thấy địa điểm này"
+  },
+  "walkins": {
+    "sectionHeader": "Địa điểm có thể đi vào trong và lái xe vào <0>- Mở cửa hôm nay</0>",
+    "openString": "Thời gian mở cửa {{openTimeString}}",
+    "cancellationNotice": {
+      "info": "Xin đừng đặt hẹn nhiều lần",
+      "message": "Hãy nhớ huỷ cuộc hẹn ban đầu của bạn tại trang web <0>bookmyvaccine.nz</0>"
+    },
+    "cancelBooking": "Huỷ bỏ cuộc hẹn",
+    "noticeList": {
+      "title": "Địa điểm có thể không còn ",
+      "text": "Hãy nhớ rằng các địa điểm có thể đi vào trong liệt kê ở đây có thể không còn chỗ"
+    },
+    "walkinAwailable": "<0 /> Có thể đi vào trong",
+    "driveThroughAvailable": "<0 /> Có thể lái xe vào",
+    "phone": "Điện thoại",
+    "hours": "Giờ làm việc",
+    "closed": "Closed",
+    "publicHolidays": "Ngày lễ",
+    "otherExeptions": "Ngoại lệ",
+    "seeMore": "Xem thêm",
+    "otherLocations": {
+      "sectionHeader": "Những địa điểm khác <0>- Mở cửa hôm nay</0>",
+      "disclaimer": {
+        "title": "Địa điểm này được cập nhật bởi công chúng",
+        "message": "Thông tin có thể không chính xác 100%. Xin hãy tìm địa chỉ trên mạng."
+      }
+    }
+  },
+  "calendar": {
+    "month": "{{monthString, yyyy mmm}}",
+    "numberOfDoses": "{{numberOfDoses}} có sẵn",
+    "modal": {
+      "howToBook": {
+        "title": "Đặt cuộc hẹn thế nào",
+        "stepOne": "Tìm địa điểm và thời gian từ danh sách bên dưới.",
+        "stepTwo": "Nhấn vào nút <i>Đặt cuộc hẹn</i>, bạn sẽ được đưa đến trang web <0>bookmyvaccine.nz</0>",
+        "stepThree": "Nhập thông tin cá nhân của bạn",
+        "stepFour": "Khi được hỏi, tìm địa điểm và thời gian bạn thích"
+      },
+      "availableSlots": "Chỗ trống",
+      "noBookingsAvailable": "Không còn chỗ trống nào vào ngày này :(",
+      "backToCalendar": "Quay về lịch",
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
+    },
+    "numberOfAppointments": "{{sumAvailableTimes}} chỗ trống"
+  },
+  "footer": {
+    "message": "Nếu trang web này đã giúp bạn, xin hãy chia xẻ",
+    "links": {
+      "contactUs": "Liên hệ",
+      "rawData": "Dữ liệu thô",
+      "sourceCode": "Mã nguồn",
+      "roadmap": "Lộ trình"
+    },
+    "addressFinderLinkCopy": "Cảm ơn <0>AddressFinder</0> đã tài trợ dịch vụ địa chỉ tìm kiếm"
+  }
+}

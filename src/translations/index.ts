@@ -1,27 +1,36 @@
 import { resources } from "./resources";
 import languages from "./resources";
 
-let initLanguage = localStorage.getItem("i18nextLng") || "en-NZ";
-
 const options = {
-  order: ["querystring", "navigator"],
-  lookupQuerystring: "lang",
+  order: ["querystring", "localStorage", "navigator"],
+  lookupQuerystring: "locale",
 };
 
+export const unsupportedLocales = ["mi-NZ", "to-TO", "sm-SM"];
+
 export const config = {
-  lng: initLanguage,
   fallbackLng: "en-NZ",
   ns: ["common"],
   defaultNS: "common",
   detection: options,
   supportedLngs: [
     "en-NZ",
+    "mi-NZ",
     "es-ES",
     "de-DE",
+    "id-ID",
     "ru-RU",
     "zh-CN",
     "zh-TW",
+    "hi-HI",
     "ms-MY",
+    "sm-SM",
+    "vi-VN",
+    "to-TO",
+    "pl-PL",
+    "ar-IQ",
+    "ja-JP",
+    "tl-PH",
   ],
   interpolation: { escapeValue: false },
   resources,

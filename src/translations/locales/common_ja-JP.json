@@ -1,0 +1,97 @@
+{
+  "core": {
+    "title": "Vaxx.nz",
+    "tagline": "コロナワクチン接種会場の検索",
+    "subtitle": "最寄りのコロナワクチン接種会場の検索",
+    "disclaimerNotAGovWebsite": "政府公式のウェブサイトではありません。ワクチン接種可能な会場の情報提供を目的としています。 <0>bookmyvaccine.nz</0>",
+    "loading": "検索中...",
+    "getDirections": "最寄りの会場が見つかりました。",
+    "makeABooking": "ワクチン接種の予約をする",
+    "distanceAway": "{{distance}} 先にあります。",
+    "lastUpdated": "最新の更新 {{updatedAt}}",
+    "cancel": "キャンセル",
+    "website": "ウェブサイト",
+    "address": "住所",
+    "noResultsNotInNZ": "ワクチン接種会場は見つかりませんでした。　あなたはニュージーランド国内に居住していますか?",
+    "noResultsInRadius": "ワクチン接種会場は見つかりませんでした。 距離を変更して再検索して下さい。"
+  },
+  "navigation": {
+    "about": "このウェブサイトについて",
+    "contact": "連絡する",
+    "getInvolved": "プログラム開発に参画",
+    "setLocation": "場所を設定",
+    "setLocationConfirmation": "設定場所の確認",
+    "locationModal": {
+      "locaitonTitle": "場所",
+      "locationCTA": "住所を入力",
+      "useCurrentLocation": "現在の住所を使用",
+      "geolocationNotSupported": "あなたのブラウザでは位置情報がサポートされていません。"
+    },
+    "vaccinationsNear": "<0>{{location}}</0> 付近のワクチン接種会場",
+    "unknownLocation": "未知の場所",
+    "distanceDropdown": {
+      "2km": "2km以内",
+      "5km": "5km以内",
+      "10km": "10km以内",
+      "25km": "25km以内",
+      "50km": "50km以内",
+      "100km": "100km以内",
+      "10closest": "10 closest"
+    }
+  },
+  "walkins": {
+    "sectionHeader": "本日接種可能",
+    "openString": "Open {{openTimeString}}",
+    "cancellationNotice": {
+      "info": "ダブルクリックをしないで下さい。",
+      "message": "もしあなたが既に予約を入れている場合は、その予約のキャンセルを忘れないように注意してください。"
+    },
+    "cancelBooking": "キャンセル",
+    "noticeList": {
+      "title": "ワクチン接種のやり方",
+      "text": "ワクチン接種の際には並ぶことがあるかもしれません。もしくは幾つかの会場では本日接種可能な余剰分がないかもしれません。気になる場合は、電話で確認して下さい。"
+    },
+    "walkinAwailable": "<0 /> ワクチン接種が可能",
+    "driveThroughAvailable": "<0 /> ドライブスルーでのワクチン接種が可能",
+    "phone": "電話",
+    "hours": "時間帯",
+    "closed": "終了時刻",
+    "publicHolidays": "パブリックホリデー",
+    "otherExeptions": "例外",
+    "seeMore": "もっと見る",
+    "otherLocations": {
+      "sectionHeader": "他のワクチン接種会場 <0>- 本日接種可能</0>",
+      "disclaimer": {
+        "title": "この場所は一般的に公開されている情報です。",
+        "message": "この情報は100％正確ではありません。ウェブサイトで場所を確認して下さい。"
+      }
+    }
+  },
+  "calendar": {
+    "month": "{{monthString, MMMM yyyy}}",
+    "numberOfAppointments": "{{sumAvailableTimes}} 回接種可能",
+    "modal": {
+      "howToBook": {
+        "title": "予約のやり方",
+        "stepOne": "下記のリストから場所と時間を探す",
+        "stepTwo": "<i>ワクチン接種の予約をする</i> ボタンをクリックすると、<0>bookmyvaccine.nz</0> に移動します",
+        "stepThree": "あなたの情報を入力して下さい",
+        "stepFour": "希望の場所と時間を検索する"
+      },
+      "availableSlots": "予約可能",
+      "noBookingsAvailable": "この日の予約はできません。 :(",
+      "notBMV": "この場所は <0>bookmyvaccine.nz</0> を使っていません。あるいはワクチン接種の空きがありません。",
+      "backToCalendar": "カレンダーに戻る"
+    }
+  },
+  "footer": {
+    "message": "このサイトがあなたの役に立ったら、ぜひシェアして下さい。",
+    "addressFinderLinkCopy": "住所検索を無償で提供して下さった <0>AddressFinder</0> に感謝致します。",
+    "links": {
+      "contactUs": "連絡先",
+      "rawData": "ローデータ",
+      "sourceCode": "ソースコード",
+      "roadmap": "ロードマップ"
+    }
+  }
+}

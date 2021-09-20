@@ -1,19 +1,42 @@
-export function getSuburbIsh(
-  place: google.maps.places.PlaceResult
-): string | undefined {
-  const { address_components } = place;
-  const suburbish = (address_components ?? []).find(
-    (a) =>
-      a.types.includes("locality") ||
-      a.types.includes("sublocality_level_1") ||
-      a.types.includes("sublocality")
-  );
-  const short_name = suburbish?.short_name;
-  return short_name;
+import distance from "@turf/distance";
+import { Coords } from "../location-picker/LocationPicker";
+import { sortByAsc } from "./array";
+import { Radius } from "./locationTypes";
+
+type LatLng = [number, number];
+
+function point(latlng: LatLng) {
+  const geometry = {
+    type: "Point" as "Point",
+    coordinates: latlng,
+  };
+  return geometry;
 }
 
-export const DEFAULT_LOCATION = {
-  lat: -36.853610199274385,
-  lng: 174.76054541484535,
-  placeName: "Auckland CBD"
+function getGetDistanceInKm<T>(
+  myPoint: { type: "Point"; coordinates: LatLng },
+  getLatLng: (location: T) => LatLng
+) {
+  return (l: T) =>
+    distance(myPoint, point(getLatLng(l)), {
+      units: "kilometers",
+    });
+}
+
+export function filterLocations<T>(
+  locations: T[],
+  coords: Coords,
+  radiusKm: Radius,
+  getLatLng: (location: T) => LatLng
+) {
+  const myPoint = point([coords.lat, coords.lng]);
+  const getDistanceKm = getGetDistanceInKm(myPoint, getLatLng);
+  if (radiusKm === "10closest") {
+    return sortByAsc(locations, (l) => getDistanceKm(l)).slice(0, 10);
+  } else {
+    return sortByAsc(
+      locations.filter((l) => getDistanceKm(l) < radiusKm),
+      (l) => getDistanceKm(l)
+    );
+  }
 }
