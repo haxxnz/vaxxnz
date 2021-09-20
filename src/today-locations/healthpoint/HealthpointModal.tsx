@@ -187,7 +187,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
             frameBorder="0"
             scrolling="no"
             loading="lazy"
-            src={`https://www.google.com/maps/embed/v1/place?zoom=18&q=${location.address}&center=${location.lat}%2C${location.lng}&key=AIzaSyAcCqT9f9Oe5dTmK81lFC1IyVHJmxwv_eg`}
+            src={`https://www.google.com/maps/embed/v1/place?zoom=16&q=${location.address}&center=${location.lat}%2C${location.lng}&key=AIzaSyAcCqT9f9Oe5dTmK81lFC1IyVHJmxwv_eg`}
           ></iframe>
           <br />
         </div>
