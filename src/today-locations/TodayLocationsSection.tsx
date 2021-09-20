@@ -10,14 +10,12 @@ import { Spinner } from "baseui/spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import { useTodayLocationsData } from "./TodayLocationsData";
-import { useHistory } from "react-router-dom";
 import { simpleHash } from "../utils/simpleHash";
 import { slug } from "../utils/slug";
 import { useRadiusKm } from "../utils/useRadiusKm";
-import { getSearch } from "../utils/url";
 import { useCoords } from "../utils/useCoords";
 import { PageLink } from "../PageLink";
 
@@ -27,7 +25,6 @@ export function TodayLocationsSection() {
   const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
   const locations = useTodayLocationsData();
   const { t, i18n } = useTranslation("common");
-  const history = useHistory();
 
   const [currentView, setCurrentView] = useState(!isMobileView ? 30 : 30);
 

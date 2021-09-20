@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react";
 import { Switch, Route } from "react-router";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {
   CalendarSection,
