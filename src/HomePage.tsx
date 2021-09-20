@@ -50,6 +50,9 @@ const StyledTabs = styled.div`
       border-right: 1px solid lightgray;
     }
   }
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+  }
 `;
 
 const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => (
