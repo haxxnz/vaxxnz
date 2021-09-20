@@ -20,7 +20,7 @@ describe("Normal number", () => {
   });
 
   it("should return a null", () => {
-    const want = null;
+    const want = "test string no actual phone number";
 
     const got = parsePhoneNumber("test string no actual phone number");
 
