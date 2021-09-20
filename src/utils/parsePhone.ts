@@ -1,6 +1,6 @@
 //Takes in a string and returns either the first valid phone number or original string
 
-export function parsePhoneNumber(potentialNumber: string): string{
+export function parsePhoneNumber(potentialNumber: string): string {
   let phoneRegex = /[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\.0-9]*/;
   let eightHundredRegex = /0800\s[A-Z]+/;
   //Does a standard phone regex, but that will also just return the 0800 from a number like 0800 ORANGA
@@ -12,11 +12,9 @@ export function parsePhoneNumber(potentialNumber: string): string{
     return potentialNumber.match(phoneRegex)![0].trim();
   } else if (potentialNumber.match(eightHundredRegex) != null) {
     return potentialNumber.match(eightHundredRegex)![0].trim();
-  } 
-    else if (potentialNumber == null){
-        return ""
-    }  
-  else {
+  } else if (potentialNumber == null) {
+    return "";
+  } else {
     return potentialNumber;
   }
 }
