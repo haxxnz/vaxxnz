@@ -78,8 +78,8 @@ const StyledTab = styled.button`
   margin: 0;
   cursor: pointer;
   background: none;
-  font-size: 1.15rem;
-  font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: 400;
   text-align: center;
   margin: 0px;
   width: 100%;
@@ -96,6 +96,7 @@ const StyledTab = styled.button`
     border-bottom-color: #000;
     background-color: white;
     cursor: default;
+    font-weight: 600;
   }
 `;
 
