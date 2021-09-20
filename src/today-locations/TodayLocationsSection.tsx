@@ -62,7 +62,7 @@ export function TodayLocationsSection() {
 
   return (
     <div>
-      <div className="WalkSection">
+      <div className="WalkSection2">
         <h2>Walk-in and Drive Thru Vaccination Centres</h2>
         <p>
           You don't need an appointment to get vaccinated at these venues. Visit{" "}
@@ -124,15 +124,8 @@ export function TodayLocationsSection() {
                       <OtherBox onClick={() => openModal(index)} key={index}>
                         <section className="WalkItem">
                           <div>
-                            <h3>
-                              {name}
-                              {instructions.includes(Instruction.walkIn) && (
-                                <FontAwesomeIcon icon={faWalking} />
-                              )}
-                              {instructions.includes(
-                                Instruction.driveThrough
-                              ) && <FontAwesomeIcon icon={faCar} />}
-                            </h3>
+                            <h3>{name}</h3>
+
                             {locationLat && locationLng && (
                               <p>
                                 {t("core.distanceAway", {
@@ -143,7 +136,13 @@ export function TodayLocationsSection() {
                                     }),
                                     i18n.language
                                   ),
-                                })}
+                                })}{" "}
+                                {instructions.includes(Instruction.walkIn) && (
+                                  <FontAwesomeIcon icon={faWalking} />
+                                )}
+                                {instructions.includes(
+                                  Instruction.driveThrough
+                                ) && <FontAwesomeIcon icon={faCar} />}
                               </p>
                             )}
                           </div>

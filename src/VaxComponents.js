@@ -120,6 +120,7 @@ export const MonthContainer = styled.section`
     font-family: inherit;
     min-height: 144px;
     height: 100%;
+    width: 100%;
 
     text-align: left;
     background-color: white;
@@ -354,13 +355,14 @@ export const WalkMessage = styled.div`
   background: white;
   margin: 0;
   box-sizing: border-box;
-`
+`;
 
 export const WalkBox = styled.button`
   box-sizing: border-box;
   font-family: inherit;
   min-height: 144px;
   height: 100%;
+  width: 100%;
   flex: 1;
   min-width: 320px;
 
