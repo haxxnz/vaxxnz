@@ -90,18 +90,19 @@ function App() {
                       },
                     },
                     Tab: {
-                      style: {
-                        fontSize: "1.25rem",
+                      style: ({ $active }) => ({
+                        fontSize: "1.15rem",
                         fontWeight: "bold",
                         textAlign: "center",
                         margin: "0px",
-                        padding: "16px 0px",
+                        padding: "13px 0px",
                         flex: "1",
-                        color: "#0076FF",
                         ":hover": {
                           backgroundColor: "#e4eeff",
                         },
-                      },
+                        color: $active ? "#0076FF" : "#444",
+                        borderBottomColor: $active ? "#0076FF" : "transparent",
+                      }),
                     },
                   }}
                 >
@@ -120,7 +121,7 @@ function App() {
                       data={bookingData}
                     />
                   </Tab>
-                  <Tab title="Find a walk-in">
+                  <Tab title="Walk-in/Drive Thru">
                     <TodayLocationsSection
                       selectedLocationIndex={selectedLocationIndex}
                       setSelectedLocation={setSelectedLocationIndex}
