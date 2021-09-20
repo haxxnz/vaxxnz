@@ -9,6 +9,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { BookingData } from "../booking/BookingData";
 import { getSearch } from "../../utils/url";
 import { saveScrollAndGo } from "../../scroll";
+import { LoadingBookingCalendar } from "../Calendar";
 
 interface BookingModalProps {
   bookingData?: BookingData;
@@ -37,7 +38,7 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
   );
 
   if (!bookingData || !unwind) {
-    return <p>Loading...</p>;
+    return <LoadingBookingCalendar />;
   }
 
   const activeDate = { dateStr: unwind[0], locations: unwind[1] };

@@ -21,15 +21,7 @@ import { getSearch } from "../utils/url";
 import { useCoords } from "../utils/useCoords";
 import { saveScrollAndGo } from "../scroll";
 
-export interface Props {
-  selectedLocationIndex?: number;
-  setSelectedLocation: (num?: number) => void;
-}
-
-export function TodayLocationsSection({
-  selectedLocationIndex,
-  setSelectedLocation,
-}: Props) {
+export function TodayLocationsSection() {
   const radiusKm = useRadiusKm();
   const coords = useCoords();
   const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
@@ -50,7 +42,7 @@ export function TodayLocationsSection({
       locationName: location ? location.name : "",
       radiusKm,
     });
-    const path = `/${slug(location.name)}-${simpleHash(
+    const path = `/locations/${slug(location.name)}-${simpleHash(
       `${location.lat}${location.lng}`
     )}`;
     saveScrollAndGo(path);

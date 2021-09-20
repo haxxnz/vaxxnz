@@ -1,0 +1,100 @@
+import React, { FunctionComponent } from "react";
+import { Switch, Route } from "react-router";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import {
+  CalendarSection,
+  CalendarSectionProps,
+} from "./calendar/CalendarSection";
+import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
+
+interface HomePageProps extends CalendarSectionProps {}
+
+enum TabType {
+  walkIn,
+  bookings,
+}
+
+export const HomePage: FunctionComponent<HomePageProps> = ({ bookingData }) => {
+  return (
+    <Switch>
+      <Route path="/locations">
+        <Tabs activeTab={TabType.walkIn} />
+        <TodayLocationsSection />
+      </Route>
+      <Route>
+        <Tabs activeTab={TabType.bookings} />
+        <CalendarSection bookingData={bookingData} />
+      </Route>
+    </Switch>
+  );
+};
+
+interface TabsProps {
+  activeTab: TabType;
+}
+
+const StyledTabs = styled.div`
+  background: white;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  display: flex;
+  margin-bottom: 1.5rem;
+
+  a {
+    display: block;
+    flex: 1 0 auto;
+
+    &:not(:last-child) {
+      border-right: 1px solid lightgray;
+    }
+  }
+`;
+
+const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => (
+  <StyledTabs role="tablist">
+    <Link to="/bookings">
+      <Tab isActive={activeTab === TabType.bookings}>Make a Booking</Tab>
+    </Link>
+    <Link to="/locations">
+      <Tab isActive={activeTab === TabType.walkIn}>Walk-in/Drive Thru</Tab>
+    </Link>
+  </StyledTabs>
+);
+
+interface TabProps {
+  isActive: boolean;
+}
+
+const StyledTab = styled.button`
+  font-family: inherit;
+  appearance: none;
+  outline: none;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  cursor: pointer;
+  background: none;
+  font-size: 1.15rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0px;
+  width: 100%;
+  padding: 13px 0px;
+  border-bottom: 1px solid lightgray;
+
+  &:hover: {
+    background-color: #e4eeff;
+  }
+
+  &[aria-selected="true"] {
+    color: #0076ff;
+    border-bottom-color: #0076ff;
+  }
+`;
+
+const Tab: FunctionComponent<TabProps> = ({ isActive, children }) => (
+  <StyledTab aria-selected={isActive} role="tab">
+    {children}
+  </StyledTab>
+);

@@ -15,7 +15,7 @@ import {
   HealthpointLocationsContext,
   HealthpointLocationsResult,
 } from "./contexts";
-import { Tabs, Tab } from "baseui/tabs";
+import { HomePage } from "./HomePage";
 
 const Contexts: React.FC<{}> = (props) => {
   const [healthpointLocations, setHealthpointLocations] =
@@ -38,7 +38,6 @@ function App() {
   const [selectedLocationIndex, setSelectedLocationIndex] = useState<number>();
 
   const bookingData = useBookingData(setLastUpdateTime);
-  const [activeKey, setActiveKey] = useState<React.Key>("0");
 
   return (
     <Contexts>
@@ -52,83 +51,18 @@ function App() {
               />
             </div>
           </Route>
-          <Route path="/:slug">
+          <Route path="/locations/:slug">
             <div className={"big-old-container"}>
               <LocationRouter />
-              <TodayLocationsSection
-                selectedLocationIndex={selectedLocationIndex}
-                setSelectedLocation={setSelectedLocationIndex}
-              />
+              <TodayLocationsSection />
             </div>
           </Route>
-          <Route path="/">
+          <Route>
             <>
               <Banner />
               <div className={"big-old-container"}>
                 <LocationPicker lastUpdateTime={lastUpdateTime} />
-                <Tabs
-                  onChange={({ activeKey }) => {
-                    setActiveKey(activeKey);
-                  }}
-                  activeKey={activeKey}
-                  overrides={{
-                    TabBar: {
-                      style: {
-                        backgroundColor: "white",
-                        borderBottom: "1px solid lightgray",
-                        borderLeft: "1px solid lightgray",
-                        borderRight: "1px solid lightgray",
-
-                        padding: "0px",
-                      },
-                    },
-                    TabContent: {
-                      style: {
-                        padding: "0px !important",
-                        marginTop: "1.5rem",
-                      },
-                    },
-                    Tab: {
-                      style: ({ $active }) => ({
-                        fontSize: "1.15rem",
-                        fontWeight: "bold",
-                        textAlign: "center",
-                        margin: "0px",
-                        padding: "13px 0px",
-                        flex: "1",
-                        ":hover": {
-                          backgroundColor: "#e4eeff",
-                          color: "#0050ac",
-                        },
-                        color: $active ? "#000" : "#0076FF",
-                        borderBottomColor: $active ? "#000" : "transparent",
-                        borderRadius: "0",
-                      }),
-                    },
-                  }}
-                >
-                  <Tab
-                    title="Make a Booking"
-                    overrides={{
-                      Tab: {
-                        style: {
-                          borderRight: "1px solid lightgray",
-                        },
-                      },
-                    }}
-                  >
-                    <CalendarSection
-                      setLastUpdateTime={setLastUpdateTime}
-                      data={bookingData}
-                    />
-                  </Tab>
-                  <Tab title="Walk-in/Drive Thru">
-                    <TodayLocationsSection
-                      selectedLocationIndex={selectedLocationIndex}
-                      setSelectedLocation={setSelectedLocationIndex}
-                    />
-                  </Tab>
-                </Tabs>
+                <HomePage bookingData={bookingData} />
               </div>
             </>
           </Route>

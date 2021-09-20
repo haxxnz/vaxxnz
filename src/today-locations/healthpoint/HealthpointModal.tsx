@@ -180,14 +180,14 @@ const HealthpointModal: FunctionComponent<Props> = ({
         </WalkInstructions>
         <div style={{ height: "100%" }}>
           <iframe
-            title="Map"
+            title="Google Maps Embed"
             className="mappymap"
             width="100%"
             height="600px"
             frameBorder="0"
             scrolling="no"
             loading="lazy"
-            src={`https://www.google.com/maps/embed/v1/view?zoom=18&center=${location.lat}%2C${location.lng}&key=AIzaSyAcCqT9f9Oe5dTmK81lFC1IyVHJmxwv_eg`}
+            src={`https://www.google.com/maps/embed/v1/place?zoom=18&q=${location.address}&center=${location.lat}%2C${location.lng}&key=AIzaSyAcCqT9f9Oe5dTmK81lFC1IyVHJmxwv_eg`}
           ></iframe>
           <br />
         </div>
