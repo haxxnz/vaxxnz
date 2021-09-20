@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { CalendarModalContent } from "./CalendarModalContent";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { BookingData } from "../booking/BookingData";
 import { LoadingBookingCalendar } from "../Calendar";
 import { PageLink } from "../../PageLink";
@@ -19,7 +19,6 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
 }) => {
   const { t } = useTranslation("common");
   const { date } = useParams<{ date: string }>();
-  const history = useHistory();
   const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
 
   // Fixme: this is trash because the data structure is trash
