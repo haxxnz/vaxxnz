@@ -1,6 +1,7 @@
 import {
   WalkBox as OtherBox,
   WalkContainer as OtherContainer,
+  WalkMessage,
 } from "../VaxComponents";
 import { formatDistanceKm, getDistanceKm } from "../utils/distance";
 import { Instruction } from "./healthpoint/HealthpointData";
@@ -60,24 +61,20 @@ export function TodayLocationsSection({
     setCurrentView((latest) => latest + 12);
   };
 
-  return "error" in locations ||
-    ("ok" in locations && locations.ok.length === 0) ? null : (
+  return (
     <div>
       <div className="WalkSection">
-        <h2>Find a walk-in vaccination</h2>
-        <p>You don't need a booking to get vaccinated at any of these venues</p>
+        <h2>Walk-in and Drive Thru Vaccination Centres</h2>
+        <p>
+          You don't need an appointment to get vaccinated at these venues. Visit{" "}
+          <a href="https://covid19.govt.nz/covid-19-vaccines/how-to-get-a-covid-19-vaccination/walk-in-and-drive-through-vaccination-centres/">
+            covid19.govt.nz
+          </a>{" "}
+          for more information.
+        </p>
       </div>
       {"loading" in locations ? (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            minHeight: "20vh",
-            width: "100%",
-            backgroundColor: "white",
-          }}
-        >
+        <WalkMessage>
           <Spinner color="black" />
           <div
             style={{
@@ -87,7 +84,14 @@ export function TodayLocationsSection({
           >
             {t("core.loading")}
           </div>
-        </div>
+        </WalkMessage>
+      ) : "error" in locations ? (
+        <WalkMessage>Loading failed: {locations.error.message}</WalkMessage>
+      ) : locations.ok.length === 0 ? (
+        <WalkMessage>
+          There aren't any walk-in or drive thru vaccination centres in your
+          area. Try make a booking instead.
+        </WalkMessage>
       ) : (
         <>
           <OtherContainer>

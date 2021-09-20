@@ -344,6 +344,18 @@ export const WalkContainer = styled.div`
   }
 `;
 
+export const WalkMessage = styled.div`
+  display: flex;
+  justify-content center;
+  align-items: center;
+  min-height 20vh;
+  width: 100%;
+  border: 1px solid lightgray;
+  background: white;
+  margin: 0;
+  box-sizing: border-box;
+`
+
 export const WalkBox = styled.button`
   box-sizing: border-box;
   font-family: inherit;
