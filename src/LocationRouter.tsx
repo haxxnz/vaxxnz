@@ -5,14 +5,13 @@ import {
 } from "./today-locations/healthpoint/HealthpointData";
 import { CrowdsourcedLocation } from "./crowdsourced/CrowdsourcedData";
 import CrowdsourcedModal from "./crowdsourced/CrowdsourcedModal";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { simpleHash } from "./utils/simpleHash";
 import { crowdsourcedLocations } from "./crowdsourced/CrowdsourcedLocations";
 
 export function LocationRouter() {
   const { slug } = useParams<{ slug: string }>();
   const [hash] = slug.split("-").slice(-1);
-  const history = useHistory();
 
   const healthpointLocationsResult = useHealthpointLocations();
   const loading = "loading" in healthpointLocationsResult;
