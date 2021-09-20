@@ -7,8 +7,6 @@ import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { CalendarModalContent } from "./CalendarModalContent";
 import { useParams, useHistory } from "react-router-dom";
 import { BookingData } from "../booking/BookingData";
-import { getSearch } from "../../utils/url";
-import { saveScrollAndGo } from "../../scroll";
 import { LoadingBookingCalendar } from "../Calendar";
 import { PageLink } from "../../PageLink";
 

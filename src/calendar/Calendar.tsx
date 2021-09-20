@@ -15,11 +15,8 @@ import {
   CalendarDateLocations,
   CalendarMonth,
 } from "./CalendarData";
-import { useHistory } from "react-router-dom";
 import React from "react";
 import { useRadiusKm } from "../utils/useRadiusKm";
-import { getSearch } from "../utils/url";
-import { saveScrollAndGo } from "../scroll";
 import { PageLink } from "../PageLink";
 
 interface BookingCalendarProps {
@@ -146,7 +143,6 @@ function CalendarDay(props: CalendarDayProps): JSX.Element {
             radiusKm,
             spotsAvailable: availableCount,
           });
-          saveScrollAndGo(path);
         }}
       >
         <div>

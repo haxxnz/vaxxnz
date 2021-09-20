@@ -8,8 +8,6 @@ import CrowdsourcedModal from "./crowdsourced/CrowdsourcedModal";
 import { useParams, useHistory } from "react-router-dom";
 import { simpleHash } from "./utils/simpleHash";
 import { crowdsourcedLocations } from "./crowdsourced/CrowdsourcedLocations";
-import { getSearch } from "./utils/url";
-import { saveScrollAndGo } from "./scroll";
 
 export function LocationRouter() {
   const { slug } = useParams<{ slug: string }>();

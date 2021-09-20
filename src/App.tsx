@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./App.css";
-import { CalendarSection } from "./calendar/CalendarSection";
 import { LocationPicker } from "./location-picker/LocationPicker";
 import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
 import CookiesBar from "./Cookies";
@@ -16,6 +15,7 @@ import {
   HealthpointLocationsResult,
 } from "./contexts";
 import { HomePage } from "./HomePage";
+import { useSaveScroll } from "./scroll";
 
 const Contexts: React.FC<{}> = (props) => {
   const [healthpointLocations, setHealthpointLocations] =
@@ -35,9 +35,8 @@ const Contexts: React.FC<{}> = (props) => {
 
 function App() {
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
-  const [selectedLocationIndex, setSelectedLocationIndex] = useState<number>();
-
   const bookingData = useBookingData(setLastUpdateTime);
+  useSaveScroll();
 
   return (
     <Contexts>

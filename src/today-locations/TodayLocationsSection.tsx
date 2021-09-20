@@ -19,7 +19,6 @@ import { slug } from "../utils/slug";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { getSearch } from "../utils/url";
 import { useCoords } from "../utils/useCoords";
-import { saveScrollAndGo } from "../scroll";
 import { PageLink } from "../PageLink";
 
 export function TodayLocationsSection() {
