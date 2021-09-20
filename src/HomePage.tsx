@@ -82,14 +82,17 @@ const StyledTab = styled.button`
   width: 100%;
   padding: 13px 0px;
   border-bottom: 1px solid lightgray;
-
-  &:hover: {
+  color: #0076ff;
+  transition: all 0.15s;
+  :hover {
     background-color: #e4eeff;
   }
 
   &[aria-selected="true"] {
-    color: #0076ff;
-    border-bottom-color: #0076ff;
+    color: #000;
+    border-bottom-color: #000;
+    background-color: white;
+    cursor: default;
   }
 `;
 
