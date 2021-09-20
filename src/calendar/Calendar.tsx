@@ -164,7 +164,7 @@ function CalendarDay(props: CalendarDayProps): JSX.Element {
             })}
           </p>
         </div>
-        <img src="./arrow.svg" aria-hidden="true" alt="" />
+        <img src="/arrow.svg" aria-hidden="true" alt="" />
       </button>
     </PageLink>
   );

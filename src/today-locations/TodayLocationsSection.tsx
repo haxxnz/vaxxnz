@@ -154,7 +154,7 @@ export function TodayLocationsSection() {
                         </section>
                         <img
                           className="Chevron"
-                          src="./arrow-right-1.svg"
+                          src="/arrow-right-1.svg"
                           alt=""
                         />
                       </OtherBox>
