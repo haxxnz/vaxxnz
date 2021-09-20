@@ -58,7 +58,7 @@ export function LocationRouter() {
       {"isHealthpoint" in location ? (
         <WalkModal
           clearSelectedLocation={() => {
-            const path = "/";
+            const path = "/locations";
             saveScrollAndGo(path);
             history.push(`${path}${getSearch()}`);
           }}
@@ -67,7 +67,7 @@ export function LocationRouter() {
       ) : (
         <CrowdsourcedModal
           clearSelectedLocation={() => {
-            const path = "/";
+            const path = "/locations";
             saveScrollAndGo(path);
             history.push(`${path}${getSearch()}`);
           }}
