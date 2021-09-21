@@ -1,6 +1,6 @@
 import { Button, KIND } from "baseui/button";
 import { FunctionComponent } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import { LocationNotice } from "../../common/LocationNotice";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
@@ -72,8 +72,10 @@ const HealthpointModal: FunctionComponent<Props> = ({
       </WalkHeading>
       <WalkGrid className={"modal-container WalkModal"}>
         <WalkInstructions>
-          <h2 style={{ marginBottom: "0.5rem" }}>How to get vaccinated here</h2>
-          <p>Visit the address below and ask for a free COVID vaccination.</p>
+          <h2 style={{ marginBottom: "0.5rem" }}>
+            {t("walkins.healthpointModal.title")}
+          </h2>
+          <p>{t("walkins.healthpointModal.subtitle")}</p>
 
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
@@ -93,15 +95,25 @@ const HealthpointModal: FunctionComponent<Props> = ({
               <aside>{t("core.getDirections")}</aside>
             </section>
           </a>
+
           {telephone && (
             <p>
-              You can also call <a href={`tel:${telephone}`}>{telephone}</a> to
-              check how long the queues are.
+              <Trans
+                i18nKey="walkins.healthpointModal.queueQuery"
+                t={t}
+                components={[
+                  <a href={`tel:${telephone}`} target="_blank" rel="noreferrer">
+                    {{ telephone }}
+                  </a>,
+                ]}
+              />
             </p>
           )}
 
           <LocationNotice instructions={location.instructionLis} />
-          <h2 className="address-header">Venue Details</h2>
+          <h2 className="address-header">
+            {t("walkins.healthpointModal.venueDetails")}
+          </h2>
 
           {telephone && (
             <section>

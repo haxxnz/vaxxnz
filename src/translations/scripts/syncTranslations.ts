@@ -14,17 +14,10 @@ const set = (string: string, obj: any, value: string) => {
   return obj;
 };
 
-const get = (value: object, path: string, defaultValue: string) => {
-  return String(path)
+const get = (object: any, path: string, defval = undefined) => {
+  return path
     .split(".")
-    .reduce((acc: any, v: any) => {
-      try {
-        acc = acc[v];
-      } catch (e) {
-        return defaultValue;
-      }
-      return acc;
-    }, value);
+    .reduce((xs, x) => (xs && xs[x] ? xs[x] : defval), object);
 };
 
 export interface IHash {
@@ -49,8 +42,8 @@ fs.readdirSync(join(__dirname, "../locales")).forEach((locale) => {
   }
 
   paths.forEach((p) => {
-    if (get(data, p, "") === undefined) {
-      set(p, data, get(english, p, ""));
+    if (get(data, p, undefined) === undefined) {
+      set(p, data, get(english, p, undefined));
       missingKeys[locale] = missingKeys[locale] ? missingKeys[locale] + 1 : 1;
     }
   });
