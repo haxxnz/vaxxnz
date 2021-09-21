@@ -16,6 +16,8 @@ import {
 } from "./contexts";
 import { HomePage } from "./HomePage";
 import { useSaveScroll } from "./scroll";
+import ReactMarkdown from "react-markdown";
+import { terms, privacy, cookie } from "./md/LegalContent";
 
 const Contexts: React.FC<{}> = (props) => {
   const [healthpointLocations, setHealthpointLocations] =
@@ -43,6 +45,21 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
+          <Route path="/terms-and-conditions">
+            <div className={"big-old-container"}>
+              <ReactMarkdown>{terms}</ReactMarkdown>
+            </div>
+          </Route>
+          <Route path="/privacy-policy">
+            <div className={"big-old-container"}>
+              <ReactMarkdown>{privacy}</ReactMarkdown>
+            </div>
+          </Route>
+          <Route path="/cookie-policy">
+            <div className={"big-old-container"}>
+              <ReactMarkdown>{cookie}</ReactMarkdown>
+            </div>
+          </Route>
           <Route path="/bookings/:date">
             <div className={"big-old-container"}>
               <BookingModal
