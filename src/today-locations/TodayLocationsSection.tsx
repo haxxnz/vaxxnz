@@ -3,7 +3,7 @@ import {
   WalkContainer as OtherContainer,
   WalkMessage,
 } from "../VaxComponents";
-import { formatDistanceKm, getDistanceKm } from "../utils/distance";
+import { getDistanceKm } from "../utils/distance";
 import { Instruction } from "./healthpoint/HealthpointData";
 import { useState } from "react";
 import { Spinner } from "baseui/spinner";
@@ -18,6 +18,7 @@ import { slug } from "../utils/slug";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { useCoords } from "../utils/useCoords";
 import { PageLink } from "../PageLink";
+import { formatDistanceKm } from "../utils/locale";
 
 export function TodayLocationsSection() {
   const radiusKm = useRadiusKm();

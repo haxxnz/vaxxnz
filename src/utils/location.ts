@@ -1,6 +1,6 @@
 import distance from "@turf/distance";
-import { Coords } from "../location-picker/LocationPicker";
 import { sortByAsc } from "./array";
+import { Coords } from "./distance";
 import { Radius } from "./locationTypes";
 
 type LatLng = [number, number];
