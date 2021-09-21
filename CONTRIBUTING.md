@@ -27,4 +27,4 @@ Here are some ways to help:
 
 ## For Developers:
 
-- Have a look at our technical guide on [how to get started](CONTRIBUTING_DEV.md)
+- Have a look at our technical guide on [how to get started](CONTRIBUTORS_DEV.md)
