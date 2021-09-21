@@ -15,11 +15,9 @@ async function main() {
       "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/healthpointLocations.json",
       (resp) => {
         let data = "";
-
         resp.on("data", (chunk) => {
           data += chunk;
         });
-
         resp.on("end", () => {
           healthpointLocations = JSON.parse(data) as HealthpointLocation[];
 
@@ -28,7 +26,10 @@ async function main() {
             const closestKm = Math.min(
               ...healthpointLocations.map((h) => getDistanceKm(h, location))
             );
-            console.log("closestKm", closestKm);
+            const closestMeters = Math.floor(closestKm * 1000);
+            if (closestMeters > 10) {
+              console.log("closestMeters", closestMeters);
+            }
           }
         });
       }
