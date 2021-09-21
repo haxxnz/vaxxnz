@@ -14,9 +14,10 @@ import {
   HealthpointLocationsContext,
   HealthpointLocationsResult,
 } from "./contexts";
-import { HomePage } from "./HomePage";
+import { Tabs, TabType } from "./HomePage";
 import { useSaveScroll } from "./scroll";
 import { Helmet } from "react-helmet";
+import { CalendarSection } from "./calendar/CalendarSection";
 
 const Contexts: React.FC<{}> = (props) => {
   const [healthpointLocations, setHealthpointLocations] =
@@ -132,17 +133,36 @@ function App() {
           </Route>
           <Route>
             <>
-              <Helmet>
-                <title>
-                  Find a COVID-19 vaccination in New Zealand | Vaccine finder
-                  New Zealand | See ways to get vaccinated near you | Vaxx.nz
-                </title>
-                <link rel="canonical" href={getCanonicalHome()} />
-              </Helmet>
               <Banner />
               <div className={"big-old-container"}>
                 <LocationPicker lastUpdateTime={lastUpdateTime} />
-                <HomePage bookingData={bookingData} />
+                {/* <HomePage bookingData={bookingData} /> */}
+                <Switch>
+                  <Route path="/locations">
+                    <Helmet>
+                      <title>
+                        COVID-19 vaccination bookings in New Zealand | Vaccine
+                        finder New Zealand | See ways to get vaccinated near you
+                        | Vaxx.nz
+                      </title>
+                      <link rel="canonical" href={getCanonicalHome()} />
+                    </Helmet>
+                    <Tabs activeTab={TabType.walkIn} />
+                    <TodayLocationsSection />
+                  </Route>
+                  <Route>
+                    <Helmet>
+                      <title>
+                        COVID-19 vaccination sites in New Zealand | Vaccine
+                        finder New Zealand | See ways to get vaccinated near you
+                        | Vaxx.nz
+                      </title>
+                      <link rel="canonical" href={getCanonicalHome()} />
+                    </Helmet>
+                    <Tabs activeTab={TabType.bookings} />
+                    <CalendarSection bookingData={bookingData} />
+                  </Route>
+                </Switch>
               </div>
             </>
           </Route>

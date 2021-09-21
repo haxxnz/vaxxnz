@@ -10,25 +10,25 @@ import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
 
 interface HomePageProps extends CalendarSectionProps {}
 
-enum TabType {
+export enum TabType {
   walkIn,
   bookings,
 }
 
-export const HomePage: FunctionComponent<HomePageProps> = ({ bookingData }) => {
-  return (
-    <Switch>
-      <Route path="/locations">
-        <Tabs activeTab={TabType.walkIn} />
-        <TodayLocationsSection />
-      </Route>
-      <Route>
-        <Tabs activeTab={TabType.bookings} />
-        <CalendarSection bookingData={bookingData} />
-      </Route>
-    </Switch>
-  );
-};
+// export const HomePage: FunctionComponent<HomePageProps> = ({ bookingData }) => {
+//   return (
+//     <Switch>
+//       <Route path="/locations">
+//         <Tabs activeTab={TabType.walkIn} />
+//         <TodayLocationsSection />
+//       </Route>
+//       <Route>
+//         <Tabs activeTab={TabType.bookings} />
+//         <CalendarSection bookingData={bookingData} />
+//       </Route>
+//     </Switch>
+//   );
+// };
 
 interface TabsProps {
   activeTab: TabType;
@@ -54,7 +54,7 @@ const StyledTabs = styled.div`
   }
 `;
 
-const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => (
+export const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => (
   <StyledTabs role="tablist">
     <PageLink to="/bookings">
       <Tab isActive={activeTab === TabType.bookings}>Make a Booking</Tab>
