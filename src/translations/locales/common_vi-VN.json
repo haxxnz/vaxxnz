@@ -89,7 +89,7 @@
       "availableSlots": "Chỗ trống",
       "noBookingsAvailable": "Không còn chỗ trống nào vào ngày này :(",
       "backToCalendar": "Quay về lịch",
-      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may have availability."
     },
     "numberOfAppointments": "{{sumAvailableTimes}} chỗ trống"
   },

@@ -89,7 +89,7 @@
       "availableSlots": "Доступные слоты",
       "noBookingsAvailable": "В этот день нет доступных бронирований :(",
       "backToCalendar": "Вернуться к календарю",
-      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may have availability."
     }
   },
   "footer": {
