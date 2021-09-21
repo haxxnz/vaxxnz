@@ -15,7 +15,7 @@ export const LocationNotice: FunctionComponent<LocationNoticeProps> = ({
       {instructions.includes(Instruction.walkIn) && (
         <div>
           <br />
-          <p>{t("walkins.noticeList.text")}</p>
+          <p>{t("walkins.healthpointModal.text")}</p>
           <br />
           <p>
             <Trans
@@ -38,7 +38,7 @@ export const LocationNotice: FunctionComponent<LocationNoticeProps> = ({
       {instructions.includes(Instruction.driveThrough) && (
         <div>
           <br />
-          <p>{t("walkins.noticeList.text")}</p>
+          <p>{t("walkins.healthpointModal.text")}</p>
           <br />
           <p>
             <Trans
