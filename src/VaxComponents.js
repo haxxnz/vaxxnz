@@ -267,20 +267,23 @@ export const VaccineCentre = styled.section`
     margin-bottom: 0.5rem;
   }
 
-  @media screen and (min-width: 1024px) {
-    .ButtonConstraint {
-      max-width: 400px;
+  .ButtonConstraint {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 1rem 0;
+    gap: 1.5rem;
+    a {
+      flex: 1;
     }
-  
   }
+
   @media screen and (max-width: 768px) {
     h3 {
       font-size: 1.5rem;
       margin-bottom: 0.25rem;
- 
     }
   }
-
   section.slot {
     display: flex;
     flex-direction: row;
@@ -298,10 +301,18 @@ export const VaccineCentre = styled.section`
     }
 
     @media screen and (max-width: 500px) {
-           p {
-             flex: 1;
-            }
-}
+      p {
+        flex: 1;
+      }
+     
+     
+      }
+    }
+    @media screen and (max-width: 600px) {
+        .ButtonConstraint {
+        flex-direction: column;
+        gap: 1rem;
+      }
     }
   }
 `;

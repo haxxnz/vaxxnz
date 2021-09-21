@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { Button } from "baseui/button";
+import { Button, KIND } from "baseui/button";
 import { isAfter, isToday, parse } from "date-fns";
 import { differenceInDays } from "date-fns/esm";
 import { useEffect, useRef, useState } from "react";
@@ -144,22 +144,18 @@ const BookingLocation = ({
             {t("core.getDirections")}
           </a>
         </p>
-        <a
-          href={`https://app.bookmyvaccine.covid19.health.nz/deep-linking?location=${locationSlotsPair.location.extId}&date=${activeDate.dateStr}`}
-          target="_blank"
-          referrerPolicy="origin"
-          rel="noreferrer"
-        >
-          <div className="ButtonConstraint">
+        <div className="ButtonConstraint">
+          <a
+            href={`https://app.bookmyvaccine.covid19.health.nz/deep-linking?location=${locationSlotsPair.location.extId}&date=${activeDate.dateStr}`}
+            target="_blank"
+            referrerPolicy="origin"
+            rel="noreferrer"
+          >
             <Button
               overrides={{
                 Root: {
                   style: {
                     width: "100%",
-                    marginTop: "1rem",
-                    marginRight: 0,
-                    marginBottom: "1rem",
-                    marginLeft: 0,
                   },
                 },
               }}
@@ -174,8 +170,35 @@ const BookingLocation = ({
             >
               {t("core.makeABooking")}
             </Button>
-          </div>
-        </a>
+          </a>
+          <a
+            href={`https://app.bookmyvaccine.covid19.health.nz/manage`}
+            target="_blank"
+            referrerPolicy="origin"
+            rel="noreferrer"
+          >
+            <Button
+              kind={KIND.secondary}
+              overrides={{
+                Root: {
+                  style: {
+                    width: "100%",
+                  },
+                },
+              }}
+              onClick={() =>
+                enqueueAnalyticsEvent("Edit Booking clicked", {
+                  locationName: location.name,
+                  radiusKm,
+                  spotsAvailable: slots?.length || 0,
+                  bookingDateInDays: differenceInDays(date, new Date()),
+                })
+              }
+            >
+              Change or cancel a Booking
+            </Button>
+          </a>
+        </div>
         <p
           style={{
             marginTop: "0.25rem",
