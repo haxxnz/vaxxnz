@@ -13,11 +13,6 @@ import { HeaderMain } from "../VaxComponents";
 import LocationModal from "./LocationModal";
 import { useCoords } from "../utils/useCoords";
 
-export interface Coords {
-  lng: number;
-  lat: number;
-}
-
 interface LocationPickerProps {
   lastUpdateTime: Date | null;
 }

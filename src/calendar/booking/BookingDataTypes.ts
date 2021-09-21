@@ -1,5 +1,5 @@
 import { CrowdsourcedLocation } from "../../crowdsourced/CrowdsourcedData";
-import { Coords } from "../../location-picker/LocationPicker";
+import { Coords } from "../../utils/distance";
 
 export interface OpenHour {
   days: string[];

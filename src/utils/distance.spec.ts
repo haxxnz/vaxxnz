@@ -1,4 +1,5 @@
-import { getDistanceKm, formatDistanceKm } from "./distance";
+import { getDistanceKm } from "./distance";
+import { formatDistanceKm } from "./locale";
 
 describe("getDistanceKm", () => {
   it("should return 0 km", () => {
