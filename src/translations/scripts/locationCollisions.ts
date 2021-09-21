@@ -23,12 +23,24 @@ async function main() {
 
           for (let i = 0; i < crowdsourcedLocations.length; i++) {
             const location: CrowdsourcedLocation = crowdsourcedLocations[i];
-            const closestKm = Math.min(
-              ...healthpointLocations.map((h) => getDistanceKm(h, location))
-            );
-            const closestMeters = Math.floor(closestKm * 1000);
-            if (closestMeters > 10) {
-              console.log("closestMeters", closestMeters);
+            let minKm = Infinity;
+            let minKmLocation: HealthpointLocation | undefined;
+            for (let j = 0; j < healthpointLocations.length; j++) {
+              const healthpointLocation = healthpointLocations[j];
+              const km = getDistanceKm(healthpointLocation, location);
+              if (km < minKm) {
+                minKm = km;
+                minKmLocation = healthpointLocation;
+              }
+            }
+            // const closestKm = Math.min(
+            //   ...healthpointLocations.map((h) => getDistanceKm(h, location))
+            // );
+            const closestMeters = Math.floor(minKm * 1000);
+            if (location.name !== minKmLocation?.name) {
+              console.log("distance between meters", closestMeters);
+              console.log("location1.name", location.name);
+              console.log("location2.name", minKmLocation?.name);
             }
           }
         });
