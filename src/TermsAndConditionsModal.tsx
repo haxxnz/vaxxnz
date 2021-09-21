@@ -46,23 +46,23 @@ const TermsAndConditionsModal = (props: Props) => {
         Welcome to vaxx.nz These terms and conditions outline the rules and
         regulations for the use of vaxx.nz. By accessing this website we assume
         you accept these terms and conditions. Do not continue to use if you do
-        not agree to take all of the terms and conditions stated on this page.
-        The following terminology applies to these Terms and Conditions, Privacy
+        not agree to all of the terms and conditions stated on this page. The
+        following terminology applies to these Terms and Conditions, Privacy
         Statement and Disclaimer Notice and all Agreements: “You” refers to you,
-        the person log on this website and compliant to the Company's terms and
-        conditions. “vaxx.nz”, refers to our Company and "bookmyvaxine.nz",
-        refers to the website provided by the Ministry of Health of New Zealand
-        where "you" will be taken, once clicked on the link, to book your
+        the person using this website and compliant to this site's terms and
+        conditions. “vaxx.nz”, refers to this site. "bookmyvaccine.nz", refers
+        to the website provided by the Ministry of Health of New Zealand where
+        "you" will be taken, once clicked on the booking links, to book your
         vaccine.
       </p>
       <br />
       <h3>Cookies</h3>
       <p>
-        We employ the use of cookies. By accessing vaxx.nz, you agreed to use
-        cookies in agreement with vaxx.nz's Privacy Policy. Most interactive
-        websites use cookies to let us enhance the user's experience. Cookies
-        are used by our website to enable the functionality of certain areas to
-        make it easier for people visiting our website.
+        We use cookies to enhance. By accessing vaxx.nz, you agreed to use
+        cookies in agreement with vaxx.nz's Privacy Policy. We use cookies to
+        enhance the user's experience. Cookies are used by our website to enable
+        the functionality and personalisation of key features which aid in the
+        usability of our website.
       </p>
       <br />
       <h3>Privacy Policy</h3>
@@ -70,7 +70,8 @@ const TermsAndConditionsModal = (props: Props) => {
         We do not collect any information, neither we collect any information
         when making a booking for the vaccine through the Ministry of Health NZ.
         We shall not be held responsible for any breach to the bookmyvaccine.nz
-        website. bookmyvaccine.nz privacy statement: <br />
+        website. bookmyvaccine.nz privacy statement can be found at this link:{" "}
+        <br />
         <br />
         <a
           href="https://bookmyvaccine.covid19.health.nz/privacy"
@@ -97,10 +98,10 @@ const TermsAndConditionsModal = (props: Props) => {
       <br />
       <h3>Content Liability</h3>
       <p>
-        We do not ensure that the information on this website is correct, we do
-        not warrant its completeness or accuracy; nor do we promise to ensure
-        that the website remains available or that the material on the website
-        is kept up to date.
+        With the rapidly changing environment, we cannot guarantee up-to-date
+        information on this website. We do not warrant its completeness or
+        accuracy; nor do we promise to ensure that the website remains available
+        or that the material on the website is kept up to date.
       </p>
     </Modal>
   );
