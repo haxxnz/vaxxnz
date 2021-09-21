@@ -75,7 +75,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
           <h2 style={{ marginBottom: "0.5rem" }}>
             {t("walkins.healthpointModal.title")}
           </h2>
-          <p>{t("walkins.healthpointModal.subTitle")}</p>
+          <p>{t("walkins.healthpointModal.subtitle")}</p>
 
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
