@@ -66,6 +66,27 @@ function getCanonicalLocations() {
   return canonical;
 }
 
+function getCanonicalBookings() {
+  const { protocol, host, pathname } = window.location;
+  const searchParams = new URL(window.location.toString()).searchParams;
+  const lat = searchParams.get("lat");
+  const lng = searchParams.get("lng");
+  const placeName = searchParams.get("placeName");
+  const radius = searchParams.get("radius");
+
+  const canonicalDict = {
+    ...(lat ? { lat } : {}),
+    ...(lng ? { lng } : {}),
+    ...(placeName ? { placeName } : {}),
+    ...(radius ? { radius } : {}),
+  };
+
+  const sp = new URLSearchParams(canonicalDict).toString();
+  const canonical = `${protocol}//${host}${pathname}${sp ? `?${sp}` : ""}`;
+  console.log("canonical", canonical);
+  return canonical;
+}
+
 function App() {
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
   const bookingData = useBookingData(setLastUpdateTime);
@@ -77,32 +98,44 @@ function App() {
         <Header />
         <Switch>
           <Route path="/bookings/:date">
-            <div className={"big-old-container"}>
-              <BookingModal
-                bookingData={"ok" in bookingData ? bookingData.ok : undefined}
-              />
-            </div>
+            <>
+              <Helmet>
+                <title>
+                  {/* TODO: dynamic */}
+                  Available to Book - 22 Sep 2021 | COVID-19 vaccination |
+                  Vaxx.nz
+                </title>
+                <link rel="canonical" href={getCanonicalBookings()} />
+              </Helmet>
+              <div className={"big-old-container"}>
+                <BookingModal
+                  bookingData={"ok" in bookingData ? bookingData.ok : undefined}
+                />
+              </div>
+            </>
           </Route>
           <Route path="/locations/:slug">
-            <Helmet>
-              <title>
-                {/* TODO: dynamic */}
-                The Auckland City Doctors | Walk-in/Drive-through vaccination
-                site | Vaxx.nz
-              </title>
-              <link rel="canonical" href={getCanonicalLocations()} />
-            </Helmet>
-            <div className={"big-old-container"}>
-              <LocationRouter />
-              <TodayLocationsSection />
-            </div>
+            <>
+              <Helmet>
+                <title>
+                  {/* TODO: dynamic */}
+                  The Auckland City Doctors | Walk-in/Drive-through COVID-19
+                  vaccination site | Vaxx.nz
+                </title>
+                <link rel="canonical" href={getCanonicalLocations()} />
+              </Helmet>
+              <div className={"big-old-container"}>
+                <LocationRouter />
+                <TodayLocationsSection />
+              </div>
+            </>
           </Route>
           <Route>
             <>
               <Helmet>
                 <title>
-                  Find a COVID vaccination in New Zealand | Vaccine finder New
-                  Zealand | See ways to get vaccinated near you | Vaxx.nz
+                  Find a COVID-19 vaccination in New Zealand | Vaccine finder
+                  New Zealand | See ways to get vaccinated near you | Vaxx.nz
                 </title>
                 <link rel="canonical" href={getCanonicalHome()} />
               </Helmet>
