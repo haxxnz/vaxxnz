@@ -308,7 +308,7 @@ export const VaccineCentre = styled.section`
      
       }
     }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 600px) {
         .ButtonConstraint {
         flex-direction: column;
         gap: 1rem;

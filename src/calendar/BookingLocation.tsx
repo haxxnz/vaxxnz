@@ -195,7 +195,7 @@ const BookingLocation = ({
                 })
               }
             >
-              Edit Booking
+              Change or cancel a booking
             </Button>
           </a>
         </div>
