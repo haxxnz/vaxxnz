@@ -67,7 +67,13 @@
       }
     },
     "subHeader": "You don't need an appointment to get vaccinated at these venues. Visit <0>covid19.govt.nz</0> for more information.",
-    "noWalkinDriveThruFound": "There aren't any walk-in or drive thru vaccination centres in your area. Try make a booking instead."
+    "noWalkinDriveThruFound": "There aren't any walk-in or drive thru vaccination centres in your area. Try make a booking instead.",
+    "healthpointModal": {
+      "title": "How to get vaccinated here",
+      "subtitle": "Visit the address below and ask for a free COVID vaccination.",
+      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
+      "venueDetails": "Venue Details"
+    }
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",

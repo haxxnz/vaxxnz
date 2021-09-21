@@ -53,6 +53,12 @@
       "title": "How to get Vaccinated",
       "text": "Vaccinations might have a queue, and some places might not have spare vaccines available today - ring ahead if you can!"
     },
+    "healthpointModal": {
+      "title": "How to get vaccinated here",
+      "subtitle": "Visit the address below and ask for a free COVID vaccination.",
+      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
+      "venueDetails": "Venue Details"
+    },
     "walkinAwailable": "<0 /> Walk-in vaccinations available",
     "driveThroughAvailable": "<0 /> Drive-through vaccinations available",
     "phone": "Phone",
@@ -67,12 +73,6 @@
         "title": "This location has been submitted by the public",
         "message": "The information here may not be 100% accurate. Please refer to the location's website."
       }
-    },
-    "healthpointModal": {
-      "title": "How to get vaccinated here",
-      "subTitle": "Visit the address below and ask for a free COVID vaccination.",
-      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
-      "venueDetails": "Venue Details"
     }
   },
   "calendar": {
