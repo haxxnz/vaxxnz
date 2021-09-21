@@ -35,6 +35,7 @@ const Contexts: React.FC<{}> = (props) => {
 };
 
 function getCanonical() {
+  const { protocol, host } = window.location;
   const searchParams = new URL(window.location.toString()).searchParams;
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
@@ -48,12 +49,9 @@ function getCanonical() {
     ...(radius ? { radius } : {}),
   };
 
-  // todo: nothing when no lat/lng
   // todo: put pathname too
   const sp = new URLSearchParams(canonicalDict).toString();
-  const canonical = `${window.location.protocol}//${window.location.host}${
-    sp ? `?${sp}` : ""
-  }`;
+  const canonical = `${protocol}//${host}${sp ? `?${sp}` : ""}`;
   console.log("canonical", canonical);
   return canonical;
 }
@@ -66,7 +64,7 @@ function App() {
   return (
     <Contexts>
       <Helmet>
-        {/* <meta charSet="utf-8" /> */}
+        {/* TODO */}
         {/* <title>My Title</title> */}
         <link rel="canonical" href={getCanonical()} />
       </Helmet>
