@@ -16,6 +16,7 @@ import {
 } from "./contexts";
 import { HomePage } from "./HomePage";
 import { useSaveScroll } from "./scroll";
+import { Helmet } from "react-helmet";
 
 const Contexts: React.FC<{}> = (props) => {
   const [healthpointLocations, setHealthpointLocations] =
@@ -33,6 +34,30 @@ const Contexts: React.FC<{}> = (props) => {
   );
 };
 
+function getCanonical() {
+  const searchParams = new URL(window.location.toString()).searchParams;
+  const lat = searchParams.get("lat");
+  const lng = searchParams.get("lng");
+  const placeName = searchParams.get("placeName");
+  const radius = searchParams.get("radius");
+
+  const canonicalDict = {
+    ...(lat ? { lat } : {}),
+    ...(lng ? { lng } : {}),
+    ...(placeName ? { placeName } : {}),
+    ...(radius ? { radius } : {}),
+  };
+
+  // todo: nothing when no lat/lng
+  // todo: put pathname too
+  const sp = new URLSearchParams(canonicalDict).toString();
+  const canonical = `${window.location.protocol}//${window.location.host}${
+    sp ? `?${sp}` : ""
+  }`;
+  console.log("canonical", canonical);
+  return canonical;
+}
+
 function App() {
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
   const bookingData = useBookingData(setLastUpdateTime);
@@ -40,6 +65,11 @@ function App() {
 
   return (
     <Contexts>
+      <Helmet>
+        {/* <meta charSet="utf-8" /> */}
+        {/* <title>My Title</title> */}
+        <link rel="canonical" href={getCanonical()} />
+      </Helmet>
       <div className="App">
         <Header />
         <Switch>
