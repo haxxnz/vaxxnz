@@ -40,3 +40,29 @@ export const getDateFnsLocale = (): Locale => {
   const lang = i18next.language;
   return supportedDateLocale[lang] ?? enNZ;
 };
+
+/**
+ * Formats a given distance in kilometers to meters, if the distance is
+ * less than 1000 meters.
+ *
+ * @export
+ * @param {number} km
+ * @param {string} language
+ * @return {string}
+ */
+export function formatDistanceKm(km: number, language: string): string {
+  if (km < 1) {
+    const meters = km * 1000;
+    return new Intl.NumberFormat(language, {
+      style: "unit",
+      unit: "meter",
+      notation: "compact",
+    }).format(meters);
+  } else {
+    return new Intl.NumberFormat(language, {
+      style: "unit",
+      unit: "kilometer",
+      notation: "compact",
+    }).format(km);
+  }
+}

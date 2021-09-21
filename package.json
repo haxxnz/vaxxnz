@@ -48,6 +48,7 @@
   "scripts": {
     "start": "react-scripts start",
     "sync:i18n": "ts-node --project src/translations/scripts/tsconfig.json src/translations/scripts/syncTranslations.ts",
+    "locationcollisions": "ts-node --project src/translations/scripts/tsconfig.json src/translations/scripts/locationCollisions.ts",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
