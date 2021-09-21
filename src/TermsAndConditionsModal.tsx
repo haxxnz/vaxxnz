@@ -84,13 +84,15 @@ const TermsAndConditionsModal = (props: Props) => {
       </p>
       <h3>Disclaimer</h3>
       <p>
-        We work hard to be as updated as possible, but we do not guarantee the
-        correctness of the data we provide. We are a group of individuals
-        working to bring this information and facilitate people to book their
-        vaccine against COVID-19 in Auckland via the 'bookmyvaccine.nz' website.
-        As long as the website and the information and services on the website
-        are provided free of charge, we will not be liable for any loss or
-        damage of any nature.
+        We are committed to serving the most up-to-date vaccine booking
+        availabilities but cannot guarantee the correctness of all booking
+        slots. We are a team of individuals working to facilitate the vaccine
+        booking process across New Zealand by enabling users to browse vaxx.nz
+        intuitively, locate the desired vaccine availability, and directing the
+        user to the official bookmyvaccine.nz website where they complete their
+        booking. As long as the website, its information and services are
+        provided free of charge, we will not be liable for any loss or damages
+        of any nature.
       </p>
       <br />
       <h3>Content Liability</h3>
