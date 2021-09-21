@@ -20,7 +20,6 @@ async function main() {
         });
         resp.on("end", () => {
           healthpointLocations = JSON.parse(data) as HealthpointLocation[];
-
           for (let i = 0; i < crowdsourcedLocations.length; i++) {
             const location: CrowdsourcedLocation = crowdsourcedLocations[i];
             let minKm = Infinity;
@@ -33,14 +32,11 @@ async function main() {
                 minKmLocation = healthpointLocation;
               }
             }
-            // const closestKm = Math.min(
-            //   ...healthpointLocations.map((h) => getDistanceKm(h, location))
-            // );
             const closestMeters = Math.floor(minKm * 1000);
             if (location.name !== minKmLocation?.name) {
               console.log("distance between meters", closestMeters);
-              console.log("location1.name", location.name);
-              console.log("location2.name", minKmLocation?.name);
+              console.log("locationCS.name", location.name);
+              console.log("locationHP.name", minKmLocation?.name);
             }
           }
         });
