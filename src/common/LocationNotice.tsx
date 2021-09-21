@@ -19,7 +19,7 @@ export const LocationNotice: FunctionComponent<LocationNoticeProps> = ({
           <br />
           <p>
             <Trans
-              i18nKey="walkins.cancellationNotice.message"
+              i18nKey="walkins.healthpointModal.message"
               t={t}
               components={[
                 <a
@@ -42,7 +42,7 @@ export const LocationNotice: FunctionComponent<LocationNoticeProps> = ({
           <br />
           <p>
             <Trans
-              i18nKey="walkins.cancellationNotice.message"
+              i18nKey="walkins.healthpointModal.message"
               t={t}
               components={[
                 <a
