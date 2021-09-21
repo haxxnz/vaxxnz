@@ -12,8 +12,8 @@
     "cancel": "Abbrechen",
     "website": "Webseite",
     "address": "Adresse",
-    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
-    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius."
+    "noResultsNotInNZ": "Für diese Suchanfrage wurden keine Impfstellen gefunden. Bist du in Neuseeland?",
+    "noResultsInRadius": "Für diese Suchanfrage wurden keine Impfstellen gefunden. Vergrößern Sie den Suchradius."
   },
   "navigation": {
     "about": "Über uns",
@@ -21,7 +21,7 @@
     "getInvolved": "Mitmachen",
     "setLocation": "Standort aktualisieren",
     "setLocationConfirmation": "Standort aktualisiert",
-    "vaccinationsNear": "Verfügbare Buchungszeiten <0>bei {{location}}</0>",
+    "vaccinationsNear": "Verfügbare Buchungszeiten <0>in {{location}}</0>",
     "distanceDropdown": {
       "2km": "Innerhalb von 2km",
       "5km": "Innerhalb von 5km",
@@ -29,7 +29,7 @@
       "25km": "Innerhalb von 25km",
       "50km": "Innerhalb von 50km",
       "100km": "Innerhalb von 100km",
-      "10closest": "10 closest"
+      "10closest": "Automatisch"
     },
     "locationModal": {
       "locaitonTitle": "Standort",
@@ -66,13 +66,13 @@
       }
     },
     "closed": "Geschlossen",
-    "subHeader": "You don't need an appointment to get vaccinated at these venues. Visit <0>covid19.govt.nz</0> for more information.",
-    "noWalkinDriveThruFound": "There aren't any walk-in or drive thru vaccination centres in your area. Try make a booking instead.",
+    "subHeader": "An diesen Orten benötigen Sie keinen Termin, um sich impfen zu lassen. Besuchen Sie <0>covid19.govt.nz</0> um mehr zu erfahren.",
+    "noWalkinDriveThruFound": "Es gibt keine begehbaren oder Drive-Through-Impfzentren in Ihrer Nähe. Versuchen Sie stattdessen, eine Buchung vorzunehmen.",
     "healthpointModal": {
-      "title": "How to get vaccinated here",
-      "subtitle": "Visit the address below and ask for a free COVID vaccination.",
-      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
-      "venueDetails": "Venue Details"
+      "title": "So lassen Sie sich hier impfen",
+      "subtitle": "Besuchen Sie die unten stehende Adresse und fordern Sie eine kostenlose COVID-Impfung an.",
+      "queueQuery": "Sie können auch <0>{{telephone}}</0> anrufen, um zu überprüfen, wie lange die Warteschlangen sind.",
+      "venueDetails": "Anbieterdetails"
     }
   },
   "calendar": {
@@ -89,7 +89,7 @@
       "availableSlots": "Verfügbare Termine",
       "noBookingsAvailable": "An diesem Tag sind keine Buchungen möglich :(",
       "backToCalendar": "Zurück zum Kalender",
-      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
+      "notBMV": "Dieser Anbieter verwendet nicht <0>bookmyvaccine.nz</0> und hat möglicherweise Impfstoff zur Verfügung."
     }
   },
   "footer": {
@@ -100,6 +100,6 @@
       "sourceCode": "Quellcode",
       "roadmap": "Roadmap"
     },
-    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
+    "addressFinderLinkCopy": "Wir danken <0>AddressFinder</0> für die kostenlose Adresssuche"
   }
 }
