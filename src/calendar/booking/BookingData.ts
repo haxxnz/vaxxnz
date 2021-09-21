@@ -5,7 +5,7 @@ import {
   getCrowdsourcedLocations,
 } from "../../crowdsourced/CrowdsourcedData";
 import { filterSlots, getTodayDateStr } from "../../filterOldDates";
-import { Coords } from "../../location-picker/LocationPicker";
+import { Coords } from "../../utils/distance";
 import { filterLocations } from "../../utils/location";
 import { Radius } from "../../utils/locationTypes";
 import { memoize0, memoizeOnce } from "../../utils/memoize";

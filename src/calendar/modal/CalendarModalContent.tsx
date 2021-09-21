@@ -79,7 +79,6 @@ export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> 
                 />
               </li>
               <li>{t("calendar.modal.howToBook.stepThree")}</li>
-              <li>{t("calendar.modal.howToBook.stepFour")}</li>
             </ol>
 
             <PageLink to="/">
