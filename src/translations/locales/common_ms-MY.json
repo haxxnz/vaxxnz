@@ -89,7 +89,7 @@
       "availableSlots": "Slots tersedia",
       "noBookingsAvailable": "Tiada tempahan tersedia pada hari ini :(",
       "backToCalendar": "Kembali ke Kalendar",
-      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may have availability."
     }
   },
   "footer": {

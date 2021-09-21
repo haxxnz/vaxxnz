@@ -89,7 +89,7 @@
       "availableSlots": "Koe ngaahi feitu'u eni oku ata",
       "noBookingsAvailable": "Aho oku ikai lava ha puka aponimeni:",
       "backToCalendar": "Vakai kihe tohi mahina",
-      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may have availability."
     }
   },
   "footer": {
