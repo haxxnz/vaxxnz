@@ -64,12 +64,12 @@
       }
     },
     "healthpointModal": {
-      "title": "How to get vaccinated here!!!",
-      "subTitle": "Visit the address below and ask for a free COVID vaccination.!!!",
-      "message": "Remember to cancel your original booking if you have one at <0>bookmyvaccine.nz</0>!!!",
-      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.!!!",
-      "text": "Vaccinations might have a queue, and some places might not have spare vaccines available today - ring ahead if you can!???",
-      "venueDetails": "Venue Details!!!"
+      "title": "How to get vaccinated here",
+      "subTitle": "Visit the address below and ask for a free COVID vaccination.",
+      "message": "Remember to cancel your original booking if you have one at <0>bookmyvaccine.nz</0>",
+      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
+      "text": "Vaccinations might have a queue, and some places might not have spare vaccines available today - ring ahead if you can!",
+      "venueDetails": "Venue Details"
     }
   },
   "calendar": {
