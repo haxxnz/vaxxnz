@@ -49,7 +49,6 @@ function getCanonicalHome() {
     ...(radius ? { radius } : {}),
   };
 
-  // todo: put pathname too
   const sp = new URLSearchParams(canonicalDict).toString();
   const canonical = `${protocol}//${host}${sp ? `?${sp}` : ""}`;
   console.log("canonical", canonical);
@@ -58,20 +57,9 @@ function getCanonicalHome() {
 
 function getCanonicalLocations() {
   const { protocol, host, pathname } = window.location;
-  // const searchParams = new URL(window.location.toString()).searchParams;
-  // const lat = searchParams.get("lat");
-  // const lng = searchParams.get("lng");
-  // const placeName = searchParams.get("placeName");
-  // const radius = searchParams.get("radius");
 
-  const canonicalDict = {
-    // ...(lat ? { lat } : {}),
-    // ...(lng ? { lng } : {}),
-    // ...(placeName ? { placeName } : {}),
-    // ...(radius ? { radius } : {}),
-  };
+  const canonicalDict = {};
 
-  // todo: put pathname too
   const sp = new URLSearchParams(canonicalDict).toString();
   const canonical = `${protocol}//${host}${pathname}${sp ? `?${sp}` : ""}`;
   console.log("canonical", canonical);
