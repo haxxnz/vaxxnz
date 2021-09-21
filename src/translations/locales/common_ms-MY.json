@@ -65,7 +65,9 @@
         "message": "Maklumat di sini tidak menjamin 100% tepat. Sila rujuk laman web lokasi."
       }
     },
-    "closed": "Tutup"
+    "closed": "Tutup",
+    "subHeader": "You don't need an appointment to get vaccinated at these venues. Visit <0>covid19.govt.nz</0> for more information.",
+    "noWalkinDriveThruFound": "There aren't any walk-in or drive thru vaccination centres in your area. Try make a booking instead."
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
