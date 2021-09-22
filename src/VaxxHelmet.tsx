@@ -170,6 +170,7 @@ export function VaxxHelmet({
         />
       );
     case RouteType.Booking:
+      // TODO: format date
       title = `Available to Book - ${date} | Find a COVID-19 vaccine | vaxx.nz`;
       description =
         "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
