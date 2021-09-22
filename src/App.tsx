@@ -50,13 +50,23 @@ function getSearch(searchParams: Record<string, string>) {
 function getCanonicalHome() {
   const { protocol, host } = window.location;
   const { lat, lng, placeName, radius } = getSearchParams();
-  const searchParams = { lat, lng, placeName, radius };
+  const searchParams = {
+    ...(lat ? { lat } : {}),
+    ...(lng ? { lng } : {}),
+    ...(placeName ? { placeName } : {}),
+    ...(radius ? { radius } : {}),
+  };
   return `${protocol}//${host}${getSearch(searchParams)}`;
 }
 function getCanonicalHomeLocations() {
   const { protocol, host, pathname } = window.location;
   const { lat, lng, placeName, radius } = getSearchParams();
-  const searchParams = { lat, lng, placeName, radius };
+  const searchParams = {
+    ...(lat ? { lat } : {}),
+    ...(lng ? { lng } : {}),
+    ...(placeName ? { placeName } : {}),
+    ...(radius ? { radius } : {}),
+  };
   return `${protocol}//${host}${pathname}${getSearch(searchParams)}`;
 }
 
@@ -69,7 +79,12 @@ function getCanonicalLocation() {
 function getCanonicalCalendarDay() {
   const { protocol, host, pathname } = window.location;
   const { lat, lng, placeName, radius } = getSearchParams();
-  const searchParams = { lat, lng, placeName, radius };
+  const searchParams = {
+    ...(lat ? { lat } : {}),
+    ...(lng ? { lng } : {}),
+    ...(placeName ? { placeName } : {}),
+    ...(radius ? { radius } : {}),
+  };
   return `${protocol}//${host}${pathname}${getSearch(searchParams)}`;
 }
 
