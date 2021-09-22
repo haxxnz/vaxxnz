@@ -1,5 +1,5 @@
-import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 /**
  *  @param { string } message Error Message to split
