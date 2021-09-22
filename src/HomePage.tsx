@@ -1,35 +1,12 @@
-import React, { FunctionComponent } from "react";
-import { Switch, Route } from "react-router";
+import { FunctionComponent } from "react";
 import styled from "styled-components";
-import {
-  CalendarSection,
-  CalendarSectionProps,
-} from "./calendar/CalendarSection";
 import { PageLink } from "./PageLink";
-import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
 import { useTranslation } from "react-i18next";
-
-interface HomePageProps extends CalendarSectionProps {}
 
 export enum TabType {
   walkIn,
   bookings,
 }
-
-// export const HomePage: FunctionComponent<HomePageProps> = ({ bookingData }) => {
-//   return (
-//     <Switch>
-//       <Route path="/locations">
-//         <Tabs activeTab={TabType.walkIn} />
-//         <TodayLocationsSection />
-//       </Route>
-//       <Route>
-//         <Tabs activeTab={TabType.bookings} />
-//         <CalendarSection bookingData={bookingData} />
-//       </Route>
-//     </Switch>
-//   );
-// };
 
 interface TabsProps {
   activeTab: TabType;
