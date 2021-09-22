@@ -18,6 +18,7 @@ import { Tabs, TabType } from "./HomePage";
 import { useSaveScroll } from "./scroll";
 import { CalendarSection } from "./calendar/CalendarSection";
 import { RouteType, VaxxHelmet } from "./VaxxHelmet";
+import { HelmetProvider } from "react-helmet-async";
 
 const Contexts: React.FC<{}> = (props) => {
   const [healthpointLocations, setHealthpointLocations] =
@@ -41,56 +42,58 @@ function App() {
   useSaveScroll();
 
   return (
-    <Contexts>
-      <div className="App">
-        <Header />
-        <Switch>
-          <Route path="/bookings/:date">
-            <div className={"big-old-container"}>
-              <LocationPicker lastUpdateTime={lastUpdateTime} />
-              <VaxxHelmet routeType={RouteType.Booking} />
-              <BookingModal
-                bookingData={"ok" in bookingData ? bookingData.ok : undefined}
-              />
-            </div>
-          </Route>
-          <Route path="/locations/:slug">
-            <div className={"big-old-container"}>
-              <LocationRouter />
-              <TodayLocationsSection />
-            </div>
-          </Route>
-          <Route>
-            <Banner />
-            <div className={"big-old-container"}>
-              <LocationPicker lastUpdateTime={lastUpdateTime} />
-              <Switch>
-                <Route path="/locations">
-                  <VaxxHelmet routeType={RouteType.Locations} />
-                  <Tabs activeTab={TabType.walkIn} />
-                  <TodayLocationsSection />
-                </Route>
-                <Route>
-                  <VaxxHelmet routeType={RouteType.Home} />
-                  <Tabs activeTab={TabType.bookings} />
-                  <CalendarSection bookingData={bookingData} />
-                </Route>
-              </Switch>
-            </div>
-          </Route>
-        </Switch>
-        <Footer />
-      </div>
-      <div className="background">
-        <div
-          className="bg-impt"
-          style={{
-            backgroundImage: `url(${process.env.PUBLIC_URL + "/bg.svg"})`,
-          }}
-        ></div>
-        <CookiesBar />
-      </div>
-    </Contexts>
+    <HelmetProvider>
+      <Contexts>
+        <div className="App">
+          <Header />
+          <Switch>
+            <Route path="/bookings/:date">
+              <div className={"big-old-container"}>
+                <LocationPicker lastUpdateTime={lastUpdateTime} />
+                <VaxxHelmet routeType={RouteType.Booking} />
+                <BookingModal
+                  bookingData={"ok" in bookingData ? bookingData.ok : undefined}
+                />
+              </div>
+            </Route>
+            <Route path="/locations/:slug">
+              <div className={"big-old-container"}>
+                <LocationRouter />
+                <TodayLocationsSection />
+              </div>
+            </Route>
+            <Route>
+              <Banner />
+              <div className={"big-old-container"}>
+                <LocationPicker lastUpdateTime={lastUpdateTime} />
+                <Switch>
+                  <Route path="/locations">
+                    <VaxxHelmet routeType={RouteType.Locations} />
+                    <Tabs activeTab={TabType.walkIn} />
+                    <TodayLocationsSection />
+                  </Route>
+                  <Route>
+                    <VaxxHelmet routeType={RouteType.Home} />
+                    <Tabs activeTab={TabType.bookings} />
+                    <CalendarSection bookingData={bookingData} />
+                  </Route>
+                </Switch>
+              </div>
+            </Route>
+          </Switch>
+          <Footer />
+        </div>
+        <div className="background">
+          <div
+            className="bg-impt"
+            style={{
+              backgroundImage: `url(${process.env.PUBLIC_URL + "/bg.svg"})`,
+            }}
+          ></div>
+          <CookiesBar />
+        </div>
+      </Contexts>
+    </HelmetProvider>
   );
 }
 
