@@ -43,6 +43,21 @@ const LanguageSelect = () => {
             minWidth: "144px",
           },
         },
+        InputContainer: () => (
+          <div
+            style={{ alignSelf: "center", marginLeft: "auto", marginRight: 2 }}
+          >
+            <FontAwesomeIcon
+              icon={faGlobeAmericas}
+              style={{
+                height: 24,
+                alignContent: "center",
+                marginLeft: 8,
+                marginBottom: -5,
+              }}
+            />
+          </div>
+        ),
       }}
       searchable={false}
       clearable={false}
