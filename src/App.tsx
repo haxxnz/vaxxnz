@@ -80,7 +80,7 @@ function getCanonicalCalendarDay() {
   return `${protocol}//${host}${pathname}${getSearch(searchParams)}`;
 }
 
-enum RouteType {
+export enum RouteType {
   Home = "/",
   Locations = "/locations",
   Bookings = "/bookings",
@@ -116,7 +116,13 @@ const VaxxCanonical: React.FC<{ url: string; title: string }> = ({
   );
 };
 
-function VaxxHelmet({ routeType }: { routeType: RouteType }) {
+export function VaxxHelmet({
+  routeType,
+  locationName,
+}: {
+  routeType: RouteType;
+  locationName?: string;
+}) {
   const { date, slug } = useParams<{ date: string; slug: string }>();
   let title;
   switch (routeType) {
@@ -133,7 +139,6 @@ function VaxxHelmet({ routeType }: { routeType: RouteType }) {
       title = `Available to Book - ${date} | Find a COVID-19 vaccine | vaxx.nz`;
       return <VaxxCanonical url={getCanonicalCalendarDay()} title={title} />;
     case RouteType.Location:
-      const locationName = slug.split("-").slice(0, -1).join(" ");
       title = `${locationName} | Walk-in/Drive-through COVID-19 vaccination site | Find a COVID-19 vaccine | vaxx.nz`;
       return <VaxxCanonical url={getCanonicalLocation()} title={title} />;
   }
@@ -158,7 +163,6 @@ function App() {
             </div>
           </Route>
           <Route path="/locations/:slug">
-            <VaxxHelmet routeType={RouteType.Location} />
             <div className={"big-old-container"}>
               <LocationRouter />
               <TodayLocationsSection />

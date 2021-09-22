@@ -8,6 +8,7 @@ import { PageLink } from "../PageLink";
 import { ModalGrid } from "../VaxComponents";
 import { CrowdsourcedLocation } from "./CrowdsourcedData";
 import { parsePhoneNumber } from "../utils/parsePhone";
+import { RouteType, VaxxHelmet } from "../App";
 
 type Props = {
   cancelPath: string;
@@ -63,6 +64,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
     : { ...desktopDialogStyle, ...sharedDialogStyle };
   return (
     <div style={dialogStyle as any}>
+      <VaxxHelmet routeType={RouteType.Location} locationName={location.name} />
       <ModalGrid className={"modal-container WalkModal"}>
         <div>
           <h1

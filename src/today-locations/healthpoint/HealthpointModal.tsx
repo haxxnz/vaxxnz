@@ -12,6 +12,7 @@ import { parsePhoneNumber } from "../../utils/parsePhone";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PageLink } from "../../PageLink";
+import { RouteType, VaxxHelmet } from "../../App";
 
 type Props = {
   cancelPath: string;
@@ -55,6 +56,8 @@ const HealthpointModal: FunctionComponent<Props> = ({
     : { ...desktopDialogStyle, ...sharedDialogStyle };
   return (
     <div style={dialogStyle as any}>
+      <VaxxHelmet routeType={RouteType.Location} locationName={location.name} />
+
       <WalkHeading>
         <h1>{location.name}</h1>
         <PageLink to={cancelPath}>
