@@ -3,7 +3,8 @@ import { ShareButtons } from "./ShareButtons";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { useState } from "react";
 import TermsAndConditionsModal from "./TermsAndConditionsModal";
-import { Button } from "baseui/button";
+import PrivacyPolicyModal from "./PrivacyPolicyModal";
+import CookiesPolicyModal from "./CookiesPolicyModal";
 
 export function Footer() {
   const { t } = useTranslation("common");
@@ -15,6 +16,15 @@ export function Footer() {
         termsAndConditionsIsOpen={isOpen}
         setTermsAndConditionsIsOpen={setIsOpen}
       />
+      <PrivacyPolicyModal
+        privacyPolicyIsOpen={isOpen}
+        setPrivacyPolicyIsOpen={setIsOpen}
+      />
+      <CookiesPolicyModal
+        cookiesPolicyIsOpen={isOpen}
+        setCookiesPolicyIsOpen={setIsOpen}
+      />
+
       <footer className="footer-header">
         <p style={{ marginBottom: "0.5rem" }}>{t("footer.message")}</p>
         <div className={"social-container"}>
@@ -73,8 +83,7 @@ export function Footer() {
           >
             {t("footer.links.sourceCode")}
           </a>{" "}
-        </p>
-        <p>
+          /{" "}
           <a
             href="https://twitter.com/vaxxnz"
             target="_blank"
@@ -83,15 +92,37 @@ export function Footer() {
           >
             Twitter
           </a>{" "}
-          <br />
-          <Button
+        </p>
+        <p>
+          <a
+            href="javascript:void(0)"
             onClick={() => {
               enqueueAnalyticsEvent("Terms and Conditions clicked");
               setIsOpen(true);
             }}
           >
-            {t("footer.links.termsAndConditions")}
-          </Button>{" "}
+            Terms and Conditions
+          </a>{" "}
+          /{" "}
+          <a
+            href="javascript:void(0)"
+            onClick={() => {
+              enqueueAnalyticsEvent("Privacy policy clicked");
+              setIsOpen(true);
+            }}
+          >
+            Privacy Policy
+          </a>{" "}
+          /{" "}
+          <a
+            href="javascript:void(0)"
+            onClick={() => {
+              enqueueAnalyticsEvent("Cookies clicked");
+              setIsOpen(true);
+            }}
+          >
+            Cookies Policy
+          </a>
         </p>
       </footer>
     </>
