@@ -41,7 +41,6 @@ const LanguageSelect = () => {
           style: {
             Color: "rgba(0,0,0,0)",
             minWidth: "144px",
-            // fontSize: "1.1rem",
           },
         },
       }}
