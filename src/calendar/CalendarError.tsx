@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 /**
@@ -107,6 +108,8 @@ const Map = styled.img`
   }
 `;
 
+const { t } = useTranslation("common");
+
 export function CalendarError(props: { errorMessage: string }) {
   return (
     <MainContainer>
@@ -116,7 +119,9 @@ export function CalendarError(props: { errorMessage: string }) {
             <Title>{line}</Title>
           ))}
           <Section>
-            <Subheader>{t("core.mistake")}</Subheader>
+            <Subheader>
+              {t("core.mistake")}
+              </Subheader>
             <Button
               href="https://github.com/CovidEngine/vaxxnz/issues"
               target="_blank"

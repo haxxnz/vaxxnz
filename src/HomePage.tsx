@@ -7,6 +7,7 @@ import {
 } from "./calendar/CalendarSection";
 import { PageLink } from "./PageLink";
 import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
+import { useTranslation } from "react-i18next";
 
 interface HomePageProps extends CalendarSectionProps {}
 
@@ -54,13 +55,16 @@ const StyledTabs = styled.div`
   }
 `;
 
+
+const { t } = useTranslation("common");
+
 const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => (
   <StyledTabs role="tablist">
     <PageLink to="/bookings">
-      <Tab isActive={activeTab === TabType.bookings}>Make a Booking</Tab>
+      <Tab isActive={activeTab === TabType.bookings}>{t("core.makeABooking")}</Tab>
     </PageLink>
     <PageLink to="/locations">
-      <Tab isActive={activeTab === TabType.walkIn}>Walk-in/Drive Thru</Tab>
+      <Tab isActive={activeTab === TabType.walkIn}>{t("core.walkInDriveThru")}</Tab>
     </PageLink>
   </StyledTabs>
 );
