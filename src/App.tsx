@@ -133,8 +133,8 @@ function VaxxHelmet({ routeType }: { routeType: RouteType }) {
       title = `Available to Book - ${date} | Find a COVID-19 vaccine | vaxx.nz`;
       return <VaxxCanonical url={getCanonicalCalendarDay()} title={title} />;
     case RouteType.Location:
-      const hash = slug.split("-").slice(0, -1).join(" ");
-      title = `${hash} | Walk-in/Drive-through COVID-19 vaccination site | vaxx.nz`;
+      const locationName = slug.split("-").slice(0, -1).join(" ");
+      title = `${locationName} | Walk-in/Drive-through COVID-19 vaccination site | vaxx.nz`;
       return <VaxxCanonical url={getCanonicalLocation()} title={title} />;
   }
 }
