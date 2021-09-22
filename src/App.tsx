@@ -35,40 +35,24 @@ const Contexts: React.FC<{}> = (props) => {
   );
 };
 
+function getSearchParams() {
+  return Object.fromEntries([
+    ...new URL(window.location.toString()).searchParams.entries(),
+  ]);
+}
+
 function getCanonicalHome() {
   const { protocol, host } = window.location;
-  const searchParams = new URL(window.location.toString()).searchParams;
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
-  const placeName = searchParams.get("placeName");
-  const radius = searchParams.get("radius");
-
-  const canonicalDict = {
-    ...(lat ? { lat } : {}),
-    ...(lng ? { lng } : {}),
-    ...(placeName ? { placeName } : {}),
-    ...(radius ? { radius } : {}),
-  };
-
+  const { lat, lng, placeName, radius } = getSearchParams();
+  const canonicalDict = { lat, lng, placeName, radius };
   const sp = new URLSearchParams(canonicalDict).toString();
   const canonical = `${protocol}//${host}${sp ? `?${sp}` : ""}`;
   return canonical;
 }
 function getCanonicalHomeLocations() {
   const { protocol, host, pathname } = window.location;
-  const searchParams = new URL(window.location.toString()).searchParams;
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
-  const placeName = searchParams.get("placeName");
-  const radius = searchParams.get("radius");
-
-  const canonicalDict = {
-    ...(lat ? { lat } : {}),
-    ...(lng ? { lng } : {}),
-    ...(placeName ? { placeName } : {}),
-    ...(radius ? { radius } : {}),
-  };
-
+  const { lat, lng, placeName, radius } = getSearchParams();
+  const canonicalDict = { lat, lng, placeName, radius };
   const sp = new URLSearchParams(canonicalDict).toString();
   const canonical = `${protocol}//${host}${pathname}${sp ? `?${sp}` : ""}`;
   return canonical;
@@ -80,12 +64,6 @@ function getCanonicalLocations() {
   const sp = new URLSearchParams(canonicalDict).toString();
   const canonical = `${protocol}//${host}${pathname}${sp ? `?${sp}` : ""}`;
   return canonical;
-}
-
-function getSearchParams() {
-  return Object.fromEntries([
-    ...new URL(window.location.toString()).searchParams.entries(),
-  ]);
 }
 
 function getCanonicalBookings() {
