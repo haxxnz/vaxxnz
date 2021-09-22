@@ -40,7 +40,7 @@
     "unknownLocation": "未知位置"
   },
   "walkins": {
-    "sectionHeader": "<0>今日开放的</0>免预约及驾驶通过(drive-thru)接种点",
+    "sectionHeader": "免预约及驾驶通过(drive-thru)接种点",
     "openString": "开放时间 {{openTimeString}}",
     "cancellationNotice": {
       "info": "请勿重复预约",

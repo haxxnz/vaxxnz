@@ -116,7 +116,7 @@ export function CalendarError(props: { errorMessage: string }) {
             <Title>{line}</Title>
           ))}
           <Section>
-            <Subheader>Did we make a mistake?</Subheader>
+            <Subheader>{t("core.mistake")}</Subheader>
             <Button
               href="https://github.com/CovidEngine/vaxxnz/issues"
               target="_blank"
