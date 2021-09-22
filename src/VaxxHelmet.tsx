@@ -1,5 +1,6 @@
 import { parse } from "date-fns";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { config } from "./translations";
 import { DEFAULT_LOCATION } from "./utils/consts";
@@ -63,8 +64,10 @@ const VaxxCanonical: React.FC<{
   description: string;
   keywords: string[];
 }> = ({ url, title, description, keywords }) => {
+  const { i18n } = useTranslation("common");
   return (
     <Helmet>
+      <html lang={i18n.language.toLowerCase()} />
       <title>{title}</title>
       <link rel="canonical" href={url} />
       <meta name="description" content={description} />
