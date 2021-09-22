@@ -13,7 +13,11 @@
     "website": "Laman Web",
     "address": "Alamat",
     "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
-    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius."
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius.",
+    "walkInDriveThru": "Walk-in/Drive Thru",
+    "availableBookingSlots": "Available Booking Slots",
+    "vaccApptToBook": "Vaccination appointments available to book right now.",
+    "mistake": "Did we make a mistake?"
   },
   "navigation": {
     "about": "Mengenai",
@@ -89,7 +93,7 @@
       "availableSlots": "Slots tersedia",
       "noBookingsAvailable": "Tiada tempahan tersedia pada hari ini :(",
       "backToCalendar": "Kembali ke Kalendar",
-      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may have availability."
     }
   },
   "footer": {

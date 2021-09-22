@@ -13,7 +13,11 @@
     "website": "موقع اليكتروني",
     "address": "العنوان",
     "noResultsNotInNZ": "لم يتم العثور على مواقع التطعيم لاستعلام البحث هذا. هل انت في نيوزيلندا",
-    "noResultsInRadius": "لم يتم العثور على مواقع التطعيم لاستعلام البحث هذا. جرب نصف قطر كيلومتر مختلف"
+    "noResultsInRadius": "لم يتم العثور على مواقع التطعيم لاستعلام البحث هذا. جرب نصف قطر كيلومتر مختلف",
+    "walkInDriveThru": "Walk-in/Drive Thru",
+    "availableBookingSlots": "Available Booking Slots",
+    "vaccApptToBook": "Vaccination appointments available to book right now.",
+    "mistake": "Did we make a mistake?"
   },
   "navigation": {
     "about": "معلومات",

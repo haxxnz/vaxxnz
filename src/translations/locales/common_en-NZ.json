@@ -7,13 +7,17 @@
     "loading": "Loading...",
     "getDirections": "Get Directions",
     "makeABooking": "Make a Booking",
+    "walkInDriveThru": "Walk-in/Drive Thru",
     "distanceAway": "{{distance}} away",
     "lastUpdated": "Last updated {{updatedAt}}",
     "cancel": "Cancel",
     "website": "Website",
     "address": "Address",
     "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
-    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius."
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different search radius.",
+    "availableBookingSlots": "Available Booking Slots",
+    "vaccApptToBook": "Vaccination appointments available to book right now.",
+    "mistake": "Did we make a mistake?"
   },
   "navigation": {
     "about": "About",
@@ -88,7 +92,7 @@
       },
       "availableSlots": "Available to Book",
       "noBookingsAvailable": "No bookings are available on this day :(",
-      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots.",
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may have availability.",
       "backToCalendar": "Back to Calendar"
     }
   },

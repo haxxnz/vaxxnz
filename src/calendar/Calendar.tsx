@@ -55,12 +55,12 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
 }) => {
   const { i18n } = useTranslation();
   const calendarData = Array.from(data);
-
+  const { t } = useTranslation("common");
   return (
     <>
       <div className="WalkSection2">
-        <h2>Available Booking Slots</h2>
-        <p>Vaccination appointments available to book right now.</p>
+        <h2>{t("core.availableBookingSlots")}</h2>
+        <p>{t("core.vaccApptToBook")}</p>
       </div>
 
       <CalendarContainer>

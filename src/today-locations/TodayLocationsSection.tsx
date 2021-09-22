@@ -61,7 +61,13 @@ export function TodayLocationsSection() {
   return (
     <div>
       <div className="WalkSection2">
-        <h2>{t("walkins.sectionHeader")}</h2>
+        <h2>
+          <Trans
+            i18nKey="walkins.sectionHeader"
+            t={t}
+            components={[<strong />]}
+          />
+        </h2>
         <p>
           <Trans
             i18nKey="walkins.subHeader"
