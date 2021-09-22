@@ -130,14 +130,14 @@ export function VaxxHelmet({
     "vaccination sites",
     "vaccination locations",
   ];
-  const titleSuffix =
-    "Find a COVID-19 vaccine | See ways to get vaccinated near you | vaxx.nz";
+  // const titleSuffix =
+  //   "Find a COVID-19 vaccine | See ways to get vaccinated near you | vaxx.nz";
   switch (routeType) {
     case RouteType.Home:
     case RouteType.Bookings:
       title = `COVID-19 Vaccine Bookings - ${suburb} - Vaxx.nz`; //${titleSuffix}`;
       description =
-        "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
+        "Available Booking Slots. Vaccination appointments available to book right now. This is not an official Government website. To get vaccinated visit bookmyvaccine.nz.";
       keywords = [
         ...commonKeywords,
         "booking",
@@ -162,7 +162,7 @@ export function VaxxHelmet({
     case RouteType.Locations:
       title = `COVID-19 Vaccination Centres - ${suburb} - Vaxx.nz`; //${titleSuffix}`;
       description =
-        "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
+        "Walk-in and Drive Thru Vaccination Centres. You don't need an appointment to get vaccinated at these venues. Visit covid19.govt.nz for more information. ";
       keywords = [
         ...commonKeywords,
         "walk-in",
@@ -181,7 +181,7 @@ export function VaxxHelmet({
     case RouteType.Booking:
       title = `Available to Book - ${suburb} - ${titleDate} - Vaxx.nz`; // | ${titleSuffix}`;
       description =
-        "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
+        "Find a location and time from the list below. Click on the Make a Booking button, this will take you to bookmyvaccine.nz. Enter your details.";
       keywords = [
         ...commonKeywords,
         "booking",
@@ -207,7 +207,8 @@ export function VaxxHelmet({
       // TODO: dynamic
       title = `${locationName} - Vaxx.nz`; //Walk-in/Drive-through COVID-19 vaccination site | ${titleSuffix}`;
       description =
-        "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
+        "You can get a free COVID-19 vaccination at 415 Queen Street, Auckland Central, Auckland. You can also call (09) 280 3555 to check how long the queues are.";
+
       keywords = [
         ...commonKeywords,
         "walk-in",
