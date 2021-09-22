@@ -104,8 +104,6 @@ export function VaxxHelmet({
   const dateObject = parse(date, "yyyy-MM-dd", new Date());
 
   const titleDate = `${dateObject.toLocaleDateString(["en-NZ"], {
-    weekday: "long",
-  })} ${dateObject.toLocaleDateString(["en-NZ"], {
     day: "numeric",
     month: "short",
     year: "numeric",
@@ -181,8 +179,7 @@ export function VaxxHelmet({
         />
       );
     case RouteType.Booking:
-      // TODO: format date
-      title = `Available to Book in ${suburb} - ${titleDate} | ${titleSuffix}`;
+      title = `Available to Book - ${suburb} - ${titleDate} - Vaxx.nz`;
       description =
         "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
       keywords = [
