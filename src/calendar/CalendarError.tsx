@@ -22,7 +22,7 @@ const MainContainer = styled.div`
   position: absolute;
   max-width: 1438px;
   width: calc(100% - 2px);
-  z-index: 99 !important;
+  z-index: 2 !important;
   display: flex;
   flex-direction: row;
   border: 1px solid rgb(211, 211, 211);
