@@ -26,8 +26,8 @@ body {
   z-index: 1;
 }
 
-#root div:last-child {
-  z-index: 2;
+#root div[data-baseweb="popover"]:last-child {
+  z-index: 4;
 }
 
 h1,
