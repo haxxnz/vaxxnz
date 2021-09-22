@@ -13,7 +13,11 @@
     "website": "Pae tukutuku",
     "address": "Wāhi noho",
     "noResultsNotInNZ": "Kāore i kitea he wāhi rongoā āraimate mō tēnei paearu rapu. Kei Aotearoa koe?",
-    "noResultsInRadius": "Kāore i kitea he wāhi rongoā āraimate mō tēnei paearu rapu. Whakamātauhia tētahi atu pūtoro kiromita."
+    "noResultsInRadius": "Kāore i kitea he wāhi rongoā āraimate mō tēnei paearu rapu. Whakamātauhia tētahi atu pūtoro kiromita.",
+    "walkInDriveThru": "Walk-in/Drive Thru",
+    "availableBookingSlots": "Available Booking Slots",
+    "vaccApptToBook": "Vaccination appointments available to book right now.",
+    "mistake": "Did we make a mistake?"
   },
   "navigation": {
     "about": "Taipitopito",

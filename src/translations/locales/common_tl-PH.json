@@ -13,7 +13,11 @@
     "website": "Website",
     "address": "Address",
     "noResultsNotInNZ": "Walang tumugmang lugar ng pagpapabakuna base sa iyong search. Ikaw ba ay nasa New Zealand?",
-    "noResultsInRadius": "Walang tumugmang lugar ng pagpapabakuna base sa iyong search. Sumubok ng ibang distansya (km)."
+    "noResultsInRadius": "Walang tumugmang lugar ng pagpapabakuna base sa iyong search. Sumubok ng ibang distansya (km).",
+    "walkInDriveThru": "Walk-in/Drive Thru",
+    "availableBookingSlots": "Available Booking Slots",
+    "vaccApptToBook": "Vaccination appointments available to book right now.",
+    "mistake": "Did we make a mistake?"
   },
   "navigation": {
     "about": "Tungkol",

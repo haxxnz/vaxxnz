@@ -13,7 +13,11 @@
     "website": "Situs Web",
     "address": "Alamat",
     "noResultsNotInNZ": "Tidak ditemukan situs vaksinasi untuk permintaan pencarian ini. Apakah Anda di Selandia Baru?",
-    "noResultsInRadius": "Tidak ditemukan situs vaksinasi untuk permintaan pencarian ini. Harap mencoba radius kilometer yang berbeda."
+    "noResultsInRadius": "Tidak ditemukan situs vaksinasi untuk permintaan pencarian ini. Harap mencoba radius kilometer yang berbeda.",
+    "walkInDriveThru": "Walk-in/Drive Thru",
+    "availableBookingSlots": "Available Booking Slots",
+    "vaccApptToBook": "Vaccination appointments available to book right now.",
+    "mistake": "Did we make a mistake?"
   },
   "navigation": {
     "about": "Mengenai",
