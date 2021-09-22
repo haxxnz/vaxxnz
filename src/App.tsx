@@ -72,6 +72,59 @@ function getCanonicalCalendarDay() {
   return `${protocol}//${host}${pathname}${getSearch(searchParams)}`;
 }
 
+enum RouteType {
+  Home = "/",
+  Locations = "/locations",
+  Bookings = "/bookings",
+  Booking = "/bookings/:date",
+  Location = "/locations/:slug",
+}
+
+function VaxxHelmet({ routeType }: { routeType: RouteType }) {
+  switch (routeType) {
+    case RouteType.Home:
+    case RouteType.Bookings:
+      return (
+        <Helmet>
+          <title>
+            COVID-19 vaccination sites in New Zealand | Vaccine finder New
+            Zealand | See ways to get vaccinated near you | vaxx.nz
+          </title>
+          <link rel="canonical" href={getCanonicalHome()} />
+        </Helmet>
+      );
+    case RouteType.Locations:
+      return (
+        <Helmet>
+          <title>
+            COVID-19 vaccination bookings in New Zealand | Vaccine finder New
+            Zealand | See ways to get vaccinated near you | vaxx.nz
+          </title>
+          <link rel="canonical" href={getCanonicalHomeLocations()} />
+        </Helmet>
+      );
+    case RouteType.Booking:
+      return (
+        <Helmet>
+          <title>
+            Available to Book - 22 Sep 2021 | COVID-19 vaccination | vaxx.nz
+          </title>
+          <link rel="canonical" href={getCanonicalCalendarDay()} />
+        </Helmet>
+      );
+    case RouteType.Location:
+      return (
+        <Helmet>
+          <title>
+            The Auckland City Doctors | Walk-in/Drive-through COVID-19
+            vaccination site | vaxx.nz
+          </title>
+          <link rel="canonical" href={getCanonicalLocation()} />
+        </Helmet>
+      );
+  }
+}
+
 function App() {
   const [lastUpdateTime, setLastUpdateTime] = useState<Date | null>(null); // null whilst loading
   const bookingData = useBookingData(setLastUpdateTime);
@@ -83,28 +136,15 @@ function App() {
         <Header />
         <Switch>
           <Route path="/bookings/:date">
-            <Helmet>
-              <title>
-                {/* TODO: dynamic */}
-                Available to Book - 22 Sep 2021 | COVID-19 vaccination | vaxx.nz
-              </title>
-              <link rel="canonical" href={getCanonicalCalendarDay()} />
-            </Helmet>
             <div className={"big-old-container"}>
+              <VaxxHelmet routeType={RouteType.Booking} />
               <BookingModal
                 bookingData={"ok" in bookingData ? bookingData.ok : undefined}
               />
             </div>
           </Route>
           <Route path="/locations/:slug">
-            <Helmet>
-              <title>
-                {/* TODO: dynamic */}
-                The Auckland City Doctors | Walk-in/Drive-through COVID-19
-                vaccination site | vaxx.nz
-              </title>
-              <link rel="canonical" href={getCanonicalLocation()} />
-            </Helmet>
+            <VaxxHelmet routeType={RouteType.Location} />
             <div className={"big-old-container"}>
               <LocationRouter />
               <TodayLocationsSection />
@@ -114,29 +154,14 @@ function App() {
             <Banner />
             <div className={"big-old-container"}>
               <LocationPicker lastUpdateTime={lastUpdateTime} />
-              {/* <HomePage bookingData={bookingData} /> */}
               <Switch>
                 <Route path="/locations">
-                  <Helmet>
-                    <title>
-                      COVID-19 vaccination bookings in New Zealand | Vaccine
-                      finder New Zealand | See ways to get vaccinated near you |
-                      vaxx.nz
-                    </title>
-                    <link rel="canonical" href={getCanonicalHome()} />
-                  </Helmet>
+                  <VaxxHelmet routeType={RouteType.Locations} />
                   <Tabs activeTab={TabType.walkIn} />
                   <TodayLocationsSection />
                 </Route>
                 <Route>
-                  <Helmet>
-                    <title>
-                      COVID-19 vaccination sites in New Zealand | Vaccine finder
-                      New Zealand | See ways to get vaccinated near you |
-                      vaxx.nz
-                    </title>
-                    <link rel="canonical" href={getCanonicalHomeLocations()} />
-                  </Helmet>
+                  <VaxxHelmet routeType={RouteType.Home} />
                   <Tabs activeTab={TabType.bookings} />
                   <CalendarSection bookingData={bookingData} />
                 </Route>
