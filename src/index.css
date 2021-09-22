@@ -27,7 +27,7 @@ body {
 }
 
 #root div[data-baseweb="popover"]:last-child {
-  z-index: 3;
+  z-index: 4;
 }
 
 h1,
