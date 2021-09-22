@@ -121,11 +121,12 @@ export function VaxxHelmet({
     "vaccination sites",
     "vaccination locations",
   ];
+  const titleSuffix =
+    "Find a COVID-19 vaccine | See ways to get vaccinated near you | vaxx.nz";
   switch (routeType) {
     case RouteType.Home:
     case RouteType.Bookings:
-      title =
-        "Find a COVID-19 vaccine bookings in New Zealand | Vaccine finder New Zealand | See ways to get vaccinated near you | vaxx.nz";
+      title = `Find COVID-19 vaccine bookings in New Zealand | ${titleSuffix}`;
       description =
         "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
       keywords = [
@@ -150,8 +151,7 @@ export function VaxxHelmet({
         />
       );
     case RouteType.Locations:
-      title =
-        "Find COVID-19 vaccination sites in New Zealand | Vaccine finder New Zealand | See ways to get vaccinated near you | vaxx.nz";
+      title = `Find COVID-19 vaccination sites in New Zealand | ${titleSuffix}`;
       description =
         "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
       keywords = [
@@ -171,7 +171,7 @@ export function VaxxHelmet({
       );
     case RouteType.Booking:
       // TODO: format date
-      title = `Available to Book - ${date} | Find a COVID-19 vaccine | vaxx.nz`;
+      title = `Available to Book - ${date} | ${titleSuffix}`;
       description =
         "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
       keywords = [
@@ -196,7 +196,8 @@ export function VaxxHelmet({
         />
       );
     case RouteType.Location:
-      title = `${locationName} | Walk-in/Drive-through COVID-19 vaccination site | Find a COVID-19 vaccine | vaxx.nz`;
+      // TODO: dynamic
+      title = `${locationName} - Walk-in/Drive-through COVID-19 vaccination site | ${titleSuffix}`;
       description =
         "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
       keywords = [
