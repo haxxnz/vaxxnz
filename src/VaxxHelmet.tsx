@@ -182,7 +182,7 @@ export function VaxxHelmet({
       );
     case RouteType.Booking:
       // TODO: format date
-      title = `Available to Book - ${titleDate} | ${titleSuffix}`;
+      title = `Available to Book in ${suburb} - ${titleDate} | ${titleSuffix}`;
       description =
         "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
       keywords = [
