@@ -18,6 +18,7 @@ import { Tabs, TabType } from "./HomePage";
 import { useSaveScroll } from "./scroll";
 import { Helmet } from "react-helmet";
 import { CalendarSection } from "./calendar/CalendarSection";
+import { config } from "./translations";
 
 const Contexts: React.FC<{}> = (props) => {
   const [healthpointLocations, setHealthpointLocations] =
@@ -80,6 +81,24 @@ enum RouteType {
   Location = "/locations/:slug",
 }
 
+const VaxxCanonical: React.FC<{ url: string }> = ({ url }) => {
+  return (
+    <>
+      <link rel="canonical" href={url} />
+      {config.supportedLngs.map((lng) => {
+        const locale = lng.toLowerCase();
+        return (
+          <link
+            rel="alternate"
+            href={`${url}&locale=${locale}`}
+            hrefLang={`${locale}`}
+          />
+        );
+      })}
+    </>
+  );
+};
+
 function VaxxHelmet({ routeType }: { routeType: RouteType }) {
   switch (routeType) {
     case RouteType.Home:
@@ -87,29 +106,29 @@ function VaxxHelmet({ routeType }: { routeType: RouteType }) {
       return (
         <Helmet>
           <title>
-            COVID-19 vaccination sites in New Zealand | Vaccine finder New
-            Zealand | See ways to get vaccinated near you | vaxx.nz
+            Find a COVID-19 vaccination sites in New Zealand | Vaccine finder
+            New Zealand | See ways to get vaccinated near you | vaxx.nz
           </title>
-          <link rel="canonical" href={getCanonicalHome()} />
+          <VaxxCanonical url={getCanonicalHome()} />
         </Helmet>
       );
     case RouteType.Locations:
       return (
         <Helmet>
           <title>
-            COVID-19 vaccination bookings in New Zealand | Vaccine finder New
+            Find a COVID-19 vaccine bookings in New Zealand | Vaccine finder New
             Zealand | See ways to get vaccinated near you | vaxx.nz
           </title>
-          <link rel="canonical" href={getCanonicalHomeLocations()} />
+          <VaxxCanonical url={getCanonicalHomeLocations()} />
         </Helmet>
       );
     case RouteType.Booking:
       return (
         <Helmet>
           <title>
-            Available to Book - 22 Sep 2021 | COVID-19 vaccination | vaxx.nz
+            Available to Book - 22 Sep 2021 | Find a COVID-19 vaccine | vaxx.nz
           </title>
-          <link rel="canonical" href={getCanonicalCalendarDay()} />
+          <VaxxCanonical url={getCanonicalCalendarDay()} />
         </Helmet>
       );
     case RouteType.Location:
@@ -119,7 +138,7 @@ function VaxxHelmet({ routeType }: { routeType: RouteType }) {
             The Auckland City Doctors | Walk-in/Drive-through COVID-19
             vaccination site | vaxx.nz
           </title>
-          <link rel="canonical" href={getCanonicalLocation()} />
+          <VaxxCanonical url={getCanonicalLocation()} />
         </Helmet>
       );
   }
