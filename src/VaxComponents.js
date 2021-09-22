@@ -14,6 +14,7 @@ gap: 2rem;
   z-index: 2;
 
 border: 1px solid lightgray;
+border-bottom: 0px;
 >div {
   display:flex;
   flex-direction: row;

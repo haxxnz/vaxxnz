@@ -40,6 +40,7 @@ const StyledTabs = styled.div`
   border-right: 1px solid lightgray;
   display: flex;
   margin-bottom: 1.5rem;
+  border-top: 1px solid lightgray;
 
   a {
     display: block;
