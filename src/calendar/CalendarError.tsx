@@ -108,9 +108,10 @@ const Map = styled.img`
   }
 `;
 
-const { t } = useTranslation("common");
+
 
 export function CalendarError(props: { errorMessage: string }) {
+  const { t } = useTranslation("common");
   return (
     <MainContainer>
       <CenterContainer>

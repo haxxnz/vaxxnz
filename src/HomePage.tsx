@@ -55,10 +55,9 @@ const StyledTabs = styled.div`
   }
 `;
 
-
-const { t } = useTranslation("common");
-
-const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => (
+const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => {
+  const { t } = useTranslation("common");
+  return (
   <StyledTabs role="tablist">
     <PageLink to="/bookings">
       <Tab isActive={activeTab === TabType.bookings}>{t("core.makeABooking")}</Tab>
@@ -67,7 +66,8 @@ const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => (
       <Tab isActive={activeTab === TabType.walkIn}>{t("core.walkInDriveThru")}</Tab>
     </PageLink>
   </StyledTabs>
-);
+  )
+};
 
 interface TabProps {
   isActive: boolean;
