@@ -86,7 +86,7 @@ function App() {
             <Helmet>
               <title>
                 {/* TODO: dynamic */}
-                Available to Book - 22 Sep 2021 | COVID-19 vaccination | Vaxx.nz
+                Available to Book - 22 Sep 2021 | COVID-19 vaccination | vaxx.nz
               </title>
               <link rel="canonical" href={getCanonicalCalendarDay()} />
             </Helmet>
@@ -101,7 +101,7 @@ function App() {
               <title>
                 {/* TODO: dynamic */}
                 The Auckland City Doctors | Walk-in/Drive-through COVID-19
-                vaccination site | Vaxx.nz
+                vaccination site | vaxx.nz
               </title>
               <link rel="canonical" href={getCanonicalLocation()} />
             </Helmet>
@@ -121,7 +121,7 @@ function App() {
                     <title>
                       COVID-19 vaccination bookings in New Zealand | Vaccine
                       finder New Zealand | See ways to get vaccinated near you |
-                      Vaxx.nz
+                      vaxx.nz
                     </title>
                     <link rel="canonical" href={getCanonicalHome()} />
                   </Helmet>
@@ -133,7 +133,7 @@ function App() {
                     <title>
                       COVID-19 vaccination sites in New Zealand | Vaccine finder
                       New Zealand | See ways to get vaccinated near you |
-                      Vaxx.nz
+                      vaxx.nz
                     </title>
                     <link rel="canonical" href={getCanonicalHomeLocations()} />
                   </Helmet>
