@@ -80,6 +80,7 @@ const VaxxCanonical: React.FC<{
         const locale = lng.toLowerCase();
         return (
           <link
+            key={locale}
             rel="alternate"
             href={`${url}&locale=${locale}`}
             hrefLang={`${locale}`}
@@ -92,10 +93,10 @@ const VaxxCanonical: React.FC<{
 
 export function VaxxHelmet({
   routeType,
-  locationName,
+  location,
 }: {
   routeType: RouteType;
-  locationName?: string;
+  location?: { name: string; address: string; telephone: string };
 }) {
   const { date } = useParams<{ date: string }>();
   const { placeName } = useSearchParams();
@@ -203,16 +204,15 @@ export function VaxxHelmet({
       );
     case RouteType.Location:
       // TODO: dynamic
-      title = `${locationName} - Vaxx.nz`;
-      description =
-        "You can get a free COVID-19 vaccination at 415 Queen Street, Auckland Central, Auckland. You can also call (09) 280 3555 to check how long the queues are.";
+      title = `${location?.name} - Vaxx.nz`;
+      description = `You can get a free COVID-19 vaccination at ${location?.address}. You can also call ${location?.telephone} to check how long the queues are.`;
 
       keywords = [
         ...commonKeywords,
         "walk-in",
         "drive thru",
         "drive through",
-        `${locationName}`,
+        `${location?.name}`,
       ];
       return (
         <VaxxCanonical

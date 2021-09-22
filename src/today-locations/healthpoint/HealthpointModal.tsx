@@ -56,7 +56,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
     : { ...desktopDialogStyle, ...sharedDialogStyle };
   return (
     <div style={dialogStyle as any}>
-      <VaxxHelmet routeType={RouteType.Location} locationName={location.name} />
+      <VaxxHelmet routeType={RouteType.Location} location={location} />
 
       <WalkHeading>
         <h1>{location.name}</h1>

@@ -64,7 +64,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
     : { ...desktopDialogStyle, ...sharedDialogStyle };
   return (
     <div style={dialogStyle as any}>
-      <VaxxHelmet routeType={RouteType.Location} locationName={location.name} />
+      <VaxxHelmet routeType={RouteType.Location} location={location} />
       <ModalGrid className={"modal-container WalkModal"}>
         <div>
           <h1
