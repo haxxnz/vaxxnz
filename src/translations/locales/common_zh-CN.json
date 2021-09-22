@@ -12,8 +12,8 @@
     "cancel": "取消",
     "website": "网站",
     "address": "地址",
-    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
-    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius."
+    "noResultsNotInNZ": "此搜索查询没有找到疫苗接种点。您是在新西兰吗?",
+    "noResultsInRadius": "此搜索查询没有找到疫苗接种点。请尝试不同的公里范围。"
   },
   "navigation": {
     "about": "关于",
@@ -40,7 +40,7 @@
     "unknownLocation": "未知位置"
   },
   "walkins": {
-    "sectionHeader": "<0>今日开放的</0>免预约及得来速 (drive-thru) 接种点",
+    "sectionHeader": "<0>今日开放的</0>免预约及驾驶通过(drive-thru)接种点",
     "openString": "开放时间 {{openTimeString}}",
     "cancellationNotice": {
       "info": "请勿重复预约",
@@ -52,7 +52,7 @@
       "text": "请注意，免预约接种点接待能力有限，无法保证所有人都能得到接种。"
     },
     "walkinAwailable": "<0 /> 可免预约前往",
-    "driveThroughAvailable": "<0 /> 可驾车 (drive-thru) 前往",
+    "driveThroughAvailable": "<0 /> 可驾驶通过(drive-thru) ",
     "phone": "电话",
     "hours": "开放时间",
     "publicHolidays": "公共节假日",
@@ -66,13 +66,13 @@
       }
     },
     "closed": "关闭",
-    "subHeader": "You don't need an appointment to get vaccinated at these venues. Visit <0>covid19.govt.nz</0> for more information.",
-    "noWalkinDriveThruFound": "There aren't any walk-in or drive thru vaccination centres in your area. Try make a booking instead.",
+    "subHeader": "您无需预约即可在这些场所接种疫苗。请浏览 <0>covid19.govt.nz</0> 查询更多的信息.",
+    "noWalkinDriveThruFound": "您所在地区没有任何步入式或驾驶通过的疫苗接种中心. 请尝试进行预订.",
     "healthpointModal": {
-      "title": "How to get vaccinated here",
-      "subtitle": "Visit the address below and ask for a free COVID vaccination.",
-      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
-      "venueDetails": "Venue Details"
+      "title": "如何在这里接种疫苗",
+      "subtitle": "浏览以下地址并要求免费新冠疫苗接种.",
+      "queueQuery": "你也可以打咨询电话 <0>{{telephone}}</0> 去询问等候时间.",
+      "venueDetails": "场地详情"
     }
   },
   "calendar": {
