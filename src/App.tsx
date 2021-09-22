@@ -41,38 +41,35 @@ function getSearchParams() {
   ]);
 }
 
+function getSearch(searchParams: Record<string, string>) {
+  const sp = new URLSearchParams(searchParams).toString();
+  return sp ? `?${sp}` : "";
+}
+
 function getCanonicalHome() {
   const { protocol, host } = window.location;
   const { lat, lng, placeName, radius } = getSearchParams();
-  const canonicalDict = { lat, lng, placeName, radius };
-  const sp = new URLSearchParams(canonicalDict).toString();
-  const canonical = `${protocol}//${host}${sp ? `?${sp}` : ""}`;
-  return canonical;
+  const searchParams = { lat, lng, placeName, radius };
+  return `${protocol}//${host}${getSearch(searchParams)}`;
 }
 function getCanonicalHomeLocations() {
   const { protocol, host, pathname } = window.location;
   const { lat, lng, placeName, radius } = getSearchParams();
-  const canonicalDict = { lat, lng, placeName, radius };
-  const sp = new URLSearchParams(canonicalDict).toString();
-  const canonical = `${protocol}//${host}${pathname}${sp ? `?${sp}` : ""}`;
-  return canonical;
+  const searchParams = { lat, lng, placeName, radius };
+  return `${protocol}//${host}${pathname}${getSearch(searchParams)}`;
 }
 
 function getCanonicalLocation() {
   const { protocol, host, pathname } = window.location;
-  const canonicalDict = {};
-  const sp = new URLSearchParams(canonicalDict).toString();
-  const canonical = `${protocol}//${host}${pathname}${sp ? `?${sp}` : ""}`;
-  return canonical;
+  const searchParams = {};
+  return `${protocol}//${host}${pathname}${getSearch(searchParams)}`;
 }
 
 function getCanonicalCalendarDay() {
   const { protocol, host, pathname } = window.location;
   const { lat, lng, placeName, radius } = getSearchParams();
-  const canonicalDict = { lat, lng, placeName, radius };
-  const sp = new URLSearchParams(canonicalDict).toString();
-  const canonical = `${protocol}//${host}${pathname}${sp ? `?${sp}` : ""}`;
-  return canonical;
+  const searchParams = { lat, lng, placeName, radius };
+  return `${protocol}//${host}${pathname}${getSearch(searchParams)}`;
 }
 
 function App() {
