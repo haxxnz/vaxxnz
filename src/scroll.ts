@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
 // let savedScrolls: Record<string, ScrollPos> = {};
@@ -26,13 +26,10 @@ export const useSaveScroll = () => {
   const pathname = useLocation().pathname;
   const previousPathname = usePrevious(pathname);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const scrollPos: ScrollPos = [window.scrollX, window.scrollY];
     const wasHome = previousPathname && homePaths.has(previousPathname);
     const isHome = homePaths.has(pathname);
-    console.log("scroll", scrollPos);
-    console.log("was home", wasHome, previousPathname);
-    console.log("is home", isHome, pathname);
 
     if (wasHome && !isHome) {
       // left the home page
