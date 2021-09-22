@@ -132,6 +132,10 @@ export function VaxxHelmet({
         "book my vaccine",
         "vaccine schedule",
         "vaccination schedule",
+        "today",
+        "tomorrow",
+        "week",
+        "weekend",
         `${suburb}`,
       ];
       return (
@@ -147,7 +151,13 @@ export function VaxxHelmet({
         "Find COVID-19 vaccination sites in New Zealand | Vaccine finder New Zealand | See ways to get vaccinated near you | vaxx.nz";
       description =
         "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
-      keywords = [...commonKeywords, `${suburb}`];
+      keywords = [
+        ...commonKeywords,
+        `${suburb}`,
+        "walk-in",
+        "drive thru",
+        "drive through",
+      ];
       return (
         <VaxxCanonical
           url={getCanonicalHomeLocations()}
@@ -167,6 +177,10 @@ export function VaxxHelmet({
         "book my vaccine",
         "vaccine schedule",
         "vaccination schedule",
+        "today",
+        "tomorrow",
+        "week",
+        "weekend",
         `${suburb}`,
       ];
       return (
@@ -181,7 +195,13 @@ export function VaxxHelmet({
       title = `${locationName} | Walk-in/Drive-through COVID-19 vaccination site | Find a COVID-19 vaccine | vaxx.nz`;
       description =
         "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
-      keywords = [...commonKeywords, `${locationName}`];
+      keywords = [
+        ...commonKeywords,
+        `${locationName}`,
+        "walk-in",
+        "drive thru",
+        "drive through",
+      ];
       return (
         <VaxxCanonical
           url={getCanonicalLocation()}
