@@ -4,7 +4,7 @@ import { LocationPicker } from "./location-picker/LocationPicker";
 import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
 import CookiesBar from "./Cookies";
 import BookingModal from "./calendar/modal/CalendarModal";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useParams } from "react-router-dom";
 import { useBookingData } from "./calendar/booking/BookingData";
 import { LocationRouter } from "./LocationRouter";
 import { Footer } from "./Footer";
@@ -117,6 +117,7 @@ const VaxxCanonical: React.FC<{ url: string; title: string }> = ({
 };
 
 function VaxxHelmet({ routeType }: { routeType: RouteType }) {
+  const { date, slug } = useParams<{ date: string; slug: string }>();
   let title;
   switch (routeType) {
     case RouteType.Home:
@@ -129,12 +130,11 @@ function VaxxHelmet({ routeType }: { routeType: RouteType }) {
         "Find a COVID-19 vaccine bookings in New Zealand | Vaccine finder New Zealand | See ways to get vaccinated near you | vaxx.nz";
       return <VaxxCanonical url={getCanonicalHomeLocations()} title={title} />;
     case RouteType.Booking:
-      title =
-        "Available to Book - 22 Sep 2021 | Find a COVID-19 vaccine | vaxx.nz";
+      title = `Available to Book - ${date} | Find a COVID-19 vaccine | vaxx.nz`;
       return <VaxxCanonical url={getCanonicalCalendarDay()} title={title} />;
     case RouteType.Location:
-      title =
-        "The Auckland City Doctors | Walk-in/Drive-through COVID-19 vaccination site | vaxx.nz";
+      const hash = slug.split("-").slice(0, -1).join(" ");
+      title = `${hash} | Walk-in/Drive-through COVID-19 vaccination site | vaxx.nz`;
       return <VaxxCanonical url={getCanonicalLocation()} title={title} />;
   }
 }
