@@ -13,7 +13,11 @@
     "website": "Webseite",
     "address": "Adresse",
     "noResultsNotInNZ": "Für diese Suchanfrage wurden keine Impfstellen gefunden. Bist du in Neuseeland?",
-    "noResultsInRadius": "Für diese Suchanfrage wurden keine Impfstellen gefunden. Vergrößern Sie den Suchradius."
+    "noResultsInRadius": "Für diese Suchanfrage wurden keine Impfstellen gefunden. Vergrößern Sie den Suchradius.",
+    "walkInDriveThru": "Walk-in/Drive Thru",
+    "availableBookingSlots": "Available Booking Slots",
+    "vaccApptToBook": "Vaccination appointments available to book right now.",
+    "mistake": "Did we make a mistake?"
   },
   "navigation": {
     "about": "Über uns",
