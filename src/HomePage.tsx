@@ -55,11 +55,11 @@ const StyledTabs = styled.div`
 `;
 
 const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => (
-  <StyledTabs role="tablist">
-    <PageLink to="/bookings">
+  <StyledTabs>
+    <PageLink to="/bookings" role="tablist" title="make a booking">
       <Tab isActive={activeTab === TabType.bookings}>Make a Booking</Tab>
     </PageLink>
-    <PageLink to="/locations">
+    <PageLink to="/locations" role="tablist" title="walk-in locations">
       <Tab isActive={activeTab === TabType.walkIn}>Walk-in/Drive Thru</Tab>
     </PageLink>
   </StyledTabs>
@@ -85,7 +85,7 @@ const StyledTab = styled.button`
   width: 100%;
   padding: 13px 0px;
   border-bottom: 1px solid lightgray;
-  color: #0076ff;
+  color: #0059be;
   transition: all 0.15s;
   :hover {
     background-color: #e4eeff;
@@ -101,7 +101,7 @@ const StyledTab = styled.button`
 `;
 
 const Tab: FunctionComponent<TabProps> = ({ isActive, children }) => (
-  <StyledTab aria-selected={isActive} role="tab">
+  <StyledTab role="tab" aria-selected={isActive}>
     {children}
   </StyledTab>
 );
