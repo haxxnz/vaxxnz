@@ -5,10 +5,7 @@ import languages, { Language } from "./translations/resources";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { eventedPushState } from "./utils/url";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronDown,
-  faGlobeAmericas,
-} from "@fortawesome/free-solid-svg-icons";
+import { faGlobeAmericas } from "@fortawesome/free-solid-svg-icons";
 
 const LanguageSelect = () => {
   const langCode = localStorage.getItem("i18nextLng") || "en-NZ";
