@@ -55,7 +55,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
 }) => {
   const { i18n } = useTranslation();
   const calendarData = Array.from(data);
-
+  const { t } = useTranslation("common");
   return (
     <>
       <div className="WalkSection2">
