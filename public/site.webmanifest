@@ -1,6 +1,6 @@
 {
-  "name": "Vaxx.nz | The NZ COVID Vaccination Finder | See all vaccine slots for all vaccination sites to minimise the manual filtering hassle",
-  "short_name": "Vaxx.nz | The NZ COVID Vaccination Finder",
+  "name": "Vaxx.nz - Find a COVID-19 vaccine | See all vaccine slots for all vaccination sites to minimise the manual filtering hassle",
+  "short_name": "Vaxx.nz - Find a COVID-19 vaccine",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
