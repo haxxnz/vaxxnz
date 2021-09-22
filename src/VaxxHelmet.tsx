@@ -203,7 +203,6 @@ export function VaxxHelmet({
         />
       );
     case RouteType.Location:
-      // TODO: dynamic
       title = `${location?.name} - Vaxx.nz`;
       description = `You can get a free COVID-19 vaccination at ${location?.address}. You can also call ${location?.telephone} to check how long the queues are.`;
 
