@@ -135,7 +135,7 @@ export function VaxxHelmet({
   switch (routeType) {
     case RouteType.Home:
     case RouteType.Bookings:
-      title = `Find COVID-19 vaccine bookings in New Zealand | ${titleSuffix}`;
+      title = `COVID-19 Vaccine Bookings - ${suburb} - Vaxx.nz`; //${titleSuffix}`;
       description =
         "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
       keywords = [
@@ -160,7 +160,7 @@ export function VaxxHelmet({
         />
       );
     case RouteType.Locations:
-      title = `Find COVID-19 vaccination sites in New Zealand | ${titleSuffix}`;
+      title = `COVID-19 Vaccination Centres - ${suburb} - Vaxx.nz`; //${titleSuffix}`;
       description =
         "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
       keywords = [
@@ -179,7 +179,7 @@ export function VaxxHelmet({
         />
       );
     case RouteType.Booking:
-      title = `Available to Book - ${suburb} - ${titleDate} - Vaxx.nz`;
+      title = `Available to Book - ${suburb} - ${titleDate} - Vaxx.nz`; // | ${titleSuffix}`;
       description =
         "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
       keywords = [
@@ -205,7 +205,7 @@ export function VaxxHelmet({
       );
     case RouteType.Location:
       // TODO: dynamic
-      title = `${locationName} - Walk-in/Drive-through COVID-19 vaccination site | ${titleSuffix}`;
+      title = `${locationName} - Vaxx.nz`; //Walk-in/Drive-through COVID-19 vaccination site | ${titleSuffix}`;
       description =
         "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
       keywords = [
