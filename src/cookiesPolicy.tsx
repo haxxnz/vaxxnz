@@ -1,39 +1,6 @@
-import { Modal } from "baseui/modal";
-import { useCallback, useState } from "react";
-import { useTranslation } from "react-i18next";
-
-type Props = {
-  cookiesPolicyIsOpen: boolean;
-  setCookiesPolicyIsOpen: (isOpen: boolean) => void;
-};
-
-const CookiesPolicyModal = (props: Props) => {
-  const { setCookiesPolicyIsOpen } = props;
-
-  const { t } = useTranslation("common");
-
-  const close = useCallback(() => {
-    setCookiesPolicyIsOpen(false);
-  }, [setCookiesPolicyIsOpen]);
-
+const CookiesPolicy = () => {
   return (
-    <Modal
-      onClose={close}
-      isOpen={!!props.cookiesPolicyIsOpen}
-      unstable_ModalBackdropScroll={true}
-      overrides={{
-        Root: { style: { zIndex: 1500 } },
-        Dialog: {
-          style: {
-            height: "auto",
-            width: "600px",
-            display: "flex",
-            flexDirection: "column",
-            padding: "1.5rem",
-          },
-        },
-      }}
-    >
+    <div>
       <h2>Cookies Policy</h2>
       <p
         style={{
@@ -160,8 +127,8 @@ const CookiesPolicyModal = (props: Props) => {
         will be used, stored and destroyed in accordance with our privacy
         policy.
       </p>
-    </Modal>
+    </div>
   );
 };
 
-export default CookiesPolicyModal;
+export default CookiesPolicy;

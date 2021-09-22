@@ -1,39 +1,6 @@
-import { Modal } from "baseui/modal";
-import { useCallback, useState } from "react";
-import { useTranslation } from "react-i18next";
-
-type Props = {
-  privacyPolicyIsOpen: boolean;
-  setPrivacyPolicyIsOpen: (isOpen: boolean) => void;
-};
-
-const PrivacyPolicyModal = (props: Props) => {
-  const { setPrivacyPolicyIsOpen } = props;
-
-  const { t } = useTranslation("common");
-
-  const close = useCallback(() => {
-    setPrivacyPolicyIsOpen(false);
-  }, [setPrivacyPolicyIsOpen]);
-
+const PrivacyPolicy = () => {
   return (
-    <Modal
-      onClose={close}
-      isOpen={!!props.privacyPolicyIsOpen}
-      unstable_ModalBackdropScroll={true}
-      overrides={{
-        Root: { style: { zIndex: 1500 } },
-        Dialog: {
-          style: {
-            height: "auto",
-            width: "600px",
-            display: "flex",
-            flexDirection: "column",
-            padding: "1.5rem",
-          },
-        },
-      }}
-    >
+    <div>
       <h2>Privacy Policy</h2>
       <p
         style={{
@@ -271,8 +238,8 @@ const PrivacyPolicyModal = (props: Props) => {
         <br />
         <br />
       </p>
-    </Modal>
+    </div>
   );
 };
 
-export default PrivacyPolicyModal;
+export default PrivacyPolicy;

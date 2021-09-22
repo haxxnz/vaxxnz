@@ -113,7 +113,7 @@ export function Footer() {
           </a>{" "}
           /{" "}
           <a
-            href="/cookies-policy"
+            href="/cookie-policy"
             onClick={() => {
               enqueueAnalyticsEvent("Cookies policy clicked");
             }}

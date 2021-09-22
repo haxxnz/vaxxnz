@@ -1,39 +1,6 @@
-import { Modal } from "baseui/modal";
-import { useCallback, useState } from "react";
-import { useTranslation } from "react-i18next";
-
-type Props = {
-  termsAndConditionsIsOpen: boolean;
-  setTermsAndConditionsIsOpen: (isOpen: boolean) => void;
-};
-
-const TermsAndConditionsModal = (props: Props) => {
-  const { setTermsAndConditionsIsOpen } = props;
-
-  const { t } = useTranslation("common");
-
-  const close = useCallback(() => {
-    setTermsAndConditionsIsOpen(false);
-  }, [setTermsAndConditionsIsOpen]);
-
+const TermsAndConditions = () => {
   return (
-    <Modal
-      onClose={close}
-      isOpen={!!props.termsAndConditionsIsOpen}
-      unstable_ModalBackdropScroll={true}
-      overrides={{
-        Root: { style: { zIndex: 1500 } },
-        Dialog: {
-          style: {
-            height: "auto",
-            width: "600px",
-            display: "flex",
-            flexDirection: "column",
-            padding: "1.5rem",
-          },
-        },
-      }}
-    >
+    <div>
       <h2>Terms and Conditions</h2>
       <p
         style={{
@@ -279,8 +246,8 @@ const TermsAndConditionsModal = (props: Props) => {
         <br />
         <br />
       </p>
-    </Modal>
+    </div>
   );
 };
 
-export default TermsAndConditionsModal;
+export default TermsAndConditions;
