@@ -83,75 +83,65 @@ function App() {
         <Header />
         <Switch>
           <Route path="/bookings/:date">
-            <>
-              <Helmet>
-                <title>
-                  {/* TODO: dynamic */}
-                  Available to Book - 22 Sep 2021 | COVID-19 vaccination |
-                  Vaxx.nz
-                </title>
-                <link rel="canonical" href={getCanonicalCalendarDay()} />
-              </Helmet>
-              <div className={"big-old-container"}>
-                <BookingModal
-                  bookingData={"ok" in bookingData ? bookingData.ok : undefined}
-                />
-              </div>
-            </>
+            <Helmet>
+              <title>
+                {/* TODO: dynamic */}
+                Available to Book - 22 Sep 2021 | COVID-19 vaccination | Vaxx.nz
+              </title>
+              <link rel="canonical" href={getCanonicalCalendarDay()} />
+            </Helmet>
+            <div className={"big-old-container"}>
+              <BookingModal
+                bookingData={"ok" in bookingData ? bookingData.ok : undefined}
+              />
+            </div>
           </Route>
           <Route path="/locations/:slug">
-            <>
-              <Helmet>
-                <title>
-                  {/* TODO: dynamic */}
-                  The Auckland City Doctors | Walk-in/Drive-through COVID-19
-                  vaccination site | Vaxx.nz
-                </title>
-                <link rel="canonical" href={getCanonicalLocation()} />
-              </Helmet>
-              <div className={"big-old-container"}>
-                <LocationRouter />
-                <TodayLocationsSection />
-              </div>
-            </>
+            <Helmet>
+              <title>
+                {/* TODO: dynamic */}
+                The Auckland City Doctors | Walk-in/Drive-through COVID-19
+                vaccination site | Vaxx.nz
+              </title>
+              <link rel="canonical" href={getCanonicalLocation()} />
+            </Helmet>
+            <div className={"big-old-container"}>
+              <LocationRouter />
+              <TodayLocationsSection />
+            </div>
           </Route>
           <Route>
-            <>
-              <Banner />
-              <div className={"big-old-container"}>
-                <LocationPicker lastUpdateTime={lastUpdateTime} />
-                {/* <HomePage bookingData={bookingData} /> */}
-                <Switch>
-                  <Route path="/locations">
-                    <Helmet>
-                      <title>
-                        COVID-19 vaccination bookings in New Zealand | Vaccine
-                        finder New Zealand | See ways to get vaccinated near you
-                        | Vaxx.nz
-                      </title>
-                      <link rel="canonical" href={getCanonicalHome()} />
-                    </Helmet>
-                    <Tabs activeTab={TabType.walkIn} />
-                    <TodayLocationsSection />
-                  </Route>
-                  <Route>
-                    <Helmet>
-                      <title>
-                        COVID-19 vaccination sites in New Zealand | Vaccine
-                        finder New Zealand | See ways to get vaccinated near you
-                        | Vaxx.nz
-                      </title>
-                      <link
-                        rel="canonical"
-                        href={getCanonicalHomeLocations()}
-                      />
-                    </Helmet>
-                    <Tabs activeTab={TabType.bookings} />
-                    <CalendarSection bookingData={bookingData} />
-                  </Route>
-                </Switch>
-              </div>
-            </>
+            <Banner />
+            <div className={"big-old-container"}>
+              <LocationPicker lastUpdateTime={lastUpdateTime} />
+              {/* <HomePage bookingData={bookingData} /> */}
+              <Switch>
+                <Route path="/locations">
+                  <Helmet>
+                    <title>
+                      COVID-19 vaccination bookings in New Zealand | Vaccine
+                      finder New Zealand | See ways to get vaccinated near you |
+                      Vaxx.nz
+                    </title>
+                    <link rel="canonical" href={getCanonicalHome()} />
+                  </Helmet>
+                  <Tabs activeTab={TabType.walkIn} />
+                  <TodayLocationsSection />
+                </Route>
+                <Route>
+                  <Helmet>
+                    <title>
+                      COVID-19 vaccination sites in New Zealand | Vaccine finder
+                      New Zealand | See ways to get vaccinated near you |
+                      Vaxx.nz
+                    </title>
+                    <link rel="canonical" href={getCanonicalHomeLocations()} />
+                  </Helmet>
+                  <Tabs activeTab={TabType.bookings} />
+                  <CalendarSection bookingData={bookingData} />
+                </Route>
+              </Switch>
+            </div>
           </Route>
         </Switch>
         <Footer />
