@@ -127,14 +127,14 @@ function VaxxHelmet({ routeType }: { routeType: RouteType }) {
       return <VaxxCanonical url={getCanonicalHome()} title={title} />;
     case RouteType.Locations:
       title =
-        "Find a COVID-19 vaccination sites in New Zealand | Vaccine finder New Zealand | See ways to get vaccinated near you | vaxx.nz";
+        "Find COVID-19 vaccination sites in New Zealand | Vaccine finder New Zealand | See ways to get vaccinated near you | vaxx.nz";
       return <VaxxCanonical url={getCanonicalHomeLocations()} title={title} />;
     case RouteType.Booking:
       title = `Available to Book - ${date} | Find a COVID-19 vaccine | vaxx.nz`;
       return <VaxxCanonical url={getCanonicalCalendarDay()} title={title} />;
     case RouteType.Location:
       const locationName = slug.split("-").slice(0, -1).join(" ");
-      title = `${locationName} | Walk-in/Drive-through COVID-19 vaccination site | vaxx.nz`;
+      title = `${locationName} | Walk-in/Drive-through COVID-19 vaccination site | Find a COVID-19 vaccine | vaxx.nz`;
       return <VaxxCanonical url={getCanonicalLocation()} title={title} />;
   }
 }
