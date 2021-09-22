@@ -156,10 +156,10 @@ export function VaxxHelmet({
         "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
       keywords = [
         ...commonKeywords,
-        `${suburb}`,
         "walk-in",
         "drive thru",
         "drive through",
+        `${suburb}`,
       ];
       return (
         <VaxxCanonical
@@ -200,10 +200,10 @@ export function VaxxHelmet({
         "See all vaccine slots for all vaccination sites to minimise the manual filtering hassle";
       keywords = [
         ...commonKeywords,
-        `${locationName}`,
         "walk-in",
         "drive thru",
         "drive through",
+        `${locationName}`,
       ];
       return (
         <VaxxCanonical
