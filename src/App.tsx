@@ -47,6 +47,7 @@ function App() {
         <Switch>
           <Route path="/bookings/:date">
             <div className={"big-old-container"}>
+              <LocationPicker lastUpdateTime={lastUpdateTime} />
               <VaxxHelmet routeType={RouteType.Booking} />
               <BookingModal
                 bookingData={"ok" in bookingData ? bookingData.ok : undefined}
