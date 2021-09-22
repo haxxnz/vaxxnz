@@ -78,9 +78,7 @@ function getCanonicalHomeLocations() {
 
 function getCanonicalLocations() {
   const { protocol, host, pathname } = window.location;
-
   const canonicalDict = {};
-
   const sp = new URLSearchParams(canonicalDict).toString();
   const canonical = `${protocol}//${host}${pathname}${sp ? `?${sp}` : ""}`;
   console.log("canonical", canonical);
@@ -94,14 +92,12 @@ function getCanonicalBookings() {
   const lng = searchParams.get("lng");
   const placeName = searchParams.get("placeName");
   const radius = searchParams.get("radius");
-
   const canonicalDict = {
     ...(lat ? { lat } : {}),
     ...(lng ? { lng } : {}),
     ...(placeName ? { placeName } : {}),
     ...(radius ? { radius } : {}),
   };
-
   const sp = new URLSearchParams(canonicalDict).toString();
   const canonical = `${protocol}//${host}${pathname}${sp ? `?${sp}` : ""}`;
   console.log("canonical", canonical);
