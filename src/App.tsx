@@ -58,7 +58,7 @@ function getCanonicalHomeLocations() {
   return canonical;
 }
 
-function getCanonicalLocations() {
+function getCanonicalLocation() {
   const { protocol, host, pathname } = window.location;
   const canonicalDict = {};
   const sp = new URLSearchParams(canonicalDict).toString();
@@ -66,7 +66,7 @@ function getCanonicalLocations() {
   return canonical;
 }
 
-function getCanonicalBookings() {
+function getCanonicalCalendarDay() {
   const { protocol, host, pathname } = window.location;
   const { lat, lng, placeName, radius } = getSearchParams();
   const canonicalDict = { lat, lng, placeName, radius };
@@ -93,7 +93,7 @@ function App() {
                   Available to Book - 22 Sep 2021 | COVID-19 vaccination |
                   Vaxx.nz
                 </title>
-                <link rel="canonical" href={getCanonicalBookings()} />
+                <link rel="canonical" href={getCanonicalCalendarDay()} />
               </Helmet>
               <div className={"big-old-container"}>
                 <BookingModal
@@ -110,7 +110,7 @@ function App() {
                   The Auckland City Doctors | Walk-in/Drive-through COVID-19
                   vaccination site | Vaxx.nz
                 </title>
-                <link rel="canonical" href={getCanonicalLocations()} />
+                <link rel="canonical" href={getCanonicalLocation()} />
               </Helmet>
               <div className={"big-old-container"}>
                 <LocationRouter />
