@@ -2,9 +2,9 @@ import { Trans, useTranslation } from "react-i18next";
 import { ShareButtons } from "./ShareButtons";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { useState } from "react";
-import TermsAndConditionsModal from "./TermsAndConditionsModal";
-import PrivacyPolicyModal from "./PrivacyPolicyModal";
-import CookiesPolicyModal from "./CookiesPolicyModal";
+// import TermsAndConditionsModal from "./termsAndConditions";
+// import PrivacyPolicyModal from "./privacyPolicy";
+// import CookiesPolicyModal from "./cookiesPolicy";
 
 export function Footer() {
   const { t } = useTranslation("common");
@@ -12,7 +12,7 @@ export function Footer() {
 
   return (
     <>
-      <TermsAndConditionsModal
+      {/* <TermsAndConditionsModal
         termsAndConditionsIsOpen={isOpen}
         setTermsAndConditionsIsOpen={setIsOpen}
       />
@@ -23,7 +23,7 @@ export function Footer() {
       <CookiesPolicyModal
         cookiesPolicyIsOpen={isOpen}
         setCookiesPolicyIsOpen={setIsOpen}
-      />
+      /> */}
 
       <footer className="footer-header">
         <p style={{ marginBottom: "0.5rem" }}>{t("footer.message")}</p>
@@ -95,30 +95,27 @@ export function Footer() {
         </p>
         <p>
           <a
-            href="javascript:void(0)"
+            href="/terms-and-conditions"
             onClick={() => {
               enqueueAnalyticsEvent("Terms and Conditions clicked");
-              setIsOpen(true);
             }}
           >
             Terms and Conditions
           </a>{" "}
           /{" "}
           <a
-            href="javascript:void(0)"
+            href="/privacy-policy"
             onClick={() => {
               enqueueAnalyticsEvent("Privacy policy clicked");
-              setIsOpen(true);
             }}
           >
             Privacy Policy
           </a>{" "}
           /{" "}
           <a
-            href="javascript:void(0)"
+            href="/cookies-policy"
             onClick={() => {
-              enqueueAnalyticsEvent("Cookies clicked");
-              setIsOpen(true);
+              enqueueAnalyticsEvent("Cookies policy clicked");
             }}
           >
             Cookies Policy
