@@ -7,6 +7,7 @@ import {
 } from "./calendar/CalendarSection";
 import { PageLink } from "./PageLink";
 import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
+import { useTranslation } from "react-i18next";
 
 interface HomePageProps extends CalendarSectionProps {}
 
@@ -53,17 +54,23 @@ const StyledTabs = styled.div`
     flex-direction: column;
   }
 `;
-
-const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => (
-  <StyledTabs>
-    <PageLink to="/bookings" role="tablist" title="make a booking">
-      <Tab isActive={activeTab === TabType.bookings}>Make a Booking</Tab>
-    </PageLink>
-    <PageLink to="/locations" role="tablist" title="walk-in locations">
-      <Tab isActive={activeTab === TabType.walkIn}>Walk-in/Drive Thru</Tab>
-    </PageLink>
-  </StyledTabs>
-);
+const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => {
+  const { t } = useTranslation("common");
+  return (
+    <StyledTabs role="tablist">
+      <PageLink role="tablist" to="/bookings">
+        <Tab isActive={activeTab === TabType.bookings}>
+          {t("core.makeABooking")}
+        </Tab>
+      </PageLink>
+      <PageLink role="tablist" to="/locations">
+        <Tab isActive={activeTab === TabType.walkIn}>
+          {t("core.walkInDriveThru")}
+        </Tab>
+      </PageLink>
+    </StyledTabs>
+  );
+};
 
 interface TabProps {
   isActive: boolean;
