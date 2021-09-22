@@ -1,5 +1,5 @@
 import { parse } from "date-fns";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import { config } from "./translations";
 import { DEFAULT_LOCATION } from "./utils/consts";
