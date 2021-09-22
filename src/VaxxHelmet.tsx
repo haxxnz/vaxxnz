@@ -1,6 +1,8 @@
 import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import { config } from "./translations";
+import { DEFAULT_LOCATION } from "./utils/consts";
+import { useSearchParams } from "./utils/url";
 
 function getSearchParams() {
   return Object.fromEntries([
@@ -90,13 +92,14 @@ const VaxxCanonical: React.FC<{
 export function VaxxHelmet({
   routeType,
   locationName,
-  suburb,
 }: {
   routeType: RouteType;
   locationName?: string;
-  suburb: string;
 }) {
   const { date } = useParams<{ date: string }>();
+  const { placeName } = useSearchParams();
+  const suburb = placeName || DEFAULT_LOCATION.placeName;
+
   let title;
   let description;
   let keywords;
