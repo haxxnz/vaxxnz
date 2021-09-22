@@ -8,7 +8,7 @@ import { PageLink } from "../PageLink";
 import { ModalGrid } from "../VaxComponents";
 import { CrowdsourcedLocation } from "./CrowdsourcedData";
 import { parsePhoneNumber } from "../utils/parsePhone";
-import { RouteType, VaxxHelmet } from "../App";
+import { RouteType, VaxxHelmet } from "../VaxxHelmet";
 
 type Props = {
   cancelPath: string;

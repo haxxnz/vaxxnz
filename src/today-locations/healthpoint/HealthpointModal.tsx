@@ -12,7 +12,7 @@ import { parsePhoneNumber } from "../../utils/parsePhone";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PageLink } from "../../PageLink";
-import { RouteType, VaxxHelmet } from "../../App";
+import { RouteType, VaxxHelmet } from "../../VaxxHelmet";
 
 type Props = {
   cancelPath: string;
