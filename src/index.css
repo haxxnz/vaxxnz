@@ -30,6 +30,10 @@ body {
   z-index: 2;
 }
 
+#root div[data-baseweb="popover"]:last-child {
+  z-index: 4 !important;
+}
+
 h1,
 h2,
 h3,
