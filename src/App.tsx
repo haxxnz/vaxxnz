@@ -16,9 +16,11 @@ import {
 } from "./contexts";
 import { Tabs, TabType } from "./HomePage";
 import { useSaveScroll } from "./scroll";
-import { CalendarSection } from "./calendar/CalendarSection";
-import { RouteType, VaxxHelmet } from "./VaxxHelmet";
+import ReactMarkdown from "react-markdown";
+import { terms, privacy, cookie } from "./md/LegalContent";
 import { HelmetProvider } from "react-helmet-async";
+import { RouteType, VaxxHelmet } from "./VaxxHelmet";
+import { CalendarSection } from "./calendar/CalendarSection";
 
 const Contexts: React.FC<{}> = (props) => {
   const [healthpointLocations, setHealthpointLocations] =
@@ -47,10 +49,23 @@ function App() {
         <div className="App">
           <Header />
           <Switch>
+            <Route path="/terms-and-conditions">
+              <div className={"big-old-container"}>
+                <ReactMarkdown>{terms}</ReactMarkdown>
+              </div>
+            </Route>
+            <Route path="/privacy-policy">
+              <div className={"big-old-container"}>
+                <ReactMarkdown>{privacy}</ReactMarkdown>
+              </div>
+            </Route>
+            <Route path="/cookie-policy">
+              <div className={"big-old-container"}>
+                <ReactMarkdown>{cookie}</ReactMarkdown>
+              </div>
+            </Route>
             <Route path="/bookings/:date">
               <div className={"big-old-container"}>
-                <LocationPicker lastUpdateTime={lastUpdateTime} />
-                <VaxxHelmet routeType={RouteType.Booking} />
                 <BookingModal
                   bookingData={"ok" in bookingData ? bookingData.ok : undefined}
                 />
