@@ -17,7 +17,8 @@
     "walkInDriveThru": "免預約/駕駛通過",
     "availableBookingSlots": "可預訂時段",
     "vaccApptToBook": "現有接種疫苗預約.",
-    "mistake": "是否有任何錯誤?"
+    "mistake": "是否有任何錯誤?",
+    "changeOrCancelABooking": "更改或取消預訂"
   },
   "navigation": {
     "about": "關於",
