@@ -2,30 +2,35 @@ import { differenceInDays } from "date-fns";
 import React, { FunctionComponent } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { CrowdsourcedLocation } from "../../crowdsourced/CrowdsourcedData";
-import { Coords } from "../../location-picker/LocationPicker";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { getDistanceKm } from "../../utils/distance";
+import { formatDistanceKm } from "../../utils/locale";
+import { useCoords } from "../../utils/useCoords";
+import { useRadiusKm } from "../../utils/useRadiusKm";
 import { VaccineCentre } from "../../VaxComponents";
 
 interface CrowdsourcedBookingLocationProps {
   location: CrowdsourcedLocation;
-  coords: Coords;
   date: Date;
-  radiusKm: number;
 }
 
 export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingLocationProps> =
-  ({ location, radiusKm, coords, date }) => {
-    const { t } = useTranslation("common");
+  ({ location, date }) => {
+    const { t, i18n } = useTranslation("common");
     const locationCoords = { lat: location.lat, lng: location.lng };
-    const hours = location.openingHours[date.getDay()];
+    const hours = location.openingHours.find((a) => a.day === date.getDay());
+    const radiusKm = useRadiusKm();
+    const coords = useCoords();
     return (
       <VaccineCentre>
         <h3>{location.name}</h3>
         <p>
           {location.address} (
-          {t("core.kmAway", {
-            distance: Math.floor(getDistanceKm(coords, locationCoords)),
+          {t("core.distanceAway", {
+            distance: formatDistanceKm(
+              getDistanceKm(coords, locationCoords),
+              i18n.language
+            ),
           })}
           )
         </p>
@@ -64,7 +69,7 @@ export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingL
         <section style={{ marginTop: "0.8rem" }}>
           <h4>{t("walkins.hours")}</h4>
           {/* Closed should never happen */}
-          <p>{hours.isOpen ? hours.hours : "Closed"}</p>{" "}
+          <p>{hours?.isOpen ? hours?.hours : "Closed"}</p>{" "}
         </section>
 
         {location.website && (

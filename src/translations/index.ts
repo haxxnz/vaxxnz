@@ -6,6 +6,8 @@ const options = {
   lookupQuerystring: "locale",
 };
 
+export const unsupportedLocales = ["mi-NZ", "to-TO", "sm-SM"];
+
 export const config = {
   fallbackLng: "en-NZ",
   ns: ["common"],
@@ -13,15 +15,22 @@ export const config = {
   detection: options,
   supportedLngs: [
     "en-NZ",
+    "mi-NZ",
     "es-ES",
     "de-DE",
+    "id-ID",
     "ru-RU",
     "zh-CN",
     "zh-TW",
+    "hi-HI",
     "ms-MY",
     "sm-SM",
     "vi-VN",
     "to-TO",
+    "pl-PL",
+    "ar-IQ",
+    "ja-JP",
+    "tl-PH",
   ],
   interpolation: { escapeValue: false },
   resources,

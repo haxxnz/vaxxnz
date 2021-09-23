@@ -7,11 +7,18 @@
     "loading": "Загрузка...",
     "getDirections": "Получить направления",
     "makeABooking": "Выполнить бронирование",
-    "kmAway": "{{distance}} км отсюда",
+    "distanceAway": "{{distance}} отсюда",
     "lastUpdated": "Последнее обновление {{updatedAt}}",
     "cancel": "Отменить",
     "website": "Вебсайт",
-    "address": "Адрес"
+    "address": "Адрес",
+    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius.",
+    "walkInDriveThru": "Walk-in/Drive Thru",
+    "availableBookingSlots": "Available Booking Slots",
+    "vaccApptToBook": "Vaccination appointments available to book right now.",
+    "mistake": "Did we make a mistake?",
+    "changeOrCancelABooking": "Change or cancel a Booking"
   },
   "navigation": {
     "about": "О нас",
@@ -26,7 +33,8 @@
       "10km": "В пределах 10 км",
       "25km": "В пределах 25 км",
       "50km": "В пределах 50 км",
-      "100km": "В пределах 100 км"
+      "100km": "В пределах 100 км",
+      "10closest": "10 closest"
     },
     "locationModal": {
       "locaitonTitle": "Местоположение",
@@ -62,7 +70,15 @@
         "message": "Информация здесь может быть не на 100% точной. Пожалуйста, обратитесь на сайт данной локации."
       }
     },
-    "closed": "Закрыто"
+    "closed": "Закрыто",
+    "subHeader": "You don't need an appointment to get vaccinated at these venues. Visit <0>covid19.govt.nz</0> for more information.",
+    "noWalkinDriveThruFound": "There aren't any walk-in or drive thru vaccination centres in your area. Try make a booking instead.",
+    "healthpointModal": {
+      "title": "How to get vaccinated here",
+      "subtitle": "Visit the address below and ask for a free COVID vaccination.",
+      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
+      "venueDetails": "Venue Details"
+    }
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
@@ -78,7 +94,7 @@
       "availableSlots": "Доступные слоты",
       "noBookingsAvailable": "В этот день нет доступных бронирований :(",
       "backToCalendar": "Вернуться к календарю",
-      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may have availability."
     }
   },
   "footer": {

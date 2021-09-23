@@ -1,63 +1,69 @@
-import { format, parse } from "date-fns";
-import { useState, useCallback, useEffect, useMemo } from "react";
-import filterOldDates from "../../filterOldDates";
-import { Coords } from "../../location-picker/LocationPicker";
-import { getDistanceKm } from "../../utils/distance";
+import { addDays, format, parse } from "date-fns";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import {
+  CrowdsourcedLocation,
+  getCrowdsourcedLocations,
+} from "../../crowdsourced/CrowdsourcedData";
+import { filterSlots, getTodayDateStr } from "../../filterOldDates";
+import { Coords } from "../../utils/distance";
+import { filterLocations } from "../../utils/location";
+import { Radius } from "../../utils/locationTypes";
+import { memoize0, memoizeOnce } from "../../utils/memoize";
+import { useCoords } from "../../utils/useCoords";
+import { useRadiusKm } from "../../utils/useRadiusKm";
 import { DateString, MonthString } from "../CalendarData";
 import {
   BookingDateLocations,
-  Location,
-  LocationsData,
   BookingLocationSlotsPair,
+  Location,
+  AvailabilityData,
+  LocationRaw,
 } from "./BookingDataTypes";
 
-const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
-
-async function getLocations() {
+const getLocations = memoizeOnce(async function () {
   const res = await fetch(
     "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/uniqLocations.json"
   );
-  const data: Location[] = await res.json();
+  const dataRaw: LocationRaw[] = await res.json();
+  const data: Location[] = dataRaw.map((l) => ({
+    ...l,
+    isBooking: true,
+    lat: l.location.lat,
+    lng: l.location.lng,
+  }));
   return data;
-}
+});
 
-async function getLocationData(extId: string) {
+const getAvailabilityData = memoize0(async function (extId: string) {
   const res = await fetch(
     `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/availability/${extId}.json`
   );
-  const data: LocationsData = await res.json();
+  const data: AvailabilityData = await res.json();
   return data;
-}
+});
 
-async function getMyCalendar(coords: Coords, radiusKm: number) {
+async function getMyCalendar(coords: Coords, radiusKm: Radius) {
   const locations = await getLocations();
-  const filtredLocations = locations.filter((location) => {
-    const distance = getDistanceKm(coords, location.location);
-    return distance < radiusKm;
-  });
-  if (filtredLocations.length === 0) {
-    if (
-      !(
-        coords.lat > NZbbox[1] &&
-        coords.lat < NZbbox[3] &&
-        coords.lng > NZbbox[0] &&
-        coords.lng < NZbbox[2]
-      )
-    ) {
-      throw new Error(
-        "No vaccination sites found for this search query. Are you in New Zealand?"
-      );
-    }
-    throw new Error(
-      "No vaccination sites found for this search query. Try a different kilometer radius?"
-    );
-  }
+  const crowdSourced = getCrowdsourcedLocations();
+  const combinedSorted = filterLocations(
+    [...locations, ...crowdSourced],
+    coords,
+    radiusKm,
+    (l) => [l.lat, l.lng]
+  );
+
   let oldestLastUpdatedTimestamp = Infinity;
+  const bmvLocations = combinedSorted.filter((l) =>
+    "isBooking" in l ? true : false
+  ) as Location[];
+  const crowdSourcedLocations = combinedSorted.filter((l) =>
+    "isCrowdSourced" in l ? true : false
+  ) as CrowdsourcedLocation[];
   const availabilityDatesAndLocations = await Promise.all(
-    filtredLocations.map(async (location) => {
-      let locationsData: LocationsData | undefined = undefined;
+    bmvLocations.map(async (location) => {
+      let locationsData: AvailabilityData | undefined = undefined;
       try {
-        locationsData = await getLocationData(location.extId);
+        locationsData = await getAvailabilityData(location.extId);
       } catch (e) {
         console.error("getMyCalendar e", e);
       }
@@ -69,9 +75,15 @@ async function getMyCalendar(coords: Coords, radiusKm: number) {
         oldestLastUpdatedTimestamp = lastUpdatedTimestamp;
       }
 
+      const todayDateStr = getTodayDateStr();
+      const slots = filterSlots(locationsData?.availabilityDates[todayDateStr]);
+
       return {
         location,
-        availabilityDates: locationsData?.availabilityDates,
+        availabilityDates: {
+          ...locationsData?.availabilityDates,
+          [todayDateStr]: slots,
+        },
       };
     })
   );
@@ -82,13 +94,28 @@ async function getMyCalendar(coords: Coords, radiusKm: number) {
     // 90 days in the future
     const date = new Date().setDate(today.getDate() + i);
     const dateStr = format(date, "yyyy-MM-dd");
-    const locationSlotsPairs: BookingLocationSlotsPair[] = [];
+    const locationSlotsPairs: (
+      | BookingLocationSlotsPair
+      | CrowdsourcedLocation
+    )[] = [];
     for (let j = 0; j < availabilityDatesAndLocations.length; j++) {
       const availabilityDatesAndLocation = availabilityDatesAndLocations[j];
       const { location, availabilityDates } = availabilityDatesAndLocation;
       const slots = availabilityDates ? availabilityDates[dateStr] : [];
       locationSlotsPairs.push({ isBooking: true, location, slots });
     }
+
+    for (const location of crowdSourcedLocations) {
+      const date = addDays(today, i);
+      const isOpen = location.openingHours.find(
+        (a) => a.day === date.getDay()
+      )?.isOpen;
+      if (!isOpen) {
+        continue;
+      }
+      locationSlotsPairs.push(location);
+    }
+
     dateLocationsPairs.push({
       dateStr,
       locationSlotsPairs,
@@ -97,7 +124,7 @@ async function getMyCalendar(coords: Coords, radiusKm: number) {
   return { dateLocationsPairs, oldestLastUpdatedTimestamp };
 }
 
-type BookingDataResult =
+export type BookingDataResult =
   | { ok: BookingData }
   | { error: Error }
   | { loading: true };
@@ -107,8 +134,12 @@ export type BookingData = Map<
   Map<DateString, BookingLocationSlotsPair[]>
 >;
 
-function getBookingData(bookingDateLocations: BookingDateLocations[]) {
-  const dateLocationsPairs = filterOldDates(bookingDateLocations);
+function generateBookingData(
+  bookingDateLocations: BookingDateLocations[],
+  coords: Coords,
+  radiusKm: Radius
+) {
+  const dateLocationsPairs = bookingDateLocations;
   let byMonth: BookingData = new Map();
   dateLocationsPairs.forEach((dateLocationsPair) => {
     const date = parse(dateLocationsPair.dateStr, "yyyy-MM-dd", new Date());
@@ -127,8 +158,6 @@ function getBookingData(bookingDateLocations: BookingDateLocations[]) {
 }
 
 export const useBookingData = (
-  coords: Coords,
-  radiusKm: number,
   setLastUpdateTime: (time: Date | null) => void
 ): BookingDataResult => {
   const [loading, setLoading] = useState(false);
@@ -136,6 +165,8 @@ export const useBookingData = (
   const [dateLocationsPairs, setDateLocationsPairs] = useState<
     BookingDateLocations[]
   >([]);
+  const radiusKm = useRadiusKm();
+  const coords = useCoords();
 
   const loadCalendar = useCallback(async () => {
     setLoading(true);
@@ -156,8 +187,8 @@ export const useBookingData = (
 
   // FOR FUTURE: set directly in setState to reduce RAM usage?
   const byMonth = useMemo(
-    () => getBookingData(dateLocationsPairs),
-    [dateLocationsPairs]
+    () => generateBookingData(dateLocationsPairs, coords, radiusKm),
+    [coords, dateLocationsPairs, radiusKm]
   );
 
   useEffect(() => {
@@ -169,6 +200,10 @@ export const useBookingData = (
   } else if (error) {
     return { error };
   } else {
-    return { ok: byMonth };
+    return {
+      ok: new Map(
+        Array.from(byMonth).sort((a, b) => String(b[0]).localeCompare(a[0]))
+      ),
+    };
   }
 };

@@ -6,7 +6,7 @@ Hey there! Thank you for your interest in helping us translate Vaxx.nz. Here is 
 
 **Ask: Does Vaxx.nz currently support the language I want to contribute?**
 
-**YES**: Please propose any changes to the translations by editing the appropriate `common.json` file in the `/translations` folder.
+**YES**: Please propose any changes to the translations by editing the appropriate `common_[LOCALE].json` file in the `/translations/locales` folder.
 
 Then create a Pull Request for us to review.
 
@@ -32,7 +32,7 @@ Then create a Pull Request for us to review.
    ];
    ```
 
-3. Duplicate the default translations from `common_en.json` into a file called `common_[LOCALE].json`
+3. Duplicate the default translations from `common_en-NZ.json` into a file called `common_[LOCALE].json`
 
    E.g. `common_vi-VN.json`
 
@@ -54,7 +54,7 @@ If you feel that translation keys are missing, please do the following:
    ```bash
    $ yarn run sync:i18n
    ```
-   This looks at the `common_en.json` file (source of truth) and syncs its key/value pairs with all other translation files. The console output will tell you how many changes where made to each file. You may then go ahead and add the missing translations.
+   This looks at the `common_en-NZ.json` file (source of truth) and syncs its key/value pairs with all other translation files. The console output will tell you how many changes where made to each file. You may then go ahead and add the missing translations.
 
 ## Need a hand?
 

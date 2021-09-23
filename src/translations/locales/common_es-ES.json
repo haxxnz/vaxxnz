@@ -7,11 +7,18 @@
     "loading": "Cargando...",
     "getDirections": "Obtener las direcciones",
     "makeABooking": "Hacer una reserva",
-    "kmAway": "{{distance}}km de distancia",
+    "distanceAway": "{{distance}} de distancia",
     "lastUpdated": "Última actualización {{updatedAt}}",
     "cancel": "Cancelar",
     "website": "Website",
-    "address": "Address"
+    "address": "Address",
+    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius.",
+    "walkInDriveThru": "Walk-in/Drive Thru",
+    "availableBookingSlots": "Available Booking Slots",
+    "vaccApptToBook": "Vaccination appointments available to book right now.",
+    "mistake": "Did we make a mistake?",
+    "changeOrCancelABooking": "Change or cancel a Booking"
   },
   "navigation": {
     "about": "Sobre nosotros",
@@ -26,7 +33,8 @@
       "10km": "Dentro de 10km",
       "25km": "Dentro de 25km",
       "50km": "Dentro de 50km",
-      "100km": "Dentro de 100km"
+      "100km": "Dentro de 100km",
+      "10closest": "10 closest"
     },
     "locationModal": {
       "locaitonTitle": "Ubicación",
@@ -62,7 +70,15 @@
         "message": "The information here may not be 100% accurate. Please refer to the locations website."
       }
     },
-    "closed": "Closed"
+    "closed": "Closed",
+    "subHeader": "You don't need an appointment to get vaccinated at these venues. Visit <0>covid19.govt.nz</0> for more information.",
+    "noWalkinDriveThruFound": "There aren't any walk-in or drive thru vaccination centres in your area. Try make a booking instead.",
+    "healthpointModal": {
+      "title": "How to get vaccinated here",
+      "subtitle": "Visit the address below and ask for a free COVID vaccination.",
+      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
+      "venueDetails": "Venue Details"
+    }
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
@@ -79,7 +95,7 @@
       "availableSlots": "Espacios disponibles",
       "noBookingsAvailable": "No hay reservas disponibles en este día :(",
       "backToCalendar": "Volver al calendario",
-      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may have availability."
     }
   },
   "footer": {

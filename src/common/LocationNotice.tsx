@@ -1,5 +1,3 @@
-import { faWalking, faCar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FunctionComponent } from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { Instruction } from "../today-locations/healthpoint/HealthpointData";
@@ -15,15 +13,10 @@ export const LocationNotice: FunctionComponent<LocationNoticeProps> = ({
   return (
     <>
       {instructions.includes(Instruction.walkIn) && (
-        <div className="WalkInTypes">
-          <h3>
-            <Trans
-              i18nKey="walkins.walkinAwailable"
-              t={t}
-              components={[<FontAwesomeIcon icon={faWalking} />]}
-            />
-          </h3>
+        <div>
+          <br />
           <p>{t("walkins.noticeList.text")}</p>
+          <br />
           <p>
             <Trans
               i18nKey="walkins.cancellationNotice.message"
@@ -43,15 +36,10 @@ export const LocationNotice: FunctionComponent<LocationNoticeProps> = ({
       )}
 
       {instructions.includes(Instruction.driveThrough) && (
-        <div className="WalkInTypes">
-          <h3>
-            <Trans
-              i18nKey="walkins.driveThroughAvailable"
-              t={t}
-              components={[<FontAwesomeIcon icon={faCar} />]}
-            />
-          </h3>
+        <div>
+          <br />
           <p>{t("walkins.noticeList.text")}</p>
+          <br />
           <p>
             <Trans
               i18nKey="walkins.cancellationNotice.message"

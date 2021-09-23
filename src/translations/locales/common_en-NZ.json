@@ -7,11 +7,18 @@
     "loading": "Loading...",
     "getDirections": "Get Directions",
     "makeABooking": "Make a Booking",
-    "kmAway": "{{distance}}km away",
+    "changeOrCancelABooking": "Change or cancel a Booking",
+    "walkInDriveThru": "Walk-in/Drive Thru",
+    "distanceAway": "{{distance}} away",
     "lastUpdated": "Last updated {{updatedAt}}",
     "cancel": "Cancel",
     "website": "Website",
-    "address": "Address"
+    "address": "Address",
+    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different search radius.",
+    "availableBookingSlots": "Available Booking Slots",
+    "vaccApptToBook": "Vaccination appointments available to book right now.",
+    "mistake": "Did we make a mistake?"
   },
   "navigation": {
     "about": "About",
@@ -33,11 +40,14 @@
       "10km": "Within 10km",
       "25km": "Within 25km",
       "50km": "Within 50km",
-      "100km": "Within 100km"
+      "100km": "Within 100km",
+      "10closest": "10 closest"
     }
   },
   "walkins": {
-    "sectionHeader": "Open Today",
+    "sectionHeader": "Walk-in and Drive Thru Vaccination Centres",
+    "subHeader": "You don't need an appointment to get vaccinated at these venues. Visit <0>covid19.govt.nz</0> for more information.",
+    "noWalkinDriveThruFound": "There aren't any walk-in or drive thru vaccination centres in your area. Try make a booking instead.",
     "openString": "Open {{openTimeString}}",
     "cancellationNotice": {
       "info": "Please Don't Double-book",
@@ -47,6 +57,12 @@
     "noticeList": {
       "title": "How to get Vaccinated",
       "text": "Vaccinations might have a queue, and some places might not have spare vaccines available today - ring ahead if you can!"
+    },
+    "healthpointModal": {
+      "title": "How to get vaccinated here",
+      "subtitle": "Visit the address below and ask for a free COVID vaccination.",
+      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
+      "venueDetails": "Venue Details"
     },
     "walkinAwailable": "<0 /> Walk-in vaccinations available",
     "driveThroughAvailable": "<0 /> Drive-through vaccinations available",
@@ -77,7 +93,7 @@
       },
       "availableSlots": "Available to Book",
       "noBookingsAvailable": "No bookings are available on this day :(",
-      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots.",
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may have availability.",
       "backToCalendar": "Back to Calendar"
     }
   },
