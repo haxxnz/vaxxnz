@@ -197,10 +197,14 @@ const BookingLocation = ({
               }
             >
 <<<<<<< HEAD
+<<<<<<< HEAD
               {t("core.changeOrCancel")}
 =======
               {t("core.changeOrCancelABooking")}
 >>>>>>> main
+=======
+              {t("core.changeOrCancelABooking")}
+>>>>>>> ce34220efd0f55bc176fac8bdeb1f8a3e267fd7d
             </Button>
           </a>
         </div>
