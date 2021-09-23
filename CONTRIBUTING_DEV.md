@@ -83,6 +83,13 @@ To create a production build, use yarn build.
 
 You are good to start coding!
 
+## Making a Pull Request
+When you make a Pull Request, we would highly appreciate if you tick this checkbox:
+
+![allow-maintainers-to-make-edits-sidebar-checkbox](https://user-images.githubusercontent.com/2031472/134484350-7a25d09c-56fc-41fe-bff0-6341ba4d7699.png)
+
+This will allow us to push a commit to your branch if you accidentally made a mistake! That makes the process smoother by avoiding back-and-forth.
+
 ## Help! I'm stuck!
 
 If you need any help, we have our [Discord Server](https://discord.gg/nkbnqhR8A8). Feel free to join and ask us anything, we don't bite!

@@ -17,7 +17,8 @@
     "walkInDriveThru": "Walk-in/Drive Thru",
     "availableBookingSlots": "Available Booking Slots",
     "vaccApptToBook": "Vaccination appointments available to book right now.",
-    "mistake": "Did we make a mistake?"
+    "mistake": "Did we make a mistake?",
+    "changeOrCancelABooking": "Change or cancel a Booking"
   },
   "navigation": {
     "about": "Tungkol",
