@@ -21,7 +21,7 @@ export interface CrowdsourcedLocation {
   name: string;
   branch?: string;
   address: string;
-  telephone?: string;
+  telephone: string;
   openingHours: OpeningHours[];
   instructions: Instruction[];
   website?: string;

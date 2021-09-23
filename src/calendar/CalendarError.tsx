@@ -108,8 +108,6 @@ const Map = styled.img`
   }
 `;
 
-
-
 export function CalendarError(props: { errorMessage: string }) {
   const { t } = useTranslation("common");
   return (
@@ -120,9 +118,7 @@ export function CalendarError(props: { errorMessage: string }) {
             <Title>{line}</Title>
           ))}
           <Section>
-            <Subheader>
-              {t("core.mistake")}
-              </Subheader>
+            <Subheader>{t("core.mistake")}</Subheader>
             <Button
               href="https://github.com/CovidEngine/vaxxnz/issues"
               target="_blank"

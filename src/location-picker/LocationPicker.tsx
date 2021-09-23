@@ -8,10 +8,10 @@ import { unsupportedLocales } from "../translations";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { getDateFnsLocale } from "../utils/locale";
 import { DEFAULT_LOCATION } from "../utils/consts";
-import { useSearchParams } from "../utils/url";
 import { HeaderMain } from "../VaxComponents";
 import LocationModal from "./LocationModal";
 import { useCoords } from "../utils/useCoords";
+import { usePlaceName } from "../utils/usePlaceName";
 
 interface LocationPickerProps {
   lastUpdateTime: Date | null;
@@ -20,7 +20,7 @@ interface LocationPickerProps {
 export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
   lastUpdateTime,
 }) => {
-  const { placeName } = useSearchParams();
+  const placeName = usePlaceName();
   const coords = useCoords();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -39,11 +39,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
             <Trans
               i18nKey="navigation.vaccinationsNear"
               t={t}
-              components={[
-                <strong>
-                  {{ location: placeName || DEFAULT_LOCATION.placeName }}
-                </strong>,
-              ]}
+              components={[<strong>{{ location: placeName }}</strong>]}
             />
           </h1>
           <p style={{ color: "#666" }}>

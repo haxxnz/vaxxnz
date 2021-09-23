@@ -1,13 +1,12 @@
 {
   "core": {
     "title": "Vaxx.nz",
-    "tagline": "Find a COVID vaccination",
+    "tagline": "Find a COVID-19 vaccine",
     "subtitle": "See ways to get vaccinated near you.",
     "disclaimerNotAGovWebsite": "This is not an official Government website. To get vaccinated visit <0>bookmyvaccine.nz</0>",
     "loading": "Loading...",
     "getDirections": "Get Directions",
     "makeABooking": "Make a Booking",
-    "changeOrCancelABooking": "Change or cancel a Booking",
     "walkInDriveThru": "Walk-in/Drive Thru",
     "distanceAway": "{{distance}} away",
     "lastUpdated": "Last updated {{updatedAt}}",

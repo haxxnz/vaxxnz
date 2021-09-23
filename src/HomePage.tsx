@@ -1,35 +1,12 @@
-import React, { FunctionComponent } from "react";
-import { Switch, Route } from "react-router";
+import { FunctionComponent } from "react";
 import styled from "styled-components";
-import {
-  CalendarSection,
-  CalendarSectionProps,
-} from "./calendar/CalendarSection";
 import { PageLink } from "./PageLink";
-import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
 import { useTranslation } from "react-i18next";
 
-interface HomePageProps extends CalendarSectionProps {}
-
-enum TabType {
+export enum TabType {
   walkIn,
   bookings,
 }
-
-export const HomePage: FunctionComponent<HomePageProps> = ({ bookingData }) => {
-  return (
-    <Switch>
-      <Route path="/locations">
-        <Tabs activeTab={TabType.walkIn} />
-        <TodayLocationsSection />
-      </Route>
-      <Route>
-        <Tabs activeTab={TabType.bookings} />
-        <CalendarSection bookingData={bookingData} />
-      </Route>
-    </Switch>
-  );
-};
 
 interface TabsProps {
   activeTab: TabType;
@@ -41,6 +18,7 @@ const StyledTabs = styled.div`
   border-right: 1px solid lightgray;
   display: flex;
   margin-bottom: 1.5rem;
+  border-top: 1px solid lightgray;
 
   a {
     display: block;
@@ -54,7 +32,7 @@ const StyledTabs = styled.div`
     flex-direction: column;
   }
 `;
-const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => {
+export const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => {
   const { t } = useTranslation("common");
   return (
     <StyledTabs role="tablist">
