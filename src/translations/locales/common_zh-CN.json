@@ -7,18 +7,18 @@
     "loading": "正在加载...",
     "getDirections": "查询路线",
     "makeABooking": "预约",
+    "changeOrCancelABooking": "更改或取消预订",
+    "walkInDriveThru": "免预约/驾驶通过",
     "distanceAway": "{{distance}}",
     "lastUpdated": "最近更新于 {{updatedAt}}",
     "cancel": "取消",
     "website": "网站",
     "address": "地址",
     "noResultsNotInNZ": "此搜索查询没有找到疫苗接种点。您是在新西兰吗?",
-    "noResultsInRadius": "此搜索查询没有找到疫苗接种点。请尝试不同的公里范围。",
-    "walkInDriveThru": "Walk-in/Drive Thru",
-    "availableBookingSlots": "Available Booking Slots",
-    "vaccApptToBook": "Vaccination appointments available to book right now.",
-    "mistake": "Did we make a mistake?",
-    "changeOrCancelABooking": "Change or cancel a Booking"
+    "noResultsInRadius": "此搜索查询没有找到疫苗接种点。请尝试不同的公里范围。",    
+    "availableBookingSlots": "可预订时段",
+    "vaccApptToBook": "现有接种疫苗预约.",
+    "mistake": "有什么错误吗?"
   },
   "navigation": {
     "about": "关于",
@@ -34,7 +34,7 @@
       "25km": "25 公里内",
       "50km": "50 公里内",
       "100km": "100 公里内",
-      "10closest": "10 closest"
+      "10closest": "10个最靠近地点"
     },
     "locationModal": {
       "locaitonTitle": "位置",
