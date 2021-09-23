@@ -74,8 +74,7 @@ const VaxxCanonical: React.FC<{
   url: string;
   title: string;
   description: string;
-  keywords: string[];
-}> = ({ url, title, description, keywords }) => {
+}> = ({ url, title, description }) => {
   const { i18n } = useTranslation("common");
   return (
     <Helmet>
@@ -83,7 +82,6 @@ const VaxxCanonical: React.FC<{
       <title>{title}</title>
       <link rel="canonical" href={url} />
       <meta name="description" content={description} />
-      <meta name="keywords" content={keywords.join(",")} />
 
       {config.supportedLngs.map((lng) => {
         if (lng === "cimode") {
@@ -125,113 +123,51 @@ export function VaxxHelmet({
 
   let title;
   let description;
-  let keywords;
 
-  const commonKeywords = [
-    "covid",
-    "vaccine",
-    "nz",
-    "covid-19",
-    "vaccine near me",
-    "vaccine rollout",
-    "new zealand",
-    "medsafe",
-    "ministry of health",
-    "vaccination",
-    "vaccination centres",
-    "group 3",
-    "group 4",
-    "vaccination sites",
-    "vaccination locations",
-  ];
   switch (routeType) {
     case RouteType.Home:
     case RouteType.Bookings:
       title = `COVID-19 Vaccine Bookings - ${placeName} - Vaxx.nz`;
       description =
         "Available Booking Slots. Vaccination appointments available to book right now. This is not an official Government website. To get vaccinated visit bookmyvaccine.nz.";
-      keywords = [
-        ...commonKeywords,
-        "booking",
-        "book",
-        "book my vaccine",
-        "vaccine schedule",
-        "vaccination schedule",
-        "today",
-        "tomorrow",
-        "week",
-        "weekend",
-        `${placeName}`,
-      ];
       return (
         <VaxxCanonical
           url={getCanonicalHome()}
           title={title}
           description={description}
-          keywords={keywords}
         />
       );
     case RouteType.Locations:
       title = `COVID-19 Vaccination Centres - ${placeName} - Vaxx.nz`;
       description =
         "Walk-in and Drive Thru Vaccination Centres. You don't need an appointment to get vaccinated at these venues. Visit covid19.govt.nz for more information. ";
-      keywords = [
-        ...commonKeywords,
-        "walk-in",
-        "drive thru",
-        "drive through",
-        `${placeName}`,
-      ];
       return (
         <VaxxCanonical
           url={getCanonicalHomeLocations()}
           title={title}
           description={description}
-          keywords={keywords}
         />
       );
     case RouteType.Booking:
       title = `Available to Book - ${placeName} - ${titleDate} - Vaxx.nz`;
       description =
         "Find a location and time from the list below. Click on the Make a Booking button, this will take you to bookmyvaccine.nz. Enter your details.";
-      keywords = [
-        ...commonKeywords,
-        "booking",
-        "book",
-        "book my vaccine",
-        "vaccine schedule",
-        "vaccination schedule",
-        "today",
-        "tomorrow",
-        "week",
-        "weekend",
-        `${placeName}`,
-      ];
       return (
         <VaxxCanonical
           url={getCanonicalCalendarDay()}
           title={title}
           description={description}
-          keywords={keywords}
         />
       );
     case RouteType.Location:
       title = `${location?.name} - Vaxx.nz`;
       description = `You can get a free COVID-19 vaccination at ${location?.address}. You can also call ${location?.telephone} to check how long the queues are.`;
 
-      keywords = [
-        ...commonKeywords,
-        "walk-in",
-        "drive thru",
-        "drive through",
-        `${location?.name}`,
-      ];
       return (
         <VaxxCanonical
           url={getCanonicalLocation()}
           title={title}
           description={description}
-          keywords={keywords}
         />
       );
   }
