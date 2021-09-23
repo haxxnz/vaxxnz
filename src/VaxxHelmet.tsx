@@ -3,8 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { config } from "./translations";
-import { DEFAULT_LOCATION } from "./utils/consts";
-import { useSearchParams } from "./utils/url";
+import { usePlaceName } from "./utils/usePlaceName";
 
 function getSearchParams() {
   return Object.fromEntries([
@@ -102,9 +101,7 @@ export function VaxxHelmet({
   location?: { name: string; address: string; telephone: string };
 }) {
   const { date } = useParams<{ date: string }>();
-  const { placeName } = useSearchParams();
-  const suburb = placeName || DEFAULT_LOCATION.placeName;
-
+  const placeName = usePlaceName();
   const dateObject = parse(date, "yyyy-MM-dd", new Date());
 
   const titleDate = `${dateObject.toLocaleDateString(["en-NZ"], {
@@ -137,7 +134,7 @@ export function VaxxHelmet({
   switch (routeType) {
     case RouteType.Home:
     case RouteType.Bookings:
-      title = `COVID-19 Vaccine Bookings - ${suburb} - Vaxx.nz`;
+      title = `COVID-19 Vaccine Bookings - ${placeName} - Vaxx.nz`;
       description =
         "Available Booking Slots. Vaccination appointments available to book right now. This is not an official Government website. To get vaccinated visit bookmyvaccine.nz.";
       keywords = [
@@ -151,7 +148,7 @@ export function VaxxHelmet({
         "tomorrow",
         "week",
         "weekend",
-        `${suburb}`,
+        `${placeName}`,
       ];
       return (
         <VaxxCanonical
@@ -162,7 +159,7 @@ export function VaxxHelmet({
         />
       );
     case RouteType.Locations:
-      title = `COVID-19 Vaccination Centres - ${suburb} - Vaxx.nz`;
+      title = `COVID-19 Vaccination Centres - ${placeName} - Vaxx.nz`;
       description =
         "Walk-in and Drive Thru Vaccination Centres. You don't need an appointment to get vaccinated at these venues. Visit covid19.govt.nz for more information. ";
       keywords = [
@@ -170,7 +167,7 @@ export function VaxxHelmet({
         "walk-in",
         "drive thru",
         "drive through",
-        `${suburb}`,
+        `${placeName}`,
       ];
       return (
         <VaxxCanonical
@@ -181,7 +178,7 @@ export function VaxxHelmet({
         />
       );
     case RouteType.Booking:
-      title = `Available to Book - ${suburb} - ${titleDate} - Vaxx.nz`;
+      title = `Available to Book - ${placeName} - ${titleDate} - Vaxx.nz`;
       description =
         "Find a location and time from the list below. Click on the Make a Booking button, this will take you to bookmyvaccine.nz. Enter your details.";
       keywords = [
@@ -195,7 +192,7 @@ export function VaxxHelmet({
         "tomorrow",
         "week",
         "weekend",
-        `${suburb}`,
+        `${placeName}`,
       ];
       return (
         <VaxxCanonical
