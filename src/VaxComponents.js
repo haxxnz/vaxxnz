@@ -118,7 +118,7 @@ export const MonthContainer = styled.section`
   button {
     box-sizing: border-box;
     font-family: inherit;
-    min-height: 144px;
+    min-height: 112px;
     height: 100%;
     width: 100%;
 
@@ -133,6 +133,7 @@ export const MonthContainer = styled.section`
 
     div {
       height: 100%;
+      min-height: inherit;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
