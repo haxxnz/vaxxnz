@@ -196,7 +196,11 @@ const BookingLocation = ({
                 })
               }
             >
+<<<<<<< HEAD
               {t("core.changeOrCancel")}
+=======
+              {t("core.changeOrCancelABooking")}
+>>>>>>> main
             </Button>
           </a>
         </div>
