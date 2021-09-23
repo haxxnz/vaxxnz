@@ -7,7 +7,8 @@
     "loading": "Loading...",
     "getDirections": "Get Directions",
     "makeABooking": "Make a Booking",
-    "walkInDriveThru":"Walk-in/Drive Thru",
+    "changeOrCancelABooking": "Change or cancel a Booking",
+    "walkInDriveThru": "Walk-in/Drive Thru",
     "distanceAway": "{{distance}} away",
     "lastUpdated": "Last updated {{updatedAt}}",
     "cancel": "Cancel",
@@ -18,7 +19,7 @@
     "availableBookingSlots": "Available Booking Slots",
     "vaccApptToBook": "Vaccination appointments available to book right now.",
     "mistake" : "Did we make a mistake?",
-    "changeOrCancel" : "Change or cancel a Booking"
+    "changeOrCancelBooking" : "Change or cancel a Booking"
   },
   "navigation": {
     "about": "About",
