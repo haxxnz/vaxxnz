@@ -8,7 +8,7 @@
     "getDirections": "查询路线",
     "makeABooking": "预约",
     "changeOrCancelABooking": "更改或取消预订",
-    "walkInDriveThru": "Walk-in/Drive Thru",
+    "walkInDriveThru": "免预约/驾驶通过",
     "distanceAway": "{{distance}}",
     "lastUpdated": "最近更新于 {{updatedAt}}",
     "cancel": "取消",
@@ -41,8 +41,8 @@
       "25km": "25 公里内",
       "50km": "50 公里内",
       "100km": "100 公里内",
-      "10closest": "10 closest"
-    }    
+      "10closest": "10个最靠近地点"
+    }
   },
   "walkins": {
     "sectionHeader": "免预约及驾驶通过(drive-thru)接种点",
