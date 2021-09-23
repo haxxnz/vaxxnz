@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { config } from "./translations";
+import { DEFAULT_LOCATION } from "./utils/consts";
 import { usePlaceName } from "./utils/usePlaceName";
 
 function getSearchParams() {
@@ -17,7 +18,19 @@ function getSearch(searchParams: Record<string, string>) {
 }
 
 function getBookingDataParams(searchParams: Record<string, string>) {
-  const { lat, lng, placeName, radius } = searchParams;
+  let { lat, lng, placeName, radius } = searchParams;
+  if (
+    lat === `${DEFAULT_LOCATION.lat}` &&
+    lng === `${DEFAULT_LOCATION.lng}` &&
+    placeName === DEFAULT_LOCATION.placeName
+  ) {
+    lat = "";
+    lng = "";
+    placeName = "";
+  }
+  if (radius === "10") {
+    radius = "";
+  }
   return {
     ...(lat ? { lat } : {}),
     ...(lng ? { lng } : {}),
