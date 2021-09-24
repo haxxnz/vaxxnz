@@ -169,15 +169,15 @@ Depending on the cookie, our Sites may use both first-party and third-party cook
 
 Most browsers are set to accept cookies by default. However, you can remove or reject cookies in your browser’s settings. This could affect the availability and functionality of the Sites. For more information on how to control cookies, check your browser or device’s settings for how you can control or reject cookies, or visit the following links:
 
-**Google Chrome**: https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DDesktop&hl=en
-**Apple Safari**: https://support.apple.com/en-nz/guide/safari/sfri11471/mac
-**Microsoft Edge:** https://support.microsoft.com/en-us/windows/microsoft-edge-browsing-data-and-privacy-bb8174ba-9d73-dcf2-9b4a-c582b4e640dd
-**Microsoft Internet Explorer**: https://support.microsoft.com/en-us/windows/delete-and-manage-cookies-168dab11-0753-043d-7c16-ede5947fc64d
-**Mozilla Firefox**: https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop?redirectslug=enable-and-disable-cookies-website-preferences&redirectlocale=en-US
-**Opera**: https://help.opera.com/en/latest/
-**Android (Chrome)**: https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DAndroid&hl=en&oco=1
-**iPhone and iPad (Chrome)**: https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DiOS&hl=en&oco=1
-**iPhone and iPad (Safari)**: https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DAndroid&hl=en&oco=1
+<a href="https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DDesktop&hl=en">Google Chrome</a>
+<a href="https://support.apple.com/en-nz/guide/safari/sfri11471/mac">Apple Safari</a>
+<a href="https://support.microsoft.com/en-us/windows/microsoft-edge-browsing-data-and-privacy-bb8174ba-9d73-dcf2-9b4a-c582b4e640dd">Microsoft Edge</a>
+<a href="https://support.microsoft.com/en-us/windows/delete-and-manage-cookies-168dab11-0753-043d-7c16-ede5947fc64d">Microsoft Internet Explorer</a>
+<a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop?redirectslug=enable-and-disable-cookies-website-preferences&redirectlocale=en-US">Mozilla Firefox</a>
+<a href="https://help.opera.com/en/latest/">Opera</a>
+<a href="https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DAndroid&hl=en&oco=1">Android (Chrome)</a>
+<a href="https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DiOS&hl=en&oco=1">iPhone and iPad (Chrome)</a>
+<a href="https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DAndroid&hl=en&oco=1">iPhone and iPad (Safari)</a>
 
 ### How Long are Cookies Stored?
 
