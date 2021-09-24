@@ -1,4 +1,5 @@
-import { Spinner } from "baseui/spinner";
+import {withStyle} from 'baseui';
+import CustomSpinner from '../utils/customSpinner'
 import { FunctionComponent } from "react";
 import { sum } from "../utils/math";
 import {
@@ -37,7 +38,7 @@ export const LoadingBookingCalendar: FunctionComponent = () => {
         backgroundColor: "white",
       }}
     >
-      <Spinner color="black" />
+      <CustomSpinner />
       <div
         style={{
           marginLeft: "1rem",
