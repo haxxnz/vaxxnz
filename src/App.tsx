@@ -50,12 +50,12 @@ function App() {
           <Switch>
             <Route path="/terms-and-conditions">
               <div className={"big-old-container"}>
-                <ReactMarkdown>{terms}</ReactMarkdown>
+                <h1>{terms}</h1>
               </div>
             </Route>
             <Route path="/privacy-policy">
               <div className={"big-old-container"}>
-                <ReactMarkdown>{privacy}</ReactMarkdown>
+                <h2>{privacy}</h2>
               </div>
             </Route>
             <Route path="/cookie-policy">
