@@ -373,7 +373,7 @@ export const WalkMessage = styled.div`
 export const WalkBox = styled.button`
   box-sizing: border-box;
   font-family: inherit;
-  min-height: 144px;
+  min-height: 112px;
   height: 100%;
   width: 100%;
   flex: 1;
@@ -412,6 +412,7 @@ export const WalkBox = styled.button`
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    min-height: inherit;
   }
   .Chevron {
     width: 1.25rem;
