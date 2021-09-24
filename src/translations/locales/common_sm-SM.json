@@ -7,11 +7,18 @@
     "loading": "utaina",
     "getDirections": "Vaai fa'atonuga",
     "makeABooking": "Faamauina lou avanoa",
-    "kmAway": "{{distance}} kilomita le alu",
+    "distanceAway": "{{distance}} le alu",
     "lastUpdated": "Taimi mulimuli ga fa'afouina ai - {{updatedAt}}",
     "cancel": "Fa'aleaogaina",
     "website": "Upega tafa'ilagi",
-    "address": "Tuatusi"
+    "address": "Tuatusi",
+    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius.",
+    "walkInDriveThru": "Walk-in/Drive Thru",
+    "availableBookingSlots": "Available Booking Slots",
+    "vaccApptToBook": "Vaccination appointments available to book right now.",
+    "mistake": "Did we make a mistake?",
+    "changeOrCancelABooking": "Change or cancel a Booking"
   },
   "navigation": {
     "about": "Uiga Tāua",
@@ -33,7 +40,8 @@
       "10km": "Totonu ole 10km",
       "25km": "Totonu ole 25km",
       "50km": "Totonu ole 50km",
-      "100km": "Totonu ole 100km"
+      "100km": "Totonu ole 100km",
+      "10closest": "10 closest"
     }
   },
   "walkins": {
@@ -62,7 +70,15 @@
         "message": "I lenei auiliiliga atonu e le 100 pasene sona atoatoa. Fa'amolemole tagai ane ile nofoaga ile upega tafa'ilagi."
       }
     },
-    "closed": "Tapuni"
+    "closed": "Tapuni",
+    "subHeader": "You don't need an appointment to get vaccinated at these venues. Visit <0>covid19.govt.nz</0> for more information.",
+    "noWalkinDriveThruFound": "There aren't any walk-in or drive thru vaccination centres in your area. Try make a booking instead.",
+    "healthpointModal": {
+      "title": "How to get vaccinated here",
+      "subtitle": "Visit the address below and ask for a free COVID vaccination.",
+      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
+      "venueDetails": "Venue Details"
+    }
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
@@ -78,7 +94,7 @@
       "availableSlots": "Avanoa fetaui",
       "noBookingsAvailable": "Leai ni avanoa o maua ile asō :(",
       "backToCalendar": "Toe foi i tua ile Kalena",
-      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
+      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may have availability."
     }
   },
   "footer": {

@@ -1,16 +1,17 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { Button } from "baseui/button";
-import { VaccineCentre } from "../VaxComponents";
-import { getDistanceKm } from "../utils/distance";
-import { parse } from "date-fns";
-import { Coords } from "../location-picker/LocationPicker";
-import { FunctionComponent, useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
-
-import { enqueueAnalyticsEvent } from "../utils/analytics";
+import { Button, KIND } from "baseui/button";
+import { isAfter, isToday, parse } from "date-fns";
 import { differenceInDays } from "date-fns/esm";
-
+import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { enqueueAnalyticsEvent } from "../utils/analytics";
+import { formatToLocaleTimeString } from "../utils/date";
+import { getDistanceKm } from "../utils/distance";
+import { formatDistanceKm } from "../utils/locale";
+import { useCoords } from "../utils/useCoords";
+import { useRadiusKm } from "../utils/useRadiusKm";
 import { useSeen } from "../utils/useSeen";
+import { VaccineCentre } from "../VaxComponents";
 import {
   BookingLocationSlotsPair,
   SlotWithAvailability,
@@ -19,9 +20,7 @@ import { CalendarDate } from "./CalendarData";
 
 type BookingLocationProps = {
   locationSlotsPair: BookingLocationSlotsPair;
-  coords: Coords;
   activeDate: CalendarDate;
-  radiusKm: number;
 };
 
 const IS_UAT =
@@ -33,16 +32,29 @@ const MOH_PROXY = IS_UAT
   ? "https://dev-moh-f3a4edb2.vaxx.nz"
   : "https://moh.vaxx.nz";
 
-const BookingLocation: FunctionComponent<BookingLocationProps> = ({
+const filterOldSlots = (
+  slots: SlotWithAvailability[],
+  isTodayDate: boolean
+) => {
+  if (isTodayDate) {
+    return slots.filter(({ localStartTime }) => {
+      const startTime = parse(localStartTime, "HH:mm:ss", new Date());
+      return isAfter(startTime, new Date());
+    });
+  }
+  return slots;
+};
+
+const BookingLocation = ({
   locationSlotsPair,
-  coords,
-  radiusKm,
   activeDate,
-}) => {
-  const { t } = useTranslation("common");
+}: BookingLocationProps) => {
+  const { t, i18n } = useTranslation("common");
   const ref = useRef() as any;
   const seen = useSeen(ref, "20px");
   const [slots, setSlots] = useState<SlotWithAvailability[] | undefined>();
+  const radiusKm = useRadiusKm();
+  const coords = useCoords();
 
   const getSlots = async (url: string) => {
     try {
@@ -90,96 +102,125 @@ const BookingLocation: FunctionComponent<BookingLocationProps> = ({
     activeDate.dateStr,
   ]);
 
+  const isTodayDate = activeDate?.dateStr
+    ? isToday(new Date(activeDate.dateStr))
+    : false;
+
   const slotsToDisplay =
-    slots && slots.length > 0 ? slots : locationSlotsPair.slots;
+    slots && slots.length > 0
+      ? filterOldSlots(slots, isTodayDate)
+      : filterOldSlots(locationSlotsPair.slots ?? [], isTodayDate);
+
   const location = locationSlotsPair.location;
   const date = parse(activeDate.dateStr, "yyyy-MM-dd", new Date());
-  return (
-    <VaccineCentre ref={ref}>
-      <h3>{location.name}</h3>
-      <p>
-        {location.displayAddress} (
-        {t("core.kmAway", {
-          distance: Math.floor(getDistanceKm(coords, location.location)),
-        })}
-        )
-      </p>
-      <p>
-        <a
-          href={`https://www.google.com/maps/dir/?api=1&destination=${location.location.lat},${location.location.lng}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={() =>
-            enqueueAnalyticsEvent("Get Directions clicked", {
-              radiusKm,
-              spotsAvailable: slots?.length || 0,
-              bookingDateInDays: differenceInDays(date, new Date()),
-            })
-          }
-        >
-          {t("core.getDirections")}
-        </a>
-      </p>
-      <a
-        href="https://bookmyvaccine.covid19.health.nz"
-        target="_blank"
-        referrerPolicy="origin"
-        rel="noreferrer"
-      >
-        <div className="ButtonConstraint">
-          <Button
-            overrides={{
-              Root: {
-                style: {
-                  width: "100%",
-                  marginTop: "1rem",
-                  marginRight: 0,
-                  marginBottom: "1rem",
-                  marginLeft: 0,
-                },
-              },
-            }}
+  if (slotsToDisplay.length === 0) {
+    return null;
+  } else {
+    return (
+      <VaccineCentre ref={ref}>
+        <h3>{location.name}</h3>
+        <p>
+          {location.displayAddress} (
+          {t("core.distanceAway", {
+            distance: formatDistanceKm(
+              getDistanceKm(coords, location.location),
+              i18n.language
+            ),
+          })}
+          )
+        </p>
+        <p>
+          <a
+            href={`https://www.google.com/maps/dir/?api=1&destination=${location.location.lat},${location.location.lng}`}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() =>
-              enqueueAnalyticsEvent("Make a Booking clicked", {
-                locationName: location.name,
+              enqueueAnalyticsEvent("Get Directions clicked", {
                 radiusKm,
                 spotsAvailable: slots?.length || 0,
                 bookingDateInDays: differenceInDays(date, new Date()),
               })
             }
           >
-            {t("core.makeABooking")}
-          </Button>
+            {t("core.getDirections")}
+          </a>
+        </p>
+        <div className="ButtonConstraint">
+          <a
+            href={`https://app.bookmyvaccine.covid19.health.nz/deep-linking?location=${locationSlotsPair.location.extId}&date=${activeDate.dateStr}`}
+            target="_blank"
+            referrerPolicy="origin"
+            rel="noreferrer"
+          >
+            <Button
+              overrides={{
+                Root: {
+                  style: {
+                    width: "100%",
+                  },
+                },
+              }}
+              onClick={() =>
+                enqueueAnalyticsEvent("Make a Booking clicked", {
+                  locationName: location.name,
+                  radiusKm,
+                  spotsAvailable: slots?.length || 0,
+                  bookingDateInDays: differenceInDays(date, new Date()),
+                })
+              }
+            >
+              {t("core.makeABooking")}
+            </Button>
+          </a>
+          <a
+            href={`https://app.bookmyvaccine.covid19.health.nz/manage`}
+            target="_blank"
+            referrerPolicy="origin"
+            rel="noreferrer"
+          >
+            <Button
+              kind={KIND.secondary}
+              overrides={{
+                Root: {
+                  style: {
+                    width: "100%",
+                  },
+                },
+              }}
+              onClick={() =>
+                enqueueAnalyticsEvent("Edit Booking clicked", {
+                  locationName: location.name,
+                  radiusKm,
+                  spotsAvailable: slots?.length || 0,
+                  bookingDateInDays: differenceInDays(date, new Date()),
+                })
+              }
+            >
+              {t("core.changeOrCancelABooking")}
+            </Button>
+          </a>
         </div>
-      </a>
-      <p
-        style={{
-          marginTop: "0.25rem",
-          marginRight: 0,
-          marginBottom: "0.5rem",
-          marginLeft: 0,
-        }}
-      >
-        {t("calendar.modal.availableSlots")}
-      </p>
-      <section className="slot">
-        {/* <p>1am</p> */}
-        {slotsToDisplay?.map((slot) => (
-          <p key={slot.localStartTime}>
-            {parse(
-              slot.localStartTime,
-              "HH:mm:ss",
-              new Date()
-            ).toLocaleTimeString("en-NZ", {
-              hour: "2-digit",
-              minute: "2-digit",
-              hour12: true,
-            })}
-          </p>
-        ))}
-      </section>
-    </VaccineCentre>
-  );
+        <p
+          style={{
+            marginTop: "0.25rem",
+            marginRight: 0,
+            marginBottom: "0.5rem",
+            marginLeft: 0,
+          }}
+        >
+          {t("calendar.modal.availableSlots")}
+        </p>
+        <section className="slot">
+          {/* <p>1am</p> */}
+          {slotsToDisplay?.map((slot) => (
+            <p key={slot.localStartTime}>
+              {formatToLocaleTimeString(slot.localStartTime, i18n.language)}
+            </p>
+          ))}
+        </section>
+      </VaccineCentre>
+    );
+  }
 };
 
 export default BookingLocation;

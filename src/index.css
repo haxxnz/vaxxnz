@@ -30,6 +30,10 @@ body {
   z-index: 2;
 }
 
+#root div[data-baseweb="popover"]:last-child {
+  z-index: 4 !important;
+}
+
 h1,
 h2,
 h3,
@@ -67,10 +71,10 @@ a {
 }
 
 .menu-header {
-  max-width: 1440px;
+  max-width: 1488px;
   margin: 0 auto;
   box-sizing: border-box;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem;
   display: flex;
   justify-content: space-between;
 }
@@ -234,4 +238,5 @@ a {
 .footer-header {
   text-align: center;
   padding: 2.5rem 2.5rem 4rem 2.5rem;
+  line-height: 1.5;
 }

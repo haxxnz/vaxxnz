@@ -1,55 +1,41 @@
 import React, { FunctionComponent } from "react";
-import { Coords } from "../location-picker/LocationPicker";
 import { BookingCalendar, LoadingBookingCalendar } from "./Calendar";
-import BookingModal from "./modal/CalendarModal";
-import { CalendarDate, useCalendarLocations } from "./CalendarData";
+import { BookingDataResult } from "./booking/BookingData";
+import { CalendarError } from "./CalendarError";
+import { useCoords } from "../utils/useCoords";
 
-interface CalendarSectionProps {
-  coords: Coords;
-  radiusKm: number;
-  setLastUpdateTime: (time: Date | null) => void;
+export interface CalendarSectionProps {
+  bookingData: BookingDataResult;
 }
+const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
 
 /** Loads booking data, display the calendar or load errors. */
 export const CalendarSection: FunctionComponent<CalendarSectionProps> = ({
-  coords,
-  radiusKm,
-  setLastUpdateTime,
+  bookingData: data,
 }) => {
-  const [activeDate, setActiveDate] = React.useState<CalendarDate | null>(null);
-
-  const data = useCalendarLocations(coords, radiusKm, setLastUpdateTime);
+  const coords = useCoords();
+  if (
+    !(
+      coords.lat > NZbbox[1] &&
+      coords.lat < NZbbox[3] &&
+      coords.lng > NZbbox[0] &&
+      coords.lng < NZbbox[2]
+    )
+  ) {
+    return (
+      <CalendarError
+        errorMessage={"Uh oh... this page is only visible in New Zealand"}
+      />
+    );
+  }
   return (
     <>
-      <BookingModal
-        radiusKm={radiusKm}
-        activeDate={activeDate}
-        setActiveDate={setActiveDate}
-        coords={coords}
-      />
-
       {"ok" in data ? (
-        <BookingCalendar
-          setActiveDate={setActiveDate}
-          data={data.ok}
-          radiusKm={radiusKm}
-        />
+        <BookingCalendar data={data.ok} />
       ) : "loading" in data ? (
         <LoadingBookingCalendar />
       ) : (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: "1rem",
-          }}
-        >
-          {/* <Spinner color="black" /> */}
-          <div style={{ marginLeft: "1rem", fontSize: "1.5rem" }}>
-            {data.error.message}
-          </div>
-        </div>
+        <CalendarError errorMessage={data.error.message} />
       )}
     </>
   );

@@ -1,17 +1,24 @@
 {
   "core": {
     "title": "Vaxx.nz",
-    "tagline": "2019 冠狀病毒病疫苗接種",
-    "subtitle": "瞭解如何就近接種疫苗",
+    "tagline": "新冠疫苗接種",
+    "subtitle": "了解如何就近接種疫苗",
     "disclaimerNotAGovWebsite": "本站並非政府官方網站。若要預約接種請訪問 <0>bookmyvaccine.nz</0>",
     "loading": "載入中...",
     "getDirections": "查詢路線",
     "makeABooking": "預約",
-    "kmAway": "{{distance}} 公里",
+    "distanceAway": "{{distance}}",
     "lastUpdated": "最近更新於 {{updatedAt}}",
     "cancel": "取消",
-    "website": "Website",
-    "address": "Address"
+    "website": "網站",
+    "address": "地址",
+    "noResultsNotInNZ": "此搜索查詢沒有找到疫苗接種點。您是在新西蘭嗎?",
+    "noResultsInRadius": "此搜索查詢沒有找到疫苗接種點。請嘗試不同的公里範圍.",
+    "walkInDriveThru": "免預約/駕駛通過",
+    "availableBookingSlots": "可預訂時段",
+    "vaccApptToBook": "現有接種疫苗預約.",
+    "mistake": "是否有任何錯誤?",
+    "changeOrCancelABooking": "更改或取消預訂"
   },
   "navigation": {
     "about": "關於",
@@ -26,7 +33,8 @@
       "10km": "10 公里內",
       "25km": "25 公里內",
       "50km": "50 公里內",
-      "100km": "100 公里內"
+      "100km": "100 公里內",
+      "10closest": "10個最靠近地點"
     },
     "locationModal": {
       "locaitonTitle": "位置",
@@ -37,11 +45,11 @@
     "unknownLocation": "未知位置"
   },
   "walkins": {
-    "sectionHeader": "<0>今日開放的</0>免預約及得來速 (drive-thru) 接種點",
+    "sectionHeader": "免預約及駕駛通過(drive-thru) 接種點",
     "openString": "開放時間 {{openTimeString}}",
     "cancellationNotice": {
       "info": "請勿重複預約",
-      "message": "如果先前已在 <0>bookmyvaccine.nz</0> 預約，請取消原預約"
+      "message": "如果先前已在 <0>bookmyvaccine.nz</0> 預約，請取消先前的預約"
     },
     "cancelBooking": "取消預約",
     "noticeList": {
@@ -49,20 +57,28 @@
       "text": "請注意，免預約接種點接待能力有限，無法保證所有人都能得到接種。"
     },
     "walkinAwailable": "<0 /> 可免預約前往",
-    "driveThroughAvailable": "<0 /> 可以得來速",
+    "driveThroughAvailable": "<0 /> 可以駕駛通過",
     "phone": "電話",
     "hours": "開放時間",
-    "publicHolidays": "公共節假日",
-    "otherExeptions": "Exceptions",
-    "seeMore": "瞭解更多",
+    "publicHolidays": "公共假期",
+    "otherExeptions": "例外",
+    "seeMore": "了解更多",
     "otherLocations": {
-      "sectionHeader": "Other Vaccination Locations <0>- Open Today</0>",
+      "sectionHeader": "其他疫苗接種地點 <0>- 今日開放</0>",
       "disclaimer": {
-        "title": "This location has been submitted by the public",
-        "message": "The information here may not be 100% accurate. Please refer to the locations website."
+        "title": "此位置是被公眾提交",
+        "message": "這裡的信息可能不是100%準確。 請參考地點網站."
       }
     },
-    "closed": "Closed"
+    "closed": "關閉",
+    "subHeader": "您無需預約在這些活動場所。請瀏覽 <0>covid19.govt.nz</0> 查詢更多的信息.",
+    "noWalkinDriveThruFound": "您所在地區沒有任何步入式或駕駛通過的網絡中心。 請嘗試進行預訂.",
+    "healthpointModal": {
+      "title": "如何在這裡接種疫苗",
+      "subtitle": "瀏覽以下地址並要求免費新冠疫苗接種.",
+      "queueQuery": "您也可以打諮詢電話 <0>{{telephone}}</0> 去詢問等候時間.",
+      "venueDetails": "场地详情"
+    }
   },
   "calendar": {
     "month": "{{monthString, yyyy mmm}}",
@@ -70,17 +86,17 @@
     "modal": {
       "howToBook": {
         "title": "如何預約",
-        "stepOne": "從以下列表中挑選一個接種點及時間段",
-        "stepTwo": "點按 <i>預約</i> 按鈕後會跳轉到 <0>bookmyvaccine.nz</0>",
+        "stepOne": "從以下列表中挑選一個接種點及時段",
+        "stepTwo": "點選 <i>預約</i> 按鈕後會連結至 <0>bookmyvaccine.nz</0>",
         "stepThree": "輸入個人資訊",
-        "stepFour": "搜尋想要的接種地點及時間段"
+        "stepFour": "搜尋想要的接種地點及時段"
       },
-      "availableSlots": "時間段",
+      "availableSlots": "時段",
       "noBookingsAvailable": "當天已約滿 :(",
       "backToCalendar": "回到日曆",
-      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
+      "notBMV": "此位置不使用 <0>bookmyvaccine.nz</0> 並且可能沒有空槽."
     },
-    "numberOfAppointments": "{{sumAvailableTimes}} 個空餘預約"
+    "numberOfAppointments": "{{sumAvailableTimes}} 個餘額預約"
   },
   "footer": {
     "message": "歡迎與親友分享本站",
@@ -88,8 +104,8 @@
       "contactUs": "聯絡我們",
       "rawData": "原始資料",
       "sourceCode": "原始碼",
-      "roadmap": "Roadmap"
+      "roadmap": "策劃"
     },
-    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
+    "addressFinderLinkCopy": "感謝 <0>AddressFinder</0> 提供免費地址查詢"
   }
 }

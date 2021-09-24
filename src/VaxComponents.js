@@ -86,7 +86,7 @@ export const CalendarContainer = styled.section`
 export const CalendarSectionContainer = styled.section`
   .MonthSection {
     display: block;
-    padding: 1.5rem 1rem;
+    padding: 1.1rem 1rem;
     border-bottom: 1px solid lightgray;
     position: sticky;
     top: 0px;
@@ -94,8 +94,8 @@ export const CalendarSectionContainer = styled.section`
     background-color: #fff;
     z-index: 2 !important;
   }
-  h2 {
-    font-size: 1.5rem;
+  h3 {
+    font-size: 1.25rem;
   }
 
   @media screen and (max-width: 1024px) {
@@ -118,8 +118,9 @@ export const MonthContainer = styled.section`
   button {
     box-sizing: border-box;
     font-family: inherit;
-    min-height: 144px;
+    min-height: 112px;
     height: 100%;
+    width: 100%;
 
     text-align: left;
     background-color: white;
@@ -132,6 +133,7 @@ export const MonthContainer = styled.section`
 
     div {
       height: 100%;
+      min-height: inherit;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -219,10 +221,13 @@ export const ModalGrid = styled.section`
     }
   }
 `;
+export const WalkInstructions = styled.div`
+  padding: 1.5rem;
+  border-right: 1px solid lightgray;
+`;
 
 export const WalkGrid = styled.section`
   display: grid;
-  gap: 2.5rem;
   grid-template-columns: 1fr 1fr;
   height: 100%;
   overflow-y: scroll;
@@ -230,9 +235,7 @@ export const WalkGrid = styled.section`
     font-size: 2.5rem;
     font-weight: 600;
   }
-  h2 {
-    font-weight: 400;
-  }
+
   hr {
     border: none;
     border-top: 1px solid lightgray;
@@ -265,20 +268,23 @@ export const VaccineCentre = styled.section`
     margin-bottom: 0.5rem;
   }
 
-  @media screen and (min-width: 1024px) {
-    .ButtonConstraint {
-      max-width: 400px;
+  .ButtonConstraint {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 1rem 0;
+    gap: 1.5rem;
+    a {
+      flex: 1;
     }
-  
   }
+
   @media screen and (max-width: 768px) {
     h3 {
       font-size: 1.5rem;
       margin-bottom: 0.25rem;
- 
     }
   }
-
   section.slot {
     display: flex;
     flex-direction: row;
@@ -296,13 +302,37 @@ export const VaccineCentre = styled.section`
     }
 
     @media screen and (max-width: 500px) {
-           p {
-             flex: 1;
-            }
-}
+      p {
+        flex: 1;
+      }
+     
+     
+      }
+    }
+    @media screen and (max-width: 600px) {
+        .ButtonConstraint {
+        flex-direction: column;
+        gap: 1rem;
+      }
     }
   }
 `;
+
+export const WalkHeading = styled.section`
+  border-bottom: 1px solid lightgray;
+  padding: 1.5rem;
+
+  display: flex;
+
+  width: 100%;
+  box-sizing: border-box;
+  h1 {
+    flex: 1;
+    font-size: 2rem;
+    align-self: center;
+  }
+`;
+
 export const WalkContainer = styled.div`
   border-left: 1px solid lightgray;
   border-right: 1px solid lightgray;
@@ -327,11 +357,24 @@ export const WalkContainer = styled.div`
   }
 `;
 
+export const WalkMessage = styled.div`
+  display: flex;
+  justify-content center;
+  align-items: center;
+  min-height 20vh;
+  width: 100%;
+  border: 1px solid lightgray;
+  background: white;
+  margin: 0;
+  box-sizing: border-box;
+`;
+
 export const WalkBox = styled.button`
   box-sizing: border-box;
   font-family: inherit;
   min-height: 144px;
   height: 100%;
+  width: 100%;
   flex: 1;
   min-width: 320px;
 
