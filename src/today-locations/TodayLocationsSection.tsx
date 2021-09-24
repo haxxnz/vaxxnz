@@ -66,7 +66,7 @@ export function TodayLocationsSection() {
             i18nKey="walkins.sectionHeader"
             t={t}
             components={[<strong />]}
-            />
+          />
         </h2>
         <p>
           <Trans
