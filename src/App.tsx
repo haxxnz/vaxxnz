@@ -50,17 +50,17 @@ function App() {
           <Switch>
             <Route path="/terms-and-conditions">
               <div className={"big-old-container"}>
-                <h1>{terms}</h1>
+                <h1><b>{terms}</b></h1>
               </div>
             </Route>
             <Route path="/privacy-policy">
               <div className={"big-old-container"}>
-                <h2>{privacy}</h2>
+                <h2><b>{privacy}</b></h2>
               </div>
             </Route>
             <Route path="/cookie-policy">
               <div className={"big-old-container"}>
-                <h1>{cookie}</h1>
+                <h3><b>{cookie}</b></h3>
               </div>
             </Route>
             <Route path="/bookings/:date">
