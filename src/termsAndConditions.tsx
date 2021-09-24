@@ -1,6 +1,6 @@
 const TermsAndConditions = () => {
   return (
-    <div>
+    <div style={{ margin: "3rem" }}>
       <h2>Terms and Conditions</h2>
       <p
         style={{
