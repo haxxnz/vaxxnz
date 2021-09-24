@@ -16,7 +16,6 @@ import {
 } from "./contexts";
 import { Tabs, TabType } from "./HomePage";
 import { useSaveScroll } from "./scroll";
-import ReactMarkdown from "react-markdown";
 import { terms, privacy, cookie } from "./md/LegalContent";
 import { HelmetProvider } from "react-helmet-async";
 import { RouteType, VaxxHelmet } from "./VaxxHelmet";
@@ -61,7 +60,7 @@ function App() {
             </Route>
             <Route path="/cookie-policy">
               <div className={"big-old-container"}>
-                <ReactMarkdown>{cookie}</ReactMarkdown>
+                <h1>{cookie}</h1>
               </div>
             </Route>
             <Route path="/bookings/:date">
