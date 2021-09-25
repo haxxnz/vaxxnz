@@ -16,11 +16,12 @@ import {
 } from "./contexts";
 import { Tabs, TabType } from "./HomePage";
 import { useSaveScroll } from "./scroll";
-import ReactMarkdown from "react-markdown";
-import { terms, privacy, cookie } from "./md/LegalContent";
 import { HelmetProvider } from "react-helmet-async";
 import { RouteType, VaxxHelmet } from "./VaxxHelmet";
 import { CalendarSection } from "./calendar/CalendarSection";
+import TermsAndConditions from "./termsAndConditions";
+import PrivacyPolicy from "./privacyPolicy";
+import CookiesPolicy from "./cookiesPolicy";
 
 const Contexts: React.FC<{}> = (props) => {
   const [healthpointLocations, setHealthpointLocations] =
@@ -51,17 +52,17 @@ function App() {
           <Switch>
             <Route path="/terms-and-conditions">
               <div className={"big-old-container"}>
-                <ReactMarkdown>{terms}</ReactMarkdown>
+                <TermsAndConditions />
               </div>
             </Route>
             <Route path="/privacy-policy">
               <div className={"big-old-container"}>
-                <ReactMarkdown>{privacy}</ReactMarkdown>
+                <PrivacyPolicy />
               </div>
             </Route>
             <Route path="/cookie-policy">
               <div className={"big-old-container"}>
-                <ReactMarkdown>{cookie}</ReactMarkdown>
+                <CookiesPolicy />
               </div>
             </Route>
             <Route path="/bookings/:date">
