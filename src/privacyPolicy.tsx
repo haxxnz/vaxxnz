@@ -1,6 +1,6 @@
 const PrivacyPolicy = () => {
   return (
-    <div style={{ margin: "3rem" }}>
+    <div>
       <h2>Privacy Policy</h2>
       <p
         style={{

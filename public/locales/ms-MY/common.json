@@ -1,0 +1,110 @@
+{
+    "core": {
+        "title": "Vaxx.nz",
+        "tagline": "Dapatkan Vaksinasi COVID-19",
+        "subtitle": "Temui cara dapatkan vaksinasi di tempat anda.",
+        "disclaimerNotAGovWebsite": "Ini bukan laman web rasmi kerajaan. Untuk mendapatkan vaksin, lawati <0>bookmyvaccine.nz</0>",
+        "loading": "Memuatkan...",
+        "getDirections": "Dapatkan lokasi",
+        "makeABooking": "Buat Tempahan",
+        "changeOrCancelABooking": "Tukar atau batalkan Tempahan",
+        "distanceAway": "Jarak {{distance}}",
+        "lastUpdated": "Dikemas kini {{updatedAt}}",
+        "cancel": "Batal",
+        "website": "Laman Web",
+        "address": "Alamat",
+        "noResultsNotInNZ": "Tidak ada laman vaksinasi untuk pertanyaan carian ini. Adakah anda di New Zealand?",
+        "noResultsInRadius": "Tidak ada laman vaksinasi untuk pertanyaan carian ini. Cuba jejari kilometer yang berbeza.",
+        "walkInDriveThru": "Walk-in/Pandu-terus",
+        "availableBookingSlots": "Slot Tempahan yang Ada",
+        "vaccApptToBook": "Temu janji vaksinasi tersedia untuk ditempah sekarang.",
+        "mistake": "Adakah kita melakukan kesilapan?"
+    },
+    "navigation": {
+        "about": "Mengenai",
+        "contact": "Hubungi",
+        "getInvolved": "Melibatkan diri",
+        "setLocation": "Tetapkan Lokasi anda",
+        "setLocationConfirmation": "Set Lokasi",
+        "locationModal": {
+            "locaitonTitle": "Lokasi",
+            "locationCTA": "Taipkan alamat atau bandar",
+            "useCurrentLocation": "Gunakan lokasi saya sekarang",
+            "geolocationNotSupported": "Geolokasi tidak disokong oleh pelayar internet(browser) anda"
+        },
+        "vaccinationsNear": "Vaksinasi tersedia berdekatan<0> {{location}}</0>",
+        "unknownLocation": "Lokasi Tidak Diketahui",
+        "distanceDropdown": {
+            "2km": "Dalam 2km",
+            "5km": "Dalam 5km",
+            "10km": "Dalam 10km",
+            "25km": "Dalam 25km",
+            "50km": "Dalam 50km",
+            "100km": "Dalam 100km",
+            "10closest": "10 lokasi paling hampir"
+        }
+    },
+    "walkins": {
+        "sectionHeader": "Tanpa tempahan & Pandu-terus Vaksinasi <0>- Buka Hari Ini</0>",
+        "openString": "Buka {{openTimeString}}",
+        "cancellationNotice": {
+            "info": "Jangan Menempah Lebih Dari Satu Kali",
+            "message": "Batalkan tempahan asal anda jika ada <0>bookmyvaccine.nz</0>"
+        },
+        "cancelBooking": "Batal",
+        "noticeList": {
+            "title": "Tempat Kosong Tidak Dijamin",
+            "text": "Perlu diingati bahawa lokasi tanpa tempahan yang disenaraikan tidak semestinya mempunyai kapasiti yang tersedia."
+        },
+        "walkinAwailable": "<0 /> Walk-in ada",
+        "driveThroughAvailable": "<0 /> Pandu-terus ada",
+        "phone": "Telefon",
+        "hours": "Jam",
+        "publicHolidays": "Cuti Awam",
+        "otherExeptions": "Kecualian",
+        "seeMore": "Lagi",
+        "otherLocations": {
+            "sectionHeader": "Lokasi Vaksinasi Lain <0>- Buka Hari Ini</0>",
+            "disclaimer": {
+                "title": "Tempat ini diberitahui dari orang awam",
+                "message": "Maklumat di sini tidak menjamin 100% tepat. Sila rujuk laman web lokasi."
+            }
+        },
+        "closed": "Tutup",
+        "subHeader": "Anda tidak memerlukan janji temu untuk mendapatkan vaksin di tempat-tempat ini. Lawati <0>covid19.govt.nz</0> untuk maklumat lanjut.",
+        "noWalkinDriveThruFound": "Tidak ada Walk-in atau Pandu-terus pusat vaksinasi di kawasan anda. Sebaliknya, cuba buat tempahan.",
+        "healthpointModal": {
+            "title": "Cara mendapatkan vaksin di sini",
+            "subtitle": "Kunjungi alamat di bawah dan minta vaksinasi COVID percuma.",
+            "queueQuery": "Anda juga boleh menghubungi <0>{{telephone}}</0> untuk mendapati masa menungu.",
+            "venueDetails": "Venue Details"
+        }
+    },
+    "calendar": {
+        "month": "{{monthString, MMMM yyyy}}",
+        "numberOfAppointments": "{{sumAvailableTimes}} tersedia",
+        "modal": {
+            "howToBook": {
+                "title": "Cara Membuat Tempahan",
+                "stepOne": "Cari lokasi dan masa dari senarai di bawah.",
+                "stepTwo": "Tekan <i>Buat Tempahan</i> butang, ini akan membawa anda ke <0>bookmyvaccine.nz</0>",
+                "stepThree": "Masukkan maklumat anda.",
+                "stepFour": "Apabila ditanya, cari lokasi dan masa yang anda inginkan."
+            },
+            "availableSlots": "Slots tersedia",
+            "noBookingsAvailable": "Tiada tempahan tersedia pada hari ini :(",
+            "backToCalendar": "Kembali ke Kalendar",
+            "notBMV": "Lokasi ini tidak menggunakan <0>bookmyvaccine.nz</0> dan mungkin mempunyai ketersediaan."
+        }
+    },
+    "footer": {
+        "message": "Sekiranya laman web ini membantu, sila dikongsikan bersama",
+        "links": {
+            "contactUs": "Hubungi Kami",
+            "rawData": "Maklumat Asli",
+            "sourceCode": "Source Code",
+            "roadmap": "Rancangan"
+        },
+        "addressFinderLinkCopy": "Terima Kasih kepada <0>AddressFinder</0> memberikan carian alamat percuma"
+    }
+}

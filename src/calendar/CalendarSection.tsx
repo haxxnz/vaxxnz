@@ -5,38 +5,40 @@ import { CalendarError } from "./CalendarError";
 import { useCoords } from "../utils/useCoords";
 
 export interface CalendarSectionProps {
-  bookingData: BookingDataResult;
+    bookingData: BookingDataResult;
 }
 const NZbbox = [166.509144322, -46.641235447, 178.517093541, -34.4506617165];
 
 /** Loads booking data, display the calendar or load errors. */
 export const CalendarSection: FunctionComponent<CalendarSectionProps> = ({
-  bookingData: data,
+    bookingData: data,
 }) => {
-  const coords = useCoords();
-  if (
-    !(
-      coords.lat > NZbbox[1] &&
-      coords.lat < NZbbox[3] &&
-      coords.lng > NZbbox[0] &&
-      coords.lng < NZbbox[2]
-    )
-  ) {
+    const coords = useCoords();
+    if (
+        !(
+            coords.lat > NZbbox[1] &&
+            coords.lat < NZbbox[3] &&
+            coords.lng > NZbbox[0] &&
+            coords.lng < NZbbox[2]
+        )
+    ) {
+        return (
+            <CalendarError
+                errorMessage={
+                    "Uh oh... this page is only visible in New Zealand"
+                }
+            />
+        );
+    }
     return (
-      <CalendarError
-        errorMessage={"Uh oh... this page is only visible in New Zealand"}
-      />
+        <>
+            {"ok" in data ? (
+                <BookingCalendar data={data.ok} />
+            ) : "loading" in data ? (
+                <LoadingBookingCalendar />
+            ) : (
+                <CalendarError errorMessage={data.error.message} />
+            )}
+        </>
     );
-  }
-  return (
-    <>
-      {"ok" in data ? (
-        <BookingCalendar data={data.ok} />
-      ) : "loading" in data ? (
-        <LoadingBookingCalendar />
-      ) : (
-        <CalendarError errorMessage={data.error.message} />
-      )}
-    </>
-  );
 };

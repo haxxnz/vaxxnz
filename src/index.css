@@ -1,8 +1,8 @@
 body {
   margin: 0;
   font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
+  "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+  "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -22,16 +22,16 @@ body {
   z-index: -2 !important;
 }
 
-#root div:first-child {
+#__next div:first-child {
   z-index: 1;
 }
 
-#root div:last-child {
+#__next div:last-child {
   z-index: 2;
 }
 
-#root div[data-baseweb="popover"]:last-child {
-  z-index: 4 !important;
+#__next div[data-baseweb="popover"]:last-child {
+  z-index: 1000 !important;
 }
 
 h1,
@@ -61,7 +61,7 @@ h3 {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  monospace;
 }
 
 a {
@@ -143,13 +143,13 @@ a {
   max-height: 280px;
   overflow: hidden;
   display: block;
-  margin: auto auto 0 auto;
+  margin: 35px auto 0 auto;
 }
 
 .header-img {
   height: 300px;
   display: block;
-  margin: 35px auto 0 auto;
+  transform: translateY(35px);
   opacity: 0.7;
 }
 
@@ -165,10 +165,10 @@ a {
 }
 
 @media screen and (max-width: 768px) {
-  #root div:first-child {
+  #__next div:first-child {
     z-index: 1;
   }
-  #root div:last-child {
+  #__next div:last-child {
     z-index: 2;
   }
   .App-header h1 {

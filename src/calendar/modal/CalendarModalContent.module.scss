@@ -1,0 +1,32 @@
+.modal-grid {
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: 0.6fr 1fr;
+    height: 100%;
+    overflow-y: initial;
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+    }
+    p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+    hr {
+        border: none;
+        border-top: 1px solid lightgray;
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    @media screen and (max-width: 768px) {
+        gap: 0;
+        h1 {
+            font-size: 2rem;
+        }
+    }
+}

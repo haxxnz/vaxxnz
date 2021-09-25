@@ -1,0 +1,89 @@
+.main-container {
+  position: absolute;
+  max-width: 1438px;
+  width: calc(100% - 2px);
+  z-index: 3 !important;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgb(211, 211, 211);
+  background-color: rgb(255, 255, 255);
+  max-height: 800px;
+  height: 100%;
+  margin-top: -122px;
+
+  @media screen and (min-width: 400px) {
+    margin-top: -74px;
+  }
+}
+
+.center-container {
+  display: flex;
+  margin: auto;
+  flex-direction: column-reverse;
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: row !important;
+  }
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto 0 auto 0;
+
+  @media screen and (min-width: 1024px) {
+    margin-right: 2rem;
+  }
+}
+
+
+.button {
+  color: #ffffff;
+  display: flex;
+  margin: 10px auto;
+  padding: 1rem 5.5rem 1rem 5.5rem;
+  background-color: #000000;
+}
+
+.sub-header {
+  font-size: 1.4rem;
+  margin-top: 1.4rem;
+}
+
+.section {
+  display: flex;
+  margin-left: auto;
+  flex-direction: column;
+
+  @media screen and (max-width: 1024px) {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 1.5rem;
+  }
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+
+  @media screen and (min-width: 1024px) {
+    text-align: right;
+    font-size: 2.5rem;
+  }
+}
+
+.map {
+  width: 151px;
+  margin: auto;
+  margin-bottom: 2rem;
+
+  @media screen and (min-width: 768px) {
+    width: 227px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: auto;
+    margin-bottom: 0;
+  }
+}

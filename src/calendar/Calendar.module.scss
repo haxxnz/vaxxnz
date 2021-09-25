@@ -1,0 +1,111 @@
+.calendar-container {
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    margin: 0;
+}
+
+.calendar-section-container {
+    .month-section {
+        display: block;
+        padding: 1.1rem 1rem;
+        border-bottom: 1px solid lightgray;
+        position: sticky;
+        top: 0px;
+
+        background-color: #fff;
+        z-index: 2 !important;
+    }
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .month-section {
+            top: 0;
+        }
+    }
+}
+
+.month-container {
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: repeat(7, 1fr);
+    background-color: lightgray;
+    border-bottom: 1px solid lightgray;
+    gap: 1px;
+    transition: all 0.3s;
+
+    z-index: 1;
+    button {
+        box-sizing: border-box;
+        font-family: inherit;
+        min-height: 112px;
+        height: 100%;
+        width: 100%;
+
+        text-align: left;
+        background-color: white;
+        border: none;
+        margin: 0;
+        padding: 1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        div {
+            height: 100%;
+            min-height: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        aside {
+            color: #666;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #555;
+        }
+        @media (hover: hover) {
+            &:hover {
+                background-color: #e4eeff;
+                cursor: pointer;
+                h3,
+                p {
+                    color: #005eca;
+                }
+            }
+        }
+
+        img {
+            width: 1rem;
+            height: 1rem;
+            bottom: 0;
+            opacity: 0.7;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media screen and (max-width: 500px) {
+        grid-template-columns: repeat(1, 1fr);
+        button img {
+            align-self: center;
+            height: 2rem;
+            width: 2rem;
+        }
+    }
+}

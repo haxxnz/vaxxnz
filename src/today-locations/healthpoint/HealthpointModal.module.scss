@@ -1,0 +1,51 @@
+.walk-instructions {
+    padding: 1.5rem;
+    border-right: 1px solid lightgray;
+}
+
+.walk-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    overflow-y: scroll;
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid lightgray;
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+    p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+    }
+    @media screen and (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    @media screen and (max-width: 768px) {
+        gap: 0;
+        h1 {
+            font-size: 2rem;
+        }
+    }
+}
+
+.walk-heading {
+    border-bottom: 1px solid lightgray;
+    padding: 1.5rem;
+
+    display: flex;
+
+    width: 100%;
+    box-sizing: border-box;
+    h1 {
+        flex: 1;
+        font-size: 2rem;
+        align-self: center;
+    }
+}

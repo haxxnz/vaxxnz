@@ -1,8 +1,18 @@
 import { FunctionComponent } from "react";
-import { Link, LinkProps } from "react-router-dom";
-import { getSearch } from "./utils/url";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 /** A link that retains the users search query (i.e. lat long) */
-export const PageLink: FunctionComponent<LinkProps> = ({ to, ...props }) => (
-  <Link to={`${to}${getSearch()}`} {...props} />
-);
+export const PageLink: FunctionComponent<{ to: string; role?: string }> = ({
+    to,
+    children,
+    role,
+    ...props
+}) => {
+    const { query } = useRouter();
+    return (
+        <Link href={{ pathname: to, query: query }}>
+            <a role={role}>{children}</a>
+        </Link>
+    );
+};

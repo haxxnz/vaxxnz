@@ -1,0 +1,110 @@
+{
+    "core": {
+        "title": "Vaxx.nz",
+        "tagline": "Avanoa o Tuipuipui ole COVID-19",
+        "subtitle": "Tagai i auala e faia ai tuipuipui i nofoaga latalata ane ia te oe.",
+        "disclaimerNotAGovWebsite": "O lenei upega tafa'ilagi e lei faia ele Malo. Ile faatinoina o tuipuipui asiasi ane ile upega tafa'ilagi lea, <0>bookmyvaccine.nz</0>",
+        "loading": "utaina",
+        "getDirections": "Vaai fa'atonuga",
+        "makeABooking": "Faamauina lou avanoa",
+        "distanceAway": "{{distance}} le alu",
+        "lastUpdated": "Taimi mulimuli ga fa'afouina ai - {{updatedAt}}",
+        "cancel": "Fa'aleaogaina",
+        "website": "Upega tafa'ilagi",
+        "address": "Tuatusi",
+        "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
+        "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius.",
+        "walkInDriveThru": "Walk-in/Drive Thru",
+        "availableBookingSlots": "Available Booking Slots",
+        "vaccApptToBook": "Vaccination appointments available to book right now.",
+        "mistake": "Did we make a mistake?",
+        "changeOrCancelABooking": "Change or cancel a Booking"
+    },
+    "navigation": {
+        "about": "Uiga Tāua",
+        "contact": "Fa'afeso'ota'i",
+        "getInvolved": "Auai Nei",
+        "setLocation": "Faailoa lou nofoaga",
+        "setLocationConfirmation": "Faamautinoa lou nofoaga",
+        "locationModal": {
+            "locaitonTitle": "Nofoaga",
+            "locationCTA": "Tusi i lalo lou tuatusi po'o le alalafaga",
+            "useCurrentLocation": "Fa'aoga le nofoaga o loo e nofo ai nei",
+            "geolocationNotSupported": "O nofoaga e le lagolagoina e le upega tafa'ilagi"
+        },
+        "vaccinationsNear": "Avanoa mo tuipuipui <0>lata ane {{location}}</0>",
+        "unknownLocation": "Nofoaga le mailoa",
+        "distanceDropdown": {
+            "2km": "Totonu ole 2km",
+            "5km": "Totonu ole 5km",
+            "10km": "Totonu ole 10km",
+            "25km": "Totonu ole 25km",
+            "50km": "Totonu ole 50km",
+            "100km": "Totonu ole 100km",
+            "10closest": "10 closest"
+        }
+    },
+    "walkins": {
+        "sectionHeader": "Matala ile asō",
+        "openString": "Taimi matala - {{openTimeString}}",
+        "cancellationNotice": {
+            "info": "Faamolemole e aua le faia faalua se avanoa",
+            "message": "Manatua ia faaleaogaina se isi avanoa sa faia muamua ile upega tafailagi lea <0>bookmyvaccine.nz</0>"
+        },
+        "cancelBooking": "Fa'aleaogaina",
+        "noticeList": {
+            "title": "O avanoa ele mautinoa",
+            "text": "Ia manatua o nofoaga oloo taua ai le ulufale atu iai, ele mautinoa le maua o ni avanoa."
+        },
+        "walkinAwailable": "<0 /> Avanoa mo le ulufale atu ",
+        "driveThroughAvailable": "<0 /> Avanoa pe a talaa'ao atu i lau ta'avale",
+        "phone": "Telefoni",
+        "hours": "Itula",
+        "publicHolidays": "Aso Malolo",
+        "otherExeptions": "O isi Vaega",
+        "seeMore": "Tagai ane pea",
+        "otherLocations": {
+            "sectionHeader": "O isi nofoaga mo tuipuipui <0>- mata ile asō</0>",
+            "disclaimer": {
+                "title": "O nofoaga nei sa tuuina mai e tagata ole Atunuu",
+                "message": "I lenei auiliiliga atonu e le 100 pasene sona atoatoa. Fa'amolemole tagai ane ile nofoaga ile upega tafa'ilagi."
+            }
+        },
+        "closed": "Tapuni",
+        "subHeader": "You don't need an appointment to get vaccinated at these venues. Visit <0>covid19.govt.nz</0> for more information.",
+        "noWalkinDriveThruFound": "There aren't any walk-in or drive thru vaccination centres in your area. Try make a booking instead.",
+        "healthpointModal": {
+            "title": "How to get vaccinated here",
+            "subtitle": "Visit the address below and ask for a free COVID vaccination.",
+            "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
+            "venueDetails": "Venue Details"
+        }
+    },
+    "calendar": {
+        "month": "{{monthString, MMMM yyyy}}",
+        "numberOfAppointments": "{{sumAvailableTimes}} avanoa",
+        "modal": {
+            "howToBook": {
+                "title": "E faafefea ga faia avanoa",
+                "stepOne": "Sue se avanoa ma se taimi mai le lisi o i lalo.",
+                "stepTwo": "Kiliki le <i>Faamauina lou avanoa</i>, e ta'ita'i atu oe ile itulau lea  <0>bookmyvaccine.nz</0>",
+                "stepThree": "Tusia lou tala'aga.",
+                "stepFour": "Ole ā fesiligia, e vaai se nofoaga ma se taimi e fetaui lelei ma oe."
+            },
+            "availableSlots": "Avanoa fetaui",
+            "noBookingsAvailable": "Leai ni avanoa o maua ile asō :(",
+            "backToCalendar": "Toe foi i tua ile Kalena",
+            "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may have availability."
+        }
+    },
+    "footer": {
+        "message": "Afai sa fesoasoani lenei upega tafa'ilagi mo oe, fa'amolemole faasoa atu i isi ",
+        "links": {
+            "contactUs": "Contact Us",
+            "rawData": "Raw Data",
+            "sourceCode": "Source Code",
+            "roadmap": "Roadmap"
+        },
+        "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
+    }
+}
