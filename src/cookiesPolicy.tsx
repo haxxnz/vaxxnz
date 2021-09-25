@@ -1,6 +1,6 @@
 const CookiesPolicy = () => {
   return (
-    <div>
+    <div style={{ margin: "3rem" }}>
       <h2>Cookies Policy</h2>
       <p
         style={{
@@ -75,7 +75,7 @@ const CookiesPolicy = () => {
           <br />
           <br />
         </a>
-        <strong>Mozilla Firefox:</strong>
+        <strong>Mozilla Firefox: </strong>
         <a href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop?redirectslug=enable-and-disable-cookies-website-preferences&redirectlocale=en-US">
           https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop?redirectslug=enable-and-disable-cookies-website-preferences&redirectlocale=en-US
           <br />
@@ -121,7 +121,7 @@ const CookiesPolicy = () => {
         cookies.
         <br />
         <br />
-        <strong>Cookies and Personal Information</strong>
+        <strong>Cookies and Personal Information: </strong>
         Where cookies are used to collect your Personal Information, or other
         Anonymized Data (as these terms are defined our privacy policy), they
         will be used, stored and destroyed in accordance with our privacy
