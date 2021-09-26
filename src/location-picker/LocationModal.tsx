@@ -91,7 +91,6 @@ const LocationModal = (props: Props) => {
                         },
                     }
                 );
-
                 widget.on("result:select", function (fullAddress, metaData) {
                     const locationName = getMetaDataLocation(metaData);
 
