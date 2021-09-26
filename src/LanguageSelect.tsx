@@ -1,4 +1,6 @@
 import { Select } from "baseui/select";
+import { Select as New } from "./common/Select";
+
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import languages, { Language } from "./translations/resources";
@@ -23,33 +25,34 @@ const LanguageSelect = () => {
   };
 
   return (
-    <Select
-      overrides={{
-        Root: {
-          style: {
-            maxHeight: "40px",
-            alignSelf: "center",
-            marginTop: "-4px",
-          },
-        },
-        ControlContainer: {
-          style: {
-            Color: "rgba(0,0,0,0)",
-            minWidth: "144px",
-            // fontSize: "1.1rem",
-          },
-        },
-      }}
-      searchable={false}
-      clearable={false}
-      options={languages}
-      valueKey="code"
-      value={language ? [language] : undefined}
-      placeholder="English"
-      onChange={(params) => {
-        changeLanguage(params.option as Language);
-      }}
-    />
+    <New />
+    // <Select
+    //   overrides={{
+    //     Root: {
+    //       style: {
+    //         maxHeight: "40px",
+    //         alignSelf: "center",
+    //         marginTop: "-4px",
+    //       },
+    //     },
+    //     ControlContainer: {
+    //       style: {
+    //         Color: "rgba(0,0,0,0)",
+    //         minWidth: "144px",
+    //         // fontSize: "1.1rem",
+    //       },
+    //     },
+    //   }}
+    //   searchable={false}
+    //   clearable={false}
+    //   options={languages}
+    //   valueKey="code"
+    //   value={language ? [language] : undefined}
+    //   placeholder="English"
+    //   onChange={(params) => {
+    //     changeLanguage(params.option as Language);
+    //   }}
+    // />
   );
 };
 
