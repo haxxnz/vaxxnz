@@ -6,4 +6,9 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 module.exports = {
     i18n,
+    webpack: function (config) {
+        config.externals = config.externals || {};
+        config.externals["styletron-server"] = "styletron-server";
+        return config;
+    },
 };

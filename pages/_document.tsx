@@ -1,17 +1,56 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Head, Html, Main, NextScript } from "next/document";
 import { DocumentContext } from "next/dist/shared/lib/utils";
+import { Provider as StyletronProvider } from "styletron-react";
 import * as React from "react";
-import Script from "next/script";
+import { Client, Server } from "styletron-engine-atomic";
 
-class MyDocument extends Document {
+export const engine =
+    typeof window === "undefined"
+        ? new Server()
+        : new Client({
+              hydrate: Array.from(
+                  document.getElementsByClassName("_styletron_hydrate_")
+              ) as HTMLStyleElement[],
+          });
+
+class MyDocument extends Document<{
+    stylesheets: Array<{ css: string; attrs: Record<string, string> }>;
+}> {
     static async getInitialProps(ctx: DocumentContext) {
-        return await Document.getInitialProps(ctx);
+        const renderPage = () =>
+            ctx.renderPage({
+                enhanceApp: (App) => (props) =>
+                    (
+                        <StyletronProvider value={engine}>
+                            <App {...props} />
+                        </StyletronProvider>
+                    ),
+            });
+
+        const initialProps = await Document.getInitialProps({
+            ...ctx,
+            renderPage,
+        });
+        if (engine instanceof Server) {
+            const stylesheets = engine.getStylesheets() || [];
+            return { ...initialProps, stylesheets };
+        }
+        return initialProps;
     }
 
     render() {
         return (
             <Html>
                 <Head>
+                    {this.props.stylesheets.map((sheet, i) => (
+                        <style
+                            className="_styletron_hydrate_"
+                            dangerouslySetInnerHTML={{ __html: sheet.css }}
+                            media={sheet.attrs.media}
+                            data-hydrate={sheet.attrs["data-hydrate"]}
+                            key={i}
+                        />
+                    ))}
                     <script
                         dangerouslySetInnerHTML={{
                             __html: `
