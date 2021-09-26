@@ -147,7 +147,7 @@ const BookingLocation = ({
                         {t("core.getDirections")}
                     </a>
                 </p>
-                <div className="ButtonConstraint">
+                <div className={styles["button-constraint"]}>
                     <a
                         href={`https://app.bookmyvaccine.covid19.health.nz/deep-linking?location=${locationSlotsPair.location.extId}&date=${activeDate.dateStr}`}
                         target="_blank"

@@ -56,7 +56,7 @@ export function TodayLocationsSection() {
 
     return (
         <div>
-            <div className="WalkSection2">
+            <div className={"WalkSection2"}>
                 <h2>
                     <Trans
                         i18nKey="walkins.sectionHeader"

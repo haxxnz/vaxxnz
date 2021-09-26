@@ -1,16 +1,15 @@
 import * as React from "react";
-import { LocationRouter } from "../../src/LocationRouter";
-import { TodayLocationsSection } from "../../src/today-locations/TodayLocationsSection";
+import { Navigation } from "../../src/components/layouts/Navigation/Navigation";
+import ReactMarkdown from "react-markdown";
+import { privacy } from "../../src/md/LegalContent";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { Navigation } from "../../src/components/layouts/Navigation/Navigation";
 
 function Page() {
     return (
-        <Navigation hideBanner={true}>
+        <Navigation>
             <div className={"big-old-container"}>
-                <LocationRouter />
-                <TodayLocationsSection />
+                <ReactMarkdown>{privacy}</ReactMarkdown>
             </div>
         </Navigation>
     );

@@ -73,7 +73,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
                 </PageLink>
             </section>
             <section
-                className={`${styles["walk-container"]} modal-container WalkModal`}
+                className={`${styles["walk-grid"]} modal-container ${styles["walk-modal"]}`}
             >
                 <div className={styles["walk-instructions"]}>
                     <h2 style={{ marginBottom: "0.5rem" }}>
@@ -128,7 +128,6 @@ const HealthpointModal: FunctionComponent<Props> = ({
                     <h2 className="address-header">
                         {t("walkins.healthpointModal.venueDetails")}
                     </h2>
-
                     {telephone && (
                         <section>
                             <h3>{t("walkins.phone")}</h3>

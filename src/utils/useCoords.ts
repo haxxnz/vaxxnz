@@ -1,9 +1,11 @@
 import { useMemo } from "react";
 import { DEFAULT_LOCATION } from "./consts";
 import { useSearchParams } from "./url";
+import { useRouter } from "next/router";
 
 export function useCoords() {
-    const { lat, lng } = useSearchParams();
+    const router = useRouter();
+    const { lat, lng } = router.query;
     const coords = useMemo(
         () => ({
             lat: lat ? parseFloat(lat.toString()) : DEFAULT_LOCATION.lat,

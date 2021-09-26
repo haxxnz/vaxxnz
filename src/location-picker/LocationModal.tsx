@@ -9,6 +9,7 @@ import getSuburb from "../utils/reverseGeocode";
 import { ADDRESS_FINDER_API_KEY } from "../utils/consts";
 import { eventedPushState } from "../utils/url";
 import Script from "next/script";
+import { useRouter } from "next/router";
 
 type Props = {
     locationIsOpen: boolean;
@@ -16,8 +17,15 @@ type Props = {
 };
 
 const LocationModal = (props: Props) => {
+    const router = useRouter();
     const [loading, setLoading] = useState<boolean>(false);
-    const [loaded, setLoaded] = useState(false);
+    const [loaded, setLoaded] = useState(() => {
+        try {
+            return Boolean(AddressFinder);
+        } catch {
+            return false;
+        }
+    });
     const { setLocationIsOpen } = props;
 
     const { t } = useTranslation("common");
@@ -42,12 +50,16 @@ const LocationModal = (props: Props) => {
         (lat: number, lng: number, name?: string | null) => {
             const placeName = name ?? `${lat} ${lng}`;
             close();
-            const url = new URL(window.location.toString());
-            url.searchParams.set("lat", lat.toString());
-            url.searchParams.set("lng", lng.toString());
-            url.searchParams.set("placeName", placeName);
+            router.push({
+                pathname: router.pathname,
+                query: {
+                    lat: lat.toString(),
+                    lng: lng.toString(),
+                    placeName: placeName,
+                },
+            });
             enqueueAnalyticsEvent("Location set");
-            eventedPushState(url.toString());
+            eventedPushState(new URL(window.location.toString()).toString());
         },
         [close]
     );

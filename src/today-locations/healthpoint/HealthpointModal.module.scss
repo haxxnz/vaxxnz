@@ -49,3 +49,27 @@
         align-self: center;
     }
 }
+
+.walk-container {
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    margin: 0;
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: lightgray;
+    border-bottom: 1px solid lightgray;
+    gap: 1px;
+    transition: all 0.3s;
+
+    z-index: 1;
+    @media screen and (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    @media screen and (max-width: 500px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
