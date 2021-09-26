@@ -42,7 +42,12 @@ const LanguageSelect = () => {
         },
         InputContainer: () => (
           <div
-            style={{ alignSelf: "center", marginLeft: "auto", marginRight: 2 }}
+            style={{
+              alignSelf: "center",
+              marginLeft: "auto",
+              marginRight: 2,
+              opacity: 0.6,
+            }}
           >
             <FontAwesomeIcon
               icon={faGlobeAmericas}
