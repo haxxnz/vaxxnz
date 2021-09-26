@@ -2,7 +2,7 @@ import { Button, KIND } from "baseui/button";
 import { BaseInput } from "baseui/input";
 import { Modal } from "baseui/modal";
 import * as React from "react";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "next-i18next";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import getSuburb from "../utils/reverseGeocode";
@@ -74,6 +74,7 @@ const LocationModal = (props: Props) => {
     const inputRef = useCallback(
         (domNode) => {
             if (domNode != null) {
+                domNode.focus();
                 const widget = new AddressFinder.Widget(
                     domNode,
                     ADDRESS_FINDER_API_KEY,

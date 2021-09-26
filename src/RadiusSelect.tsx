@@ -16,9 +16,9 @@ export default function RadiusSelect(props: Props) {
         router.push(
             {
                 pathname: router.pathname,
-                query: { radius: radiusKm.toString() },
+                query: { ...router.query, radius: radiusKm.toString() },
             },
-            { query: { radius: radiusKm.toString() } },
+            { query: { ...router.query, radius: radiusKm.toString() } },
             { shallow: true }
         );
     };
