@@ -46,26 +46,38 @@ const Button = styled.button``;
 export const Select: FC<Partial<SelectProps>> =
   ({}: Partial<SelectProps>): ReactElement => {
     const [dropdownIsActive, setDropdownIsActive] = useState<boolean>(false);
-    const toggleActive = () => setDropdownIsActive(!dropdownIsActive);
-
-    const firstRender = useRef(true);
-    useEffect(() => {
-      if (firstRender.current) {
-        setTimeout(() => {
-          if (dropdownIsActive) {
-            console.log("adding event listener");
-            window.addEventListener("click", toggleActive);
-          } else {
-            console.log("removing event listener");
-            window.removeEventListener("click", toggleActive);
-          }
-        }, 0);
+    const toggleActive = (e: MouseEvent) => {
+      let weAreInsideDropdown = false;
+      let reviewNode = e.target;
+      // @ts-ignore
+      while (reviewNode?.nodeName !== "BODY") {
+        // @ts-ignore
+        if (reviewNode?.classList.contains("vaxx-select")) {
+          weAreInsideDropdown = true;
+          break;
+        }
+        // @ts-ignore
+        reviewNode = reviewNode?.parentNode;
       }
-    });
+      if (!weAreInsideDropdown) {
+        setDropdownIsActive((state) => !state);
+      }
+    };
+
+    const toggleActiveReact = () => {
+      setDropdownIsActive((state) => !state);
+    };
+
+    useEffect(() => {
+      window.addEventListener("click", toggleActive);
+      return () => {
+        window.removeEventListener("click", toggleActive);
+      };
+    }, []);
 
     return (
-      <Container>
-        <Button onClick={() => toggleActive()}>English</Button>
+      <Container className={"vaxx-select"}>
+        <Button onClick={toggleActiveReact}>English</Button>
         {dropdownIsActive && <p>test</p>}
       </Container>
     );
