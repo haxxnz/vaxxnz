@@ -7,7 +7,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 function Page() {
     return (
-        <Navigation>
+        <Navigation hideBanner={true}>
             <div className={"big-old-container"}>
                 <ReactMarkdown>{privacy}</ReactMarkdown>
             </div>

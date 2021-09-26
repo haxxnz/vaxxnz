@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { DEFAULT_LOCATION } from "./consts";
-import { useSearchParams } from "./url";
 import { useRouter } from "next/router";
 
 export function useCoords() {

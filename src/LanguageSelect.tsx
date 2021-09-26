@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useTranslation } from "next-i18next";
 import languages, { Language } from "./translations/resources";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
-import { eventedPushState } from "./utils/url";
 import { useRouter } from "next/router";
 
 const LanguageSelect = () => {
@@ -26,7 +25,6 @@ const LanguageSelect = () => {
             "locale",
             String(newLang?.code.toLocaleLowerCase())
         );
-        eventedPushState(url.toString());
         enqueueAnalyticsEvent("Language changed", { code: newLang?.code });
     };
 

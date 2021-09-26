@@ -2,7 +2,6 @@ import { Select } from "baseui/select";
 import { useTranslation } from "next-i18next";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { Radius } from "./utils/locationTypes";
-import { eventedPushState } from "./utils/url";
 import { useRadiusKm } from "./utils/useRadiusKm";
 import { useRouter } from "next/router";
 
@@ -14,11 +13,14 @@ export default function RadiusSelect(props: Props) {
     const radiusKm = useRadiusKm();
 
     const setRadiusKm = (radiusKm: Radius) => {
-        router.push({
-            pathname: router.pathname,
-            query: { radius: radiusKm.toString() },
-        });
-        eventedPushState(new URL(window.location.toString()).toString());
+        router.push(
+            {
+                pathname: router.pathname,
+                query: { radius: radiusKm.toString() },
+            },
+            { query: { radius: radiusKm.toString() } },
+            { shallow: true }
+        );
     };
 
     const options = [
