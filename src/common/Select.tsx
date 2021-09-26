@@ -1,4 +1,4 @@
-import { FC, ReactElement, useRef, useEffect, useState } from "react";
+import React, { FC, ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
 import type { StyleObject } from "styletron-react";
 import type { ReactNode } from "react";
@@ -43,42 +43,37 @@ const Button = styled.button``;
  * @param { string | undefined } placeholder Default option
  * @param { (props: Props) => void } onChange function to fire when option changes
  */
-export const Select: FC<Partial<SelectProps>> =
-  ({}: Partial<SelectProps>): ReactElement => {
-    const [dropdownIsActive, setDropdownIsActive] = useState<boolean>(false);
-    const toggleActive = (e: MouseEvent) => {
-      let weAreInsideDropdown = false;
-      let reviewNode = e.target;
-      // @ts-ignore
-      while (reviewNode?.nodeName !== "BODY") {
-        // @ts-ignore
-        if (reviewNode?.classList.contains("vaxx-select")) {
-          weAreInsideDropdown = true;
-          break;
-        }
-        // @ts-ignore
-        reviewNode = reviewNode?.parentNode;
-      }
-      if (!weAreInsideDropdown) {
-        setDropdownIsActive((state) => !state);
-      }
-    };
+export const Select: FC<Partial<SelectProps>> = ({
+  placeholder,
+}: Partial<SelectProps>): ReactElement => {
+  const [dropdownIsActive, setDropdownIsActive] = useState<boolean>(false);
+  const onWindowClick = (e: MouseEvent) => {
+    let weAreInsideDropdown = e
+      .composedPath()
+      .includes(document.querySelector("#vaxx-select")!);
 
-    const toggleActiveReact = () => {
-      setDropdownIsActive((state) => !state);
-    };
-
-    useEffect(() => {
-      window.addEventListener("click", toggleActive);
-      return () => {
-        window.removeEventListener("click", toggleActive);
-      };
-    }, []);
-
-    return (
-      <Container className={"vaxx-select"}>
-        <Button onClick={toggleActiveReact}>English</Button>
-        {dropdownIsActive && <p>test</p>}
-      </Container>
-    );
+    if (!weAreInsideDropdown) {
+      setDropdownIsActive(false);
+      window.removeEventListener("click", onWindowClick);
+    }
   };
+
+  const toggleDropdown = () => {
+    if (!dropdownIsActive) {
+      setDropdownIsActive(true);
+      window.addEventListener("click", onWindowClick);
+    } else {
+      setDropdownIsActive(false);
+      window.removeEventListener("click", onWindowClick);
+    }
+  };
+
+  return (
+    <Container>
+      <Button id={"vaxx-select"} onClick={toggleDropdown}>
+        {placeholder}
+      </Button>
+      {dropdownIsActive && <p>test</p>}
+    </Container>
+  );
+};
