@@ -3,22 +3,22 @@
     "title": "Vaxx.nz",
     "tagline": "Encuentra una vacunación de COVID",
     "subtitle": "Encuentra lugares de vacunación cerca a ti.",
-    "disclaimerNotAGovWebsite": "Esto no es un sitio web oficial del gobierno. Para vacunarse visite <0>bookmyvaccine.nz</0>",
+    "disclaimerNotAGovWebsite": "Esto no es un sitio web oficial del gobierno. Para vacunarse visita <0>bookmyvaccine.nz</0>",
     "loading": "Cargando...",
     "getDirections": "Obtener las direcciones",
     "makeABooking": "Hacer una reserva",
     "distanceAway": "{{distance}} de distancia",
     "lastUpdated": "Última actualización {{updatedAt}}",
     "cancel": "Cancelar",
-    "website": "Website",
-    "address": "Address",
-    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
-    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius.",
-    "walkInDriveThru": "Walk-in/Drive Thru",
-    "availableBookingSlots": "Available Booking Slots",
-    "vaccApptToBook": "Vaccination appointments available to book right now.",
-    "mistake": "Did we make a mistake?",
-    "changeOrCancelABooking": "Change or cancel a Booking"
+    "website": "Sitio Web",
+    "address": "Dirección",
+    "noResultsNotInNZ": "No se encontraron sitios de vacunación durante está busqueda. ¿Estás en Nueva Zelanda?",
+    "noResultsInRadius": "No se encontraron sitios de vacunación durante está busqueda. Intenta con un radio de kilómetros diferente.",
+    "walkInDriveThru": "Auto-servicio ó entrar caminando ",
+    "availableBookingSlots": "Espacios de reserva disponibles",
+    "vaccApptToBook": "Citas de vacunación libres para reservar ahora mismo",
+    "mistake": "¿Cometimos un error?",
+    "changeOrCancelABooking": "Cancelar ó cambiar la cita"
   },
   "navigation": {
     "about": "Sobre nosotros",
@@ -34,7 +34,7 @@
       "25km": "Dentro de 25km",
       "50km": "Dentro de 50km",
       "100km": "Dentro de 100km",
-      "10closest": "10 closest"
+      "10closest": "10km más cercano"
     },
     "locationModal": {
       "locaitonTitle": "Ubicación",
@@ -45,67 +45,67 @@
     "unknownLocation": "Ubicación desconocida"
   },
   "walkins": {
-    "sectionHeader": "Sin cita & Vacunas en el coche <0>- Open Today</0>",
+    "sectionHeader": "Entrar caminando ó auto-servicio de vacunación  <0>- Abierto hoy</0>",
     "openString": "Abierto {{openTimeString}}",
     "cancellationNotice": {
       "info": "Por favor no reserve dos veces",
-      "message": " Recuerda cancelar tu reserva original si tienes una en <0>bookmyvaccine.nz</0>"
+      "message": " Recuerda cancelar tu reservación original si tienes una en <0>bookmyvaccine.nz</0>"
     },
     "cancelBooking": "Cancelar",
     "noticeList": {
       "title": "La disponibilidad no está garantizada",
-      "text": "Tenga en cuenta que es posible que las ubicaciones de acceso sin cita indicadas no tengan necesariamente capacidad disponible"
+      "text": "Tenga en cuenta que, es posible que las ubicaciones de acceso sin cita indicadas no tengan necesariamente capacidad disponible"
     },
-    "walkinAwailable": "<0 /> Sin cita disponible",
+    "walkinAwailable": "<0 /> Sin citas disponibles",
     "driveThroughAvailable": "<0 /> Servicio al carro disponible",
     "phone": "Teléfono",
     "hours": "Horas",
-    "publicHolidays": "Vacaciones públicas",
+    "publicHolidays": "Vacaciones públicas/días festivos",
     "otherExeptions": "Excepciones",
     "seeMore": "Ver más",
     "otherLocations": {
-      "sectionHeader": "Other Vaccination Locations <0>- Open Today</0>",
+      "sectionHeader": "Otros centros de vacunación <0>- Abierto hoy</0>",
       "disclaimer": {
-        "title": "This location has been submitted by the public",
-        "message": "The information here may not be 100% accurate. Please refer to the locations website."
+        "title": "Esta ubicación a sido enviada por el público",
+        "message": "La información encontrada aquí tal vez no sea 100% precisa. Favor de ir al sitio web de la ubicación."
       }
     },
-    "closed": "Closed",
-    "subHeader": "You don't need an appointment to get vaccinated at these venues. Visit <0>covid19.govt.nz</0> for more information.",
-    "noWalkinDriveThruFound": "There aren't any walk-in or drive thru vaccination centres in your area. Try make a booking instead.",
+    "closed": "Cerrado",
+    "subHeader": "En estos centros de vacunación no necesitas una cita. Visita <0>covid19.govt.nz</0> para más información.",
+    "noWalkinDriveThruFound": "No hay centros de vacunación con auto-servicio ó con disponiblidad de entrar caminando en tú zona. Mejor intenta hacer una cita.",
     "healthpointModal": {
-      "title": "How to get vaccinated here",
-      "subtitle": "Visit the address below and ask for a free COVID vaccination.",
-      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
-      "venueDetails": "Venue Details"
+      "title": "Como vacunarse aquí",
+      "subtitle": "Acude a la dirección de abajo por una vacuna de COVID gratis.",
+      "queueQuery": "También puedes llamar al <0>{{telephone}}</0> para verificar que tan larga es la fila",
+      "venueDetails": "Detalles del lugar"
     }
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
-    "numberOfAppointments": "{{sumAvailableTimes}} disponible",
+    "numberOfAppointments": "{{sumAvailableTimes}} disponibles",
     "numberOfAppointments_plural": "{{sumAvailableTimes}} disponibles",
     "modal": {
       "howToBook": {
         "title": "Cómo reservar",
         "stepOne": "Encuentre una ubicación y hora en la lista a continuación.",
-        "stepTwo": "Clickea en el botón <i>hacer una reserva</i>, esto te llevará a <0>bookmyvaccine.nz</0>",
+        "stepTwo": "Da click en el botón <i> hacer una reserva </i>, esto te llevará a <0>bookmyvaccine.nz</0>",
         "stepThree": "Completa tus datos.",
         "stepFour": "Cuando se le solicite, busque la ubicación y la hora deseada."
       },
       "availableSlots": "Espacios disponibles",
       "noBookingsAvailable": "No hay reservas disponibles en este día :(",
       "backToCalendar": "Volver al calendario",
-      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may have availability."
+      "notBMV": "Está ubicación no usa <0>bookmyvaccine.nz</0> y puede no haya disponibilidad."
     }
   },
   "footer": {
-    "message": "Si este sitio le ayudó, considere compartir",
+    "message": "Si este sitio le ayudó considere compartir",
     "links": {
-      "contactUs": "Contacta con nosotras",
+      "contactUs": "Contectanos",
       "rawData": "Datos brutos",
-      "sourceCode": "Código fuente",
-      "roadmap": "mapa vial"
+      "sourceCode": "Fuente de código",
+      "roadmap": "Plan de programación"
     },
-    "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup"
+    "addressFinderLinkCopy": "Muchas gracias a <0>AddressFinder</0> por la busqueda de dirección gratuita"
   }
 }
