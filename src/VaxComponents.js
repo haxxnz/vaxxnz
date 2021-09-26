@@ -14,6 +14,7 @@ gap: 2rem;
   z-index: 2;
 
 border: 1px solid lightgray;
+border-bottom: 0px;
 >div {
   display:flex;
   flex-direction: row;
@@ -118,7 +119,7 @@ export const MonthContainer = styled.section`
   button {
     box-sizing: border-box;
     font-family: inherit;
-    min-height: 144px;
+    min-height: 112px;
     height: 100%;
     width: 100%;
 
@@ -133,6 +134,7 @@ export const MonthContainer = styled.section`
 
     div {
       height: 100%;
+      min-height: inherit;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -371,7 +373,7 @@ export const WalkMessage = styled.div`
 export const WalkBox = styled.button`
   box-sizing: border-box;
   font-family: inherit;
-  min-height: 144px;
+  min-height: 112px;
   height: 100%;
   width: 100%;
   flex: 1;
@@ -410,6 +412,7 @@ export const WalkBox = styled.button`
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    min-height: inherit;
   }
   .Chevron {
     width: 1.25rem;

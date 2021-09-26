@@ -20,7 +20,7 @@ Over the course of one week, our team of 6 developers and 2 designers built a we
 
 ## A vaccine centre is missing!
 
-We automatically load any locations giving vaccines listed on [bookmyvaccine.nz](https://bookmyvaccine.nz), but if you know of one we don't have add it on [our spreadsheet](https://docs.google.com/spreadsheets/d/1dbAFVdtQParU78_j3eR1i5iA6XpzLsrR_WvzTATPK2Y/edit) and we will manually include it.
+We automatically load any locations giving vaccines listed on [bookmyvaccine.nz](https://bookmyvaccine.nz), but if you know of one we don't have, contact Healthpoint to profile the missing location: https://www.healthpoint.co.nz/register/
 
 ## How to get involved
 

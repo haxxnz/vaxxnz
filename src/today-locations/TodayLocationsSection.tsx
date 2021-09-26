@@ -6,7 +6,7 @@ import {
 import { getDistanceKm } from "../utils/distance";
 import { Instruction } from "./healthpoint/HealthpointData";
 import { useState } from "react";
-import { Spinner } from "baseui/spinner";
+import CustomSpinner from '../utils/customSpinner'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
@@ -66,7 +66,7 @@ export function TodayLocationsSection() {
             i18nKey="walkins.sectionHeader"
             t={t}
             components={[<strong />]}
-            />
+          />
         </h2>
         <p>
           <Trans
@@ -86,7 +86,7 @@ export function TodayLocationsSection() {
       </div>
       {"loading" in locations ? (
         <WalkMessage>
-          <Spinner color="black" />
+          <CustomSpinner />
           <div
             style={{
               marginLeft: "1rem",

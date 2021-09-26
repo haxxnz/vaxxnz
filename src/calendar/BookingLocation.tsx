@@ -196,7 +196,7 @@ const BookingLocation = ({
                 })
               }
             >
-              Change or cancel a Booking
+              {t("core.changeOrCancelABooking")}
             </Button>
           </a>
         </div>

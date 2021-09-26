@@ -38,6 +38,9 @@ export const useSaveScroll = () => {
     } else if (isHome && !wasHome && savedScroll) {
       // we've gone back home
       window.scrollTo(savedScroll[0], savedScroll[1]);
+    } else if (!wasHome && !isHome && previousPathname !== pathname) {
+      // was not home and went to a non home path
+      window.scrollTo(0, 0);
     }
   }, [pathname, previousPathname]);
 };

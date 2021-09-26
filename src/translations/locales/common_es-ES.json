@@ -17,7 +17,8 @@
     "walkInDriveThru": "Auto-servicio ó entrar caminando ",
     "availableBookingSlots": "Espacios de reserva disponibles",
     "vaccApptToBook": "Citas de vacunación libres para reservar ahora mismo",
-    "mistake": "¿Cometimos un error?"
+    "mistake": "¿Cometimos un error?",
+    "changeOrCancelABooking": "Cancelar ó cambiar la cita"
   },
   "navigation": {
     "about": "Sobre nosotros",

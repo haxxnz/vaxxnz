@@ -1,6 +1,6 @@
 {
-  "name": "Vaxx.nz | The NZ COVID Vaccination Finder | See all vaccine slots for all vaccination sites to minimise the manual filtering hassle",
-  "short_name": "Vaxx.nz | The NZ COVID Vaccination Finder",
+  "name": "Vaxx.nz - Find a COVID-19 vaccine | Find a COVID-19 vaccine. See ways to get vaccinated near you. This is not an official Government website. To get vaccinated visit bookmyvaccine.nz",
+  "short_name": "Vaxx.nz - Find a COVID-19 vaccine",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -8,8 +8,8 @@
       "type": "image/png"
     },
     {
-      "src": "/android-chrome-512x512.png",
-      "sizes": "512x512",
+      "src": "/android-chrome-256x256.png",
+      "sizes": "256x256",
       "type": "image/png"
     }
   ],
