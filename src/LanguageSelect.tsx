@@ -4,6 +4,8 @@ import { useTranslation } from "next-i18next";
 import languages, { Language } from "./translations/resources";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { useRouter } from "next/router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGlobeAmericas } from "@fortawesome/free-solid-svg-icons";
 
 const LanguageSelect = () => {
     const router = useRouter();
@@ -42,9 +44,28 @@ const LanguageSelect = () => {
                     style: {
                         Color: "rgba(0,0,0,0)",
                         minWidth: "144px",
-                        // fontSize: "1.1rem",
-                    },
-                },
+                        },
+        },
+        InputContainer: () => (
+          <div
+            style={{
+              alignSelf: "center",
+              marginLeft: "auto",
+                    marginRight: 2,
+              opacity: 0.6,
+            }}
+          >
+            <FontAwesomeIcon
+              icon={faGlobeAmericas}
+              style={{
+                height: 24,
+                alignContent: "center",
+                marginLeft: 8,
+                marginBottom: -5,
+              }}
+            />
+          </div>
+                ),
             }}
             searchable={false}
             clearable={false}
