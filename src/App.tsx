@@ -22,6 +22,7 @@ import { CalendarSection } from "./calendar/CalendarSection";
 import TermsAndConditions from "./termsAndConditions";
 import PrivacyPolicy from "./privacyPolicy";
 import CookiesPolicy from "./cookiesPolicy";
+import Faq from "./faq";
 
 const Contexts: React.FC<{}> = (props) => {
   const [healthpointLocations, setHealthpointLocations] =
@@ -63,6 +64,11 @@ function App() {
             <Route path="/cookie-policy">
               <div className={"big-old-container"}>
                 <CookiesPolicy />
+              </div>
+            </Route>
+            <Route path="/faq">
+              <div className={"big-old-container"}>
+                <Faq />
               </div>
             </Route>
             <Route path="/bookings/:date">

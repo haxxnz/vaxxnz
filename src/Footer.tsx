@@ -119,6 +119,15 @@ export function Footer() {
             }}
           >
             Cookies Policy
+          </a>{" "}
+          /{" "}
+          <a
+            href="/faq"
+            onClick={() => {
+              enqueueAnalyticsEvent("Frequently asked questions clicked");
+            }}
+          >
+            FAQ's
           </a>
         </p>
       </footer>
