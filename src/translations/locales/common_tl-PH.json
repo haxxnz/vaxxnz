@@ -15,10 +15,10 @@
     "noResultsNotInNZ": "Walang tumugmang lugar ng pagpapabakuna base sa iyong search. Ikaw ba ay nasa New Zealand?",
     "noResultsInRadius": "Walang tumugmang lugar ng pagpapabakuna base sa iyong search. Sumubok ng ibang distansya (km).",
     "walkInDriveThru": "Walk-in/Drive Thru",
-    "availableBookingSlots": "Available Booking Slots",
-    "vaccApptToBook": "Vaccination appointments available to book right now.",
-    "mistake": "Did we make a mistake?",
-    "changeOrCancelABooking": "Change or cancel a Booking"
+    "availableBookingSlots": "Mga Booking Slots na available",
+    "vaccApptToBook": "Vaccination appointments na maaaring i-book ngayon.",
+    "mistake": "Kami ba ay nagkamali?",
+    "changeOrCancelABooking": "Palitan o kanselahin ang Booking"
   },
   "navigation": {
     "about": "Tungkol",
@@ -41,7 +41,7 @@
       "25km": "Hindi lalayo ng 25km",
       "50km": "Hindi lalayo ng 50km",
       "100km": "Hindi lalayo ng 100km",
-      "10closest": "10 closest"
+      "10closest": "10 pinaka malapit"
     }
   },
   "walkins": {
@@ -62,7 +62,7 @@
     "hours": "Oras",
     "closed": "Sarado",
     "publicHolidays": "Public Holidays",
-    "otherExeptions": "Exceptions",
+    "otherExeptions": "Eksepsyon",
     "seeMore": "Karagdagang impormasyon",
     "otherLocations": {
       "sectionHeader": "Ibang lugar ng pagpapa-bakuna <0>- Bukas ngayon</0>",
@@ -71,13 +71,13 @@
         "message": "Ang impormasyon dito ay maaaring hindi 100% tama. Maaring sumangguni sa website kung saan kayo magpapa-bakuna."
       }
     },
-    "subHeader": "You don't need an appointment to get vaccinated at these venues. Visit <0>covid19.govt.nz</0> for more information.",
-    "noWalkinDriveThruFound": "There aren't any walk-in or drive thru vaccination centres in your area. Try make a booking instead.",
+    "subHeader": "Hindi kailangan ng appoinment upang magpa-bakuna sa mga lokasyong ito. Pumunta sa <0>covid19.govt.nz</0> para sa karagdagang impormasyon.",
+    "noWalkinDriveThruFound": "Walang mga walk-in o drive thru na lokasyon ng pagpapa-bakuna sa iyong lugar. Sa halip ay subukang mag-book.",
     "healthpointModal": {
-      "title": "How to get vaccinated here",
-      "subtitle": "Visit the address below and ask for a free COVID vaccination.",
-      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
-      "venueDetails": "Venue Details"
+      "title": "Paano magpa-bakuna dito",
+      "subtitle": "Pumunta sa address na nakalagay sa ibaba at magtanong ng libreng COVID bakuna.",
+      "queueQuery": "Maaari ring tumawag sa <0>{{telephone}}</0> upang malaman ang haba ng pila.",
+      "venueDetails": "Mga Detalye ng Venue"
     }
   },
   "calendar": {
