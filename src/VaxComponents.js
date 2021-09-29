@@ -174,8 +174,16 @@ export const MonthContainer = styled.section`
     }
   }
 
+  .dayPlaceholder {
+    background-color: whitesmoke;
+  }
+
   @media screen and (max-width: 1024px) {
     grid-template-columns: repeat(5, 1fr);
+
+    .dayPlaceholder {
+      display: none;
+    }
   }
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
