@@ -96,7 +96,7 @@ export function Footer() {
           <a
             href="https://docs.vaxx.nz"
             onClick={() => enqueueAnalyticsEvent("Vaxx.nz Widget Clicked")}
-            title="Vaxx.nz Widget - Vaxx.nz Widget"
+            title="Vaxx.nz Widget"
           >
             Vaxx.nz Widget
           </a>{" "}
