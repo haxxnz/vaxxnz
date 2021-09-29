@@ -92,6 +92,14 @@ export function Footer() {
           >
             Twitter
           </a>{" "}
+          /{" "}
+          <a
+            href="https://docs.vaxx.nz"
+            onClick={() => enqueueAnalyticsEvent("Vaxx.nz Widget Clicked")}
+            title="Vaxx.nz Widget - Vaxx.nz Widget"
+          >
+            Vaxx.nz Widget
+          </a>{" "}
         </p>
         <p>
           <a
