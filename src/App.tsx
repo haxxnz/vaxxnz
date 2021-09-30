@@ -67,6 +67,7 @@ function App() {
             </Route>
             <Route path="/bookings/:date">
               <div className={"big-old-container"}>
+                <LocationPicker lastUpdateTime={lastUpdateTime} />
                 <BookingModal
                   bookingData={"ok" in bookingData ? bookingData.ok : undefined}
                 />
@@ -80,32 +81,29 @@ function App() {
             </Route>
             <Route>
               <Banner />
-              <div className={"big-old-container"}>
-                <LocationPicker lastUpdateTime={lastUpdateTime} />
-                <Switch>
-                  <Route path="/locations">
+              <Switch>
+                <Route path="/locations">
+                  <div className={"big-old-container"}>
+                    <LocationPicker lastUpdateTime={lastUpdateTime} />
                     <VaxxHelmet routeType={RouteType.Locations} />
                     <Tabs activeTab={TabType.walkIn} />
                     <TodayLocationsSection />
-                  </Route>
-                  <Route>
+                  </div>
+                </Route>
+                <Route>
+                  <div className={"big-old-container"}>
+                    <LocationPicker lastUpdateTime={lastUpdateTime} />
                     <VaxxHelmet routeType={RouteType.Home} />
                     <Tabs activeTab={TabType.bookings} />
                     <CalendarSection bookingData={bookingData} />
-                  </Route>
-                </Switch>
-              </div>
+                  </div>
+                </Route>
+              </Switch>
             </Route>
           </Switch>
-          <Footer />
         </div>
         <div className="background">
-          <div
-            className="bg-impt"
-            style={{
-              backgroundImage: `url(${process.env.PUBLIC_URL + "/bg.svg"})`,
-            }}
-          ></div>
+          <div className="bg-impt"></div>
           <CookiesBar />
         </div>
       </Contexts>

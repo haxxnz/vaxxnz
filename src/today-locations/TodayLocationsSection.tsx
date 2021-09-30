@@ -6,7 +6,7 @@ import {
 import { getDistanceKm } from "../utils/distance";
 import { Instruction } from "./healthpoint/HealthpointData";
 import { useState } from "react";
-import CustomSpinner from '../utils/customSpinner'
+import CustomSpinner from "../utils/customSpinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
@@ -19,6 +19,13 @@ import { useRadiusKm } from "../utils/useRadiusKm";
 import { useCoords } from "../utils/useCoords";
 import { PageLink } from "../PageLink";
 import { formatDistanceKm } from "../utils/locale";
+import styled from "styled-components";
+import { Footer } from "../Footer";
+
+const LoadingText = styled.div`
+  margin-left: 1rem;
+  font-size: 1.5rem;
+`;
 
 export function TodayLocationsSection() {
   const radiusKm = useRadiusKm();
@@ -59,42 +66,37 @@ export function TodayLocationsSection() {
   };
 
   return (
-    <div>
-      <div className="WalkSection2">
-        <h2>
-          <Trans
-            i18nKey="walkins.sectionHeader"
-            t={t}
-            components={[<strong />]}
-          />
-        </h2>
-        <p>
-          <Trans
-            i18nKey="walkins.subHeader"
-            t={t}
-            components={[
-              <a
-                href="https://covid19.govt.nz/covid-19-vaccines/how-to-get-a-covid-19-vaccination/walk-in-and-drive-through-vaccination-centres/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                covid19.govt.nz
-              </a>,
-            ]}
-          />
-        </p>
-      </div>
+    <>
+      {"ok" in locations ? (
+        <div className="WalkSection2">
+          <h2>
+            <Trans
+              i18nKey="walkins.sectionHeader"
+              t={t}
+              components={[<strong />]}
+            />
+          </h2>
+          <p>
+            <Trans
+              i18nKey="walkins.subHeader"
+              t={t}
+              components={[
+                <a
+                  href="https://covid19.govt.nz/covid-19-vaccines/how-to-get-a-covid-19-vaccination/walk-in-and-drive-through-vaccination-centres/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  covid19.govt.nz
+                </a>,
+              ]}
+            />
+          </p>
+        </div>
+      ) : null}
       {"loading" in locations ? (
         <WalkMessage>
           <CustomSpinner />
-          <div
-            style={{
-              marginLeft: "1rem",
-              fontSize: "1.5rem",
-            }}
-          >
-            {t("core.loading")}
-          </div>
+          <LoadingText>{t("core.loading")}</LoadingText>
         </WalkMessage>
       ) : "error" in locations ? (
         <WalkMessage>Loading failed: {locations.error.message}</WalkMessage>
@@ -183,6 +185,7 @@ export function TodayLocationsSection() {
           )}
         </>
       )}
-    </div>
+      {"ok" in locations ? <Footer /> : null}
+    </>
   );
 }
