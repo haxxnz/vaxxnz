@@ -54,16 +54,19 @@ function App() {
               <div className={"big-old-container"}>
                 <TermsAndConditions />
               </div>
+              <Footer />
             </Route>
             <Route path="/privacy-policy">
               <div className={"big-old-container"}>
                 <PrivacyPolicy />
               </div>
+              <Footer />
             </Route>
             <Route path="/cookie-policy">
               <div className={"big-old-container"}>
                 <CookiesPolicy />
               </div>
+              <Footer />
             </Route>
             <Route path="/bookings/:date">
               <div className={"big-old-container"}>
@@ -71,6 +74,7 @@ function App() {
                   bookingData={"ok" in bookingData ? bookingData.ok : undefined}
                 />
               </div>
+              {"ok" in bookingData ? <Footer /> : null}
             </Route>
             <Route path="/locations/:slug">
               <div className={"big-old-container"}>
@@ -92,12 +96,12 @@ function App() {
                     <VaxxHelmet routeType={RouteType.Home} />
                     <Tabs activeTab={TabType.bookings} />
                     <CalendarSection bookingData={bookingData} />
+                    {"ok" in bookingData ? <Footer /> : null}
                   </Route>
                 </Switch>
               </div>
             </Route>
           </Switch>
-          <Footer />
         </div>
         <div className="background">
           <div className="bg-impt"></div>

@@ -20,6 +20,7 @@ import { useCoords } from "../utils/useCoords";
 import { PageLink } from "../PageLink";
 import { formatDistanceKm } from "../utils/locale";
 import styled from "styled-components";
+import { Footer } from "../Footer";
 
 const LoadingText = styled.div`
   margin-left: 1rem;
@@ -182,6 +183,7 @@ export function TodayLocationsSection() {
           )}
         </>
       )}
+      {"ok" in locations ? <Footer /> : null}
     </div>
   );
 }
