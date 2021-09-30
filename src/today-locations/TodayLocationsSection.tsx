@@ -66,7 +66,7 @@ export function TodayLocationsSection() {
   };
 
   return (
-    <div>
+    <>
       <div className="WalkSection2">
         <h2>
           <Trans
@@ -184,6 +184,6 @@ export function TodayLocationsSection() {
         </>
       )}
       {"ok" in locations ? <Footer /> : null}
-    </div>
+    </>
   );
 }

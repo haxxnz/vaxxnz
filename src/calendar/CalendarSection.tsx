@@ -3,6 +3,7 @@ import { BookingCalendar, LoadingBookingCalendar } from "./Calendar";
 import { BookingDataResult } from "./booking/BookingData";
 import { CalendarError } from "./CalendarError";
 import { useCoords } from "../utils/useCoords";
+import { Footer } from "../Footer";
 
 export interface CalendarSectionProps {
   bookingData: BookingDataResult;
@@ -31,11 +32,19 @@ export const CalendarSection: FunctionComponent<CalendarSectionProps> = ({
   return (
     <>
       {"ok" in data ? (
-        <BookingCalendar data={data.ok} />
+        <>
+          <BookingCalendar data={data.ok} />
+          <Footer />
+        </>
       ) : "loading" in data ? (
-        <LoadingBookingCalendar />
+        <>
+          <LoadingBookingCalendar />
+        </>
       ) : (
-        <CalendarError errorMessage={data.error.message} />
+        <>
+          <CalendarError errorMessage={data.error.message} />
+          <Footer />
+        </>
       )}
     </>
   );
