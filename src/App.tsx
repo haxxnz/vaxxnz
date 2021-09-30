@@ -67,6 +67,7 @@ function App() {
             </Route>
             <Route path="/bookings/:date">
               <div className={"big-old-container"}>
+                <LocationPicker lastUpdateTime={lastUpdateTime} />
                 <BookingModal
                   bookingData={"ok" in bookingData ? bookingData.ok : undefined}
                 />
