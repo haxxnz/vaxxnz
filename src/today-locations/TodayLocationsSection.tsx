@@ -67,30 +67,32 @@ export function TodayLocationsSection() {
 
   return (
     <>
-      <div className="WalkSection2">
-        <h2>
-          <Trans
-            i18nKey="walkins.sectionHeader"
-            t={t}
-            components={[<strong />]}
-          />
-        </h2>
-        <p>
-          <Trans
-            i18nKey="walkins.subHeader"
-            t={t}
-            components={[
-              <a
-                href="https://covid19.govt.nz/covid-19-vaccines/how-to-get-a-covid-19-vaccination/walk-in-and-drive-through-vaccination-centres/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                covid19.govt.nz
-              </a>,
-            ]}
-          />
-        </p>
-      </div>
+      {"ok" in locations ? (
+        <div className="WalkSection2">
+          <h2>
+            <Trans
+              i18nKey="walkins.sectionHeader"
+              t={t}
+              components={[<strong />]}
+            />
+          </h2>
+          <p>
+            <Trans
+              i18nKey="walkins.subHeader"
+              t={t}
+              components={[
+                <a
+                  href="https://covid19.govt.nz/covid-19-vaccines/how-to-get-a-covid-19-vaccination/walk-in-and-drive-through-vaccination-centres/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  covid19.govt.nz
+                </a>,
+              ]}
+            />
+          </p>
+        </div>
+      ) : null}
       {"loading" in locations ? (
         <WalkMessage>
           <CustomSpinner />
