@@ -16,6 +16,7 @@ body {
   background-position: center center, center center;
   background-size: cover, cover;
   z-index: -2 !important;
+  background-image: url('./bg.svg');
 }
 
 .background {

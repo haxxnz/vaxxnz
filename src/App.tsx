@@ -100,12 +100,7 @@ function App() {
           <Footer />
         </div>
         <div className="background">
-          <div
-            className="bg-impt"
-            style={{
-              backgroundImage: `url(${process.env.PUBLIC_URL + "/bg.svg"})`,
-            }}
-          ></div>
+          <div className="bg-impt"></div>
           <CookiesBar />
         </div>
       </Contexts>
