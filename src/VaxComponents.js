@@ -1,81 +1,76 @@
 import styled from "styled-components";
 
 export const HeaderMain = styled.header`
-
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-box-sizing: border-box;
-top: -2px;
-padding: 1.5rem 1rem;
-background-color: white;
-gap: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  top: -2px;
+  padding: 1.5rem 1rem;
+  background-color: white;
+  gap: 2rem;
 
   z-index: 2;
 
-border: 1px solid lightgray;
-border-bottom: 0px;
->div {
-  display:flex;
-  flex-direction: row;
-  gap:1rem;
-  max-height: 48px;
-  width: auto;
-  align-self: center;
-}
-h1 {
-  text-align: left;
-  margin: 0;
-  align-self: center;
-  font-size: 2rem;
-  font-weight: 600;
-}
->section {
-  flex-direction: column;
-}
->p {
-  font-size: 0.95rem;
-  color: #555;
-}
-strong {
-    font-weight:400;
-}
-
-@media screen and (max-width:1024px) {
-  position: relative;
-  top: initial;
-flex-direction: row;
->div {
-  max-height: auto;
-  flex-direction: row;
-}
-}
-@media screen and (max-width:768px) {
-flex-direction: column;
-h1 {
- 
-  font-size: 1.5rem;
-}
->div {
-  flex-direction: column;
-  width: 100%;
-  max-height: initial;
-  z-index: initial;
-
-}
-@media screen and (max-width:500px) {
+  border: 1px solid lightgray;
+  border-bottom: 0px;
+  > div {
+    display: flex;
+    flex-direction: row;
     gap: 1rem;
-  flex-direction: column;
->div {
-  flex-direction: column;
+    max-height: 48px;
+    width: auto;
+    align-self: center;
+  }
+  h1 {
+    text-align: left;
+    margin: 0;
+    align-self: center;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  > section {
+    flex-direction: column;
+  }
+  > p {
+    font-size: 0.95rem;
+    color: #555;
+  }
+  strong {
+    font-weight: 400;
+  }
 
-}
-section p {
-    padding: 0.5rem 0 1rem 0;
-}
-}
-
-
+  @media screen and (max-width: 1024px) {
+    position: relative;
+    top: initial;
+    flex-direction: row;
+    > div {
+      max-height: auto;
+      flex-direction: row;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    h1 {
+      font-size: 1.5rem;
+    }
+    > div {
+      flex-direction: column;
+      width: 100%;
+      max-height: initial;
+      z-index: initial;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    gap: 1rem;
+    flex-direction: column;
+    > div {
+      flex-direction: column;
+    }
+    section p {
+      padding: 0.5rem 0 1rem 0;
+    }
+  }
 `;
 
 export const CalendarContainer = styled.section`
@@ -314,12 +309,9 @@ export const VaccineCentre = styled.section`
       p {
         flex: 1;
       }
-     
-     
-      }
     }
     @media screen and (max-width: 600px) {
-        .ButtonConstraint {
+      .ButtonConstraint {
         flex-direction: column;
         gap: 1rem;
       }
@@ -368,9 +360,9 @@ export const WalkContainer = styled.div`
 
 export const WalkMessage = styled.div`
   display: flex;
-  justify-content center;
+  justify-content: center;
   align-items: center;
-  min-height 20vh;
+  min-height: 20vh;
   width: 100%;
   border: 1px solid lightgray;
   background: white;
