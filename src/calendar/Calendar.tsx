@@ -19,35 +19,34 @@ import {
 import React from "react";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { PageLink } from "../PageLink";
+import styled from "styled-components";
 
 interface BookingCalendarProps {
   data: CalendarData;
 }
 
+const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 20vh;
+  width: 100%;
+  background-color: white;
+`;
+
+const LoadingText = styled.div`
+  margin-left: 1rem;
+  font-size: 1.5rem;
+`;
+
 export const LoadingBookingCalendar: FunctionComponent = () => {
   const { t } = useTranslation("common");
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "20vh",
-        width: "100%",
-        backgroundColor: "white",
-      }}
-    >
+    <LoadingContainer>
       <CustomSpinner />
-      <div
-        style={{
-          marginLeft: "1rem",
-          fontSize: "1.5rem",
-        }}
-      >
-        {t("core.loading")}
-      </div>
-    </div>
+      <LoadingText>{t("core.loading")}</LoadingText>
+    </LoadingContainer>
   );
 };
 

@@ -6,6 +6,14 @@ import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { eventedPushState } from "./utils/url";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobeAmericas } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
+
+const GlobeContainer = styled.div`
+  align-self: center;
+  margin-left: auto;
+  margin-right: 2px;
+  opacity: 0.6;
+`;
 
 const LanguageSelect = () => {
   const langCode = localStorage.getItem("i18nextLng") || "en-NZ";
@@ -41,14 +49,7 @@ const LanguageSelect = () => {
           },
         },
         InputContainer: () => (
-          <div
-            style={{
-              alignSelf: "center",
-              marginLeft: "auto",
-              marginRight: 2,
-              opacity: 0.6,
-            }}
-          >
+          <GlobeContainer>
             <FontAwesomeIcon
               icon={faGlobeAmericas}
               style={{
@@ -58,7 +59,7 @@ const LanguageSelect = () => {
                 marginBottom: -5,
               }}
             />
-          </div>
+          </GlobeContainer>
         ),
       }}
       searchable={false}
