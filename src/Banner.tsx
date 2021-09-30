@@ -1,4 +1,9 @@
 import { Trans, useTranslation } from "react-i18next";
+import styled from "styled-components";
+
+const Subtitle = styled.h2`
+  font-weight: normal;
+`;
 
 export function Banner() {
   const { t } = useTranslation("common");
@@ -6,7 +11,7 @@ export function Banner() {
     <section className="App-header">
       <div className="header-content">
         <h1>{t("core.tagline")}</h1>
-        <h2 style={{ fontWeight: "normal" }}>{t("core.subtitle")}</h2>
+        <Subtitle>{t("core.subtitle")}</Subtitle>
         <br />
         <p>
           <Trans

@@ -6,7 +6,7 @@ import {
 import { getDistanceKm } from "../utils/distance";
 import { Instruction } from "./healthpoint/HealthpointData";
 import { useState } from "react";
-import CustomSpinner from '../utils/customSpinner'
+import CustomSpinner from "../utils/customSpinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
@@ -19,6 +19,12 @@ import { useRadiusKm } from "../utils/useRadiusKm";
 import { useCoords } from "../utils/useCoords";
 import { PageLink } from "../PageLink";
 import { formatDistanceKm } from "../utils/locale";
+import styled from "styled-components";
+
+const LoadingText = styled.div`
+  margin-left: 1rem;
+  font-size: 1.5rem;
+`;
 
 export function TodayLocationsSection() {
   const radiusKm = useRadiusKm();
@@ -87,14 +93,7 @@ export function TodayLocationsSection() {
       {"loading" in locations ? (
         <WalkMessage>
           <CustomSpinner />
-          <div
-            style={{
-              marginLeft: "1rem",
-              fontSize: "1.5rem",
-            }}
-          >
-            {t("core.loading")}
-          </div>
+          <LoadingText>{t("core.loading")}</LoadingText>
         </WalkMessage>
       ) : "error" in locations ? (
         <WalkMessage>Loading failed: {locations.error.message}</WalkMessage>

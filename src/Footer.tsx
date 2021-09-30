@@ -2,9 +2,14 @@ import { Trans, useTranslation } from "react-i18next";
 import { ShareButtons } from "./ShareButtons";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { useState } from "react";
+import styled from "styled-components";
 // import TermsAndConditionsModal from "./termsAndConditions";
 // import PrivacyPolicyModal from "./privacyPolicy";
 // import CookiesPolicyModal from "./cookiesPolicy";
+
+const FooterMessage = styled.p`
+  margin-bottom: 0.5rem;
+`;
 
 export function Footer() {
   const { t } = useTranslation("common");
@@ -26,7 +31,7 @@ export function Footer() {
       /> */}
 
       <footer className="footer-header">
-        <p style={{ marginBottom: "0.5rem" }}>{t("footer.message")}</p>
+        <FooterMessage>{t("footer.message")}</FooterMessage>
         <div className={"social-container"}>
           <ShareButtons />
         </div>
