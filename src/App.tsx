@@ -84,22 +84,25 @@ function App() {
             </Route>
             <Route>
               <Banner />
-              <div className={"big-old-container"}>
-                <LocationPicker lastUpdateTime={lastUpdateTime} />
-                <Switch>
-                  <Route path="/locations">
+              <Switch>
+                <Route path="/locations">
+                  <div className={"big-old-container"}>
+                    <LocationPicker lastUpdateTime={lastUpdateTime} />
                     <VaxxHelmet routeType={RouteType.Locations} />
                     <Tabs activeTab={TabType.walkIn} />
                     <TodayLocationsSection />
-                  </Route>
-                  <Route>
+                  </div>
+                </Route>
+                <Route>
+                  <div className={"big-old-container"}>
+                    <LocationPicker lastUpdateTime={lastUpdateTime} />
                     <VaxxHelmet routeType={RouteType.Home} />
                     <Tabs activeTab={TabType.bookings} />
                     <CalendarSection bookingData={bookingData} />
                     {"ok" in bookingData ? <Footer /> : null}
-                  </Route>
-                </Switch>
-              </div>
+                  </div>
+                </Route>
+              </Switch>
             </Route>
           </Switch>
         </div>
