@@ -165,7 +165,8 @@ a {
 @media screen and (max-width: 768px) {
   #root div:first-child {
     z-index: 1;
-  }  .App-header h1 {
+  }  
+  .App-header h1 {
     font-size: 2rem;
   }
   .App-header h2 {
