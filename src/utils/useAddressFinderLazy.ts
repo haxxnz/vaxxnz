@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-export function useAddressFinder() {
-  const [addressFinderClass, setAddressFinderClass] = useState<
+export function useAddressFinderLazy() {
+  const [AddressFinderLazy, SetAddressFinderLazy] = useState<
     AddressFinderClass | undefined
   >(undefined);
   useEffect(function () {
@@ -10,11 +10,11 @@ export function useAddressFinder() {
       script.src = "https://api.addressfinder.io/assets/v3/widget.js";
       script.async = true;
       script.onload = () => {
-        setAddressFinderClass(AddressFinder);
+        SetAddressFinderLazy(AddressFinder);
       };
       document.body.appendChild(script);
     }
     downloadAddressFinder();
   }, []);
-  return addressFinderClass;
+  return AddressFinderLazy;
 }
