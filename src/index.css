@@ -27,9 +27,9 @@ body {
   z-index: 1;
 }
 
-#root div:last-child {
+/* #root div:last-child {
   z-index: 2;
-}
+} */
 
 #root div[data-baseweb="popover"]:last-child {
   z-index: 4 !important;
@@ -170,9 +170,9 @@ a {
   #root div:first-child {
     z-index: 1;
   }
-  #root div:last-child {
+  /* #root div:last-child {
     z-index: 2;
-  }
+  } */
   .App-header h1 {
     font-size: 2rem;
   }
