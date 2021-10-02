@@ -1,11 +1,20 @@
 import { Select as OldSelect } from "baseui/select";
 import { Select } from "./common/Select";
-
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import languages, { Language } from "./translations/resources";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { eventedPushState } from "./utils/url";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGlobeAmericas } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
+
+const GlobeContainer = styled.div`
+  align-self: center;
+  margin-left: auto;
+  margin-right: 2px;
+  opacity: 0.6;
+`;
 
 const LanguageSelect = () => {
   const langCode = localStorage.getItem("i18nextLng") || "en-NZ";
@@ -25,7 +34,6 @@ const LanguageSelect = () => {
   };
 
   return (
-    <Select placeholder={"English"} />
     // <Select
     //   overrides={{
     //     Root: {
@@ -39,9 +47,21 @@ const LanguageSelect = () => {
     //       style: {
     //         Color: "rgba(0,0,0,0)",
     //         minWidth: "144px",
-    //         // fontSize: "1.1rem",
     //       },
     //     },
+    //     InputContainer: () => (
+    //       <GlobeContainer>
+    //         <FontAwesomeIcon
+    //           icon={faGlobeAmericas}
+    //           style={{
+    //             height: 24,
+    //             alignContent: "center",
+    //             marginLeft: 8,
+    //             marginBottom: -5,
+    //           }}
+    //         />
+    //       </GlobeContainer>
+    //     ),
     //   }}
     //   searchable={false}
     //   clearable={false}
@@ -53,6 +73,33 @@ const LanguageSelect = () => {
     //     changeLanguage(params.option as Language);
     //   }}
     // />
+
+    <Select
+      options={languages}
+      placeholder={"English"}
+      value={language}
+      valueKey={"code"}
+      onChange={(params) => {
+        changeLanguage(params.option as Language);
+      }}
+      overrides={{
+        InputContainer: {
+          node: (
+            <GlobeContainer>
+              <FontAwesomeIcon
+                icon={faGlobeAmericas}
+                style={{
+                  height: 24,
+                  alignContent: "center",
+                  marginLeft: 8,
+                  marginBottom: -5,
+                }}
+              />
+            </GlobeContainer>
+          ),
+        },
+      }}
+    />
   );
 };
 

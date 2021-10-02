@@ -1,4 +1,5 @@
-import { Select } from "baseui/select";
+import { Select as OldSelect } from "baseui/select";
+import { Select } from "./common/Select";
 import { useTranslation } from "react-i18next";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { Radius } from "./utils/locationTypes";
@@ -31,20 +32,16 @@ export default function RadiusSelect(props: Props) {
 
   return (
     <Select
-      searchable={false}
-      clearable={false}
       options={options}
-      value={selectedOption ? [selectedOption] : []}
+      value={selectedOption}
+      valueKey={"id"}
       placeholder="Select radius"
       onChange={(params) => {
-        const selectedOptions = params.value;
-        if (selectedOptions.length > 0) {
-          const selectedOption = selectedOptions[0];
-          const id = selectedOption.id;
-          if (id && (typeof id === "number" || id === "10closest")) {
-            setRadiusKm(id);
-            enqueueAnalyticsEvent("Radius changed", { radiusKm: id });
-          }
+        const selectedOption = params.option;
+        const id = selectedOption.id;
+        if (id && (typeof id === "number" || id === "10closest")) {
+          setRadiusKm(id);
+          enqueueAnalyticsEvent("Radius changed", { radiusKm: id });
         }
       }}
     />
