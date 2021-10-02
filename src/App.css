@@ -82,7 +82,6 @@ div.WalkSection {
   position: sticky;
   top: 0px;
   background-color: #fff;
-  /* z-index: 2 !important; */
 }
 
 div.WalkSection p {
@@ -95,7 +94,6 @@ div.WalkSection2 {
   padding: 1.5rem 1rem;
   border: 1px solid lightgray;
   background-color: #fff;
-  /* z-index: 2 !important; */
 }
 
 div.WalkSection2 p {

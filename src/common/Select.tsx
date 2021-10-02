@@ -22,12 +22,10 @@ interface SelectProps {
 // Styled components
 const Container = styled.div`
   display: block;
-  // z-index: 10 !important;
   flex-direction: column;
 `;
 
 const InputContainer = styled.div`
-  // z-index: 1;
   padding-right: 0px;
   padding-left: 10px;
   padding-bottom: 10px;
@@ -67,7 +65,6 @@ const Placeholder = styled.p`
 `;
 
 const ArrowContainer = styled.div`
-  // z-index: 2 !important;
   align-self: stretch;
   flex-shrink: 0;
   align-items: center;
@@ -96,7 +93,6 @@ const ItemContainer = styled.ul`
   padding-top: 8px;
   padding-left: 0px;
   padding-right: 0px;
-  // z-index: 10 !important;
   background-color: rgb(255, 255, 255);
   box-shadow: rgb(0 0 0 / 16%) 0px 4px 16px;
   margin: 0px;
@@ -112,7 +108,6 @@ const Item = styled.li`
   transition-property: color, background-color;
   font-size: 14px;
   padding-bottom: 8px;
-  // z-index: 10 !important;
   padding-top: 8px;
   display: block;
   background-color: transparent;

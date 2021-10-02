@@ -27,10 +27,6 @@ body {
   z-index: 1;
 }
 
-/* #root div:last-child {
-  z-index: 2;
-} */
-
 #root div[data-baseweb="popover"]:last-child {
   z-index: 4 !important;
 }
@@ -169,11 +165,7 @@ a {
 @media screen and (max-width: 768px) {
   #root div:first-child {
     z-index: 1;
-  }
-  /* #root div:last-child {
-    z-index: 2;
-  } */
-  .App-header h1 {
+  }  .App-header h1 {
     font-size: 2rem;
   }
   .App-header h2 {
