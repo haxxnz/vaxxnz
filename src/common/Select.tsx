@@ -27,7 +27,7 @@ const Container = styled.div`
 `;
 
 const InputContainer = styled.div`
-  z-index: 1;
+  // z-index: 1;
   padding-right: 0px;
   padding-left: 10px;
   padding-bottom: 10px;
@@ -67,7 +67,7 @@ const Placeholder = styled.p`
 `;
 
 const ArrowContainer = styled.div`
-  z-index: 2 !important;
+  // z-index: 2 !important;
   align-self: stretch;
   flex-shrink: 0;
   align-items: center;
