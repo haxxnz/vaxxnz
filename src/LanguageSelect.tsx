@@ -35,13 +35,6 @@ const LanguageSelect = () => {
 
   return (
     <Select
-      options={languages}
-      placeholder={"English"}
-      value={language}
-      valueKey={"code"}
-      onChange={(params) => {
-        changeLanguage(params.option as Language);
-      }}
       overrides={{
         InputContainer: {
           node: (
@@ -58,6 +51,13 @@ const LanguageSelect = () => {
             </GlobeContainer>
           ),
         },
+      }}
+      options={languages}
+      valueKey="code"
+      value={language}
+      placeholder="English"
+      onChange={(params) => {
+        changeLanguage(params.option as Language);
       }}
     />
   );
