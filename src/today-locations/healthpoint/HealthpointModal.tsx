@@ -1,16 +1,18 @@
 import { Button, KIND } from "baseui/button";
 import { FunctionComponent } from "react";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import { LocationNotice } from "../../common/LocationNotice";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { useRadiusKm } from "../../utils/useRadiusKm";
 import { WalkGrid, WalkHeading, WalkInstructions } from "../../VaxComponents";
 import { HealthpointLocation } from "./HealthpointData";
+import { parsePhoneNumber } from "../../utils/parsePhone";
 
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { PageLink } from "../../PageLink";
+import { RouteType, VaxxHelmet } from "../../VaxxHelmet";
 
 type Props = {
   cancelPath: string;
@@ -28,7 +30,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
   if (location == null) {
     return null;
   }
-  const telephone = location.telephone.replace(/\[.*\]/g, "");
+  const telephone = parsePhoneNumber(location.telephone);
 
   const desktopDialogStyle = {
     width: "100%",
@@ -54,6 +56,8 @@ const HealthpointModal: FunctionComponent<Props> = ({
     : { ...desktopDialogStyle, ...sharedDialogStyle };
   return (
     <div style={dialogStyle as any}>
+      <VaxxHelmet routeType={RouteType.Location} location={location} />
+
       <WalkHeading>
         <h1>{location.name}</h1>
         <PageLink to={cancelPath}>
@@ -71,8 +75,10 @@ const HealthpointModal: FunctionComponent<Props> = ({
       </WalkHeading>
       <WalkGrid className={"modal-container WalkModal"}>
         <WalkInstructions>
-          <h2 style={{ marginBottom: "0.5rem" }}>How to get vaccinated here</h2>
-          <p>Visit the address below and ask for a free COVID vaccination.</p>
+          <h2 style={{ marginBottom: "0.5rem" }}>
+            {t("walkins.healthpointModal.title")}
+          </h2>
+          <p>{t("walkins.healthpointModal.subtitle")}</p>
 
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
@@ -92,15 +98,25 @@ const HealthpointModal: FunctionComponent<Props> = ({
               <aside>{t("core.getDirections")}</aside>
             </section>
           </a>
+
           {telephone && (
             <p>
-              You can also call <a href={`tel:${telephone}`}>{telephone}</a> to
-              check how long the queues are.
+              <Trans
+                i18nKey="walkins.healthpointModal.queueQuery"
+                t={t}
+                components={[
+                  <a href={`tel:${telephone}`} target="_blank" rel="noreferrer">
+                    {{ telephone }}
+                  </a>,
+                ]}
+              />
             </p>
           )}
 
           <LocationNotice instructions={location.instructionLis} />
-          <h2 className="address-header">Venue Details</h2>
+          <h2 className="address-header">
+            {t("walkins.healthpointModal.venueDetails")}
+          </h2>
 
           {telephone && (
             <section>

@@ -13,7 +13,12 @@
     "website": "वेबसाइट",
     "address": "पता",
     "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
-    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius."
+    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius.",
+    "walkInDriveThru": "Walk-in/Drive Thru",
+    "availableBookingSlots": "Available Booking Slots",
+    "vaccApptToBook": "Vaccination appointments available to book right now.",
+    "mistake": "Did we make a mistake?",
+    "changeOrCancelABooking": "Change or cancel a Booking"
   },
   "navigation": {
     "about": "के बारे में",
@@ -65,6 +70,14 @@
         "title": "यह स्थान जनता द्वारा सबमिट किया गया है",
         "message": " यहां दी गई जानकारी 100% सटीक नहीं हो सकती है। कृपया स्थान की वेबसाइट देखें"
       }
+    },
+    "subHeader": "You don't need an appointment to get vaccinated at these venues. Visit <0>covid19.govt.nz</0> for more information.",
+    "noWalkinDriveThruFound": "There aren't any walk-in or drive thru vaccination centres in your area. Try make a booking instead.",
+    "healthpointModal": {
+      "title": "How to get vaccinated here",
+      "subtitle": "Visit the address below and ask for a free COVID vaccination.",
+      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
+      "venueDetails": "Venue Details"
     }
   },
   "calendar": {

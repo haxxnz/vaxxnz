@@ -3,23 +3,29 @@ import {
   WalkContainer as OtherContainer,
   WalkMessage,
 } from "../VaxComponents";
-import { formatDistanceKm, getDistanceKm } from "../utils/distance";
+import { getDistanceKm } from "../utils/distance";
 import { Instruction } from "./healthpoint/HealthpointData";
 import { useState } from "react";
-import { Spinner } from "baseui/spinner";
+import CustomSpinner from "../utils/customSpinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { Trans, useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 import { useTodayLocationsData } from "./TodayLocationsData";
-import { useHistory } from "react-router-dom";
 import { simpleHash } from "../utils/simpleHash";
 import { slug } from "../utils/slug";
 import { useRadiusKm } from "../utils/useRadiusKm";
-import { getSearch } from "../utils/url";
 import { useCoords } from "../utils/useCoords";
 import { PageLink } from "../PageLink";
+import { formatDistanceKm } from "../utils/locale";
+import styled from "styled-components";
+import { Footer } from "../Footer";
+
+const LoadingText = styled.div`
+  margin-left: 1rem;
+  font-size: 1.5rem;
+`;
 
 export function TodayLocationsSection() {
   const radiusKm = useRadiusKm();
@@ -27,9 +33,8 @@ export function TodayLocationsSection() {
   const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
   const locations = useTodayLocationsData();
   const { t, i18n } = useTranslation("common");
-  const history = useHistory();
 
-  const [currentView, setCurrentView] = useState(!isMobileView ? 12 : 12);
+  const [currentView, setCurrentView] = useState(!isMobileView ? 30 : 30);
 
   const modalPath = (locationIndex: number) => {
     const location =
@@ -61,36 +66,42 @@ export function TodayLocationsSection() {
   };
 
   return (
-    <div>
-      <div className="WalkSection2">
-        <h2>Walk-in and Drive Thru Vaccination Centres</h2>
-        <p>
-          You don't need an appointment to get vaccinated at these venues. Visit{" "}
-          <a href="https://covid19.govt.nz/covid-19-vaccines/how-to-get-a-covid-19-vaccination/walk-in-and-drive-through-vaccination-centres/">
-            covid19.govt.nz
-          </a>{" "}
-          for more information.
-        </p>
-      </div>
+    <>
+      {"ok" in locations ? (
+        <div className="WalkSection2">
+          <h2>
+            <Trans
+              i18nKey="walkins.sectionHeader"
+              t={t}
+              components={[<strong />]}
+            />
+          </h2>
+          <p>
+            <Trans
+              i18nKey="walkins.subHeader"
+              t={t}
+              components={[
+                <a
+                  href="https://covid19.govt.nz/covid-19-vaccines/how-to-get-a-covid-19-vaccination/walk-in-and-drive-through-vaccination-centres/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  covid19.govt.nz
+                </a>,
+              ]}
+            />
+          </p>
+        </div>
+      ) : null}
       {"loading" in locations ? (
         <WalkMessage>
-          <Spinner color="black" />
-          <div
-            style={{
-              marginLeft: "1rem",
-              fontSize: "1.5rem",
-            }}
-          >
-            {t("core.loading")}
-          </div>
+          <CustomSpinner />
+          <LoadingText>{t("core.loading")}</LoadingText>
         </WalkMessage>
       ) : "error" in locations ? (
         <WalkMessage>Loading failed: {locations.error.message}</WalkMessage>
       ) : locations.ok.length === 0 ? (
-        <WalkMessage>
-          There aren't any walk-in or drive thru vaccination centres in your
-          area. Try make a booking instead.
-        </WalkMessage>
+        <WalkMessage>{t("walkins.noWalkinDriveThruFound")}</WalkMessage>
       ) : (
         <>
           <OtherContainer>
@@ -157,7 +168,7 @@ export function TodayLocationsSection() {
                         </section>
                         <img
                           className="Chevron"
-                          src="./arrow-right-1.svg"
+                          src="/arrow-right-1.svg"
                           alt=""
                         />
                       </OtherBox>
@@ -174,6 +185,7 @@ export function TodayLocationsSection() {
           )}
         </>
       )}
-    </div>
+      {"ok" in locations ? <Footer /> : null}
+    </>
   );
 }

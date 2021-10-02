@@ -7,6 +7,9 @@ import { NoticeList, NoticeListItem } from "../NoticeList";
 import { PageLink } from "../PageLink";
 import { ModalGrid } from "../VaxComponents";
 import { CrowdsourcedLocation } from "./CrowdsourcedData";
+import { parsePhoneNumber } from "../utils/parsePhone";
+import { RouteType, VaxxHelmet } from "../VaxxHelmet";
+
 type Props = {
   cancelPath: string;
   location?: CrowdsourcedLocation;
@@ -36,7 +39,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
   if (location == null) {
     return null;
   }
-  const telephone = location.telephone?.replace(/\[.*\]/g, "");
+  const telephone = parsePhoneNumber(location.telephone);
 
   const desktopDialogStyle = {
     width: "100%",
@@ -61,6 +64,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
     : { ...desktopDialogStyle, ...sharedDialogStyle };
   return (
     <div style={dialogStyle as any}>
+      <VaxxHelmet routeType={RouteType.Location} location={location} />
       <ModalGrid className={"modal-container WalkModal"}>
         <div>
           <h1

@@ -13,7 +13,12 @@
     "website": "Situs Web",
     "address": "Alamat",
     "noResultsNotInNZ": "Tidak ditemukan situs vaksinasi untuk permintaan pencarian ini. Apakah Anda di Selandia Baru?",
-    "noResultsInRadius": "Tidak ditemukan situs vaksinasi untuk permintaan pencarian ini. Harap mencoba radius kilometer yang berbeda."
+    "noResultsInRadius": "Tidak ditemukan situs vaksinasi untuk permintaan pencarian ini. Harap mencoba radius kilometer yang berbeda.",
+    "walkInDriveThru": "Walk-in/Drive Thru",
+    "availableBookingSlots": "Available Booking Slots",
+    "vaccApptToBook": "Vaccination appointments available to book right now.",
+    "mistake": "Did we make a mistake?",
+    "changeOrCancelABooking": "Change or cancel a Booking"
   },
   "navigation": {
     "about": "Mengenai",
@@ -65,7 +70,15 @@
         "message": "Informasi di sini mungkin tidak 100% akurat. Silahkan mengunjungi situs web lokasi ofisial ."
       }
     },
-    "closed": "Tutup"
+    "closed": "Tutup",
+    "subHeader": "You don't need an appointment to get vaccinated at these venues. Visit <0>covid19.govt.nz</0> for more information.",
+    "noWalkinDriveThruFound": "There aren't any walk-in or drive thru vaccination centres in your area. Try make a booking instead.",
+    "healthpointModal": {
+      "title": "How to get vaccinated here",
+      "subtitle": "Visit the address below and ask for a free COVID vaccination.",
+      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
+      "venueDetails": "Venue Details"
+    }
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",

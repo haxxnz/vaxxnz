@@ -7,13 +7,18 @@
     "loading": "Memuatkan...",
     "getDirections": "Dapatkan lokasi",
     "makeABooking": "Buat Tempahan",
+    "changeOrCancelABooking": "Tukar atau batalkan Tempahan",
     "distanceAway": "Jarak {{distance}}",
     "lastUpdated": "Dikemas kini {{updatedAt}}",
     "cancel": "Batal",
     "website": "Laman Web",
     "address": "Alamat",
-    "noResultsNotInNZ": "No vaccination sites found for this search query. Are you in New Zealand?",
-    "noResultsInRadius": "No vaccination sites found for this search query. Try a different kilometer radius."
+    "noResultsNotInNZ": "Tidak ada laman vaksinasi untuk pertanyaan carian ini. Adakah anda di New Zealand?",
+    "noResultsInRadius": "Tidak ada laman vaksinasi untuk pertanyaan carian ini. Cuba jejari kilometer yang berbeza.",
+    "walkInDriveThru": "Walk-in/Pandu-terus",
+    "availableBookingSlots": "Slot Tempahan yang Ada",
+    "vaccApptToBook": "Temu janji vaksinasi tersedia untuk ditempah sekarang.",
+    "mistake": "Adakah kita melakukan kesilapan?"
   },
   "navigation": {
     "about": "Mengenai",
@@ -36,7 +41,7 @@
       "25km": "Dalam 25km",
       "50km": "Dalam 50km",
       "100km": "Dalam 100km",
-      "10closest": "10 closest"
+      "10closest": "10 lokasi paling hampir"
     }
   },
   "walkins": {
@@ -59,13 +64,21 @@
     "otherExeptions": "Kecualian",
     "seeMore": "Lagi",
     "otherLocations": {
-      "sectionHeader": "Other Vaccination Locations <0>- Buka Hari Ini</0>",
+      "sectionHeader": "Lokasi Vaksinasi Lain <0>- Buka Hari Ini</0>",
       "disclaimer": {
         "title": "Tempat ini diberitahui dari orang awam",
         "message": "Maklumat di sini tidak menjamin 100% tepat. Sila rujuk laman web lokasi."
       }
     },
-    "closed": "Tutup"
+    "closed": "Tutup",
+    "subHeader": "Anda tidak memerlukan janji temu untuk mendapatkan vaksin di tempat-tempat ini. Lawati <0>covid19.govt.nz</0> untuk maklumat lanjut.",
+    "noWalkinDriveThruFound": "Tidak ada Walk-in atau Pandu-terus pusat vaksinasi di kawasan anda. Sebaliknya, cuba buat tempahan.",
+    "healthpointModal": {
+      "title": "Cara mendapatkan vaksin di sini",
+      "subtitle": "Kunjungi alamat di bawah dan minta vaksinasi COVID percuma.",
+      "queueQuery": "Anda juga boleh menghubungi <0>{{telephone}}</0> untuk mendapati masa menungu.",
+      "venueDetails": "Venue Details"
+    }
   },
   "calendar": {
     "month": "{{monthString, MMMM yyyy}}",
@@ -81,7 +94,7 @@
       "availableSlots": "Slots tersedia",
       "noBookingsAvailable": "Tiada tempahan tersedia pada hari ini :(",
       "backToCalendar": "Kembali ke Kalendar",
-      "notBMV": "This location does not use <0>bookmyvaccine.nz</0> and may not have empty slots."
+      "notBMV": "Lokasi ini tidak menggunakan <0>bookmyvaccine.nz</0> dan mungkin mempunyai ketersediaan."
     }
   },
   "footer": {

@@ -1,35 +1,12 @@
-import React, { FunctionComponent } from "react";
-import { Switch, Route } from "react-router";
-import { Link } from "react-router-dom";
+import { FunctionComponent } from "react";
 import styled from "styled-components";
-import {
-  CalendarSection,
-  CalendarSectionProps,
-} from "./calendar/CalendarSection";
 import { PageLink } from "./PageLink";
-import { TodayLocationsSection } from "./today-locations/TodayLocationsSection";
+import { useTranslation } from "react-i18next";
 
-interface HomePageProps extends CalendarSectionProps {}
-
-enum TabType {
+export enum TabType {
   walkIn,
   bookings,
 }
-
-export const HomePage: FunctionComponent<HomePageProps> = ({ bookingData }) => {
-  return (
-    <Switch>
-      <Route path="/locations">
-        <Tabs activeTab={TabType.walkIn} />
-        <TodayLocationsSection />
-      </Route>
-      <Route>
-        <Tabs activeTab={TabType.bookings} />
-        <CalendarSection bookingData={bookingData} />
-      </Route>
-    </Switch>
-  );
-};
 
 interface TabsProps {
   activeTab: TabType;
@@ -41,6 +18,7 @@ const StyledTabs = styled.div`
   border-right: 1px solid lightgray;
   display: flex;
   margin-bottom: 1.5rem;
+  border-top: 1px solid lightgray;
 
   a {
     display: block;
@@ -54,17 +32,23 @@ const StyledTabs = styled.div`
     flex-direction: column;
   }
 `;
-
-const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => (
-  <StyledTabs role="tablist">
-    <PageLink to="/bookings">
-      <Tab isActive={activeTab === TabType.bookings}>Make a Booking</Tab>
-    </PageLink>
-    <PageLink to="/locations">
-      <Tab isActive={activeTab === TabType.walkIn}>Walk-in/Drive Thru</Tab>
-    </PageLink>
-  </StyledTabs>
-);
+export const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => {
+  const { t } = useTranslation("common");
+  return (
+    <StyledTabs role="tablist">
+      <PageLink role="tablist" to="/bookings">
+        <Tab isActive={activeTab === TabType.bookings}>
+          {t("core.makeABooking")}
+        </Tab>
+      </PageLink>
+      <PageLink role="tablist" to="/locations">
+        <Tab isActive={activeTab === TabType.walkIn}>
+          {t("core.walkInDriveThru")}
+        </Tab>
+      </PageLink>
+    </StyledTabs>
+  );
+};
 
 interface TabProps {
   isActive: boolean;
@@ -79,14 +63,14 @@ const StyledTab = styled.button`
   margin: 0;
   cursor: pointer;
   background: none;
-  font-size: 1.15rem;
-  font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: 400;
   text-align: center;
   margin: 0px;
   width: 100%;
   padding: 13px 0px;
   border-bottom: 1px solid lightgray;
-  color: #0076ff;
+  color: #0059be;
   transition: all 0.15s;
   :hover {
     background-color: #e4eeff;
@@ -97,11 +81,12 @@ const StyledTab = styled.button`
     border-bottom-color: #000;
     background-color: white;
     cursor: default;
+    font-weight: 600;
   }
 `;
 
 const Tab: FunctionComponent<TabProps> = ({ isActive, children }) => (
-  <StyledTab aria-selected={isActive} role="tab">
+  <StyledTab role="tab" aria-selected={isActive}>
     {children}
   </StyledTab>
 );

@@ -1,80 +1,76 @@
 import styled from "styled-components";
 
 export const HeaderMain = styled.header`
-
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-box-sizing: border-box;
-top: -2px;
-padding: 1.5rem 1rem;
-background-color: white;
-gap: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  top: -2px;
+  padding: 1.5rem 1rem;
+  background-color: white;
+  gap: 2rem;
 
   z-index: 2;
 
-border: 1px solid lightgray;
->div {
-  display:flex;
-  flex-direction: row;
-  gap:1rem;
-  max-height: 48px;
-  width: auto;
-  align-self: center;
-}
-h1 {
-  text-align: left;
-  margin: 0;
-  align-self: center;
-  font-size: 2rem;
-  font-weight: 600;
-}
->section {
-  flex-direction: column;
-}
->p {
-  font-size: 0.95rem;
-  color: #555;
-}
-strong {
-    font-weight:400;
-}
-
-@media screen and (max-width:1024px) {
-  position: relative;
-  top: initial;
-flex-direction: row;
->div {
-  max-height: auto;
-  flex-direction: row;
-}
-}
-@media screen and (max-width:768px) {
-flex-direction: column;
-h1 {
- 
-  font-size: 1.5rem;
-}
->div {
-  flex-direction: column;
-  width: 100%;
-  max-height: initial;
-  z-index: initial;
-
-}
-@media screen and (max-width:500px) {
+  border: 1px solid lightgray;
+  border-bottom: 0px;
+  > div {
+    display: flex;
+    flex-direction: row;
     gap: 1rem;
-  flex-direction: column;
->div {
-  flex-direction: column;
+    max-height: 48px;
+    width: auto;
+    align-self: center;
+  }
+  h1 {
+    text-align: left;
+    margin: 0;
+    align-self: center;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  > section {
+    flex-direction: column;
+  }
+  > p {
+    font-size: 0.95rem;
+    color: #555;
+  }
+  strong {
+    font-weight: 400;
+  }
 
-}
-section p {
-    padding: 0.5rem 0 1rem 0;
-}
-}
-
-
+  @media screen and (max-width: 1024px) {
+    position: relative;
+    top: initial;
+    flex-direction: row;
+    > div {
+      max-height: auto;
+      flex-direction: row;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    h1 {
+      font-size: 1.5rem;
+    }
+    > div {
+      flex-direction: column;
+      width: 100%;
+      max-height: initial;
+      z-index: initial;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    gap: 1rem;
+    flex-direction: column;
+    > div {
+      flex-direction: column;
+    }
+    section p {
+      padding: 0.5rem 0 1rem 0;
+    }
+  }
 `;
 
 export const CalendarContainer = styled.section`
@@ -118,7 +114,7 @@ export const MonthContainer = styled.section`
   button {
     box-sizing: border-box;
     font-family: inherit;
-    min-height: 144px;
+    min-height: 112px;
     height: 100%;
     width: 100%;
 
@@ -133,6 +129,7 @@ export const MonthContainer = styled.section`
 
     div {
       height: 100%;
+      min-height: inherit;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -172,8 +169,16 @@ export const MonthContainer = styled.section`
     }
   }
 
+  .dayPlaceholder {
+    background-color: whitesmoke;
+  }
+
   @media screen and (max-width: 1024px) {
     grid-template-columns: repeat(5, 1fr);
+
+    .dayPlaceholder {
+      display: none;
+    }
   }
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
@@ -267,20 +272,23 @@ export const VaccineCentre = styled.section`
     margin-bottom: 0.5rem;
   }
 
-  @media screen and (min-width: 1024px) {
-    .ButtonConstraint {
-      max-width: 400px;
+  .ButtonConstraint {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 1rem 0;
+    gap: 1.5rem;
+    a {
+      flex: 1;
     }
-  
   }
+
   @media screen and (max-width: 768px) {
     h3 {
       font-size: 1.5rem;
       margin-bottom: 0.25rem;
- 
     }
   }
-
   section.slot {
     display: flex;
     flex-direction: row;
@@ -298,10 +306,15 @@ export const VaccineCentre = styled.section`
     }
 
     @media screen and (max-width: 500px) {
-           p {
-             flex: 1;
-            }
-}
+      p {
+        flex: 1;
+      }
+    }
+    @media screen and (max-width: 600px) {
+      .ButtonConstraint {
+        flex-direction: column;
+        gap: 1rem;
+      }
     }
   }
 `;
@@ -347,9 +360,9 @@ export const WalkContainer = styled.div`
 
 export const WalkMessage = styled.div`
   display: flex;
-  justify-content center;
+  justify-content: center;
   align-items: center;
-  min-height 20vh;
+  min-height: 20vh;
   width: 100%;
   border: 1px solid lightgray;
   background: white;
@@ -360,7 +373,7 @@ export const WalkMessage = styled.div`
 export const WalkBox = styled.button`
   box-sizing: border-box;
   font-family: inherit;
-  min-height: 144px;
+  min-height: 112px;
   height: 100%;
   width: 100%;
   flex: 1;
@@ -399,6 +412,7 @@ export const WalkBox = styled.button`
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    min-height: inherit;
   }
   .Chevron {
     width: 1.25rem;

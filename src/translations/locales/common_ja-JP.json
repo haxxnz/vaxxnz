@@ -13,7 +13,12 @@
     "website": "ウェブサイト",
     "address": "住所",
     "noResultsNotInNZ": "ワクチン接種会場は見つかりませんでした。　あなたはニュージーランド国内に居住していますか?",
-    "noResultsInRadius": "ワクチン接種会場は見つかりませんでした。 距離を変更して再検索して下さい。"
+    "noResultsInRadius": "ワクチン接種会場は見つかりませんでした。 距離を変更して再検索して下さい。",
+    "walkInDriveThru": "Walk-in/Drive Thru",
+    "availableBookingSlots": "Available Booking Slots",
+    "vaccApptToBook": "Vaccination appointments available to book right now.",
+    "mistake": "Did we make a mistake?",
+    "changeOrCancelABooking": "Change or cancel a Booking"
   },
   "navigation": {
     "about": "このウェブサイトについて",
@@ -65,6 +70,14 @@
         "title": "この場所は一般的に公開されている情報です。",
         "message": "この情報は100％正確ではありません。ウェブサイトで場所を確認して下さい。"
       }
+    },
+    "subHeader": "You don't need an appointment to get vaccinated at these venues. Visit <0>covid19.govt.nz</0> for more information.",
+    "noWalkinDriveThruFound": "There aren't any walk-in or drive thru vaccination centres in your area. Try make a booking instead.",
+    "healthpointModal": {
+      "title": "How to get vaccinated here",
+      "subtitle": "Visit the address below and ask for a free COVID vaccination.",
+      "queueQuery": "You can also call <0>{{telephone}}</0> to check how long the queues are.",
+      "venueDetails": "Venue Details"
     }
   },
   "calendar": {

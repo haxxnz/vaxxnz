@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 /**
  *  @param { string } message Error Message to split
@@ -108,6 +109,7 @@ const Map = styled.img`
 `;
 
 export function CalendarError(props: { errorMessage: string }) {
+  const { t } = useTranslation("common");
   return (
     <MainContainer>
       <CenterContainer>
@@ -116,7 +118,7 @@ export function CalendarError(props: { errorMessage: string }) {
             <Title>{line}</Title>
           ))}
           <Section>
-            <Subheader>Did we make a mistake?</Subheader>
+            <Subheader>{t("core.mistake")}</Subheader>
             <Button
               href="https://github.com/CovidEngine/vaxxnz/issues"
               target="_blank"
