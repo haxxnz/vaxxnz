@@ -1,4 +1,3 @@
-import { Select as OldSelect } from "baseui/select";
 import { Select } from "./common/Select";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";

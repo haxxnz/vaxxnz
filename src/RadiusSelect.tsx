@@ -1,4 +1,3 @@
-import { Select as OldSelect } from "baseui/select";
 import { Select } from "./common/Select";
 import { useTranslation } from "react-i18next";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
