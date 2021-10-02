@@ -160,9 +160,6 @@ export const Select: FC<SelectProps> = ({
   overrides,
 }: SelectProps): ReactElement => {
   const [dropdownIsActive, setDropdownIsActive] = useState<boolean>(false);
-  const [currentlySelected, setCurrentlySelected] = useState<
-    Option | undefined
-  >(value);
   const [dropdownId] = useState<string>(
     `vaxx-select-${new Date().getMilliseconds()}`
   );
@@ -187,7 +184,6 @@ export const Select: FC<SelectProps> = ({
   const selectItem = (item: string) => {
     const selected_option =
       options.find((option) => option.label === item) || ({} as Option);
-    setCurrentlySelected(selected_option);
     onChange({ option: selected_option });
   };
 
@@ -213,7 +209,7 @@ export const Select: FC<SelectProps> = ({
         }}
       >
         <InputContainer>
-          <Placeholder>{currentlySelected?.label || placeholder}</Placeholder>
+          <Placeholder>{value?.label || placeholder}</Placeholder>
 
           {overrides?.InputContainer && overrides?.InputContainer.node}
         </InputContainer>
@@ -258,11 +254,9 @@ export const Select: FC<SelectProps> = ({
                     key={index}
                     style={{
                       fontWeight:
-                        option[valueKey] == currentlySelected[valueKey]
-                          ? "bold"
-                          : "normal",
+                        option[valueKey] == value[valueKey] ? "bold" : "normal",
                       color:
-                        option[valueKey] == currentlySelected[valueKey]
+                        option[valueKey] == value[valueKey]
                           ? "rgb(0, 0, 0)"
                           : "rgb(84, 84, 84)",
                     }}
