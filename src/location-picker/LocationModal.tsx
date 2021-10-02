@@ -7,6 +7,7 @@ import { enqueueAnalyticsEvent } from "../utils/analytics";
 import getSuburb from "../utils/reverseGeocode";
 import { ADDRESS_FINDER_API_KEY } from "../utils/consts";
 import { eventedPushState } from "../utils/url";
+import { useAddressFinder } from "../utils/useAddressFinder";
 
 type Props = {
   locationIsOpen: boolean;
@@ -16,6 +17,7 @@ type Props = {
 const LocationModal = (props: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
   const { setLocationIsOpen } = props;
+  const AddressFinderClass = useAddressFinder();
 
   const { t } = useTranslation("common");
 
@@ -50,8 +52,8 @@ const LocationModal = (props: Props) => {
   );
   const inputRef = useCallback(
     (domNode) => {
-      if (domNode != null) {
-        const widget = new AddressFinder.Widget(
+      if (domNode != null && AddressFinderClass) {
+        const widget = new AddressFinderClass.Widget(
           domNode,
           ADDRESS_FINDER_API_KEY,
           "NZ",
@@ -79,7 +81,7 @@ const LocationModal = (props: Props) => {
         });
       }
     },
-    [setLocation]
+    [AddressFinderClass, setLocation]
   );
 
   const getLocation = () => {

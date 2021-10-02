@@ -61,7 +61,7 @@ type Widget = {
   ) => void;
 };
 type Options = unknown;
-interface AddressFinder {
+interface AddressFinderClass {
   Widget: new (
     arg1: HTMLElement | null,
     arg2: string,
@@ -69,4 +69,4 @@ interface AddressFinder {
     arg4: Options
   ) => Widget;
 }
-declare const AddressFinder: AddressFinder;
+declare const AddressFinder: AddressFinderClass | undefined;
