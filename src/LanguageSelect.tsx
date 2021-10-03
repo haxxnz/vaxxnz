@@ -1,4 +1,4 @@
-import { Select } from "baseui/select";
+import { Select } from "./common/Select";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import languages, { Language } from "./translations/resources";
@@ -35,38 +35,25 @@ const LanguageSelect = () => {
   return (
     <Select
       overrides={{
-        Root: {
-          style: {
-            maxHeight: "40px",
-            alignSelf: "center",
-            marginTop: "-4px",
-          },
+        InputContainer: {
+          node: (
+            <GlobeContainer>
+              <FontAwesomeIcon
+                icon={faGlobeAmericas}
+                style={{
+                  height: 24,
+                  alignContent: "center",
+                  marginLeft: 8,
+                  marginBottom: -5,
+                }}
+              />
+            </GlobeContainer>
+          ),
         },
-        ControlContainer: {
-          style: {
-            Color: "rgba(0,0,0,0)",
-            minWidth: "144px",
-          },
-        },
-        InputContainer: () => (
-          <GlobeContainer>
-            <FontAwesomeIcon
-              icon={faGlobeAmericas}
-              style={{
-                height: 24,
-                alignContent: "center",
-                marginLeft: 8,
-                marginBottom: -5,
-              }}
-            />
-          </GlobeContainer>
-        ),
       }}
-      searchable={false}
-      clearable={false}
       options={languages}
       valueKey="code"
-      value={language ? [language] : undefined}
+      value={language}
       placeholder="English"
       onChange={(params) => {
         changeLanguage(params.option as Language);
