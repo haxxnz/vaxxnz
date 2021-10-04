@@ -86,6 +86,7 @@ export const CalendarSectionContainer = styled.section`
     border-bottom: 1px solid lightgray;
     position: sticky;
     top: 0px;
+    z-index: 2 !important;
 
     background-color: #fff;
   }
