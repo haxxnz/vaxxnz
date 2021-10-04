@@ -1,11 +1,11 @@
 import { Trans, useTranslation } from "react-i18next";
 import { ShareButtons } from "./ShareButtons";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
-import styled from "styled-components";
+import { styled } from "styletron-react";
 
-const FooterMessage = styled.p`
-  margin-bottom: 0.5rem;
-`;
+const FooterMessage = styled("p", {
+  marginBottom: "0.5rem",
+});
 
 export function Footer() {
   const { t } = useTranslation("common");
