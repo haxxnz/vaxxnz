@@ -2,7 +2,7 @@
 import { Button, KIND } from "baseui/button";
 import { FunctionComponent, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { useMediaQuery } from "react-responsive";
+import { styled } from "styletron-react";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { CalendarModalContent } from "./CalendarModalContent";
 import { useParams } from "react-router-dom";
@@ -20,7 +20,6 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
 }) => {
   const { t } = useTranslation("common");
   const { date } = useParams<{ date: string }>();
-  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
 
   // Fixme: this is trash because the data structure is trash
   const unwind = useMemo(
@@ -42,15 +41,9 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
 
   const activeDate = { dateStr: unwind[0], locations: unwind[1] };
 
-  const desktopDialogStyle = {
+  const MOBILE = "@media screen and (max-width: 768)";
+  const Dialog = styled("div", {
     width: "100%",
-  };
-  const mobileDialogStyle = {
-    width: "100vw",
-    margin: "0rem",
-    borderRadius: "0",
-  };
-  const sharedDialogStyle = {
     display: "flex",
     flexDirection: "column",
     alignSelf: "center",
@@ -59,14 +52,17 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
     border: "1px solid lightgray",
     maxWidth: "1440px",
     boxSizing: "border-box",
-  };
-  const dialogStyle = isMobileView
-    ? { ...mobileDialogStyle, ...sharedDialogStyle }
-    : { ...desktopDialogStyle, ...sharedDialogStyle };
+
+    [MOBILE]: {
+      width: "100vw",
+      margin: "0rem",
+      borderRadius: "0",
+    },
+  });
 
   return (
     <>
-      <div style={dialogStyle as any}>
+      <Dialog>
         {activeDate && <CalendarModalContent activeDate={activeDate} />}
         <div className="MobileOnly">
           <PageLink to="/">
@@ -91,7 +87,7 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
             </Button>
           </PageLink>
         </div>
-      </div>
+      </Dialog>
       <Footer />
     </>
   );

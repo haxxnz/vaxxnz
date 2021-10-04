@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { Trans, useTranslation } from "react-i18next";
-import { useMediaQuery } from "react-responsive";
 import { useTodayLocationsData } from "./TodayLocationsData";
 import { simpleHash } from "../utils/simpleHash";
 import { slug } from "../utils/slug";
@@ -19,22 +18,21 @@ import { useRadiusKm } from "../utils/useRadiusKm";
 import { useCoords } from "../utils/useCoords";
 import { PageLink } from "../PageLink";
 import { formatDistanceKm } from "../utils/locale";
-import styled from "styled-components";
+import { styled } from "styletron-react";
 import { Footer } from "../Footer";
 
-const LoadingText = styled.div`
-  margin-left: 1rem;
-  font-size: 1.5rem;
-`;
+const LoadingText = styled("div", {
+  marginLeft: "1rem",
+  fontSize: "1.5rem",
+});
 
 export function TodayLocationsSection() {
   const radiusKm = useRadiusKm();
   const coords = useCoords();
-  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
   const locations = useTodayLocationsData();
   const { t, i18n } = useTranslation("common");
 
-  const [currentView, setCurrentView] = useState(!isMobileView ? 30 : 30);
+  const [currentView, setCurrentView] = useState(30);
 
   const modalPath = (locationIndex: number) => {
     const location =
