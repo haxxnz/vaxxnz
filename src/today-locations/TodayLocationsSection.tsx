@@ -18,13 +18,13 @@ import { useRadiusKm } from "../utils/useRadiusKm";
 import { useCoords } from "../utils/useCoords";
 import { PageLink } from "../PageLink";
 import { formatDistanceKm } from "../utils/locale";
-import styled from "styled-components";
+import { styled } from "styletron-react";
 import { Footer } from "../Footer";
 
-const LoadingText = styled.div`
-  margin-left: 1rem;
-  font-size: 1.5rem;
-`;
+const LoadingText = styled("div", {
+  marginLeft: "1rem",
+  fontSize: "1.5rem",
+});
 
 export function TodayLocationsSection() {
   const radiusKm = useRadiusKm();
