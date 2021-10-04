@@ -41,28 +41,6 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
 
   const activeDate = { dateStr: unwind[0], locations: unwind[1] };
 
-  const desktopDialogStyle = {
-    width: "100%",
-  };
-  const mobileDialogStyle = {
-    width: "100vw",
-    margin: "0rem",
-    borderRadius: "0",
-  };
-  const sharedDialogStyle = {
-    display: "flex",
-    flexDirection: "column",
-    alignSelf: "center",
-    padding: "1.5rem",
-    backgroundColor: "white",
-    border: "1px solid lightgray",
-    maxWidth: "1440px",
-    boxSizing: "border-box",
-  };
-  // const dialogStyle = isMobileView
-  //   ? { ...mobileDialogStyle, ...sharedDialogStyle }
-  //   : { ...desktopDialogStyle, ...sharedDialogStyle };
-
   const MOBILE = "@media screen and (max-width: 768)";
   const Dialog = styled("div", {
     width: "100%",
