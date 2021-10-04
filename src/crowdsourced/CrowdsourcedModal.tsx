@@ -1,7 +1,7 @@
 import { Button, KIND } from "baseui/button";
 import { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
-import { useMediaQuery } from "react-responsive";
+import { styled } from "styletron-react";
 import { LocationNotice } from "../common/LocationNotice";
 import { NoticeList, NoticeListItem } from "../NoticeList";
 import { PageLink } from "../PageLink";
@@ -34,22 +34,15 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
   location,
 }) => {
   const { t } = useTranslation("common");
-  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
 
   if (location == null) {
     return null;
   }
   const telephone = parsePhoneNumber(location.telephone);
 
-  const desktopDialogStyle = {
+  const MOBILE = "@media screen and (max-width: 768)";
+  const Dialog = styled("div", {
     width: "100%",
-  };
-  const mobileDialogStyle = {
-    width: "100vw",
-    margin: "0rem",
-    borderRadius: "0",
-  };
-  const sharedDialogStyle = {
     display: "flex",
     flexDirection: "column",
     alignSelf: "center",
@@ -58,12 +51,16 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
     border: "1px solid lightgray",
     maxWidth: "1440px",
     boxSizing: "border-box",
-  };
-  const dialogStyle = isMobileView
-    ? { ...mobileDialogStyle, ...sharedDialogStyle }
-    : { ...desktopDialogStyle, ...sharedDialogStyle };
+
+    [MOBILE]: {
+      width: "100vw",
+      margin: "0rem",
+      borderRadius: "0",
+    },
+  });
+
   return (
-    <div style={dialogStyle as any}>
+    <Dialog>
       <VaxxHelmet routeType={RouteType.Location} location={location} />
       <ModalGrid className={"modal-container WalkModal"}>
         <div>
@@ -177,7 +174,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
           )}
         </div>
       </ModalGrid>
-    </div>
+    </Dialog>
   );
 };
 
