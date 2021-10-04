@@ -27,6 +27,11 @@ body {
   z-index: 1;
 }
 
+body[data-state="open"] .MonthSection, 
+body[data-state="open"] header {
+  z-index: 1 !important;
+}
+
 #root div[data-baseweb="popover"]:last-child {
   z-index: 4 !important;
 }
