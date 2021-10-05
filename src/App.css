@@ -586,3 +586,44 @@ ul.af_list.af_list li.af_item {
   bottom: 0;
   opacity: 0.7;
 }
+
+.modal-grid {
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: 0.6fr 1fr;
+  height: 100%;
+  overflow-y: initial;
+}
+
+.modal-grid h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.modal-grid p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.modal-grid hr {
+  border: none;
+  border-top: 1px solid lightgray;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .modal-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .modal-grid {
+    gap: 0;
+  }
+
+  .modal-grid h1 {
+    font-size: 2rem;
+  }
+}
