@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, useState } from "react";
-import styled from "styled-components";
+import { styled } from "styletron-react";
 import type { ReactNode } from "react";
 import type { StyleObject } from "styletron-react";
 
@@ -20,113 +20,119 @@ interface SelectProps {
 }
 
 // Styled components
-const Container = styled.div`
-  display: block;
-  flex-direction: column;
-`;
+const Container = styled("div", {
+  display: "block",
+  flexDirection: "column",
+});
 
-const InputContainer = styled.div`
-  padding-right: 0px;
-  padding-left: 10px;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  flex-wrap: nowrap;
-  align-items: center;
-  flex-basis: 0%;
-  flex-shrink: 1;
-  flex-grow: 1;
-  display: flex;
-  overflow: hidden;
-  position: relative;
-  box-sizing: border-box;
-`;
+const InputContainer = styled("div", {
+  paddingRight: "0px",
+  paddingLeft: "10px",
+  paddingBottom: "10px",
+  paddingTop: "10px",
+  flexWrap: "nowrap",
+  alignItems: "center",
+  flexBasis: "0%",
+  flexShrink: 1,
+  flexGrow: 1,
+  display: "flex",
+  overflow: "hidden",
+  position: "relative",
+  boxSizing: "border-box",
+});
 
-const Button = styled.div`
-  background-color: rgb(238, 238, 238);
-  width: 100%;
-  min-width: 144px;
-  box-sizing: border-box;
-  display: flex;
-  line-height: 24px;
-  cursor: pointer;
-`;
+const Button = styled("div", {
+  backgroundColor: "rgb(238, 238, 238)",
+  width: "100%",
+  minWidth: "144px",
+  boxSizing: "border-box",
+  display: "flex",
+  lineHeight: "24px",
+  cursor: "pointer",
+});
 
-const Placeholder = styled.p`
-  overflowwrap: normal;
-  whitespace: nowrap;
-  textoverflow: ellipsis;
-  maxwidth: 100%;
-  height: 100%;
-  marginleft: 2px;
-  overflow: hidden;
-  boxsizing: border-box;
-  lineheight: 24px;
-  display: block;
-`;
+const Placeholder = styled("p", {
+  overflowwrap: "normal",
+  whitespace: "nowrap",
+  textoverflow: "ellipsis",
+  maxwidth: "100%",
+  height: "100%",
+  marginleft: "2px",
+  overflow: "hidden",
+  boxsizing: "border-box",
+  lineheight: "24px",
+  display: "block",
+});
 
-const ArrowContainer = styled.div`
-  align-self: stretch;
-  flex-shrink: 0;
-  align-items: center;
-  display: flex;
-  position: relative;
-  box-sizing: border-box;
-  color: rgb(0, 0, 0);
-  cursor: pointer;
-  padding-right: 12px;
-`;
+const ArrowContainer = styled("div", {
+  alignSelf: "stretch",
+  flexShrink: 0,
+  alignItems: "center",
+  display: "flex",
+  position: "relative",
+  boxSizing: "border-box",
+  color: "rgb(0, 0, 0)",
+  cursor: "pointer",
+  paddingRight: "12px",
+});
 
-const Arrow = styled.svg`
-  width: 16px;
-  height: 16px;
-  fill: currentcolor;
-  display: inline-block;
-  color: rgb(0, 0, 0);
-  overflow: hidden;
-  font-size: 16px;
-`;
+const Arrow = styled("svg", {
+  width: "16px",
+  height: "16px",
+  fill: "currentcolor",
+  display: "inline-block",
+  color: "rgb(0, 0, 0)",
+  overflow: "hidden",
+  fontSize: "16px",
+});
 
-const ItemContainer = styled.ul`
-  max-height: 900px;
-  overflow: auto;
-  padding-bottom: 8px;
-  padding-top: 8px;
-  padding-left: 0px;
-  padding-right: 0px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: rgb(0 0 0 / 16%) 0px 4px 16px;
-  margin: 0px;
-  margin-top: -2px;
-  border-bottom-right-radius: 0px;
-  border-bottom-left-radius: 0px;
-  border-top-right-radius: 0px;
-  border-top-left-radius: 0px;
-  position: relative;
-`;
+const ItemContainer = styled("ul", {
+  maxHeight: "900px",
+  overflow: "auto",
+  paddingBottom: "8px",
+  paddingTop: "8px",
+  paddingLeft: "0px",
+  paddingRight: "0px",
+  backgroundColor: "rgb(255, 255, 255)",
+  boxShadow: "rgb(0 0 0 / 16%) 0px 4px 16px",
+  margin: "0px",
+  marginTop: "-2px",
+  borderBottomRightRadius: "0px",
+  borderBottomleftRadius: "0px",
+  borderTopRightRadius: "0px",
+  borderTopLeftRadius: "0px",
+  position: "relative",
+});
 
-const Item = styled.li`
-  transition-property: color, background-color;
-  font-size: 14px;
-  padding-bottom: 8px;
-  padding-top: 8px;
-  display: block;
-  background-color: transparent;
-  padding-right: 16px;
-  padding-left: 16px;
-  line-height: 20px;
-  margin-bottom: 0px;
-  transition-timing-function: cubic-bezier(0.2, 0.8, 0.4, 1);
-  transition-duration: 200ms;
-  cursor: pointer;
-  position: relative;
-  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
-    "Helvetica Neue", sans-serif;
+const Item = styled("li", {
+  transitionProperty: "color, background-color",
+  fontSize: "14px",
+  paddingBottom: "8px",
+  paddingTop: "8px",
+  display: "block",
+  backgroundColor: "transparent",
+  paddingRight: "16px",
+  paddingLeft: "16px",
+  lineHeight: "20px",
+  marginBottom: "0px",
+  transitionTimingFunction: "cubic-bezier(0.2, 0.8, 0.4, 1)",
+  transitionDuration: "200ms",
+  cursor: "pointer",
+  position: "relative",
 
-  :hover {
-    background-color: rgb(246, 246, 246);
-  }
-`;
+  ":hover": {
+    backgroundColor: "rgb(246, 246, 246)",
+  },
+});
+
+const DropdownContainer = styled("div", {
+  position: "absolute",
+  backgroundColor: "rgb(238, 238, 238)",
+  display: "block",
+  zIndex: 10,
+  marginBottom: 0,
+  opacity: 1,
+});
 
 /**
  * Component for letting users select option from list of options
@@ -138,11 +144,13 @@ const Item = styled.li`
  * const onChangeHandler = (props: Props) => console.log(`Selected ${props.option.label}`);
  *
  * return (
- *  <Select options={options} placeholder={placeholder} onChange={onChangeHandler} />
+ *  <Select options={options} valueKey={"id"} placeholder={placeholder} onChange={onChangeHandler} />
  * )
  *
  * @param { SelectOverrides } overrides CSS overrides
  * @param { Options } options Options that a user can select
+ * @param { string } valuekey key for unique identifier on option
+ * @param { Option } value currently selected option
  * @param { string | undefined } placeholder Default option
  * @param { (props: Props) => void } onChange function to fire when option changes
  */
@@ -217,52 +225,26 @@ export const Select: FC<SelectProps> = ({
       </Button>
 
       {dropdownIsActive && (
-        <div
-          style={{
-            position: "absolute",
-            backgroundColor: "rgb(238, 238, 238)",
-            display: "block",
-            zIndex: 10,
-            marginBottom: 0,
-            width: getButtonWidth(),
-            opacity: 1,
-          }}
-        >
-          <div
-            style={{
-              position: "relative",
-              display: "block",
-              backgroundColor: "rgb(238, 238, 238)",
-              zIndex: 10,
-            }}
-          >
-            <div
-              style={{
-                display: "block",
-                zIndex: 10,
-              }}
-            >
-              <ItemContainer>
-                {options.map((option: Option, index: number) => (
-                  <Item
-                    onClick={() => selectItem(option.label)}
-                    key={index}
-                    style={{
-                      fontWeight:
-                        option[valueKey] == value[valueKey] ? "bold" : "normal",
-                      color:
-                        option[valueKey] == value[valueKey]
-                          ? "rgb(0, 0, 0)"
-                          : "rgb(84, 84, 84)",
-                    }}
-                  >
-                    {option.label}
-                  </Item>
-                ))}
-              </ItemContainer>
-            </div>
-          </div>
-        </div>
+        <DropdownContainer style={{ width: getButtonWidth() }}>
+          <ItemContainer>
+            {options.map((option: Option, index: number) => (
+              <Item
+                onClick={() => selectItem(option.label)}
+                key={index}
+                style={{
+                  fontWeight:
+                    option[valueKey] === value[valueKey] ? "bold" : "normal",
+                  color:
+                    option[valueKey] === value[valueKey]
+                      ? "rgb(0, 0, 0)"
+                      : "rgb(84, 84, 84)",
+                }}
+              >
+                {option.label}
+              </Item>
+            ))}
+          </ItemContainer>
+        </DropdownContainer>
       )}
     </Container>
   );
