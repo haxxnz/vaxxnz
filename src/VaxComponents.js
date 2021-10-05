@@ -7,10 +7,10 @@ export const CalendarContainer = styled("section", {
   margin: "0",
 });
 
-export const WalkInstructions = styledd.div`
-  padding: 1.5rem;
-  border-right: 1px solid lightgray;
-`;
+export const WalkInstructions = styled("div", {
+  padding: "1.5rem",
+  borderRight: "1px solid lightgray",
+});
 
 export const WalkGrid = styledd.section`
   display: grid;
@@ -140,17 +140,17 @@ export const WalkContainer = styledd.div`
   }
 `;
 
-export const WalkMessage = styledd.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 20vh;
-  width: 100%;
-  border: 1px solid lightgray;
-  background: white;
-  margin: 0;
-  box-sizing: border-box;
-`;
+export const WalkMessage = styled("div", {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  minHeight: "20vh",
+  width: "100%",
+  border: "1px solid lightgray",
+  background: "white",
+  margin: 0,
+  boxSizing: "border-box",
+});
 
 export const WalkBox = styledd.button`
   box-sizing: border-box;
