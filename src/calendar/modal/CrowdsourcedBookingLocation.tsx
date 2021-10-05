@@ -7,7 +7,6 @@ import { getDistanceKm } from "../../utils/distance";
 import { formatDistanceKm } from "../../utils/locale";
 import { useCoords } from "../../utils/useCoords";
 import { useRadiusKm } from "../../utils/useRadiusKm";
-import { VaccineCentre } from "../../VaxComponents";
 import { styled } from "styletron-react";
 
 interface CrowdsourcedBookingLocationProps {
@@ -25,7 +24,7 @@ export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingL
     const radiusKm = useRadiusKm();
     const coords = useCoords();
     return (
-      <VaccineCentre>
+      <section className="VaccineCentre">
         <h3>{location.name}</h3>
         <p>
           {location.address} (
@@ -101,6 +100,6 @@ export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingL
           <h4>{t("walkins.otherLocations.disclaimer.title")}</h4>
           <p> {t("walkins.otherLocations.disclaimer.message")}</p>
         </Section>
-      </VaccineCentre>
+      </section>
     );
   };

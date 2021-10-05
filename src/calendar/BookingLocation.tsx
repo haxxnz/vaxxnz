@@ -11,7 +11,6 @@ import { formatDistanceKm } from "../utils/locale";
 import { useCoords } from "../utils/useCoords";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { useSeen } from "../utils/useSeen";
-import { VaccineCentre } from "../VaxComponents";
 import {
   BookingLocationSlotsPair,
   SlotWithAvailability,
@@ -125,7 +124,7 @@ const BookingLocation = ({
     return null;
   } else {
     return (
-      <VaccineCentre ref={ref}>
+      <section className="VaccineCentre" ref={ref}>
         <h3>{location.name}</h3>
         <p>
           {location.displayAddress} (
@@ -217,7 +216,7 @@ const BookingLocation = ({
             </p>
           ))}
         </section>
-      </VaccineCentre>
+      </section>
     );
   }
 };

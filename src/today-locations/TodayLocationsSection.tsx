@@ -1,8 +1,4 @@
-import {
-  WalkBox as OtherBox,
-  WalkContainer as OtherContainer,
-  WalkMessage,
-} from "../VaxComponents";
+import { WalkContainer as OtherContainer, WalkMessage } from "../VaxComponents";
 import { getDistanceKm } from "../utils/distance";
 import { Instruction } from "./healthpoint/HealthpointData";
 import { useState } from "react";
@@ -130,7 +126,11 @@ export function TodayLocationsSection() {
                   }
                   return (
                     <PageLink to={modalPath(index)}>
-                      <OtherBox onClick={() => openModal(index)} key={index}>
+                      <button
+                        className="WalkBox"
+                        onClick={() => openModal(index)}
+                        key={index}
+                      >
                         <section className="WalkItem">
                           <div>
                             <h3>{name}</h3>
@@ -169,7 +169,7 @@ export function TodayLocationsSection() {
                           src="/arrow-right-1.svg"
                           alt=""
                         />
-                      </OtherBox>
+                      </button>
                     </PageLink>
                   );
                 }
