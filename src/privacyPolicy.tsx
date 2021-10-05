@@ -1,21 +1,26 @@
 import { Footer } from "./Footer";
+import { styled } from "styletron-react";
+
+const Container = styled("div", {
+  margin: "3rem",
+});
+
+const Summary = styled("p", {
+  marginTop: "1rem",
+  marginBottom: "0.5rem",
+  marginRight: "1rem",
+});
 
 const PrivacyPolicy = () => {
   return (
     <>
-      <div style={{ margin: "3rem" }}>
+      <Container>
         <h2>Privacy Policy</h2>
-        <p
-          style={{
-            marginTop: "1rem",
-            marginBottom: "0.5rem",
-            marginRight: "1rem",
-          }}
-        >
+        <Summary>
           This privacy policy sets out how vaxx.nz (“vaxx.nz”) collects,
           processes and uses your Personal Information through your use of our
           Services.
-        </p>
+        </Summary>
         <br />
         <h3>Definitions</h3>
         <p>
@@ -244,7 +249,7 @@ const PrivacyPolicy = () => {
           <br />
           <br />
         </p>
-      </div>
+      </Container>
 
       <Footer />
     </>
