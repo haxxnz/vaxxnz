@@ -17,6 +17,7 @@ import {
   SlotWithAvailability,
 } from "./booking/BookingDataTypes";
 import { CalendarDate } from "./CalendarData";
+import { styled } from "styletron-react";
 
 type BookingLocationProps = {
   locationSlotsPair: BookingLocationSlotsPair;
@@ -55,6 +56,13 @@ const BookingLocation = ({
   const [slots, setSlots] = useState<SlotWithAvailability[] | undefined>();
   const radiusKm = useRadiusKm();
   const coords = useCoords();
+
+  const AvailableSlots = styled("p", {
+    marginTop: "0.25rem",
+    marginRight: 0,
+    marginBottom: "0.5rem",
+    marginLeft: 0,
+  });
 
   const getSlots = async (url: string) => {
     try {
@@ -200,16 +208,7 @@ const BookingLocation = ({
             </Button>
           </a>
         </div>
-        <p
-          style={{
-            marginTop: "0.25rem",
-            marginRight: 0,
-            marginBottom: "0.5rem",
-            marginLeft: 0,
-          }}
-        >
-          {t("calendar.modal.availableSlots")}
-        </p>
+        <AvailableSlots>{t("calendar.modal.availableSlots")}</AvailableSlots>
         <section className="slot">
           {/* <p>1am</p> */}
           {slotsToDisplay?.map((slot) => (
