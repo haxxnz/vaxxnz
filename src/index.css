@@ -16,6 +16,7 @@ body {
   background-position: center center, center center;
   background-size: cover, cover;
   z-index: -2 !important;
+  background-image: url('./bg.svg');
 }
 
 .background {
@@ -26,8 +27,9 @@ body {
   z-index: 1;
 }
 
-#root div:last-child {
-  z-index: 2;
+body[data-state="open"] .MonthSection, 
+body[data-state="open"] header {
+  z-index: 1 !important;
 }
 
 #root div[data-baseweb="popover"]:last-child {
@@ -148,6 +150,7 @@ a {
 
 .header-img {
   height: 300px;
+  width: 340.66px;
   display: block;
   margin: 35px auto 0 auto;
   opacity: 0.7;
@@ -167,9 +170,6 @@ a {
 @media screen and (max-width: 768px) {
   #root div:first-child {
     z-index: 1;
-  }
-  #root div:last-child {
-    z-index: 2;
   }
   .App-header h1 {
     font-size: 2rem;

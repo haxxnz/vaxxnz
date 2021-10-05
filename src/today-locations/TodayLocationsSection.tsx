@@ -6,12 +6,11 @@ import {
 import { getDistanceKm } from "../utils/distance";
 import { Instruction } from "./healthpoint/HealthpointData";
 import { useState } from "react";
-import CustomSpinner from '../utils/customSpinner'
+import CustomSpinner from "../utils/customSpinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar, faWalking } from "@fortawesome/free-solid-svg-icons";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { Trans, useTranslation } from "react-i18next";
-import { useMediaQuery } from "react-responsive";
 import { useTodayLocationsData } from "./TodayLocationsData";
 import { simpleHash } from "../utils/simpleHash";
 import { slug } from "../utils/slug";
@@ -19,15 +18,21 @@ import { useRadiusKm } from "../utils/useRadiusKm";
 import { useCoords } from "../utils/useCoords";
 import { PageLink } from "../PageLink";
 import { formatDistanceKm } from "../utils/locale";
+import { styled } from "styletron-react";
+import { Footer } from "../Footer";
+
+const LoadingText = styled("div", {
+  marginLeft: "1rem",
+  fontSize: "1.5rem",
+});
 
 export function TodayLocationsSection() {
   const radiusKm = useRadiusKm();
   const coords = useCoords();
-  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
   const locations = useTodayLocationsData();
   const { t, i18n } = useTranslation("common");
 
-  const [currentView, setCurrentView] = useState(!isMobileView ? 30 : 30);
+  const [currentView, setCurrentView] = useState(30);
 
   const modalPath = (locationIndex: number) => {
     const location =
@@ -59,42 +64,37 @@ export function TodayLocationsSection() {
   };
 
   return (
-    <div>
-      <div className="WalkSection2">
-        <h2>
-          <Trans
-            i18nKey="walkins.sectionHeader"
-            t={t}
-            components={[<strong />]}
-          />
-        </h2>
-        <p>
-          <Trans
-            i18nKey="walkins.subHeader"
-            t={t}
-            components={[
-              <a
-                href="https://covid19.govt.nz/covid-19-vaccines/how-to-get-a-covid-19-vaccination/walk-in-and-drive-through-vaccination-centres/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                covid19.govt.nz
-              </a>,
-            ]}
-          />
-        </p>
-      </div>
+    <>
+      {"ok" in locations ? (
+        <div className="WalkSection2">
+          <h2>
+            <Trans
+              i18nKey="walkins.sectionHeader"
+              t={t}
+              components={[<strong />]}
+            />
+          </h2>
+          <p>
+            <Trans
+              i18nKey="walkins.subHeader"
+              t={t}
+              components={[
+                <a
+                  href="https://covid19.govt.nz/covid-19-vaccines/how-to-get-a-covid-19-vaccination/walk-in-and-drive-through-vaccination-centres/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  covid19.govt.nz
+                </a>,
+              ]}
+            />
+          </p>
+        </div>
+      ) : null}
       {"loading" in locations ? (
         <WalkMessage>
           <CustomSpinner />
-          <div
-            style={{
-              marginLeft: "1rem",
-              fontSize: "1.5rem",
-            }}
-          >
-            {t("core.loading")}
-          </div>
+          <LoadingText>{t("core.loading")}</LoadingText>
         </WalkMessage>
       ) : "error" in locations ? (
         <WalkMessage>Loading failed: {locations.error.message}</WalkMessage>
@@ -183,6 +183,7 @@ export function TodayLocationsSection() {
           )}
         </>
       )}
-    </div>
+      {"ok" in locations ? <Footer /> : null}
+    </>
   );
 }

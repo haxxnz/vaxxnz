@@ -1,5 +1,5 @@
-import {withStyle} from 'baseui';
-import CustomSpinner from '../utils/customSpinner'
+import { withStyle } from "baseui";
+import CustomSpinner from "../utils/customSpinner";
 import { FunctionComponent } from "react";
 import { sum } from "../utils/math";
 import {
@@ -19,35 +19,34 @@ import {
 import React from "react";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { PageLink } from "../PageLink";
+import styled from "styled-components";
 
 interface BookingCalendarProps {
   data: CalendarData;
 }
 
+const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 20vh;
+  width: 100%;
+  background-color: white;
+`;
+
+const LoadingText = styled.div`
+  margin-left: 1rem;
+  font-size: 1.5rem;
+`;
+
 export const LoadingBookingCalendar: FunctionComponent = () => {
   const { t } = useTranslation("common");
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "20vh",
-        width: "100%",
-        backgroundColor: "white",
-      }}
-    >
+    <LoadingContainer>
       <CustomSpinner />
-      <div
-        style={{
-          marginLeft: "1rem",
-          fontSize: "1.5rem",
-        }}
-      >
-        {t("core.loading")}
-      </div>
-    </div>
+      <LoadingText>{t("core.loading")}</LoadingText>
+    </LoadingContainer>
   );
 };
 
@@ -88,6 +87,14 @@ function CalendarMonthContainerExpensive(
 ): JSX.Element {
   const { monthStr, monthDates } = props;
   const date = parse(monthStr, "MMMM yyyy", new Date());
+  const monthDatesArr = Array.from(monthDates);
+  const firstDayDate = parse(monthDatesArr[0][0], "yyyy-MM-dd", new Date());
+  const lastDayDate = parse(
+    monthDatesArr[monthDatesArr.length - 1][0],
+    "yyyy-MM-dd",
+    new Date()
+  );
+
   return (
     <CalendarSectionContainer key={monthStr}>
       <div className="MonthSection">
@@ -99,7 +106,14 @@ function CalendarMonthContainerExpensive(
         </h3>
       </div>
       <MonthContainer>
-        {Array.from(monthDates).map(([dateStr, locations]) => {
+        {[...Array(firstDayDate.getDay() ?? 0)].map((_, i) => (
+          <div
+            className="dayPlaceholder"
+            key={`${firstDayDate.toISOString}-placeholder-${i}`}
+          ></div>
+        ))}
+
+        {monthDatesArr.map(([dateStr, locations]) => {
           const availableCount = sum(
             locations.map((location) =>
               "isBooking" in location ? location.slots?.length ?? 0 : 1
@@ -114,6 +128,13 @@ function CalendarMonthContainerExpensive(
             />
           );
         })}
+
+        {[...Array(6 - (lastDayDate.getDay() ?? 6))].map((_, i) => (
+          <div
+            className="dayPlaceholder"
+            key={`${lastDayDate.toISOString}-placeholder-${i}`}
+          ></div>
+        ))}
       </MonthContainer>
     </CalendarSectionContainer>
   );

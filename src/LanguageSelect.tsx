@@ -1,4 +1,4 @@
-import { Select } from "baseui/select";
+import { Select } from "./common/Select";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import languages, { Language } from "./translations/resources";
@@ -6,6 +6,14 @@ import { enqueueAnalyticsEvent } from "./utils/analytics";
 import { eventedPushState } from "./utils/url";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGlobeAmericas } from "@fortawesome/free-solid-svg-icons";
+import styled from "styled-components";
+
+const GlobeContainer = styled.div`
+  align-self: center;
+  margin-left: auto;
+  margin-right: 2px;
+  opacity: 0.6;
+`;
 
 const LanguageSelect = () => {
   const langCode = localStorage.getItem("i18nextLng") || "en-NZ";
@@ -27,45 +35,25 @@ const LanguageSelect = () => {
   return (
     <Select
       overrides={{
-        Root: {
-          style: {
-            maxHeight: "40px",
-            alignSelf: "center",
-            marginTop: "-4px",
-          },
+        InputContainer: {
+          node: (
+            <GlobeContainer>
+              <FontAwesomeIcon
+                icon={faGlobeAmericas}
+                style={{
+                  height: 24,
+                  alignContent: "center",
+                  marginLeft: 8,
+                  marginBottom: -5,
+                }}
+              />
+            </GlobeContainer>
+          ),
         },
-        ControlContainer: {
-          style: {
-            Color: "rgba(0,0,0,0)",
-            minWidth: "144px",
-          },
-        },
-        InputContainer: () => (
-          <div
-            style={{
-              alignSelf: "center",
-              marginLeft: "auto",
-              marginRight: 2,
-              opacity: 0.6,
-            }}
-          >
-            <FontAwesomeIcon
-              icon={faGlobeAmericas}
-              style={{
-                height: 24,
-                alignContent: "center",
-                marginLeft: 8,
-                marginBottom: -5,
-              }}
-            />
-          </div>
-        ),
       }}
-      searchable={false}
-      clearable={false}
       options={languages}
       valueKey="code"
-      value={language ? [language] : undefined}
+      value={language}
       placeholder="English"
       onChange={(params) => {
         changeLanguage(params.option as Language);

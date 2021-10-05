@@ -1,7 +1,7 @@
 import { Button, KIND } from "baseui/button";
 import { FunctionComponent } from "react";
 import { Trans, useTranslation } from "react-i18next";
-import { useMediaQuery } from "react-responsive";
+import { styled } from "styletron-react";
 import { LocationNotice } from "../../common/LocationNotice";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { useRadiusKm } from "../../utils/useRadiusKm";
@@ -24,7 +24,6 @@ const HealthpointModal: FunctionComponent<Props> = ({
   location,
 }) => {
   const { t } = useTranslation("common");
-  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
   const radiusKm = useRadiusKm();
 
   if (location == null) {
@@ -32,30 +31,27 @@ const HealthpointModal: FunctionComponent<Props> = ({
   }
   const telephone = parsePhoneNumber(location.telephone);
 
-  const desktopDialogStyle = {
+  const MOBILE = "@media screen and (max-width: 768)";
+  const Dialog = styled("div", {
     width: "100%",
-  };
-  const mobileDialogStyle = {
-    width: "100vw",
-    margin: "0rem",
-    borderRadius: "0",
-  };
-  const sharedDialogStyle = {
     display: "flex",
     flexDirection: "column",
     alignSelf: "center",
+    padding: "1.5rem",
     backgroundColor: "white",
     border: "1px solid lightgray",
     maxWidth: "1440px",
     boxSizing: "border-box",
-    marginBottom: "1.5rem",
-  };
 
-  const dialogStyle = isMobileView
-    ? { ...mobileDialogStyle, ...sharedDialogStyle }
-    : { ...desktopDialogStyle, ...sharedDialogStyle };
+    [MOBILE]: {
+      width: "100vw",
+      margin: "0rem",
+      borderRadius: "0",
+    },
+  });
+
   return (
-    <div style={dialogStyle as any}>
+    <Dialog>
       <VaxxHelmet routeType={RouteType.Location} location={location} />
 
       <WalkHeading>
@@ -230,7 +226,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
           </Button>
         </PageLink>
       </div>
-    </div>
+    </Dialog>
   );
 };
 

@@ -12,10 +12,14 @@ import { HeaderMain } from "../VaxComponents";
 import LocationModal from "./LocationModal";
 import { useCoords } from "../utils/useCoords";
 import { usePlaceName } from "../utils/usePlaceName";
+import styled from "styled-components";
 
 interface LocationPickerProps {
   lastUpdateTime: Date | null;
 }
+const LastUpdated = styled.div`
+  color: #666;
+`;
 
 export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
   lastUpdateTime,
@@ -42,7 +46,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
               components={[<strong>{{ location: placeName }}</strong>]}
             />
           </h1>
-          <p style={{ color: "#666" }}>
+          <LastUpdated>
             {t("core.lastUpdated", {
               updatedAt:
                 lastUpdateTime === null
@@ -57,13 +61,14 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
                       locale: getDateFnsLocale(),
                     }),
             })}
-          </p>
+          </LastUpdated>
         </section>
 
         <div>
           <Button
             kind={KIND.primary}
             onClick={() => {
+              document.body.dataset.state = "open";
               enqueueAnalyticsEvent("Location modal opened");
               setIsOpen(true);
             }}

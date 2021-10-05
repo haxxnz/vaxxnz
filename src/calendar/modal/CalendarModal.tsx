@@ -2,13 +2,14 @@
 import { Button, KIND } from "baseui/button";
 import { FunctionComponent, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { useMediaQuery } from "react-responsive";
+import { styled } from "styletron-react";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { CalendarModalContent } from "./CalendarModalContent";
 import { useParams } from "react-router-dom";
 import { BookingData } from "../booking/BookingData";
 import { LoadingBookingCalendar } from "../Calendar";
 import { PageLink } from "../../PageLink";
+import { Footer } from "../../Footer";
 
 interface BookingModalProps {
   bookingData?: BookingData;
@@ -19,7 +20,6 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
 }) => {
   const { t } = useTranslation("common");
   const { date } = useParams<{ date: string }>();
-  const isMobileView = useMediaQuery({ query: "(max-width: 768px)" });
 
   // Fixme: this is trash because the data structure is trash
   const unwind = useMemo(
@@ -41,15 +41,9 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
 
   const activeDate = { dateStr: unwind[0], locations: unwind[1] };
 
-  const desktopDialogStyle = {
+  const MOBILE = "@media screen and (max-width: 768)";
+  const Dialog = styled("div", {
     width: "100%",
-  };
-  const mobileDialogStyle = {
-    width: "100vw",
-    margin: "0rem",
-    borderRadius: "0",
-  };
-  const sharedDialogStyle = {
     display: "flex",
     flexDirection: "column",
     alignSelf: "center",
@@ -58,38 +52,44 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
     border: "1px solid lightgray",
     maxWidth: "1440px",
     boxSizing: "border-box",
-  };
-  const dialogStyle = isMobileView
-    ? { ...mobileDialogStyle, ...sharedDialogStyle }
-    : { ...desktopDialogStyle, ...sharedDialogStyle };
+
+    [MOBILE]: {
+      width: "100vw",
+      margin: "0rem",
+      borderRadius: "0",
+    },
+  });
 
   return (
-    <div style={dialogStyle as any}>
-      {activeDate && <CalendarModalContent activeDate={activeDate} />}
-      <div className="MobileOnly">
-        <PageLink to="/">
-          <Button
-            onClick={() => {
-              enqueueAnalyticsEvent("Back to Calendar clicked");
-            }}
-            overrides={{
-              Root: {
-                style: {
-                  width: "100%",
-                  marginTop: "1rem",
-                  marginRight: 0,
-                  marginBottom: "1rem",
-                  marginLeft: 0,
+    <>
+      <Dialog>
+        {activeDate && <CalendarModalContent activeDate={activeDate} />}
+        <div className="MobileOnly">
+          <PageLink to="/">
+            <Button
+              onClick={() => {
+                enqueueAnalyticsEvent("Back to Calendar clicked");
+              }}
+              overrides={{
+                Root: {
+                  style: {
+                    width: "100%",
+                    marginTop: "1rem",
+                    marginRight: 0,
+                    marginBottom: "1rem",
+                    marginLeft: 0,
+                  },
                 },
-              },
-            }}
-            kind={KIND.secondary}
-          >
-            {t("calendar.modal.backToCalendar")}
-          </Button>
-        </PageLink>
-      </div>
-    </div>
+              }}
+              kind={KIND.secondary}
+            >
+              {t("calendar.modal.backToCalendar")}
+            </Button>
+          </PageLink>
+        </div>
+      </Dialog>
+      <Footer />
+    </>
   );
 };
 export default BookingModal;
