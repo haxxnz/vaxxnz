@@ -1,12 +1,7 @@
-import { withStyle } from "baseui";
 import CustomSpinner from "../utils/customSpinner";
 import { FunctionComponent } from "react";
 import { sum } from "../utils/math";
-import {
-  CalendarContainer,
-  CalendarSectionContainer,
-  MonthContainer,
-} from "../VaxComponents";
+import { CalendarContainer } from "../VaxComponents";
 import { differenceInDays, parse } from "date-fns";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { useTranslation } from "react-i18next";
@@ -19,25 +14,25 @@ import {
 import React from "react";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { PageLink } from "../PageLink";
-import styled from "styled-components";
+import { styled } from "styletron-react";
 
 interface BookingCalendarProps {
   data: CalendarData;
 }
 
-const LoadingContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 20vh;
-  width: 100%;
-  background-color: white;
-`;
+const LoadingContainer = styled("div", {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  minHeight: "20vh",
+  width: "100%",
+  backgroundColor: "white",
+});
 
-const LoadingText = styled.div`
-  margin-left: 1rem;
-  font-size: 1.5rem;
-`;
+const LoadingText = styled("div", {
+  marginLeft: "1rem",
+  fontSize: "1.5rem",
+});
 
 export const LoadingBookingCalendar: FunctionComponent = () => {
   const { t } = useTranslation("common");
@@ -96,7 +91,7 @@ function CalendarMonthContainerExpensive(
   );
 
   return (
-    <CalendarSectionContainer key={monthStr}>
+    <section className="calendar-section-container" key={monthStr}>
       <div className="MonthSection">
         <h3>
           {date.toLocaleDateString([i18next.language], {
@@ -105,7 +100,7 @@ function CalendarMonthContainerExpensive(
           })}
         </h3>
       </div>
-      <MonthContainer>
+      <section className="month-container">
         {[...Array(firstDayDate.getDay() ?? 0)].map((_, i) => (
           <div
             className="dayPlaceholder"
@@ -135,8 +130,8 @@ function CalendarMonthContainerExpensive(
             key={`${lastDayDate.toISOString}-placeholder-${i}`}
           ></div>
         ))}
-      </MonthContainer>
-    </CalendarSectionContainer>
+      </section>
+    </section>
   );
 }
 // FOR FUTURE: ideally we just have cheaper calendar month containers? Idk. Maybe useMemo or memoizeOne is a more elegant solution? Idk. This will do for now.

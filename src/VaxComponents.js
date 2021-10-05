@@ -1,126 +1,13 @@
-import styled from "styled-components";
+import styledd from "styled-components";
+import { styled } from "styletron-react";
 
-export const CalendarContainer = styled.section`
-  border-left: 1px solid lightgray;
-  border-right: 1px solid lightgray;
-  margin: 0;
-`;
+export const CalendarContainer = styled("section", {
+  borderLeft: "1px solid lightgray",
+  borderRight: "1px solid lightgray",
+  margin: "0",
+});
 
-export const CalendarSectionContainer = styled.section`
-  .MonthSection {
-    display: block;
-    padding: 1.1rem 1rem;
-    border-bottom: 1px solid lightgray;
-    position: sticky;
-    top: 0px;
-    z-index: 2 !important;
-
-    background-color: #fff;
-  }
-  h3 {
-    font-size: 1.25rem;
-  }
-
-  @media screen and (max-width: 1024px) {
-    .MonthSection {
-      top: 0;
-    }
-  }
-`;
-
-export const MonthContainer = styled.section`
-  display: grid;
-  box-sizing: border-box;
-  grid-template-columns: repeat(7, 1fr);
-  background-color: lightgray;
-  border-bottom: 1px solid lightgray;
-  gap: 1px;
-  transition: all 0.3s;
-
-  z-index: 1;
-  button {
-    box-sizing: border-box;
-    font-family: inherit;
-    min-height: 112px;
-    height: 100%;
-    width: 100%;
-
-    text-align: left;
-    background-color: white;
-    border: none;
-    margin: 0;
-    padding: 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    div {
-      height: 100%;
-      min-height: inherit;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    h3 {
-      font-size: 1.2rem;
-      font-weight: 400;
-    }
-    aside {
-      color: #666;
-      font-weight: 500;
-      font-size: 0.9rem;
-    }
-
-    p {
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: #555;
-    }
-    @media (hover: hover) {
-      :hover {
-        background-color: #e4eeff;
-        cursor: pointer;
-        h3,
-        p {
-          color: #005eca;
-        }
-      }
-    }
-
-    img {
-      width: 1rem;
-      height: 1rem;
-      bottom: 0;
-      opacity: 0.7;
-    }
-  }
-
-  .dayPlaceholder {
-    background-color: whitesmoke;
-  }
-
-  @media screen and (max-width: 1024px) {
-    grid-template-columns: repeat(5, 1fr);
-
-    .dayPlaceholder {
-      display: none;
-    }
-  }
-  @media screen and (max-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media screen and (max-width: 500px) {
-    grid-template-columns: repeat(1, 1fr);
-    button img {
-      align-self: center;
-      height: 2rem;
-      width: 2rem;
-    }
-  }
-`;
-
-export const ModalGrid = styled.section`
+export const ModalGrid = styledd.section`
   display: grid;
   gap: 4rem;
   grid-template-columns: 0.6fr 1fr;
@@ -152,12 +39,12 @@ export const ModalGrid = styled.section`
     }
   }
 `;
-export const WalkInstructions = styled.div`
+export const WalkInstructions = styledd.div`
   padding: 1.5rem;
   border-right: 1px solid lightgray;
 `;
 
-export const WalkGrid = styled.section`
+export const WalkGrid = styledd.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: 100%;
@@ -189,7 +76,7 @@ export const WalkGrid = styled.section`
   }
 `;
 
-export const VaccineCentre = styled.section`
+export const VaccineCentre = styledd.section`
   padding-bottom: 1.5rem;
   margin-bottom: 1.5rem;
   border-bottom: 2px solid lightgray;
@@ -246,7 +133,7 @@ export const VaccineCentre = styled.section`
   }
 `;
 
-export const WalkHeading = styled.section`
+export const WalkHeading = styledd.section`
   border-bottom: 1px solid lightgray;
   padding: 1.5rem;
 
@@ -261,7 +148,7 @@ export const WalkHeading = styled.section`
   }
 `;
 
-export const WalkContainer = styled.div`
+export const WalkContainer = styledd.div`
   border-left: 1px solid lightgray;
   border-right: 1px solid lightgray;
   margin: 0;
@@ -285,7 +172,7 @@ export const WalkContainer = styled.div`
   }
 `;
 
-export const WalkMessage = styled.div`
+export const WalkMessage = styledd.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -297,7 +184,7 @@ export const WalkMessage = styled.div`
   box-sizing: border-box;
 `;
 
-export const WalkBox = styled.button`
+export const WalkBox = styledd.button`
   box-sizing: border-box;
   font-family: inherit;
   min-height: 112px;
