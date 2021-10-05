@@ -546,13 +546,13 @@ ul.af_list.af_list li.af_item {
 }
 
 @media (hover: hover) {
-  .month-container button :hover {
+  .month-container button:hover {
     background-color: #e4eeff;
     cursor: pointer;
-    h3,
-    p {
-      color: #005eca;
-    }
+  }
+  .month-container button:hover h3,
+  .month-container button:hover p {
+    color: #005eca;
   }
 }
 
@@ -592,7 +592,7 @@ ul.af_list.af_list li.af_item {
   gap: 4rem;
   grid-template-columns: 0.6fr 1fr;
   height: 100%;
-  overflow-y: initial;
+  overflow-y: initial !important;
 }
 
 .modal-grid h1 {
@@ -626,4 +626,60 @@ ul.af_list.af_list li.af_item {
   .modal-grid h1 {
     font-size: 2rem;
   }
+}
+
+.walk-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.walk-grid h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.walk-grid hr {
+  border: none;
+  border-top: 1px solid lightgray;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.walk-grid p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 1024px) {
+  .walk-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .walk-grid {
+    gap: 0;
+  }
+
+  .walk-grid h1 {
+    font-size: 2rem;
+  }
+}
+
+.walk-heading {
+  border-bottom: 1px solid lightgray;
+  padding: 1.5rem;
+
+  display: flex;
+
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.walk-heading h1 {
+  flex: 1;
+  font-size: 2rem;
+  align-self: center;
 }

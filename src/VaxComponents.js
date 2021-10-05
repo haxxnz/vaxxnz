@@ -12,38 +12,6 @@ export const WalkInstructions = styled("div", {
   borderRight: "1px solid lightgray",
 });
 
-export const WalkGrid = styledd.section`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 100%;
-  overflow-y: scroll;
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 600;
-  }
-
-  hr {
-    border: none;
-    border-top: 1px solid lightgray;
-    margin-top: 1rem;
-    padding-top: 1rem;
-  }
-  p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-  }
-  @media screen and (max-width: 1024px) {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-  @media screen and (max-width: 768px) {
-    gap: 0;
-    h1 {
-      font-size: 2rem;
-    }
-  }
-`;
-
 export const VaccineCentre = styledd.section`
   padding-bottom: 1.5rem;
   margin-bottom: 1.5rem;
@@ -101,44 +69,29 @@ export const VaccineCentre = styledd.section`
   }
 `;
 
-export const WalkHeading = styledd.section`
-  border-bottom: 1px solid lightgray;
-  padding: 1.5rem;
+export const WalkContainer = styled("div", {
+  borderLeft: "1px solid lightgray",
+  borderRight: "1px solid lightgray",
+  margin: 0,
+  display: "grid",
+  boxSizing: "border-box",
+  gridTemplateColumns: "1fr 1fr 1fr",
+  backgroundColor: "lightgray",
+  borderBottom: "1px solid lightgray",
+  gap: "1px",
+  transition: "all 0.3s",
 
-  display: flex;
-
-  width: 100%;
-  box-sizing: border-box;
-  h1 {
-    flex: 1;
-    font-size: 2rem;
-    align-self: center;
-  }
-`;
-
-export const WalkContainer = styledd.div`
-  border-left: 1px solid lightgray;
-  border-right: 1px solid lightgray;
-  margin: 0;
-  display: grid;
-  box-sizing: border-box;
-  grid-template-columns: 1fr 1fr 1fr;
-  background-color: lightgray;
-  border-bottom: 1px solid lightgray;
-  gap: 1px;
-  transition: all 0.3s;
-
-  z-index: 1;
-  @media screen and (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media screen and (max-width: 768px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  @media screen and (max-width: 500px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-`;
+  zIndex: 1,
+  "@media screen and (max-width: 1024px)": {
+    gridTemplateColumns: "repeat(2, 1fr)",
+  },
+  "@media screen and (max-width: 768px)": {
+    gridTemplateColumns: "repeat(1, 1fr)",
+  },
+  "@media screen and (max-width: 500px)": {
+    gridTemplateColumns: "repeat(1, 1fr)",
+  },
+});
 
 export const WalkMessage = styled("div", {
   display: "flex",
