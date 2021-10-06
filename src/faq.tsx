@@ -39,6 +39,12 @@ const faq = () => {
               https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTING.md
             </a>
           </p>
+          <br />
+          <h4>How to add Vaxx.nz to my website?</h4>
+          <p>
+            Head over to{" "}
+            <a href="https://docs.vaxx.nz/">https://docs.vaxx.nz/</a>
+          </p>
         </p>
       </div>
       <Footer />
