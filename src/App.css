@@ -216,6 +216,7 @@ ul.af_list.af_list {
   /* this is pretty atrocious, but the element is positioned at root so we have to calculate the width manually */
   width: calc(min(100vw - 80px, 600px));
   box-sizing: border-box;
+  z-index: 1501;
 }
 
 ul.af_list.af_list li.af_item {
