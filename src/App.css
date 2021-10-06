@@ -452,7 +452,7 @@ ul.af_list.af_list li.af_item {
   border-bottom: 1px solid lightgray;
   position: sticky;
   top: 0px;
-  z-index: 2 !important;
+  z-index: 1;
 
   background-color: #fff;
 }
