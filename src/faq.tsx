@@ -10,11 +10,32 @@ const faq = () => {
         }}
       ></p>
       <br />
-      <h3></h3>
       <p>
+        <h4>How do I get my vaccination location added to Vaxx.nz?</h4>
+        <p>
+          We automatically load any locations listed on bookmyvaccine.nz, but if
+          you're not integrated with them, contact Healthpoint to profile your
+          missing location:{" "}
+          <a href="https://www.healthpoint.co.nz/register/">
+            https://www.healthpoint.co.nz/register/
+          </a>
+        </p>
         <br />
-        <strong>Frequently asked questions:</strong>
+        <h4>Who maintains Vaxx.nz?</h4>
+        <p>
+          Vaxx.nz is an open source community project run by volunteers:{" "}
+          <a href="https://github.com/CovidEngine/vaxxnz#built-by">
+            https://github.com/CovidEngine/vaxxnz#built-by
+          </a>
+        </p>
         <br />
+        <h4>How do I get involved?</h4>
+        <p>
+          Head over to{" "}
+          <a href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTING.md">
+            https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTING.md
+          </a>
+        </p>
       </p>
     </div>
   );
