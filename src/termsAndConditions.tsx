@@ -48,8 +48,8 @@ const TermsAndConditions = () => {
           <br />
           <br />
           (c) The Site uses cookies in accordance with our Cookies Policy, which
-          can be found here:
-          <a href="./CookiesModal.tsx">Cookies.</a>
+          can be found here:&nbsp;
+          <a href="./cookie-policy">Cookies Policy.</a>
           <br />
         </p>
         <br />
@@ -197,12 +197,13 @@ const TermsAndConditions = () => {
         <h3>Privacy</h3>
         <p>
           <br />
-          You acknowledge that you have read and understood the terms of
-          vaxx.nz's Privacy Policy, which can be found here:
-          <a href="./PrivacyPolicyModal.tsx">Privicy.</a>
+          (a) You acknowledge that you have read and understood the terms of
+          vaxx.nz's Privacy Policy, which can be found here:&nbsp;
+          <a href="privacy-policy">Privacy Policy.</a>
           <br />
-          . You agree that we may use your information (including disclosure to
-          third parties) in accordance with the terms of our Privacy Policy.
+          <br />
+          (b) You agree that we may use your information (including disclosure
+          to third parties) in accordance with the terms of our Privacy Policy.
           <br />
           <br />
         </p>
