@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "styletron-react";
 import { useTranslation } from "react-i18next";
 
 /**
@@ -19,94 +19,94 @@ const splitErrorMessage = (message: string, split_length: number): string[] => {
   return lines;
 };
 
-const MainContainer = styled.div`
-  position: absolute;
-  max-width: 1438px;
-  width: calc(100% - 2px);
-  z-index: 3 !important;
-  display: flex;
-  flex-direction: row;
-  border: 1px solid rgb(211, 211, 211);
-  background-color: rgb(255, 255, 255);
-  max-height: 800px;
-  height: 100%;
-  margin-top: -122px;
+const MainContainer = styled("div", {
+  position: "absolute",
+  maxWidth: "1438px",
+  width: "calc(100% - 2px)",
+  zIndex: 3,
+  display: "flex",
+  flexDirection: "row",
+  border: "1px solid rgb(211, 211, 211)",
+  backgroundColor: "rgb(255, 255, 255)",
+  maxHeight: "800px",
+  height: "100%",
+  marginTop: "-122px",
 
-  @media screen and (min-width: 400px) {
-    margin-top: -74px;
-  }
-`;
+  "@media screen and (min-width: 400px)": {
+    marginTop: "-74px",
+  },
+});
 
-const CenterContainer = styled.div`
-  display: flex;
-  margin: auto;
-  flex-direction: column-reverse;
+const CenterContainer = styled("div", {
+  display: "flex",
+  margin: "auto",
+  flexDirection: "column-reverse",
 
-  @media screen and (min-width: 1024px) {
-    flex-direction: row !important;
-  }
-`;
+  "@media screen and (min-width: 1024px)": {
+    flexDirection: "row",
+  },
+});
 
-const TextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: auto 0 auto 0;
+const TextContainer = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  margin: "auto 0 auto 0",
 
-  @media screen and (min-width: 1024px) {
-    margin-right: 2rem;
-  }
-`;
+  "@media screen and (min-width: 1024px)": {
+    marginRight: "2rem",
+  },
+});
 
-const Button = styled.a`
-  color: #ffffff;
-  display: flex;
-  margin: 10px auto;
-  padding: 1rem 5.5rem 1rem 5.5rem;
-  background-color: #000000;
-`;
+const Button = styled("a", {
+  color: "#ffffff",
+  display: "flex",
+  margin: "10px auto",
+  padding: "1rem 5.5rem 1rem 5.5rem",
+  backgroundColor: "#000000",
+});
 
-const Subheader = styled.p`
-  font-size: 1.4rem;
-  margin-top: 1.4rem;
-`;
+const Subheader = styled("p", {
+  fontSize: "1.4rem",
+  marginTop: "1.4rem",
+});
 
-const Section = styled.div`
-  display: flex;
-  margin-left: auto;
-  flex-direction: column;
+const Section = styled("div", {
+  display: "flex",
+  marginLeft: "auto",
+  flexDirection: "column",
 
-  @media screen and (max-width: 1024px) {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    margin-top: 1.5rem;
-  }
-`;
+  "@media screen and (max-width: 1024px)": {
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: "1.5rem",
+  },
+});
 
-const Title = styled.p`
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
+const Title = styled("p", {
+  fontSize: "2rem",
+  fontWeight: "bold",
+  textAlign: "center",
 
-  @media screen and (min-width: 1024px) {
-    text-align: right;
-    font-size: 2.5rem;
-  }
-`;
+  "@media screen and (min-width: 1024px)": {
+    textAlign: "right",
+    fontSize: "2.5rem",
+  },
+});
 
-const Map = styled.img`
-  width: 151px;
-  margin: auto;
-  margin-bottom: 2rem;
+const Map = styled("img", {
+  width: "151px",
+  margin: "auto",
+  marginBottom: "2rem",
 
-  @media screen and (min-width: 768px) {
-    width: 227px;
-  }
+  "@media screen and (min-width: 768px)": {
+    width: "227px",
+  },
 
-  @media screen and (min-width: 1024px) {
-    width: auto;
-    margin-bottom: 0;
-  }
-`;
+  "@media screen and (min-width: 1024px)": {
+    width: "auto",
+    marginBottom: 0,
+  },
+});
 
 export function CalendarError(props: { errorMessage: string }) {
   const { t } = useTranslation("common");

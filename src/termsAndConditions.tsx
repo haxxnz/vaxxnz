@@ -1,17 +1,22 @@
 import { Footer } from "./Footer";
+import { styled } from "styletron-react";
+
+const Container = styled("div", {
+  margin: "3rem",
+});
+
+const Summary = styled("p", {
+  marginTop: "1rem",
+  marginBottom: "0.5rem",
+  marginRight: "1rem",
+});
 
 const TermsAndConditions = () => {
   return (
     <>
-      <div style={{ margin: "3rem" }}>
+      <Container>
         <h2>Terms and Conditions</h2>
-        <p
-          style={{
-            marginTop: "1rem",
-            marginBottom: "0.5rem",
-            marginRight: "1rem",
-          }}
-        >
+        <Summary>
           Effective as of September 21, 2021.
           <br />
           <br />
@@ -23,7 +28,7 @@ const TermsAndConditions = () => {
           right to change these Terms and Conditions in the future. Except as
           explicitly stated otherwise, your continued use of the Site will
           constitute deemed acceptance of our updated Terms and Conditions.
-        </p>
+        </Summary>
         <br />
         <h3>Site</h3>
         <p>
@@ -251,7 +256,7 @@ const TermsAndConditions = () => {
           <br />
           <br />
         </p>
-      </div>
+      </Container>
       <Footer />
     </>
   );

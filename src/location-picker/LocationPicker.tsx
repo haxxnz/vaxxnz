@@ -8,18 +8,17 @@ import { unsupportedLocales } from "../translations";
 import { enqueueAnalyticsEvent } from "../utils/analytics";
 import { getDateFnsLocale } from "../utils/locale";
 import { DEFAULT_LOCATION } from "../utils/consts";
-import { HeaderMain } from "../VaxComponents";
 import LocationModal from "./LocationModal";
 import { useCoords } from "../utils/useCoords";
 import { usePlaceName } from "../utils/usePlaceName";
-import styled from "styled-components";
+import { styled } from "styletron-react";
 
 interface LocationPickerProps {
   lastUpdateTime: Date | null;
 }
-const LastUpdated = styled.div`
-  color: #666;
-`;
+const LastUpdated = styled("div", {
+  color: "#666",
+});
 
 export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
   lastUpdateTime,
@@ -37,7 +36,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
     <>
       <LocationModal locationIsOpen={isOpen} setLocationIsOpen={setIsOpen} />
 
-      <HeaderMain>
+      <header className="header-main">
         <section>
           <h1>
             <Trans
@@ -87,7 +86,7 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
           </Button>
           <RadiusSelect />
         </div>
-      </HeaderMain>
+      </header>
     </>
   );
 };

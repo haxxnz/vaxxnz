@@ -11,12 +11,12 @@ import { formatDistanceKm } from "../utils/locale";
 import { useCoords } from "../utils/useCoords";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { useSeen } from "../utils/useSeen";
-import { VaccineCentre } from "../VaxComponents";
 import {
   BookingLocationSlotsPair,
   SlotWithAvailability,
 } from "./booking/BookingDataTypes";
 import { CalendarDate } from "./CalendarData";
+import { styled } from "styletron-react";
 
 type BookingLocationProps = {
   locationSlotsPair: BookingLocationSlotsPair;
@@ -55,6 +55,13 @@ const BookingLocation = ({
   const [slots, setSlots] = useState<SlotWithAvailability[] | undefined>();
   const radiusKm = useRadiusKm();
   const coords = useCoords();
+
+  const AvailableSlots = styled("p", {
+    marginTop: "0.25rem",
+    marginRight: 0,
+    marginBottom: "0.5rem",
+    marginLeft: 0,
+  });
 
   const getSlots = async (url: string) => {
     try {
@@ -117,7 +124,7 @@ const BookingLocation = ({
     return null;
   } else {
     return (
-      <VaccineCentre ref={ref}>
+      <section className="VaccineCentre" ref={ref}>
         <h3>{location.name}</h3>
         <p>
           {location.displayAddress} (
@@ -200,16 +207,7 @@ const BookingLocation = ({
             </Button>
           </a>
         </div>
-        <p
-          style={{
-            marginTop: "0.25rem",
-            marginRight: 0,
-            marginBottom: "0.5rem",
-            marginLeft: 0,
-          }}
-        >
-          {t("calendar.modal.availableSlots")}
-        </p>
+        <AvailableSlots>{t("calendar.modal.availableSlots")}</AvailableSlots>
         <section className="slot">
           {/* <p>1am</p> */}
           {slotsToDisplay?.map((slot) => (
@@ -218,7 +216,7 @@ const BookingLocation = ({
             </p>
           ))}
         </section>
-      </VaccineCentre>
+      </section>
     );
   }
 };

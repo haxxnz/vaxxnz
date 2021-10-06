@@ -5,7 +5,7 @@ import { styled } from "styletron-react";
 import { LocationNotice } from "../../common/LocationNotice";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
 import { useRadiusKm } from "../../utils/useRadiusKm";
-import { WalkGrid, WalkHeading, WalkInstructions } from "../../VaxComponents";
+import { WalkInstructions } from "../../VaxComponents";
 import { HealthpointLocation } from "./HealthpointData";
 import { parsePhoneNumber } from "../../utils/parsePhone";
 
@@ -49,12 +49,28 @@ const HealthpointModal: FunctionComponent<Props> = ({
       borderRadius: "0",
     },
   });
+  const ScheduleContainer = styled("div", {
+    fontSize: "1.25rem",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    borderBottom: "1px solid rgb(233, 233, 233)",
+    padding: "12px 0 4px 0",
+  });
+  const ExceptionContainer = styled("section", {
+    marginTop: "1rem",
+    lineHeight: "1.5",
+  });
+  const GoogleMapsContainer = styled("div", { height: "100%" });
+  const NotesHtmlContainer = styled("div", { marginTop: "1rem" });
+  const Title = styled("h2", { marginBottom: "0.5rem" });
+  const WalkinHours = styled("h3", { marginBottom: "0.25rem" });
 
   return (
     <Dialog>
       <VaxxHelmet routeType={RouteType.Location} location={location} />
 
-      <WalkHeading>
+      <section className="walk-heading">
         <h1>{location.name}</h1>
         <PageLink to={cancelPath}>
           <Button
@@ -68,12 +84,10 @@ const HealthpointModal: FunctionComponent<Props> = ({
             {t("walkins.cancelBooking")}
           </Button>
         </PageLink>
-      </WalkHeading>
-      <WalkGrid className={"modal-container WalkModal"}>
+      </section>
+      <section className={"modal-container walk-grid WalkModal"}>
         <WalkInstructions>
-          <h2 style={{ marginBottom: "0.5rem" }}>
-            {t("walkins.healthpointModal.title")}
-          </h2>
+          <Title>{t("walkins.healthpointModal.title")}</Title>
           <p>{t("walkins.healthpointModal.subtitle")}</p>
 
           <a
@@ -128,24 +142,14 @@ const HealthpointModal: FunctionComponent<Props> = ({
 
           {location.opennningHours.schedule && (
             <section>
-              <h3 style={{ marginBottom: "0.25rem" }}>{t("walkins.hours")}</h3>
+              <WalkinHours>{t("walkins.hours")}</WalkinHours>
               {Object.keys(location.opennningHours.schedule).map(
                 (openDate, index) => {
                   return (
-                    <div
-                      key={index}
-                      style={{
-                        fontSize: "1.25rem",
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        borderBottom: "1px solid rgb(233, 233, 233)",
-                        padding: "12px 0 4px 0",
-                      }}
-                    >
+                    <ScheduleContainer key={index}>
                       <p>{openDate}</p>
                       <p>{location.opennningHours.schedule[openDate]}</p>
-                    </div>
+                    </ScheduleContainer>
                   );
                 }
               )}
@@ -163,13 +167,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
           {Object.entries(location.opennningHours.exceptions).map(
             ([key, value], index) => {
               return (
-                <section
-                  key={index}
-                  style={{
-                    marginTop: "1rem",
-                    lineHeight: "1.5",
-                  }}
-                >
+                <ExceptionContainer key={index}>
                   <h3>
                     {key === "Public Holidays"
                       ? t("walkins.publicHolidays")
@@ -177,22 +175,22 @@ const HealthpointModal: FunctionComponent<Props> = ({
                   </h3>
 
                   <p key={index}>{value}</p>
-                </section>
+                </ExceptionContainer>
               );
             }
           )}
           {location.opennningHours.notesHtml.map((noteHtml, index) => {
             return (
-              <div key={index} style={{ marginTop: "1rem" }}>
+              <NotesHtmlContainer key={index}>
                 <small
                   key={index}
                   dangerouslySetInnerHTML={{ __html: noteHtml }}
                 ></small>
-              </div>
+              </NotesHtmlContainer>
             );
           })}
         </WalkInstructions>
-        <div style={{ height: "100%" }}>
+        <GoogleMapsContainer>
           <iframe
             title="Google Maps Embed"
             className="mappymap"
@@ -204,8 +202,8 @@ const HealthpointModal: FunctionComponent<Props> = ({
             src={`https://www.google.com/maps/embed/v1/place?zoom=16&q=${location.address}&center=${location.lat}%2C${location.lng}&key=AIzaSyAcCqT9f9Oe5dTmK81lFC1IyVHJmxwv_eg`}
           ></iframe>
           <br />
-        </div>
-      </WalkGrid>
+        </GoogleMapsContainer>
+      </section>
       <div className="MobileOnly">
         <PageLink to={cancelPath}>
           <Button

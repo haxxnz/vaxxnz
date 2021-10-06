@@ -7,12 +7,14 @@ import { getDistanceKm } from "../../utils/distance";
 import { formatDistanceKm } from "../../utils/locale";
 import { useCoords } from "../../utils/useCoords";
 import { useRadiusKm } from "../../utils/useRadiusKm";
-import { VaccineCentre } from "../../VaxComponents";
+import { styled } from "styletron-react";
 
 interface CrowdsourcedBookingLocationProps {
   location: CrowdsourcedLocation;
   date: Date;
 }
+
+const Section = styled("section", { marginTop: "0.8rem" });
 
 export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingLocationProps> =
   ({ location, date }) => {
@@ -22,7 +24,7 @@ export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingL
     const radiusKm = useRadiusKm();
     const coords = useCoords();
     return (
-      <VaccineCentre>
+      <section className="VaccineCentre">
         <h3>{location.name}</h3>
         <p>
           {location.address} (
@@ -66,14 +68,14 @@ export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingL
           />
         </p>
 
-        <section style={{ marginTop: "0.8rem" }}>
+        <Section>
           <h4>{t("walkins.hours")}</h4>
           {/* Closed should never happen */}
           <p>{hours?.isOpen ? hours?.hours : "Closed"}</p>{" "}
-        </section>
+        </Section>
 
         {location.website && (
-          <section style={{ marginTop: "0.8rem" }}>
+          <Section>
             <h4>{t("core.website")}</h4>
             <p>
               {" "}
@@ -81,23 +83,23 @@ export const CrowdsourcedBookingLocation: FunctionComponent<CrowdsourcedBookingL
                 {location.website}
               </a>
             </p>
-          </section>
+          </Section>
         )}
 
         {location.telephone && (
-          <section style={{ marginTop: "0.8rem" }}>
+          <Section>
             <h4>{t("walkins.phone")}</h4>
             <p>
               {" "}
               <a href={`tel:${location.telephone}`}>{location.telephone}</a>
             </p>
-          </section>
+          </Section>
         )}
 
-        <section style={{ marginTop: "0.8rem" }}>
+        <Section>
           <h4>{t("walkins.otherLocations.disclaimer.title")}</h4>
           <p> {t("walkins.otherLocations.disclaimer.message")}</p>
-        </section>
-      </VaccineCentre>
+        </Section>
+      </section>
     );
   };

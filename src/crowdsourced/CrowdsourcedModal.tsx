@@ -5,7 +5,6 @@ import { styled } from "styletron-react";
 import { LocationNotice } from "../common/LocationNotice";
 import { NoticeList, NoticeListItem } from "../NoticeList";
 import { PageLink } from "../PageLink";
-import { ModalGrid } from "../VaxComponents";
 import { CrowdsourcedLocation } from "./CrowdsourcedData";
 import { parsePhoneNumber } from "../utils/parsePhone";
 import { RouteType, VaxxHelmet } from "../VaxxHelmet";
@@ -58,21 +57,33 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
       borderRadius: "0",
     },
   });
+  const Container = styled("div", { height: "100%" });
+  const OpeningHours = styled("p", { float: "right" });
+  const BR = styled("br", { lineHeight: "0.5rem" });
+  const HR = styled("hr", {
+    width: "100%",
+    height: 1,
+    backgroundColor: "#e9e9e9",
+    border: "none",
+    padding: 0,
+    margin: "0 0 12px 0",
+  });
+  const DayOfWeek = styled("p", {
+    float: "left",
+  });
+  const WalkInHours = styled("h3", { marginBottom: "0.75rem" });
+
+  const LocationName = styled("h1", {
+    marginBottom: "1rem",
+  });
 
   return (
     <Dialog>
       <VaxxHelmet routeType={RouteType.Location} location={location} />
-      <ModalGrid className={"modal-container WalkModal"}>
+      <section className={"modal-container WalkModal modal-grid"}>
         <div>
-          <h1
-            style={{
-              marginBottom: "1rem",
-            }}
-          >
-            {location.name}
-          </h1>
+          <LocationName>{location.name}</LocationName>
           <LocationNotice instructions={location.instructions} />
-
           <a
             href={`https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`}
             target="_blank"
@@ -121,7 +132,7 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
             </NoticeListItem>
           </NoticeList>
         </div>
-        <div style={{ height: "100%" }}>
+        <Container>
           <section>
             <h3>{t("core.address")}</h3>
             <p>{location.address}</p>
@@ -146,34 +157,25 @@ const CrowdsourcedModal: FunctionComponent<Props> = ({
           )}
           {location.openingHours.length > 0 && (
             <section>
-              <h3 style={{ marginBottom: "0.75rem" }}>{t("walkins.hours")}</h3>
+              <WalkInHours>{t("walkins.hours")}</WalkInHours>
               {location.openingHours.map((oh, index) => {
                 return (
                   <>
-                    <p key={index} style={{ float: "left" }}>
+                    <DayOfWeek key={index}>
                       {dayOfWeekToString(oh.day)}{" "}
-                    </p>
-                    <p style={{ float: "right" }}>
+                    </DayOfWeek>
+                    <OpeningHours>
                       {oh.isOpen ? oh.hours : t("walkins.closed")}
-                    </p>
-                    <br style={{ lineHeight: "0.5rem" }} />
-                    <hr
-                      style={{
-                        width: "100%",
-                        height: 1,
-                        backgroundColor: "#e9e9e9",
-                        border: "none",
-                        padding: 0,
-                        margin: "0 0 12px 0",
-                      }}
-                    />
+                    </OpeningHours>
+                    <BR />
+                    <HR />
                   </>
                 );
               })}
             </section>
           )}
-        </div>
-      </ModalGrid>
+        </Container>
+      </section>
     </Dialog>
   );
 };

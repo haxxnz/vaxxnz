@@ -8,15 +8,17 @@ import { NoticeList } from "../../NoticeList";
 import { PageLink } from "../../PageLink";
 import { Instruction } from "../../today-locations/healthpoint/HealthpointData";
 import { enqueueAnalyticsEvent } from "../../utils/analytics";
-import { ModalGrid } from "../../VaxComponents";
 import { BookingLocationSlotsPair } from "../booking/BookingDataTypes";
 import BookingLocation from "../BookingLocation";
 import { CalendarDate } from "../CalendarData";
+import { styled } from "styletron-react";
 import { CrowdsourcedBookingLocation } from "./CrowdsourcedBookingLocation";
 
 interface CalendarModalContentProps {
   activeDate: CalendarDate;
 }
+
+const Container = styled("div", { height: "100%" });
 
 export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> =
   ({ activeDate: { dateStr, locations } }) => {
@@ -42,7 +44,7 @@ export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> 
     ) as CrowdsourcedLocation[]; */
 
     return (
-      <ModalGrid className={"modal-container"}>
+      <section className={"modal-container modal-grid"}>
         <div>
           <div className="ModalHeader">
             <h1>
@@ -107,7 +109,7 @@ export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> 
           </div>
         </div>
 
-        <div style={{ height: "100%" }}>
+        <Container>
           <h2>
             {t("calendar.modal.availableSlots")} -{" "}
             {date.toLocaleDateString([i18next.language], {
@@ -140,7 +142,7 @@ export const CalendarModalContent: FunctionComponent<CalendarModalContentProps> 
                 <h1>{t("calendar.modal.noBookingsAvailable")}</h1>
               </>
             )}
-        </div>
-      </ModalGrid>
+        </Container>
+      </section>
     );
   };

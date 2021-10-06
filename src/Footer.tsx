@@ -1,35 +1,17 @@
 import { Trans, useTranslation } from "react-i18next";
 import { ShareButtons } from "./ShareButtons";
 import { enqueueAnalyticsEvent } from "./utils/analytics";
-import { useState } from "react";
-import styled from "styled-components";
-// import TermsAndConditionsModal from "./termsAndConditions";
-// import PrivacyPolicyModal from "./privacyPolicy";
-// import CookiesPolicyModal from "./cookiesPolicy";
+import { styled } from "styletron-react";
 
-const FooterMessage = styled.p`
-  margin-bottom: 0.5rem;
-`;
+const FooterMessage = styled("p", {
+  marginBottom: "0.5rem",
+});
 
 export function Footer() {
   const { t } = useTranslation("common");
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      {/* <TermsAndConditionsModal
-        termsAndConditionsIsOpen={isOpen}
-        setTermsAndConditionsIsOpen={setIsOpen}
-      />
-      <PrivacyPolicyModal
-        privacyPolicyIsOpen={isOpen}
-        setPrivacyPolicyIsOpen={setIsOpen}
-      />
-      <CookiesPolicyModal
-        cookiesPolicyIsOpen={isOpen}
-        setCookiesPolicyIsOpen={setIsOpen}
-      /> */}
-
       <footer className="footer-header">
         <FooterMessage>{t("footer.message")}</FooterMessage>
         <div className={"social-container"}>

@@ -1,24 +1,29 @@
 import { Footer } from "./Footer";
+import { styled } from "styletron-react";
+
+const Container = styled("div", {
+  margin: "3rem",
+});
+
+const Summary = styled("p", {
+  marginTop: "1rem",
+  marginBottom: "0.5rem",
+  marginRight: "1rem",
+});
 
 const CookiesPolicy = () => {
   return (
     <>
-      <div style={{ margin: "3rem" }}>
+      <Container>
         <h2>Cookies Policy</h2>
-        <p
-          style={{
-            marginTop: "1rem",
-            marginBottom: "0.5rem",
-            marginRight: "1rem",
-          }}
-        >
+        <Summary>
           Cookies are small files that are downloaded onto your device by your
           web browser when you access any website or app that posts a link to
           this policy (collectively “the Sites”). Different types of cookies
           provide us with different information, all of which are used to
           provide you with a better experience on our Sites and provide us with
           greater information on users to make further improvements.
-        </p>
+        </Summary>
         <br />
         <h3>Types of Cookies</h3>
         <p>
@@ -130,7 +135,7 @@ const CookiesPolicy = () => {
           will be used, stored and destroyed in accordance with our privacy
           policy.
         </p>
-      </div>
+      </Container>
       <Footer />
     </>
   );

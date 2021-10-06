@@ -8,6 +8,22 @@ import getSuburb from "../utils/reverseGeocode";
 import { ADDRESS_FINDER_API_KEY } from "../utils/consts";
 import { eventedPushState } from "../utils/url";
 import { useAddressFinderLazy } from "../utils/useAddressFinderLazy";
+import { styled } from "styletron-react";
+
+const UseCurrentLocationButton = styled("button", {
+  color: "#0057FF",
+  fontWeight: 600,
+  marginBlock: 20,
+  textAlign: "left",
+  border: "none",
+  backgroundColor: "white'",
+});
+
+const LocationCTA = styled("p", {
+  marginTop: "1rem",
+  marginBottom: "0.5rem",
+  marginRight: "1rem",
+});
 
 type Props = {
   locationIsOpen: boolean;
@@ -126,15 +142,7 @@ const LocationModal = (props: Props) => {
       }}
     >
       <h2>{t("navigation.locationModal.locaitonTitle")}</h2>
-      <p
-        style={{
-          marginTop: "1rem",
-          marginBottom: "0.5rem",
-          marginRight: "1rem",
-        }}
-      >
-        {t("navigation.locationModal.locationCTA")}
-      </p>
+      <LocationCTA>{t("navigation.locationModal.locationCTA")}</LocationCTA>
       <BaseInput
         id="pac-input"
         type="text"
@@ -142,16 +150,8 @@ const LocationModal = (props: Props) => {
         onChange={(_e) => {}}
       />
 
-      <button
+      <UseCurrentLocationButton
         className={"clickable"}
-        style={{
-          color: "#0057FF",
-          fontWeight: 600,
-          marginBlock: 20,
-          textAlign: "left",
-          border: "none",
-          backgroundColor: "white'",
-        }}
         onClick={() => {
           enqueueAnalyticsEvent("Use current location clicked");
           getLocation();
@@ -160,7 +160,7 @@ const LocationModal = (props: Props) => {
         {loading
           ? t("core.loading")
           : t("navigation.locationModal.useCurrentLocation")}
-      </button>
+      </UseCurrentLocationButton>
       <Button
         overrides={{
           Root: {

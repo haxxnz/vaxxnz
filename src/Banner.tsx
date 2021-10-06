@@ -1,9 +1,9 @@
 import { Trans, useTranslation } from "react-i18next";
-import styled from "styled-components";
+import { styled } from "styletron-react";
 
-const Subtitle = styled.h2`
-  font-weight: normal;
-`;
+const Subtitle = styled("h2", {
+  fontWeight: "normal",
+});
 
 export function Banner() {
   const { t } = useTranslation("common");
