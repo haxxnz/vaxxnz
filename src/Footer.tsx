@@ -140,7 +140,7 @@ export function Footer() {
               enqueueAnalyticsEvent("Frequently asked questions clicked");
             }}
           >
-            FAQ's
+            FAQ
           </a>
         </p>
       </footer>
