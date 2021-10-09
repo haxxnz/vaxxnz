@@ -51,7 +51,7 @@
       "info": "Por favor no reserve dos veces",
       "message": " Recuerda cancelar tu reservación original si tienes una en <0>bookmyvaccine.nz</0>"
     },
-    "cancelBooking": "Cancelar",
+    "backToCentres": "Cancelar",
     "noticeList": {
       "title": "La disponibilidad no está garantizada",
       "text": "Tenga en cuenta que, es posible que las ubicaciones de acceso sin cita indicadas no tengan necesariamente capacidad disponible"

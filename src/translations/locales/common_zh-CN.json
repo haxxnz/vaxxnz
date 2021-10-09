@@ -51,7 +51,7 @@
       "info": "请勿重复预约",
       "message": "如果之前已在 <0>bookmyvaccine.nz</0> 预约过，请取消先前的预约"
     },
-    "cancelBooking": "取消预约",
+    "backToCentres": "返回",
     "noticeList": {
       "title": "无法保证一定能接种",
       "text": "请注意，免预约接种点接待能力有限，无法保证所有人都能得到接种。"

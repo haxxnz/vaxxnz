@@ -20,7 +20,7 @@
     "vaccApptToBook": "Vaccination appointments available to book right now.",
     "mistake": "Did we make a mistake?"
   },
-  "navigation": {  
+  "navigation": {
     "about": "About",
     "contact": "Contact",
     "getInvolved": "Get Involved",
@@ -53,7 +53,7 @@
       "info": "Please Don't Double-book",
       "message": "Remember to cancel your original booking if you have one at <0>bookmyvaccine.nz</0>"
     },
-    "cancelBooking": "Cancel",
+    "backToCentres": "Back",
     "noticeList": {
       "title": "How to get Vaccinated",
       "text": "Vaccinations might have a queue, and some places might not have spare vaccines available today - ring ahead if you can!"

@@ -51,7 +51,7 @@
       "info": "請勿重複預約",
       "message": "如果先前已在 <0>bookmyvaccine.nz</0> 預約，請取消先前的預約"
     },
-    "cancelBooking": "取消預約",
+    "backToCentres": "取消預約",
     "noticeList": {
       "title": "無法保證一定能接種",
       "text": "請注意，免預約接種點接待能力有限，無法保證所有人都能得到接種。"

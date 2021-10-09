@@ -81,7 +81,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
             }}
             kind={KIND.secondary}
           >
-            {t("walkins.cancelBooking")}
+            {t("walkins.backToCentres")}
           </Button>
         </PageLink>
       </section>
@@ -220,7 +220,7 @@ const HealthpointModal: FunctionComponent<Props> = ({
             }}
             kind={KIND.secondary}
           >
-            {t("walkins.cancelBooking")}
+            {t("walkins.backToCentres")}
           </Button>
         </PageLink>
       </div>

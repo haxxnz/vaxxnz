@@ -51,7 +51,7 @@
       "info": "Bitte nicht doppelt buchen",
       "message": "Denken Sie daran, Ihre ursprüngliche Buchung zu stornieren, wenn Sie bereits eine bei <0>bookmyvaccine.nz</0> haben."
     },
-    "cancelBooking": "Abbrechen",
+    "backToCentres": "Abbrechen",
     "noticeList": {
       "title": "Verfügbarkeit ist nicht garantiert",
       "text": "Beachten Sie, dass die aufgeführten Walk-in-Standorte möglicherweise nicht unbedingt über Kapazitäten verfügen."
