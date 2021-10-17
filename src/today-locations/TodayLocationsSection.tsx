@@ -95,7 +95,7 @@ export function TodayLocationsSection() {
       return date;
     }
 
-    const dateRegex = new RegExp(/^(?:[Oo]pen )?[0-9]{1,2}:[0-9]{1,2} ?[AP]M to [0-9]{1,2}:[0-9]{1,2} ?[AP]M\.?$/);
+    const dateRegex = new RegExp(/^[0-9]{1,2}:[0-9]{1,2} ?[AP]M to [0-9]{1,2}:[0-9]{1,2} ?[AP]M\.?$/);
     if (!openTimes || !dateRegex.test(openTimes.trim())) {
       return false;
     }
