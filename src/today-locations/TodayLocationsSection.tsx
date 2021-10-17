@@ -70,20 +70,20 @@ export function TodayLocationsSection() {
       let isPM = splits[2] === "PM";
 
       // the hours
-      let hours: number;
+      let hours24h: number;
 
       // the raw hours inform the hours, checking for edge cases.
-      let rawHours = parseInt(splits[0]);
-      if (isNaN(rawHours)) {
+      let hours12h = parseInt(splits[0]);
+      if (isNaN(hours12h)) {
         return undefined;
       }
       // if it's 12:00 AM then it's 00:00
-      if (rawHours === 12 && !isPM) {
-        hours = 0;
+      if (hours12h === 12 && !isPM) {
+        hours24h = 0;
       } else if (isPM) { // otherwise if PM then add 12 hours
-        hours = rawHours + 12;
+        hours24h = hours12h + 12;
       } else {
-        hours = rawHours;
+        hours24h = hours12h;
       }
 
       // the minutes
@@ -91,7 +91,7 @@ export function TodayLocationsSection() {
       if (isNaN(minutes)) {
         return undefined;
       }
-      date.setHours(hours, minutes, 0)
+      date.setHours(hours24h, minutes, 0)
       return date;
     }
 
