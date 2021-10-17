@@ -95,10 +95,11 @@ export function TodayLocationsSection() {
       return date;
     }
 
-    if (!openTimes) {
+    const dateRegex = new RegExp(/^(?:[Oo]pen )?[0-9]{1,2}:[0-9]{1,2} ?[AP]M to [0-9]{1,2}:[0-9]{1,2} ?[AP]M\.?$/);
+    if (!openTimes || !dateRegex.test(openTimes.trim())) {
       return false;
     }
-    const times = openTimes.split("to");
+    const times = openTimes.trim().split("to");
 
     // from time
     const fromStr = times[0].trim();
