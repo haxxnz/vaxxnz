@@ -59,6 +59,76 @@ export function TodayLocationsSection() {
     setCurrentView((latest) => latest + 12);
   };
 
+  const isOpenNow = (openTimes: string | undefined) => {
+    // Parse the time into a usable Date
+    const parseTime = (time: string): Date | undefined => {
+      let date = new Date();
+      let splits = time.split(/[: ]/);
+      if (splits.length !== 3) {
+        return undefined;
+      }
+      let isPM = splits[2] === "PM";
+
+      // the hours
+      let hours: number;
+
+      // the raw hours inform the hours, checking for edge cases.
+      let rawHours = parseInt(splits[0]);
+      if (isNaN(rawHours)) {
+        return undefined;
+      }
+      // if it's 12:00 AM then it's 00:00
+      if (rawHours === 12 && !isPM) {
+        hours = 0;
+      } else if (isPM) { // otherwise if PM then add 12 hours
+        hours = rawHours + 12;
+      } else {
+        hours = rawHours;
+      }
+
+      // the minutes
+      let minutes = parseInt(splits[1]);
+      if (isNaN(minutes)) {
+        return undefined;
+      }
+      date.setHours(hours, minutes, 0)
+      return date;
+    }
+
+    if (!openTimes) {
+      return false;
+    }
+    const times = openTimes.split("to");
+
+    // from time
+    const fromStr = times[0].trim();
+
+    // to time
+    let toStr = times[1].trim();
+    // clean up the period.
+    if (toStr.charAt(toStr.length-1) === '.') {
+      toStr = toStr.substr(0, toStr.length-1);
+    }
+
+    const timeFrom = parseTime(fromStr);
+    const timeTo = parseTime(toStr);
+    if (timeFrom === undefined || timeTo === undefined) {
+      return false;
+    }
+
+    // Deal with the edge case where the closing time "12:00 AM" is parsed as 12AM this morning.
+    const midnightThisMorning = new Date();
+    midnightThisMorning.setHours(0, 0, 0);
+    if (timeTo.getTime() === midnightThisMorning.getTime()) {
+      timeTo.setDate(new Date().getDate()+1);
+    }
+
+
+    const now = new Date();
+
+    return now >= timeFrom && now <= timeTo;
+  }
+
   return (
     <>
       {"ok" in locations ? (
@@ -100,6 +170,21 @@ export function TodayLocationsSection() {
         <>
           <OtherContainer>
             {locations.ok
+              .filter(({...location}) => {
+                let openHours;
+                if ("isHealthpoint" in location) {
+                  openHours = location.openTodayHours;
+                } else {
+                    const currentDay = new Date().getDay();
+                    const hours = location.openingHours.find(
+                      (oh) => oh.day === currentDay
+                    )!;
+                    if (hours.isOpen) {
+                       openHours = hours.hours;
+                    }
+                }
+                return isOpenNow(openHours);
+              })
               .slice(0, currentView)
               .map(
                 (
