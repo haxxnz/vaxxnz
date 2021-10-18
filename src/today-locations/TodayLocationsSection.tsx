@@ -59,7 +59,7 @@ export function TodayLocationsSection() {
     setCurrentView((latest) => latest + 12);
   };
 
-  const isOpenNow = (openTimes: string | undefined) => {
+  const isOpenNow = (openTimes: string | undefined): boolean => {
     // Parse the time into a usable Date
     const parseTime = (time: string): Date | undefined => {
       let date = new Date();
@@ -95,9 +95,9 @@ export function TodayLocationsSection() {
       return date;
     }
 
-    const dateRegex = new RegExp(/^[0-9]{1,2}:[0-9]{1,2} ?[AP]M to [0-9]{1,2}:[0-9]{1,2} ?[AP]M\.?$/);
+    const dateRegex = new RegExp(/^[0-9]{1,2}:[0-9]{1,2} [AP]M to [0-9]{1,2}:[0-9]{1,2} [AP]M\.?$/);
     if (!openTimes || !dateRegex.test(openTimes.trim())) {
-      return false;
+      return true;
     }
     const times = openTimes.trim().split("to");
 
@@ -114,7 +114,7 @@ export function TodayLocationsSection() {
     const timeFrom = parseTime(fromStr);
     const timeTo = parseTime(toStr);
     if (timeFrom === undefined || timeTo === undefined) {
-      return false;
+      return true;
     }
 
     // Deal with the edge case where the closing time "12:00 AM" is parsed as 12AM this morning.
