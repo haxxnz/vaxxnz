@@ -23,19 +23,6 @@ body {
   z-index: -2 !important;
 }
 
-#root div:first-child {
-  z-index: 1;
-}
-
-body[data-state="open"] .MonthSection, 
-body[data-state="open"] header {
-  z-index: 1 !important;
-}
-
-#root div[data-baseweb="popover"]:last-child {
-  z-index: 4 !important;
-}
-
 h1,
 h2,
 h3,
@@ -168,9 +155,6 @@ a {
 }
 
 @media screen and (max-width: 768px) {
-  #root div:first-child {
-    z-index: 1;
-  }
   .App-header h1 {
     font-size: 2rem;
   }

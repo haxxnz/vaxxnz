@@ -38,7 +38,6 @@ const LocationModal = (props: Props) => {
   const { t } = useTranslation("common");
 
   const close = useCallback(() => {
-    document.body.dataset.state = "closed";
     setLocationIsOpen(false);
   }, [setLocationIsOpen]);
 

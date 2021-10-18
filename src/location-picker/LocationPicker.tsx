@@ -67,7 +67,6 @@ export const LocationPicker: FunctionComponent<LocationPickerProps> = ({
           <Button
             kind={KIND.primary}
             onClick={() => {
-              document.body.dataset.state = "open";
               enqueueAnalyticsEvent("Location modal opened");
               setIsOpen(true);
             }}
