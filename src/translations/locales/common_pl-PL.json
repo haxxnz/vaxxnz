@@ -53,7 +53,7 @@
       "info": "Proszę nie rezerwować się podwójnie",
       "message": "Pamiętaj odwołać ustaloną poprzednią rezerwacje jeżeli masz nową na stronie <0>bookmyvaccine.nz</0>"
     },
-    "cancelBooking": "Anuluj",
+    "backToCentres": "Anuluj",
     "noticeList": {
       "title": "Jak się Zaszczepić?",
       "text": "Do szczepień może być kolejka i niektóre miejsca mogą dzisiaj nie mieć wolnych szczepionek - zadzwoń wcześniej jak możesz!"
