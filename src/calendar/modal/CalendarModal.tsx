@@ -55,7 +55,6 @@ const BookingModal: FunctionComponent<BookingModalProps> = ({
 
     [MOBILE]: {
       width: "100vw",
-      margin: "0rem",
       borderRadius: "0",
     },
   });
