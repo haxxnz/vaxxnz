@@ -40,6 +40,12 @@ button.zero-available div p {
   padding: 12px 13px;
   margin-top: 10px;
 }
+@media screen and (max-width: 1440px) {
+
+.big-old-container { 
+  margin: 1rem;
+}
+}
 
 @media screen and (max-width: 1024px) {
   .cancel-booking-notice.mobile {

@@ -37,11 +37,11 @@ const HealthpointModal: FunctionComponent<Props> = ({
     display: "flex",
     flexDirection: "column",
     alignSelf: "center",
-    padding: "1.5rem",
     backgroundColor: "white",
     border: "1px solid lightgray",
     maxWidth: "1440px",
     boxSizing: "border-box",
+    marginBottom: "1.5rem",
 
     [MOBILE]: {
       width: "100vw",
