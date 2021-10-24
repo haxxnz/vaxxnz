@@ -51,18 +51,26 @@ export const getDateFnsLocale = (): Locale => {
  * @return {string}
  */
 export function formatDistanceKm(km: number, language: string): string {
-  if (km < 1) {
-    const meters = km * 1000;
-    return new Intl.NumberFormat(language, {
-      style: "unit",
-      unit: "meter",
-      notation: "compact",
-    }).format(meters);
-  } else {
-    return new Intl.NumberFormat(language, {
-      style: "unit",
-      unit: "kilometer",
-      notation: "compact",
-    }).format(km);
+  try {
+    if (km < 1) {
+      const meters = km * 1000;
+      return new Intl.NumberFormat(language, {
+        style: "unit",
+        unit: "meter",
+        notation: "compact",
+      }).format(meters);
+    } else {
+      return new Intl.NumberFormat(language, {
+        style: "unit",
+        unit: "kilometer",
+        notation: "compact",
+      }).format(km);
+    }
+  } catch (e) {
+    if (km < 1) {
+      return `${(km * 1000).toFixed(0)} m`;
+    } else {
+      return `${km.toFixed(1)} km`;
+    }
   }
 }
