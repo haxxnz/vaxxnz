@@ -68,9 +68,9 @@ export function formatDistanceKm(km: number, language: string): string {
     }
   } catch (e) {
     if (km < 1) {
-      return `${km * 1000} m`;
+      return `${(km * 1000).toFixed(0)} m`;
     } else {
-      return `${km} km`;
+      return `${km.toFixed(1)} km`;
     }
   }
 }
