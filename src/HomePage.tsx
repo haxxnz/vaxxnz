@@ -14,13 +14,17 @@ interface TabsProps {
 export const Tabs: FunctionComponent<TabsProps> = ({ activeTab }) => {
   const { t } = useTranslation("common");
   return (
-    <div className="styled-tabs" role="tablist">
-      <PageLink role="tablist" to="/bookings">
+    <div className="styled-tabs">
+      <PageLink role="tablist" aria-label={"Book a vaccination"} to="/bookings">
         <Tab isActive={activeTab === TabType.bookings}>
           {t("core.makeABooking")}
         </Tab>
       </PageLink>
-      <PageLink role="tablist" to="/locations">
+      <PageLink
+        role="tablist"
+        aria-label={"Walk in vaccination"}
+        to="/locations"
+      >
         <Tab isActive={activeTab === TabType.walkIn}>
           {t("core.walkInDriveThru")}
         </Tab>
