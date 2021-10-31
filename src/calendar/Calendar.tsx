@@ -1,5 +1,5 @@
 import CustomSpinner from "../utils/customSpinner";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useMemo } from "react";
 import { sum } from "../utils/math";
 import { CalendarContainer } from "../VaxComponents";
 import { differenceInDays, parse } from "date-fns";
@@ -15,7 +15,6 @@ import React from "react";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { PageLink } from "../PageLink";
 import { styled } from "styletron-react";
-import { Calendar } from "baseui/datepicker";
 
 interface BookingCalendarProps {
   data: CalendarData;
@@ -59,7 +58,9 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   const { i18n } = useTranslation();
   const calendarData = Array.from(data);
   const { t } = useTranslation("common");
-  const bookingsAvailable = isBookingsAvailable(calendarData);
+  const bookingsAvailable = useMemo(() => isBookingsAvailable(calendarData),
+    [calendarData]
+  );
 
   console.log("Bookings Available: " + bookingsAvailable);
 
