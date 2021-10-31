@@ -18,6 +18,7 @@
     "noResultsInRadius": "No vaccination sites found for this search query. Try a different search radius.",
     "availableBookingSlots": "Available Booking Slots",
     "vaccApptToBook": "Vaccination appointments available to book right now.",
+    "noVaccApptToBook": "Sorry, there are no vaccination sites in the selected area.",
     "mistake": "Did we make a mistake?"
   },
   "navigation": {

@@ -15,6 +15,7 @@ import React from "react";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { PageLink } from "../PageLink";
 import { styled } from "styletron-react";
+import { CalendarError } from "./CalendarError";
 
 interface BookingCalendarProps {
   data: CalendarData;
@@ -62,27 +63,33 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
     [calendarData]
   );
 
-  console.log("Bookings Available: " + bookingsAvailable);
+  if (bookingsAvailable) {
+    return (
+      <>
+        <div className="WalkSection2">
+          <h2>{t("core.availableBookingSlots")}</h2>
+          <p>{t("core.vaccApptToBook")}</p>
+        </div>
 
-  return (
-    <>
-      <div className="WalkSection2">
-        <h2>{t("core.availableBookingSlots")}</h2>
-        <p>{t("core.vaccApptToBook")}</p>
-      </div>
-
-      <CalendarContainer>
-        {calendarData.map(([monthStr, monthDates]) => (
-          <CalendarMonthContainer
-            key={monthStr}
-            monthStr={monthStr}
-            monthDates={monthDates}
-            language={i18n.language}
-          />
-        ))}
-      </CalendarContainer>
-    </>
-  );
+        <CalendarContainer>
+          {calendarData.map(([monthStr, monthDates]) => (
+            <CalendarMonthContainer
+              key={monthStr}
+              monthStr={monthStr}
+              monthDates={monthDates}
+              language={i18n.language}
+            />
+          ))}
+        </CalendarContainer>
+      </>
+    );
+  } else {
+    return (
+      <CalendarError
+        errorMessage={t("core.noVaccApptToBook")}
+      />
+    );
+  }
 };
 
 interface CalendarMonthContainerProps {
