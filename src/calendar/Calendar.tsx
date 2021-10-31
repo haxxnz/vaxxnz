@@ -15,6 +15,7 @@ import React from "react";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { PageLink } from "../PageLink";
 import { styled } from "styletron-react";
+import { Calendar } from "baseui/datepicker";
 
 interface BookingCalendarProps {
   data: CalendarData;
@@ -45,12 +46,23 @@ export const LoadingBookingCalendar: FunctionComponent = () => {
   );
 };
 
+const getNumberOfAvailableLocations = (calendarData: [string, CalendarMonth][]): number => {
+  return calendarData.reduce((prev: number, it) =>
+      prev +
+      Array.from(it[1].values()).reduce((prev, it) => prev + it.length, 0)
+    , 0);
+}
+
 export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   data,
 }) => {
   const { i18n } = useTranslation();
   const calendarData = Array.from(data);
   const { t } = useTranslation("common");
+  const bookingsAvailable = getNumberOfAvailableLocations(calendarData) !== 0;
+
+  console.log("Bookings Available: " + bookingsAvailable);
+
   return (
     <>
       <div className="WalkSection2">
