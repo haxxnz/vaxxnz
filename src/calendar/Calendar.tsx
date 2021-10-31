@@ -8,8 +8,8 @@ import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import {
   CalendarData,
-  CalendarDateLocations,
-  CalendarMonth,
+  CalendarDateLocations, CalendarLocation,
+  CalendarMonth
 } from "./CalendarData";
 import React from "react";
 import { useRadiusKm } from "../utils/useRadiusKm";
@@ -47,9 +47,9 @@ export const LoadingBookingCalendar: FunctionComponent = () => {
 };
 
 const getNumberOfAvailableLocations = (calendarData: [string, CalendarMonth][]): number => {
-  return calendarData.reduce((prev: number, it) =>
+  return calendarData.reduce((prev: number, it: [string, CalendarMonth]) =>
       prev +
-      Array.from(it[1].values()).reduce((prev, it) => prev + it.length, 0)
+      Array.from(it[1].values()).reduce((prev: number, it: CalendarLocation[]) => prev + it.length, 0)
     , 0);
 }
 
