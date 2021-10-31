@@ -46,11 +46,11 @@ export const LoadingBookingCalendar: FunctionComponent = () => {
   );
 };
 
-const getNumberOfAvailableLocations = (calendarData: [string, CalendarMonth][]): number => {
+const isBookingsAvailable = (calendarData: [string, CalendarMonth][]): boolean => {
   return calendarData.reduce((prev: number, it: [string, CalendarMonth]) =>
       prev +
       Array.from(it[1].values()).reduce((prev: number, it: CalendarLocation[]) => prev + it.length, 0)
-    , 0);
+    , 0) !== 0;
 }
 
 export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
@@ -59,7 +59,7 @@ export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   const { i18n } = useTranslation();
   const calendarData = Array.from(data);
   const { t } = useTranslation("common");
-  const bookingsAvailable = getNumberOfAvailableLocations(calendarData) !== 0;
+  const bookingsAvailable = isBookingsAvailable(calendarData);
 
   console.log("Bookings Available: " + bookingsAvailable);
 
