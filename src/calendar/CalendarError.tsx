@@ -123,7 +123,7 @@ export function CalendarError(props: { errorMessage: string }) {
               href="https://github.com/CovidEngine/vaxxnz/issues"
               target="_blank"
             >
-              Report error
+              Report Error
             </Button>
           </Section>
         </TextContainer>
