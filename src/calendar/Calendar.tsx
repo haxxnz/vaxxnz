@@ -1,5 +1,5 @@
 import CustomSpinner from "../utils/customSpinner";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useMemo } from "react";
 import { sum } from "../utils/math";
 import { CalendarContainer } from "../VaxComponents";
 import { differenceInDays, parse } from "date-fns";
@@ -8,13 +8,14 @@ import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import {
   CalendarData,
-  CalendarDateLocations,
-  CalendarMonth,
+  CalendarDateLocations, CalendarLocation,
+  CalendarMonth
 } from "./CalendarData";
 import React from "react";
 import { useRadiusKm } from "../utils/useRadiusKm";
 import { PageLink } from "../PageLink";
 import { styled } from "styletron-react";
+import { CalendarError } from "./CalendarError";
 
 interface BookingCalendarProps {
   data: CalendarData;
@@ -45,31 +46,50 @@ export const LoadingBookingCalendar: FunctionComponent = () => {
   );
 };
 
+const isBookingsAvailable = (calendarData: [string, CalendarMonth][]): boolean => {
+  return calendarData.reduce((prev: number, it: [string, CalendarMonth]) =>
+      prev +
+      Array.from(it[1].values()).reduce((prev: number, it: CalendarLocation[]) => prev + it.length, 0)
+    , 0) !== 0;
+}
+
 export const BookingCalendar: FunctionComponent<BookingCalendarProps> = ({
   data,
 }) => {
   const { i18n } = useTranslation();
   const calendarData = Array.from(data);
   const { t } = useTranslation("common");
-  return (
-    <>
-      <div className="WalkSection2">
-        <h2>{t("core.availableBookingSlots")}</h2>
-        <p>{t("core.vaccApptToBook")}</p>
-      </div>
-
-      <CalendarContainer>
-        {calendarData.map(([monthStr, monthDates]) => (
-          <CalendarMonthContainer
-            key={monthStr}
-            monthStr={monthStr}
-            monthDates={monthDates}
-            language={i18n.language}
-          />
-        ))}
-      </CalendarContainer>
-    </>
+  const bookingsAvailable = useMemo(() => isBookingsAvailable(calendarData),
+    [calendarData]
   );
+
+  if (bookingsAvailable) {
+    return (
+      <>
+        <div className="WalkSection2">
+          <h2>{t("core.availableBookingSlots")}</h2>
+          <p>{t("core.vaccApptToBook")}</p>
+        </div>
+
+        <CalendarContainer>
+          {calendarData.map(([monthStr, monthDates]) => (
+            <CalendarMonthContainer
+              key={monthStr}
+              monthStr={monthStr}
+              monthDates={monthDates}
+              language={i18n.language}
+            />
+          ))}
+        </CalendarContainer>
+      </>
+    );
+  } else {
+    return (
+      <CalendarError
+        errorMessage={t("core.noVaccApptToBook")}
+      />
+    );
+  }
 };
 
 interface CalendarMonthContainerProps {
