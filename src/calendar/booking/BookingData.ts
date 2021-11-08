@@ -202,7 +202,7 @@ export const useBookingData = (
   } else {
     return {
       ok: new Map(
-        Array.from(byMonth).sort((a, b) => String(b[0]).localeCompare(a[0]))
+        Array.from(byMonth).sort((a, b) => Date.parse(a[0]) - Date.parse(b[0]))
       ),
     };
   }
