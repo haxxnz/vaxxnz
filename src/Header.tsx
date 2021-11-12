@@ -12,7 +12,7 @@ export function Header() {
       <div className="menu-divider">
         {" "}
         <a
-          href="https://github.com/CovidEngine/vaxxnz"
+          href="https://github.com/vaxxnz/vaxxnz"
           target="_blank"
           rel="noreferrer"
           className="menu-link"

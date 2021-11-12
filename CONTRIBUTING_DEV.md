@@ -47,13 +47,13 @@ Make sure you have these tools installed locally:
 
 ### Task 5. Start development
 
-- Have a look at [good first issues](https://github.com/CovidEngine/vaxxnz/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22). It's a list of issues which are more straight forward than other ones and easier to get started with.
+- Have a look at [good first issues](https://github.com/vaxxnz/vaxxnz/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22). It's a list of issues which are more straight forward than other ones and easier to get started with.
 
-- Have a look at other [open issues](https://github.com/CovidEngine/vaxxnz/issues) and see if anyone needs any help investigating a problem or bug
+- Have a look at other [open issues](https://github.com/vaxxnz/vaxxnz/issues) and see if anyone needs any help investigating a problem or bug
 
-- [Review our roadmap ](https://github.com/CovidEngine/vaxxnz/projects/2) and join the discussion
+- [Review our roadmap ](https://github.com/vaxxnz/vaxxnz/projects/2) and join the discussion
 
-- Propose a new idea or feature by [Creating an issue](https://github.com/CovidEngine/vaxxnz/issues)
+- Propose a new idea or feature by [Creating an issue](https://github.com/vaxxnz/vaxxnz/issues)
 
 ### Task 6. Start development
 

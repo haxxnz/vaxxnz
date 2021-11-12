@@ -39,7 +39,7 @@ export interface HealthpointLocation extends HealthpointLocationRaw {
 export const getHealthpointData = memoizeOnce(
   async (): Promise<HealthpointLocation[]> => {
     const r = await fetch(
-      "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/healthpointLocations.json"
+      "https://raw.githubusercontent.com/vaxxnz/vaxxnzlocations/main/healthpointLocations.json"
     );
     const locs = await r.json();
     return locs.map((l: HealthpointLocationRaw) => ({

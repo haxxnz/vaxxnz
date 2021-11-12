@@ -120,7 +120,7 @@ export function CalendarError(props: { errorMessage: string }) {
           <Section>
             <Subheader>{t("core.mistake")}</Subheader>
             <Button
-              href="https://github.com/CovidEngine/vaxxnz/issues"
+              href="https://github.com/vaxxnz/vaxxnz/issues"
               target="_blank"
             >
               Report Error
