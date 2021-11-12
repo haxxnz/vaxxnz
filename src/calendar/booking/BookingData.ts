@@ -22,7 +22,7 @@ import {
 
 const getLocations = memoizeOnce(async function () {
   const res = await fetch(
-    "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/uniqLocations.json"
+    "https://raw.githubusercontent.com/vaxxnz/vaxxnzlocations/main/uniqLocations.json"
   );
   const dataRaw: LocationRaw[] = await res.json();
   const data: Location[] = dataRaw.map((l) => ({
@@ -36,7 +36,7 @@ const getLocations = memoizeOnce(async function () {
 
 const getAvailabilityData = memoize0(async function (extId: string) {
   const res = await fetch(
-    `https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/availability/${extId}.json`
+    `https://raw.githubusercontent.com/vaxxnz/vaxxnzlocations/main/availability/${extId}.json`
   );
   const data: AvailabilityData = await res.json();
   return data;

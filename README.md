@@ -10,7 +10,7 @@ In response to this, we've built [vaxx.nz](https://vaxx.nz) to make the experien
 
 ### Built by:
 
-![Contributors](https://contrib.rocks/image?repo=CovidEngine/vaxxnz)
+![Contributors](https://contrib.rocks/image?repo=vaxxnz/vaxxnz)
 
 ## How does it work?
 
@@ -47,5 +47,5 @@ Following our launch, we welcomed an average of 2,800 users every 30 minutes! Al
 
 ## Resources
 
-- Periodically updated JSON of all available slots: [see raw data here](https://github.com/CovidEngine/vaxxnzlocations)
+- Periodically updated JSON of all available slots: [see raw data here](https://github.com/vaxxnz/vaxxnzlocations)
 - Vaxx.nz Widget: [see here](https://docs.vaxx.nz)

@@ -27,16 +27,16 @@ const faq = () => {
           <h4>Who maintains Vaxx.nz?</h4>
           <p>
             Vaxx.nz is an open source community project run by volunteers:{" "}
-            <a href="https://github.com/CovidEngine/vaxxnz#built-by">
-              https://github.com/CovidEngine/vaxxnz#built-by
+            <a href="https://github.com/vaxxnz/vaxxnz#built-by">
+              https://github.com/vaxxnz/vaxxnz#built-by
             </a>
           </p>
           <br />
           <h4>How do I get involved?</h4>
           <p>
             Head over to{" "}
-            <a href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTING.md">
-              https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTING.md
+            <a href="https://github.com/vaxxnz/vaxxnz/blob/main/CONTRIBUTING.md">
+              https://github.com/vaxxnz/vaxxnz/blob/main/CONTRIBUTING.md
             </a>
           </p>
           <br />

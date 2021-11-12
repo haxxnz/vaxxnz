@@ -37,7 +37,7 @@ export function Footer() {
           </a>{" "}
           /{" "}
           <a
-            href="https://github.com/CovidEngine/vaxxnz/projects/2"
+            href="https://github.com/vaxxnz/vaxxnz/projects/2"
             target="_blank"
             rel="noreferrer"
             onClick={() => enqueueAnalyticsEvent("Roadmap clicked")}
@@ -46,7 +46,7 @@ export function Footer() {
           </a>{" "}
           /{" "}
           <a
-            href="https://github.com/CovidEngine/vaxxnz/blob/main/CONTRIBUTING.md"
+            href="https://github.com/vaxxnz/vaxxnz/blob/main/CONTRIBUTING.md"
             target="_blank"
             rel="noreferrer"
           >
@@ -54,7 +54,7 @@ export function Footer() {
           </a>
           <br />{" "}
           <a
-            href="https://github.com/CovidEngine/vaxxnzlocations"
+            href="https://github.com/vaxxnz/vaxxnzlocations"
             target="_blank"
             rel="noreferrer"
             onClick={() => enqueueAnalyticsEvent("Raw data clicked")}
@@ -63,7 +63,7 @@ export function Footer() {
           </a>{" "}
           /{" "}
           <a
-            href="https://github.com/CovidEngine/vaxxnz"
+            href="https://github.com/vaxxnz/vaxxnz"
             target="_blank"
             rel="noreferrer"
             onClick={() => enqueueAnalyticsEvent("Source code clicked")}

@@ -12,7 +12,7 @@ async function main() {
   let healthpointLocations: HealthpointLocation[] = [];
   https
     .get(
-      "https://raw.githubusercontent.com/CovidEngine/vaxxnzlocations/main/healthpointLocations.json",
+      "https://raw.githubusercontent.com/vaxxnz/vaxxnzlocations/main/healthpointLocations.json",
       (resp) => {
         let data = "";
         resp.on("data", (chunk) => {
