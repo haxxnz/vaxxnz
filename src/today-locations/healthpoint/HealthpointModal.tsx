@@ -211,10 +211,6 @@ const HealthpointModal: FunctionComponent<Props> = ({
               Root: {
                 style: {
                   width: "100%",
-                  marginTop: "1rem",
-                  marginRight: 0,
-                  marginBottom: "1rem",
-                  marginLeft: 0,
                 },
               },
             }}
