@@ -80,7 +80,8 @@ export function TodayLocationsSection() {
       // if it's 12:00 AM then it's 00:00
       if (hours12h === 12 && !isPM) {
         hours24h = 0;
-      } else if (isPM) { // otherwise if PM then add 12 hours
+      } else if (isPM) {
+        // otherwise if PM then add 12 hours
         hours24h = hours12h + 12;
       } else {
         hours24h = hours12h;
@@ -91,11 +92,13 @@ export function TodayLocationsSection() {
       if (isNaN(minutes)) {
         return undefined;
       }
-      date.setHours(hours24h, minutes, 0)
+      date.setHours(hours24h, minutes, 0);
       return date;
-    }
+    };
 
-    const dateRegex = new RegExp(/^[0-9]{1,2}:[0-9]{1,2} [AP]M to [0-9]{1,2}:[0-9]{1,2} [AP]M\.?$/);
+    const dateRegex = new RegExp(
+      /^[0-9]{1,2}:[0-9]{1,2} [AP]M to [0-9]{1,2}:[0-9]{1,2} [AP]M\.?$/
+    );
     if (!openTimes || !dateRegex.test(openTimes.trim())) {
       return true;
     }
@@ -107,8 +110,8 @@ export function TodayLocationsSection() {
     // to time
     let toStr = times[1].trim();
     // clean up the period.
-    if (toStr.charAt(toStr.length-1) === '.') {
-      toStr = toStr.substr(0, toStr.length-1);
+    if (toStr.charAt(toStr.length - 1) === ".") {
+      toStr = toStr.substr(0, toStr.length - 1);
     }
 
     const timeFrom = parseTime(fromStr);
@@ -121,14 +124,13 @@ export function TodayLocationsSection() {
     const midnightThisMorning = new Date();
     midnightThisMorning.setHours(0, 0, 0);
     if (timeTo.getTime() === midnightThisMorning.getTime()) {
-      timeTo.setDate(new Date().getDate()+1);
+      timeTo.setDate(new Date().getDate() + 1);
     }
-
 
     const now = new Date();
 
     return now >= timeFrom && now <= timeTo;
-  }
+  };
 
   return (
     <>
@@ -171,18 +173,18 @@ export function TodayLocationsSection() {
         <>
           <OtherContainer>
             {locations.ok
-              .filter(({...location}) => {
+              .filter(({ ...location }) => {
                 let openHours;
                 if ("isHealthpoint" in location) {
                   openHours = location.openTodayHours;
                 } else {
-                    const currentDay = new Date().getDay();
-                    const hours = location.openingHours.find(
-                      (oh) => oh.day === currentDay
-                    )!;
-                    if (hours.isOpen) {
-                       openHours = hours.hours;
-                    }
+                  const currentDay = new Date().getDay();
+                  const hours = location.openingHours.find(
+                    (oh) => oh.day === currentDay
+                  )!;
+                  if (hours.isOpen) {
+                    openHours = hours.hours;
+                  }
                 }
                 return isOpenNow(openHours);
               })
@@ -211,7 +213,13 @@ export function TodayLocationsSection() {
                     }
                   }
                   return (
-                    <PageLink to={modalPath(index)}>
+                    <PageLink
+                      to={modalPath(
+                        locations.ok.findIndex(
+                          (location) => location.name === name
+                        )
+                      )}
+                    >
                       <button
                         className="WalkBox"
                         onClick={() => openModal(index)}
