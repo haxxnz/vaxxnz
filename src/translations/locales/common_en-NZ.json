@@ -6,7 +6,7 @@
     "disclaimerNotAGovWebsite": "This is not an official Government website. To get vaccinated visit <0>bookmyvaccine.nz</0>",
     "loading": "Loading...",
     "getDirections": "Get Directions",
-    "makeABooking": "Make a Booking",
+    "makeABooking": "Make a Booking (Closed for Repairs)",
     "changeOrCancelABooking": "Change or cancel a Booking",
     "walkInDriveThru": "Walk-in/Drive Thru",
     "distanceAway": "{{distance}} away",
@@ -98,7 +98,6 @@
       "backToCalendar": "Back to Calendar"
     }
   },
-
   "footer": {
     "message": "If this site helped you, please consider sharing",
     "addressFinderLinkCopy": "Thanks to <0>AddressFinder</0> for free-of-charge address lookup",
