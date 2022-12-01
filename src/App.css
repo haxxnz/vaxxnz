@@ -1,4 +1,3 @@
-
 .big-old-container {
   border-radius: 16px;
   max-width: 1440px;
@@ -40,17 +39,19 @@ button.zero-available div p {
   padding: 12px 13px;
   margin-top: 10px;
 }
+
 @media screen and (max-width: 1440px) {
 
-.big-old-container { 
-  margin: 1rem;
-}
+  .big-old-container {
+    margin: 1rem;
+  }
 }
 
 @media screen and (max-width: 1024px) {
   .cancel-booking-notice.mobile {
     display: block !important;
   }
+
   .cancel-booking-notice.desktop {
     display: none;
   }
@@ -278,6 +279,7 @@ ul.af_list.af_list li.af_item {
   border-bottom: 1px solid lightgray;
   padding-bottom: 0.5rem;
 }
+
 .mappymap {
   border-bottom: 1px solid lightgray;
   position: sticky;
@@ -303,6 +305,15 @@ ul.af_list.af_list li.af_item {
   border-bottom: 1px solid lightgray;
   color: #0059be;
   transition: all 0.15s;
+}
+
+.styled-tab:disabled {
+  color: #333;
+  cursor: not-allowed;
+}
+
+.styled-tab:disabled:hover {
+  background-color: white;
 }
 
 .styled-tab:hover {
@@ -390,7 +401,7 @@ ul.af_list.af_list li.af_item {
   }
 }
 
-.header-main > div {
+.header-main>div {
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -400,14 +411,14 @@ ul.af_list.af_list li.af_item {
 }
 
 @media screen and (max-width: 1024px) {
-  .header-main > div {
+  .header-main>div {
     max-height: auto;
     flex-direction: row;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .header-main > div {
+  .header-main>div {
     flex-direction: column;
     width: 100%;
     max-height: initial;
@@ -415,7 +426,7 @@ ul.af_list.af_list li.af_item {
 }
 
 @media screen and (max-width: 500px) {
-  .header-main > div {
+  .header-main>div {
     flex-direction: column;
   }
 }
@@ -440,11 +451,11 @@ ul.af_list.af_list li.af_item {
   }
 }
 
-.header-main > section {
+.header-main>section {
   flex-direction: column;
 }
 
-.header-main > p {
+.header-main>p {
   font-size: 0.95rem;
   color: #555;
 }
@@ -497,15 +508,18 @@ ul.af_list.af_list li.af_item {
     display: none;
   }
 }
+
 @media screen and (max-width: 768px) {
   .month-container {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 @media screen and (max-width: 500px) {
   .month-container {
     grid-template-columns: repeat(1, 1fr);
   }
+
   .month-container button img {
     align-self: center;
     height: 2rem;
@@ -535,6 +549,7 @@ ul.af_list.af_list li.af_item {
     background-color: #e4eeff;
     cursor: pointer;
   }
+
   .month-container button:hover h3,
   .month-container button:hover p {
     color: #005eca;
@@ -548,6 +563,7 @@ ul.af_list.af_list li.af_item {
   flex-direction: column;
   justify-content: space-between;
 }
+
 .month-container button h3 {
   font-size: 1.2rem;
   font-weight: 400;
@@ -603,6 +619,7 @@ ul.af_list.af_list li.af_item {
     gap: 0;
   }
 }
+
 @media screen and (max-width: 768px) {
   .modal-grid {
     gap: 0;
@@ -643,6 +660,7 @@ ul.af_list.af_list li.af_item {
     gap: 0;
   }
 }
+
 @media screen and (max-width: 768px) {
   .walk-grid {
     gap: 0;
@@ -730,11 +748,13 @@ ul.af_list.af_list li.af_item {
   margin-bottom: 1.5rem;
   border-bottom: 2px solid lightgray;
 }
+
 .VaccineCentre h3 {
   font-size: 1.75rem;
   font-weight: 400;
   margin-bottom: 0.5rem;
 }
+
 .VaccineCentre .ButtonConstraint {
   display: flex;
   flex-wrap: wrap;
@@ -742,21 +762,25 @@ ul.af_list.af_list li.af_item {
   margin: 1rem 0;
   gap: 1.5rem;
 }
+
 .VaccineCentre .ButtonConstraint a {
-  flex:1;
+  flex: 1;
 }
+
 @media screen and (max-width: 768px) {
   .VaccineCentre h3 {
     font-size: 1.5rem;
     margin-bottom: 0.25rem;
   }
 }
+
 .VaccineCentre section.slot {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
+
 .VaccineCentre section.slot p {
   border-radius: 4px;
   border: 1px solid #e8e8e8;
@@ -767,11 +791,13 @@ ul.af_list.af_list li.af_item {
   min-width: 80px;
   text-align: center;
 }
+
 @media screen and (max-width: 500px) {
   .VaccineCentre section.slot p {
     flex: 1;
   }
 }
+
 @media screen and (max-width: 600px) {
   .VaccineCentre section.slot .ButtonConstraint {
     flex-direction: column;

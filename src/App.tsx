@@ -87,7 +87,7 @@ function App() {
             <Route>
               <Banner />
               <Switch>
-                <Route path="/locations">
+                <Route>
                   <div className={"big-old-container"}>
                     <LocationPicker lastUpdateTime={lastUpdateTime} />
                     <VaxxHelmet routeType={RouteType.Locations} />
@@ -95,7 +95,7 @@ function App() {
                     <TodayLocationsSection />
                   </div>
                 </Route>
-                <Route>
+                <Route path="/bookings">
                   <div className={"big-old-container"}>
                     <LocationPicker lastUpdateTime={lastUpdateTime} />
                     <VaxxHelmet routeType={RouteType.Home} />
