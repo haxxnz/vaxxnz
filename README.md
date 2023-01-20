@@ -49,3 +49,4 @@ Following our launch, we welcomed an average of 2,800 users every 30 minutes! Al
 
 - Periodically updated JSON of all available slots: [see raw data here](https://github.com/vaxxnz/vaxxnzlocations)
 - Vaxx.nz Widget: [see here](https://docs.vaxx.nz)
+- Vaxx Figma Assets: https://www.figma.com/file/4oWThzqdwnGO0ibpbWR3zd/Vaxxtastic?node-id=0%3A1
